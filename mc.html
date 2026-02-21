@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MC Businesses — McKillsey & Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3148;
+  --cream:#f0ead8;--cream-dim:#9aabbf;
+  --gold:#c9a84c;--gold-dim:#8a6f2e;
+  --green:#2dba72;--red:#d94f4f;--amber:#e08c2a;
+  --weekly:#f0c040;--weekly-bg:rgba(240,192,64,0.08);--weekly-border:rgba(240,192,64,0.35);
+  --rule:rgba(201,168,76,0.18);
+  --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--serif:'Playfair Display',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size:15px;line-height:1.65}
+.site-header{border-bottom:1px solid var(--rule);padding:20px 48px;display:flex;align-items:center;gap:32px}
+.wordmark{font-family:var(--serif);font-weight:700;color:#b8c8d8;line-height:1.15;text-decoration:none}
+.wordmark .line1{display:block;font-size:26px}
+.wordmark .line2{display:block;font-size:22px;padding-left:1.1em}
+.header-tagline{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.1em;text-transform:uppercase;margin-left:auto}
+.weekly-banner{background:var(--weekly-bg);border-bottom:1px solid var(--weekly-border);padding:11px 48px;display:flex;align-items:center;gap:16px}
+.weekly-badge{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;background:var(--weekly);color:var(--navy);padding:4px 10px;font-weight:500;flex-shrink:0}
+.weekly-banner-text{font-size:13px;color:var(--cream)}
+.weekly-banner-text strong{color:var(--weekly)}
+.weekly-expires{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.08em;flex-shrink:0}
+
+/* PAGE */
+.page{max-width:1520px;margin:0 auto;padding:44px 48px 80px}
+.page-title h1{font-family:var(--serif);font-size:34px;font-weight:900;line-height:1.1}
+.page-title .subtitle{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-top:6px}
+
+/* SECTION — standardized 36px top margin before label, 14px below */
+.section{margin-top:36px}
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+
+/* MODE TOGGLE */
+.mode-row{display:flex;align-items:center;gap:0;margin:28px 0 32px;flex-wrap:wrap;row-gap:12px}
+.mode-bar{display:flex;border:1px solid var(--rule);width:fit-content}
+.mode-btn{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:10px 20px;cursor:pointer;border:none;border-right:1px solid var(--rule);background:var(--navy-mid);color:var(--cream-dim);transition:all .15s;user-select:none;white-space:nowrap}
+.mode-btn:last-child{border-right:none}
+.mode-btn.active{background:var(--navy-light);color:var(--cream)}
+.mode-btn.active.m-crew{border-bottom:2px solid var(--green);color:var(--green)}
+.mode-btn.active.m-solo{border-bottom:2px solid var(--gold);color:var(--gold)}
+.mode-btn.active.m-solofull{border-bottom:2px solid var(--amber);color:var(--amber)}
+.mode-desc{font-family:var(--mono);font-size:10px;color:var(--cream-dim);margin-left:20px;letter-spacing:.06em}
+
+/* ASSUMPTIONS */
+.assumptions{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:32px;padding:11px 16px;border:1px solid var(--rule);background:rgba(201,168,76,.03)}
+.assumption-pill{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--cream-dim)}
+.assumption-pill .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+/* RANKINGS */
+.rankings{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:0}
+.rank-card{background:var(--navy-mid);padding:18px 14px;position:relative;border:1px solid var(--rule)}
+.rank-card.r1n{background:rgba(201,168,76,.07)}
+.rank-card.rw{background:rgba(240,192,64,.1);outline:1px solid var(--weekly-border)}
+.rank-num{font-family:var(--serif);font-size:44px;font-weight:900;color:rgba(255,255,255,.04);position:absolute;top:6px;right:10px;line-height:1;user-select:none}
+.rank-card.r1n .rank-num{color:rgba(201,168,76,.14)}
+.rank-card.rw .rank-num{color:rgba(240,192,64,.18)}
+.rank-business{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--cream);margin-bottom:1px}
+.rank-slug{font-family:var(--mono);font-size:10px;color:var(--gold-dim);letter-spacing:.08em;margin-bottom:12px}
+.rank-metric{font-family:var(--mono);font-size:16px;font-weight:500;color:var(--green);line-height:1;margin-bottom:2px}
+.rank-card.rw .rank-metric{color:var(--weekly)}
+.rank-label{font-family:var(--mono);font-size:9px;color:var(--cream-dim);letter-spacing:.06em;text-transform:uppercase}
+.weekly-tag{display:inline-block;margin-top:6px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:var(--weekly);color:var(--navy);padding:2px 6px;font-weight:500}
+
+/* TABLE */
+.table-wrap{overflow-x:auto;margin-bottom:0}
+table{width:100%;border-collapse:collapse;min-width:900px}
+thead th{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-align:right;padding:9px 14px;border-bottom:1px solid var(--rule);white-space:nowrap;font-weight:500}
+thead th:first-child{text-align:left}
+tbody tr{border-bottom:1px solid rgba(201,168,76,.07)}
+tbody tr.best-row{background:rgba(201,168,76,.04)}
+tbody tr.weekly-row{background:rgba(240,192,64,.07);border-bottom:1px solid rgba(240,192,64,.14)}
+td{padding:13px 14px;text-align:right;font-family:var(--mono);font-size:13px;color:var(--cream);vertical-align:middle;white-space:nowrap}
+td:first-child{text-align:left;font-family:var(--sans);white-space:normal;min-width:180px}
+.biz-name{font-family:var(--serif);font-size:13px;color:var(--cream);font-weight:700;display:block}
+.biz-slug{font-family:var(--mono);font-size:9px;color:var(--gold-dim);letter-spacing:.06em;display:block;margin-bottom:3px}
+.biz-tag{display:inline-block;font-size:9px;letter-spacing:.05em;text-transform:uppercase;padding:2px 5px;font-family:var(--mono);font-weight:500;margin-right:3px}
+.tag-buff{background:rgba(45,186,114,.15);color:var(--green)}
+.tag-weekly{background:var(--weekly);color:var(--navy)}
+.dim{color:var(--cream-dim)}
+.green{color:var(--green)}
+.red{color:var(--red)}
+.gold{color:var(--gold)}
+.wkly{color:var(--weekly);font-weight:500}
+.wkly-note{display:block;font-size:9px;color:var(--weekly);margin-top:2px}
+.norm-note{display:block;font-size:9px;color:var(--cream-dim);margin-top:2px}
+.rb{display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;border-radius:50%;font-size:9px;font-weight:600;font-family:var(--sans);background:var(--navy-light);color:var(--cream-dim);vertical-align:middle;margin-right:3px}
+.rb.g{background:var(--gold);color:var(--navy)}
+.rb.w{background:var(--weekly);color:var(--navy)}
+
+/* GLOBAL TOOLTIP */
+#tipbox{position:fixed;z-index:9999;width:300px;background:#08111a;border:1px solid var(--gold);padding:12px 14px;font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--cream);pointer-events:none;display:none;box-shadow:0 8px 32px rgba(0,0,0,.6)}
+#tipbox .tb-label{color:var(--gold);font-size:9px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px;border-bottom:1px solid rgba(201,168,76,.2);padding-bottom:5px}
+#tipbox .tb-calc{color:var(--cream-dim)}
+#tipbox .tb-result{color:var(--green);font-weight:500;margin-top:5px;display:block}
+#tipbox .tb-result.wk{color:var(--weekly)}
+.tip{border-bottom:1px dashed rgba(201,168,76,.45);cursor:help;display:inline-block}
+.tip.wt{border-bottom-color:rgba(240,192,64,.55)}
+
+/* MODE VISIBILITY */
+body.mode-crew .solo-only,body.mode-solofull .solo-only{display:none}
+body.mode-solo .crew-only,body.mode-solofull .crew-only{display:none}
+body.mode-crew .solofull-only,body.mode-solo .solofull-only{display:none}
+/* tables */
+body.mode-crew .tbl-crew{display:block}
+body.mode-solo .tbl-crew,body.mode-solofull .tbl-crew{display:none}
+body.mode-solo .tbl-solo{display:block}
+body.mode-crew .tbl-solo,body.mode-solofull .tbl-solo{display:none}
+body.mode-solofull .tbl-solofull{display:block}
+body.mode-crew .tbl-solofull,body.mode-solo .tbl-solofull{display:none}
+
+.tier-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dim);padding:7px 14px;background:rgba(255,255,255,.03);border-bottom:1px solid var(--rule)}
+.tier-label.wk-tier{background:rgba(240,192,64,.06)}
+
+/* SCENARIO TABLES — full width, no side-by-side overflow */
+.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0}
+.scenario-block{background:var(--navy-mid);padding:22px;border:1px solid var(--rule)}
+.scenario-block.rec{background:rgba(45,186,114,.04)}
+.scenario-block.wb{background:rgba(240,192,64,.06);border:1px solid var(--weekly-border);grid-column:span 2}
+.scenario-title{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--cream);margin-bottom:4px}
+.scenario-badge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;margin-bottom:14px}
+.badge-rec{background:rgba(45,186,114,.2);color:var(--green)}
+.badge-weekly{background:var(--weekly);color:var(--navy);font-weight:500}
+.badge-norm{background:rgba(255,255,255,.07);color:var(--cream-dim)}
+.stbl{width:100%;border-collapse:collapse}
+.stbl td{padding:6px 0;font-family:var(--mono);font-size:12px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;color:var(--cream);white-space:nowrap}
+.stbl td:first-child{text-align:left;color:var(--cream-dim);padding-right:12px;white-space:normal}
+.stbl tr.total td{border-top:1px solid var(--rule);border-bottom:none;padding-top:9px;font-size:13px}
+.stbl tr.total td:last-child{color:var(--green)}
+.stbl tr.total.wt td:last-child{color:var(--weekly)}
+
+/* INSIGHTS */
+.insights{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:0}
+.insight-card{background:var(--navy-mid);padding:22px;border:1px solid var(--rule)}
+.insight-number{font-family:var(--serif);font-size:30px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:6px}
+.insight-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:10px}
+.insight-text{font-size:12px;color:var(--cream);line-height:1.6}
+
+/* VERDICT */
+.verdict{border:1px solid var(--rule);border-left:3px solid var(--gold);padding:18px 22px;margin-bottom:12px;background:rgba(201,168,76,.02)}
+.verdict.wv{border-left-color:var(--weekly);background:rgba(240,192,64,.04);border-color:var(--weekly-border)}
+.verdict:last-child{margin-bottom:0}
+.verdict-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.verdict.wv .verdict-label{color:var(--weekly)}
+.verdict p{font-size:13px;color:var(--cream);line-height:1.7;margin-bottom:7px}
+.verdict p:last-child{margin-bottom:0}
+.verdict em{color:var(--cream-dim);font-style:normal}
+
+/* CONCEPT BOX */
+.concept-box{border:1px solid var(--rule);border-left:3px solid var(--cream-dim);padding:18px 22px;background:rgba(255,255,255,.01)}
+.concept-box .verdict-label{color:var(--cream-dim)}
+.concept-box p{font-size:13px;color:var(--cream);line-height:1.7;margin-bottom:7px}
+.concept-box p:last-child{margin-bottom:0}
+.code{font-family:var(--mono);font-size:11px;color:var(--gold)}
+
+.feedback-btn{position:fixed;bottom:22px;right:22px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--gold);padding:9px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .15s;z-index:100}
+.feedback-btn:hover{background:var(--gold);color:var(--navy)}
+
+/* ── FEEDBACK MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;display:none;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--navy-mid);border:1px solid var(--rule);width:500px;max-width:calc(100vw - 40px);max-height:90vh;overflow-y:auto;padding:28px}
+.modal-title{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--cream);margin-bottom:4px}
+.modal-sub{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.08em;margin-bottom:22px}
+.modal-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block}
+.modal-textarea{width:100%;background:var(--navy);border:1px solid var(--rule);color:var(--cream);font-family:var(--sans);font-size:13px;padding:10px 12px;resize:vertical;min-height:90px;line-height:1.6;outline:none}
+.modal-textarea:focus{border-color:var(--gold)}
+.screenshot-zone{width:100%;min-height:80px;background:var(--navy);border:1px dashed rgba(201,168,76,.35);display:flex;align-items:center;justify-content:center;margin-top:14px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .15s}
+.screenshot-zone:hover{border-color:var(--gold)}
+.screenshot-zone.has-image{border-style:solid;border-color:var(--gold)}
+.screenshot-zone img{max-width:100%;max-height:220px;display:block}
+.screenshot-hint{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.06em;text-align:center;padding:20px;pointer-events:none}
+.screenshot-hint span{color:var(--gold)}
+.screenshot-clear{position:absolute;top:6px;right:8px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;padding:2px 8px;cursor:pointer;display:none}
+.screenshot-zone.has-image .screenshot-clear{display:block}
+.modal-footer{display:flex;align-items:center;justify-content:space-between;margin-top:18px;gap:12px}
+.modal-send-btn{background:var(--gold);border:none;color:var(--navy);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 22px;cursor:pointer;transition:all .15s;font-weight:500}
+.modal-send-btn:hover{background:var(--cream)}
+.modal-send-btn:disabled{opacity:.4;cursor:not-allowed}
+.modal-cancel-btn{background:none;border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:10px 16px;cursor:pointer;transition:all .15s}
+.modal-cancel-btn:hover{border-color:var(--cream-dim);color:var(--cream)}
+.modal-status{font-family:var(--mono);font-size:11px;color:var(--cream-dim);min-height:16px}
+
+@media(max-width:900px){
+  .page{padding:20px}
+  .site-header,.weekly-banner{padding-left:20px;padding-right:20px}
+  .rankings{grid-template-columns:1fr 1fr}
+  .scenario-grid{grid-template-columns:1fr}
+  .scenario-block.wb{grid-column:span 1}
+  .insights{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body class="mode-crew">
+<div id="tipbox"></div>
+
+<header class="site-header">
+  <a href="/" class="wordmark"><span class="line1">McKillsey</span><span class="line2">&amp; Company</span></a>
+  <div class="header-tagline">Strategic Advisory · Los Santos · Blaine County</div>
+</header>
+
+<div class="weekly-banner">
+  <div class="weekly-badge">This Week</div>
+  <div class="weekly-banner-text">
+    <strong>Counterfeit Cash is on 2× sell bonus.</strong>
+    Stacks with front business bonus.
+    <span class="tip wt" data-tip-label="This Week — Crew + Full Lobby" data-tip-calc="Base $496,800 (Car Wash +35%)
+× 2.00 weekly bonus = $993,600
+× 1.50 lobby bonus = $1,490,400
+− $150,000 supply = $1,340,400 net
+÷ 40 min burden × 60 = $2,010,600/hr" data-tip-result="$1,340,400 net · $2,010,600/hr">Crew + full lobby nets $1,340,400 per sell.</span>
+  </div>
+  <div class="weekly-expires">Resets Thursday</div>
+</div>
+
+<main class="page">
+
+<div class="page-title">
+  <h1>MC Businesses</h1>
+  <div class="subtitle">Comparative Analysis — All Five Operations</div>
+</div>
+
+<!-- MODE TOGGLE -->
+<div class="mode-row">
+  <div class="mode-bar">
+    <div class="mode-btn m-crew active" id="btn-crew" onclick="setMode('crew')">Crew + Full Lobby</div>
+    <div class="mode-btn m-solo" id="btn-solo" onclick="setMode('solo')">Solo + Invite Only</div>
+    <div class="mode-btn m-solofull" id="btn-solofull" onclick="setMode('solofull')">Solo + Full Lobby</div>
+  </div>
+  <div class="mode-desc" id="mode-desc">Recommended. 2 helpers · +50% lobby bonus · reciprocity cost applied.</div>
+</div>
+
+<div class="assumptions">
+  <div class="assumption-pill"><span class="dot"></span>All upgrades purchased</div>
+  <div class="assumption-pill"><span class="dot"></span>Remote sales only</div>
+  <div class="assumption-pill"><span class="dot"></span>Front bonuses applied where owned</div>
+  <div class="assumption-pill"><span class="dot"></span>Sell times: 10 min crew · 30 min solo (McKillsey estimates)</div>
+  <div class="assumption-pill"><span class="dot"></span>Payouts: exact game values</div>
+</div>
+
+<!-- RANKINGS -->
+<div class="section">
+  <div class="section-label" id="ranking-label">Rankings — Crew + Full Lobby</div>
+  <div class="rankings" id="rankings-grid"></div>
+</div>
+
+<!-- ═══ CREW TABLE ═══ -->
+<div class="section tbl-crew">
+  <div class="section-label">Full Data — Crew + Full Lobby</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th style="text-align:left">Business</th>
+        <th>Supply Expense</th>
+        <th>Gross Revenue</th>
+        <th>Net Income</th>
+        <th>Active Time</th>
+        <th>Fill Time</th>
+        <th>$/Active Hr</th>
+        <th>$/Passive Hr</th>
+      </tr></thead>
+      <tbody>
+        <!-- COKE -->
+        <tr class="best-row">
+          <td><span class="biz-name">Cocaine Lockup</span><span class="biz-slug">/coke</span></td>
+          <td><span class="tip" data-tip-label="Supply Expense" data-tip-calc="2.5 restocks × $75,000 = $187,500">$187,500</span></td>
+          <td><span class="tip" data-tip-label="Gross — Crew + Full Lobby" data-tip-calc="$525,000 × 1.50 lobby bonus = $787,500" data-tip-result="$787,500">$787,500</span></td>
+          <td><span class="tip green" data-tip-label="Net Income" data-tip-calc="$787,500 − $187,500 = $600,000" data-tip-result="$600,000">$600,000</span></td>
+          <td><span class="tip" data-tip-label="Active Time — Crew" data-tip-calc="10 min sell + 20 min reciprocity (2 × 10)
+= 30 min total active burden">30m</span></td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 bars × 2.5 supply ratio
+= 300 real-world minutes">300m</span></td>
+          <td><span class="tip green" data-tip-label="$/Active Hr" data-tip-calc="$600,000 ÷ 30 min × 60 = $1,200,000/hr" data-tip-result="$1,200,000/hr"><span class="rb g">1</span>$1,200,000</span></td>
+          <td><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$600,000 ÷ 300 min × 60 = $120,000/hr">$120,000</span></td>
+        </tr>
+        <!-- CASH WEEKLY -->
+        <tr class="weekly-row">
+          <td><span class="biz-name">Counterfeit Cash</span><span class="biz-slug">/cash</span><span class="biz-tag tag-buff">+35% Car Wash</span> <span class="biz-tag tag-weekly">2× this week</span></td>
+          <td><span class="tip" data-tip-label="Supply Expense" data-tip-calc="2.0 restocks × $75,000 = $150,000">$150,000</span></td>
+          <td>
+            <span class="tip wt" data-tip-label="Gross — This Week" data-tip-calc="$496,800 (Car Wash +35%)
+× 2.00 weekly = $993,600
+× 1.50 lobby = $1,490,400" data-tip-result="$1,490,400 this week · $745,200 normal" data-tip-result-class="wk"><span class="wkly">$1,490,400</span></span>
+            <span class="norm-note">$745,200 normal</span>
+          </td>
+          <td>
+            <span class="tip wt" data-tip-label="Net — This Week" data-tip-calc="$1,490,400 − $150,000 = $1,340,400
+Normal: $745,200 − $150,000 = $595,200" data-tip-result="$1,340,400 this week · $595,200 normal" data-tip-result-class="wk"><span class="wkly">$1,340,400</span></span>
+            <span class="norm-note">$595,200 normal</span>
+          </td>
+          <td><span class="tip" data-tip-label="Active Time — Crew" data-tip-calc="10 min sell + 20 min reciprocity (2 × 10)
+= 30 min total active burden">30m</span></td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="2.0 restocks × supply time
+= 320 real-world minutes">320m</span></td>
+          <td>
+            <span class="tip wt" data-tip-label="$/Active Hr — This Week" data-tip-calc="$1,340,400 ÷ 30 min × 60 = $2,680,800/hr
+Normal: $595,200 ÷ 30 × 60 = $1,190,400/hr" data-tip-result="$2,680,800/hr this week · $1,190,400/hr normal" data-tip-result-class="wk"><span class="rb w">★</span><span class="wkly">$2,680,800</span></span>
+            <span class="norm-note">$1,190,400 normal</span>
+          </td>
+          <td>
+            <span class="tip wt" data-tip-label="$/Passive Hr — This Week" data-tip-calc="$1,340,400 ÷ 320 min × 60 = $251,325/hr
+Normal: $595,200 ÷ 320 × 60 = $111,600/hr" data-tip-result="$251,325/hr this week" data-tip-result-class="wk"><span class="wkly">$251,325</span></span>
+            <span class="norm-note">$111,600 normal</span>
+          </td>
+        </tr>
+        <!-- METH -->
+        <tr>
+          <td><span class="biz-name">Methamphetamine Lab</span><span class="biz-slug">/meth</span></td>
+          <td><span class="tip" data-tip-label="Supply Expense" data-tip-calc="2.5 restocks × $75,000 = $187,500
+Same cost as Coke, lower payout."><span class="red">$187,500</span></span></td>
+          <td><span class="tip" data-tip-label="Gross — Crew + Full Lobby" data-tip-calc="$446,350 × 1.50 = $669,525">$669,525</span></td>
+          <td><span class="tip" data-tip-label="Net Income" data-tip-calc="$669,525 − $187,500 = $482,025">$482,025</span></td>
+          <td><span class="tip" data-tip-label="Active Time — Crew" data-tip-calc="10 min sell + 20 min reciprocity (2 × 10)
+= 30 min total active burden">30m</span></td>
+          <td><span class="tip dim" data-tip-label="Fill Time" data-tip-calc="2.5 restocks × supply time
+= 360 real-world minutes (6 hours)">360m</span></td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="$482,025 ÷ 30 min × 60 = $964,050/hr" data-tip-result="$964,050/hr"><span class="rb">3</span>$964,050</span></td>
+          <td><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$482,025 ÷ 360 min × 60 = $80,338/hr">$80,338</span></td>
+        </tr>
+        <!-- WEED -->
+        <tr>
+          <td><span class="biz-name">Weed Farm</span><span class="biz-slug">/weed</span><span class="biz-tag tag-buff">+35% Smoke on the Water</span></td>
+          <td><span class="tip" data-tip-label="Supply Expense" data-tip-calc="20/9 restocks × $75,000 = $166,667">$166,667</span></td>
+          <td><span class="tip" data-tip-label="Gross — Crew + Full Lobby" data-tip-calc="$426,600 (Smoke on the Water +35%)
+× 1.50 lobby = $639,900">$639,900</span></td>
+          <td>
+            <span class="tip" data-tip-label="Net Income (with front bonus)" data-tip-calc="$639,900 − $166,667 = $473,233
+Without front: ($315,000 × 1.5) − $166,667 = $305,833">$473,233</span>
+            <span class="norm-note">$305,833 no front</span>
+          </td>
+          <td><span class="tip" data-tip-label="Active Time — Crew" data-tip-calc="10 min sell + 20 min reciprocity (2 × 10)
+= 30 min total active burden">30m</span></td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="20/9 restocks × supply time
+= 320 real-world minutes">320m</span></td>
+          <td>
+            <span class="tip" data-tip-label="$/Active Hr (with front)" data-tip-calc="$473,233 ÷ 30 min × 60 = $946,466/hr
+Without front: $305,833 ÷ 30 × 60 = $611,666/hr"><span class="rb">4</span>$946,466</span>
+            <span class="norm-note">$611,666 no front</span>
+          </td>
+          <td>
+            <span class="tip" data-tip-label="$/Passive Hr (with front)" data-tip-calc="$473,233 ÷ 320 min × 60 = $88,731/hr
+Without front: $57,344/hr">$88,731</span>
+            <span class="norm-note">$57,344 no front</span>
+          </td>
+        </tr>
+        <!-- FORGERY -->
+        <tr>
+          <td><span class="biz-name">Document Forgery</span><span class="biz-slug">/docs</span></td>
+          <td><span class="tip green" data-tip-label="Supply Expense" data-tip-calc="1.2 restocks × $75,000 = $90,000">$90,000</span></td>
+          <td><span class="tip red" data-tip-label="Gross — Crew + Full Lobby" data-tip-calc="$159,000 × 1.50 = $238,500">$238,500</span></td>
+          <td><span class="tip red" data-tip-label="Net Income" data-tip-calc="$238,500 − $90,000 = $148,500">$148,500</span></td>
+          <td><span class="tip" data-tip-label="Active Time — Crew" data-tip-calc="10 min sell + 20 min reciprocity (2 × 10)
+= 30 min total active burden">30m</span></td>
+          <td><span class="tip green" data-tip-label="Fill Time" data-tip-calc="1.2 restocks × supply time
+= 180 real-world minutes (3 hours)">180m</span></td>
+          <td><span class="tip red" data-tip-label="$/Active Hr" data-tip-calc="$148,500 ÷ 30 min × 60 = $297,000/hr"><span class="rb">5</span>$297,000</span></td>
+          <td><span class="tip red" data-tip-label="$/Passive Hr" data-tip-calc="$148,500 ÷ 180 min × 60 = $49,500/hr">$49,500</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══ SOLO+INVITE TABLE ═══ -->
+<div class="section tbl-solo">
+  <div class="section-label">Full Data — Solo + Invite Only (All Stock Tiers)</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th style="text-align:left">Business / Stock Level</th>
+        <th>Vehicles</th>
+        <th>Supply Expense</th>
+        <th>Gross Revenue</th>
+        <th>Net Income</th>
+        <th>Active Time</th>
+        <th>$/Active Hr</th>
+        <th>$/Passive Hr</th>
+      </tr></thead>
+      <tbody>
+        <tr><td colspan="8" class="tier-label">Cocaine Lockup — /coke — Fill 300m — $187,500 full supply</td></tr>
+        <tr>
+          <td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">Under 1.5 bars</span></td>
+          <td>1</td><td>$37,500</td>
+          <td><span class="tip" data-tip-label="Gross — 1 bar, Invite Only" data-tip-calc="1 × $105,000/bar = $105,000
+No lobby bonus">$105,000</span></td>
+          <td><span class="tip" data-tip-label="Net" data-tip-calc="$105,000 − $37,500 = $67,500">$67,500</span></td>
+          <td><span class="tip" data-tip-label="Active Time — Solo, 1 vehicle" data-tip-calc="10 min sell
+No reciprocity cost">10m</span></td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="$67,500 ÷ 10 min × 60 = $405,000/hr">$405,000</span></td>
+          <td class="dim">—</td>
+        </tr>
+        <tr>
+          <td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">1.5–2.5 bars</span></td>
+          <td>2</td><td>$75,000</td><td>$210,000</td>
+          <td><span class="tip" data-tip-label="Net" data-tip-calc="$210,000 − $75,000 = $135,000">$135,000</span></td>
+          <td>20m</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="$135,000 ÷ 20 min × 60 = $405,000/hr">$405,000</span></td>
+          <td class="dim">—</td>
+        </tr>
+        <tr class="best-row">
+          <td style="padding-left:18px"><span style="font-family:var(--mono);font-size:11px">Full stock</span></td>
+          <td>4–5</td><td>$187,500</td>
+          <td><span class="tip" data-tip-label="Gross — Full, Invite Only" data-tip-calc="$525,000 base
+No lobby bonus">$525,000</span></td>
+          <td><span class="tip green" data-tip-label="Net" data-tip-calc="$525,000 − $187,500 = $337,500">$337,500</span></td>
+          <td><span class="tip" data-tip-label="Active Time — Solo Full Stock" data-tip-calc="~30 min sell (multiple vehicles)
+No reciprocity cost">~30m</span></td>
+          <td><span class="tip green" data-tip-label="$/Active Hr" data-tip-calc="$337,500 ÷ 30 min × 60 = $675,000/hr
+No reciprocity — sold solo" data-tip-result="$675,000/hr">$675,000</span></td>
+          <td><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$337,500 ÷ 300 min × 60 = $67,500/hr">$67,500</span></td>
+        </tr>
+
+        <tr><td colspan="8" class="tier-label wk-tier">Counterfeit Cash — /cash — Fill 320m — $150,000 full supply — +35% Car Wash — <span class="wkly">2× this week</span></td></tr>
+        <tr class="weekly-row">
+          <td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">Under 1.5 bars</span></td>
+          <td>1</td><td>$30,000</td>
+          <td><span class="tip wt" data-tip-label="Gross — 1 bar, This Week" data-tip-calc="1 × $99,360/bar × 2.0 weekly = $198,720
+Normal: $99,360" data-tip-result="$198,720 this week · $99,360 normal" data-tip-result-class="wk"><span class="wkly">$198,720</span></span><span class="norm-note">$99,360 normal</span></td>
+          <td><span class="tip wt" data-tip-label="Net — This Week" data-tip-calc="$198,720 − $30,000 = $168,720
+Normal: $99,360 − $30,000 = $69,360" data-tip-result-class="wk"><span class="wkly">$168,720</span></span><span class="norm-note">$69,360 normal</span></td>
+          <td>10m</td>
+          <td><span class="tip wt" data-tip-label="$/Active Hr — This Week" data-tip-calc="$168,720 ÷ 10 min × 60 = $1,012,320/hr
+Normal: $69,360 ÷ 10 × 60 = $416,160/hr" data-tip-result="$1,012,320/hr this week" data-tip-result-class="wk"><span class="wkly">$1,012,320</span></span><span class="norm-note">$416,160 normal</span></td>
+          <td class="dim">—</td>
+        </tr>
+        <tr class="weekly-row">
+          <td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">1.5–2.5 bars</span></td>
+          <td>2</td><td>$60,000</td>
+          <td><span class="wkly">$397,440</span><span class="norm-note">$198,720 normal</span></td>
+          <td><span class="wkly">$337,440</span><span class="norm-note">$138,720 normal</span></td>
+          <td>20m</td>
+          <td><span class="tip wt" data-tip-label="$/Active Hr — This Week" data-tip-calc="$337,440 ÷ 20 min × 60 = $1,012,320/hr" data-tip-result-class="wk"><span class="wkly">$1,012,320</span></span><span class="norm-note">$416,160 normal</span></td>
+          <td class="dim">—</td>
+        </tr>
+        <tr class="weekly-row best-row">
+          <td style="padding-left:18px"><span style="font-family:var(--mono);font-size:11px">Full stock</span></td>
+          <td>4–5</td><td>$150,000</td>
+          <td><span class="tip wt" data-tip-label="Gross — Full, This Week, Invite Only" data-tip-calc="$496,800 × 2.0 weekly = $993,600
+No lobby bonus (invite-only)" data-tip-result="$993,600 this week · $496,800 normal" data-tip-result-class="wk"><span class="wkly">$993,600</span></span><span class="norm-note">$496,800 normal</span></td>
+          <td><span class="tip wt" data-tip-label="Net — This Week" data-tip-calc="$993,600 − $150,000 = $843,600
+Normal: $496,800 − $150,000 = $346,800" data-tip-result-class="wk"><span class="wkly">$843,600</span></span><span class="norm-note">$346,800 normal</span></td>
+          <td>~30m</td>
+          <td><span class="tip wt" data-tip-label="$/Active Hr — This Week" data-tip-calc="$843,600 ÷ 30 min × 60 = $1,687,200/hr
+No reciprocity — sold solo
+Normal: $346,800 ÷ 30 × 60 = $693,600/hr" data-tip-result="$1,687,200/hr this week" data-tip-result-class="wk"><span class="wkly">$1,687,200</span></span><span class="norm-note">$693,600 normal</span></td>
+          <td><span class="wkly">$158,175</span><span class="norm-note">$65,025 normal</span></td>
+        </tr>
+
+        <tr><td colspan="8" class="tier-label">Methamphetamine Lab — /meth — Fill 360m — $187,500 full supply</td></tr>
+        <tr><td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">Under 1.5 bars</span></td><td>1</td><td>$37,500</td><td>$89,270</td><td>$51,770</td><td>10m</td><td>$310,620</td><td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">1.5–2.5 bars</span></td><td>2</td><td>$75,000</td><td>$178,540</td><td>$103,540</td><td>20m</td><td>$310,620</td><td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span style="font-family:var(--mono);font-size:11px">Full stock</span></td><td>4–5</td><td>$187,500</td><td>$446,350</td><td>$258,850</td><td>~30m</td><td>$517,700</td><td>$43,142</td></tr>
+
+        <tr><td colspan="8" class="tier-label">Weed Farm — /weed — Fill 320m — $166,667 full supply — +35% Smoke on the Water</td></tr>
+        <tr><td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">Under 1.5 bars</span></td><td>1</td><td>$33,333</td><td>$85,320</td><td>$51,987</td><td>10m</td><td>$311,922</td><td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">1.5–2.5 bars</span></td><td>2</td><td>$66,667</td><td>$170,640</td><td>$103,973</td><td>20m</td><td>$311,919</td><td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span style="font-family:var(--mono);font-size:11px">Full stock</span></td><td>4–5</td><td>$166,667</td><td>$426,600</td><td>$259,933</td><td>~30m</td><td>$519,866</td><td>$48,737</td></tr>
+
+        <tr><td colspan="8" class="tier-label">Document Forgery — /docs — Fill 180m — $90,000 full supply</td></tr>
+        <tr><td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">Under 1.5 bars</span></td><td>1</td><td>$18,000</td><td class="red">$31,800</td><td class="red">$13,800</td><td>10m</td><td class="red">$82,800</td><td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">1.5–2.5 bars</span></td><td>2</td><td>$36,000</td><td class="red">$63,600</td><td class="red">$27,600</td><td>20m</td><td class="red">$82,800</td><td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span style="font-family:var(--mono);font-size:11px">Full stock</span></td><td>4–5</td><td>$90,000</td><td class="red">$159,000</td><td class="red">$69,000</td><td>~30m</td><td class="red">$138,000</td><td class="red">$23,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══ SOLO+FULL TABLE ═══ -->
+<div class="section tbl-solofull">
+  <div class="section-label">Full Data — Solo + Full Lobby (All Stock Tiers)</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th style="text-align:left">Business / Stock Level</th>
+        <th>Vehicles</th>
+        <th>Supply Expense</th>
+        <th>Gross Revenue</th>
+        <th>Net Income</th>
+        <th>Active Time</th>
+        <th>$/Active Hr</th>
+        <th>$/Passive Hr</th>
+      </tr></thead>
+      <tbody>
+        <tr><td colspan="8" class="tier-label">Cocaine Lockup — /coke — Fill 300m — $187,500 full supply — +50% lobby bonus applied</td></tr>
+        <tr>
+          <td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">Under 1.5 bars</span></td>
+          <td>1</td><td>$37,500</td>
+          <td><span class="tip" data-tip-label="Gross — 1 bar, Full Lobby" data-tip-calc="1 × $105,000 × 1.50 lobby = $157,500">$157,500</span></td>
+          <td><span class="tip" data-tip-label="Net" data-tip-calc="$157,500 − $37,500 = $120,000">$120,000</span></td>
+          <td>10m</td>
+          <td><span class="tip green" data-tip-label="$/Active Hr" data-tip-calc="$120,000 ÷ 10 min × 60 = $720,000/hr
+No reciprocity — solo seller" data-tip-result="$720,000/hr">$720,000</span></td>
+          <td class="dim">—</td>
+        </tr>
+        <tr>
+          <td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">1.5–2.5 bars</span></td>
+          <td>2</td><td>$75,000</td>
+          <td><span class="tip" data-tip-label="Gross — 2 bars, Full Lobby" data-tip-calc="2 × $105,000 × 1.50 = $315,000">$315,000</span></td>
+          <td>$240,000</td><td>20m</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="$240,000 ÷ 20 min × 60 = $720,000/hr">$720,000</span></td>
+          <td class="dim">—</td>
+        </tr>
+        <tr class="best-row">
+          <td style="padding-left:18px"><span style="font-family:var(--mono);font-size:11px">Full stock</span></td>
+          <td>4–5</td><td>$187,500</td>
+          <td><span class="tip" data-tip-label="Gross — Full, Full Lobby" data-tip-calc="$525,000 × 1.50 = $787,500">$787,500</span></td>
+          <td><span class="tip green" data-tip-label="Net" data-tip-calc="$787,500 − $187,500 = $600,000">$600,000</span></td>
+          <td>~30m</td>
+          <td><span class="tip green" data-tip-label="$/Active Hr" data-tip-calc="$600,000 ÷ 30 min × 60 = $1,200,000/hr
+No reciprocity — solo seller" data-tip-result="$1,200,000/hr">$1,200,000</span></td>
+          <td>$120,000</td>
+        </tr>
+
+        <tr><td colspan="8" class="tier-label wk-tier">Counterfeit Cash — /cash — Fill 320m — $150,000 full supply — +35% Car Wash — <span class="wkly">2× this week</span></td></tr>
+        <tr class="weekly-row">
+          <td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">Under 1.5 bars</span></td>
+          <td>1</td><td>$30,000</td>
+          <td><span class="tip wt" data-tip-label="Gross — 1 bar, Full Lobby, This Week" data-tip-calc="$99,360 × 2.0 weekly × 1.50 lobby = $298,080
+Normal: $99,360 × 1.50 = $149,040" data-tip-result-class="wk"><span class="wkly">$298,080</span></span><span class="norm-note">$149,040 normal</span></td>
+          <td><span class="wkly">$268,080</span><span class="norm-note">$119,040 normal</span></td>
+          <td>10m</td>
+          <td><span class="tip wt" data-tip-label="$/Active Hr — This Week" data-tip-calc="$268,080 ÷ 10 min × 60 = $1,608,480/hr
+Normal: $119,040 ÷ 10 × 60 = $714,240/hr" data-tip-result-class="wk"><span class="wkly">$1,608,480</span></span><span class="norm-note">$714,240 normal</span></td>
+          <td class="dim">—</td>
+        </tr>
+        <tr class="weekly-row">
+          <td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">1.5–2.5 bars</span></td>
+          <td>2</td><td>$60,000</td>
+          <td><span class="wkly">$596,160</span><span class="norm-note">$298,080 normal</span></td>
+          <td><span class="wkly">$536,160</span><span class="norm-note">$238,080 normal</span></td>
+          <td>20m</td>
+          <td><span class="wkly">$1,608,480</span><span class="norm-note">$714,240 normal</span></td>
+          <td class="dim">—</td>
+        </tr>
+        <tr class="weekly-row best-row">
+          <td style="padding-left:18px"><span style="font-family:var(--mono);font-size:11px">Full stock</span></td>
+          <td>4–5</td><td>$150,000</td>
+          <td><span class="tip wt" data-tip-label="Gross — Full, Full Lobby, This Week" data-tip-calc="$496,800 × 2.0 weekly × 1.50 lobby = $1,490,400
+Normal: $496,800 × 1.50 = $745,200" data-tip-result-class="wk"><span class="wkly">$1,490,400</span></span><span class="norm-note">$745,200 normal</span></td>
+          <td><span class="tip wt" data-tip-label="Net — This Week" data-tip-calc="$1,490,400 − $150,000 = $1,340,400
+Normal: $745,200 − $150,000 = $595,200" data-tip-result-class="wk"><span class="wkly">$1,340,400</span></span><span class="norm-note">$595,200 normal</span></td>
+          <td>~30m</td>
+          <td><span class="tip wt" data-tip-label="$/Active Hr — This Week (Solo, No Reciprocity)" data-tip-calc="$1,340,400 ÷ 30 min × 60 = $2,680,800/hr
+Solo seller — no reciprocity cost
+Normal: $595,200 ÷ 30 × 60 = $1,190,400/hr" data-tip-result="$2,680,800/hr this week" data-tip-result-class="wk"><span class="wkly">$2,680,800</span></span><span class="norm-note">$1,190,400 normal</span></td>
+          <td><span class="wkly">$251,325</span><span class="norm-note">$111,600 normal</span></td>
+        </tr>
+
+        <tr><td colspan="8" class="tier-label">Methamphetamine Lab — /meth — Fill 360m — $187,500 full supply — +50% lobby applied</td></tr>
+        <tr><td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">Under 1.5 bars</span></td><td>1</td><td>$37,500</td><td>$133,905</td><td>$96,405</td><td>10m</td><td>$578,430</td><td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">1.5–2.5 bars</span></td><td>2</td><td>$75,000</td><td>$267,810</td><td>$192,810</td><td>20m</td><td>$578,430</td><td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span style="font-family:var(--mono);font-size:11px">Full stock</span></td><td>4–5</td><td>$187,500</td><td>$669,525</td><td>$482,025</td><td>~30m</td><td>$964,050</td><td>$80,338</td></tr>
+
+        <tr><td colspan="8" class="tier-label">Weed Farm — /weed — Fill 320m — $166,667 full supply — +35% Smoke on the Water — +50% lobby applied</td></tr>
+        <tr><td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">Under 1.5 bars</span></td><td>1</td><td>$33,333</td><td>$127,980</td><td>$94,647</td><td>10m</td><td>$567,882</td><td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">1.5–2.5 bars</span></td><td>2</td><td>$66,667</td><td>$255,960</td><td>$189,293</td><td>20m</td><td>$567,879</td><td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span style="font-family:var(--mono);font-size:11px">Full stock</span></td><td>4–5</td><td>$166,667</td><td>$639,900</td><td>$473,233</td><td>~30m</td><td>$946,466</td><td>$88,731</td></tr>
+
+        <tr><td colspan="8" class="tier-label">Document Forgery — /docs — Fill 180m — $90,000 full supply — +50% lobby applied</td></tr>
+        <tr><td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">Under 1.5 bars</span></td><td>1</td><td>$18,000</td><td class="red">$47,700</td><td class="red">$29,700</td><td>10m</td><td class="red">$178,200</td><td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="dim" style="font-family:var(--mono);font-size:11px">1.5–2.5 bars</span></td><td>2</td><td>$36,000</td><td class="red">$95,400</td><td class="red">$59,400</td><td>20m</td><td class="red">$178,200</td><td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span style="font-family:var(--mono);font-size:11px">Full stock</span></td><td>4–5</td><td>$90,000</td><td class="red">$238,500</td><td class="red">$148,500</td><td>~30m</td><td class="red">$297,000</td><td class="red">$49,500</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- WEEKLY SPOTLIGHT -->
+<div class="section">
+  <div class="section-label">This Week — Cash 2× Sell Bonus</div>
+  <div class="verdict wv" style="margin-bottom:12px">
+    <div class="verdict-label">McKillsey Weekly Advisory</div>
+    <p>This week, Counterfeit Cash sells for double the normal price. Supply costs are unchanged. The Car Wash front bonus stacks on top. The result at crew + full lobby: <strong>$2,680,800 per active hour</strong> on <strong>$1,340,400 net</strong> — 2.23× Coke's normal ceiling. If you own Cash, sell it as frequently as possible before Thursday.</p>
+    <p>Cash's 320-minute fill cycle means roughly two full sell cycles in a long session. At $1,340,400 net per sell, that is $2.68M net from a single business before touching Coke, Meth, or Weed.</p>
+    <p><em>Don't own the Hands-On Car Wash? Base-only gross this week is still $1,470,000 crew/full. Excellent. But own the front business.</em></p>
+  </div>
+  <div class="scenario-grid">
+    <div class="scenario-block wb">
+      <div class="scenario-title">Cash — Crew + Full Lobby, This Week</div>
+      <div><span class="scenario-badge badge-weekly">★ This Week's Best Play</span></div>
+      <table class="stbl">
+        <tr><td>Base payout (Car Wash +35%)</td><td>$496,800</td></tr>
+        <tr><td>2× weekly bonus</td><td>× 2.00 = $993,600</td></tr>
+        <tr><td>Full lobby bonus (+50%)</td><td>× 1.50 = $1,490,400</td></tr>
+        <tr><td>Supply expense</td><td>− $150,000</td></tr>
+        <tr><td>Net income</td><td class="wkly">$1,340,400</td></tr>
+        <tr><td>Your sell time</td><td>10 min</td></tr>
+        <tr><td>Reciprocity (2 helpers × 10 min)</td><td>+ 20 min</td></tr>
+        <tr class="total wt"><td>Total active burden → $/active hr</td><td>30 min → $2,680,800/hr</td></tr>
+      </table>
+    </div>
+    <div class="scenario-block rec">
+      <div class="scenario-title">Cash — Crew + Full Lobby, Normal Week</div>
+      <div><span class="scenario-badge badge-rec">Recommended (Normal)</span></div>
+      <table class="stbl">
+        <tr><td>Base payout (Car Wash +35%)</td><td>$496,800</td></tr>
+        <tr><td>Full lobby bonus (+50%)</td><td>× 1.50 = $745,200</td></tr>
+        <tr><td>Supply expense</td><td>− $150,000</td></tr>
+        <tr><td>Net income</td><td class="green">$595,200</td></tr>
+        <tr><td>Your sell time</td><td>10 min</td></tr>
+        <tr><td>Reciprocity (2 helpers × 10 min)</td><td>+ 20 min</td></tr>
+        <tr class="total"><td>Total active burden → $/active hr</td><td>30 min → <span class="green">$1,190,400/hr</span></td></tr>
+      </table>
+    </div>
+    <div class="scenario-block">
+      <div class="scenario-title">Coke — Crew + Full Lobby (comparison)</div>
+      <div><span class="scenario-badge badge-norm">Normal Week #1</span></div>
+      <table class="stbl">
+        <tr><td>Base payout</td><td>$525,000</td></tr>
+        <tr><td>Full lobby bonus (+50%)</td><td>× 1.50 = $787,500</td></tr>
+        <tr><td>Supply expense</td><td>− $187,500</td></tr>
+        <tr><td>Net income</td><td class="green">$600,000</td></tr>
+        <tr><td>Your sell time</td><td>10 min</td></tr>
+        <tr><td>Reciprocity (2 helpers × 10 min)</td><td>+ 20 min</td></tr>
+        <tr class="total"><td>Total active burden → $/active hr</td><td>30 min → <span class="green">$1,200,000/hr</span></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- KEY FINDINGS -->
+<div class="section">
+  <div class="section-label">Key Findings</div>
+  <div class="insights">
+    <div class="insight-card">
+      <div class="insight-number">&lt;1%</div>
+      <div class="insight-label">Coke vs Cash gap (normal week)</div>
+      <div class="insight-text">Cash trails Coke by $4,800 per sell at crew + full lobby, on a $600,000 transaction. Cash also costs $37,500 less per cycle. Both should always be running. There is no scenario where you run one without the other.</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-number">4×</div>
+      <div class="insight-label">Coke vs Forgery at ceiling</div>
+      <div class="insight-text">Forgery's best case is $297,000/active-hr. Coke's is $1,200,000. Forgery earns less than a quarter of Coke for identical active time. There is no scenario where selling Forgery product is the correct use of your time.</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-number">+35%</div>
+      <div class="insight-label">Front bonus impact</div>
+      <div class="insight-text">Without Smoke on the Water, Weed earns $611,666/active-hr crew/full. With it: $946,466. The front bonus is not a marginal improvement. It is the business case. Own both front businesses before your first Cash or Weed sell.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RECIPROCITY -->
+<div class="section">
+  <div class="section-label">Concept — Reciprocity Cost</div>
+  <div class="concept-box">
+    <div class="verdict-label">McKillsey — Reciprocity Cost</div>
+    <p>Every crew scenario carries a 30-minute total active time burden — not 10. If two crew members spend 10 minutes helping you sell, you owe them 20 minutes back. That is time you are not running your Agency, not doing Cayo, not doing anything productive. The sell time and the total burden are two different numbers. McKillsey tracks both.</p>
+    <p><span class="code">Total Active Burden = Sell Time + (Helpers × Sell Time)</span><br>
+    MC standard: <span class="code">10 min + (2 × 10 min) = 30 min total</span></p>
+  </div>
+</div>
+
+<!-- VERDICTS -->
+<div class="section">
+  <div class="section-label">McKillsey Verdicts</div>
+  <div class="verdict">
+    <div class="verdict-label">Which Businesses to Run</div>
+    <p>Your portfolio should be shaped by your target minimum earnings per active hour. Coke is the best MC business in a normal week, Cash is second, then Meth, then Weed. For most active players, all four make sense — passive production runs in the background and the sell time is identical across businesses. For players with a higher time threshold, Coke and Cash alone may be the right call: Meth and Weed become marginal when you're choosing between a $964k/hr sell and a $1.2M/hr sell and your active time is limited.</p>
+    <p>The hierarchy is stable week to week, with two exceptions: front business bonuses and weekly 2× events. Both are significant enough to reorganize session priorities entirely. The McKillsey Quarterly (<em>/weekly</em>) tracks active bonuses every Wednesday.</p>
+  </div>
+  <div class="verdict">
+    <div class="verdict-label">On Document Forgery</div>
+    <p>Don't own it. If you already do — do not sell it. Keep it fully stocked with product and leave it. Each player can raid a stash house once per day and receive free supplies to one random business. You never want that going to Forgery. A full product bar means the game cannot route supplies there. Keep it full and forget it exists.</p>
+  </div>
+  <div class="verdict">
+    <div class="verdict-label">On Front Businesses</div>
+    <p>The Hands-On Car Wash (+35% on Cash) and Smoke on the Water (+35% on Weed) are the primary reasons to own those fronts. Ownership alone applies the buff — no active management required to receive it. The Car Wash also generates its own passive income stream; to keep that flowing you need to wash a car occasionally to manage heat. Worth it for most players. Full Car Wash analysis on its own page.</p>
+  </div>
+</div>
+
+<!-- PRODUCTION REFERENCE -->
+<div class="section">
+  <div class="section-label">Production Reference</div>
+  <div class="table-wrap">
+    <table style="min-width:600px">
+      <thead><tr>
+        <th style="text-align:left">Business</th>
+        <th>Supply:Product</th>
+        <th>Full Supply Expense</th>
+        <th>Max Units</th>
+        <th>Units / Bar</th>
+        <th>Fill Time</th>
+        <th>Fills / 10 hrs</th>
+      </tr></thead>
+      <tbody>
+        <tr class="best-row"><td><span class="biz-name">Cocaine Lockup</span></td><td>2.5 : 1</td><td>$187,500</td><td class="dim">10</td><td class="dim">2</td><td>300m</td><td class="gold">2.0×</td></tr>
+        <tr class="weekly-row"><td><span class="biz-name">Counterfeit Cash</span></td><td>2.0 : 1</td><td class="green">$150,000</td><td class="dim">40</td><td class="dim">8</td><td>320m</td><td class="gold">1.88×</td></tr>
+        <tr><td><span class="biz-name">Methamphetamine Lab</span></td><td>2.5 : 1</td><td class="red">$187,500</td><td class="dim">20</td><td class="dim">4</td><td class="red">360m</td><td>1.67×</td></tr>
+        <tr><td><span class="biz-name">Weed Farm</span></td><td>2.2 : 1</td><td>$166,667</td><td class="dim">80</td><td class="dim">16</td><td>320m</td><td class="gold">1.88×</td></tr>
+        <tr><td><span class="biz-name">Document Forgery</span></td><td>1.2 : 1</td><td class="green">$90,000</td><td class="dim">60</td><td class="dim">12</td><td class="green">180m</td><td>3.33×</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div>
+
+</main>
+
+<button class="feedback-btn" onclick="openFeedback()">Report Error / Suggest Change</button>
+
+<!-- FEEDBACK MODAL -->
+<div class="modal-overlay" id="feedback-overlay" onclick="if(event.target===this)closeFeedback()">
+  <div class="modal">
+    <div class="modal-title">Report an Error</div>
+    <div class="modal-sub">No login required. Screenshot optional.</div>
+    <label class="modal-label" style="margin-top:4px">What's wrong?</label>
+    <textarea class="modal-textarea" id="feedback-text" placeholder="Describe the error or suggest a change..."></textarea>
+    <div class="screenshot-zone" id="screenshot-zone" onclick="document.getElementById('screenshot-file').click()">
+      <div class="screenshot-hint" id="screenshot-hint"><span>Paste</span> a screenshot or <span>click</span> to upload</div>
+      <img id="screenshot-preview" style="display:none">
+      <button class="screenshot-clear" id="screenshot-clear" onclick="event.stopPropagation();clearScreenshot()">✕ Remove</button>
+    </div>
+    <input type="file" id="screenshot-file" accept="image/*" style="display:none" onchange="handleFileSelect(event)">
+    <div class="modal-footer">
+      <div class="modal-status" id="modal-status"></div>
+      <div style="display:flex;gap:8px">
+        <button class="modal-cancel-btn" onclick="closeFeedback()">Cancel</button>
+        <button class="modal-send-btn" id="modal-send-btn" onclick="submitFeedback()">Send Report</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── TOOLTIP ─────────────────────────────────────────────
+const tipbox = document.getElementById('tipbox');
+let activeTip = null;
+
+document.addEventListener('mouseover', e => {
+  const el = e.target.closest('.tip');
+  if (!el) return;
+  activeTip = el;
+  const label = el.dataset.tipLabel || '';
+  const calc  = el.dataset.tipCalc  || '';
+  const result= el.dataset.tipResult|| '';
+  const rc    = el.dataset.tipResultClass || '';
+  tipbox.innerHTML =
+    (label  ? `<span class="tb-label">${label}</span>` : '') +
+    (calc   ? `<span class="tb-calc">${calc.replace(/\n/g,'<br>')}</span>` : '') +
+    (result ? `<span class="tb-result${rc?' '+rc:''}">${result}</span>` : '');
+  tipbox.style.display = 'block';
+  positionTip(e);
+});
+document.addEventListener('mousemove', e => {
+  if (!activeTip) return;
+  if (!e.target.closest('.tip')) { tipbox.style.display = 'none'; activeTip = null; return; }
+  positionTip(e);
+});
+document.addEventListener('mouseout', e => {
+  if (!e.target.closest('.tip')) { tipbox.style.display = 'none'; activeTip = null; }
+});
+function positionTip(e) {
+  const tw = 300, th = tipbox.offsetHeight || 120;
+  const vw = window.innerWidth, vh = window.innerHeight;
+  let x = e.clientX - tw / 2;
+  let y = e.clientY - th - 14;
+  if (x < 8) x = 8;
+  if (x + tw > vw - 8) x = vw - tw - 8;
+  if (y < 8) y = e.clientY + 20;
+  tipbox.style.left = x + 'px';
+  tipbox.style.top  = y + 'px';
+}
+
+// ── MODE TOGGLE ──────────────────────────────────────────
+const MODES = {
+  crew: {
+    desc: 'Recommended. 2 helpers · +50% lobby bonus · reciprocity cost applied.',
+    rlabel: 'Rankings — Crew + Full Lobby',
+    ranks: [
+      {name:'Counterfeit Cash',slug:'/cash',metric:'$2,680,800',weekly:true, rank:1},
+      {name:'Cocaine Lockup',  slug:'/coke',metric:'$1,200,000',weekly:false,rank:2},
+      {name:'Meth Lab',        slug:'/meth',metric:'$964,050',  weekly:false,rank:3},
+      {name:'Weed Farm',       slug:'/weed',metric:'$946,466',  weekly:false,rank:4},
+      {name:'Document Forgery',slug:'/docs',metric:'$297,000',  weekly:false,rank:5},
+    ]
+  },
+  solo: {
+    desc: 'Solo seller · Invite-only lobby · No lobby bonus · No reciprocity cost.',
+    rlabel: 'Rankings — Solo + Invite Only (Full Stock)',
+    ranks: [
+      {name:'Counterfeit Cash',slug:'/cash',metric:'$1,687,200',weekly:true, rank:1},
+      {name:'Cocaine Lockup',  slug:'/coke',metric:'$675,000',  weekly:false,rank:2},
+      {name:'Weed Farm',       slug:'/weed',metric:'$519,866',  weekly:false,rank:3},
+      {name:'Meth Lab',        slug:'/meth',metric:'$517,700',  weekly:false,rank:4},
+      {name:'Document Forgery',slug:'/docs',metric:'$138,000',  weekly:false,rank:5},
+    ]
+  },
+  solofull: {
+    desc: 'Solo seller · Full public lobby · +50% lobby bonus · No reciprocity cost · Higher risk.',
+    rlabel: 'Rankings — Solo + Full Lobby (Full Stock)',
+    ranks: [
+      {name:'Counterfeit Cash',slug:'/cash',metric:'$2,680,800',weekly:true, rank:1},
+      {name:'Cocaine Lockup',  slug:'/coke',metric:'$1,200,000',weekly:false,rank:2},
+      {name:'Meth Lab',        slug:'/meth',metric:'$964,050',  weekly:false,rank:3},
+      {name:'Weed Farm',       slug:'/weed',metric:'$946,466',  weekly:false,rank:4},
+      {name:'Document Forgery',slug:'/docs',metric:'$297,000',  weekly:false,rank:5},
+    ]
+  }
+};
+
+function setMode(m) {
+  document.body.className = 'mode-' + m;
+  ['crew','solo','solofull'].forEach(id => {
+    const btn = document.getElementById('btn-' + id);
+    btn.className = 'mode-btn m-' + id + (m === id ? ' active' : '');
+  });
+  const cfg = MODES[m];
+  document.getElementById('mode-desc').textContent = cfg.desc;
+  document.getElementById('ranking-label').textContent = cfg.rlabel;
+  document.getElementById('rankings-grid').innerHTML = cfg.ranks.map(d => `
+    <div class="rank-card ${d.weekly ? 'rw' : d.rank===1 ? 'r1n' : ''}">
+      <div class="rank-num">${d.rank}</div>
+      <div class="rank-business">${d.name}</div>
+      <div class="rank-slug">${d.slug}</div>
+      <div class="rank-metric" style="${d.rank===5?'color:var(--red)':''}">${d.metric}</div>
+      <div class="rank-label">/ active hour</div>
+      ${d.weekly ? '<div class="weekly-tag">★ 2× this week</div>' : ''}
+    </div>`).join('');
+}
+setMode('crew');
+
+// ── FEEDBACK MODAL ────────────────────────────────────────
+let screenshotData = null;
+
+function openFeedback() {
+  document.getElementById('feedback-overlay').classList.add('open');
+  document.getElementById('feedback-text').focus();
+}
+function closeFeedback() {
+  document.getElementById('feedback-overlay').classList.remove('open');
+  document.getElementById('modal-status').textContent = '';
+}
+function setScreenshot(dataUrl) {
+  screenshotData = dataUrl;
+  const zone = document.getElementById('screenshot-zone');
+  const preview = document.getElementById('screenshot-preview');
+  const hint = document.getElementById('screenshot-hint');
+  preview.src = dataUrl; preview.style.display = 'block';
+  hint.style.display = 'none'; zone.classList.add('has-image');
+}
+function clearScreenshot() {
+  screenshotData = null;
+  const zone = document.getElementById('screenshot-zone');
+  const preview = document.getElementById('screenshot-preview');
+  const hint = document.getElementById('screenshot-hint');
+  preview.src = ''; preview.style.display = 'none';
+  hint.style.display = ''; zone.classList.remove('has-image');
+  document.getElementById('screenshot-file').value = '';
+}
+function handleFileSelect(e) {
+  const file = e.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => setScreenshot(ev.target.result);
+  reader.readAsDataURL(file);
+}
+document.addEventListener('paste', e => {
+  if (!document.getElementById('feedback-overlay').classList.contains('open')) return;
+  const items = e.clipboardData?.items; if (!items) return;
+  for (const item of items) {
+    if (item.type.startsWith('image/')) {
+      const blob = item.getAsFile();
+      const reader = new FileReader();
+      reader.onload = ev => setScreenshot(ev.target.result);
+      reader.readAsDataURL(blob); break;
+    }
+  }
+});
+async function submitFeedback() {
+  const text = document.getElementById('feedback-text').value.trim();
+  if (!text) { document.getElementById('modal-status').textContent = 'Please describe the issue first.'; return; }
+  const btn = document.getElementById('modal-send-btn');
+  const status = document.getElementById('modal-status');
+  btn.disabled = true; btn.textContent = 'Sending...'; status.textContent = '';
+  const pageUrl = window.location.href;
+  let body = `Page: ${pageUrl}\n\nFeedback:\n${text}`;
+  if (screenshotData) {
+    try {
+      const imgForm = new FormData();
+      imgForm.append('key', 'a3cb2b5f84e2b4e2a7b6c1d9f8e3a4b5'); // ← replace with ImgBB key
+      imgForm.append('image', screenshotData.split(',')[1]);
+      const imgRes = await fetch('https://api.imgbb.com/1/upload', { method:'POST', body:imgForm });
+      const imgData = await imgRes.json();
+      if (imgData.success) body += `\n\nScreenshot: ${imgData.data.url}`;
+    } catch(e) { body += '\n\n(Screenshot failed to upload)'; }
+  }
+  const formData = new FormData();
+  formData.append('access_key', '25c0d000-546c-45cd-be70-ec9abcded581');
+  formData.append('subject', 'McKillsey Error Report — MC Businesses');
+  formData.append('message', body);
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', { method:'POST', body:formData });
+    const result = await response.json();
+    if (result.success) {
+      status.style.color = 'var(--green)'; status.textContent = 'Sent. Thank you.'; btn.textContent = 'Sent ✓';
+      setTimeout(() => {
+        closeFeedback();
+        document.getElementById('feedback-text').value = '';
+        clearScreenshot(); btn.disabled = false; btn.textContent = 'Send Report'; status.style.color = '';
+      }, 1800);
+    } else { throw new Error(result.message || 'Unknown error'); }
+  } catch(err) {
+    status.style.color = 'var(--red)'; status.textContent = 'Failed to send. Try again.';
+    btn.disabled = false; btn.textContent = 'Send Report';
+  }
+}
+</script>
+</body>
+</html>
