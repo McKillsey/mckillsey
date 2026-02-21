@@ -370,7 +370,8 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
         <div class="method-notes">
           <p>Bags filled greedily by value density ($ per full bag): Gold ($496k) → Cocaine ($401k) → Weed ($354k) → Painting ($338k) → Cash ($324k).</p>
           <p>Paintings cannot be taken partially — skipped if remaining space &lt; 50%.</p>
-          <p>Bags allocated host-first (best bag to host). Each bag filled independently from remaining stacks. Greedy sequential fill maximizes total secondary value.</p>
+          <p>Gold requires at least two players to collect — it is locked behind doors that cannot be opened solo. It is excluded from the Solo scenario entirely. While gold may be accessible solo via glitches, we do not model or endorse such approaches.</p>
+          <p>Bags are allocated host-first as a convention — the host receives the highest-value bag.</p>
           <p>Secondary values are session averages. Actual payouts may vary ±5%.</p>
         </div>
       </div>
@@ -614,7 +615,7 @@ async function submitFeedback() {
   if (screenshotData) {
     try {
       const imgForm = new FormData();
-      imgForm.append('key', 'd7f1f680dc13ad3d2d70ca055eb752d7');
+      imgForm.append('key', 'a3cb2b5f84e2b4e2a7b6c1d9f8e3a4b5'); // ← replace with your ImgBB key
       imgForm.append('image', screenshotData.split(',')[1]); // base64 only, no data: prefix
       const imgRes = await fetch('https://api.imgbb.com/1/upload', { method:'POST', body:imgForm });
       const imgData = await imgRes.json();
@@ -668,6 +669,8 @@ function optimizeBags(numPlayers, availableLoot) {
   });
   const rem = {};
   for (const t of sorted) rem[t] = availableLoot[t]||0;
+  // Gold requires two players to collect (locked behind two-person doors) — unavailable solo
+  if (numPlayers === 1) rem['gold'] = 0;
   const bags = [];
   for (let i=0; i<numPlayers; i++) {
     let space=1.0; const items=[];
@@ -755,6 +758,9 @@ function render() {
       if (sc.eliteOk) eliteBadge=`<span class="scenario-badge badge-elite">Elite ✓</span>`;
       else { eliteBadge=`<span class="scenario-badge badge-no-elite">Elite ✗</span>`; eliteWarning=`<div class="warning-box">Not enough loot to fill all ${np} bags — Elite bonus excluded for this player count.</div>`; }
     }
+    const goldNote = (np===1 && state.loot.gold > 0)
+      ? `<div class="warning-box">Gold excluded from solo — requires two players to access. Not modelled.</div>`
+      : '';
 
     const bagRows=sc.bags.map((bag,bi)=>{
       const isH=bi===0, lbl=isH?'Host bag':`Player ${bi+1} bag`;
@@ -853,7 +859,7 @@ function render() {
           </div>
         </div>`;
 
-    cardEl.innerHTML = header + `<div class="scenario-body">${eliteWarning}${mathBlock}
+    cardEl.innerHTML = header + `<div class="scenario-body">${goldNote}${eliteWarning}${mathBlock}
         ${sc.secondary>0?`<div class="bags-detail"><div class="bags-title">Bag contents</div>${bagRows}</div>`:''}
         <div class="player-rows" style="margin-top:12px" id="prows-${np}"></div>
       </div>`;
