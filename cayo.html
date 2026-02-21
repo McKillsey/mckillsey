@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cayo Perico — McKillsey & Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── DESIGN TOKENS (exact match to mc-comparison.html) ── */
+:root {
+  --navy:#0d1b2a; --navy-mid:#162436; --navy-light:#1e3148;
+  --cream:#f0ead8; --cream-dim:#9aabbf;
+  --gold:#c9a84c; --gold-dim:#8a6f2e;
+  --green:#2dba72; --red:#d94f4f; --amber:#e08c2a;
+  --weekly:#f0c040; --weekly-bg:rgba(240,192,64,0.08); --weekly-border:rgba(240,192,64,0.35);
+  --rule:rgba(201,168,76,0.18);
+  --mono:'IBM Plex Mono',monospace;
+  --sans:'IBM Plex Sans',sans-serif;
+  --serif:'Playfair Display',serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size:14px;line-height:1.6}
+
+/* ── HEADER (exact copy from mc-comparison.html) ── */
+.site-header{border-bottom:1px solid var(--rule);padding:20px 48px;display:flex;align-items:center;gap:32px}
+.wordmark{font-family:var(--serif);font-weight:700;color:#b8c8d8;line-height:1.15;text-decoration:none}
+.wordmark .line1{display:block;font-size:26px}
+.wordmark .line2{display:block;font-size:22px;padding-left:1.1em}
+.header-tagline{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.1em;text-transform:uppercase;margin-left:auto}
+
+/* ── PAGE ── */
+.page{max-width:1400px;margin:0 auto;padding:44px 48px 80px}
+.page-title h1{font-family:var(--serif);font-size:34px;font-weight:900;line-height:1.1}
+.page-title .subtitle{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-top:6px}
+.section{margin-top:36px}
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+
+/* ── CALCULATOR LAYOUT ── */
+.calculator-layout{display:grid;grid-template-columns:300px 1fr;gap:32px;align-items:start;margin-top:32px}
+
+/* ── INPUTS PANEL ── */
+.inputs-panel{background:var(--navy-mid);border:1px solid var(--rule);padding:22px;position:sticky;top:20px}
+.input-section{margin-bottom:24px}
+.input-section:last-child{margin-bottom:0}
+.input-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block}
+
+/* ── TOGGLE BUTTONS (exact mode-btn style from mc-comparison.html) ── */
+.toggle-group{display:flex;border:1px solid var(--rule);width:fit-content;flex-wrap:wrap}
+.toggle-btn{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;cursor:pointer;border:none;border-right:1px solid var(--rule);background:var(--navy-mid);color:var(--cream-dim);transition:all .15s;user-select:none;white-space:nowrap}
+.toggle-btn:last-child{border-right:none}
+.toggle-btn:hover{background:var(--navy-light);color:var(--cream)}
+.toggle-btn.active{background:var(--navy-light);color:var(--gold);border-bottom:2px solid var(--gold)}
+.toggle-group.yes-no .toggle-btn.active{color:var(--green);border-bottom-color:var(--green)}
+
+/* Loot quantity steppers */
+.loot-grid{display:flex;flex-direction:column;gap:8px}
+.loot-row{display:flex;align-items:center;gap:10px}
+.loot-name{width:64px;font-family:var(--sans);font-size:13px;color:var(--cream);flex-shrink:0}
+.loot-stepper{display:flex;align-items:center}
+.step-btn{background:var(--navy-mid);border:1px solid var(--rule);color:var(--cream-dim);width:26px;height:26px;font-size:15px;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
+.step-btn:first-child{border-radius:2px 0 0 2px}
+.step-btn:last-child{border-radius:0 2px 2px 0}
+.step-btn:hover{background:var(--navy-light);border-color:var(--gold);color:var(--gold)}
+.step-val{width:28px;height:26px;text-align:center;font-family:var(--mono);font-size:13px;font-weight:500;color:var(--gold);background:var(--navy);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:center}
+.loot-hint{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.04em}
+
+/* ── SHARE LINK ── */
+.share-section{margin-top:22px;border-top:1px solid var(--rule);padding-top:18px}
+.share-url-box{display:flex;align-items:stretch;background:var(--navy);border:1px solid var(--rule);overflow:hidden}
+.share-url-text{flex:1;padding:7px 10px;font-family:var(--mono);font-size:10px;color:var(--cream-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;letter-spacing:.02em}
+.share-copy-btn{background:var(--navy-mid);border:none;border-left:1px solid var(--rule);color:var(--gold);padding:0 12px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .15s;white-space:nowrap;flex-shrink:0}
+.share-copy-btn:hover{background:var(--gold);color:var(--navy)}
+.share-copy-btn.copied{background:var(--green);color:var(--navy)}
+.share-hint{margin-top:6px;font-family:var(--mono);font-size:10px;color:var(--cream-dim);line-height:1.6;letter-spacing:.02em}
+
+/* ── RESULTS PANEL ── */
+.results-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+.results-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.results-note{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.04em}
+
+/* ── RECOMMENDATION (verdict style from mc-comparison.html) ── */
+.verdict{border:1px solid var(--rule);border-left:3px solid var(--gold);padding:14px 18px;margin-bottom:16px;background:rgba(201,168,76,.02)}
+.verdict-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.verdict p{font-size:13px;color:var(--cream);line-height:1.7}
+
+/* ── SCENARIO CARDS (scenario-grid style from mc-comparison.html) ── */
+.scenarios-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;background:transparent;border:none;margin-bottom:28px}
+.scenario-card{background:var(--navy-mid);overflow:hidden;border:1px solid var(--rule)}
+.scenario-card.best-for-host{background:rgba(45,186,114,.04)}
+
+.scenario-header{padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule);background:rgba(255,255,255,.02)}
+.scenario-card.best-for-host .scenario-header{background:rgba(45,186,114,.06)}
+.scenario-name{font-family:var(--serif);font-size:13px;font-weight:700;color:var(--cream)}
+.scenario-badges{display:flex;gap:5px;align-items:center}
+.scenario-badge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px}
+.badge-best{background:rgba(45,186,114,.2);color:var(--green)}
+.badge-elite{background:rgba(201,168,76,.15);color:var(--gold)}
+.badge-no-elite{background:rgba(217,79,79,.15);color:var(--red)}
+
+.scenario-body{padding:16px}
+
+/* ── PLAYER ROWS ── */
+.player-rows{margin-bottom:10px}
+.player-row{display:flex;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);gap:8px}
+.player-row:last-child{border-bottom:none}
+.player-label{font-family:var(--mono);font-size:11px;color:var(--cream-dim);width:64px;flex-shrink:0;letter-spacing:.04em}
+.player-host .player-label{color:var(--gold)}
+.player-pct{font-family:var(--mono);font-size:11px;font-weight:500;width:36px;color:var(--cream);flex-shrink:0;text-align:right}
+.player-host .player-pct{color:var(--gold)}
+.pct-controls{display:flex;gap:2px;flex-shrink:0}
+.pct-btn{background:var(--navy-mid);border:1px solid var(--rule);color:var(--cream-dim);width:19px;height:19px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .12s;font-family:var(--mono)}
+.pct-btn:hover{border-color:var(--gold);color:var(--gold)}
+.pct-btn:disabled{opacity:.2;cursor:not-allowed}
+.pct-btn:disabled:hover{border-color:var(--rule);color:var(--cream-dim)}
+.player-amount{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--green);margin-left:auto}
+.player-host .player-amount{color:var(--gold)}
+.elite-note{font-family:var(--mono);font-size:9px;color:var(--gold);margin-left:4px;opacity:.75}
+
+/* ── PAYOUT MATH (stbl style from mc-comparison.html) ── */
+.payout-math{background:var(--navy);border:1px solid var(--rule);padding:10px 14px;margin-bottom:12px}
+.math-row{display:flex;justify-content:space-between;align-items:baseline;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.math-row:last-child{border-bottom:none}
+.math-label{font-family:var(--mono);font-size:11px;color:var(--cream-dim)}
+.math-val{font-family:var(--mono);font-size:11px;color:var(--cream)}
+.math-val.pos{color:var(--green)}
+.math-val.neg{color:var(--red)}
+.math-divider{border:none;border-top:1px solid var(--rule);margin:5px 0}
+.math-total .math-label{color:var(--cream);font-size:11px}
+.math-total .math-val{color:var(--gold);font-size:12px;font-weight:500}
+
+/* ── BAG ALLOCATION ── */
+.bags-detail{margin-top:12px;border-top:1px solid var(--rule);padding-top:10px}
+.bags-title{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:8px}
+.bag-item{padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.bag-item:last-child{border-bottom:none}
+.bag-item-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px}
+.bag-owner{font-family:var(--mono);font-size:11px;color:var(--cream)}
+.bag-owner.is-host{color:var(--gold)}
+.bag-value{font-family:var(--mono);font-size:11px;color:var(--green)}
+.bag-contents{font-family:var(--mono);font-size:10px;color:var(--cream-dim);line-height:1.5;letter-spacing:.02em}
+.bag-fill-bar{height:3px;background:rgba(255,255,255,.06);margin-top:4px;overflow:hidden}
+.bag-fill-inner{height:100%;background:var(--gold);transition:width .3s}
+.bag-fill-inner.partial{background:var(--amber)}
+.bag-fill-inner.under{background:var(--red)}
+
+/* ── WARNING ── */
+.warning-box{background:rgba(217,79,79,.08);border:1px solid rgba(217,79,79,.3);padding:7px 10px;font-family:var(--mono);font-size:10px;color:var(--red);margin-bottom:10px;line-height:1.5}
+
+/* ── METHODOLOGY ── */
+.methodology{margin-top:40px;border:1px solid var(--rule);padding:24px;background:rgba(255,255,255,.01)}
+.methodology h2{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+.methodology-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.method-section h3{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
+.method-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:11px}
+.method-table th{text-align:left;color:var(--cream-dim);font-weight:normal;padding:3px 10px 3px 0;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+.method-table td{padding:3px 10px 3px 0;color:var(--cream);border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top}
+.method-table td.range{color:var(--cream-dim);font-size:10px}
+.method-table td.avg{color:var(--gold)}
+.method-notes{font-family:var(--mono);font-size:11px;color:var(--cream-dim);line-height:1.7}
+.method-notes p{margin-bottom:8px}
+
+/* ── TOOLTIP (exact from mc-comparison.html) ── */
+#tipbox{position:fixed;z-index:9999;width:300px;background:#08111a;border:1px solid var(--gold);padding:12px 14px;font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--cream);pointer-events:none;display:none;box-shadow:0 8px 32px rgba(0,0,0,.6)}
+#tipbox .tb-label{color:var(--gold);font-size:9px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px;border-bottom:1px solid rgba(201,168,76,.2);padding-bottom:5px}
+#tipbox .tb-calc{color:var(--cream-dim)}
+.tip{border-bottom:1px dashed rgba(201,168,76,.45);cursor:help;display:inline}
+
+/* ── FEEDBACK ── */
+.feedback-btn{position:fixed;bottom:22px;right:22px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--gold);padding:9px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .15s;z-index:100}
+.feedback-btn:hover{background:var(--gold);color:var(--navy)}
+
+/* ── DATA NOTE ── */
+.data-note{font-family:var(--mono);font-size:10px;color:var(--cream-dim);border-top:1px solid var(--rule);padding-top:16px;line-height:1.7;opacity:.65;margin-top:32px}
+.data-note .label{color:var(--amber)}
+
+@media(max-width:900px){
+  .page{padding:20px}
+  .site-header{padding-left:20px;padding-right:20px}
+  .calculator-layout{grid-template-columns:1fr}
+  .scenarios-grid{grid-template-columns:1fr}
+  .methodology-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="tipbox"></div>
+
+<!-- HEADER (exact markup from mc-comparison.html) -->
+<header class="site-header">
+  <a href="/" class="wordmark"><span class="line1">McKillsey</span><span class="line2">&amp; Company</span></a>
+  <div class="header-tagline">Strategic Advisory · Los Santos · Blaine County</div>
+</header>
+
+<main class="page">
+
+<div class="page-title">
+  <h1>Cayo Perico</h1>
+  <div class="subtitle">Heist Calculator</div>
+</div>
+
+<div class="calculator-layout">
+
+  <!-- INPUTS -->
+  <div class="inputs-panel">
+
+    <div class="input-section">
+      <span class="input-label">Primary Target</span>
+      <div class="toggle-group" id="primary-group" style="width:100%;flex-direction:column;border:none;gap:3px">
+        <button class="toggle-btn active" data-val="tequila"  onclick="setPrimary(this)" style="border:1px solid var(--rule)">Tequila</button>
+        <button class="toggle-btn"        data-val="ruby"     onclick="setPrimary(this)" style="border:1px solid var(--rule)">Ruby Necklace</button>
+        <button class="toggle-btn"        data-val="bonds"    onclick="setPrimary(this)" style="border:1px solid var(--rule)">Bearer Bonds</button>
+        <button class="toggle-btn"        data-val="diamond"  onclick="setPrimary(this)" style="border:1px solid var(--rule)">Pink Diamond</button>
+        <button class="toggle-btn"        data-val="panther"  onclick="setPrimary(this)" style="border:1px solid var(--rule)">Panther Statue</button>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <span class="input-label">Secondary Loot Available</span>
+      <div class="loot-grid">
+        <div class="loot-row">
+          <span class="loot-name">Gold</span>
+          <div class="loot-stepper">
+            <button class="step-btn" onclick="stepLoot('gold',-1)">−</button>
+            <div class="step-val" id="loot-gold">0</div>
+            <button class="step-btn" onclick="stepLoot('gold',1)">+</button>
+          </div>
+        </div>
+        <div class="loot-row">
+          <span class="loot-name">Cocaine</span>
+          <div class="loot-stepper">
+            <button class="step-btn" onclick="stepLoot('cocaine',-1)">−</button>
+            <div class="step-val" id="loot-cocaine">0</div>
+            <button class="step-btn" onclick="stepLoot('cocaine',1)">+</button>
+          </div>
+        </div>
+        <div class="loot-row">
+          <span class="loot-name">Weed</span>
+          <div class="loot-stepper">
+            <button class="step-btn" onclick="stepLoot('weed',-1)">−</button>
+            <div class="step-val" id="loot-weed">0</div>
+            <button class="step-btn" onclick="stepLoot('weed',1)">+</button>
+          </div>
+        </div>
+        <div class="loot-row">
+          <span class="loot-name">Painting</span>
+          <div class="loot-stepper">
+            <button class="step-btn" onclick="stepLoot('painting',-1)">−</button>
+            <div class="step-val" id="loot-painting">0</div>
+            <button class="step-btn" onclick="stepLoot('painting',1)">+</button>
+          </div>
+        </div>
+        <div class="loot-row">
+          <span class="loot-name">Cash</span>
+          <div class="loot-stepper">
+            <button class="step-btn" onclick="stepLoot('cash',-1)">−</button>
+            <div class="step-val" id="loot-cash">0</div>
+            <button class="step-btn" onclick="stepLoot('cash',1)">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <span class="input-label">Hard Mode</span>
+      <div class="toggle-group yes-no" id="hardmode-group">
+        <button class="toggle-btn active" data-val="yes" onclick="setToggle('hardMode','yes',this)">Yes</button>
+        <button class="toggle-btn"        data-val="no"  onclick="setToggle('hardMode','no',this)">No</button>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <span class="input-label">Elite Challenge</span>
+      <div class="toggle-group yes-no" id="elite-group">
+        <button class="toggle-btn active" data-val="yes" onclick="setToggle('eliteSelected','yes',this)">Yes</button>
+        <button class="toggle-btn"        data-val="no"  onclick="setToggle('eliteSelected','no',this)">No</button>
+      </div>
+    </div>
+
+    <!-- SHARE LINK -->
+    <div class="share-section">
+      <span class="input-label">Share This Setup</span>
+      <div class="share-url-box">
+        <span class="share-url-text" id="share-url-text"></span>
+        <button class="share-copy-btn" id="share-copy-btn" onclick="copyShareUrl()">Copy</button>
+      </div>
+      <div class="share-hint">Typeable. No data stored.</div>
+    </div>
+
+  </div><!-- /inputs-panel -->
+
+  <!-- RESULTS -->
+  <div class="results-panel">
+    <div class="results-header">
+      <span class="results-label">Payout Scenarios</span>
+      <span class="results-note">Host receives balance after player cuts</span>
+    </div>
+    <div id="recommendation-banner"></div>
+    <div class="scenarios-grid" id="scenarios-grid"></div>
+  </div>
+
+</div><!-- /calculator-layout -->
+
+<!-- METHODOLOGY -->
+<div class="section">
+  <div class="section-label">Methodology &amp; Source Data</div>
+  <div class="methodology">
+    <div class="methodology-grid">
+
+      <div class="method-section">
+        <h3>Primary Targets</h3>
+        <table class="method-table">
+          <thead><tr><th>Target</th><th>Normal</th><th>Hard Mode</th></tr></thead>
+          <tbody>
+            <tr><td>Tequila</td>       <td class="avg">$900,000</td>  <td class="avg">$990,000</td></tr>
+            <tr><td>Ruby Necklace</td> <td class="avg">$1,000,000</td><td class="avg">$1,100,000</td></tr>
+            <tr><td>Bearer Bonds</td>  <td class="avg">$1,100,000</td><td class="avg">$1,210,000</td></tr>
+            <tr><td>Pink Diamond</td>  <td class="avg">$1,300,000</td><td class="avg">$1,430,000</td></tr>
+            <tr><td>Panther Statue</td><td class="avg">$1,900,000</td><td class="avg">$2,090,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="method-section">
+        <h3>Secondary Loot — Per Stack Averages</h3>
+        <table class="method-table">
+          <thead><tr><th>Loot</th><th>Avg/Stack</th><th>Bag Fill</th><th>Observed Range</th></tr></thead>
+          <tbody>
+            <tr><td>Cash</td>    <td class="avg">$81,000</td>  <td>25%</td>   <td class="range">$78,750–$83,250</td></tr>
+            <tr><td>Weed</td>    <td class="avg">$132,750</td> <td>37.5%</td> <td class="range">$130,500–$135,000</td></tr>
+            <tr><td>Painting</td><td class="avg">$168,750</td> <td>50%</td>   <td class="range">$157,500–$180,000</td></tr>
+            <tr><td>Cocaine</td> <td class="avg">$200,250</td> <td>50%</td>   <td class="range">$198,000–$202,500</td></tr>
+            <tr><td>Gold</td>    <td class="avg">$330,888</td> <td>66.7%</td> <td class="range">$328,584–$333,192</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="method-section">
+        <h3>Payout Formula</h3>
+        <div class="method-notes">
+          <p><strong style="color:var(--cream)">Gross loot</strong> = Primary (×1.1 if Hard Mode) + optimal secondary fill across all player bags + $59,500 office safe (avg).</p>
+          <p><strong style="color:var(--cream)">Net distributable</strong> = Gross − 10% fencing − 2% Pavel = Gross × 0.88.</p>
+          <p><strong style="color:var(--cream)">Host cut</strong> = 100% − (15% × number of other players). Each player starts at 15%, adjustable in 5% increments, minimum 15%.</p>
+          <p><strong style="color:var(--cream)">Elite Challenge</strong> adds +$50k/player (normal) or +$100k/player (hard) — applied after the split, not subject to fees. Only if all bags are full.</p>
+        </div>
+      </div>
+
+      <div class="method-section">
+        <h3>Bag Optimizer Logic</h3>
+        <div class="method-notes">
+          <p>Bags filled greedily by value density ($ per full bag): Gold ($496k) → Cocaine ($401k) → Weed ($354k) → Painting ($338k) → Cash ($324k).</p>
+          <p>Paintings cannot be taken partially — skipped if remaining space &lt; 50%.</p>
+          <p>Bags allocated host-first (best bag to host). Each bag filled independently from remaining stacks. Greedy sequential fill maximizes total secondary value.</p>
+          <p>Secondary values are session averages. Actual payouts may vary ±5%.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="data-note">
+  <span class="label">Data source</span> — Primary target values confirmed from in-game testing. Secondary loot values are averages of observed per-stack ranges (Cash $78,750–$83,250 · Weed $130,500–$135,000 · Painting $157,500–$180,000 · Cocaine $198,000–$202,500 · Gold $328,584–$333,192). Numbers subject to change with Rockstar patches. <a href="#" style="color:var(--gold)">Report an error.</a>
+</div>
+
+</main>
+
+<button class="feedback-btn">Report Error / Suggest Change</button>
+
+<script>
+// ─── DATA ─────────────────────────────────────────────────────────────────
+
+const PRIMARY_TARGETS = {
+  tequila: { label:'Tequila',        urlKey:'tequila', normal:900000,  hard:990000  },
+  ruby:    { label:'Ruby Necklace',  urlKey:'ruby',    normal:1000000, hard:1100000 },
+  bonds:   { label:'Bearer Bonds',   urlKey:'bonds',   normal:1100000, hard:1210000 },
+  diamond: { label:'Pink Diamond',   urlKey:'diamond', normal:1300000, hard:1430000 },
+  panther: { label:'Panther Statue', urlKey:'panther', normal:1900000, hard:2090000 }
+};
+
+const SECONDARY_LOOT = {
+  gold:     { label:'Gold',     urlKey:'gold', avgPerStack:330888, bagFill:2/3,   canPartial:true  },
+  cocaine:  { label:'Cocaine',  urlKey:'coke', avgPerStack:200250, bagFill:0.5,   canPartial:true  },
+  weed:     { label:'Weed',     urlKey:'weed', avgPerStack:132750, bagFill:0.375, canPartial:true  },
+  painting: { label:'Painting', urlKey:'art',  avgPerStack:168750, bagFill:0.5,   canPartial:false },
+  cash:     { label:'Cash',     urlKey:'cash', avgPerStack:81000,  bagFill:0.25,  canPartial:true  }
+};
+
+const OFFICE_SAFE  = 59500;
+const FENCING_FEE  = 0.10;
+const PAVEL_FEE    = 0.02;
+const ELITE_NORMAL = 50000;
+const ELITE_HARD   = 100000;
+
+// ─── STATE ────────────────────────────────────────────────────────────────
+
+const state = {
+  primary:'tequila', hardMode:true, eliteSelected:true,
+  loot:{ gold:0, cocaine:0, weed:0, painting:0, cash:0 },
+  memberPcts:{ 2:[15], 3:[15,15], 4:[15,15,15] }
+};
+
+// ─── URL ──────────────────────────────────────────────────────────────────
+
+function parseUrlParams() {
+  const search = window.location.search.replace(/^\?/,'');
+  if (!search) return;
+  const parts = search.split(',').map(s => s.trim().toLowerCase());
+  const primaryKeys = Object.keys(PRIMARY_TARGETS);
+  const pm = parts.find(p => primaryKeys.includes(p));
+  if (pm) state.primary = pm;
+  if (parts.includes('hard'))    state.hardMode = true;
+  if (parts.includes('normal'))  state.hardMode = false;
+  if (parts.includes('elite'))   state.eliteSelected = true;
+  if (parts.includes('noelite')) state.eliteSelected = false;
+  const byUrlKey = {};
+  for (const [k,v] of Object.entries(SECONDARY_LOOT)) byUrlKey[v.urlKey] = k;
+  for (const part of parts) {
+    const m = part.match(/^(\d+)?([a-z]+)$/);
+    if (!m) continue;
+    const key = byUrlKey[m[2]];
+    if (key) state.loot[key] = Math.min(6, Math.max(0, m[1] ? parseInt(m[1]) : 1));
+  }
+}
+
+function buildShareUrl() {
+  const parts = [state.primary];
+  for (const [type, count] of Object.entries(state.loot)) {
+    if (count > 0) { const k=SECONDARY_LOOT[type].urlKey; parts.push(count===1?k:`${count}${k}`); }
+  }
+  parts.push(state.hardMode ? 'hard' : 'normal');
+  parts.push(state.eliteSelected ? 'elite' : 'noelite');
+  return 'mckillsey.com/cayo?' + parts.join(',');
+}
+
+function updateShareUrl() {
+  const url = buildShareUrl();
+  document.getElementById('share-url-text').textContent = url;
+  try { window.history.replaceState(null,'','?'+url.split('?')[1]); } catch(e) {}
+}
+
+function copyShareUrl() {
+  const url = 'https://' + buildShareUrl();
+  const btn = document.getElementById('share-copy-btn');
+  const done = () => {
+    btn.textContent='Copied!'; btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent='Copy'; btn.classList.remove('copied'); }, 1800);
+  };
+  if (navigator.clipboard) navigator.clipboard.writeText(url).then(done).catch(()=>fbCopy(url,done));
+  else fbCopy(url,done);
+}
+function fbCopy(text,cb) {
+  const ta=document.createElement('textarea'); ta.value=text;
+  document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+  document.body.removeChild(ta); cb();
+}
+
+// ─── INPUT HANDLERS ───────────────────────────────────────────────────────
+
+function setPrimary(btn) {
+  state.primary = btn.dataset.val;
+  document.querySelectorAll('#primary-group .toggle-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function setToggle(key, val, btn) {
+  state[key] = (val==='yes');
+  const gid = key==='hardMode' ? 'hardmode-group' : 'elite-group';
+  document.querySelectorAll(`#${gid} .toggle-btn`).forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function stepLoot(type, delta) {
+  state.loot[type] = Math.max(0, Math.min(6, state.loot[type]+delta));
+  document.getElementById('loot-'+type).textContent = state.loot[type];
+  render();
+}
+
+// ─── TOOLTIP (using mc-comparison.html's tipbox system) ───────────────────
+
+const tipbox = document.getElementById('tipbox');
+document.addEventListener('mousemove', e => {
+  if (tipbox.style.display==='block') {
+    tipbox.style.left = (e.clientX+14)+'px';
+    tipbox.style.top  = (e.clientY-8)+'px';
+  }
+});
+function showTip(el, label, calc) {
+  tipbox.innerHTML = `<span class="tb-label">${label}</span><span class="tb-calc">${calc}</span>`;
+  tipbox.style.display='block';
+}
+function hideTip() { tipbox.style.display='none'; }
+
+// ─── BAG OPTIMIZER ────────────────────────────────────────────────────────
+
+function optimizeBags(numPlayers, availableLoot) {
+  const sorted = Object.keys(SECONDARY_LOOT).sort((a,b) => {
+    return (SECONDARY_LOOT[b].avgPerStack/SECONDARY_LOOT[b].bagFill) - (SECONDARY_LOOT[a].avgPerStack/SECONDARY_LOOT[a].bagFill);
+  });
+  const rem = {};
+  for (const t of sorted) rem[t] = availableLoot[t]||0;
+  const bags = [];
+  for (let i=0; i<numPlayers; i++) {
+    let space=1.0; const items=[];
+    for (const type of sorted) {
+      if (rem[type]<=0||space<=0.001) continue;
+      const loot=SECONDARY_LOOT[type];
+      if (!loot.canPartial) {
+        const fits=Math.floor(space/loot.bagFill); if (fits<1) continue;
+        const take=Math.min(Math.floor(rem[type]),fits); if (take<1) continue;
+        items.push({label:loot.label,stacks:take,value:take*loot.avgPerStack,fill:take*loot.bagFill});
+        rem[type]-=take; space-=take*loot.bagFill;
+      } else {
+        const take=Math.min(rem[type],space/loot.bagFill); if (take<=0.001) continue;
+        const fill=take*loot.bagFill;
+        items.push({label:loot.label,stacks:take,value:take*loot.avgPerStack,fill});
+        rem[type]-=take; space-=fill;
+      }
+    }
+    bags.push({items,totalValue:items.reduce((s,i)=>s+i.value,0),totalFill:items.reduce((s,i)=>s+i.fill,0)});
+  }
+  return bags;
+}
+
+// ─── CALC ─────────────────────────────────────────────────────────────────
+
+function calcScenario(numPlayers) {
+  const target=PRIMARY_TARGETS[state.primary];
+  const primaryVal=state.hardMode?target.hard:target.normal;
+  const bags=optimizeBags(numPlayers,state.loot);
+  const secondary=bags.reduce((s,b)=>s+b.totalValue,0);
+  const gross=primaryVal+secondary+OFFICE_SAFE;
+  const fencing=gross*FENCING_FEE, pavel=gross*PAVEL_FEE;
+  const distrib=gross*(1-FENCING_FEE-PAVEL_FEE);
+  const allFull=bags.every(b=>b.totalFill>=0.999);
+  const eliteOk=state.eliteSelected&&allFull;
+  const eliteEach=eliteOk?(state.hardMode?ELITE_HARD:ELITE_NORMAL):0;
+  const memPcts=numPlayers===1?[]:state.memberPcts[numPlayers];
+  const hostPct=100-memPcts.reduce((s,p)=>s+p,0);
+  const players=[{label:'Host',pct:hostPct,isHost:true,finalPayout:distrib*hostPct/100+eliteEach}];
+  memPcts.forEach((pct,i)=>players.push({label:`Player ${i+2}`,pct,isHost:false,finalPayout:distrib*pct/100+eliteEach}));
+  return {numPlayers,primaryVal,bags,secondary,gross,fencing,pavel,distrib,allFull,eliteOk,eliteEach,hostPct,memPcts,players,hostPayout:players[0].finalPayout};
+}
+
+// ─── RENDER ───────────────────────────────────────────────────────────────
+
+const fmt  = n=>'$'+Math.round(n).toLocaleString('en-US');
+const fPct = n=>n.toFixed(1).replace('.0','')+'%';
+const fStk = n=>Math.abs(n-Math.round(n))<0.001?Math.round(n).toString():n.toFixed(2).replace(/\.?0+$/,'');
+
+function renderBagContents(bag) {
+  if (!bag.items.length) return '<em style="opacity:.4">Empty</em>';
+  return bag.items.map(i=>`${fStk(i.stacks)} × ${i.label} (${fPct(i.fill*100)} → ${fmt(i.value)})`).join('<br>');
+}
+
+function render() {
+  const scenarios=[1,2,3,4].map(n=>calcScenario(n));
+  const bestIdx=scenarios.reduce((b,sc,i)=>sc.hostPayout>scenarios[b].hostPayout?i:b,0);
+  const bestSc=scenarios[bestIdx];
+  const labels=['solo','with 2 players','with 3 players','with 4 players'];
+
+  // Recommendation (verdict style) — show best vs next-best
+  const sortedByHost = scenarios.slice().sort((a,b)=>b.hostPayout-a.hostPayout);
+  const secondBestSc = sortedByHost[1];
+  const pctDiff = ((bestSc.hostPayout - secondBestSc.hostPayout) / secondBestSc.hostPayout * 100);
+  const pctDiffStr = '+' + pctDiff.toFixed(1) + '%';
+  const playerLabels = ['Solo','2 Players','3 Players','4 Players'];
+  let recMsg;
+  if (bestSc.numPlayers===1) {
+    recMsg = `Run this <strong>solo</strong>. Your cut peaks at <strong>${fmt(bestSc.hostPayout)}</strong> (${pctDiffStr} vs ${fmt(secondBestSc.hostPayout)} with ${playerLabels[secondBestSc.numPlayers-1].toLowerCase()}).`;
+  } else {
+    recMsg = `Host with <strong>${labels[bestIdx]}</strong>. Your cut peaks at <strong>${fmt(bestSc.hostPayout)}</strong> (${pctDiffStr} vs ${fmt(secondBestSc.hostPayout)} with ${playerLabels[secondBestSc.numPlayers-1].toLowerCase()}).`;
+  }
+  document.getElementById('recommendation-banner').innerHTML =
+    `<div class="verdict"><div class="verdict-label">McKillsey Recommendation</div><p>${recMsg}</p></div>`;
+
+  // Cards
+  const grid=document.getElementById('scenarios-grid');
+  grid.innerHTML='';
+
+  scenarios.forEach((sc,idx)=>{
+    const isBest=idx===bestIdx, np=sc.numPlayers;
+
+    let eliteBadge='', eliteWarning='';
+    if (state.eliteSelected) {
+      if (sc.eliteOk) eliteBadge=`<span class="scenario-badge badge-elite">Elite ✓</span>`;
+      else { eliteBadge=`<span class="scenario-badge badge-no-elite">Elite ✗</span>`; eliteWarning=`<div class="warning-box">Not enough loot to fill all ${np} bags — Elite bonus excluded for this player count.</div>`; }
+    }
+
+    const bagRows=sc.bags.map((bag,bi)=>{
+      const isH=bi===0, lbl=isH?'Host bag':`Player ${bi+1} bag`;
+      const fp=bag.totalFill*100, bc=fp>=99.9?'':fp>60?'partial':'under';
+      return `<div class="bag-item">
+        <div class="bag-item-header">
+          <span class="bag-owner ${isH?'is-host':''}">${lbl}</span>
+          <span class="bag-value">${fmt(bag.totalValue)}</span>
+        </div>
+        <div class="bag-contents">${renderBagContents(bag)}</div>
+        <div class="bag-fill-bar"><div class="bag-fill-inner ${bc}" style="width:${Math.min(100,fp).toFixed(1)}%"></div></div>
+      </div>`;
+    }).join('');
+
+    const eliteTag=sc.eliteOk?`<span class="elite-note">${sc.eliteEach===ELITE_HARD?'incl. +$100k elite':'incl. +$50k elite'}</span>`:'';
+
+    const playerRows=sc.players.map((p,pi)=>{
+      const mi=pi-1; let controls='';
+      if (!p.isHost&&np>1) {
+        const canUp=p.pct<85&&sc.hostPct-5>=15, canDown=p.pct>15;
+        controls=`<div class="pct-controls"><button class="pct-btn" onclick="adjustMember(${np},${mi},-1)" ${canDown?'':'disabled'}>−</button><button class="pct-btn" onclick="adjustMember(${np},${mi},1)" ${canUp?'':'disabled'}>+</button></div>`;
+      }
+      return `<div class="player-row ${p.isHost?'player-host':''}">
+        <span class="player-label">${p.label}</span>
+        <span class="player-pct">${p.pct}%</span>
+        ${controls}
+        <span class="player-amount">${fmt(p.finalPayout)}${p.isHost?eliteTag:(sc.eliteOk?eliteTag:'')}</span>
+      </div>`;
+    }).join('');
+
+    const primLabel=PRIMARY_TARGETS[state.primary].label;
+    const tipCalc=`${primLabel} ${state.hardMode?'× 1.1 (Hard Mode)':'(Normal Mode)'}\n+ secondary loot (${np} bag${np>1?'s':''})\n+ $59,500 office safe\n− 10% fencing − 2% Pavel\n= Gross × 0.88 distributable`;
+
+    const card=document.createElement('div');
+    card.className='scenario-card'+(isBest?' best-for-host':'');
+    card.innerHTML=`
+      <div class="scenario-header">
+        <span class="scenario-name">${np===1?'Solo':np+' Players'}</span>
+        <div class="scenario-badges">${isBest?'<span class="scenario-badge badge-best">Best for host</span>':''}${eliteBadge}</div>
+      </div>
+      <div class="scenario-body">
+        ${eliteWarning}
+        <div class="payout-math">
+          <div class="math-row"><span class="math-label tip" onmouseenter="showTip(this,'${primLabel}','${primLabel} ${state.hardMode?'× 1.1 hard mode bonus':''}')" onmouseleave="hideTip()">Primary loot${state.hardMode?' ×1.1':''}</span><span class="math-val pos">${fmt(sc.primaryVal)}</span></div>
+          <div class="math-row"><span class="math-label tip" onmouseenter="showTip(this,'Secondary Loot','Optimal fill across ${np} bag${np>1?'s':''} · greedy by $/bag density')" onmouseleave="hideTip()">Secondary (${np} bag${np>1?'s':''})</span><span class="math-val pos">${fmt(sc.secondary)}</span></div>
+          <div class="math-row"><span class="math-label tip" onmouseenter="showTip(this,'Office Safe','Average safe take · always $59,500')" onmouseleave="hideTip()">Office safe (avg)</span><span class="math-val pos">${fmt(OFFICE_SAFE)}</span></div>
+          <hr class="math-divider">
+          <div class="math-row"><span class="math-label">Gross take</span><span class="math-val">${fmt(sc.gross)}</span></div>
+          <div class="math-row"><span class="math-label">− Fencing fee (10%)</span><span class="math-val neg">−${fmt(sc.fencing)}</span></div>
+          <div class="math-row"><span class="math-label">− Pavel fee (2%)</span><span class="math-val neg">−${fmt(sc.pavel)}</span></div>
+          <hr class="math-divider">
+          <div class="math-row math-total"><span class="math-label tip" onmouseenter="showTip(this,'Distributable','Gross × 0.88 · split by player percentages')" onmouseleave="hideTip()">Distributable</span><span class="math-val">${fmt(sc.distrib)}</span></div>
+        </div>
+        ${sc.secondary>0?`<div class="bags-detail"><div class="bags-title">Bag Allocation — host gets best bag</div>${bagRows}</div>`:''}
+        <div class="player-rows" style="margin-top:12px">${playerRows}</div>
+        ${sc.eliteOk?`<div style="font-family:var(--mono);font-size:10px;color:var(--cream-dim);margin-top:6px">Elite bonus applied per player after split — not subject to fees.</div>`:''}
+      </div>`;
+    grid.appendChild(card);
+  });
+
+  updateShareUrl();
+}
+
+function adjustMember(np,mi,delta) {
+  const pcts=state.memberPcts[np], newP=pcts[mi]+delta*5;
+  if (newP<15) return;
+  const othersTotal=pcts.reduce((s,p,i)=>i===mi?s:s+p,0);
+  if (100-othersTotal-newP<15) return;
+  pcts[mi]=newP; render();
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────
+
+parseUrlParams();
+document.querySelectorAll('#primary-group .toggle-btn').forEach(b=>b.classList.toggle('active',b.dataset.val===state.primary));
+document.querySelectorAll('#hardmode-group .toggle-btn').forEach(b=>b.classList.toggle('active',(b.dataset.val==='yes')===state.hardMode));
+document.querySelectorAll('#elite-group .toggle-btn').forEach(b=>b.classList.toggle('active',(b.dataset.val==='yes')===state.eliteSelected));
+for (const [t,c] of Object.entries(state.loot)) document.getElementById('loot-'+t).textContent=c;
+render();
+</script>
+</body>
+</html>
