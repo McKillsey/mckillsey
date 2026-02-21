@@ -741,7 +741,7 @@ function render() {
   if (bestSc.numPlayers===1) {
     recMsg = `Run this <strong>solo</strong>. Your cut peaks at <strong>${fmt(bestSc.hostPayout)}</strong> (${pctDiffStr} vs ${fmt(secondBestSc.hostPayout)} with ${playerLabels[secondBestSc.numPlayers-1].toLowerCase()}).`;
   } else {
-    recMsg = `Host with <strong>${labels[bestIdx]}</strong>. Your cut peaks at <strong>${fmt(bestSc.hostPayout)}</strong> (${pctDiffStr} vs ${fmt(secondBestSc.hostPayout)} with ${playerLabels[secondBestSc.numPlayers-1].toLowerCase()}).`;
+    recMsg = `Host <strong>${labels[bestIdx]}</strong> total. Your cut peaks at <strong>${fmt(bestSc.hostPayout)}</strong> (${pctDiffStr} vs ${fmt(secondBestSc.hostPayout)} with ${playerLabels[secondBestSc.numPlayers-1].toLowerCase()}).`;
   }
   document.getElementById('recommendation-banner').innerHTML =
     `<div class="verdict"><div class="verdict-label">McKillsey Recommendation</div><p>${recMsg}</p></div>`;
