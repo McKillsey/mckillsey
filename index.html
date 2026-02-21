@@ -3,122 +3,226 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>McKillsey & Company — Strategic Advisory, Los Santos</title>
+<title>McKillsey & Company</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3148;
-  --cream:#f0ead8;--cream-dim:#9aabbf;
-  --gold:#c9a84c;--gold-dim:#8a6f2e;
-  --green:#2dba72;--red:#d94f4f;--amber:#e08c2a;
-  --weekly:#f0c040;--weekly-bg:rgba(240,192,64,.08);--weekly-border:rgba(240,192,64,.35);
-  --rule:rgba(201,168,76,.18);
-  --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--serif:'Playfair Display',serif;
+  --navy:#0d1b2a; --navy-mid:#162436; --navy-light:#1e3148;
+  --cream:#f0ead8; --cream-dim:#9aabbf;
+  --gold:#c9a84c; --gold-dim:#8a6f2e;
+  --green:#2dba72; --red:#d94f4f;
+  --rule:rgba(201,168,76,0.18);
+  --mono:'IBM Plex Mono',monospace;
+  --sans:'IBM Plex Sans',sans-serif;
+  --serif:'Playfair Display',serif;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size:14px;line-height:1.6}
 
-/* HEADER */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+
+body {
+  background:var(--navy);
+  color:var(--cream);
+  font-family:var(--sans);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ── HEADER ── */
 .site-header{border-bottom:1px solid var(--rule);padding:20px 48px;display:flex;align-items:center;gap:32px}
-.wordmark{font-family:var(--serif);font-weight:700;color:#b8c8d8;line-height:1.15}
+.wordmark{font-family:var(--serif);font-weight:700;color:#b8c8d8;line-height:1.15;text-decoration:none}
 .wordmark .line1{display:block;font-size:26px}
 .wordmark .line2{display:block;font-size:22px;padding-left:1.1em}
 .header-tagline{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.1em;text-transform:uppercase;margin-left:auto}
 
-/* WEEKLY BANNER */
-.weekly-banner{background:var(--weekly-bg);border-bottom:1px solid var(--weekly-border);padding:11px 48px;display:flex;align-items:center;gap:16px}
-.weekly-badge{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;background:var(--weekly);color:var(--navy);padding:4px 10px;font-weight:500;flex-shrink:0}
-.weekly-banner-text{font-size:13px;color:var(--cream)}
-.weekly-banner-text strong{color:var(--weekly)}
-.weekly-link{color:var(--weekly);text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.06em}
-.weekly-link:hover{text-decoration:underline}
-.weekly-expires{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.08em;flex-shrink:0}
-
-/* PAGE */
-.page{max-width:1200px;margin:0 auto;padding:56px 48px 80px}
-
-/* HERO */
-.hero{margin-bottom:56px;padding-bottom:44px;border-bottom:1px solid var(--rule)}
-.hero-eyebrow{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px}
-.hero h1{font-family:var(--serif);font-size:48px;font-weight:900;line-height:1.05;color:var(--cream);margin-bottom:16px}
-.hero h1 em{color:var(--gold);font-style:normal}
-.hero-desc{font-size:15px;color:var(--cream-dim);line-height:1.75;max-width:620px;margin-bottom:24px}
-.hero-motto{font-family:var(--mono);font-size:11px;color:var(--cream-dim);letter-spacing:.08em;border-left:2px solid var(--gold);padding-left:14px}
-.hero-cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
-.cta-btn{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:11px 24px;text-decoration:none;transition:all .15s}
-.cta-btn.primary{background:var(--gold);color:var(--navy);font-weight:500}
-.cta-btn.primary:hover{background:#d4b05a}
-.cta-btn.secondary{border:1px solid var(--rule);color:var(--cream-dim)}
-.cta-btn.secondary:hover{border-color:var(--gold);color:var(--cream)}
-.cta-btn.weekly-btn{border:1px solid var(--weekly-border);color:var(--weekly)}
-.cta-btn.weekly-btn:hover{background:var(--weekly-bg)}
-
-/* TWO-COLUMN LAYOUT */
-.index-layout{display:grid;grid-template-columns:1fr 340px;gap:44px;align-items:start}
-
-/* SECTION LABEL */
-.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
-
-/* BUSINESS CARDS */
-.biz-group{margin-bottom:36px}
-.biz-group-title{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.biz-group-title::after{content:'';flex:1;height:1px;background:var(--rule)}
-.biz-list{display:flex;flex-direction:column;gap:1px;background:var(--rule);border:1px solid var(--rule)}
-.biz-card{background:var(--navy-mid);padding:14px 16px;display:grid;grid-template-columns:1fr auto auto;gap:0 20px;align-items:center;text-decoration:none;transition:background .12s;position:relative}
-.biz-card:hover{background:var(--navy-light)}
-.biz-card.weekly{background:rgba(240,192,64,.07)}
-.biz-card.weekly:hover{background:rgba(240,192,64,.12)}
-.biz-card.stub{opacity:.45;pointer-events:none;cursor:default}
-.biz-name-wrap{}
-.biz-card-name{font-family:var(--serif);font-size:13px;font-weight:700;color:var(--cream);display:block;line-height:1.2}
-.biz-card-slug{font-family:var(--mono);font-size:9px;color:var(--gold-dim);letter-spacing:.07em;margin-top:2px;display:block}
-.biz-metric{text-align:right}
-.biz-metric-val{font-family:var(--mono);font-size:12px;color:var(--green);display:block;line-height:1.2}
-.biz-metric-val.wkly{color:var(--weekly)}
-.biz-metric-label{font-family:var(--mono);font-size:9px;color:var(--cream-dim);text-transform:uppercase;letter-spacing:.06em}
-.biz-card .biz-tag{display:inline-block;font-size:8px;letter-spacing:.06em;text-transform:uppercase;padding:1px 5px;font-family:var(--mono);font-weight:500;margin-top:3px}
-.tag-weekly{background:var(--weekly);color:var(--navy)}
-.tag-stub{background:rgba(255,255,255,.07);color:var(--cream-dim)}
-.tag-rec{background:rgba(45,186,114,.2);color:var(--green)}
-
-/* RIGHT COLUMN — QUICK LINKS */
-.quick-panel{position:sticky;top:24px}
-.quick-section{margin-bottom:28px}
-.quick-list{display:flex;flex-direction:column;gap:1px;background:var(--rule);border:1px solid var(--rule)}
-.quick-link{background:var(--navy-mid);padding:12px 14px;display:flex;align-items:center;justify-content:space-between;text-decoration:none;transition:background .12s}
-.quick-link:hover{background:var(--navy-light)}
-.quick-link.stub{opacity:.4;pointer-events:none}
-.quick-link-name{font-family:var(--sans);font-size:13px;color:var(--cream)}
-.quick-link-slug{font-family:var(--mono);font-size:10px;color:var(--gold-dim);letter-spacing:.07em}
-.quick-link.weekly-link-card{background:rgba(240,192,64,.07);border-bottom:1px solid var(--weekly-border)}
-.quick-link.weekly-link-card .quick-link-name{color:var(--weekly)}
-.quick-link.weekly-link-card .quick-link-slug{color:rgba(240,192,64,.6)}
-.quick-link.primary-card{background:rgba(201,168,76,.06)}
-.quick-link.primary-card .quick-link-name{color:var(--gold)}
-
-/* ABOUT PANEL */
-.about-panel{border:1px solid var(--rule);border-left:3px solid var(--gold);padding:18px 20px;background:rgba(201,168,76,.02);margin-bottom:28px}
-.about-panel p{font-size:12px;color:var(--cream-dim);line-height:1.7;margin-bottom:8px}
-.about-panel p:last-child{margin-bottom:0}
-.about-panel strong{color:var(--cream)}
-
-/* PHILOSOPHY */
-.philosophy{margin-top:44px;padding-top:36px;border-top:1px solid var(--rule)}
-.philosophy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
-.phil-card{background:var(--navy-mid);padding:22px}
-.phil-icon{font-family:var(--serif);font-size:28px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px}
-.phil-title{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:10px}
-.phil-text{font-size:12px;color:var(--cream);line-height:1.65}
-
-@media(max-width:1000px){
-  .index-layout{grid-template-columns:1fr}
-  .quick-panel{position:static}
+/* ── MAIN ── */
+.main {
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:60px 48px;
 }
-@media(max-width:700px){
-  .page{padding:20px}
-  .site-header,.weekly-banner{padding-left:20px;padding-right:20px}
-  .hero h1{font-size:34px}
-  .philosophy-grid{grid-template-columns:1fr}
+
+.center-block {
+  max-width:640px;
+  width:100%;
+  text-align:center;
+}
+
+/* Classified stamp */
+.stamp {
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--gold);
+  border:1px solid var(--gold);
+  padding:5px 16px;
+  margin-bottom:36px;
+  opacity:.7;
+}
+
+/* ── HEADLINE ── */
+.headline {
+  font-family:var(--serif);
+  font-size:clamp(38px,6vw,64px);
+  font-weight:900;
+  line-height:1.05;
+  color:var(--cream);
+  margin-bottom:10px;
+}
+.headline em {
+  font-style:normal;
+  color:var(--gold);
+}
+
+.tagline {
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--cream-dim);
+  margin-bottom:48px;
+}
+
+/* ── DIVIDER ── */
+.rule {
+  border:none;
+  border-top:1px solid var(--rule);
+  margin:0 auto 48px;
+  width:120px;
+}
+
+/* ── BODY COPY ── */
+.body-copy {
+  font-size:15px;
+  color:var(--cream-dim);
+  line-height:1.75;
+  margin-bottom:48px;
+  font-family:var(--sans);
+}
+.body-copy strong {
+  color:var(--cream);
+  font-weight:500;
+}
+
+/* ── BETA CTA ── */
+.beta-card {
+  border:1px solid var(--rule);
+  border-left:3px solid var(--gold);
+  background:rgba(201,168,76,.03);
+  padding:22px 28px;
+  text-align:left;
+  margin-bottom:0;
+}
+.beta-label {
+  font-family:var(--mono);
+  font-size:9px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:8px;
+  display:block;
+}
+.beta-title {
+  font-family:var(--serif);
+  font-size:20px;
+  font-weight:700;
+  color:var(--cream);
+  margin-bottom:6px;
+}
+.beta-desc {
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--cream-dim);
+  line-height:1.7;
+  letter-spacing:.03em;
+  margin-bottom:18px;
+}
+.beta-link {
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--navy);
+  background:var(--gold);
+  padding:10px 22px;
+  text-decoration:none;
+  transition:background .15s;
+  font-weight:500;
+}
+.beta-link:hover {
+  background:var(--cream);
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  border-top:1px solid var(--rule);
+  padding:16px 48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.footer-copy {
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--cream-dim);
+  opacity:.45;
+  letter-spacing:.06em;
+}
+
+/* ── TICKER ── */
+.ticker-wrap {
+  overflow:hidden;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  background:rgba(201,168,76,.03);
+  padding:9px 0;
+  margin-bottom:0;
+  position:relative;
+}
+.ticker-wrap::before,
+.ticker-wrap::after {
+  content:'';
+  position:absolute;
+  top:0;bottom:0;width:80px;z-index:2;
+}
+.ticker-wrap::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
+.ticker-wrap::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
+.ticker-track {
+  display:flex;
+  gap:0;
+  width:max-content;
+  animation:ticker 28s linear infinite;
+}
+.ticker-track:hover { animation-play-state:paused; }
+.ticker-item {
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--cream-dim);
+  padding:0 32px;
+  white-space:nowrap;
+}
+.ticker-item .dot {
+  color:var(--gold);
+  margin-right:8px;
+}
+@keyframes ticker {
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+@media(max-width:600px){
+  .site-header{padding:16px 20px}
+  .header-tagline{display:none}
+  .main{padding:40px 20px}
+  .site-footer{padding:14px 20px}
 }
 </style>
 </head>
@@ -129,340 +233,69 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
   <div class="header-tagline">Strategic Advisory · Los Santos · Blaine County</div>
 </header>
 
-<div class="weekly-banner">
-  <div class="weekly-badge">This Week</div>
-  <div class="weekly-banner-text">
-    <strong>2× Counterfeit Cash sell bonus</strong> — active now. Resets Thursday.
-    Full analysis on <a href="/cash" class="weekly-link">/cash</a> and <a href="/weekly" class="weekly-link">/weekly</a>.
-  </div>
-  <div class="weekly-expires">Resets Thursday</div>
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track"></div>
 </div>
 
-<main class="page">
+<main class="main">
+  <div class="center-block">
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-eyebrow">mckillsey.com</div>
-  <h1>The numbers don't lie.<br>Your <em>grind</em> might.</h1>
-  <p class="hero-desc">McKillsey & Company is the GTA Online money-making reference and calculator. Every number is transparent. Every recommendation is explained. We tell you what the optimal play is and show the math behind it.</p>
-  <div class="hero-motto">"Where every engagement is a hostile takeover."</div>
-  <div class="hero-cta">
-    <a href="/dash" class="cta-btn primary">Your Dashboard →</a>
-    <a href="/weekly" class="cta-btn weekly-btn">This Week's Bonuses</a>
-    <a href="#businesses" class="cta-btn secondary">Browse Businesses</a>
+    <div class="stamp">Clearance Level: Pending</div>
+
+    <h1 class="headline">
+      Under<br><em>Construction</em>
+    </h1>
+    <p class="tagline">The empire is still being built</p>
+
+    <hr class="rule">
+
+    <p class="body-copy">
+      McKillsey &amp; Company is preparing a comprehensive strategic advisory platform for the Los Santos and Blaine County market. Expect rigorous analysis, transparent methodology, and <strong>no tolerance for leaving money on the table.</strong>
+      <br><br>
+      The full site — covering MC businesses, the Nightclub, Bunker, weekly bonuses, and more — is in active development. In the meantime, our first engagement is live.
+    </p>
+
+    <div class="beta-card">
+      <span class="beta-label">Now Live — Early Access</span>
+      <div class="beta-title">Cayo Perico Calculator</div>
+      <p class="beta-desc">
+        Full payout breakdown across all player counts and loot configurations. Hard mode, Elite Challenge, setup fee — all accounted for. Hover any number for the math behind it.
+      </p>
+      <a href="/cayo" class="beta-link">Open Calculator →</a>
+    </div>
+
   </div>
-</div>
-
-<!-- MAIN INDEX -->
-<div class="index-layout">
-
-  <!-- LEFT: BUSINESSES -->
-  <div id="businesses">
-    <div class="section-label">Businesses</div>
-
-    <!-- MC GROUP -->
-    <div class="biz-group">
-      <div class="biz-group-title">MC Businesses</div>
-      <div class="biz-list">
-        <a href="/mc" class="biz-card" style="background:rgba(201,168,76,.05)">
-          <div class="biz-name-wrap">
-            <span class="biz-card-name">MC Businesses</span>
-            <span class="biz-card-slug">/mc — Comparative overview</span>
-          </div>
-          <div class="biz-metric">
-            <span class="biz-metric-val">$1,200,000</span>
-            <span class="biz-metric-label">Coke $/active hr</span>
-          </div>
-          <div class="biz-metric">
-            <span class="biz-metric-val">$120,000</span>
-            <span class="biz-metric-label">$/passive hr</span>
-          </div>
-        </a>
-        <a href="/coke" class="biz-card" style="padding-left:28px">
-          <div class="biz-name-wrap">
-            <span class="biz-card-name">Cocaine Lockup</span>
-            <span class="biz-card-slug">/coke</span>
-          </div>
-          <div class="biz-metric">
-            <span class="biz-metric-val">$1,200,000</span>
-            <span class="biz-metric-label">$/active hr</span>
-          </div>
-          <div class="biz-metric">
-            <span class="biz-metric-val">$120,000</span>
-            <span class="biz-metric-label">$/passive hr</span>
-          </div>
-        </a>
-        <a href="/meth" class="biz-card" style="padding-left:28px">
-          <div class="biz-name-wrap">
-            <span class="biz-card-name">Methamphetamine Lab</span>
-            <span class="biz-card-slug">/meth</span>
-          </div>
-          <div class="biz-metric">
-            <span class="biz-metric-val">$964,050</span>
-            <span class="biz-metric-label">$/active hr</span>
-          </div>
-          <div class="biz-metric">
-            <span class="biz-metric-val">$80,338</span>
-            <span class="biz-metric-label">$/passive hr</span>
-          </div>
-        </a>
-        <a href="/cash" class="biz-card weekly" style="padding-left:28px">
-          <div class="biz-name-wrap">
-            <span class="biz-card-name">Counterfeit Cash Factory</span>
-            <span class="biz-card-slug">/cash</span>
-            <span class="biz-tag tag-weekly">★ 2× this week</span>
-          </div>
-          <div class="biz-metric">
-            <span class="biz-metric-val wkly">$2,680,800</span>
-            <span class="biz-metric-label">$/active hr this week</span>
-          </div>
-          <div class="biz-metric">
-            <span class="biz-metric-val wkly">$251,325</span>
-            <span class="biz-metric-label">$/passive hr this week</span>
-          </div>
-        </a>
-        <a href="/weed" class="biz-card" style="padding-left:28px">
-          <div class="biz-name-wrap">
-            <span class="biz-card-name">Weed Farm</span>
-            <span class="biz-card-slug">/weed</span>
-          </div>
-          <div class="biz-metric">
-            <span class="biz-metric-val">$946,466</span>
-            <span class="biz-metric-label">$/active hr</span>
-          </div>
-          <div class="biz-metric">
-            <span class="biz-metric-val">$88,731</span>
-            <span class="biz-metric-label">$/passive hr</span>
-          </div>
-        </a>
-        <a href="/docs" class="biz-card" style="padding-left:28px">
-          <div class="biz-name-wrap">
-            <span class="biz-card-name">Document Forgery</span>
-            <span class="biz-card-slug">/docs</span>
-          </div>
-          <div class="biz-metric">
-            <span class="biz-metric-val red">$297,000</span>
-            <span class="biz-metric-label">$/active hr</span>
-          </div>
-          <div class="biz-metric">
-            <span class="biz-metric-val red">$49,500</span>
-            <span class="biz-metric-label">$/passive hr</span>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <!-- GUNRUNNING / ACID -->
-    <div class="biz-group">
-      <div class="biz-group-title">Gunrunning &amp; Drugs</div>
-      <div class="biz-list">
-        <a href="/bunker" class="biz-card">
-          <div class="biz-name-wrap">
-            <span class="biz-card-name">Bunker</span>
-            <span class="biz-card-slug">/bunker — Gunrunning</span>
-            <span class="biz-tag tag-rec">Highest net per sell</span>
-          </div>
-          <div class="biz-metric">
-            <span class="biz-metric-val">$1,800,000</span>
-            <span class="biz-metric-label">$/active hr</span>
-          </div>
-          <div class="biz-metric">
-            <span class="biz-metric-val">$102,857</span>
-            <span class="biz-metric-label">$/passive hr</span>
-          </div>
-        </a>
-        <a href="/acid" class="biz-card">
-          <div class="biz-name-wrap">
-            <span class="biz-card-name">Acid Lab</span>
-            <span class="biz-card-slug">/acid — Fooligan Industries</span>
-            <span class="biz-tag tag-rec">Best passive efficiency</span>
-          </div>
-          <div class="biz-metric">
-            <span class="biz-metric-val">~$3,110,000</span>
-            <span class="biz-metric-label">$/active hr avg</span>
-          </div>
-          <div class="biz-metric">
-            <span class="biz-metric-val">$107,985</span>
-            <span class="biz-metric-label">$/passive hr</span>
-          </div>
-        </a>
-        <a href="/nc" class="biz-card stub">
-          <div class="biz-name-wrap">
-            <span class="biz-card-name">Nightclub</span>
-            <span class="biz-card-slug">/nc</span>
-            <span class="biz-tag tag-stub">Coming soon</span>
-          </div>
-          <div class="biz-metric"><span class="biz-metric-val dim">—</span><span class="biz-metric-label">$/active hr</span></div>
-          <div class="biz-metric"><span class="biz-metric-val dim">—</span><span class="biz-metric-label">$/passive hr</span></div>
-        </a>
-      </div>
-    </div>
-
-    <!-- VEHICLE / IMPORT-EXPORT -->
-    <div class="biz-group">
-      <div class="biz-group-title">Vehicle &amp; Cargo</div>
-      <div class="biz-list">
-        <a href="/vehicle" class="biz-card stub">
-          <div class="biz-name-wrap">
-            <span class="biz-card-name">Vehicle Warehouse</span>
-            <span class="biz-card-slug">/vehicle — Import/Export</span>
-            <span class="biz-tag tag-stub">Coming soon</span>
-          </div>
-          <div class="biz-metric"><span class="biz-metric-val dim">—</span><span class="biz-metric-label">$/active hr</span></div>
-          <div class="biz-metric"><span class="biz-metric-val dim">—</span><span class="biz-metric-label">$/passive hr</span></div>
-        </a>
-        <a href="/hangar" class="biz-card stub">
-          <div class="biz-name-wrap">
-            <span class="biz-card-name">Hangar</span>
-            <span class="biz-card-slug">/hangar — Smuggler's Run</span>
-            <span class="biz-tag tag-stub">Coming soon</span>
-          </div>
-          <div class="biz-metric"><span class="biz-metric-val dim">—</span><span class="biz-metric-label">$/active hr</span></div>
-          <div class="biz-metric"><span class="biz-metric-val dim">—</span><span class="biz-metric-label">$/passive hr</span></div>
-        </a>
-        <a href="/cargo" class="biz-card stub">
-          <div class="biz-name-wrap">
-            <span class="biz-card-name">Special Cargo</span>
-            <span class="biz-card-slug">/cargo</span>
-            <span class="biz-tag tag-stub">Coming soon</span>
-          </div>
-          <div class="biz-metric"><span class="biz-metric-val dim">—</span><span class="biz-metric-label">$/active hr</span></div>
-          <div class="biz-metric"><span class="biz-metric-val dim">—</span><span class="biz-metric-label">$/passive hr</span></div>
-        </a>
-      </div>
-    </div>
-
-    <!-- HEISTS -->
-    <div class="section-label" style="margin-top:44px">Heists</div>
-    <div class="biz-group" style="margin-bottom:0">
-      <div class="biz-list">
-        <a href="/cayo" class="biz-card stub">
-          <div class="biz-name-wrap"><span class="biz-card-name">Cayo Perico</span><span class="biz-card-slug">/cayo</span><span class="biz-tag tag-stub">Coming soon</span></div>
-          <div class="biz-metric"><span class="biz-metric-val dim">—</span><span class="biz-metric-label">$/active hr</span></div>
-          <div class="biz-metric"><span class="biz-metric-val dim">—</span></div>
-        </a>
-        <a href="/casino" class="biz-card stub">
-          <div class="biz-name-wrap"><span class="biz-card-name">Casino Heist</span><span class="biz-card-slug">/casino</span><span class="biz-tag tag-stub">Coming soon</span></div>
-          <div class="biz-metric"><span class="biz-metric-val dim">—</span><span class="biz-metric-label">$/active hr</span></div>
-          <div class="biz-metric"><span class="biz-metric-val dim">—</span></div>
-        </a>
-        <a href="/heists" class="biz-card stub">
-          <div class="biz-name-wrap"><span class="biz-card-name">Doomsday &amp; OG Heists</span><span class="biz-card-slug">/heists</span><span class="biz-tag tag-stub">Coming soon</span></div>
-          <div class="biz-metric"><span class="biz-metric-val dim">—</span><span class="biz-metric-label">$/active hr</span></div>
-          <div class="biz-metric"><span class="biz-metric-val dim">—</span></div>
-        </a>
-      </div>
-    </div>
-
-    <!-- INSIGHTS -->
-    <div class="section-label" style="margin-top:44px">Insights</div>
-    <div class="biz-group" style="margin-bottom:0">
-      <div class="biz-list">
-        <a href="/dealers" class="biz-card stub">
-          <div class="biz-name-wrap"><span class="biz-card-name">Selling to Street Dealers</span><span class="biz-card-slug">/dealers</span><span class="biz-tag tag-stub">Coming soon</span></div>
-        </a>
-        <a href="/mansion" class="biz-card stub">
-          <div class="biz-name-wrap"><span class="biz-card-name">Mansion — Production Boosts</span><span class="biz-card-slug">/mansion</span><span class="biz-tag tag-stub">Coming soon</span></div>
-        </a>
-        <a href="/stashhouses" class="biz-card stub">
-          <div class="biz-name-wrap"><span class="biz-card-name">Robbing Stash Houses</span><span class="biz-card-slug">/stashhouses</span><span class="biz-tag tag-stub">Coming soon</span></div>
-        </a>
-      </div>
-    </div>
-  </div><!-- /left -->
-
-  <!-- RIGHT: QUICK NAVIGATION PANEL -->
-  <div class="quick-panel">
-
-    <div class="about-panel">
-      <p><strong>McKillsey & Company</strong> is a fan-built reference site for GTA Online. Every number is transparent and traceable. Every recommendation is backed by math.</p>
-      <p>Non-commercial. No ads. No accounts. Community corrections welcome.</p>
-    </div>
-
-    <div class="quick-section">
-      <div class="section-label">Jump To</div>
-      <div class="quick-list">
-        <a href="/dash" class="quick-link primary-card">
-          <span class="quick-link-name">Your Dashboard</span>
-          <span class="quick-link-slug">/dash</span>
-        </a>
-        <a href="/weekly" class="quick-link weekly-link-card">
-          <span class="quick-link-name">This Week — McKillsey Quarterly</span>
-          <span class="quick-link-slug">/weekly</span>
-        </a>
-        <a href="/mc" class="quick-link">
-          <span class="quick-link-name">MC Businesses Overview</span>
-          <span class="quick-link-slug">/mc</span>
-        </a>
-        <a href="/bunker" class="quick-link">
-          <span class="quick-link-name">Bunker</span>
-          <span class="quick-link-slug">/bunker</span>
-        </a>
-        <a href="/acid" class="quick-link">
-          <span class="quick-link-name">Acid Lab</span>
-          <span class="quick-link-slug">/acid</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="quick-section">
-      <div class="section-label">All Pages — Live</div>
-      <div class="quick-list">
-        <a href="/" class="quick-link"><span class="quick-link-name">Home</span><span class="quick-link-slug">/</span></a>
-        <a href="/dash" class="quick-link"><span class="quick-link-name">Dashboard</span><span class="quick-link-slug">/dash</span></a>
-        <a href="/weekly" class="quick-link"><span class="quick-link-name">Weekly Bonuses</span><span class="quick-link-slug">/weekly</span></a>
-        <a href="/mc" class="quick-link"><span class="quick-link-name">MC Overview</span><span class="quick-link-slug">/mc</span></a>
-        <a href="/coke" class="quick-link"><span class="quick-link-name">Cocaine Lockup</span><span class="quick-link-slug">/coke</span></a>
-        <a href="/meth" class="quick-link"><span class="quick-link-name">Meth Lab</span><span class="quick-link-slug">/meth</span></a>
-        <a href="/cash" class="quick-link"><span class="quick-link-name">Counterfeit Cash</span><span class="quick-link-slug">/cash</span></a>
-        <a href="/weed" class="quick-link"><span class="quick-link-name">Weed Farm</span><span class="quick-link-slug">/weed</span></a>
-        <a href="/docs" class="quick-link"><span class="quick-link-name">Document Forgery</span><span class="quick-link-slug">/docs</span></a>
-        <a href="/bunker" class="quick-link"><span class="quick-link-name">Bunker</span><span class="quick-link-slug">/bunker</span></a>
-        <a href="/acid" class="quick-link"><span class="quick-link-name">Acid Lab</span><span class="quick-link-slug">/acid</span></a>
-      </div>
-    </div>
-
-    <div class="quick-section">
-      <div class="section-label">Coming Soon</div>
-      <div class="quick-list">
-        <a class="quick-link stub"><span class="quick-link-name">Nightclub</span><span class="quick-link-slug">/nc</span></a>
-        <a class="quick-link stub"><span class="quick-link-name">Vehicle Warehouse</span><span class="quick-link-slug">/vehicle</span></a>
-        <a class="quick-link stub"><span class="quick-link-name">Hangar</span><span class="quick-link-slug">/hangar</span></a>
-        <a class="quick-link stub"><span class="quick-link-name">Cayo Perico</span><span class="quick-link-slug">/cayo</span></a>
-        <a class="quick-link stub"><span class="quick-link-name">Casino Heist</span><span class="quick-link-slug">/casino</span></a>
-        <a class="quick-link stub"><span class="quick-link-name">Street Dealers</span><span class="quick-link-slug">/dealers</span></a>
-        <a class="quick-link stub"><span class="quick-link-name">Mansion</span><span class="quick-link-slug">/mansion</span></a>
-        <a class="quick-link stub"><span class="quick-link-name">Agency</span><span class="quick-link-slug">/agency</span></a>
-        <a class="quick-link stub"><span class="quick-link-name">Auto Shop</span><span class="quick-link-slug">/autoshop</span></a>
-        <a class="quick-link stub"><span class="quick-link-name">Salvage Yard</span><span class="quick-link-slug">/salvage</span></a>
-      </div>
-    </div>
-
-  </div><!-- /right -->
-</div><!-- /index-layout -->
-
-<!-- PHILOSOPHY STRIP -->
-<div class="philosophy">
-  <div class="section-label">McKillsey Philosophy</div>
-  <div class="philosophy-grid">
-    <div class="phil-card">
-      <div class="phil-icon">∑</div>
-      <div class="phil-title">Transparent Math</div>
-      <div class="phil-text">Every number on this site is traceable to its inputs. Hover any calculated figure to see the formula. Disagree with an assumption? Use the feedback button.</div>
-    </div>
-    <div class="phil-card">
-      <div class="phil-icon">⏱</div>
-      <div class="phil-title">Time Is the Real Currency</div>
-      <div class="phil-text">$/active-hr is the metric that matters. Passive income runs in the background. Your active time should go to whatever pays the most per hour. The dashboard makes that calculation for your specific setup.</div>
-    </div>
-    <div class="phil-card">
-      <div class="phil-icon">→</div>
-      <div class="phil-title">Opinionated by Design</div>
-      <div class="phil-text">McKillsey makes recommendations. "Here are some options" is not analysis. We show you the best play, explain why, and tell you what the second-best play is and when it applies.</div>
-    </div>
-  </div>
-</div>
-
 </main>
+
+<footer class="site-footer">
+  <span class="footer-copy">© McKillsey &amp; Company · Los Santos · Blaine County</span>
+  <span class="footer-copy">Non-commercial fan project · Not affiliated with Rockstar Games</span>
+</footer>
+
+<script>
+// Ticker items
+const items = [
+  'Cayo Perico Calculator — Live',
+  'MC Businesses — In Development',
+  'Nightclub Warehouse — In Development',
+  'Bunker — In Development',
+  'Weekly Bonuses — In Development',
+  'Dashboard — In Development',
+  'Casino Heist — Coming Soon',
+  'Acid Lab — Coming Soon',
+  'Street Dealers — Coming Soon',
+];
+
+// Double items for seamless loop
+const track = document.getElementById('ticker-track');
+[...items, ...items].forEach(text => {
+  const el = document.createElement('span');
+  el.className = 'ticker-item';
+  el.innerHTML = `<span class="dot">◆</span>${text}`;
+  track.appendChild(el);
+});
+</script>
+
 </body>
 </html>
