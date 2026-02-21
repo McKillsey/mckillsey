@@ -166,13 +166,34 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 #tipbox .tb-calc{color:var(--cream-dim)}
 .tip{border-bottom:1px dashed rgba(201,168,76,.45);cursor:help;display:inline}
 
-/* ── FEEDBACK ── */
+/* ── FEEDBACK BUTTON ── */
 .feedback-btn{position:fixed;bottom:22px;right:22px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--gold);padding:9px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .15s;z-index:100}
 .feedback-btn:hover{background:var(--gold);color:var(--navy)}
 
-/* ── DATA NOTE ── */
-.data-note{font-family:var(--mono);font-size:10px;color:var(--cream-dim);border-top:1px solid var(--rule);padding-top:16px;line-height:1.7;opacity:.65;margin-top:32px}
-.data-note .label{color:var(--amber)}
+/* ── FEEDBACK MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;display:none;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--navy-mid);border:1px solid var(--rule);width:500px;max-width:calc(100vw - 40px);max-height:90vh;overflow-y:auto;padding:28px}
+.modal-title{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--cream);margin-bottom:4px}
+.modal-sub{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.08em;margin-bottom:22px}
+.modal-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block}
+.modal-textarea{width:100%;background:var(--navy);border:1px solid var(--rule);color:var(--cream);font-family:var(--sans);font-size:13px;padding:10px 12px;resize:vertical;min-height:90px;line-height:1.6;outline:none}
+.modal-textarea:focus{border-color:var(--gold)}
+.screenshot-zone{width:100%;min-height:80px;background:var(--navy);border:1px dashed rgba(201,168,76,.35);display:flex;align-items:center;justify-content:center;margin-top:14px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .15s}
+.screenshot-zone:hover{border-color:var(--gold)}
+.screenshot-zone.has-image{border-style:solid;border-color:var(--gold)}
+.screenshot-zone img{max-width:100%;max-height:220px;display:block}
+.screenshot-hint{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.06em;text-align:center;padding:20px;pointer-events:none}
+.screenshot-hint span{color:var(--gold)}
+.screenshot-clear{position:absolute;top:6px;right:8px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;padding:2px 8px;cursor:pointer;display:none}
+.screenshot-zone.has-image .screenshot-clear{display:block}
+.modal-footer{display:flex;align-items:center;justify-content:space-between;margin-top:18px;gap:12px}
+.modal-send-btn{background:var(--gold);border:none;color:var(--navy);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 22px;cursor:pointer;transition:all .15s;font-weight:500}
+.modal-send-btn:hover{background:var(--cream)}
+.modal-send-btn:disabled{opacity:.4;cursor:not-allowed}
+.modal-cancel-btn{background:none;border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:10px 16px;cursor:pointer;transition:all .15s}
+.modal-cancel-btn:hover{border-color:var(--cream-dim);color:var(--cream)}
+.modal-status{font-family:var(--mono);font-size:11px;color:var(--cream-dim);min-height:16px}
 
 @media(max-width:900px){
   .page{padding:20px}
@@ -208,7 +229,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
     <div class="input-section">
       <span class="input-label">Primary Target</span>
       <div class="toggle-group" id="primary-group" style="width:100%;flex-direction:column;border:none;gap:3px">
-        <button class="toggle-btn active" data-val="tequila"  onclick="setPrimary(this)" style="border:1px solid var(--rule)">Tequila</button>
+        <button class="toggle-btn active" data-val="tequila"  onclick="setPrimary(this)" style="border:1px solid var(--rule)">Sinsimito Tequila</button>
         <button class="toggle-btn"        data-val="ruby"     onclick="setPrimary(this)" style="border:1px solid var(--rule)">Ruby Necklace</button>
         <button class="toggle-btn"        data-val="bonds"    onclick="setPrimary(this)" style="border:1px solid var(--rule)">Bearer Bonds</button>
         <button class="toggle-btn"        data-val="diamond"  onclick="setPrimary(this)" style="border:1px solid var(--rule)">Pink Diamond</button>
@@ -285,7 +306,6 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
         <span class="share-url-text" id="share-url-text"></span>
         <button class="share-copy-btn" id="share-copy-btn" onclick="copyShareUrl()">Copy</button>
       </div>
-      <div class="share-hint">Typeable. No data stored.</div>
     </div>
 
   </div><!-- /inputs-panel -->
@@ -294,7 +314,6 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
   <div class="results-panel">
     <div class="results-header">
       <span class="results-label">Payout Scenarios</span>
-      <span class="results-note">Host receives balance after player cuts</span>
     </div>
     <div id="recommendation-banner"></div>
     <div class="scenarios-grid" id="scenarios-grid"></div>
@@ -360,13 +379,34 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
   </div>
 </div>
 
-<div class="data-note">
-  <span class="label">Data source</span> — Primary target values confirmed from in-game testing. Secondary loot values are averages of observed per-stack ranges (Cash $78,750–$83,250 · Weed $130,500–$135,000 · Painting $157,500–$180,000 · Cocaine $198,000–$202,500 · Gold $328,333–$333,333). Office safe range: $20,000–$99,000. Host pays $100,000 setup fee. Numbers subject to change with Rockstar patches. <a href="#" style="color:var(--gold)">Report an error.</a>
 </div>
 
 </main>
 
-<button class="feedback-btn">Report Error / Suggest Change</button>
+<button class="feedback-btn" onclick="openFeedback()">Report Error / Suggest Change</button>
+
+<!-- FEEDBACK MODAL -->
+<div class="modal-overlay" id="feedback-overlay" onclick="if(event.target===this)closeFeedback()">
+  <div class="modal">
+    <div class="modal-title">Report an Error</div>
+    <div class="modal-sub">No login required. Screenshot optional.</div>
+    <label class="modal-label" style="margin-top:4px">What's wrong?</label>
+    <textarea class="modal-textarea" id="feedback-text" placeholder="Describe the error or suggest a change..."></textarea>
+    <div class="screenshot-zone" id="screenshot-zone" onclick="document.getElementById('screenshot-file').click()">
+      <div class="screenshot-hint" id="screenshot-hint"><span>Paste</span> a screenshot or <span>click</span> to upload</div>
+      <img id="screenshot-preview" style="display:none">
+      <button class="screenshot-clear" id="screenshot-clear" onclick="event.stopPropagation();clearScreenshot()">✕ Remove</button>
+    </div>
+    <input type="file" id="screenshot-file" accept="image/*" style="display:none" onchange="handleFileSelect(event)">
+    <div class="modal-footer">
+      <div class="modal-status" id="modal-status"></div>
+      <div style="display:flex;gap:8px">
+        <button class="modal-cancel-btn" onclick="closeFeedback()">Cancel</button>
+        <button class="modal-send-btn" id="modal-send-btn" onclick="submitFeedback()">Send Report</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 // ─── DATA ─────────────────────────────────────────────────────────────────
@@ -490,10 +530,126 @@ document.addEventListener('mousemove', e => {
   }
 });
 function showTip(el, label, calc) {
-  tipbox.innerHTML = `<span class="tb-label">${label}</span><span class="tb-calc">${calc}</span>`;
+  const calcHtml = calc.replace(/\n/g, '<br>');
+  tipbox.innerHTML = `<span class="tb-label">${label}</span><span class="tb-calc">${calcHtml}</span>`;
   tipbox.style.display='block';
 }
 function hideTip() { tipbox.style.display='none'; }
+
+// ─── FEEDBACK MODAL ───────────────────────────────────────────────────────
+
+let screenshotData = null;
+
+function openFeedback() {
+  document.getElementById('feedback-overlay').classList.add('open');
+  document.getElementById('feedback-text').focus();
+}
+function closeFeedback() {
+  document.getElementById('feedback-overlay').classList.remove('open');
+  document.getElementById('modal-status').textContent = '';
+}
+
+function setScreenshot(dataUrl) {
+  screenshotData = dataUrl;
+  const zone = document.getElementById('screenshot-zone');
+  const preview = document.getElementById('screenshot-preview');
+  const hint = document.getElementById('screenshot-hint');
+  preview.src = dataUrl;
+  preview.style.display = 'block';
+  hint.style.display = 'none';
+  zone.classList.add('has-image');
+}
+function clearScreenshot() {
+  screenshotData = null;
+  const zone = document.getElementById('screenshot-zone');
+  const preview = document.getElementById('screenshot-preview');
+  const hint = document.getElementById('screenshot-hint');
+  preview.src = '';
+  preview.style.display = 'none';
+  hint.style.display = '';
+  zone.classList.remove('has-image');
+  document.getElementById('screenshot-file').value = '';
+}
+function handleFileSelect(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => setScreenshot(ev.target.result);
+  reader.readAsDataURL(file);
+}
+
+// Paste handler — works anywhere on the page when modal is open
+document.addEventListener('paste', e => {
+  if (!document.getElementById('feedback-overlay').classList.contains('open')) return;
+  const items = e.clipboardData?.items;
+  if (!items) return;
+  for (const item of items) {
+    if (item.type.startsWith('image/')) {
+      const blob = item.getAsFile();
+      const reader = new FileReader();
+      reader.onload = ev => setScreenshot(ev.target.result);
+      reader.readAsDataURL(blob);
+      break;
+    }
+  }
+});
+
+async function submitFeedback() {
+  const text = document.getElementById('feedback-text').value.trim();
+  if (!text) {
+    document.getElementById('modal-status').textContent = 'Please describe the issue first.';
+    return;
+  }
+  const btn = document.getElementById('modal-send-btn');
+  const status = document.getElementById('modal-status');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  status.textContent = '';
+
+  // Build the message body
+  const pageUrl = window.location.href;
+  let body = `Page: ${pageUrl}\n\nFeedback:\n${text}`;
+
+  // Prepare form data for Web3Forms
+  const formData = new FormData();
+  formData.append('access_key', '25c0d000-546c-45cd-be70-ec9abcded581');
+  formData.append('subject', 'McKillsey Error Report — Cayo Perico');
+  formData.append('message', body);
+  if (screenshotData) {
+    // Convert base64 to blob for attachment
+    const res = await fetch(screenshotData);
+    const blob = await res.blob();
+    formData.append('attachment', blob, 'screenshot.png');
+  }
+
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    });
+    const result = await response.json();
+    if (result.success) {
+      status.style.color = 'var(--green)';
+      status.textContent = 'Sent. Thank you.';
+      btn.textContent = 'Sent ✓';
+      setTimeout(() => {
+        closeFeedback();
+        document.getElementById('feedback-text').value = '';
+        clearScreenshot();
+        btn.disabled = false;
+        btn.textContent = 'Send Report';
+        status.style.color = '';
+      }, 1800);
+    } else {
+      throw new Error(result.message || 'Unknown error');
+    }
+  } catch(err) {
+    status.style.color = 'var(--red)';
+    status.textContent = 'Failed to send. Try again.';
+    btn.disabled = false;
+    btn.textContent = 'Send Report';
+  }
+}
 
 // ─── BAG OPTIMIZER ────────────────────────────────────────────────────────
 
@@ -606,82 +762,134 @@ function render() {
 
     const eliteTag=sc.eliteOk?`<span class="elite-note">${sc.eliteEach===ELITE_HARD?'incl. +$100k elite':'incl. +$50k elite'}</span>`:'';
 
-    const playerRows=sc.players.map((p,pi)=>{
-      const mi=pi-1; let controls='';
-      if (!p.isHost&&np>1) {
-        const canUp=p.pct<85&&sc.hostPct-5>=15, canDown=p.pct>15;
-        controls=`<div class="pct-controls"><button class="pct-btn" onclick="adjustMember(${np},${mi},-1)" ${canDown?'':'disabled'}>−</button><button class="pct-btn" onclick="adjustMember(${np},${mi},1)" ${canUp?'':'disabled'}>+</button></div>`;
-      }
-      const basePayout = sc.distrib * p.pct / 100;
-      const tipParts = [`${fmt(sc.distrib)} × ${p.pct}% = ${fmt(basePayout)}`];
-      if (sc.eliteOk) tipParts.push(`+ ${fmt(sc.eliteEach)} elite bonus`);
-      if (p.isHost) tipParts.push(`− ${fmt(SETUP_FEE)} setup fee`);
-      const tipStr = tipParts.join('  ·  ');
-      return `<div class="player-row ${p.isHost?'player-host':''}">
-        <span class="player-label">${p.label}</span>
-        <span class="player-pct">${p.pct}%</span>
-        ${controls}
-        <span class="player-amount tip" onmouseenter="showTip(this,'${p.label}','${tipStr}')" onmouseleave="hideTip()">${fmt(p.finalPayout)}${p.isHost?eliteTag:(sc.eliteOk?eliteTag:'')}</span>
-      </div>`;
-    }).join('');
-
     const primLabel=PRIMARY_TARGETS[state.primary].label;
-    const hardNote=state.hardMode?'Hard Mode: base × 1.1':'Normal Mode';
+    const primBase = state.hardMode ? PRIMARY_TARGETS[state.primary].normal : PRIMARY_TARGETS[state.primary].normal;
+    // Primary tooltip
+    const tip_primary = state.hardMode
+      ? `${primLabel}: ${fmt(PRIMARY_TARGETS[state.primary].normal)}\n× 1.1 hard mode = ${fmt(sc.primaryVal)}`
+      : `${primLabel}: ${fmt(sc.primaryVal)}`;
 
-    // Build rich tooltip strings (no quotes inside — use &apos; safe approach via JS vars passed differently)
-    const tip_primary   = `${primLabel} · ${hardNote}`;
-    const tip_secondary = `${np} bag${np>1?'s':''} · greedy fill by $/bag: Gold → Cocaine → Weed → Painting → Cash`;
-    const tip_safe      = 'Range: $20,000–$99,000 · Average: $59,500';
-    const tip_fencing   = `${fmt(sc.gross)} × 10% = ${fmt(sc.fencing)}`;
-    const tip_pavel     = `${fmt(sc.gross)} × 2% = ${fmt(sc.pavel)}`;
-    const tip_distrib   = `${fmt(sc.gross)} × 88% = ${fmt(sc.distrib)}`;
+    // Secondary tooltip — list actual bag contents from optimizer
+    const allItems = {};
+    for (const bag of sc.bags) {
+      for (const item of bag.items) {
+        if (!allItems[item.label]) allItems[item.label] = {stacks:0, value:0};
+        allItems[item.label].stacks += item.stacks;
+        allItems[item.label].value  += item.value;
+      }
+    }
+    const secLines = Object.entries(allItems).map(([lbl,v]) => `${fStk(v.stacks)}× ${lbl} = ${fmt(v.value)}`);
+    if (secLines.length === 0) secLines.push('No secondary loot');
+    secLines.push(`Total: ${fmt(sc.secondary)}`);
+    const tip_secondary = secLines.join('\n');
+
+    const tip_safe    = `Range: $20,000–$99,000\nAverage: ${fmt(OFFICE_SAFE)}`;
+    const tip_gross   = `${fmt(sc.primaryVal)} primary\n+ ${fmt(sc.secondary)} secondary\n+ ${fmt(OFFICE_SAFE)} safe\n= ${fmt(sc.gross)}`;
+    const tip_fencing = `${fmt(sc.gross)} × 10% = ${fmt(sc.fencing)}`;
+    const tip_pavel   = `${fmt(sc.gross)} × 2% = ${fmt(sc.pavel)}`;
+    const tip_distrib = `${fmt(sc.gross)} × 88% = ${fmt(sc.distrib)}`;
+
+    // Player tooltips — clean multiline, no bullets
+    const makePlayerTip = (p) => {
+      const base = sc.distrib * p.pct / 100;
+      const lines = [`${fmt(sc.distrib)} × ${p.pct}% = ${fmt(base)}`];
+      if (sc.eliteOk) lines.push(`+ ${fmt(sc.eliteEach)} elite bonus`);
+      if (p.isHost)   lines.push(`− ${fmt(SETUP_FEE)} setup fee`);
+      lines.push(`= ${fmt(p.finalPayout)}`);
+      return lines.join('\n');
+    };
 
     const card=document.createElement('div');
     card.className='scenario-card'+(isBest?' best-for-host':'');
-    card.innerHTML=`
-      <div class="scenario-header">
+
+    // Build card using DOM to avoid quote-escaping issues with tooltip strings
+    const cardEl = document.createElement('div');
+    cardEl.className='scenario-card'+(isBest?' best-for-host':'');
+
+    const header = `<div class="scenario-header">
         <span class="scenario-name">${np===1?'Solo':np+' Players'}</span>
         <div class="scenario-badges">${isBest?'<span class="scenario-badge badge-best">Best for host</span>':''}${eliteBadge}</div>
-      </div>
-      <div class="scenario-body">
-        ${eliteWarning}
-        <div class="payout-math">
+      </div>`;
+
+    const mathBlock = `<div class="payout-math">
           <div class="math-row">
-            <span class="math-label tip" onmouseenter="showTip(this,'Primary Target','${tip_primary}')" onmouseleave="hideTip()">Primary loot${state.hardMode?' ×1.1':''}</span>
-            <span class="math-val pos">${fmt(sc.primaryVal)}</span>
+            <span class="math-label">Primary loot${state.hardMode?' ×1.1':''}</span>
+            <span class="math-val pos tip" id="tip-p-${np}-primary">${fmt(sc.primaryVal)}</span>
           </div>
           <div class="math-row">
-            <span class="math-label tip" onmouseenter="showTip(this,'Secondary Loot','${tip_secondary}')" onmouseleave="hideTip()">Secondary (${np} bag${np>1?'s':''})</span>
-            <span class="math-val pos">${fmt(sc.secondary)}</span>
+            <span class="math-label">Secondary (${np} bag${np>1?'s':''})</span>
+            <span class="math-val pos tip" id="tip-p-${np}-secondary">${fmt(sc.secondary)}</span>
           </div>
           <div class="math-row">
-            <span class="math-label tip" onmouseenter="showTip(this,'Office Safe','${tip_safe}')" onmouseleave="hideTip()">Office safe (avg)</span>
-            <span class="math-val pos">${fmt(OFFICE_SAFE)}</span>
+            <span class="math-label">Office safe (avg)</span>
+            <span class="math-val pos tip" id="tip-p-${np}-safe">${fmt(OFFICE_SAFE)}</span>
           </div>
           <hr class="math-divider">
           <div class="math-row">
             <span class="math-label">Gross take</span>
-            <span class="math-val">${fmt(sc.gross)}</span>
+            <span class="math-val tip" id="tip-p-${np}-gross">${fmt(sc.gross)}</span>
           </div>
           <div class="math-row">
-            <span class="math-label tip" onmouseenter="showTip(this,'Fencing Fee','${tip_fencing}')" onmouseleave="hideTip()">− Fencing fee (10%)</span>
-            <span class="math-val neg">−${fmt(sc.fencing)}</span>
+            <span class="math-label">− Fencing fee (10%)</span>
+            <span class="math-val neg tip" id="tip-p-${np}-fencing">−${fmt(sc.fencing)}</span>
           </div>
           <div class="math-row">
-            <span class="math-label tip" onmouseenter="showTip(this,'Pavel Fee','${tip_pavel}')" onmouseleave="hideTip()">− Pavel fee (2%)</span>
-            <span class="math-val neg">−${fmt(sc.pavel)}</span>
+            <span class="math-label">− Pavel fee (2%)</span>
+            <span class="math-val neg tip" id="tip-p-${np}-pavel">−${fmt(sc.pavel)}</span>
           </div>
           <hr class="math-divider">
           <div class="math-row math-total">
-            <span class="math-label tip" onmouseenter="showTip(this,'Distributable','${tip_distrib}')" onmouseleave="hideTip()">Distributable</span>
-            <span class="math-val">${fmt(sc.distrib)}</span>
+            <span class="math-label">Distributable</span>
+            <span class="math-val tip" id="tip-p-${np}-distrib">${fmt(sc.distrib)}</span>
           </div>
-        </div>
+        </div>`;
+
+    cardEl.innerHTML = header + `<div class="scenario-body">${eliteWarning}${mathBlock}
         ${sc.secondary>0?`<div class="bags-detail"><div class="bags-title">Bag contents</div>${bagRows}</div>`:''}
-        <div class="player-rows" style="margin-top:12px">${playerRows}</div>
-        ${sc.eliteOk?`<div style="font-family:var(--mono);font-size:11px;color:var(--cream-dim);margin-top:6px">Elite bonus applied per player after split — not subject to fees.</div>`:''}
+        <div class="player-rows" style="margin-top:12px" id="prows-${np}"></div>
       </div>`;
-    grid.appendChild(card);
+    grid.appendChild(cardEl);
+
+    // Attach tooltip data via JS (avoids all quote-escaping)
+    const tips = {
+      [`tip-p-${np}-primary`]:  {label:'Primary Target',  calc:tip_primary},
+      [`tip-p-${np}-secondary`]:{label:'Secondary Loot',  calc:tip_secondary},
+      [`tip-p-${np}-safe`]:     {label:'Office Safe',     calc:tip_safe},
+      [`tip-p-${np}-gross`]:    {label:'Gross Take',      calc:tip_gross},
+      [`tip-p-${np}-fencing`]:  {label:'Fencing Fee',     calc:tip_fencing},
+      [`tip-p-${np}-pavel`]:    {label:'Pavel Fee',       calc:tip_pavel},
+      [`tip-p-${np}-distrib`]:  {label:'Distributable',   calc:tip_distrib},
+    };
+    for (const [id, t] of Object.entries(tips)) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('mouseenter', () => showTip(el, t.label, t.calc));
+        el.addEventListener('mouseleave', hideTip);
+      }
+    }
+
+    // Player rows — attach tooltip via JS
+    const prowsEl = document.getElementById(`prows-${np}`);
+    sc.players.forEach((p, pi) => {
+      const mi = pi-1;
+      const row = document.createElement('div');
+      row.className = 'player-row' + (p.isHost?' player-host':'');
+      let controls = '';
+      if (!p.isHost && np>1) {
+        const canUp=p.pct<85&&sc.hostPct-5>=15, canDown=p.pct>15;
+        controls = `<div class="pct-controls"><button class="pct-btn" onclick="adjustMember(${np},${mi},-1)" ${canDown?'':'disabled'}>−</button><button class="pct-btn" onclick="adjustMember(${np},${mi},1)" ${canUp?'':'disabled'}>+</button></div>`;
+      }
+      const eliteTag = sc.eliteOk ? `<span class="elite-note">${sc.eliteEach===ELITE_HARD?'+$100k elite':'+$50k elite'}</span>` : '';
+      row.innerHTML = `<span class="player-label">${p.label}</span>
+        <span class="player-pct">${p.pct}%</span>
+        ${controls}
+        <span class="player-amount tip">${fmt(p.finalPayout)}${p.isHost?eliteTag:(sc.eliteOk?eliteTag:'')}</span>`;
+      const amtEl = row.querySelector('.player-amount');
+      const tipText = makePlayerTip(p);
+      amtEl.addEventListener('mouseenter', () => showTip(amtEl, p.label, tipText));
+      amtEl.addEventListener('mouseleave', hideTip);
+      prowsEl.appendChild(row);
+    });
   });
 
   updateShareUrl();
