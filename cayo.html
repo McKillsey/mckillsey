@@ -368,10 +368,10 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       <div class="method-section">
         <h3>Bag Optimizer Logic</h3>
         <div class="method-notes">
-          <p>Bags filled greedily by value density ($ per full bag): Gold ($496k) → Cocaine ($401k) → Weed ($354k) → Painting ($338k) → Cash ($324k).</p>
+          <p>Bags filled by value density ($ per full bag): Gold ($496k) → Cocaine ($401k) → Weed ($354k) → Painting ($338k) → Cash ($324k). However, because paintings are indivisible (50% of a bag, no partial fill), a pure density sort can leave gaps that a painting would fill more profitably. The optimizer explicitly tries placing 0, 1, or 2 paintings in each bag first, fills the remainder greedily with divisible loot, and keeps whichever combination yields the highest total value.</p>
           <p>Paintings cannot be taken partially — skipped if remaining space &lt; 50%.</p>
           <p>Gold requires at least two players to collect — it is locked behind doors that cannot be opened solo. It is excluded from the Solo scenario entirely. While gold may be accessible solo via glitches, we do not model or endorse such approaches.</p>
-          <p>Bags are allocated host-first as a convention — the host receives the highest-value bag.</p>
+          <p>Bags are allocated host-first as a convention — the host receives the highest-value bag. This is an arbitrary choice; there is no in-game mechanic that enforces it.</p>
           <p>Secondary values are session averages. Actual payouts may vary ±5%.</p>
         </div>
       </div>
@@ -662,34 +662,86 @@ async function submitFeedback() {
 }
 
 // ─── BAG OPTIMIZER ────────────────────────────────────────────────────────
+// Greedy-by-density works for all divisible loot. Paintings are indivisible
+// (require exactly 50% of a bag, no partial). A pure density sort can leave
+// 37.5% gaps that a painting would fill more profitably. We solve this by
+// trying every feasible painting count (0, 1, 2) as a first-pass allocation
+// for each bag, then filling the remainder greedily, and keeping whichever
+// combination yields the highest value. Search space is tiny (≤3 options/bag).
+
+function fillGreedy(spaceLeft, available, exclude) {
+  // Fill remaining space greedily with divisible loot (paintings handled separately)
+  const DIVISIBLE_ORDER = ['gold','cocaine','weed','cash']; // density order, no paintings
+  let value = 0;
+  const items = [];
+  const rem = {...available};
+  for (const type of DIVISIBLE_ORDER) {
+    if (exclude === type) continue;
+    if (!rem[type] || rem[type] <= 0 || spaceLeft <= 0.001) continue;
+    const loot = SECONDARY_LOOT[type];
+    const take = Math.min(rem[type], spaceLeft / loot.bagFill);
+    if (take <= 0.001) continue;
+    const fill = take * loot.bagFill;
+    items.push({label:loot.label, stacks:take, value:take*loot.avgPerStack, fill});
+    rem[type] -= take;
+    spaceLeft -= fill;
+    value += take * loot.avgPerStack;
+  }
+  return {items, value, spaceUsed: items.reduce((s,i)=>s+i.fill,0), remaining:rem};
+}
 
 function optimizeBags(numPlayers, availableLoot) {
-  const sorted = Object.keys(SECONDARY_LOOT).sort((a,b) => {
-    return (SECONDARY_LOOT[b].avgPerStack/SECONDARY_LOOT[b].bagFill) - (SECONDARY_LOOT[a].avgPerStack/SECONDARY_LOOT[a].bagFill);
-  });
   const rem = {};
-  for (const t of sorted) rem[t] = availableLoot[t]||0;
+  for (const t of Object.keys(SECONDARY_LOOT)) rem[t] = availableLoot[t]||0;
   // Gold requires two players to collect (locked behind two-person doors) — unavailable solo
   if (numPlayers === 1) rem['gold'] = 0;
+
   const bags = [];
-  for (let i=0; i<numPlayers; i++) {
-    let space=1.0; const items=[];
-    for (const type of sorted) {
-      if (rem[type]<=0||space<=0.001) continue;
-      const loot=SECONDARY_LOOT[type];
-      if (!loot.canPartial) {
-        const fits=Math.floor(space/loot.bagFill); if (fits<1) continue;
-        const take=Math.min(Math.floor(rem[type]),fits); if (take<1) continue;
-        items.push({label:loot.label,stacks:take,value:take*loot.avgPerStack,fill:take*loot.bagFill});
-        rem[type]-=take; space-=take*loot.bagFill;
-      } else {
-        const take=Math.min(rem[type],space/loot.bagFill); if (take<=0.001) continue;
-        const fill=take*loot.bagFill;
-        items.push({label:loot.label,stacks:take,value:take*loot.avgPerStack,fill});
-        rem[type]-=take; space-=fill;
+  for (let i = 0; i < numPlayers; i++) {
+    let bestValue = -1;
+    let bestItems = [];
+
+    // Try placing 0, 1, or 2 paintings in this bag first, then fill greedily
+    const maxPaintings = Math.min(Math.floor(rem['painting']||0), 2);
+    for (let p = 0; p <= maxPaintings; p++) {
+      const paintingFill = p * SECONDARY_LOOT['painting'].bagFill; // p * 0.5
+      if (paintingFill > 1.0) break;
+      const spaceAfterPaintings = 1.0 - paintingFill;
+
+      // Greedy fill of remaining space with divisible loot
+      const availForGreedy = {...rem, painting: 0}; // paintings already placed
+      const greedy = fillGreedy(spaceAfterPaintings, availForGreedy, null);
+
+      const paintingValue = p * SECONDARY_LOOT['painting'].avgPerStack;
+      const totalValue = paintingValue + greedy.value;
+
+      if (totalValue > bestValue) {
+        bestValue = totalValue;
+        bestItems = [];
+        if (p > 0) {
+          bestItems.push({
+            label: SECONDARY_LOOT['painting'].label,
+            stacks: p,
+            value: paintingValue,
+            fill: paintingFill
+          });
+        }
+        bestItems = bestItems.concat(greedy.items);
       }
     }
-    bags.push({items,totalValue:items.reduce((s,i)=>s+i.value,0),totalFill:items.reduce((s,i)=>s+i.fill,0)});
+
+    // Commit this bag's allocation — remove consumed loot from rem
+    const totalFill = bestItems.reduce((s,it)=>s+it.fill, 0);
+    for (const item of bestItems) {
+      const key = Object.keys(SECONDARY_LOOT).find(k => SECONDARY_LOOT[k].label === item.label);
+      if (key) rem[key] = Math.max(0, rem[key] - item.stacks);
+    }
+
+    bags.push({
+      items: bestItems,
+      totalValue: bestValue < 0 ? 0 : bestValue,
+      totalFill
+    });
   }
   return bags;
 }
@@ -739,9 +791,9 @@ function render() {
   const playerLabels = ['Solo','2 Players','3 Players','4 Players'];
   let recMsg;
   if (bestSc.numPlayers===1) {
-    recMsg = `Run this <strong>solo</strong>. Your cut peaks at <strong>${fmt(bestSc.hostPayout)}</strong> (${pctDiffStr} vs ${fmt(secondBestSc.hostPayout)} with ${playerLabels[secondBestSc.numPlayers-1].toLowerCase()}).`;
+    recMsg = `Best run <strong>solo</strong>. Host's cut peaks at <strong>${fmt(bestSc.hostPayout)}</strong> (${pctDiffStr} vs ${fmt(secondBestSc.hostPayout)} with ${playerLabels[secondBestSc.numPlayers-1].toLowerCase()}).`;
   } else {
-    recMsg = `Host <strong>${labels[bestIdx]}</strong> total. Your cut peaks at <strong>${fmt(bestSc.hostPayout)}</strong> (${pctDiffStr} vs ${fmt(secondBestSc.hostPayout)} with ${playerLabels[secondBestSc.numPlayers-1].toLowerCase()}).`;
+    recMsg = `Best run with <strong>${bestSc.numPlayers} players total</strong>. Host's cut peaks at <strong>${fmt(bestSc.hostPayout)}</strong> (${pctDiffStr} vs ${fmt(secondBestSc.hostPayout)} ${secondBestSc.numPlayers===1?'solo':'with '+playerLabels[secondBestSc.numPlayers-1].toLowerCase()}).`;
   }
   document.getElementById('recommendation-banner').innerHTML =
     `<div class="verdict"><div class="verdict-label">McKillsey Recommendation</div><p>${recMsg}</p></div>`;
