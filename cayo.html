@@ -308,6 +308,14 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       <div id="repeat-buff-note" style="margin-top:6px;font-family:var(--mono);font-size:10px;color:var(--cream-dim);line-height:1.5"></div>
     </div>
 
+    <div class="input-section">
+      <span class="input-label">Ignore Office Safe</span>
+      <div class="toggle-group yes-no" id="ignoresafe-group">
+        <button class="toggle-btn"        data-val="yes" onclick="setToggle('ignoreSafe','yes',this)">Yes</button>
+        <button class="toggle-btn active" data-val="no"  onclick="setToggle('ignoreSafe','no',this)">No</button>
+      </div>
+    </div>
+
     <!-- SHARE LINK -->
     <div class="share-section">
       <span class="input-label">Share This Setup</span>
@@ -473,7 +481,7 @@ const ELITE_HARD   = 100000;
 // ─── STATE ────────────────────────────────────────────────────────────────
 
 const state = {
-  primary:'tequila', hardMode:true, eliteSelected:true, repeatHeist:true,
+  primary:'tequila', hardMode:true, eliteSelected:true, repeatHeist:true, ignoreSafe:false,
   loot:{ gold:0, cocaine:0, weed:0, painting:0, cash:0 },
   memberPcts:{ 2:[15], 3:[15,15], 4:[15,15,15] }
 };
@@ -493,6 +501,8 @@ function parseUrlParams() {
   if (parts.includes('noelite')) state.eliteSelected = false;
   if (parts.includes('repeat'))   state.repeatHeist = true;
   if (parts.includes('norepeat')) state.repeatHeist = false;
+  if (parts.includes('nosafe'))   state.ignoreSafe  = true;
+  if (parts.includes('safe'))     state.ignoreSafe  = false;
   const byUrlKey = {};
   for (const [k,v] of Object.entries(SECONDARY_LOOT)) byUrlKey[v.urlKey] = k;
   for (const part of parts) {
@@ -511,6 +521,7 @@ function buildShareUrl() {
   parts.push(state.hardMode ? 'hard' : 'normal');
   parts.push(state.eliteSelected ? 'elite' : 'noelite');
   parts.push(state.repeatHeist ? 'repeat' : 'norepeat');
+  parts.push(state.ignoreSafe ? 'nosafe' : 'safe');
   return 'mckillsey.com/cayo?' + parts.join(',');
 }
 
@@ -547,7 +558,7 @@ function setPrimary(btn) {
 
 function setToggle(key, val, btn) {
   state[key] = (val==='yes');
-  const gid = key==='hardMode' ? 'hardmode-group' : key==='eliteSelected' ? 'elite-group' : 'repeat-group';
+  const gid = key==='hardMode' ? 'hardmode-group' : key==='eliteSelected' ? 'elite-group' : key==='repeatHeist' ? 'repeat-group' : 'ignoresafe-group';
   document.querySelectorAll(`#${gid} .toggle-btn`).forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   render();
@@ -796,9 +807,10 @@ function calcScenario(numPlayers) {
   const bags=optimizeBags(numPlayers,state.loot,secBuff);
   const secondary=bags.reduce((s,b)=>s+b.totalValue,0);
   const lootBase=primaryVal+secondary;
-  const gross=lootBase+OFFICE_SAFE;
+  const safeVal=state.ignoreSafe?0:OFFICE_SAFE;
+  const gross=lootBase+safeVal;
   const fencing=lootBase*FENCING_FEE, pavel=lootBase*PAVEL_FEE;
-  const distrib=lootBase*(1-FENCING_FEE-PAVEL_FEE)+OFFICE_SAFE;
+  const distrib=lootBase*(1-FENCING_FEE-PAVEL_FEE)+safeVal;
   const allFull=bags.every(b=>b.totalFill>=0.999);
   const eliteOk=state.eliteSelected&&allFull;
   const eliteEach=eliteOk?(state.hardMode?ELITE_HARD:ELITE_NORMAL):0;
@@ -806,7 +818,7 @@ function calcScenario(numPlayers) {
   const hostPct=100-memPcts.reduce((s,p)=>s+p,0);
   const players=[{label:'Host',pct:hostPct,isHost:true,finalPayout:distrib*hostPct/100+eliteEach-SETUP_FEE}];
   memPcts.forEach((pct,i)=>players.push({label:`Player ${i+2}`,pct,isHost:false,finalPayout:distrib*pct/100+eliteEach}));
-  return {numPlayers,primaryVal,secBuff,bags,secondary,gross,fencing,pavel,distrib,allFull,eliteOk,eliteEach,hostPct,memPcts,players,hostPayout:players[0].finalPayout};
+  return {numPlayers,primaryVal,secBuff,safeVal,bags,secondary,gross,fencing,pavel,distrib,allFull,eliteOk,eliteEach,hostPct,memPcts,players,hostPayout:players[0].finalPayout};
 }
 
 // ─── RENDER ───────────────────────────────────────────────────────────────
@@ -840,20 +852,26 @@ function render() {
 
 
 
-  // Recommendation (verdict style) — show best vs next-best
-  const sortedByHost = scenarios.slice().sort((a,b)=>b.hostPayout-a.hostPayout);
-  const secondBestSc = sortedByHost[1];
-  const pctDiff = ((bestSc.hostPayout - secondBestSc.hostPayout) / secondBestSc.hostPayout * 100);
-  const pctDiffStr = '+' + pctDiff.toFixed(1) + '%';
+  // Recommendation — best for host + best for team
   const playerLabels = ['Solo','2 Players','3 Players','4 Players'];
-  let recMsg;
-  if (bestSc.numPlayers===1) {
-    recMsg = `Best run <strong>solo</strong>. Host's cut peaks at <strong>${fmt(bestSc.hostPayout)}</strong> (${pctDiffStr} vs ${fmt(secondBestSc.hostPayout)} with ${playerLabels[secondBestSc.numPlayers-1].toLowerCase()}).`;
-  } else {
-    recMsg = `Best run with <strong>${bestSc.numPlayers} players total</strong>. Host's cut peaks at <strong>${fmt(bestSc.hostPayout)}</strong> (${pctDiffStr} vs ${fmt(secondBestSc.hostPayout)} ${secondBestSc.numPlayers===1?'solo':'with '+playerLabels[secondBestSc.numPlayers-1].toLowerCase()}).`;
-  }
+  const plabel = n => n===1 ? 'solo' : playerLabels[n-1].toLowerCase();
+
+  // Best for host
+  const sortedByHost = scenarios.slice().sort((a,b)=>b.hostPayout-a.hostPayout);
+  const bestHost = sortedByHost[0], secondHost = sortedByHost[1];
+  const hostDiff = ((bestHost.hostPayout - secondHost.hostPayout) / Math.abs(secondHost.hostPayout) * 100);
+  const hostMsg = `Best for host: <strong>${plabel(bestHost.numPlayers)}</strong>. Host take peaks at <strong>${fmt(bestHost.hostPayout)}</strong> (+${hostDiff.toFixed(1)}% vs ${fmt(secondHost.hostPayout)} ${plabel(secondHost.numPlayers)}).`;
+
+  // Best for team (total of all player payouts)
+  scenarios.forEach(sc => { sc.teamPayout = sc.players.reduce((s,p)=>s+p.finalPayout, 0); });
+  const sortedByTeam = scenarios.slice().sort((a,b)=>b.teamPayout-a.teamPayout);
+  const bestTeam = sortedByTeam[0], secondTeam = sortedByTeam[1];
+  const teamDiff = ((bestTeam.teamPayout - secondTeam.teamPayout) / Math.abs(secondTeam.teamPayout) * 100);
+  const teamMsg = bestTeam.numPlayers === 1 ? '' :
+    `Best for the team: <strong>${plabel(bestTeam.numPlayers)}</strong>. Combined take peaks at <strong>${fmt(bestTeam.teamPayout)}</strong> (+${teamDiff.toFixed(1)}% vs ${fmt(secondTeam.teamPayout)} ${plabel(secondTeam.numPlayers)}).`;
+
   document.getElementById('recommendation-banner').innerHTML =
-    `<div class="verdict"><div class="verdict-label">McKillsey Recommendation</div><p>${recMsg}</p></div>`;
+    `<div class="verdict"><div class="verdict-label">McKillsey Recommendation</div>${teamMsg ? `<p>${teamMsg}</p>` : ''}<p${teamMsg ? ' style="margin-top:6px"' : ''}>${hostMsg}</p></div>`;
 
   // Cards
   const grid=document.getElementById('scenarios-grid');
@@ -919,8 +937,8 @@ function render() {
     }
     const tip_secondary = secLines.join('\n');
 
-    const tip_safe    = `Range: $20,000–$99,000\nAverage: ${fmt(OFFICE_SAFE)}`;
-    const tip_gross   = `${fmt(sc.primaryVal)} primary\n+ ${fmt(sc.secondary)} secondary\n+ ${fmt(OFFICE_SAFE)} safe (fee-exempt)\n= ${fmt(sc.gross)}`;
+    const tip_safe    = sc.safeVal===0 ? 'Excluded from calculation (Ignore Office Safe is on)' : `Range: $20,000–$99,000\nAverage: ${fmt(OFFICE_SAFE)}`;
+    const tip_gross   = `${fmt(sc.primaryVal)} primary\n+ ${fmt(sc.secondary)} secondary\n+ ${fmt(sc.safeVal)} safe (fee-exempt)\n= ${fmt(sc.gross)}`;
     const tip_fencing = `(${fmt(sc.primaryVal)} + ${fmt(sc.secondary)}) × 10%\n= ${fmt(sc.fencing)}\nOffice safe not subject to fencing fee`;
     const tip_pavel   = `(${fmt(sc.primaryVal)} + ${fmt(sc.secondary)}) × 2%\n= ${fmt(sc.pavel)}\nOffice safe not subject to Pavel fee`;
     const tip_distrib = `(${fmt(sc.primaryVal)} + ${fmt(sc.secondary)}) × 88%\n+ ${fmt(OFFICE_SAFE)} safe\n= ${fmt(sc.distrib)}`;
@@ -957,8 +975,8 @@ function render() {
             <span class="math-val pos tip" id="tip-p-${np}-secondary">${fmt(sc.secondary)}</span>
           </div>
           <div class="math-row">
-            <span class="math-label">Office safe (avg)</span>
-            <span class="math-val pos tip" id="tip-p-${np}-safe">${fmt(OFFICE_SAFE)}</span>
+            <span class="math-label">Office safe</span>
+            <span class="math-val pos tip" id="tip-p-${np}-safe">${sc.safeVal===0 ? "$0" : fmt(OFFICE_SAFE)}</span>
           </div>
           <hr class="math-divider">
           <div class="math-row">
@@ -1049,6 +1067,7 @@ function saveState() {
       hardMode:     state.hardMode,
       eliteSelected:state.eliteSelected,
       repeatHeist:  state.repeatHeist,
+      ignoreSafe:   state.ignoreSafe,
       loot:         state.loot,
       memberPcts:   state.memberPcts
     }));
@@ -1064,6 +1083,7 @@ function loadSavedState() {
     if (s.hardMode      !== undefined) state.hardMode      = s.hardMode;
     if (s.eliteSelected !== undefined) state.eliteSelected = s.eliteSelected;
     if (s.repeatHeist   !== undefined) state.repeatHeist   = s.repeatHeist;
+    if (s.ignoreSafe    !== undefined) state.ignoreSafe    = s.ignoreSafe;
     if (s.loot) {
       for (const t of Object.keys(state.loot)) {
         if (s.loot[t] !== undefined) state.loot[t] = Math.min(6, Math.max(0, s.loot[t]));
@@ -1091,6 +1111,7 @@ document.querySelectorAll('#primary-group .toggle-btn').forEach(b=>b.classList.t
 document.querySelectorAll('#hardmode-group .toggle-btn').forEach(b=>b.classList.toggle('active',(b.dataset.val==='yes')===state.hardMode));
 document.querySelectorAll('#elite-group .toggle-btn').forEach(b=>b.classList.toggle('active',(b.dataset.val==='yes')===state.eliteSelected));
 document.querySelectorAll('#repeat-group .toggle-btn').forEach(b=>b.classList.toggle('active',(b.dataset.val==='yes')===state.repeatHeist));
+document.querySelectorAll('#ignoresafe-group .toggle-btn').forEach(b=>b.classList.toggle('active',(b.dataset.val==='yes')===state.ignoreSafe));
 for (const [t,c] of Object.entries(state.loot)) document.getElementById('loot-'+t).textContent=c;
 render();
 </script>
