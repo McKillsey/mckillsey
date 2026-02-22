@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bunker — McKillsey & Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3148;
+  --cream:#f0ead8;--cream-dim:#9aabbf;
+  --gold:#c9a84c;--gold-dim:#8a6f2e;
+  --green:#2dba72;--red:#d94f4f;--amber:#e08c2a;
+  --rule:rgba(201,168,76,.18);
+  --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--serif:'Playfair Display',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size:14px;line-height:1.6}
+
+/* ── HEADER ─────────────────────────────────────────────── */
+.site-header{border-bottom:1px solid var(--rule);padding:20px 48px;display:flex;align-items:center;gap:32px}
+.wordmark{font-family:var(--serif);font-weight:700;color:#b8c8d8;line-height:1.15;text-decoration:none}
+.wordmark .line1{display:block;font-size:26px}
+.wordmark .line2{display:block;font-size:22px;padding-left:1.1em}
+.header-tagline{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.1em;text-transform:uppercase;margin-left:auto}
+
+/* ── PAGE ───────────────────────────────────────────────── */
+.page{max-width:1100px;margin:0 auto;padding:44px 48px 80px}
+.page-title h1{font-family:var(--serif);font-size:34px;font-weight:900;line-height:1.1}
+.page-title .subtitle{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-top:6px}
+
+/* ── SECTION ────────────────────────────────────────────── */
+.section{margin-top:36px}
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+
+/* ── MODE TOGGLE ────────────────────────────────────────── */
+.mode-row{display:flex;align-items:center;gap:0;margin:28px 0 32px;flex-wrap:wrap;row-gap:12px}
+.mode-bar{display:flex;border:1px solid var(--rule);width:fit-content}
+.mode-btn{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:10px 20px;cursor:pointer;border:none;border-right:1px solid var(--rule);background:var(--navy-mid);color:var(--cream-dim);transition:all .15s;user-select:none;white-space:nowrap}
+.mode-btn:last-child{border-right:none}
+.mode-btn.active{background:var(--navy-light);color:var(--cream)}
+.mode-btn.active.m-crew{border-bottom:2px solid var(--green);color:var(--green)}
+.mode-btn.active.m-solo{border-bottom:2px solid var(--gold);color:var(--gold)}
+.mode-btn.active.m-solofull{border-bottom:2px solid var(--amber);color:var(--amber)}
+.mode-desc{font-family:var(--mono);font-size:10px;color:var(--cream-dim);margin-left:20px;letter-spacing:.06em}
+
+/* ── STAT GRID ──────────────────────────────────────────── */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.stat-card{background:var(--navy-mid);padding:20px 18px}
+.stat-value{font-family:var(--mono);font-size:22px;font-weight:500;color:var(--cream);line-height:1;margin-bottom:4px}
+.stat-value.green{color:var(--green)}
+.stat-value.gold{color:var(--gold)}
+.stat-value.red{color:var(--red)}
+.stat-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim)}
+.stat-note{font-family:var(--mono);font-size:10px;color:var(--cream-dim);margin-top:4px}
+
+/* ── TABLE ──────────────────────────────────────────────── */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;min-width:560px}
+thead th{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-align:right;padding:9px 14px;border-bottom:1px solid var(--rule);white-space:nowrap;font-weight:500}
+thead th:first-child{text-align:left}
+tbody tr{border-bottom:1px solid rgba(201,168,76,.07)}
+tbody tr.best-row{background:rgba(201,168,76,.04)}
+tbody tr.warn-row{background:rgba(224,140,42,.04)}
+td{padding:12px 14px;text-align:right;font-family:var(--mono);font-size:12px;color:var(--cream);vertical-align:middle;white-space:nowrap}
+td:first-child{text-align:left}
+td.left{text-align:left;white-space:normal}
+.dim{color:var(--cream-dim)}
+.green{color:var(--green)}
+.red{color:var(--red)}
+.gold{color:var(--gold)}
+.amber{color:var(--amber)}
+.rb{display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;border-radius:50%;font-size:9px;font-weight:600;font-family:var(--sans);background:var(--navy-light);color:var(--cream-dim);vertical-align:middle;margin-right:3px}
+.rb.g{background:var(--gold);color:var(--navy)}
+
+/* ── TOOLTIP ────────────────────────────────────────────── */
+#tipbox{position:fixed;z-index:9999;width:300px;background:#08111a;border:1px solid var(--gold);padding:12px 14px;font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--cream);pointer-events:none;display:none;box-shadow:0 8px 32px rgba(0,0,0,.6)}
+#tipbox .tb-label{color:var(--gold);font-size:9px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px;border-bottom:1px solid rgba(201,168,76,.2);padding-bottom:5px}
+#tipbox .tb-calc{color:var(--cream-dim)}
+#tipbox .tb-result{color:var(--green);font-weight:500;margin-top:5px;display:block}
+.tip{border-bottom:1px dashed rgba(201,168,76,.45);cursor:help;display:inline-block}
+
+/* ── SCENARIO ───────────────────────────────────────────── */
+.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0}
+.scenario-block{background:var(--navy-mid);padding:22px;border:1px solid var(--rule)}
+.scenario-block.rec{background:rgba(45,186,114,.04)}
+.scenario-block.warn{background:rgba(224,140,42,.04)}
+.scenario-block.wb{grid-column:span 2}
+.scenario-title{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--cream);margin-bottom:4px}
+.scenario-badge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;margin-bottom:14px}
+.badge-rec{background:rgba(45,186,114,.2);color:var(--green)}
+.badge-warn{background:rgba(224,140,42,.15);color:var(--amber)}
+.badge-norm{background:rgba(255,255,255,.07);color:var(--cream-dim)}
+.stbl{width:100%;border-collapse:collapse;table-layout:fixed}
+.stbl td{padding:6px 0;font-family:var(--mono);font-size:12px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;color:var(--cream);white-space:normal;word-break:break-word}
+.stbl td:first-child{text-align:left;color:var(--cream-dim);padding-right:12px;width:55%}
+.stbl tr.total td{border-top:1px solid var(--rule);border-bottom:none;padding-top:9px;font-size:13px}
+.stbl tr.total td:last-child{color:var(--green)}
+.scenario-block table{min-width:0}
+
+/* ── SELL MISSION TAGS ──────────────────────────────────── */
+.mission-tag{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;font-weight:500}
+.tag-easy{background:rgba(45,186,114,.15);color:var(--green)}
+.tag-med{background:rgba(201,168,76,.15);color:var(--gold)}
+.tag-hard{background:rgba(217,79,79,.15);color:var(--red)}
+
+/* ── VERDICT ────────────────────────────────────────────── */
+.verdict{border:1px solid var(--rule);border-left:3px solid var(--gold);padding:18px 22px;margin-bottom:12px;background:rgba(201,168,76,.02)}
+.verdict:last-child{margin-bottom:0}
+.verdict-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.verdict p{font-size:13px;color:var(--cream);line-height:1.7;margin-bottom:7px}
+.verdict p:last-child{margin-bottom:0}
+.code{font-family:var(--mono);font-size:11px;color:var(--gold)}
+
+/* ── FEEDBACK BUTTON ────────────────────────────────────── */
+.feedback-btn{position:fixed;bottom:22px;right:22px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--gold);padding:9px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .15s;z-index:100}
+.feedback-btn:hover{background:var(--gold);color:var(--navy)}
+
+/* ── FEEDBACK MODAL ─────────────────────────────────────── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;display:none;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--navy-mid);border:1px solid var(--rule);width:500px;max-width:calc(100vw - 40px);max-height:90vh;overflow-y:auto;padding:28px}
+.modal-title{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--cream);margin-bottom:4px}
+.modal-sub{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.08em;margin-bottom:22px}
+.modal-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block}
+.modal-textarea{width:100%;background:var(--navy);border:1px solid var(--rule);color:var(--cream);font-family:var(--sans);font-size:13px;padding:10px 12px;resize:vertical;min-height:90px;line-height:1.6;outline:none}
+.modal-textarea:focus{border-color:var(--gold)}
+.screenshot-zone{width:100%;min-height:80px;background:var(--navy);border:1px dashed rgba(201,168,76,.35);display:flex;align-items:center;justify-content:center;margin-top:14px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .15s}
+.screenshot-zone:hover{border-color:var(--gold)}
+.screenshot-zone.has-image{border-style:solid;border-color:var(--gold)}
+.screenshot-zone img{max-width:100%;max-height:220px;display:block}
+.screenshot-hint{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.06em;text-align:center;padding:20px;pointer-events:none}
+.screenshot-hint span{color:var(--gold)}
+.screenshot-clear{position:absolute;top:6px;right:8px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;padding:2px 8px;cursor:pointer;display:none}
+.screenshot-zone.has-image .screenshot-clear{display:block}
+.modal-footer{display:flex;align-items:center;justify-content:space-between;margin-top:18px;gap:12px}
+.modal-send-btn{background:var(--gold);border:none;color:var(--navy);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 22px;cursor:pointer;transition:all .15s;font-weight:500}
+.modal-send-btn:hover{background:var(--cream)}
+.modal-send-btn:disabled{opacity:.4;cursor:not-allowed}
+.modal-cancel-btn{background:none;border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:10px 16px;cursor:pointer;transition:all .15s}
+.modal-cancel-btn:hover{border-color:var(--cream-dim);color:var(--cream)}
+.modal-status{font-family:var(--mono);font-size:11px;color:var(--cream-dim);min-height:16px}
+
+/* ── MOBILE ─────────────────────────────────────────────── */
+@media(max-width:900px){
+  .page{padding:24px 20px 80px}
+  .site-header{padding:14px 20px}
+  .header-tagline{display:none}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .scenario-grid{grid-template-columns:1fr}
+  .scenario-block.wb{grid-column:span 1}
+  .mode-desc{margin-left:0;margin-top:2px;width:100%}
+  table{min-width:500px}
+}
+@media(max-width:540px){
+  .stat-grid{grid-template-columns:1fr}
+  .mode-btn{padding:10px 14px;font-size:10px}
+  .page-title h1{font-size:28px}
+  .feedback-btn{bottom:16px;right:16px;padding:8px 12px}
+}
+</style>
+</head>
+<body>
+<div id="tipbox"></div>
+
+<header class="site-header">
+  <a href="/" class="wordmark"><span class="line1">McKillsey</span><span class="line2">&amp; Company</span></a>
+  <div class="header-tagline">Strategic Advisory · Los Santos · Blaine County</div>
+</header>
+
+<main class="page">
+<div class="page-title">
+  <h1>Bunker</h1>
+  <div class="subtitle">Gunrunning — /bunker</div>
+</div>
+
+<!-- MODE TOGGLE -->
+<div class="mode-row">
+  <div class="mode-bar">
+    <div class="mode-btn m-crew active" id="btn-crew" onclick="setMode('crew')">Crew + Full Lobby</div>
+    <div class="mode-btn m-solo" id="btn-solo" onclick="setMode('solo')">Solo + Invite Only</div>
+    <div class="mode-btn m-solofull" id="btn-solofull" onclick="setMode('solofull')">Solo + Full Lobby</div>
+  </div>
+  <div class="mode-desc" id="mode-desc">Recommended — 3 helpers, +50% lobby bonus, reciprocity cost applied.</div>
+</div>
+
+<!-- STAT CARDS -->
+<div class="section">
+  <div class="section-label" id="stat-label">At a Glance — Crew + Full Lobby</div>
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-value green" id="stat-dph">$1,800,000</div>
+      <div class="stat-label">$/Active Hour</div>
+      <div class="stat-note" id="stat-dph-note">10 min sell · 40 min total burden</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value green" id="stat-net">$1,200,000</div>
+      <div class="stat-label">Net Income per Sell</div>
+      <div class="stat-note" id="stat-net-note">$1,575,000 gross − $375,000 supply</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value gold">700m</div>
+      <div class="stat-label">Fill Time</div>
+      <div class="stat-note">11 hrs 40 min — spans multiple sessions</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="stat-passive">$102,857</div>
+      <div class="stat-label">$/Passive Hour</div>
+      <div class="stat-note" id="stat-passive-note">Net income ÷ fill time</div>
+    </div>
+  </div>
+</div>
+
+<!-- ALL SCENARIOS -->
+<div class="section">
+  <div class="section-label">All Scenarios — Full Stock</div>
+  <div class="scenario-grid">
+
+    <!-- CREW — spans full width -->
+    <div class="scenario-block rec wb">
+      <div class="scenario-title">Crew + Full Lobby</div>
+      <div><span class="scenario-badge badge-rec">★ Recommended</span></div>
+      <table class="stbl">
+        <tr><td>Base payout</td><td>$1,050,000</td></tr>
+        <tr><td>Full lobby (+50%)</td><td>× 1.50 = $1,575,000</td></tr>
+        <tr><td>Supply expense</td><td>− $375,000</td></tr>
+        <tr><td>Net income</td><td class="green">$1,200,000</td></tr>
+        <tr><td>Your sell time</td><td>10 min</td></tr>
+        <tr><td>Reciprocity (3 helpers × 10 min)</td><td>+ 30 min</td></tr>
+        <tr class="total"><td>Total active burden → $/hr</td><td>40 min → $1,800,000/hr</td></tr>
+      </table>
+    </div>
+
+    <!-- SOLO INVITE -->
+    <div class="scenario-block">
+      <div class="scenario-title">Solo + Invite Only</div>
+      <div><span class="scenario-badge badge-warn">Execution Risk</span></div>
+      <table class="stbl">
+        <tr><td>Base payout</td><td>$1,050,000</td></tr>
+        <tr><td>Lobby bonus</td><td class="dim">None</td></tr>
+        <tr><td>Supply expense</td><td>− $375,000</td></tr>
+        <tr><td>Net income</td><td>$675,000</td></tr>
+        <tr><td>Your sell time</td><td>~20 min</td></tr>
+        <tr><td>Reciprocity cost</td><td class="dim">None</td></tr>
+        <tr class="total"><td>Total active burden → $/hr</td><td>20 min → $2,025,000/hr</td></tr>
+      </table>
+    </div>
+
+    <!-- SOLO FULL -->
+    <div class="scenario-block warn">
+      <div class="scenario-title">Solo + Full Lobby</div>
+      <div><span class="scenario-badge badge-warn">Execution Risk</span> <span class="scenario-badge badge-warn">Grief Risk</span></div>
+      <table class="stbl">
+        <tr><td>Base payout</td><td>$1,050,000</td></tr>
+        <tr><td>Full lobby (+50%)</td><td>× 1.50 = $1,575,000</td></tr>
+        <tr><td>Supply expense</td><td>− $375,000</td></tr>
+        <tr><td>Net income</td><td class="green">$1,200,000</td></tr>
+        <tr><td>Your sell time</td><td>~20 min</td></tr>
+        <tr><td>Reciprocity cost</td><td class="dim">None</td></tr>
+        <tr class="total"><td>Total active burden → $/hr</td><td>20 min → <span class="green">$3,600,000/hr</span></td></tr>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- FULL DATA TABLE -->
+<div class="section">
+  <div class="section-label">Full Data — All Modes</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th style="text-align:left">Scenario</th>
+        <th>Supply Expense</th>
+        <th>Gross Revenue</th>
+        <th>Net Income</th>
+        <th>Active Time</th>
+        <th>$/Active Hr</th>
+        <th>$/Passive Hr</th>
+      </tr></thead>
+      <tbody>
+        <tr class="best-row">
+          <td>Crew + Full Lobby ★</td>
+          <td><span class="tip" data-tip-label="Supply Expense — Bunker" data-tip-calc="5 restocks × $75,000 each&#10;= $375,000 total&#10;&#10;Always buy — stealing stops production&#10;and costs more time than it saves">$375,000</span></td>
+          <td><span class="tip" data-tip-label="Gross Revenue — Crew + Full Lobby" data-tip-calc="Base payout (full stock, Los Santos): $1,050,000&#10;× 1.50 full lobby bonus&#10;= $1,575,000" data-tip-result="$1,575,000">$1,575,000</span></td>
+          <td><span class="tip green" data-tip-label="Net Income — Crew + Full Lobby" data-tip-calc="Gross: $1,575,000&#10;− Supply: $375,000&#10;= $1,200,000" data-tip-result="$1,200,000">$1,200,000</span></td>
+          <td><span class="tip" data-tip-label="Active Time — Crew" data-tip-calc="Your sell time: 10 min&#10;Reciprocity (3 helpers × 10 min): + 30 min&#10;= 40 min total active burden&#10;&#10;Bunker needs 3 helpers at full stock —&#10;one per extra vehicle while you run security">40m</span></td>
+          <td><span class="tip green" data-tip-label="$/Active Hour — Crew + Full Lobby" data-tip-calc="Net: $1,200,000&#10;÷ Active burden: 40 min&#10;× 60&#10;= $1,800,000/hr" data-tip-result="$1,800,000/hr"><span class="rb g">1</span>$1,800,000</span></td>
+          <td><span class="tip" data-tip-label="$/Passive Hour — Bunker" data-tip-calc="Net: $1,200,000&#10;÷ Fill time: 700 min&#10;× 60&#10;= $102,857/hr">$102,857</span></td>
+        </tr>
+        <tr class="warn-row">
+          <td>Solo + Full Lobby</td>
+          <td>$375,000</td>
+          <td><span class="tip" data-tip-label="Gross — Solo + Full Lobby" data-tip-calc="$1,050,000 × 1.50 lobby bonus = $1,575,000">$1,575,000</span></td>
+          <td class="green">$1,200,000</td>
+          <td><span class="tip" data-tip-label="Active Time — Solo, Full Lobby" data-tip-calc="~20 min average to deliver all vehicles solo&#10;Range: ~15 min (Phantom / Insurgent trucks)&#10;to ~30 min (Merryweather convoy)&#10;No reciprocity cost&#10;&#10;Execution risk: 3–4 vehicles, 15-min limit&#10;Grief risk: $1.2M cargo in public lobby">~20m</span></td>
+          <td><span class="tip amber" data-tip-label="$/Active Hour — Solo + Full Lobby" data-tip-calc="Net: $1,200,000&#10;÷ Active time: 20 min&#10;× 60&#10;= $3,600,000/hr&#10;&#10;Highest on-paper rate on this page —&#10;but public lobby risk makes it conditional" data-tip-result="$3,600,000/hr — high risk">$3,600,000</span></td>
+          <td>$102,857</td>
+        </tr>
+        <tr>
+          <td>Solo + Invite Only</td>
+          <td>$375,000</td>
+          <td>$1,050,000</td>
+          <td>$675,000</td>
+          <td><span class="tip" data-tip-label="Active Time — Solo + Invite Only" data-tip-calc="~20 min average to deliver all vehicles solo&#10;Range: ~15 min (Phantom / Insurgent trucks)&#10;to ~30 min (Merryweather convoy)&#10;No reciprocity cost&#10;&#10;Execution risk: 3–4 vehicles, 15-min limit">~20m</span></td>
+          <td><span class="tip" data-tip-label="$/Active Hour — Solo + Invite Only" data-tip-calc="Net: $675,000&#10;÷ Active time: 20 min&#10;× 60&#10;= $2,025,000/hr&#10;&#10;No lobby bonus, no risk.&#10;Solid floor for solo operators.">$2,025,000</span></td>
+          <td><span class="tip" data-tip-label="$/Passive Hour — Solo + Invite Only" data-tip-calc="Net: $675,000&#10;÷ Fill time: 700 min&#10;× 60&#10;= $57,857/hr">$57,857</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SELL MISSIONS -->
+<div class="section">
+  <div class="section-label">Sell Missions</div>
+  <p style="font-size:13px;color:var(--cream-dim);margin-bottom:16px;line-height:1.7">Six missions are possible, drawn at random. Vehicle count scales with stock level — <strong style="color:var(--cream)">0–25%</strong> spawns 1 vehicle (solo-able), <strong style="color:var(--cream)">25–50%</strong> spawns 2, <strong style="color:var(--cream)">50–75%</strong> spawns 3, <strong style="color:var(--cream)">75–100%</strong> spawns up to 4. At full stock that means 3–4 vehicles and a 15-minute time limit. Completing that solo is genuinely hard: high execution risk under time pressure, and in a public lobby you add grief risk on top. McKillsey standard is 3 helpers — one per vehicle, one on security — for a reason.</p>
+  <div class="table-wrap">
+    <table style="min-width:640px">
+      <thead><tr>
+        <th style="text-align:left">Mission</th>
+        <th style="text-align:left">Vehicle(s)</th>
+        <th>Max Vehicles</th>
+        <th id="mission-time-hdr">Est. Time (Crew)</th>
+        <th style="text-align:left">Difficulty</th>
+        <th style="text-align:left">Notes</th>
+      </tr></thead>
+      <tbody>
+        <tr class="best-row">
+          <td>Phantom Wedge</td>
+          <td class="dim">Phantom Wedge semi</td>
+          <td>2</td>
+          <td class="mission-time" data-crew="~10m" data-solo="~15m">~10m</td>
+          <td><span class="mission-tag mission-diff" data-crew="tag-easy" data-crew-label="Easy" data-solo="tag-easy" data-solo-label="Easy">Easy</span></td>
+          <td class="left dim">Rams through all obstacles. Trailer can be repositioned with a Cargobob or Iron Mule as needed. Most forgiving mission at full stock — pray for this one.</td>
+        </tr>
+        <tr class="best-row">
+          <td>Insurgent Pick-Up Trucks</td>
+          <td class="dim">HVY Insurgent Pick-Up Custom</td>
+          <td>3</td>
+          <td class="mission-time" data-crew="~10m" data-solo="~15m">~10m</td>
+          <td><span class="mission-tag mission-diff" data-crew="tag-easy" data-crew-label="Easy" data-solo="tag-med" data-solo-label="Medium">Easy</span></td>
+          <td class="left dim">Armored and fast. May spawn with NPC chasers. Most viable solo option at full stock if mission RNG cooperates.</td>
+        </tr>
+        <tr class="best-row crew-only-row">
+          <td>Insurgent <span class="dim" style="font-size:10px">crew only</span></td>
+          <td class="dim">HVY Insurgent</td>
+          <td>3</td>
+          <td class="mission-time" data-crew="~10m" data-solo="—">~10m</td>
+          <td><span class="mission-tag mission-diff" data-crew="tag-easy" data-crew-label="Easy" data-solo="tag-easy" data-solo-label="N/A">Easy</span></td>
+          <td class="left dim">Standard Insurgents, not armored customs. Only spawns in crew sessions. Straightforward delivery with no intercept. May be carried with a Cargobob or Iron Mule if needed.</td>
+        </tr>
+        <tr>
+          <td>Dune FAV</td>
+          <td class="dim">BF Dune FAV</td>
+          <td>4</td>
+          <td class="mission-time" data-crew="~10m" data-solo="~15m">~10m</td>
+          <td><span class="mission-tag mission-diff" data-crew="tag-med" data-crew-label="Medium" data-solo="tag-hard" data-solo-label="Hard">Medium</span></td>
+          <td class="left dim">Each Dune FAV has 5 drop-offs; the final location is only revealed after the 4th drop is made. Enemy waves (Triads or Lost MC) spawn throughout.</td>
+        </tr>
+        <tr>
+          <td>Marshall</td>
+          <td class="dim">Cheval Marshall</td>
+          <td>3</td>
+          <td class="mission-time" data-crew="~10m" data-solo="~15m">~10m</td>
+          <td><span class="mission-tag mission-diff" data-crew="tag-med" data-crew-label="Medium" data-solo="tag-hard" data-solo-label="Hard">Medium</span></td>
+          <td class="left dim">5 drop-offs per truck on steep terrain. Buzzards spawn after first drop and keep respawning. If a fourth player is available, helicopter escort of the convoy is strongly advised.</td>
+        </tr>
+        <tr>
+          <td>Merryweather</td>
+          <td class="dim">Insurgent Pick-Up Custom</td>
+          <td>3</td>
+          <td class="mission-time" data-crew="~15m" data-solo="~30m">~15m</td>
+          <td><span class="mission-tag mission-diff" data-crew="tag-med" data-crew-label="Medium" data-solo="tag-hard" data-solo-label="Hard">Medium</span></td>
+          <td class="left dim">Merryweather intercepts the convoy en route with multiple waves. If a fourth player is available, helicopter escort of the convoy is advised. Do not attempt solo at full stock.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PRODUCTION REFERENCE -->
+<div class="section">
+  <div class="section-label">Production Reference</div>
+  <div class="table-wrap">
+    <table style="min-width:440px">
+      <thead><tr>
+        <th style="text-align:left">Property</th>
+        <th>Value</th>
+        <th style="text-align:left">Notes</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Supply bars needed (full stock)</td><td>25 bars</td><td class="dim left">5 restocks of 5 bars each</td></tr>
+        <tr><td>Cost per restock</td><td>$75,000</td><td class="dim left">Same as MC businesses</td></tr>
+        <tr><td>Total supply expense</td><td class="red">$375,000</td><td class="dim left">5 × $75,000</td></tr>
+        <tr><td>Time per restock cycle</td><td>140m</td><td class="dim left">2 hours 20 minutes</td></tr>
+        <tr><td>Total fill time</td><td class="gold">700m</td><td class="dim left">11 hours 40 minutes — spans multiple sessions</td></tr>
+        <tr class="best-row"><td>Base payout (full stock, Los Santos)</td><td class="green">$1,050,000</td><td class="dim left">Remote sale, all upgrades installed</td></tr>
+        <tr><td>With full lobby bonus (+50%)</td><td class="green">$1,575,000</td><td class="dim left">$1,050,000 × 1.50</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- VERDICTS -->
+<div class="section">
+  <div class="section-label">McKillsey Verdicts</div>
+  <div class="verdict">
+    <div class="verdict-label">The Bunker in Context</div>
+    <p>The Bunker generates the highest single-sell net income of any passive business we track — $1,200,000 per sell with the lobby bonus applied. The $/active-hr at crew + full lobby is $1,800,000, after accounting for the three helpers you owe 30 minutes back. The constraint is time: nearly 12 hours per fill cycle means this is a multi-session asset, not a grind loop. Set it, let it fill, sell when crew is available.</p>
+    <p>Solo + Full Lobby shows $3,600,000/active-hr on paper — highest of any scenario on this page — because there is no reciprocity cost. But that number comes with two compounding risks. Execution risk: delivering 3–4 vehicles to separate drop-offs solo within a 15-minute window is genuinely difficult, and any failed delivery means restarting. Grief risk: doing all of this with $1.2M of cargo in a public lobby, where any other player can attack and reset the mission. That rate is real under ideal conditions. Most players cannot reliably create ideal conditions.</p>
+  </div>
+  <div class="verdict">
+    <div class="verdict-label">Why 3 Helpers</div>
+    <p>At full stock, the Bunker spawns up to 4 vehicles depending on the mission. Three helpers means one person per extra vehicle while you manage a fourth or run security. Two can work for specific missions, but the McKillsey standard is 3 for full stock — it ensures no mission catches you shorthanded. Total active cost: <span class="code">10 min sell + (3 × 10 min reciprocity) = 40 min</span>.</p>
+  </div>
+  <div class="verdict">
+    <div class="verdict-label">On Resupply</div>
+    <p>Always buy. Five steal missions to save $375,000 costs more in active time than the money saved — and production halts entirely during steal missions, compounding the loss further. Buy, wait, sell. The Bunker rewards patience, not hustle.</p>
+  </div>
+  <div class="verdict">
+    <div class="verdict-label">Bunker Location</div>
+    <p>Location affects mission viability more than any other variable. The Farmhouse bunker (Blaine County) is significantly more practical than Paleto Bay for most missions — shorter delivery routes and fewer obstacle-heavy terrain sections. If you haven't purchased yet, Farmhouse is the McKillsey pick.</p>
+  </div>
+</div>
+
+</main>
+
+<!-- FEEDBACK BUTTON -->
+<button class="feedback-btn" onclick="openFeedback()">Report Error / Suggest Change</button>
+
+<!-- FEEDBACK MODAL -->
+<div class="modal-overlay" id="feedback-overlay" onclick="if(event.target===this)closeFeedback()">
+  <div class="modal">
+    <div class="modal-title">Report an Error</div>
+    <div class="modal-sub">No login required. Screenshot optional.</div>
+    <label class="modal-label" style="margin-top:4px">What's wrong?</label>
+    <textarea class="modal-textarea" id="feedback-text" placeholder="Describe the error or suggest a change..."></textarea>
+    <div class="screenshot-zone" id="screenshot-zone" onclick="document.getElementById('screenshot-file').click()">
+      <div class="screenshot-hint" id="screenshot-hint"><span>Paste</span> a screenshot or <span>click</span> to upload</div>
+      <img id="screenshot-preview" style="display:none">
+      <button class="screenshot-clear" id="screenshot-clear" onclick="event.stopPropagation();clearScreenshot()">✕ Remove</button>
+    </div>
+    <input type="file" id="screenshot-file" accept="image/*" style="display:none" onchange="handleFileSelect(event)">
+    <div class="modal-footer">
+      <div class="modal-status" id="modal-status"></div>
+      <div style="display:flex;gap:8px">
+        <button class="modal-cancel-btn" onclick="closeFeedback()">Cancel</button>
+        <button class="modal-send-btn" id="modal-send-btn" onclick="submitFeedback()">Send Report</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── TOOLTIP ──────────────────────────────────────────────
+const tipbox = document.getElementById('tipbox');
+let activeTip = null;
+
+document.addEventListener('mouseover', e => {
+  const el = e.target.closest('.tip'); if (!el) return;
+  activeTip = el;
+  const label = el.dataset.tipLabel || '', calc = el.dataset.tipCalc || '', result = el.dataset.tipResult || '';
+  tipbox.innerHTML =
+    (label ? `<span class="tb-label">${label}</span>` : '') +
+    (calc  ? `<span class="tb-calc">${calc.replace(/\n/g,'<br>')}</span>` : '') +
+    (result? `<span class="tb-result">${result}</span>` : '');
+  tipbox.style.display = 'block'; positionTip(e);
+});
+document.addEventListener('mousemove', e => {
+  if (!activeTip) return;
+  if (!e.target.closest('.tip')) { tipbox.style.display='none'; activeTip=null; return; }
+  positionTip(e);
+});
+document.addEventListener('mouseout', e => {
+  if (!e.target.closest('.tip')) { tipbox.style.display='none'; activeTip=null; }
+});
+function positionTip(e) {
+  const tw=300, th=tipbox.offsetHeight||120, vw=window.innerWidth;
+  let x=e.clientX-tw/2, y=e.clientY-th-14;
+  if(x<8)x=8; if(x+tw>vw-8)x=vw-tw-8; if(y<8)y=e.clientY+20;
+  tipbox.style.left=x+'px'; tipbox.style.top=y+'px';
+}
+
+// ── MODE TOGGLE ──────────────────────────────────────────
+const MODES = {
+  crew: {
+    desc:    'Recommended — 3 helpers, +50% lobby bonus, reciprocity cost applied.',
+    label:   'At a Glance — Crew + Full Lobby',
+    dph:     '$1,800,000',
+    net:     '$1,200,000',
+    passive: '$102,857',
+    dphNote: '10 min sell · 40 min total burden (3 helpers)',
+    netNote: '$1,575,000 gross − $375,000 supply',
+    passiveNote: 'Net income ÷ fill time',
+  },
+  solo: {
+    desc:    'Solo seller, invite-only lobby — no lobby bonus, no reciprocity cost.',
+    label:   'At a Glance — Solo + Invite Only',
+    dph:     '$2,025,000',
+    net:     '$675,000',
+    passive: '$57,857',
+    dphNote: '20 min sell · no reciprocity',
+    netNote: '$1,050,000 gross − $375,000 supply',
+    passiveNote: 'Net income ÷ fill time',
+  },
+  solofull: {
+    desc:    'Solo seller, full public lobby — +50% bonus, no reciprocity, high risk.',
+    label:   'At a Glance — Solo + Full Lobby',
+    dph:     '$3,600,000',
+    net:     '$1,200,000',
+    passive: '$102,857',
+    dphNote: '20 min sell · no reciprocity — but solo in public',
+    netNote: '$1,575,000 gross − $375,000 supply',
+    passiveNote: 'Net income ÷ fill time',
+  },
+};
+
+function setMode(m) {
+  ['crew','solo','solofull'].forEach(id => {
+    document.getElementById('btn-'+id).className = 'mode-btn m-'+id+(m===id?' active':'');
+  });
+  const cfg = MODES[m];
+  document.getElementById('mode-desc').textContent     = cfg.desc;
+  document.getElementById('stat-label').textContent    = cfg.label;
+  document.getElementById('stat-dph').textContent      = cfg.dph;
+  document.getElementById('stat-net').textContent      = cfg.net;
+  document.getElementById('stat-passive').textContent  = cfg.passive;
+  document.getElementById('stat-dph-note').textContent = cfg.dphNote;
+  document.getElementById('stat-net-note').textContent = cfg.netNote;
+  document.getElementById('stat-passive-note').textContent = cfg.passiveNote;
+  // Colour the $/hr stat card based on mode
+  document.getElementById('stat-dph').className = 'stat-value ' + (m === 'solofull' ? 'amber' : 'green');
+  // Update mission table: times, difficulty tags, crew-only row
+  const isCrew = (m === 'crew');
+  document.querySelectorAll('.mission-time').forEach(td => {
+    td.textContent = isCrew ? td.dataset.crew : td.dataset.solo;
+  });
+  document.querySelectorAll('.mission-diff').forEach(span => {
+    const cls   = isCrew ? span.dataset.crew   : span.dataset.solo;
+    const label = isCrew ? span.dataset.crewLabel : span.dataset.soloLabel;
+    span.className = 'mission-tag mission-diff ' + cls;
+    span.textContent = label;
+  });
+  // Grey out crew-only Insurgent row in solo modes
+  document.querySelectorAll('.crew-only-row').forEach(tr => {
+    tr.style.opacity = isCrew ? '' : '0.35';
+    tr.title = isCrew ? '' : 'Not available in solo sessions';
+  });
+  document.getElementById('mission-time-hdr').textContent = isCrew ? 'Est. Time (Crew)' : 'Est. Time (Solo)';
+}
+setMode('crew');
+
+// ── FEEDBACK MODAL ────────────────────────────────────────
+let screenshotData = null;
+
+function openFeedback() {
+  document.getElementById('feedback-overlay').classList.add('open');
+  document.getElementById('feedback-text').focus();
+}
+function closeFeedback() {
+  document.getElementById('feedback-overlay').classList.remove('open');
+  document.getElementById('modal-status').textContent = '';
+}
+function setScreenshot(dataUrl) {
+  screenshotData = dataUrl;
+  const zone = document.getElementById('screenshot-zone');
+  const preview = document.getElementById('screenshot-preview');
+  const hint = document.getElementById('screenshot-hint');
+  preview.src = dataUrl; preview.style.display = 'block';
+  hint.style.display = 'none'; zone.classList.add('has-image');
+}
+function clearScreenshot() {
+  screenshotData = null;
+  const zone = document.getElementById('screenshot-zone');
+  const preview = document.getElementById('screenshot-preview');
+  const hint = document.getElementById('screenshot-hint');
+  preview.src = ''; preview.style.display = 'none';
+  hint.style.display = ''; zone.classList.remove('has-image');
+  document.getElementById('screenshot-file').value = '';
+}
+function handleFileSelect(e) {
+  const file = e.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => setScreenshot(ev.target.result);
+  reader.readAsDataURL(file);
+}
+document.addEventListener('paste', e => {
+  if (!document.getElementById('feedback-overlay').classList.contains('open')) return;
+  const items = e.clipboardData?.items; if (!items) return;
+  for (const item of items) {
+    if (item.type.startsWith('image/')) {
+      const blob = item.getAsFile();
+      const reader = new FileReader();
+      reader.onload = ev => setScreenshot(ev.target.result);
+      reader.readAsDataURL(blob); break;
+    }
+  }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeFeedback();
+});
+async function submitFeedback() {
+  const text = document.getElementById('feedback-text').value.trim();
+  if (!text) { document.getElementById('modal-status').textContent = 'Please describe the issue first.'; return; }
+  const btn = document.getElementById('modal-send-btn');
+  const status = document.getElementById('modal-status');
+  btn.disabled = true; btn.textContent = 'Sending...'; status.textContent = '';
+  const pageUrl = window.location.href;
+  let body = `Page: ${pageUrl}\n\nFeedback:\n${text}`;
+  if (screenshotData) {
+    try {
+      const imgForm = new FormData();
+      imgForm.append('key', 'a3cb2b5f84e2b4e2a7b6c1d9f8e3a4b5'); // ← replace with ImgBB key
+      imgForm.append('image', screenshotData.split(',')[1]);
+      const imgRes = await fetch('https://api.imgbb.com/1/upload', { method:'POST', body:imgForm });
+      const imgData = await imgRes.json();
+      if (imgData.success) body += `\n\nScreenshot: ${imgData.data.url}`;
+    } catch(e) { body += '\n\n(Screenshot failed to upload)'; }
+  }
+  const formData = new FormData();
+  formData.append('access_key', '25c0d000-546c-45cd-be70-ec9abcded581');
+  formData.append('subject', 'McKillsey Error Report — Bunker');
+  formData.append('message', body);
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', { method:'POST', body:formData });
+    const result = await response.json();
+    if (result.success) {
+      status.style.color = 'var(--green)'; status.textContent = 'Sent. Thank you.'; btn.textContent = 'Sent ✓';
+      setTimeout(() => {
+        closeFeedback();
+        document.getElementById('feedback-text').value = '';
+        clearScreenshot(); btn.disabled = false; btn.textContent = 'Send Report'; status.style.color = '';
+      }, 1800);
+    } else { throw new Error(result.message || 'Unknown error'); }
+  } catch(err) {
+    status.style.color = 'var(--red)'; status.textContent = 'Failed to send. Try again.';
+    btn.disabled = false; btn.textContent = 'Send Report';
+  }
+}
+</script>
+</body>
+</html>
