@@ -299,6 +299,15 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       </div>
     </div>
 
+    <div class="input-section">
+      <span class="input-label">Heist Within 72 Hours</span>
+      <div class="toggle-group yes-no" id="repeat-group">
+        <button class="toggle-btn active" data-val="yes" onclick="setToggle('repeatHeist','yes',this)">Yes</button>
+        <button class="toggle-btn"        data-val="no"  onclick="setToggle('repeatHeist','no',this)">No</button>
+      </div>
+      <div id="repeat-buff-note" style="margin-top:6px;font-family:var(--mono);font-size:10px;color:var(--cream-dim);line-height:1.5"></div>
+    </div>
+
     <!-- SHARE LINK -->
     <div class="share-section">
       <span class="input-label">Share This Setup</span>
@@ -353,12 +362,15 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
             <tr><td>Gold</td>    <td class="avg">$330,833</td> <td>66.7%</td> <td class="range">$328,333–$333,333</td></tr>
           </tbody>
         </table>
+        <div class="method-notes" style="margin-top:10px">
+          <p>Values shown are base averages. When the heist scope is started within 72 hours of the previous completed heist, a secondary loot buff applies — see below.</p>
+        </div>
       </div>
 
       <div class="method-section">
         <h3>Payout Formula</h3>
         <div class="method-notes">
-          <p><strong style="color:var(--cream)">Gross loot</strong> = Primary (×1.1 if Hard Mode) + optimal secondary fill across all player bags + $59,500 office safe avg (range: $20,000–$99,000).</p>
+          <p><strong style="color:var(--cream)">Gross loot</strong> = Primary (×1.1 if Hard Mode) + optimal secondary fill across all player bags (×repeat buff if applicable) + $59,500 office safe avg (range: $20,000–$99,000).</p>
           <p><strong style="color:var(--cream)">Net distributable</strong> = Gross − 10% fencing − 2% Pavel = Gross × 0.88.</p>
           <p><strong style="color:var(--cream)">Host cut</strong> = distributable × host% + elite bonus − $100,000 setup fee. Each player starts at 15%, adjustable in 5% increments, minimum 15%.</p>
           <p><strong style="color:var(--cream)">Elite Challenge</strong> adds +$50k/player (normal) or +$100k/player (hard) — applied after the split, not subject to fees. Only if all bags are full.</p>
@@ -366,9 +378,30 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       </div>
 
       <div class="method-section">
+        <h3>72-Hour Repeat Buff</h3>
+        <div class="method-notes">
+          <p>When a new heist scope is started within 72 hours of the previous heist completion, secondary loot values are buffed based on the primary target selected. The buff applies to all secondary loot types equally.</p>
+        </div>
+        <table class="method-table" style="margin-top:10px">
+          <thead><tr><th>Primary Target</th><th>Secondary Buff</th></tr></thead>
+          <tbody>
+            <tr><td>Sinsimito Tequila</td><td class="avg">×1.20 (+20%)</td></tr>
+            <tr><td>Ruby Necklace</td>    <td class="avg">×1.10 (+10%)</td></tr>
+            <tr><td>Bearer Bonds</td>     <td class="avg">×1.05 (+5%)</td></tr>
+            <tr><td>Pink Diamond</td>     <td class="range">No buff (×1.00)</td></tr>
+            <tr><td>Panther Statue</td>   <td class="range">No buff (×1.00)</td></tr>
+          </tbody>
+        </table>
+        <div class="method-notes" style="margin-top:10px">
+          <p>The buff does not affect the primary target value, the office safe, fencing fees, or the elite bonus — only the secondary loot collected in player bags. The "Heist Within 72 Hours" toggle above applies this multiplier to all secondary calculations. Default is Yes.</p>
+        </div>
+      </div>
+
+      <div class="method-section">
         <h3>Bag Optimizer Logic</h3>
         <div class="method-notes">
           <p>Bags filled by value density ($ per full bag): Gold ($496k) → Cocaine ($401k) → Weed ($354k) → Painting ($338k) → Cash ($324k). However, because paintings are indivisible (50% of a bag, no partial fill), a pure density sort can leave gaps that a painting would fill more profitably. The optimizer explicitly tries placing 0, 1, or 2 paintings in each bag first, fills the remainder greedily with divisible loot, and keeps whichever combination yields the highest total value.</p>
+          <p>When the 72hr buff is active, the density order and per-stack values used in the optimizer are adjusted by the buff multiplier before ranking — ensuring the optimal bag allocation is computed on buffed values, not base values.</p>
           <p>Paintings cannot be taken partially — skipped if remaining space &lt; 50%.</p>
           <p>Gold requires at least two players to collect — it is locked behind doors that cannot be opened solo. It is excluded from the Solo scenario entirely. While gold may be accessible solo via glitches, we do not model or endorse such approaches.</p>
           <p>Bags are allocated host-first as a convention — the host receives the highest-value bag. This is an arbitrary choice; there is no in-game mechanic that enforces it.</p>
@@ -428,6 +461,9 @@ const SECONDARY_LOOT = {
   cash:     { label:'Cash',     urlKey:'cash', avgPerStack:81000,  bagFill:0.25,  canPartial:true  }
 };
 
+// Secondary loot buff when heist scoped within 72 hrs of previous completion
+const REPEAT_BUFF = { tequila:1.20, ruby:1.10, bonds:1.05, diamond:1.00, panther:1.00 };
+
 const OFFICE_SAFE  = 59500;
 const SETUP_FEE    = 100000;
 const FENCING_FEE  = 0.10;
@@ -438,7 +474,7 @@ const ELITE_HARD   = 100000;
 // ─── STATE ────────────────────────────────────────────────────────────────
 
 const state = {
-  primary:'tequila', hardMode:true, eliteSelected:true,
+  primary:'tequila', hardMode:true, eliteSelected:true, repeatHeist:true,
   loot:{ gold:0, cocaine:0, weed:0, painting:0, cash:0 },
   memberPcts:{ 2:[15], 3:[15,15], 4:[15,15,15] }
 };
@@ -456,6 +492,8 @@ function parseUrlParams() {
   if (parts.includes('normal'))  state.hardMode = false;
   if (parts.includes('elite'))   state.eliteSelected = true;
   if (parts.includes('noelite')) state.eliteSelected = false;
+  if (parts.includes('repeat'))   state.repeatHeist = true;
+  if (parts.includes('norepeat')) state.repeatHeist = false;
   const byUrlKey = {};
   for (const [k,v] of Object.entries(SECONDARY_LOOT)) byUrlKey[v.urlKey] = k;
   for (const part of parts) {
@@ -473,6 +511,7 @@ function buildShareUrl() {
   }
   parts.push(state.hardMode ? 'hard' : 'normal');
   parts.push(state.eliteSelected ? 'elite' : 'noelite');
+  parts.push(state.repeatHeist ? 'repeat' : 'norepeat');
   return 'mckillsey.com/cayo?' + parts.join(',');
 }
 
@@ -509,7 +548,7 @@ function setPrimary(btn) {
 
 function setToggle(key, val, btn) {
   state[key] = (val==='yes');
-  const gid = key==='hardMode' ? 'hardmode-group' : 'elite-group';
+  const gid = key==='hardMode' ? 'hardmode-group' : key==='eliteSelected' ? 'elite-group' : 'repeat-group';
   document.querySelectorAll(`#${gid} .toggle-btn`).forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   render();
@@ -669,8 +708,9 @@ async function submitFeedback() {
 // for each bag, then filling the remainder greedily, and keeping whichever
 // combination yields the highest value. Search space is tiny (≤3 options/bag).
 
-function fillGreedy(spaceLeft, available, exclude) {
+function fillGreedy(spaceLeft, available, exclude, buff) {
   // Fill remaining space greedily with divisible loot (paintings handled separately)
+  // buff: secondary loot value multiplier (1.0 = no buff, 1.2 = +20% from 72hr repeat)
   const DIVISIBLE_ORDER = ['gold','cocaine','weed','cash']; // density order, no paintings
   let value = 0;
   const items = [];
@@ -682,15 +722,16 @@ function fillGreedy(spaceLeft, available, exclude) {
     const take = Math.min(rem[type], spaceLeft / loot.bagFill);
     if (take <= 0.001) continue;
     const fill = take * loot.bagFill;
-    items.push({label:loot.label, stacks:take, value:take*loot.avgPerStack, fill});
+    const itemVal = take * loot.avgPerStack * buff;
+    items.push({label:loot.label, stacks:take, value:itemVal, baseValue:take*loot.avgPerStack, fill});
     rem[type] -= take;
     spaceLeft -= fill;
-    value += take * loot.avgPerStack;
+    value += itemVal;
   }
   return {items, value, spaceUsed: items.reduce((s,i)=>s+i.fill,0), remaining:rem};
 }
 
-function optimizeBags(numPlayers, availableLoot) {
+function optimizeBags(numPlayers, availableLoot, buff=1.0) {
   const rem = {};
   for (const t of Object.keys(SECONDARY_LOOT)) rem[t] = availableLoot[t]||0;
   // Gold requires two players to collect (locked behind two-person doors) — unavailable solo
@@ -710,9 +751,9 @@ function optimizeBags(numPlayers, availableLoot) {
 
       // Greedy fill of remaining space with divisible loot
       const availForGreedy = {...rem, painting: 0}; // paintings already placed
-      const greedy = fillGreedy(spaceAfterPaintings, availForGreedy, null);
+      const greedy = fillGreedy(spaceAfterPaintings, availForGreedy, null, buff);
 
-      const paintingValue = p * SECONDARY_LOOT['painting'].avgPerStack;
+      const paintingValue = p * SECONDARY_LOOT['painting'].avgPerStack * buff;
       const totalValue = paintingValue + greedy.value;
 
       if (totalValue > bestValue) {
@@ -723,6 +764,7 @@ function optimizeBags(numPlayers, availableLoot) {
             label: SECONDARY_LOOT['painting'].label,
             stacks: p,
             value: paintingValue,
+            baseValue: p * SECONDARY_LOOT['painting'].avgPerStack,
             fill: paintingFill
           });
         }
@@ -751,7 +793,8 @@ function optimizeBags(numPlayers, availableLoot) {
 function calcScenario(numPlayers) {
   const target=PRIMARY_TARGETS[state.primary];
   const primaryVal=state.hardMode?target.hard:target.normal;
-  const bags=optimizeBags(numPlayers,state.loot);
+  const secBuff=state.repeatHeist ? REPEAT_BUFF[state.primary] : 1.0;
+  const bags=optimizeBags(numPlayers,state.loot,secBuff);
   const secondary=bags.reduce((s,b)=>s+b.totalValue,0);
   const gross=primaryVal+secondary+OFFICE_SAFE;
   const fencing=gross*FENCING_FEE, pavel=gross*PAVEL_FEE;
@@ -763,7 +806,7 @@ function calcScenario(numPlayers) {
   const hostPct=100-memPcts.reduce((s,p)=>s+p,0);
   const players=[{label:'Host',pct:hostPct,isHost:true,finalPayout:distrib*hostPct/100+eliteEach-SETUP_FEE}];
   memPcts.forEach((pct,i)=>players.push({label:`Player ${i+2}`,pct,isHost:false,finalPayout:distrib*pct/100+eliteEach}));
-  return {numPlayers,primaryVal,bags,secondary,gross,fencing,pavel,distrib,allFull,eliteOk,eliteEach,hostPct,memPcts,players,hostPayout:players[0].finalPayout};
+  return {numPlayers,primaryVal,secBuff,bags,secondary,gross,fencing,pavel,distrib,allFull,eliteOk,eliteEach,hostPct,memPcts,players,hostPayout:players[0].finalPayout};
 }
 
 // ─── RENDER ───────────────────────────────────────────────────────────────
@@ -782,6 +825,20 @@ function render() {
   const bestIdx=scenarios.reduce((b,sc,i)=>sc.hostPayout>scenarios[b].hostPayout?i:b,0);
   const bestSc=scenarios[bestIdx];
   const labels=['solo','with 2 players','with 3 players','with 4 players'];
+
+  // Update 72hr buff note under the toggle
+  const buffMult = REPEAT_BUFF[state.primary];
+  const buffNoteEl = document.getElementById('repeat-buff-note');
+  if (buffNoteEl) {
+    if (!state.repeatHeist) {
+      buffNoteEl.innerHTML = '';
+    } else if (buffMult === 1.0) {
+      buffNoteEl.innerHTML = '<span style="color:var(--cream-dim)">No buff — ' + PRIMARY_TARGETS[state.primary].label + ' primaries are not affected by the 72hr mechanic.</span>';
+    } else {
+      const pct = Math.round((buffMult - 1) * 100);
+      buffNoteEl.innerHTML = '<span style="color:var(--amber)">+' + pct + '% secondary value</span><span style="color:var(--cream-dim)"> — ' + PRIMARY_TARGETS[state.primary].label + ' primary.</span>';
+    }
+  }
 
   // Recommendation (verdict style) — show best vs next-best
   const sortedByHost = scenarios.slice().sort((a,b)=>b.hostPayout-a.hostPayout);
@@ -840,13 +897,21 @@ function render() {
     const allItems = {};
     for (const bag of sc.bags) {
       for (const item of bag.items) {
-        if (!allItems[item.label]) allItems[item.label] = {stacks:0, value:0};
+        if (!allItems[item.label]) allItems[item.label] = {stacks:0, value:0, baseValue:0};
         allItems[item.label].stacks += item.stacks;
         allItems[item.label].value  += item.value;
+        allItems[item.label].baseValue += (item.baseValue || item.value);
       }
     }
-    const secLines = Object.entries(allItems).map(([lbl,v]) => `${fStk(v.stacks)}× ${lbl} = ${fmt(v.value)}`);
+    const hasBuff = sc.secBuff > 1.0;
+    const buffLabel = hasBuff ? ` ×${parseFloat(sc.secBuff.toFixed(2)).toString()} 72hr buff` : '';
+    const buffBadge = hasBuff ? '<span style="color:var(--amber);font-size:10px"> ×' + parseFloat(sc.secBuff.toFixed(2)).toString() + ' 72hr</span>' : '';
+    const secLines = Object.entries(allItems).map(([lbl,v]) => {
+      const baseStr = hasBuff ? ` (base ${fmt(v.baseValue)}${buffLabel})` : '';
+      return `${fStk(v.stacks)}× ${lbl} = ${fmt(v.value)}${baseStr}`;
+    });
     if (secLines.length === 0) secLines.push('No secondary loot');
+    if (hasBuff) secLines.push(`72hr buff: ×${parseFloat(sc.secBuff.toFixed(2)).toString()} (${state.primary} primary)`);
     secLines.push(`Total: ${fmt(sc.secondary)}`);
     const tip_secondary = secLines.join('\n');
 
@@ -880,11 +945,11 @@ function render() {
 
     const mathBlock = `<div class="payout-math">
           <div class="math-row">
-            <span class="math-label">Primary loot${state.hardMode?' ×1.1':''}</span>
+            <span class="math-label">Primary loot${state.hardMode?' <span style="color:var(--amber);font-size:10px"> ×1.1 hard</span>':''}</span>
             <span class="math-val pos tip" id="tip-p-${np}-primary">${fmt(sc.primaryVal)}</span>
           </div>
           <div class="math-row">
-            <span class="math-label">Secondary (${np} bag${np>1?'s':''})</span>
+            <span class="math-label">Secondary (${np} bag${np>1?'s':''})${buffBadge}</span>
             <span class="math-val pos tip" id="tip-p-${np}-secondary">${fmt(sc.secondary)}</span>
           </div>
           <div class="math-row">
@@ -976,6 +1041,7 @@ parseUrlParams();
 document.querySelectorAll('#primary-group .toggle-btn').forEach(b=>b.classList.toggle('active',b.dataset.val===state.primary));
 document.querySelectorAll('#hardmode-group .toggle-btn').forEach(b=>b.classList.toggle('active',(b.dataset.val==='yes')===state.hardMode));
 document.querySelectorAll('#elite-group .toggle-btn').forEach(b=>b.classList.toggle('active',(b.dataset.val==='yes')===state.eliteSelected));
+document.querySelectorAll('#repeat-group .toggle-btn').forEach(b=>b.classList.toggle('active',(b.dataset.val==='yes')===state.repeatHeist));
 for (const [t,c] of Object.entries(state.loot)) document.getElementById('loot-'+t).textContent=c;
 render();
 </script>
