@@ -495,7 +495,63 @@ function handleSS(e){const f=e.target.files[0];if(!f)return;const r=new FileRead
 document.addEventListener('paste',e=>{if(!document.getElementById('fb-overlay').classList.contains('open'))return;const items=e.clipboardData?.items;if(!items)return;for(const item of items){if(item.type.startsWith('image/')){const blob=item.getAsFile();const r=new FileReader();r.onload=ev=>setSS(ev.target.result);r.readAsDataURL(blob);break;}}});
 async function sendFB(){const text=document.getElementById('fb-text').value.trim();if(!text){document.getElementById('fb-status').textContent='Please describe the issue first.';return;}const btn=document.getElementById('fb-send'),st=document.getElementById('fb-status');btn.disabled=true;btn.textContent='Sending...';st.textContent='';let body='Page: '+location.href+'\n\nFeedback:\n'+text;if(ssData){try{const f=new FormData();f.append('key','a3cb2b5f84e2b4e2a7b6c1d9f8e3a4b5');f.append('image',ssData.split(',')[1]);const r=await fetch('https://api.imgbb.com/1/upload',{method:'POST',body:f});const d=await r.json();if(d.success)body+='\n\nScreenshot: '+d.data.url;}catch(e){body+='\n\n(Screenshot failed to upload)';}}const fd=new FormData();fd.append('access_key','25c0d000-546c-45cd-be70-ec9abcded581');fd.append('subject','McKillsey Error Report \u2014 Diamond Casino Heist');fd.append('message',body);try{const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});const result=await res.json();if(result.success){st.style.color='var(--green)';st.textContent='Sent. Thank you.';btn.textContent='Sent \u2713';setTimeout(()=>{closeFB();document.getElementById('fb-text').value='';clearSS();btn.disabled=false;btn.textContent='Send Report';st.style.color='';},1800);}else throw new Error();}catch(e){st.style.color='var(--red)';st.textContent='Failed to send. Try again.';btn.disabled=false;btn.textContent='Send Report';}}
 
-checkDev();loadState();syncUI();render();
+function parseUrl(){
+  const q=location.search.replace(/^\?/,'').replace(/.*\?/,''); // handle both ?params and ?devmode&params or path?params
+  // Also check hash in case it's after a path
+  const raw=q||location.hash.replace(/^#/,'');
+  if(!raw)return false;
+  // Strip devmode if present as separate param
+  const clean=raw.replace(/devmode,?/,'').replace(/,?devmode/,'');
+  if(!clean)return false;
+  const parts=clean.split(',');
+  if(parts.length<6)return false;
+  try{
+    // loot
+    const loots=['cash','artwork','gold','diamonds'];
+    if(loots.includes(parts[0]))S.loot=parts[0];
+    // approach
+    const apps=['sns','bc','agg'];
+    if(apps.includes(parts[1]))S.approach=parts[1];
+    // buyer
+    const buyers=['high','med','low'];
+    if(buyers.includes(parts[2]))S.buyer=parts[2];
+    // difficulty
+    if(parts[3]==='hard'||parts[3]==='normal')S.difficulty=parts[3];
+    // elite
+    if(parts[4]==='elite')S.elite=true;
+    else if(parts[4]==='noelite')S.elite=false;
+    // gunman (gN)
+    for(const p of parts){
+      if(p.startsWith('g')&&!p.startsWith('go')){
+        const gc=parseInt(p.slice(1));
+        const gk=Object.keys(GN).find(k=>GN[k].c===gc);
+        if(gk)S.gunman=gk;
+      }
+      // driver (dN)
+      if(p.startsWith('d')&&p.length<=3&&!p.startsWith('di')){
+        const dc2=parseInt(p.slice(1));
+        const dk=Object.keys(DR).find(k=>DR[k].c===dc2);
+        if(dk)S.driver=dk;
+      }
+      // hackers (hN-N-N...)
+      if(p.startsWith('h')&&p.includes('-')||p.match(/^h\d+$/)){
+        const speeds=p.slice(1).split('-').map(Number);
+        // First speed = hacker 1 (always active)
+        S.hs[0].s=speeds[0];S.hs[0].a=true;
+        for(let i=1;i<4;i++){
+          if(i<speeds.length){S.hs[i].s=speeds[i];S.hs[i].a=true;}
+          else{S.hs[i].a=false;}
+        }
+      }
+      // commute (cN)
+      if(p.match(/^c\d+$/)){
+        S.cpp=Math.max(5,Math.min(15,parseInt(p.slice(1))));
+      }
+    }
+    return true;
+  }catch(e){return false;}
+}
+checkDev();loadState();parseUrl();syncUI();render();
 </script>
 </body>
 </html>
