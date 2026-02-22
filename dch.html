@@ -375,6 +375,8 @@ function calc(hObj,pc){
   for(const h of da){const tpd=hpd*h.s+apd,ht=h.doors*tpd;hackTotal+=ht;hbd.push({idx:h.idx,doors:h.doors,speed:h.s,tpd,total:ht});}
   const np=vc.u, commT=np*S.cpp, collMS=Math.max(0,tms-hackTotal-commT);
   const uc=Math.min(Math.floor(collMS/vc.ct),vc.u);
+  const collectUsed=uc*vc.ct;
+  const excess=tms-hackTotal-commT-collectUsed;
   const maxP=isH?vc.maxH:vc.maxN, pu=maxP/vc.u, gross=uc*pu;
   const gc=GN[S.gunman].c, dc=DR[S.driver].c, hc=hObj.cut, lc=5, tcp=gc+dc+hc+lc;
   const crewD=gross*tcp/100;
@@ -387,7 +389,7 @@ function calc(hObj,pc){
   const players=[{label:'Host',pct:hp,take:ht2,isHost:true}];
   mps.forEach((p,i)=>players.push({label:'Player '+(i+2),pct:p,take:net*p/100+eliteEach,isHost:false}));
   const totalWithElite=net+eliteEach*pc-SETUP;
-  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,commT,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,gc,dc,hc,lc,tcp,crewD,buyerFee,launderD,net,eliteEach,SETUP,totalWithElite,hp,ht:ht2,players,bad:collMS<=0,smartAlloc:da._smart||false};
+  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,commT,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,collectUsed,excess,gc,dc,hc,lc,tcp,crewD,buyerFee,launderD,net,eliteEach,SETUP,totalWithElite,hp,ht:ht2,players,bad:collMS<=0,smartAlloc:da._smart||false};
 }
 
 const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
@@ -450,6 +452,7 @@ function render(){
       html+='<div class="sr"><span class="sr-l">Man-seconds</span><span class="sr-v tip" id="'+uid+'-ms">'+r.tms+'s</span></div>';
       html+='<div class="sr"><span class="sr-l">Hacking cost</span><span class="sr-v tip" id="'+uid+'-hk">'+r.hackTotal+'s</span></div>';
       html+='<div class="sr"><span class="sr-l">Commute cost</span><span class="sr-v tip" id="'+uid+'-cm">'+r.commT+'s</span></div>';
+      html+='<div class="sr"><span class="sr-l">Excess time</span><span class="sr-v'+(r.excess<=0?' neg':'')+' tip" id="'+uid+'-ex">'+r.excess+'s</span></div>';
       html+='<div class="sr"><span class="sr-l">Collected</span><span class="sr-v'+(r.uc===r.mu?' gr':'')+' tip" id="'+uid+'-cl">'+r.uc+' of '+r.mu+'</span></div>';
       html+='<hr class="hdiv">';
       html+='<div class="sr"><span class="sr-l">Gross take</span><span class="sr-v tip" id="'+uid+'-gr">'+fmt(r.gross)+'</span></div>';
@@ -464,7 +467,7 @@ function render(){
       setTimeout(()=>{
         const e=id=>document.getElementById(id),a=(id,l,c)=>{const el=e(id);if(el)aT(el,l,c);};
         a(uid+'-ms','Man-Seconds',tipMS(r));a(uid+'-hk','Hacking Cost',tipHack(r));
-        a(uid+'-cm','Commute Cost',tipComm(r));a(uid+'-cl','Units Collected',tipColl(r));
+        a(uid+'-cm','Commute Cost',tipComm(r));a(uid+'-ex','Excess Time',r.tms+' man-seconds\n\u2212 '+r.hackTotal+' hacking\n\u2212 '+r.collectUsed+' collecting ('+r.uc+' \u00d7 '+r.ct+'s)\n\u2212 '+r.commT+' commute\n= '+r.excess+'s unused');a(uid+'-cl','Units Collected',tipColl(r));
         a(uid+'-gr','Gross Take',tipGross(r));a(uid+'-cr','Crew Deduction',tipCrew(r));
         if(r.buyerFee>0)a(uid+'-la','Laundering Fee',fmt(r.gross)+' \u00d7 '+(r.buyerFee*100)+'% = '+fmt(r.launderD));
         a(uid+'-nt','Net to Players',tipNet(r));
