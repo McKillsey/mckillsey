@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The McKillsey Weekly — Weekly Bonuses & Analysis</title>
+<meta name="description" content="Weekly GTA Online bonus analysis. What matters, what doesn't, and the math to prove it. Updated every Thursday.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3148;
+  --cream:#f0ead8;--cream-dim:#9aabbf;
+  --gold:#c9a84c;--gold-dim:#8a6f2e;
+  --green:#2dba72;--red:#d94f4f;--amber:#e08c2a;
+  --weekly:#f0c040;--weekly-bg:rgba(240,192,64,0.08);--weekly-border:rgba(240,192,64,0.35);
+  --rule:rgba(201,168,76,0.18);
+  --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--serif:'Playfair Display',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size:15px;line-height:1.65}
+
+/* ── HEADER ── */
+.site-header{border-bottom:1px solid var(--rule);padding:20px 48px;display:flex;align-items:center;gap:32px}
+.wordmark{font-family:var(--serif);font-weight:700;color:#b8c8d8;line-height:1.15;text-decoration:none}
+.wordmark .line1{display:block;font-size:26px}
+.wordmark .line2{display:block;font-size:22px;padding-left:1.1em}
+.header-tagline{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.1em;text-transform:uppercase;margin-left:auto}
+
+
+/* RESET RIBBON */
+.reset-ribbon{overflow:hidden;border-bottom:1px solid var(--rule);background:rgba(201,168,76,.03);position:relative}
+.reset-ribbon::before,.reset-ribbon::after{content:'';position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none}
+.reset-ribbon::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
+.reset-ribbon::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
+.reset-track{display:flex;width:max-content;animation:resetScroll 32s linear infinite;padding:9px 0}
+.reset-track:hover{animation-play-state:paused}
+.reset-city{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--cream-dim);padding:0 20px;white-space:nowrap}
+.reset-city .ct{color:var(--gold);font-weight:500}
+@keyframes resetScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── PAGE ── */
+.page{max-width:1100px;margin:0 auto;padding:44px 48px 80px}
+.page-title h1{font-family:var(--serif);font-size:34px;font-weight:900;line-height:1.1}
+.page-title .subtitle{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-top:6px}
+
+/* ── SECTION ── */
+.section{margin-top:36px}
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+
+/* ── DATE BAR ── */
+.date-bar{display:flex;align-items:center;gap:16px;margin-top:20px;padding:12px 18px;border:1px solid var(--weekly-border);background:var(--weekly-bg)}
+.date-bar-label{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;background:var(--weekly);color:var(--navy);padding:4px 10px;font-weight:500;flex-shrink:0}
+.date-bar-text{font-family:var(--mono);font-size:12px;color:var(--cream);letter-spacing:.04em}
+.date-bar-expires{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.08em;flex-shrink:0}
+
+/* ── TAKE / EDITORIAL ── */
+.take-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:0}
+.take-card{background:var(--navy-mid);border:1px solid var(--rule);padding:22px 24px;position:relative}
+.take-card.highlight{background:rgba(240,192,64,.07);border-color:var(--weekly-border)}
+.take-icon{font-size:24px;margin-bottom:10px;display:block}
+.take-headline{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--cream);margin-bottom:4px}
+.take-card.highlight .take-headline{color:var(--weekly)}
+.take-slug{font-family:var(--mono);font-size:10px;color:var(--gold-dim);letter-spacing:.06em;margin-bottom:10px;display:block}
+.take-body{font-size:13px;color:var(--cream-dim);line-height:1.7}
+.take-body strong{color:var(--cream);font-weight:500}
+.take-body .wkly{color:var(--weekly);font-weight:500}
+.take-body a{color:var(--gold);text-decoration:none;border-bottom:1px dashed var(--gold-dim)}
+.take-body a:hover{color:var(--cream);border-bottom-color:var(--cream)}
+.take-metric{display:inline-block;font-family:var(--mono);font-size:14px;font-weight:500;color:var(--weekly);margin-top:8px}
+.take-metric-label{font-family:var(--mono);font-size:9px;color:var(--cream-dim);letter-spacing:.06em;text-transform:uppercase}
+.take-verdict{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-top:10px;display:block}
+.take-verdict.caution{color:var(--amber)}
+.take-verdict.skip{color:var(--cream-dim)}
+
+
+/* MODE TOGGLE */
+.mode-row{display:flex;align-items:center;gap:0;margin:0 0 14px;flex-wrap:wrap;row-gap:12px}
+.mode-bar{display:flex;border:1px solid var(--rule);width:fit-content}
+.mode-btn{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:10px 20px;cursor:pointer;border:none;border-right:1px solid var(--rule);background:var(--navy-mid);color:var(--cream-dim);transition:all .15s;user-select:none;white-space:nowrap}
+.mode-btn:last-child{border-right:none}
+.mode-btn.active{background:var(--navy-light);color:var(--cream)}
+.mode-btn.active.m-crew{border-bottom:2px solid var(--green);color:var(--green)}
+.mode-btn.active.m-solo{border-bottom:2px solid var(--gold);color:var(--gold)}
+.mode-btn.active.m-solofull{border-bottom:2px solid var(--amber);color:var(--amber)}
+.strikethrough{text-decoration:line-through;color:var(--cream-dim);font-size:11px}
+.arrow-up{color:var(--weekly);font-weight:600}
+
+/* ── IMPACT TABLE ── */
+.impact-wrap{overflow-x:auto;margin-top:0}
+
+.impact-wrap th:first-child,.impact-wrap td:first-child{width:26%}
+.impact-wrap th:nth-child(2),.impact-wrap td:nth-child(2){width:18.5%;min-width:140px}
+.impact-wrap th:nth-child(3),.impact-wrap td:nth-child(3){width:18.5%;min-width:140px}
+.impact-wrap th:nth-child(4),.impact-wrap td:nth-child(4){width:18.5%;min-width:140px}
+.impact-wrap th:nth-child(5),.impact-wrap td:nth-child(5){width:18.5%;min-width:140px}
+.impact-wrap table{width:100%;border-collapse:collapse;min-width:700px}
+.impact-wrap thead th{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-align:right;padding:9px 14px;border-bottom:1px solid var(--rule);white-space:nowrap;font-weight:500}
+.impact-wrap thead th:first-child{text-align:left}
+.impact-wrap tbody tr{border-bottom:1px solid rgba(201,168,76,.07)}
+.impact-wrap tbody tr.highlight-row{background:rgba(240,192,64,.07);border-bottom:1px solid rgba(240,192,64,.14)}
+.impact-wrap td{padding:12px 14px;text-align:right;font-family:var(--mono);font-size:13px;color:var(--cream);vertical-align:middle;white-space:nowrap}
+.impact-wrap td:first-child{text-align:left;font-family:var(--sans)}
+.biz-name{font-family:var(--serif);font-size:14px;color:var(--cream);font-weight:700;display:block}
+.biz-slug{font-family:var(--mono);font-size:9px;color:var(--gold-dim);letter-spacing:.06em;display:block;margin-bottom:3px}
+.biz-tag{display:inline-block;font-size:9px;letter-spacing:.05em;text-transform:uppercase;padding:2px 5px;font-family:var(--mono);font-weight:500;margin-right:3px}
+.tag-weekly{background:var(--weekly);color:var(--navy)}
+.tag-buff{background:rgba(45,186,114,.15);color:var(--green)}
+.dim{color:var(--cream-dim)}
+.green{color:var(--green)}
+.red{color:var(--red)}
+.wkly{color:var(--weekly);font-weight:500}
+.norm-note{display:block;font-size:9px;color:var(--cream-dim);margin-top:2px}
+.weekly-tag{display:inline-block;font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:var(--weekly);color:var(--navy);padding:2px 6px;font-weight:500}
+.arrow-up{color:var(--weekly);font-weight:600}
+
+/* ── FULL REFERENCE ── */
+.ref-category{margin-top:24px}
+.ref-cat-header{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--cream);padding:12px 0 8px;border-bottom:1px solid var(--rule)}
+.ref-items{padding:0}
+.ref-item{display:flex;align-items:baseline;gap:12px;padding:8px 0;border-bottom:1px solid rgba(201,168,76,.05);font-size:13px}
+.ref-item:last-child{border-bottom:none}
+.ref-bullet{color:var(--gold);font-size:10px;flex-shrink:0;margin-top:3px}
+.ref-text{color:var(--cream-dim);line-height:1.6;flex:1}
+.ref-text strong{color:var(--cream);font-weight:500}
+.ref-text .wkly{color:var(--weekly);font-weight:500}
+.ref-multiplier{font-family:var(--mono);font-size:11px;letter-spacing:.06em;flex-shrink:0;min-width:48px;text-align:right}
+.ref-multiplier.x3{color:var(--green)}
+.ref-multiplier.x2{color:var(--weekly)}
+.ref-multiplier.disc{color:var(--gold)}
+.ref-multiplier.free{color:var(--green)}
+.ref-sub{font-size:12px;color:var(--cream-dim);padding:4px 0 4px 22px;line-height:1.5}
+.ref-sub-item{padding:3px 0;border-bottom:1px solid rgba(201,168,76,.03)}
+.ref-sub-item:last-child{border-bottom:none}
+
+/* ── TOOLTIP ── */
+#tipbox{position:fixed;z-index:9999;width:300px;background:#08111a;border:1px solid var(--gold);padding:12px 14px;font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--cream);pointer-events:none;display:none;box-shadow:0 8px 32px rgba(0,0,0,.6)}
+#tipbox .tb-label{color:var(--gold);font-size:9px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px;border-bottom:1px solid rgba(201,168,76,.2);padding-bottom:5px}
+#tipbox .tb-calc{color:var(--cream-dim)}
+#tipbox .tb-result{color:var(--green);font-weight:500;margin-top:5px;display:block}
+#tipbox .tb-result.wk{color:var(--weekly)}
+.tip{border-bottom:1px dashed rgba(201,168,76,.45);cursor:help;display:inline-block}
+
+.car-link{color:var(--gold);text-decoration:none;border-bottom:1px dashed rgba(201,168,76,.35)}
+.car-link:hover{color:var(--cream);border-bottom-color:var(--cream)}
+.removed-tag{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--red);opacity:.7;margin-left:4px}
+
+.tip.wt{border-bottom-color:rgba(240,192,64,.55)}
+
+/* ── CONCEPTS ── */
+.concept-box{border:1px solid var(--rule);border-left:3px solid var(--cream-dim);padding:18px 22px;background:rgba(255,255,255,.01)}
+.concept-box .verdict-label{color:var(--cream-dim)}
+.concept-box p{font-size:13px;color:var(--cream);line-height:1.7;margin-bottom:7px}
+.concept-box p:last-child{margin-bottom:0}
+
+/* ── VERDICT ── */
+.verdict{border:1px solid var(--rule);border-left:3px solid var(--gold);padding:18px 22px;background:rgba(201,168,76,.02)}
+.verdict.wv{border-left-color:var(--weekly);background:rgba(240,192,64,.04);border-color:var(--weekly-border)}
+.verdict-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.verdict.wv .verdict-label{color:var(--weekly)}
+.verdict p{font-size:13px;color:var(--cream);line-height:1.7;margin-bottom:7px}
+.verdict p:last-child{margin-bottom:0}
+.verdict em{color:var(--cream-dim);font-style:normal}
+
+/* ── FEEDBACK ── */
+.feedback-btn{position:fixed;bottom:22px;right:22px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--gold);padding:9px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .15s;z-index:100}
+.feedback-btn:hover{background:var(--gold);color:var(--navy)}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;display:none;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--navy-mid);border:1px solid var(--rule);width:500px;max-width:calc(100vw - 40px);max-height:90vh;overflow-y:auto;padding:28px}
+.modal-title{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--cream);margin-bottom:4px}
+.modal-sub{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.08em;margin-bottom:22px}
+.modal-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block}
+.modal-textarea{width:100%;background:var(--navy);border:1px solid var(--rule);color:var(--cream);font-family:var(--sans);font-size:13px;padding:10px 12px;resize:vertical;min-height:90px;line-height:1.6;outline:none}
+.modal-textarea:focus{border-color:var(--gold)}
+.screenshot-zone{width:100%;min-height:80px;background:var(--navy);border:1px dashed rgba(201,168,76,.35);display:flex;align-items:center;justify-content:center;margin-top:14px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .15s}
+.screenshot-zone:hover{border-color:var(--gold)}
+.screenshot-zone.has-image{border-style:solid;border-color:var(--gold)}
+.screenshot-zone img{max-width:100%;max-height:220px;display:block}
+.screenshot-hint{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.06em;text-align:center;padding:20px;pointer-events:none}
+.screenshot-hint span{color:var(--gold)}
+.screenshot-clear{position:absolute;top:6px;right:8px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;padding:2px 8px;cursor:pointer;display:none}
+.screenshot-zone.has-image .screenshot-clear{display:block}
+.modal-footer{display:flex;align-items:center;justify-content:space-between;margin-top:18px;gap:12px}
+.modal-send-btn{background:var(--gold);border:none;color:var(--navy);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 22px;cursor:pointer;transition:all .15s;font-weight:500}
+.modal-send-btn:hover{background:var(--cream)}
+.modal-send-btn:disabled{opacity:.4;cursor:not-allowed}
+.modal-cancel-btn{background:none;border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:10px 16px;cursor:pointer;transition:all .15s}
+.modal-cancel-btn:hover{border-color:var(--cream-dim);color:var(--cream)}
+.modal-status{font-family:var(--mono);font-size:11px;color:var(--cream-dim);min-height:16px}
+
+
+@media(max-width:900px){
+  .page{padding:20px}
+  .site-header{padding-left:20px;padding-right:20px}
+  .take-grid{grid-template-columns:1fr}
+  .date-bar{flex-wrap:wrap}
+  .date-bar-expires{margin-left:0}
+}
+</style>
+</head>
+<body>
+<div id="tipbox"></div>
+
+<header class="site-header">
+  <a href="/" class="wordmark"><span class="line1">McKillsey</span><span class="line2">&amp; Company</span></a>
+  <div class="header-tagline">Strategic Advisory · Los Santos · Blaine County</div>
+</header>
+
+<div class="reset-ribbon"><div class="reset-track" id="reset-track"></div></div>
+
+<main class="page">
+
+<div class="page-title">
+  <h1>The McKillsey Weekly</h1>
+  <div class="subtitle">Bonus Analysis & Full Reference</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     DATE BAR — Update this each Wednesday
+     ═══════════════════════════════════════════════ -->
+<div class="date-bar">
+  <div class="date-bar-label">Current Week</div>
+  <div class="date-bar-text">February 19 – February 26, 2026</div>
+  <div class="date-bar-expires">Resets Thursday</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 1: McKILLSEY'S TAKE
+     This is the editorial — what matters, what doesn't
+     ═══════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">McKillsey's Take This Week</div>
+
+  <div class="take-grid">
+
+    <!-- HEADLINE: 2× Cash -->
+    <div class="take-card highlight">
+      <span class="take-icon">💰</span>
+      <div class="take-headline">2× Counterfeit Cash Sell Missions</div>
+      <span class="take-slug"><a href="/cash" style="color:var(--gold-dim);text-decoration:none;border-bottom:1px dashed var(--gold-dim)">/cash</a> · <a href="/mc" style="color:var(--gold-dim);text-decoration:none;border-bottom:1px dashed var(--gold-dim)">/mc</a></span>
+      <div class="take-body">
+        The headline this week. Cash jumps from second-best MC business to <strong>comfortably the most profitable sell mission in the entire GTA Online universe</strong>. With the Car Wash front bonus stacking on top of 2×, a crew sell in a full lobby nets <span class="wkly">$1,338,420</span> per fill — that's <span class="wkly">$2,676,840/active hour</span>, more than double what Coke earns in a normal week.
+        <br><br>
+        If you own Cash: run it every fill. If you don't, factories are 40% off this week. If you own the mansion's <a href="/mansion">Car Wash front business</a>, the +35% bonus stacks multiplicatively with the 2× — this is exactly the week it was made for.
+      </div>
+      <span class="take-verdict">If you own Cash, run as many sales as you can this week.</span>
+    </div>
+
+    <!-- 2× Street Dealers -->
+    <div class="take-card highlight">
+      <span class="take-icon">🤝</span>
+      <div class="take-headline">2× Street Dealer Sales</div>
+      <span class="take-slug"><a href="/dealers" style="color:var(--gold-dim);text-decoration:none;border-bottom:1px dashed var(--gold-dim)">/dealers</a></span>
+      <div class="take-body">
+        Our usual advice on street dealers is simple: don't bother. They buy most of your product at roughly supply cost, and the modest profit you can make selling acid or each dealer's premium product is hardly worth the trip. <strong>This week is the exception.</strong> 2× dealer payouts mean you're earning real margin on every sale. Volume is still limited by dealer cooldowns, but this is the one week where selling to them is defensible.
+        <br><br>
+        See <a href="/dealers">/dealers</a> for the full breakdown on which products to prioritize.
+      </div>
+      <span class="take-verdict caution">Worth your time this week — see /dealers for the math</span>
+    </div>
+
+    <!-- 2× Biker Contracts / MC Work -->
+    <div class="take-card">
+      <span class="take-icon">🏁</span>
+      <div class="take-headline">3× Lunar New Year Stunt Races</div>
+      <div class="take-body">
+        Triple payout on Lunar New Year Stunt Races (6× for GTA+ members). For what it's worth, we think these races are actually pretty fun — but they're not meaningful $/hr relative to actual money-making activities.
+        <br><br>
+        If you do run them: the <a href="https://gtacars.net/gta5/penumbra2" target="_blank">Penumbra FF</a> is the only AWD sports car eligible, making it the easiest experience. The <a href="https://gtacars.net/gta5/r300" target="_blank">300R</a> can be faster if you can manage some oversteer.
+      </div>
+      <span class="take-verdict skip">Fun, not income</span>
+    </div>
+
+    <!-- Everything else -->
+    <div class="take-card">
+      <span class="take-icon">🏍️</span>
+      <div class="take-headline">2× Biker Contracts, MC Work & Challenges</div>
+      <div class="take-body">
+        If you're chasing the 50 Clubhouse Contracts needed for the Tier 4 challenge, this is the week to grind them — the 2× RP sweetens an otherwise tedious requirement. For everyone else, the payouts are not competitive with running your actual MC businesses, and the time is better spent on the Cash sells and dealer sales above.
+      </div>
+      <span class="take-verdict skip">Completionists only</span>
+    </div>
+
+    </div>
+</div>
+
+
+<!-- ═══ IMPACT TABLE ═══ -->
+<div class="section">
+  <div class="section-label">Weekly Bonus Impact — MC Business Economics</div>
+  <div class="mode-row">
+    <div class="mode-bar">
+      <div class="mode-btn m-crew active" id="btn-crew" onclick="setMode('crew')">Crew + Full Lobby</div>
+      <div class="mode-btn m-solo" id="btn-solo" onclick="setMode('solo')">Solo + Invite Only</div>
+      <div class="mode-btn m-solofull" id="btn-solofull" onclick="setMode('solofull')">Solo + Full Lobby</div>
+    </div>
+  </div>
+  <p id="mode-assumptions" style="font-size:12px;color:var(--cream-dim);margin-bottom:14px;font-family:var(--mono);letter-spacing:.03em">All upgrades · Front bonuses applied · Reciprocity cost included · 2 helpers</p>
+  <div class="impact-wrap">
+    <table>
+      <thead><tr>
+        <th style="text-align:left">Business</th>
+        <th>Revenue / Sell</th>
+        <th>Profit / Sell</th>
+        <th>$/Active Hr</th>
+        <th>$/Passive Hr</th>
+      </tr></thead>
+      <tbody id="impact-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 3: FULL WEEKLY REFERENCE
+     Complete list of everything — the Reddit replacement
+     ═══════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Full Weekly Reference — February 19 – 26, 2026</div>
+
+  <!-- BONUSES -->
+  <div class="ref-category">
+    <div class="ref-cat-header">GTA$ & RP Bonuses</div>
+    <div class="ref-items">
+      <div class="ref-item">
+        <span class="ref-multiplier x2">2×$</span>
+        <div class="ref-text"><strong>Counterfeit Cash Sell Missions</strong> — The headline. See impact table above.</div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-multiplier x2">2×$</span>
+        <div class="ref-text"><strong>Street Dealer Sales</strong> — Usually break-even. This week: worth it. See <a href="/dealers" style="color:var(--gold);text-decoration:none;border-bottom:1px dashed var(--gold-dim)">/dealers</a>.</div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-multiplier x2">2×$RP</span>
+        <div class="ref-text"><strong>Biker Clubhouse Contracts, MC Work & MC Challenges</strong> — Modest income, not competitive with running your actual businesses.</div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-multiplier x2">2×$RP</span>
+        <div class="ref-text"><strong>Community Combat Series</strong> — Includes the new GNGR DUNE Pyramid KOTH mode.</div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-multiplier x3">3×$RP</span>
+        <div class="ref-text"><strong>All Lunar New Year Stunt Races</strong> — 6× for GTA+ Members. Includes the new Senora Derby race for sports vehicles. Part of Featured Series. Through March 4.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DISCOUNTS -->
+  <div class="ref-category">
+    <div class="ref-cat-header">Discounts</div>
+    <div class="ref-items">
+      <div class="ref-item">
+        <span class="ref-multiplier disc">−40%</span>
+        <div class="ref-text"><strong>Counterfeit Cash Factories, Upgrades & Modifications</strong> — If you don't own one and you are serious about making money, you must buy it. At 40% off with 2× sells active, the payback period compresses to nearly a single week of active play.</div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-multiplier disc">−30%</span>
+        <div class="ref-text">
+          <strong>Vehicles</strong> —
+          <a href="https://gtacars.net/gta5/cargobob" target="_blank" class="car-link">Western Cargobob</a> · <a href="https://gtacars.net/gta5/cargobob2" target="_blank" class="car-link">Cargobob Jetsam</a> ·
+          <a href="https://gtacars.net/gta5/terminus" target="_blank" class="car-link">Canis Terminus</a> ·
+          <a href="https://gtacars.net/gta5/insurgent" target="_blank" class="car-link">HVY Insurgent Pick-Up</a> ·
+          <a href="https://gtacars.net/gta5/caracara" target="_blank" class="car-link">Vapid Caracara</a> ·
+          <a href="https://gtacars.net/gta5/retinue2" target="_blank" class="car-link">Vapid Retinue Mk II</a> ·
+          <a href="https://gtacars.net/gta5/slamtruck" target="_blank" class="car-link">Vapid Slamtruck</a> ·
+          <a href="https://gtacars.net/gta5/l352" target="_blank" class="car-link">Declasse Walton L35 Stock</a> ·
+          <a href="https://gtacars.net/gta5/jugular" target="_blank" class="car-link">Ocelot Jugular</a> ·
+          <a href="https://gtacars.net/gta5/tampa2" target="_blank" class="car-link">Declasse Drift Tampa</a> ·
+          <a href="https://gtacars.net/gta5/nebula" target="_blank" class="car-link">Vulcar Nebula Turbo</a> ·
+          <a href="https://gtacars.net/gta5/jester3" target="_blank" class="car-link">Dinka Jester Classic</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUN VAN -->
+  <div class="ref-category">
+    <div class="ref-cat-header">Gun Van</div>
+    <div class="ref-items">
+      <div class="ref-item">
+        <span class="ref-multiplier" style="color:var(--cream-dim);font-weight:400">Free</span>
+        <div class="ref-text">Baseball Bat</div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-multiplier disc">−40%</span>
+        <div class="ref-text"><strong>Military Rifle</strong></div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-multiplier disc">−40%</span>
+        <div class="ref-text"><strong>Combat Shotgun</strong> — GTA+ Members only</div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-multiplier disc">−10%</span>
+        <div class="ref-text">Combat Shotgun (non-GTA+) · Battle Rifle · Homing Launcher · MG</div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-multiplier disc">−10%</span>
+        <div class="ref-text">Sticky Bomb · Molotov · Proximity Mine</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VEHICLES & PRIZES -->
+  <div class="ref-category">
+    <div class="ref-cat-header">Vehicles & Prizes</div>
+    <div class="ref-items">
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>Lucky Wheel</strong> — <a href="https://gtacars.net/gta5/sultan3" target="_blank" class="car-link">Karin Sultan RS Classic</a></div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>Prize Ride</strong> — <a href="https://gtacars.net/gta5/stingergt" target="_blank" class="car-link">Grotti Stinger GT</a> <span class="dim">(Place Top 4 in LS Car Meet Series)</span></div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>Test Rides</strong> — <a href="https://gtacars.net/gta5/streiter" target="_blank" class="car-link">Benefactor Streiter</a> · <a href="https://gtacars.net/gta5/rapidgt3" target="_blank" class="car-link">Dewbauchee Rapid GT Classic</a> · <a href="https://gtacars.net/gta5/cogcabrio" target="_blank" class="car-link">Enus Cognoscenti Cabrio</a></div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>HSW Premium Test Ride</strong> — <a href="https://gtacars.net/gta5/issi8" target="_blank" class="car-link">Weeny Issi Rally</a> <span class="dim">(PS5/XSX/PC Enhanced only)</span></div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>Luxury Autos</strong> — <a href="https://gtacars.net/gta5/jester5" target="_blank" class="car-link">Dinka LSCM Jester RR</a> · <a href="https://gtacars.net/gta5/sentinel6" target="_blank" class="car-link">Übermacht Sentinel XS4</a></div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>Premium Deluxe</strong> — <a href="https://gtacars.net/gta5/superd" target="_blank" class="car-link">Enus Super Diamond</a> · <a href="https://gtacars.net/gta5/cognoscenti" target="_blank" class="car-link">Enus Cognoscenti</a> · <a href="https://gtacars.net/gta5/jb700" target="_blank" class="car-link">Dewbauchee JB 700</a> · <a href="https://gtacars.net/gta5/alpha" target="_blank" class="car-link">Albany Alpha</a> · <a href="https://gtacars.net/gta5/zombiea" target="_blank" class="car-link">Western Zombie Bobber</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SALVAGE YARD -->
+  <div class="ref-category">
+    <div class="ref-cat-header">Salvage Yard Robberies</div>
+    <div class="ref-items">
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>The Gangbanger Robbery</strong> — <a href="https://gtacars.net/gta5/champion" target="_blank" class="car-link">Dewbauchee Champion</a></div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>The Podium Robbery</strong> — <a href="https://gtacars.net/gta5/everon" target="_blank" class="car-link">Karin Everon</a></div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>The McTony Robbery</strong> — <a href="https://gtacars.net/gta5/weevil" target="_blank" class="car-link">BF Weevil</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EVENTS & CHALLENGES -->
+  <div class="ref-category">
+    <div class="ref-cat-header">Events & Challenges</div>
+    <div class="ref-items">
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>Weekly Challenge</strong> — Win 2 Stunt Races → $100,000</div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>Time Trial</strong> — Maze Bank Arena</div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>HSW Time Trial</strong> — Ron Alternates to Elysian Island <span class="dim">(PS5/XSX/PC Enhanced)</span></div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>Premium Race</strong> — Art to Art <span class="dim">(Motorcycle locked)</span></div>
+      </div>
+
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>FIB Priority File</strong> — The Black Box File</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LUNAR NEW YEAR -->
+  <div class="ref-category">
+    <div class="ref-cat-header">Lunar New Year (Through March 4)</div>
+    <div class="ref-items">
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>Red Year of the Horse Tee</strong> — Free, log in before March 4</div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>Horse Masks & Tattoos</strong> — Available at Vespucci Masks and all tattoo parlors</div>
+      </div>
+      <div class="ref-item">
+        <span class="ref-bullet">◆</span>
+        <div class="ref-text"><strong>Yuanbao Collectibles</strong> — 36 scattered across Los Santos. Collect all for $88,888 bonus.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAILY OBJECTIVES -->
+  <div class="ref-category">
+    <div class="ref-cat-header">Daily Objectives</div>
+    <div class="ref-items">
+      <div class="ref-item"><span class="ref-bullet">◆</span><div class="ref-text"><strong>Thu</strong> — Play a match of Tennis</div></div>
+      <div class="ref-item"><span class="ref-bullet">◆</span><div class="ref-text"><strong>Fri</strong> — Complete a Simeon Repo</div></div>
+      <div class="ref-item"><span class="ref-bullet">◆</span><div class="ref-text"><strong>Sat</strong> — Participate in the Featured Series</div></div>
+      <div class="ref-item"><span class="ref-bullet">◆</span><div class="ref-text"><strong>Sun</strong> — Participate in a Clubhouse Contract</div></div>
+      <div class="ref-item"><span class="ref-bullet">◆</span><div class="ref-text"><strong>Mon</strong> — Complete a Dispatch mission</div></div>
+      <div class="ref-item"><span class="ref-bullet">◆</span><div class="ref-text"><strong>Tue</strong> — Participate in Club Work</div></div>
+      <div class="ref-item"><span class="ref-bullet">◆</span><div class="ref-text"><strong>Wed</strong> — Participate in a Bike Race</div></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 4: METHODOLOGY NOTE
+     ═══════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Methodology</div>
+  <div class="concept-box">
+    <div class="verdict-label" style="color:var(--cream-dim)">How Weekly Bonuses Flow Through Our Numbers</div>
+    <p>When a 2× sell bonus is active, it applies as a multiplier to the base sale price <em>before</em> the lobby bonus. The full chain is: Base Sale × Front Business Bonus × Weekly Multiplier × Lobby Bonus. All numbers on this page and on affected business pages (<a href="/cash" style="color:var(--gold);text-decoration:none;border-bottom:1px dashed var(--gold-dim)">/cash</a>, <a href="/mc" style="color:var(--gold);text-decoration:none;border-bottom:1px dashed var(--gold-dim)">/mc</a>) reflect this stacking. Hover any number with a dashed underline to see the full calculation.</p>
+    <p>The McKillsey Weekly is updated manually each Thursday when Rockstar resets. If you spot an error, use the Report button — corrections are usually live within hours.</p>
+  </div>
+</div>
+
+</main>
+
+<button class="feedback-btn" onclick="openFeedback()">Report Error / Suggest Change</button>
+
+<!-- FEEDBACK MODAL -->
+<div class="modal-overlay" id="feedback-overlay" onclick="if(event.target===this)closeFeedback()">
+  <div class="modal">
+    <div class="modal-title">Report an Error</div>
+    <div class="modal-sub">No login required. Screenshot optional.</div>
+    <label class="modal-label" style="margin-top:4px">What's wrong?</label>
+    <textarea class="modal-textarea" id="feedback-text" placeholder="Describe the error or suggest a change..."></textarea>
+    <div class="screenshot-zone" id="screenshot-zone" onclick="document.getElementById('screenshot-file').click()">
+      <div class="screenshot-hint" id="screenshot-hint"><span>Paste</span> a screenshot or <span>click</span> to upload</div>
+      <img id="screenshot-preview" style="display:none">
+      <button class="screenshot-clear" id="screenshot-clear" onclick="event.stopPropagation();clearScreenshot()">✕ Remove</button>
+    </div>
+    <input type="file" id="screenshot-file" accept="image/*" style="display:none" onchange="handleFileSelect(event)">
+    <div class="modal-footer">
+      <div class="modal-status" id="modal-status"></div>
+      <div style="display:flex;gap:8px">
+        <button class="modal-cancel-btn" onclick="closeFeedback()">Cancel</button>
+        <button class="modal-send-btn" id="modal-send-btn" onclick="submitFeedback()">Send Report</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+// ── RESET RIBBON ──
+const CITIES=[
+  {c:'Los Angeles',t:'THU 2 AM'},{c:'New York',t:'THU 5 AM'},{c:'São Paulo',t:'THU 7 AM'},
+  {c:'London',t:'THU 10 AM'},{c:'Berlin',t:'THU 11 AM'},{c:'Dubai',t:'THU 2 PM'},
+  {c:'Mumbai',t:'THU 3:30 PM'},{c:'Tokyo',t:'THU 7 PM'},{c:'Sydney',t:'THU 9 PM'}
+];
+const rt=document.getElementById('reset-track');
+let rh='';
+for(let p=0;p<2;p++){
+  rh+='<span class="reset-city" style="color:var(--gold);font-weight:500;letter-spacing:.14em">\u25c6 WEEKLY RESET</span>';
+  CITIES.forEach(c=>{rh+='<span class="reset-city">'+c.c+' <span class="ct">'+c.t+'</span></span>';});
+}
+rt.innerHTML=rh;
+
+
+// ── IMPACT TABLE ──
+const D={
+  crew:{
+    note:'All upgrades \u00b7 Front bonuses applied \u00b7 Reciprocity cost included \u00b7 2 helpers',
+    biz:[
+      {n:'Counterfeit Cash',s:'/cash',tg:['2\u00d7 This Week','+35% Car Wash'],w:1,rv:744210,rw:1488420,pv:594210,pw:1338420,hr:1188420,hw:2676840,ph:111414,phw:250954,pct:'+125%',
+       tn:'Base: $367,511\n\u00d7 1.35 Car Wash = $496,140\n\u00d7 1.50 lobby = $744,210\n\u2212 $150,000 supply = $594,210',
+       tw:'Base: $367,511\n\u00d7 1.35 Car Wash = $496,140\n\u00d7 2.00 weekly = $992,280\n\u00d7 1.50 lobby = $1,488,420\n\u2212 $150,000 supply = $1,338,420'},
+      {n:'Cocaine Lockup',s:'/coke',tg:[],w:0,rv:787500,pv:600000,hr:1200000,ph:120000,
+       tn:'Gross: $787,500 \u2212 $187,500 supply = $600,000\n$600,000 \u00f7 30 min \u00d7 60 = $1,200,000/hr'},
+      {n:'Weed Farm',s:'/weed',tg:['+35% Smoke on the Water'],w:0,rv:637920,pv:517920,hr:1035840,ph:97110,
+       tn:'Gross: $637,920 \u2212 $120,000 supply = $517,920\n$517,920 \u00f7 30 min \u00d7 60 = $1,035,840/hr'},
+      {n:'Methamphetamine Lab',s:'/meth',tg:[],w:0,rv:669375,pv:481875,hr:963750,ph:80312,
+       tn:'Gross: $669,375 \u2212 $187,500 supply = $481,875\n$481,875 \u00f7 30 min \u00d7 60 = $963,750/hr'},
+      {n:'Document Forgery',s:'/docs',tg:[],w:0,rv:236250,pv:146250,hr:292500,ph:48750,bad:1,
+       tn:'Gross: $236,250 \u2212 $90,000 supply = $146,250\n$146,250 \u00f7 30 min \u00d7 60 = $292,500/hr'}
+    ]
+  },
+  solo:{
+    note:'All upgrades \u00b7 Front bonuses applied \u00b7 Solo sell, invite-only lobby \u00b7 No lobby bonus',
+    biz:[
+      {n:'Counterfeit Cash',s:'/cash',tg:['2\u00d7 This Week','+35% Car Wash'],w:1,rv:496140,rw:992280,pv:346140,pw:842280,hr:692280,hw:1684560,ph:64901,phw:157928,pct:'+143%',
+       tn:'Base: $367,511\n\u00d7 1.35 Car Wash = $496,140\n\u2212 $150,000 supply = $346,140',
+       tw:'Base: $367,511\n\u00d7 1.35 Car Wash = $496,140\n\u00d7 2.00 weekly = $992,280\n\u2212 $150,000 supply = $842,280'},
+      {n:'Cocaine Lockup',s:'/coke',tg:[],w:0,rv:525000,pv:337500,hr:675000,ph:67500,
+       tn:'Gross: $525,000 \u2212 $187,500 = $337,500\n$337,500 \u00f7 30 min \u00d7 60 = $675,000/hr'},
+      {n:'Weed Farm',s:'/weed',tg:['+35% Smoke on the Water'],w:0,rv:425280,pv:305280,hr:610560,ph:57240,
+       tn:'Gross: $425,280 \u2212 $120,000 = $305,280\n$305,280 \u00f7 30 min \u00d7 60 = $610,560/hr'},
+      {n:'Methamphetamine Lab',s:'/meth',tg:[],w:0,rv:446250,pv:258750,hr:517500,ph:43125,
+       tn:'Gross: $446,250 \u2212 $187,500 = $258,750\n$258,750 \u00f7 30 min \u00d7 60 = $517,500/hr'},
+      {n:'Document Forgery',s:'/docs',tg:[],w:0,rv:157500,pv:67500,hr:135000,ph:22500,bad:1,
+       tn:'Gross: $157,500 \u2212 $90,000 = $67,500\n$67,500 \u00f7 30 min \u00d7 60 = $135,000/hr'}
+    ]
+  },
+  solofull:{
+    note:'All upgrades \u00b7 Front bonuses applied \u00b7 Solo sell, full lobby \u00b7 +50% bonus \u00b7 Higher risk',
+    biz:[
+      {n:'Counterfeit Cash',s:'/cash',tg:['2\u00d7 This Week','+35% Car Wash'],w:1,rv:744210,rw:1488420,pv:594210,pw:1338420,hr:1188420,hw:2676840,ph:111414,phw:250954,pct:'+125%',
+       tn:'Base: $367,511\n\u00d7 1.35 Car Wash = $496,140\n\u00d7 1.50 lobby = $744,210\n\u2212 $150,000 supply = $594,210',
+       tw:'Base: $367,511\n\u00d7 1.35 Car Wash = $496,140\n\u00d7 2.00 weekly = $992,280\n\u00d7 1.50 lobby = $1,488,420\n\u2212 $150,000 supply = $1,338,420'},
+      {n:'Cocaine Lockup',s:'/coke',tg:[],w:0,rv:787500,pv:600000,hr:1200000,ph:120000,
+       tn:'Gross: $787,500 \u2212 $187,500 = $600,000\n$600,000 \u00f7 30 min \u00d7 60 = $1,200,000/hr'},
+      {n:'Weed Farm',s:'/weed',tg:['+35% Smoke on the Water'],w:0,rv:637920,pv:517920,hr:1035840,ph:97110,
+       tn:'Gross: $637,920 \u2212 $120,000 = $517,920\n$517,920 \u00f7 30 min \u00d7 60 = $1,035,840/hr'},
+      {n:'Methamphetamine Lab',s:'/meth',tg:[],w:0,rv:669375,pv:481875,hr:963750,ph:80312,
+       tn:'Gross: $669,375 \u2212 $187,500 = $481,875\n$481,875 \u00f7 30 min \u00d7 60 = $963,750/hr'},
+      {n:'Document Forgery',s:'/docs',tg:[],w:0,rv:236250,pv:146250,hr:292500,ph:48750,bad:1,
+       tn:'Gross: $236,250 \u2212 $90,000 = $146,250\n$146,250 \u00f7 30 min \u00d7 60 = $292,500/hr'}
+    ]
+  }
+};
+function fmt(n){return '$'+n.toLocaleString('en-US')}
+function pct(o,n){return '+'+(((n-o)/o)*100).toFixed(0)+'%'}
+function renderTable(m){
+  const d=D[m];document.getElementById('mode-assumptions').textContent=d.note;
+  let html='';
+  d.biz.forEach(b=>{
+    let tags='';(b.tg||[]).forEach(t=>{tags+=t.includes('This Week')?'<span class="biz-tag tag-weekly">'+t+'</span>':'<span class="biz-tag tag-buff">'+t+'</span>';});
+    let rv,pv,hr,ph,cls=b.bad?'color:var(--red)':'';
+    if(b.w){
+      let rpct=pct(b.rv,b.rw),ppct=pct(b.pv,b.pw),hpct=pct(b.hr,b.hw),phpct=pct(b.ph,b.phw);
+      rv='<span class="strikethrough">'+fmt(b.rv)+'</span><br><span class="tip wt" data-tip-label="This Week Revenue" data-tip-calc="'+b.tw.replace(/\n/g,'&#10;')+'" data-tip-result="'+fmt(b.rw)+'"><span class="wkly">'+fmt(b.rw)+'</span></span> <span class="arrow-up" style="font-size:11px">'+rpct+'</span>';
+      pv='<span class="strikethrough">'+fmt(b.pv)+'</span><br><span class="tip wt" data-tip-label="This Week Profit" data-tip-calc="'+b.tw.replace(/\n/g,'&#10;')+'" data-tip-result="'+fmt(b.pw)+'"><span class="wkly">'+fmt(b.pw)+'</span></span> <span class="arrow-up" style="font-size:11px">'+ppct+'</span>';
+      hr='<span class="strikethrough">'+fmt(b.hr)+'</span><br><span class="wkly">'+fmt(b.hw)+'</span> <span class="arrow-up" style="font-size:11px">'+hpct+'</span>';
+      ph='<span class="strikethrough">'+fmt(b.ph)+'</span><br><span class="wkly">'+fmt(b.phw)+'</span> <span class="arrow-up" style="font-size:11px">'+phpct+'</span>';
+    } else {
+      rv='<span class="tip" data-tip-label="Revenue \u2014 '+b.n+'" data-tip-calc="'+b.tn.replace(/\n/g,'&#10;')+'"'+(cls?' style="'+cls+'"':'')+'>'+fmt(b.rv)+'</span>';
+      pv='<span class="tip" data-tip-label="Profit \u2014 '+b.n+'" data-tip-calc="'+b.tn.replace(/\n/g,'&#10;')+'"'+(cls?' style="'+cls+'"':'')+'>'+fmt(b.pv)+'</span>';
+      hr='<span'+(cls?' style="'+cls+'"':'')+'>'+fmt(b.hr)+'</span>';
+      ph='<span'+(cls?' style="'+cls+'"':'')+'>'+fmt(b.ph)+'</span>';
+    }
+    html+='<tr class="'+(b.w?'highlight-row':'')+'"><td><span class="biz-name">'+b.n+'</span><span class="biz-slug">'+b.s+'</span>'+tags+'</td><td>'+rv+'</td><td>'+pv+'</td><td>'+hr+'</td><td>'+ph+'</td></tr>';
+  });
+  document.getElementById('impact-tbody').innerHTML=html;
+}
+function setMode(m){
+  ['crew','solo','solofull'].forEach(function(id){
+    document.getElementById('btn-'+id).className='mode-btn m-'+id+(m===id?' active':'');
+  });
+  renderTable(m);
+}
+setMode('crew');
+
+// ── TOOLTIP ─────────────────────────────────────────────
+const tipbox = document.getElementById('tipbox');
+let activeTip = null;
+
+document.addEventListener('mouseover', e => {
+  const el = e.target.closest('.tip');
+  if (!el) return;
+  activeTip = el;
+  const label = el.dataset.tipLabel || '';
+  const calc  = el.dataset.tipCalc  || '';
+  const result= el.dataset.tipResult|| '';
+  const rc    = el.dataset.tipResultClass || '';
+  tipbox.innerHTML =
+    (label  ? `<span class="tb-label">${label}</span>` : '') +
+    (calc   ? `<span class="tb-calc">${calc.replace(/\n/g,'<br>')}</span>` : '') +
+    (result ? `<span class="tb-result${rc?' '+rc:''}">${result}</span>` : '');
+  tipbox.style.display = 'block';
+  positionTip(e);
+});
+document.addEventListener('mousemove', e => {
+  if (!activeTip) return;
+  if (!e.target.closest('.tip')) { tipbox.style.display = 'none'; activeTip = null; return; }
+  positionTip(e);
+});
+document.addEventListener('mouseout', e => {
+  if (e.target.closest('.tip')) { tipbox.style.display = 'none'; activeTip = null; }
+});
+function positionTip(e) {
+  const pad = 16;
+  let x = e.clientX + pad, y = e.clientY + pad;
+  const bw = tipbox.offsetWidth, bh = tipbox.offsetHeight;
+  if (x + bw > window.innerWidth - pad) x = e.clientX - bw - pad;
+  if (y + bh > window.innerHeight - pad) y = e.clientY - bh - pad;
+  tipbox.style.left = x + 'px';
+  tipbox.style.top  = y + 'px';
+}
+
+// ── FEEDBACK MODAL ────────────────────────────────────────
+let screenshotData = null;
+
+function openFeedback() {
+  document.getElementById('feedback-overlay').classList.add('open');
+  document.getElementById('feedback-text').focus();
+}
+function closeFeedback() {
+  document.getElementById('feedback-overlay').classList.remove('open');
+  document.getElementById('modal-status').textContent = '';
+}
+function setScreenshot(dataUrl) {
+  screenshotData = dataUrl;
+  const zone = document.getElementById('screenshot-zone');
+  const preview = document.getElementById('screenshot-preview');
+  const hint = document.getElementById('screenshot-hint');
+  preview.src = dataUrl; preview.style.display = 'block';
+  hint.style.display = 'none'; zone.classList.add('has-image');
+}
+function clearScreenshot() {
+  screenshotData = null;
+  const zone = document.getElementById('screenshot-zone');
+  const preview = document.getElementById('screenshot-preview');
+  const hint = document.getElementById('screenshot-hint');
+  preview.src = ''; preview.style.display = 'none';
+  hint.style.display = ''; zone.classList.remove('has-image');
+  document.getElementById('screenshot-file').value = '';
+}
+function handleFileSelect(e) {
+  const file = e.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => setScreenshot(ev.target.result);
+  reader.readAsDataURL(file);
+}
+document.addEventListener('paste', e => {
+  if (!document.getElementById('feedback-overlay').classList.contains('open')) return;
+  const items = e.clipboardData?.items; if (!items) return;
+  for (const item of items) {
+    if (item.type.startsWith('image/')) {
+      const blob = item.getAsFile();
+      const reader = new FileReader();
+      reader.onload = ev => setScreenshot(ev.target.result);
+      reader.readAsDataURL(blob); break;
+    }
+  }
+});
+async function submitFeedback() {
+  const text = document.getElementById('feedback-text').value.trim();
+  if (!text) { document.getElementById('modal-status').textContent = 'Please describe the issue first.'; return; }
+  const btn = document.getElementById('modal-send-btn');
+  const status = document.getElementById('modal-status');
+  btn.disabled = true; btn.textContent = 'Sending...'; status.textContent = '';
+  const pageUrl = window.location.href;
+  let body = `Page: ${pageUrl}\n\nFeedback:\n${text}`;
+  if (screenshotData) {
+    try {
+      const imgForm = new FormData();
+      imgForm.append('key', 'a3cb2b5f84e2b4e2a7b6c1d9f8e3a4b5');
+      imgForm.append('image', screenshotData.split(',')[1]);
+      const imgRes = await fetch('https://api.imgbb.com/1/upload', { method:'POST', body:imgForm });
+      const imgData = await imgRes.json();
+      if (imgData.success) body += `\n\nScreenshot: ${imgData.data.url}`;
+    } catch(e) { body += '\n\n(Screenshot failed to upload)'; }
+  }
+  const formData = new FormData();
+  formData.append('access_key', '25c0d000-546c-45cd-be70-ec9abcded581');
+  formData.append('subject', 'McKillsey Error Report — Weekly');
+  formData.append('message', body);
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', { method:'POST', body:formData });
+    const result = await response.json();
+    if (result.success) {
+      status.style.color = 'var(--green)'; status.textContent = 'Sent. Thank you.'; btn.textContent = 'Sent ✓';
+      setTimeout(() => {
+        closeFeedback();
+        document.getElementById('feedback-text').value = '';
+        clearScreenshot(); btn.disabled = false; btn.textContent = 'Send Report'; status.style.color = '';
+      }, 1800);
+    } else { throw new Error(result.message || 'Unknown error'); }
+  } catch(err) {
+    status.style.color = 'var(--red)'; status.textContent = 'Failed to send. Try again.';
+    btn.disabled = false; btn.textContent = 'Send Report';
+  }
+}
+</script>
+</body>
+</html>
