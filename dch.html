@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diamond Casino Heist — McKillsey & Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3148;--cream:#f0ead8;--cream-dim:#9aabbf;--gold:#c9a84c;--gold-dim:#8a6f2e;--green:#2dba72;--red:#d94f4f;--amber:#e08c2a;--rule:rgba(201,168,76,0.18);--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--serif:'Playfair Display',serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size:15px;line-height:1.65}
+.site-header{border-bottom:1px solid var(--rule);padding:20px 48px;display:flex;align-items:center;gap:32px}
+.wordmark{font-family:var(--serif);font-weight:700;color:#b8c8d8;line-height:1.15;text-decoration:none}
+.wordmark .line1{display:block;font-size:26px}.wordmark .line2{display:block;font-size:22px;padding-left:1.1em}
+.header-tagline{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.1em;text-transform:uppercase;margin-left:auto}
+.page{max-width:1400px;margin:0 auto;padding:44px 48px 80px}
+.page-title h1{font-family:var(--serif);font-size:34px;font-weight:900;line-height:1.1}
+.page-title .subtitle{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-top:6px}
+.section{margin-top:36px}
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+.calculator-layout{display:grid;grid-template-columns:300px 1fr;gap:32px;align-items:start;margin-top:32px}
+.inputs-panel{background:var(--navy-mid);border:1px solid var(--rule);padding:22px;position:sticky;top:20px}
+.input-section{margin-bottom:24px}.input-section:last-child{margin-bottom:0}
+.input-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block}
+.toggle-group{display:flex;border:1px solid var(--rule);width:fit-content;flex-wrap:wrap}
+.toggle-btn{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;cursor:pointer;border:none;border-right:1px solid var(--rule);background:var(--navy-mid);color:var(--cream-dim);transition:all .15s;user-select:none;white-space:nowrap}
+.toggle-btn:last-child{border-right:none}
+.toggle-btn:hover{background:var(--navy-light);color:var(--cream)}
+.toggle-btn.active{background:var(--navy-light);color:var(--gold);border-bottom:2px solid var(--gold)}
+.toggle-group.yes-no .toggle-btn.active{color:var(--green);border-bottom-color:var(--green)}
+.toggle-group.full-width{width:100%;flex-direction:column;border:none;gap:3px}
+.toggle-group.full-width .toggle-btn{border:1px solid var(--rule);text-align:center}
+.toggle-group.equal-5{width:100%}
+.toggle-group.equal-5 .toggle-btn{flex:1;text-align:center;padding:8px 6px}
+.hacker-slots{display:flex;flex-direction:column;gap:14px}
+.hacker-slot{display:flex;flex-direction:column;gap:6px}
+.hacker-slot-header{display:flex;align-items:center;justify-content:space-between}
+.hacker-slot-label{font-family:var(--mono);font-size:11px;color:var(--cream)}
+.hacker-slot-label .slot-num{color:var(--gold)}
+.hacker-toggle{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;cursor:pointer;border:1px solid var(--rule);background:var(--navy);color:var(--cream-dim);transition:all .15s}
+.hacker-toggle:hover{border-color:var(--gold);color:var(--cream)}
+.hacker-toggle.on{background:rgba(45,186,114,.12);border-color:var(--green);color:var(--green)}
+.slider-row{display:flex;align-items:center;gap:10px}
+.slider-input{flex:1;-webkit-appearance:none;appearance:none;height:4px;background:var(--navy);border:1px solid var(--rule);outline:none;cursor:pointer}
+.slider-input::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;background:var(--gold);border:none;cursor:pointer}
+.slider-input::-moz-range-thumb{width:14px;height:14px;background:var(--gold);border:none;cursor:pointer}
+.slider-input:disabled{opacity:.25;cursor:not-allowed}
+.num-input{width:42px;background:var(--navy);border:1px solid var(--rule);color:var(--gold);font-family:var(--mono);font-size:12px;text-align:center;padding:3px 4px;outline:none}
+.num-input:focus{border-color:var(--gold)}
+.num-input:disabled{opacity:.25;color:var(--cream-dim)}
+.slider-unit{font-family:var(--mono);font-size:10px;color:var(--cream-dim)}
+.hacker-slot.inactive .hacker-slot-label{color:var(--cream-dim);opacity:.5}
+.devmode-section{border:1px dashed var(--amber);padding:14px;margin-bottom:24px;background:rgba(224,140,42,.04)}
+.devmode-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;display:block}
+.devmode-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}.devmode-row:last-child{margin-bottom:0}
+.devmode-row-label{font-family:var(--mono);font-size:10px;color:var(--cream-dim);width:120px;flex-shrink:0}
+.share-section{margin-top:22px;border-top:1px solid var(--rule);padding-top:18px}
+.share-url-box{display:flex;align-items:stretch;background:var(--navy);border:1px solid var(--rule);overflow:hidden}
+.share-url-text{flex:1;padding:7px 10px;font-family:var(--mono);font-size:10px;color:var(--cream-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;letter-spacing:.02em}
+.share-copy-btn{background:var(--navy-mid);border:none;border-left:1px solid var(--rule);color:var(--gold);padding:0 12px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .15s;white-space:nowrap;flex-shrink:0}
+.share-copy-btn:hover{background:var(--gold);color:var(--navy)}.share-copy-btn.copied{background:var(--green);color:var(--navy)}
+.verdict{border:1px solid var(--rule);border-left:3px solid var(--gold);padding:14px 18px;margin-bottom:16px;background:rgba(201,168,76,.02)}
+.verdict-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.verdict p{font-size:13px;color:var(--cream);line-height:1.7;margin-bottom:6px}.verdict p:last-child{margin-bottom:0}
+.results-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+.results-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.results-note{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.04em}
+.matrix-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.matrix-column{display:flex;flex-direction:column;gap:10px}
+.column-header{background:var(--navy-mid);border:1px solid var(--rule);padding:12px 16px;text-align:center}
+.column-title{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--cream)}
+.column-subtitle{font-family:var(--mono);font-size:9px;color:var(--cream-dim);letter-spacing:.08em;margin-top:4px}
+.column-cuts{margin-top:10px;display:flex;flex-direction:column;gap:4px}
+.cut-row{display:flex;align-items:center;justify-content:center;gap:6px}
+.cut-label{font-family:var(--mono);font-size:10px;color:var(--cream-dim);width:52px;text-align:right}
+.cut-label.host{color:var(--gold)}.cut-val{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--cream);width:32px;text-align:center}.cut-val.host{color:var(--gold)}
+.cut-controls{display:flex;gap:2px}
+.cut-btn{background:var(--navy);border:1px solid var(--rule);color:var(--cream-dim);width:18px;height:18px;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .12s;font-family:var(--mono)}
+.cut-btn:hover{border-color:var(--gold);color:var(--gold)}.cut-btn:disabled{opacity:.2;cursor:not-allowed}
+.hacker-card{background:var(--navy-mid);border:1px solid var(--rule);overflow:hidden;display:flex;flex-direction:column}
+.hacker-card.rank-1{border-color:var(--gold)}.hacker-card.rank-2{border-color:rgba(201,168,76,.35)}.hacker-card.rank-3{border-color:rgba(201,168,76,.18)}
+.hacker-card-header{padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--rule);background:rgba(255,255,255,.02)}
+.hacker-card.rank-1 .hacker-card-header{background:rgba(201,168,76,.06)}
+.hacker-rank{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px}
+.rank-1 .hacker-rank{background:rgba(201,168,76,.2);color:var(--gold)}.rank-2 .hacker-rank{background:rgba(201,168,76,.1);color:var(--gold-dim)}.rank-3 .hacker-rank{background:rgba(255,255,255,.05);color:var(--cream-dim)}
+.hacker-name{font-family:var(--serif);font-size:13px;font-weight:700;color:var(--cream)}
+.hacker-card-body{padding:12px 14px;flex:1}
+.sr{display:flex;justify-content:space-between;align-items:baseline;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04)}.sr:last-child{border-bottom:none}
+.sr-l{font-family:var(--mono);font-size:11px;color:var(--cream-dim)}.sr-v{font-family:var(--mono);font-size:11px;color:var(--cream)}
+.sr-v.hi{color:var(--gold);font-size:12px;font-weight:500}.sr-v.gr{color:var(--green)}.sr-v.neg{color:var(--red)}
+.hdiv{border:none;border-top:1px solid var(--rule);margin:4px 0}
+.cp-rows{margin-top:6px}.cp-row{display:flex;justify-content:space-between;align-items:baseline;padding:2px 0}
+.cp-l{font-family:var(--mono);font-size:10px;color:var(--cream-dim)}.cp-l.host{color:var(--gold)}
+.cp-v{font-family:var(--mono);font-size:11px;color:var(--green)}.cp-v.host{color:var(--gold)}
+.warning-box{background:rgba(217,79,79,.08);border:1px solid rgba(217,79,79,.3);padding:7px 10px;font-family:var(--mono);font-size:10px;color:var(--red);margin-bottom:10px;line-height:1.5}
+#tipbox{position:fixed;z-index:9999;max-width:380px;background:#08111a;border:1px solid var(--gold);padding:12px 14px;font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--cream);pointer-events:none;display:none;box-shadow:0 8px 32px rgba(0,0,0,.6)}
+#tipbox .tb-label{color:var(--gold);font-size:9px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px;border-bottom:1px solid rgba(201,168,76,.2);padding-bottom:5px}
+#tipbox .tb-calc{color:var(--cream-dim)}.tip{border-bottom:1px dashed rgba(201,168,76,.45);cursor:help;display:inline}
+.methodology{margin-top:40px;border:1px solid var(--rule);padding:24px;background:rgba(255,255,255,.01)}
+.methodology h2{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+.methodology-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.method-section h3{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
+.method-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:11px}
+.method-table th{text-align:left;color:var(--cream-dim);font-weight:normal;padding:3px 10px 3px 0;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+.method-table td{padding:3px 10px 3px 0;color:var(--cream);border-bottom:1px solid rgba(255,255,255,.04)}.method-table td.val{color:var(--gold)}
+.method-notes{font-family:var(--mono);font-size:11px;color:var(--cream-dim);line-height:1.7}.method-notes p{margin-bottom:8px}
+.feedback-btn{position:fixed;bottom:22px;right:22px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--gold);padding:9px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .15s;z-index:100}
+.feedback-btn:hover{background:var(--gold);color:var(--navy)}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;display:none;align-items:center;justify-content:center}.modal-overlay.open{display:flex}
+.modal{background:var(--navy-mid);border:1px solid var(--rule);width:500px;max-width:calc(100vw - 40px);max-height:90vh;overflow-y:auto;padding:28px}
+.modal-title{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--cream);margin-bottom:4px}
+.modal-sub{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.08em;margin-bottom:22px}
+.modal-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block}
+.modal-textarea{width:100%;background:var(--navy);border:1px solid var(--rule);color:var(--cream);font-family:var(--sans);font-size:13px;padding:10px 12px;resize:vertical;min-height:90px;line-height:1.6;outline:none}.modal-textarea:focus{border-color:var(--gold)}
+.screenshot-zone{width:100%;min-height:80px;background:var(--navy);border:1px dashed rgba(201,168,76,.35);display:flex;align-items:center;justify-content:center;margin-top:14px;cursor:pointer;position:relative;overflow:hidden}
+.screenshot-zone:hover{border-color:var(--gold)}.screenshot-zone.has-image{border-style:solid;border-color:var(--gold)}
+.screenshot-zone img{max-width:100%;max-height:220px;display:block}
+.screenshot-hint{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.06em;text-align:center;padding:20px;pointer-events:none}.screenshot-hint span{color:var(--gold)}
+.screenshot-clear{position:absolute;top:6px;right:8px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;padding:2px 8px;cursor:pointer;display:none}
+.screenshot-zone.has-image .screenshot-clear{display:block}
+.modal-footer{display:flex;align-items:center;justify-content:space-between;margin-top:18px;gap:12px}
+.modal-send-btn{background:var(--gold);border:none;color:var(--navy);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 22px;cursor:pointer;transition:all .15s;font-weight:500}.modal-send-btn:hover{background:var(--cream)}.modal-send-btn:disabled{opacity:.4;cursor:not-allowed}
+.modal-cancel-btn{background:none;border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:10px 16px;cursor:pointer;transition:all .15s}.modal-cancel-btn:hover{border-color:var(--cream-dim);color:var(--cream)}
+.modal-status{font-family:var(--mono);font-size:11px;color:var(--cream-dim);min-height:16px}
+@media(max-width:1100px){.matrix-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.page{padding:20px}.site-header{padding-left:20px;padding-right:20px}.calculator-layout{grid-template-columns:1fr}.inputs-panel{position:static}.methodology-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="tipbox"></div>
+<header class="site-header">
+  <a href="/" class="wordmark"><span class="line1">McKillsey</span><span class="line2">&amp; Company</span></a>
+  <div class="header-tagline">Strategic Advisory · Los Santos · Blaine County</div>
+</header>
+<main class="page">
+<div class="page-title"><h1>Diamond Casino Heist</h1><div class="subtitle">Vault Time Optimizer</div></div>
+<div class="calculator-layout">
+  <div class="inputs-panel">
+    <div class="devmode-section" id="devmode-section" style="display:none">
+      <span class="devmode-label">⚠ Dev Mode — Animation Overrides</span>
+      <div class="devmode-row"><span class="devmode-row-label">Normal (s/door)</span><input type="range" class="slider-input" min="0" max="80" value="24" style="flex:1" oninput="setAnim('n',this.value)" id="anim-n-sl"><input type="number" class="num-input" min="0" max="80" value="24" id="anim-n-in" oninput="setAnim('n',this.value)"><span class="slider-unit">s</span></div>
+      <div class="devmode-row"><span class="devmode-row-label">Hard (s/door)</span><input type="range" class="slider-input" min="0" max="120" value="28" style="flex:1" oninput="setAnim('h',this.value)" id="anim-h-sl"><input type="number" class="num-input" min="0" max="120" value="28" id="anim-h-in" oninput="setAnim('h',this.value)"><span class="slider-unit">s</span></div>
+    </div>
+    <div class="input-section"><span class="input-label">Vault Contents</span>
+      <div class="toggle-group full-width" id="loot-group">
+        <button class="toggle-btn active" data-val="cash" onclick="si('loot',this)">Cash</button>
+        <button class="toggle-btn" data-val="artwork" onclick="si('loot',this)">Artwork</button>
+        <button class="toggle-btn" data-val="gold" onclick="si('loot',this)">Gold</button>
+        <button class="toggle-btn" data-val="diamonds" onclick="si('loot',this)">Diamonds</button>
+      </div>
+    </div>
+    <div class="input-section"><span class="input-label">Approach</span>
+      <div class="toggle-group full-width" id="approach-group">
+        <button class="toggle-btn active" data-val="sns" onclick="si('approach',this)">Silent &amp; Sneaky</button>
+        <button class="toggle-btn" data-val="bc" onclick="si('approach',this)">The Big Con</button>
+        <button class="toggle-btn" data-val="agg" onclick="si('approach',this)">Aggressive</button>
+      </div>
+    </div>
+    <div class="input-section"><span class="input-label">Hard Mode</span>
+      <div class="toggle-group yes-no" id="difficulty-group">
+        <button class="toggle-btn active" data-val="hard" onclick="si('difficulty',this)">Yes</button>
+        <button class="toggle-btn" data-val="normal" onclick="si('difficulty',this)">No</button>
+      </div>
+    </div>
+    <div class="input-section"><span class="input-label">Elite Challenge</span>
+      <div class="toggle-group yes-no" id="elite-group">
+        <button class="toggle-btn active" data-val="yes" onclick="setElite(this)">Yes</button>
+        <button class="toggle-btn" data-val="no" onclick="setElite(this)">No</button>
+      </div>
+    </div>
+    <div class="input-section"><span class="input-label">Gunman</span>
+      <div class="toggle-group equal-5" id="gunman-group">
+        <button class="toggle-btn active" data-val="karl" onclick="si('gunman',this)">5%</button>
+        <button class="toggle-btn" data-val="charlie" onclick="si('gunman',this)">7%</button>
+        <button class="toggle-btn" data-val="patrick" onclick="si('gunman',this)">8%</button>
+        <button class="toggle-btn" data-val="gustavo" onclick="si('gunman',this)">9%</button>
+        <button class="toggle-btn" data-val="chester" onclick="si('gunman',this)">10%</button>
+      </div>
+    </div>
+    <div class="input-section"><span class="input-label">Driver</span>
+      <div class="toggle-group equal-5" id="driver-group">
+        <button class="toggle-btn active" data-val="karim" onclick="si('driver',this)">5%</button>
+        <button class="toggle-btn" data-val="zach" onclick="si('driver',this)">6%</button>
+        <button class="toggle-btn" data-val="taliana" onclick="si('driver',this)">7%</button>
+        <button class="toggle-btn" data-val="eddie" onclick="si('driver',this)">9%</button>
+        <button class="toggle-btn" data-val="chester_d" onclick="si('driver',this)">10%</button>
+      </div>
+    </div>
+    <div class="input-section"><span class="input-label">Hacking Speed</span>
+      <div class="hacker-slots">
+        <div class="hacker-slot" id="hslot-0"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 1</span></span></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="10" oninput="shs(0,this.value)"><input type="number" class="num-input" min="0" max="30" value="10" oninput="shs(0,this.value)"><span class="slider-unit">s/hack</span></div></div>
+        <div class="hacker-slot inactive" id="hslot-1"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 2</span></span><button class="hacker-toggle" onclick="th(1)">Inactive</button></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="10" disabled oninput="shs(1,this.value)"><input type="number" class="num-input" min="0" max="30" value="10" disabled oninput="shs(1,this.value)"><span class="slider-unit">s/hack</span></div></div>
+        <div class="hacker-slot inactive" id="hslot-2"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 3</span></span><button class="hacker-toggle" onclick="th(2)">Inactive</button></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="10" disabled oninput="shs(2,this.value)"><input type="number" class="num-input" min="0" max="30" value="10" disabled oninput="shs(2,this.value)"><span class="slider-unit">s/hack</span></div></div>
+        <div class="hacker-slot inactive" id="hslot-3"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 4</span></span><button class="hacker-toggle" onclick="th(3)">Inactive</button></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="10" disabled oninput="shs(3,this.value)"><input type="number" class="num-input" min="0" max="30" value="10" disabled oninput="shs(3,this.value)"><span class="slider-unit">s/hack</span></div></div>
+      </div>
+    </div>
+    <div class="input-section"><span class="input-label">Commute Time Per Loot Pile</span>
+      <div class="slider-row"><input type="range" class="slider-input" min="5" max="15" value="5" style="flex:1" oninput="sc(this.value)" id="comm-sl"><input type="number" class="num-input" min="5" max="15" value="5" id="comm-in" oninput="sc(this.value)"><span class="slider-unit">s/pile</span></div>
+    </div>
+    <div class="share-section"><span class="input-label">Share This Setup</span>
+      <div class="share-url-box"><span class="share-url-text" id="share-url-text"></span><button class="share-copy-btn" id="share-copy-btn" onclick="copyUrl()">Copy</button></div>
+    </div>
+  </div>
+  <div class="results-panel">
+    <div id="rec-banner"></div>
+    <div class="results-header"><span class="results-label">Optimal Hacker — by Total Player Take</span><span class="results-note">Top 3 per scenario</span></div>
+    <div class="matrix-grid" id="matrix-grid"></div>
+  </div>
+</div>
+<div class="section">
+  <div class="section-label">Methodology &amp; Source Data</div>
+  <div class="methodology"><h2>How the Vault Time Optimizer Works</h2>
+    <div class="methodology-grid">
+      <div class="method-section"><h3>Vault Contents</h3>
+        <table class="method-table"><thead><tr><th>Loot</th><th>Normal</th><th>Hard (+10%)</th><th>Units</th><th>Collect</th></tr></thead><tbody>
+          <tr><td>Cash</td><td class="val">$2,115,000</td><td class="val">$2,326,500</td><td>8 carts</td><td>38s</td></tr>
+          <tr><td>Artwork</td><td class="val">$2,350,000</td><td class="val">$2,585,000</td><td>6 pieces</td><td>18s</td></tr>
+          <tr><td>Gold</td><td class="val">$2,585,000</td><td class="val">$2,843,500</td><td>8 carts</td><td>25s</td></tr>
+          <tr><td>Diamonds</td><td class="val">$3,290,000</td><td class="val">$3,619,000</td><td>8 carts</td><td>38s</td></tr>
+        </tbody></table>
+      </div>
+      <div class="method-section"><h3>Hacker Vault Times</h3>
+        <table class="method-table"><thead><tr><th>Hacker</th><th>Cut</th><th>Unexposed</th><th>Exposed</th></tr></thead><tbody>
+          <tr><td>Rickie Lukens</td><td>5%</td><td class="val">2:26</td><td class="val">1:42</td></tr>
+          <tr><td>Yohan Blair</td><td>5%</td><td class="val">2:52</td><td class="val">2:01</td></tr>
+          <tr><td>Christian Feltz</td><td>7%</td><td class="val">2:59</td><td class="val">2:05</td></tr>
+          <tr><td>Paige Harris</td><td>9%</td><td class="val">3:25</td><td class="val">2:23</td></tr>
+          <tr><td>Avi Schwartzman</td><td>10%</td><td class="val">3:30</td><td class="val">2:26</td></tr>
+        </tbody></table>
+        <div class="method-notes" style="margin-top:8px"><p>Unexposed = Silent &amp; Sneaky, The Big Con. Exposed = Aggressive.</p></div>
+      </div>
+      <div class="method-section"><h3>Man-Seconds Budget Model</h3>
+        <div class="method-notes">
+          <p><strong style="color:var(--cream)">Total man-seconds</strong> = vault time × player count.</p>
+          <p><strong style="color:var(--cream)">Hacking cost</strong> = per hacker: doors × (hacks_per_door × s/hack + animation_per_door). Parallel across hackers; each subtracted individually from man-seconds pool.</p>
+          <p><strong style="color:var(--cream)">Animation time</strong> = 24s/door normal, 28s/door hard. Hacks per door: 1 normal, 2 hard. Placeholders pending community verification.</p>
+          <p><strong style="color:var(--cream)">Door assignment</strong> = 4 doors across active hackers. Fastest gets extra doors when uneven.</p>
+          <p><strong style="color:var(--cream)">Commute</strong> = piles × s/pile (default 10). Flat total from man-seconds.</p>
+          <p><strong style="color:var(--cream)">Collection</strong> = remaining man-seconds ÷ s/unit, floored, capped at max.</p>
+          <p><strong style="color:var(--cream)">Crew</strong> = gross × (hacker% + gunman% + driver%).</p>
+        </div>
+      </div>
+      <div class="method-section"><h3>Crew Members</h3>
+        <table class="method-table"><thead><tr><th>Gunman</th><th>Cut</th></tr></thead><tbody>
+          <tr><td>Karl Abolaji</td><td class="val">5%</td></tr><tr><td>Charlie Reed</td><td class="val">7%</td></tr>
+          <tr><td>Patrick McReary</td><td class="val">8%</td></tr><tr><td>Gustavo Mota</td><td class="val">9%</td></tr>
+          <tr><td>Chester McCoy</td><td class="val">10%</td></tr>
+        </tbody></table>
+        <table class="method-table" style="margin-top:12px"><thead><tr><th>Driver</th><th>Cut</th></tr></thead><tbody>
+          <tr><td>Karim Denz</td><td class="val">5%</td></tr><tr><td>Zach Nelson</td><td class="val">6%</td></tr>
+          <tr><td>Taliana Martinez</td><td class="val">7%</td></tr><tr><td>Eddie Toh</td><td class="val">9%</td></tr>
+          <tr><td>Chester McCoy</td><td class="val">10%</td></tr>
+        </tbody></table>
+        <div class="method-notes" style="margin-top:8px"><p>Chester McCoy can serve as both gunman and driver (20% combined).</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+<button class="feedback-btn" onclick="openFB()">Report Error / Suggest Change</button>
+<div class="modal-overlay" id="fb-overlay" onclick="if(event.target===this)closeFB()">
+  <div class="modal">
+    <div class="modal-title">Report an Error</div><div class="modal-sub">No login required. Screenshot optional.</div>
+    <label class="modal-label" style="margin-top:4px">What's wrong?</label>
+    <textarea class="modal-textarea" id="fb-text" placeholder="Describe the error or suggest a change..."></textarea>
+    <div class="screenshot-zone" id="ss-zone" onclick="document.getElementById('ss-file').click()">
+      <div class="screenshot-hint" id="ss-hint"><span>Paste</span> a screenshot or <span>click</span> to upload</div>
+      <img id="ss-preview" style="display:none"><button class="screenshot-clear" id="ss-clear" onclick="event.stopPropagation();clearSS()">✕ Remove</button>
+    </div>
+    <input type="file" id="ss-file" accept="image/*" style="display:none" onchange="handleSS(event)">
+    <div class="modal-footer">
+      <div class="modal-status" id="fb-status"></div>
+      <div style="display:flex;gap:8px"><button class="modal-cancel-btn" onclick="closeFB()">Cancel</button><button class="modal-send-btn" id="fb-send" onclick="sendFB()">Send Report</button></div>
+    </div>
+  </div>
+</div>
+<script>
+const V={cash:{label:'Cash',maxN:2115000,maxH:2326500,u:8,ct:38},artwork:{label:'Artwork',maxN:2350000,maxH:2585000,u:6,ct:18},gold:{label:'Gold',maxN:2585000,maxH:2843500,u:8,ct:25},diamonds:{label:'Diamonds',maxN:3290000,maxH:3619000,u:8,ct:38}};
+const H=[{id:'rickie',label:'Rickie Lukens',cut:5,ue:146,ex:102},{id:'yohan',label:'Yohan Blair',cut:5,ue:172,ex:121},{id:'christian',label:'Christian Feltz',cut:7,ue:179,ex:125},{id:'paige',label:'Paige Harris',cut:9,ue:205,ex:143},{id:'avi',label:'Avi Schwartzman',cut:10,ue:210,ex:146}];
+const GN={karl:{l:'Karl Abolaji',c:5},charlie:{l:'Charlie Reed',c:7},patrick:{l:'Patrick McReary',c:8},gustavo:{l:'Gustavo Mota',c:9},chester:{l:'Chester McCoy',c:10}};
+const DR={karim:{l:'Karim Denz',c:5},zach:{l:'Zach Nelson',c:6},taliana:{l:'Taliana Martinez',c:7},eddie:{l:'Eddie Toh',c:9},chester_d:{l:'Chester McCoy',c:10}};
+let AN=24,AH=28; const HN=1,HH=2,DOORS=4;
+const S={loot:'cash',approach:'sns',difficulty:'hard',gunman:'karl',driver:'karim',hs:[{a:true,s:10},{a:false,s:10},{a:false,s:10},{a:false,s:10}],cpp:5,elite:true,mp:{2:[15],3:[15,15],4:[15,15,15]},dev:false};
+
+function checkDev(){S.dev=new URLSearchParams(location.search).has('devmode');document.getElementById('devmode-section').style.display=S.dev?'block':'none';}
+function setAnim(m,v){v=Math.max(0,parseInt(v)||0);if(m==='n'){AN=v;document.getElementById('anim-n-in').value=v;document.getElementById('anim-n-sl').value=v;}else{AH=v;document.getElementById('anim-h-in').value=v;document.getElementById('anim-h-sl').value=v;}render();}
+
+function si(key,btn){S[key]=btn.dataset.val;document.querySelectorAll('#'+key+'-group .toggle-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
+function setElite(btn){S.elite=(btn.dataset.val==='yes');document.querySelectorAll('#elite-group .toggle-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
+function th(i){S.hs[i].a=!S.hs[i].a;const sl=document.getElementById('hslot-'+i),tb=sl.querySelector('.hacker-toggle'),si2=sl.querySelector('.slider-input'),ni=sl.querySelector('.num-input');if(S.hs[i].a){sl.classList.remove('inactive');tb.textContent='Active';tb.classList.add('on');si2.disabled=false;ni.disabled=false;}else{sl.classList.add('inactive');tb.textContent='Inactive';tb.classList.remove('on');si2.disabled=true;ni.disabled=true;}render();}
+function shs(i,v){v=Math.max(0,Math.min(30,parseInt(v)||0));S.hs[i].s=v;const sl=document.getElementById('hslot-'+i);sl.querySelector('.slider-input').value=v;sl.querySelector('.num-input').value=v;render();}
+function sc(v){v=Math.max(5,Math.min(15,parseInt(v)||10));S.cpp=v;document.getElementById('comm-sl').value=v;document.getElementById('comm-in').value=v;render();}
+
+const tipbox=document.getElementById('tipbox');
+document.addEventListener('mousemove',e=>{if(tipbox.style.display==='block'){let x=e.clientX+14,y=e.clientY-8;if(x+tipbox.offsetWidth>innerWidth-10)x=e.clientX-tipbox.offsetWidth-14;if(y+tipbox.offsetHeight>innerHeight-10)y=innerHeight-tipbox.offsetHeight-10;if(y<10)y=10;tipbox.style.left=x+'px';tipbox.style.top=y+'px';}});
+function showT(el,label,calc){tipbox.innerHTML='<span class="tb-label">'+label+'</span><span class="tb-calc">'+calc.replace(/\n/g,'<br>')+'</span>';tipbox.style.display='block';}
+function hideT(){tipbox.style.display='none';}
+function aT(el,label,calc){el.addEventListener('mouseenter',()=>showT(el,label,calc));el.addEventListener('mouseleave',hideT);}
+
+function getAH(max){return S.hs.map((s,i)=>({...s,idx:i})).filter(s=>s.a).slice(0,max);}
+function assignD(slots){if(!slots.length)return[];const sorted=slots.slice().sort((a,b)=>a.s-b.s);const n=sorted.length,base=Math.floor(DOORS/n),extra=DOORS%n;return sorted.map((h,i)=>({...h,doors:base+(i<extra?1:0)}));}
+
+function calc(hObj,pc){
+  const isH=S.difficulty==='hard',isE=S.approach==='agg',vc=V[S.loot];
+  const vt=isE?hObj.ex:hObj.ue, tms=vt*pc;
+  const slots=getAH(pc), da=assignD(slots);
+  const hpd=isH?HH:HN, apd=isH?AH:AN;
+  let hackTotal=0; const hbd=[];
+  for(const h of da){const tpd=hpd*h.s+apd,ht=h.doors*tpd;hackTotal+=ht;hbd.push({idx:h.idx,doors:h.doors,speed:h.s,tpd,total:ht});}
+  const np=vc.u, commT=np*S.cpp, collMS=Math.max(0,tms-hackTotal-commT);
+  const uc=Math.min(Math.floor(collMS/vc.ct),vc.u);
+  const maxP=isH?vc.maxH:vc.maxN, pu=maxP/vc.u, gross=uc*pu;
+  const gc=GN[S.gunman].c, dc=DR[S.driver].c, hc=hObj.cut, tcp=gc+dc+hc;
+  const crewD=gross*tcp/100, net=gross-crewD;
+  const eliteEach=S.elite?(isH?100000:50000):0;
+  const mps=S.mp[pc]||[], mt=mps.reduce((s,p)=>s+p,0), hp=100-mt, ht2=net*hp/100+eliteEach;
+  const players=[{label:'Host',pct:hp,take:ht2,isHost:true}];
+  mps.forEach((p,i)=>players.push({label:'Player '+(i+2),pct:p,take:net*p/100+eliteEach,isHost:false}));
+  const totalWithElite=net+eliteEach*pc;
+  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,commT,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,gc,dc,hc,tcp,crewD,net,eliteEach,totalWithElite,hp,ht:ht2,players,bad:collMS<=0};
+}
+
+const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
+const fSec=s=>{const m=Math.floor(s/60),sec=s%60;return m>0?m+':'+sec.toString().padStart(2,'0'):sec+'s';};
+
+function tipMS(r){return fSec(r.vt)+' = '+r.vt+' seconds\n\u00d7 '+r.pc+' players\n= '+r.tms+' man-seconds';}
+function tipHack(r){
+  const isH=S.difficulty==='hard',hpd=isH?HH:HN,apd=isH?AH:AN,lines=[];
+  for(const h of r.hbd){lines.push('Hacker '+(h.idx+1)+': '+h.doors+' door'+(h.doors>1?'s':''));lines.push('  '+h.doors+' \u00d7 ('+hpd+' hack'+(hpd>1?'s':'')+' \u00d7 '+h.speed+'s + '+apd+'s animation)');lines.push('  = '+h.doors+' \u00d7 '+h.tpd+'s = '+h.total+' man-seconds');}
+  lines.push('\nTotal hacking: '+r.hackTotal+' man-seconds');return lines.join('\n');
+}
+function tipComm(r){return r.np+' piles \u00d7 '+S.cpp+'s per pile\n= '+r.commT+' man-seconds';}
+function tipColl(r){
+  const lines=['MAN-SECONDS BUDGET','Total: '+r.tms,'\u2212 Hacking: '+r.hackTotal,'\u2212 Commute: '+r.commT,'= '+r.collMS+' man-seconds for collection','','COLLECTION',r.collMS+' \u00f7 '+r.ct+'s per unit'];
+  const raw=Math.floor(r.collMS/r.ct);lines.push('= '+raw+' units (floored)');
+  if(raw>r.mu)lines.push('Capped at '+r.mu+' (all available)');
+  lines.push('\u2192 '+r.uc+' of '+r.mu+' collected');return lines.join('\n');
+}
+function tipGross(r){const isH=S.difficulty==='hard',vc=V[S.loot],mp=isH?vc.maxH:vc.maxN;return '$'+mp.toLocaleString('en-US')+' \u00f7 '+vc.u+' = '+fmt(r.pu)+'/unit\n'+r.uc+' \u00d7 '+fmt(r.pu)+'\n= '+fmt(r.gross);}
+function tipCrew(r){return 'Hacker: '+r.hc+'%\nGunman: '+r.gc+'%\nDriver: '+r.dc+'%\nTotal: '+r.tcp+'%\n\n'+fmt(r.gross)+' \u00d7 '+r.tcp+'% = '+fmt(r.crewD);}
+function tipNet(r){let s=fmt(r.gross)+' gross\n\u2212 '+fmt(r.crewD)+' crew ('+r.tcp+'%)\n= '+fmt(r.net)+' distributable';if(r.eliteEach>0)s+='\n+ '+fmt(r.eliteEach)+' elite \u00d7 '+r.pc+' players = '+fmt(r.eliteEach*r.pc)+'\n= '+fmt(r.totalWithElite)+' total to players';return s;}
+function tipP(r,p){let s=fmt(r.net)+' \u00d7 '+p.pct+'%\n= '+fmt(r.net*p.pct/100);if(r.eliteEach>0)s+='\n+ '+fmt(r.eliteEach)+' elite bonus';s+='\n= '+fmt(p.take);return s;}
+
+function render(){
+  const grid=document.getElementById('matrix-grid');grid.innerHTML='';
+  const all=[];for(const pc of[2,3,4])for(const h of H)all.push(calc(h,pc));
+  // Best team (total payout including elite)
+  const bT=all.reduce((a,b)=>b.totalWithElite>a.totalWithElite?b:a);const sT=all.slice().sort((a,b)=>b.totalWithElite-a.totalWithElite);const s2T=sT[1];
+  const tPct=s2T.totalWithElite>0?((bT.totalWithElite-s2T.totalWithElite)/s2T.totalWithElite*100).toFixed(1):'∞';
+  // Best host
+  const bH=all.reduce((a,b)=>b.ht>a.ht?b:a);const sH=all.slice().sort((a,b)=>b.ht-a.ht);const s2H=sH[1];
+  const hPct=s2H.ht>0?((bH.ht-s2H.ht)/s2H.ht*100).toFixed(1):'∞';
+
+  const rec=document.getElementById('rec-banner');
+  rec.innerHTML='<div class="verdict"><div class="verdict-label">McKillsey Recommendation</div>'+
+    '<p><strong>Best for the team:</strong> '+bT.pc+' players with '+bT.hacker.label+'. Combined player take peaks at <strong>'+fmt(bT.totalWithElite)+'</strong> (+'+tPct+'% vs '+fmt(s2T.totalWithElite)+' with '+s2T.pc+' players, '+s2T.hacker.label+').</p>'+
+    '<p><strong>Best for host:</strong> '+bH.pc+' players with '+bH.hacker.label+'. Host take peaks at <strong>'+fmt(bH.ht)+'</strong> (+'+hPct+'% vs '+fmt(s2H.ht)+' with '+s2H.pc+' players, '+s2H.hacker.label+').</p></div>';
+
+  for(const pc of[2,3,4]){
+    const col=document.createElement('div');col.className='matrix-column';
+    const hdr=document.createElement('div');hdr.className='column-header';
+    const mps=S.mp[pc],hostP=100-mps.reduce((s,p)=>s+p,0);
+    let cuts='<div class="column-cuts"><div class="cut-row"><span class="cut-label host">Host</span><span class="cut-val host">'+hostP+'%</span></div>';
+    for(let i=0;i<mps.length;i++){
+      const cd=mps[i]>15,ot=mps.reduce((s,p,j)=>j===i?s:s+p,0),cu=100-ot-mps[i]-5>=15;
+      cuts+='<div class="cut-row"><span class="cut-label">Player '+(i+2)+'</span><span class="cut-val">'+mps[i]+'%</span><div class="cut-controls"><button class="cut-btn" onclick="ac('+pc+','+i+',-1)"'+(cd?'':' disabled')+'>−</button><button class="cut-btn" onclick="ac('+pc+','+i+',1)"'+(cu?'':' disabled')+'>+</button></div></div>';
+    }
+    cuts+='</div>';
+    hdr.innerHTML='<div class="column-title">'+pc+' Players</div><div class="column-subtitle">Host + '+(pc-1)+' crew member'+(pc>2?'s':'')+'</div>'+cuts;
+    col.appendChild(hdr);
+
+    const results=H.map(h=>calc(h,pc));results.sort((a,b)=>b.totalWithElite-a.totalWithElite);
+    for(let rank=0;rank<3;rank++){
+      const r=results[rank],uid='c'+pc+'r'+rank;
+      const card=document.createElement('div');card.className='hacker-card rank-'+(rank+1);
+      let html='<div class="hacker-card-header"><span class="hacker-name">'+r.hacker.label+' — '+r.hacker.cut+'%</span><span class="hacker-rank">'+(rank===0?'Best':rank===1?'2nd':'3rd')+'</span></div><div class="hacker-card-body">';
+      if(r.bad)html+='<div class="warning-box">Insufficient vault time to collect any loot with these settings.</div>';
+      html+='<div class="sr"><span class="sr-l">Vault time</span><span class="sr-v">'+fSec(r.vt)+'</span></div>';
+      html+='<div class="sr"><span class="sr-l">Man-seconds</span><span class="sr-v tip" id="'+uid+'-ms">'+r.tms+'s</span></div>';
+      html+='<div class="sr"><span class="sr-l">Hacking cost</span><span class="sr-v tip" id="'+uid+'-hk">'+r.hackTotal+'s</span></div>';
+      html+='<div class="sr"><span class="sr-l">Commute cost</span><span class="sr-v tip" id="'+uid+'-cm">'+r.commT+'s</span></div>';
+      html+='<div class="sr"><span class="sr-l">Collected</span><span class="sr-v'+(r.uc===r.mu?' gr':'')+' tip" id="'+uid+'-cl">'+r.uc+' of '+r.mu+'</span></div>';
+      html+='<hr class="hdiv">';
+      html+='<div class="sr"><span class="sr-l">Gross take</span><span class="sr-v tip" id="'+uid+'-gr">'+fmt(r.gross)+'</span></div>';
+      html+='<div class="sr"><span class="sr-l">Crew ('+r.tcp+'%)</span><span class="sr-v neg tip" id="'+uid+'-cr">\u2212'+fmt(r.crewD)+'</span></div>';
+      html+='<hr class="hdiv">';
+      html+='<div class="sr"><span class="sr-l">Net to players</span><span class="sr-v hi tip" id="'+uid+'-nt">'+fmt(r.totalWithElite)+'</span></div>';
+      html+='<div class="cp-rows">';
+      for(let pi=0;pi<r.players.length;pi++){const p=r.players[pi],cls=p.isHost?' host':'';html+='<div class="cp-row"><span class="cp-l'+cls+'">'+p.label+' ('+p.pct+'%)</span><span class="cp-v'+cls+' tip" id="'+uid+'-p'+pi+'">'+fmt(p.take)+'</span></div>';}
+      html+='</div></div>';
+      card.innerHTML=html;col.appendChild(card);
+      setTimeout(()=>{
+        const e=id=>document.getElementById(id),a=(id,l,c)=>{const el=e(id);if(el)aT(el,l,c);};
+        a(uid+'-ms','Man-Seconds',tipMS(r));a(uid+'-hk','Hacking Cost',tipHack(r));
+        a(uid+'-cm','Commute Cost',tipComm(r));a(uid+'-cl','Units Collected',tipColl(r));
+        a(uid+'-gr','Gross Take',tipGross(r));a(uid+'-cr','Crew Deduction',tipCrew(r));
+        a(uid+'-nt','Net to Players',tipNet(r));
+        for(let pi=0;pi<r.players.length;pi++)a(uid+'-p'+pi,r.players[pi].label,tipP(r,r.players[pi]));
+      },0);
+    }
+    grid.appendChild(col);
+  }
+  updateUrl();
+}
+
+function ac(pc,mi,d){const p=S.mp[pc],nv=p[mi]+d*5;if(nv<15)return;const ot=p.reduce((s,v,i)=>i===mi?s:s+v,0);if(100-ot-nv<15)return;p[mi]=nv;render();}
+
+function buildUrl(){const parts=[S.loot,S.approach,S.difficulty,S.elite?'elite':'noelite','g'+GN[S.gunman].c,'d'+DR[S.driver].c];const as=S.hs.filter(s=>s.a);parts.push('h'+as.map(s=>s.s).join('-'));parts.push('c'+S.cpp);return'mckillsey.com/dch?'+parts.join(',');}
+function updateUrl(){document.getElementById('share-url-text').textContent=buildUrl();}
+function copyUrl(){const url='https://'+buildUrl();const btn=document.getElementById('share-copy-btn');const done=()=>{btn.textContent='Copied!';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},1800);};if(navigator.clipboard)navigator.clipboard.writeText(url).then(done).catch(()=>{const ta=document.createElement('textarea');ta.value=url;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done();});else{const ta=document.createElement('textarea');ta.value=url;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done();}}
+
+let ssData=null;
+function openFB(){document.getElementById('fb-overlay').classList.add('open');document.getElementById('fb-text').focus();}
+function closeFB(){document.getElementById('fb-overlay').classList.remove('open');document.getElementById('fb-status').textContent='';}
+function setSS(d){ssData=d;const z=document.getElementById('ss-zone'),p=document.getElementById('ss-preview'),h=document.getElementById('ss-hint');p.src=d;p.style.display='block';h.style.display='none';z.classList.add('has-image');}
+function clearSS(){ssData=null;const z=document.getElementById('ss-zone'),p=document.getElementById('ss-preview'),h=document.getElementById('ss-hint');p.src='';p.style.display='none';h.style.display='';z.classList.remove('has-image');document.getElementById('ss-file').value='';}
+function handleSS(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>setSS(ev.target.result);r.readAsDataURL(f);}
+document.addEventListener('paste',e=>{if(!document.getElementById('fb-overlay').classList.contains('open'))return;const items=e.clipboardData?.items;if(!items)return;for(const item of items){if(item.type.startsWith('image/')){const blob=item.getAsFile();const r=new FileReader();r.onload=ev=>setSS(ev.target.result);r.readAsDataURL(blob);break;}}});
+async function sendFB(){const text=document.getElementById('fb-text').value.trim();if(!text){document.getElementById('fb-status').textContent='Please describe the issue first.';return;}const btn=document.getElementById('fb-send'),st=document.getElementById('fb-status');btn.disabled=true;btn.textContent='Sending...';st.textContent='';let body='Page: '+location.href+'\n\nFeedback:\n'+text;if(ssData){try{const f=new FormData();f.append('key','a3cb2b5f84e2b4e2a7b6c1d9f8e3a4b5');f.append('image',ssData.split(',')[1]);const r=await fetch('https://api.imgbb.com/1/upload',{method:'POST',body:f});const d=await r.json();if(d.success)body+='\n\nScreenshot: '+d.data.url;}catch(e){body+='\n\n(Screenshot failed to upload)';}}const fd=new FormData();fd.append('access_key','25c0d000-546c-45cd-be70-ec9abcded581');fd.append('subject','McKillsey Error Report \u2014 Diamond Casino Heist');fd.append('message',body);try{const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});const result=await res.json();if(result.success){st.style.color='var(--green)';st.textContent='Sent. Thank you.';btn.textContent='Sent \u2713';setTimeout(()=>{closeFB();document.getElementById('fb-text').value='';clearSS();btn.disabled=false;btn.textContent='Send Report';st.style.color='';},1800);}else throw new Error();}catch(e){st.style.color='var(--red)';st.textContent='Failed to send. Try again.';btn.disabled=false;btn.textContent='Send Report';}}
+
+checkDev();render();
+</script>
+</body>
+</html>
