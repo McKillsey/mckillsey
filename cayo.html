@@ -829,16 +829,16 @@ function render() {
   // Update 72hr buff note under the toggle
   const buffMult = REPEAT_BUFF[state.primary];
   const buffNoteEl = document.getElementById('repeat-buff-note');
-  if (buffNoteEl) {
-    if (!state.repeatHeist) {
-      buffNoteEl.innerHTML = '';
-    } else if (buffMult === 1.0) {
-      buffNoteEl.innerHTML = '<span style="color:var(--cream-dim)">No buff — ' + PRIMARY_TARGETS[state.primary].label + ' primaries are not affected by the 72hr mechanic.</span>';
-    } else {
-      const pct = Math.round((buffMult - 1) * 100);
-      buffNoteEl.innerHTML = '<span style="color:var(--amber)">+' + pct + '% secondary value</span><span style="color:var(--cream-dim)"> — ' + PRIMARY_TARGETS[state.primary].label + ' primary.</span>';
-    }
-  }
+  if (buffNoteEl) { buffNoteEl.innerHTML = ""; }
+
+
+
+
+
+
+
+
+
 
   // Recommendation (verdict style) — show best vs next-best
   const sortedByHost = scenarios.slice().sort((a,b)=>b.hostPayout-a.hostPayout);
@@ -907,12 +907,16 @@ function render() {
     const buffLabel = hasBuff ? ` ×${parseFloat(sc.secBuff.toFixed(2)).toString()} 72hr buff` : '';
     const buffBadge = hasBuff ? '<span style="color:var(--amber);font-size:10px"> ×' + parseFloat(sc.secBuff.toFixed(2)).toString() + ' 72hr</span>' : '';
     const secLines = Object.entries(allItems).map(([lbl,v]) => {
-      const baseStr = hasBuff ? ` (base ${fmt(v.baseValue)}${buffLabel})` : '';
-      return `${fStk(v.stacks)}× ${lbl} = ${fmt(v.value)}${baseStr}`;
+      const base = hasBuff ? v.baseValue : v.value;
+      return `${fStk(v.stacks)}× ${lbl} = ${fmt(base)}`;
     });
     if (secLines.length === 0) secLines.push('No secondary loot');
-    if (hasBuff) secLines.push(`72hr buff: ×${parseFloat(sc.secBuff.toFixed(2)).toString()} (${state.primary} primary)`);
-    secLines.push(`Total: ${fmt(sc.secondary)}`);
+    if (hasBuff) {
+      const buffMult = parseFloat(sc.secBuff.toFixed(2)).toString();
+      secLines.push(`× ${buffMult} 72hr buff = ${fmt(sc.secondary)}`);
+    } else {
+      secLines.push(`Total: ${fmt(sc.secondary)}`);
+    }
     const tip_secondary = secLines.join('\n');
 
     const tip_safe    = `Range: $20,000–$99,000\nAverage: ${fmt(OFFICE_SAFE)}`;
