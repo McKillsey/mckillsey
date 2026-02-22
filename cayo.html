@@ -1029,6 +1029,7 @@ function render() {
   });
 
   updateShareUrl();
+  saveState();
 }
 
 function adjustMember(np,mi,delta) {
@@ -1039,9 +1040,53 @@ function adjustMember(np,mi,delta) {
   pcts[mi]=newP; render();
 }
 
+// ─── LOCAL STORAGE ───────────────────────────────────────────────────────
+
+function saveState() {
+  try {
+    localStorage.setItem('cayo_state', JSON.stringify({
+      primary:      state.primary,
+      hardMode:     state.hardMode,
+      eliteSelected:state.eliteSelected,
+      repeatHeist:  state.repeatHeist,
+      loot:         state.loot,
+      memberPcts:   state.memberPcts
+    }));
+  } catch(e) {}
+}
+
+function loadSavedState() {
+  try {
+    const saved = localStorage.getItem('cayo_state');
+    if (!saved) return;
+    const s = JSON.parse(saved);
+    if (s.primary      && s.primary in PRIMARY_TARGETS) state.primary = s.primary;
+    if (s.hardMode      !== undefined) state.hardMode      = s.hardMode;
+    if (s.eliteSelected !== undefined) state.eliteSelected = s.eliteSelected;
+    if (s.repeatHeist   !== undefined) state.repeatHeist   = s.repeatHeist;
+    if (s.loot) {
+      for (const t of Object.keys(state.loot)) {
+        if (s.loot[t] !== undefined) state.loot[t] = Math.min(6, Math.max(0, s.loot[t]));
+      }
+    }
+    if (s.memberPcts) {
+      for (const n of [2,3,4]) {
+        if (s.memberPcts[n] && Array.isArray(s.memberPcts[n])) {
+          state.memberPcts[n] = s.memberPcts[n];
+        }
+      }
+    }
+  } catch(e) {}
+}
+
 // ─── INIT ─────────────────────────────────────────────────────────────────
 
-parseUrlParams();
+// URL params take precedence; fall back to localStorage if no URL config present
+if (window.location.search) {
+  parseUrlParams();
+} else {
+  loadSavedState();
+}
 document.querySelectorAll('#primary-group .toggle-btn').forEach(b=>b.classList.toggle('active',b.dataset.val===state.primary));
 document.querySelectorAll('#hardmode-group .toggle-btn').forEach(b=>b.classList.toggle('active',(b.dataset.val==='yes')===state.hardMode));
 document.querySelectorAll('#elite-group .toggle-btn').forEach(b=>b.classList.toggle('active',(b.dataset.val==='yes')===state.eliteSelected));
