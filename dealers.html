@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Street Dealers — McKillsey & Company</title>
+<meta name="description" content="Street dealer economics in GTA Online. Why they're usually a bad deal, when 2× weeks flip the math, and the full unit-level breakdown.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3148;
+  --cream:#f0ead8;--cream-dim:#9aabbf;
+  --gold:#c9a84c;--gold-dim:#8a6f2e;
+  --green:#2dba72;--red:#d94f4f;--amber:#e08c2a;
+  --weekly:#f0c040;--weekly-bg:rgba(240,192,64,0.08);--weekly-border:rgba(240,192,64,0.35);
+  --rule:rgba(201,168,76,0.18);
+  --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--serif:'Playfair Display',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size:15px;line-height:1.65}
+
+/* HEADER */
+.site-header{border-bottom:1px solid var(--rule);padding:20px 48px;display:flex;align-items:center;gap:32px}
+.wordmark{font-family:var(--serif);font-weight:700;color:#b8c8d8;line-height:1.15;text-decoration:none}
+.wordmark .line1{display:block;font-size:26px}
+.wordmark .line2{display:block;font-size:22px;padding-left:1.1em}
+.header-tagline{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.1em;text-transform:uppercase;margin-left:auto}
+
+/* PAGE */
+.page{max-width:1400px;margin:0 auto;padding:44px 48px 80px}
+.page-title h1{font-family:var(--serif);font-size:34px;font-weight:900;line-height:1.1}
+.page-title .subtitle{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-top:6px}
+
+/* SECTION */
+.section{margin-top:36px}
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+
+/* VERDICT */
+.verdict{border:1px solid var(--rule);border-left:3px solid var(--gold);padding:18px 22px;margin-bottom:12px;background:rgba(201,168,76,.02)}
+.verdict.skip{border-left-color:var(--red);background:rgba(217,79,79,.03)}
+.verdict.go{border-left-color:var(--green);background:rgba(45,186,114,.03)}
+.verdict.wv{border-left-color:var(--weekly);background:var(--weekly-bg);border-color:var(--weekly-border)}
+.verdict-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.verdict.skip .verdict-label{color:var(--red)}
+.verdict.go .verdict-label{color:var(--green)}
+.verdict.wv .verdict-label{color:var(--weekly)}
+.verdict p{font-size:14px;color:var(--cream);line-height:1.7;margin-bottom:7px}
+.verdict p:last-child{margin-bottom:0}
+.verdict em{color:var(--cream-dim);font-style:normal}
+
+/* CONCEPT BOX */
+.concept-box{border:1px solid var(--rule);border-left:3px solid var(--cream-dim);padding:18px 22px;background:rgba(255,255,255,.01);margin-bottom:12px}
+.concept-box .verdict-label{color:var(--cream-dim)}
+.concept-box p{font-size:13px;color:var(--cream);line-height:1.7;margin-bottom:7px}
+.concept-box p:last-child{margin-bottom:0}
+.concept-box a{color:var(--gold);text-decoration:none;border-bottom:1px dashed var(--gold-dim)}
+
+/* TABLES */
+.table-wrap{overflow-x:auto;margin-top:0}
+.table-wrap table{width:100%;border-collapse:collapse;table-layout:auto}
+.table-wrap thead th{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-align:right;padding:9px 14px;border-bottom:1px solid var(--rule);white-space:nowrap;font-weight:500}
+.table-wrap thead th:first-child{text-align:left}
+.table-wrap tbody tr{border-bottom:1px solid rgba(201,168,76,.07)}
+.table-wrap tbody tr:hover{background:rgba(201,168,76,.03)}
+.table-wrap tbody tr.row-highlight{background:rgba(240,192,64,.06)}
+.table-wrap td{padding:11px 14px;text-align:right;font-family:var(--mono);font-size:13px;color:var(--cream);vertical-align:middle;white-space:nowrap}
+.table-wrap td:first-child{text-align:left;font-family:var(--sans);font-weight:500}
+.table-wrap td.neg{color:var(--red)}
+.table-wrap td.pos{color:var(--green)}
+.table-wrap td.best{color:var(--green);font-weight:600}
+.table-wrap td.dim{color:var(--cream-dim)}
+.table-wrap td.weekly{color:var(--weekly);font-weight:500}
+.range{font-size:12px;color:var(--cream-dim)}
+
+/* PRODUCT LABELS */
+.prod{display:flex;align-items:center;gap:8px}
+.prod-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.prod-dot.coke{background:#e0e0e0}
+.prod-dot.meth{background:#5ec4e8}
+.prod-dot.weed{background:#5ecf6d}
+.prod-dot.acid{background:#d4a5f5}
+.prod-name{font-family:var(--sans);font-weight:500}
+
+/* COMPARISON GRID */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:0}
+.comp-card{background:var(--navy-mid);border:1px solid var(--rule);padding:18px 20px}
+.comp-card.best-card{border-color:rgba(45,186,114,.35);background:rgba(45,186,114,.04)}
+.comp-card.worst-card{border-color:rgba(217,79,79,.25);background:rgba(217,79,79,.03)}
+.comp-card-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;display:block}
+.comp-card .comp-card-label{color:var(--cream-dim)}
+.comp-card.best-card .comp-card-label{color:var(--green)}
+.comp-card.worst-card .comp-card-label{color:var(--red)}
+.comp-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(201,168,76,.06)}
+.comp-row:last-child{border-bottom:none}
+.comp-prod{font-size:13px;color:var(--cream-dim)}
+.comp-val{font-family:var(--mono);font-size:13px}
+
+/* WEEKLY HIGHLIGHT SECTION */
+.weekly-section{border:1px solid var(--weekly-border);background:var(--weekly-bg);padding:24px 28px;margin-top:24px}
+.weekly-section .section-label{color:var(--weekly);border-bottom-color:var(--weekly-border)}
+
+/* MECHANICS GRID */
+.mech-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:0}
+.mech-card{background:var(--navy-mid);border:1px solid var(--rule);padding:16px 20px}
+.mech-title{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--cream);margin-bottom:8px}
+.mech-text{font-size:13px;color:var(--cream-dim);line-height:1.65}
+.mech-text strong{color:var(--cream);font-weight:500}
+
+/* TOOLTIP */
+#tipbox{position:fixed;z-index:9999;width:300px;background:#08111a;border:1px solid var(--gold);padding:12px 14px;font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--cream);pointer-events:none;display:none;box-shadow:0 8px 32px rgba(0,0,0,.6)}
+#tipbox .tb-label{color:var(--gold);font-size:9px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px;border-bottom:1px solid rgba(201,168,76,.2);padding-bottom:5px}
+#tipbox .tb-calc{color:var(--cream-dim)}
+#tipbox .tb-result{color:var(--green);font-weight:500;margin-top:5px;display:block}
+.tip{border-bottom:1px dashed rgba(201,168,76,.45);cursor:help}
+
+/* FEEDBACK */
+.feedback-btn{position:fixed;bottom:22px;right:22px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--gold);padding:9px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .15s;z-index:100}
+.feedback-btn:hover{background:var(--gold);color:var(--navy)}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;display:none;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--navy-mid);border:1px solid var(--rule);width:500px;max-width:calc(100vw - 40px);max-height:90vh;overflow-y:auto;padding:28px}
+.modal-title{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--cream);margin-bottom:4px}
+.modal-sub{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.08em;margin-bottom:22px}
+.modal-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block}
+.modal-textarea{width:100%;background:var(--navy);border:1px solid var(--rule);color:var(--cream);font-family:var(--sans);font-size:13px;padding:10px 12px;resize:vertical;min-height:90px;line-height:1.6;outline:none}
+.modal-textarea:focus{border-color:var(--gold)}
+.modal-footer{display:flex;align-items:center;justify-content:space-between;margin-top:18px;gap:12px}
+.modal-send-btn{background:var(--gold);border:none;color:var(--navy);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 22px;cursor:pointer;font-weight:500}
+.modal-send-btn:hover{background:var(--cream)}
+.modal-send-btn:disabled{opacity:.4;cursor:not-allowed}
+.modal-cancel-btn{background:none;border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:10px 16px;cursor:pointer}
+.modal-cancel-btn:hover{border-color:var(--cream-dim);color:var(--cream)}
+.modal-status{font-family:var(--mono);font-size:11px;color:var(--cream-dim);min-height:16px}
+
+@media(max-width:1100px){.comp-grid{grid-template-columns:1fr}.mech-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.page{padding:20px}.site-header{padding-left:20px;padding-right:20px}}
+</style>
+</head>
+<body>
+<div id="tipbox"></div>
+
+<header class="site-header">
+  <a href="/" class="wordmark"><span class="line1">McKillsey</span><span class="line2">&amp; Company</span></a>
+  <div class="header-tagline">Strategic Advisory &middot; Los Santos &middot; Blaine County</div>
+</header>
+
+<main class="page">
+
+<div class="page-title">
+  <h1>Street Dealers</h1>
+  <div class="subtitle">Insights &middot; Drug Sales Channel Analysis</div>
+</div>
+
+<!-- ═══ VERDICT ═══ -->
+<div class="section">
+  <div class="section-label">McKillsey Verdict</div>
+  <div class="verdict skip">
+    <div class="verdict-label">Default Recommendation &mdash; Skip</div>
+    <p>Street dealers exist to tempt you into selling product below what your businesses would earn. In most scenarios, they pay roughly supply cost &mdash; meaning you're donating your production time for pennies, or outright losing money on meth and weed. Your MC businesses and Nightclub sell for dramatically more per unit. The only product with a defensible normal-week margin is acid, and even that's modest.</p>
+    <p><em>The exception is 2&times; dealer weeks, covered below, which flip the math enough to be worth your time.</em></p>
+  </div>
+</div>
+
+<!-- ═══ UNIT ECONOMICS ═══ -->
+<div class="section">
+  <div class="section-label">Unit Economics &mdash; What Dealers Actually Pay</div>
+
+  <div class="concept-box" style="margin-bottom:16px">
+    <div class="verdict-label" style="color:var(--cream-dim)">How Dealer Pricing Works</div>
+    <p>Three dealers appear daily across Los Santos, each buying small quantities: 1 coke, 2 meth, 10 weed, and 10 acid. Each dealer has one premium product they'll pay double for. Prices vary within a range. Dealers pull from MC business stock first; if empty, they pull from Nightclub warehouse.</p>
+  </div>
+
+  <div class="table-wrap" style="margin-top:14px">
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align:left">Product</th>
+          <th>Qty</th>
+          <th>Supply<br>Cost</th>
+          <th>Normal<br>Price</th>
+          <th>Normal<br>Profit / Unit</th>
+          <th>Normal<br>Profit / Sale</th>
+          <th>Premium<br>Price</th>
+          <th>Premium<br>Profit / Unit</th>
+          <th>Premium<br>Profit / Sale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="prod"><span class="prod-dot coke"></span><span class="prod-name">Cocaine</span></div></td>
+          <td>1</td>
+          <td class="tip" data-tip-label="Coke Supply Cost" data-tip-calc="$75,000 per supply bar&#10;÷ 4 units produced&#10;= $18,750 per unit" data-tip-result="$18,750 / unit">$18,750</td>
+          <td class="tip" data-tip-label="Coke Normal Price" data-tip-calc="Dealers pay $19,000–$21,000&#10;per unit of cocaine" data-tip-result="$19K–$21K / unit">$19,000–$21,000</td>
+          <td class="pos tip" data-tip-label="Coke Normal Profit / Unit" data-tip-calc="$19,000–$21,000 price&#10;− $18,750 supply cost&#10;= $250–$2,250 per unit" data-tip-result="Barely positive">$250–$2,250</td>
+          <td class="pos tip" data-tip-label="Coke Normal Profit / Sale" data-tip-calc="$250–$2,250 per unit&#10;× 1 unit per dealer visit&#10;= $250–$2,250" data-tip-result="Pocket change">$250–$2,250</td>
+          <td class="tip" data-tip-label="Coke Premium Price" data-tip-calc="2× normal price&#10;= $38,000–$42,000 per unit" data-tip-result="$38K–$42K / unit">$38,000–$42,000</td>
+          <td class="pos tip" data-tip-label="Coke Premium Profit / Unit" data-tip-calc="$38,000–$42,000 price&#10;− $18,750 supply cost&#10;= $19,250–$23,250 per unit" data-tip-result="$19,250–$23,250">$19,250–$23,250</td>
+          <td class="pos tip" data-tip-label="Coke Premium Profit / Sale" data-tip-calc="$19,250–$23,250 per unit&#10;× 1 unit per dealer visit&#10;= $19,250–$23,250" data-tip-result="Decent, but rare">$19,250–$23,250</td>
+        </tr>
+        <tr>
+          <td><div class="prod"><span class="prod-dot meth"></span><span class="prod-name">Meth</span></div></td>
+          <td>2</td>
+          <td class="tip" data-tip-label="Meth Supply Cost" data-tip-calc="$75,000 per supply bar&#10;÷ 8 units produced&#10;= $9,375 per unit" data-tip-result="$9,375 / unit">$9,375</td>
+          <td class="tip" data-tip-label="Meth Normal Price" data-tip-calc="Dealers pay $8,250–$9,250&#10;per unit of meth" data-tip-result="$8,250–$9,250 / unit">$8,250–$9,250</td>
+          <td class="neg tip" data-tip-label="Meth Normal Profit / Unit" data-tip-calc="$8,250–$9,250 price&#10;− $9,375 supply cost&#10;= ($1,125)–($125)" data-tip-result="Net loss on every unit">($1,125)–($125)</td>
+          <td class="neg tip" data-tip-label="Meth Normal Profit / Sale" data-tip-calc="($1,125)–($125) per unit&#10;× 2 units per dealer visit&#10;= ($2,250)–($250)" data-tip-result="You lose money">($2,250)–($250)</td>
+          <td class="tip" data-tip-label="Meth Premium Price" data-tip-calc="2× normal price&#10;= $16,500–$18,500 per unit" data-tip-result="$16,500–$18,500 / unit">$16,500–$18,500</td>
+          <td class="pos tip" data-tip-label="Meth Premium Profit / Unit" data-tip-calc="$16,500–$18,500 price&#10;− $9,375 supply cost&#10;= $7,125–$9,125 per unit" data-tip-result="$7,125–$9,125">$7,125–$9,125</td>
+          <td class="pos tip" data-tip-label="Meth Premium Profit / Sale" data-tip-calc="$7,125–$9,125 per unit&#10;× 2 units per dealer visit&#10;= $14,250–$18,250" data-tip-result="$14,250–$18,250">$14,250–$18,250</td>
+        </tr>
+        <tr>
+          <td><div class="prod"><span class="prod-dot weed"></span><span class="prod-name">Weed</span></div></td>
+          <td>10</td>
+          <td class="tip" data-tip-label="Weed Supply Cost" data-tip-calc="$75,000 per supply bar&#10;÷ 50 units produced&#10;= $1,500 per unit" data-tip-result="$1,500 / unit">$1,500</td>
+          <td class="tip" data-tip-label="Weed Normal Price" data-tip-calc="Dealers pay $1,400–$1,600&#10;per unit of weed" data-tip-result="$1,400–$1,600 / unit">$1,400–$1,600</td>
+          <td class="neg tip" data-tip-label="Weed Normal Profit / Unit" data-tip-calc="$1,400–$1,600 price&#10;− $1,500 supply cost&#10;= ($100)–$100" data-tip-result="Break-even at best">($100)–$100</td>
+          <td class="neg tip" data-tip-label="Weed Normal Profit / Sale" data-tip-calc="($100)–$100 per unit&#10;× 10 units per dealer visit&#10;= ($1,000)–$1,000" data-tip-result="Break-even">($1,000)–$1,000</td>
+          <td class="tip" data-tip-label="Weed Premium Price" data-tip-calc="2× normal price&#10;= $2,800–$3,200 per unit" data-tip-result="$2,800–$3,200 / unit">$2,800–$3,200</td>
+          <td class="pos tip" data-tip-label="Weed Premium Profit / Unit" data-tip-calc="$2,800–$3,200 price&#10;− $1,500 supply cost&#10;= $1,300–$1,700 per unit" data-tip-result="$1,300–$1,700">$1,300–$1,700</td>
+          <td class="pos tip" data-tip-label="Weed Premium Profit / Sale" data-tip-calc="$1,300–$1,700 per unit&#10;× 10 units per dealer visit&#10;= $13,000–$17,000" data-tip-result="$13,000–$17,000">$13,000–$17,000</td>
+        </tr>
+        <tr>
+          <td><div class="prod"><span class="prod-dot acid"></span><span class="prod-name">Acid</span></div></td>
+          <td>10</td>
+          <td class="tip" data-tip-label="Acid Supply Cost" data-tip-calc="$60,000 per supply bar&#10;÷ 100 units produced&#10;= $600 per unit" data-tip-result="$600 / unit">$600</td>
+          <td class="tip" data-tip-label="Acid Normal Price" data-tip-calc="Dealers pay $1,385–$1,585&#10;per unit of acid" data-tip-result="$1,385–$1,585 / unit">$1,385–$1,585</td>
+          <td class="pos tip" data-tip-label="Acid Normal Profit / Unit" data-tip-calc="$1,385–$1,585 price&#10;− $600 supply cost&#10;= $785–$985 per unit" data-tip-result="Best normal margin">$785–$985</td>
+          <td class="pos tip" data-tip-label="Acid Normal Profit / Sale" data-tip-calc="$785–$985 per unit&#10;× 10 units per dealer visit&#10;= $7,850–$9,850" data-tip-result="$7,850–$9,850">$7,850–$9,850</td>
+          <td class="tip" data-tip-label="Acid Premium Price" data-tip-calc="2× normal price&#10;= $2,770–$3,170 per unit" data-tip-result="$2,770–$3,170 / unit">$2,770–$3,170</td>
+          <td class="pos tip" data-tip-label="Acid Premium Profit / Unit" data-tip-calc="$2,770–$3,170 price&#10;− $600 supply cost&#10;= $2,170–$2,570 per unit" data-tip-result="Best premium margin">$2,170–$2,570</td>
+          <td class="pos tip" data-tip-label="Acid Premium Profit / Sale" data-tip-calc="$2,170–$2,570 per unit&#10;× 10 units per dealer visit&#10;= $21,700–$25,700" data-tip-result="$21,700–$25,700">$21,700–$25,700</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<div class="verdict" style="margin-top:14px">
+    <div class="verdict-label">Reading the Table</div>
+    <p>At normal prices, coke yields pocket change, meth and weed are net negative, and acid is the only product with a real margin. Premium prices make everything profitable &mdash; but each dealer only pays premium on one product, and the quantities are too small to build a strategy around.</p>
+  </div>
+</div>
+
+<!-- ═══ OPPORTUNITY COST ═══ -->
+<div class="section">
+  <div class="section-label">Opportunity Cost &mdash; Same Product, Different Channels</div>
+
+  <div class="concept-box" style="margin-bottom:16px">
+    <div class="verdict-label" style="color:var(--cream-dim)">What This Table Shows</div>
+    <p>The same units a dealer buys from you can be sold through your MC businesses, Acid Lab, or Nightclub for significantly more. Values shown per dealer visit quantity (1 coke, 2 meth, 10 weed, 10 acid). MC and Acid Lab values assume full upgrades and applicable front business bonuses (e.g. Smoke on the Water for weed). HDB = High Demand Bonus (+50% in a full lobby), which is how McKillsey recommends selling.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th style="text-align:left">Product</th>
+        <th>E[Sell to Dealer]</th>
+        <th>MC / Acid Lab Sell</th>
+        <th>MC / Acid Lab + HDB</th>
+        <th>Nightclub Sell</th>
+        <th>Nightclub + HDB</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="prod"><span class="prod-dot coke"></span><span class="prod-name">Cocaine <span style="font-size:11px;color:var(--cream-dim);font-weight:400">&times;1</span></span></div></td>
+          <td class="tip" data-tip-label="Coke E[Dealer Revenue]" data-tip-calc="15% chance premium: $40,000&#10;85% chance normal: $20,000&#10;&#10;E[price] = 0.15 &times; $40,000 + 0.85 &times; $20,000&#10;= $6,000 + $17,000 = $23,000&#10;&times; 1 unit = $23,000 per visit" data-tip-result="$23,000" style="color:var(--red)">$23,000</td>
+          <td><span class="tip" data-tip-label="Coke MC Sell" data-tip-calc="$52,500 per unit &times; 1 unit&#10;No front bonus for coke" data-tip-result="$52,500">$52,500</span> <span style="color:var(--green);font-size:11px">+128%</span></td>
+          <td><span class="tip" data-tip-label="Coke MC + HDB" data-tip-calc="$52,500 &times; 1.50 HDB&#10;= $78,750" data-tip-result="$78,750" style="color:var(--green);font-weight:500">$78,750</span> <span style="color:var(--green);font-size:11px">+242%</span></td>
+          <td><span class="tip" data-tip-label="Coke NC Sell" data-tip-calc="South American Imports&#10;$20,000 per unit &times; 1&#10;Zero supply cost" data-tip-result="$20,000">$20,000</span> <span style="color:var(--cream-dim);font-size:11px">&minus;13%</span></td>
+          <td><span class="tip" data-tip-label="Coke NC + HDB" data-tip-calc="$20,000 &times; 1.50 HDB&#10;= $30,000&#10;Zero supply cost" data-tip-result="$30,000" style="color:var(--green)">$30,000</span> <span style="color:var(--green);font-size:11px">+30%</span></td>
+        </tr>
+        <tr>
+          <td><div class="prod"><span class="prod-dot meth"></span><span class="prod-name">Meth <span style="font-size:11px;color:var(--cream-dim);font-weight:400">&times;2</span></span></div></td>
+          <td class="tip" data-tip-label="Meth E[Dealer Revenue]" data-tip-calc="20% chance premium: $17,500/unit&#10;80% chance normal: $8,750/unit&#10;&#10;E[price] = 0.20 &times; $17,500 + 0.80 &times; $8,750&#10;= $3,500 + $7,000 = $10,500/unit&#10;&times; 2 units = $21,000 per visit" data-tip-result="$21,000" style="color:var(--red)">$21,000</td>
+          <td><span class="tip" data-tip-label="Meth MC Sell" data-tip-calc="$22,313 per unit &times; 2 units&#10;= $44,626" data-tip-result="$44,626">$44,626</span> <span style="color:var(--green);font-size:11px">+113%</span></td>
+          <td><span class="tip" data-tip-label="Meth MC + HDB" data-tip-calc="$22,313 &times; 1.50 HDB &times; 2&#10;= $66,939" data-tip-result="$66,939" style="color:var(--green);font-weight:500">$66,939</span> <span style="color:var(--green);font-size:11px">+219%</span></td>
+          <td><span class="tip" data-tip-label="Meth NC Sell" data-tip-calc="Pharmaceutical Research&#10;$8,500 per unit &times; 2&#10;= $17,000&#10;Zero supply cost" data-tip-result="$17,000">$17,000</span> <span style="color:var(--cream-dim);font-size:11px">&minus;19%</span></td>
+          <td><span class="tip" data-tip-label="Meth NC + HDB" data-tip-calc="$8,500 &times; 1.50 &times; 2&#10;= $25,500&#10;Zero supply cost" data-tip-result="$25,500" style="color:var(--green)">$25,500</span> <span style="color:var(--green);font-size:11px">+21%</span></td>
+        </tr>
+        <tr>
+          <td><div class="prod"><span class="prod-dot weed"></span><span class="prod-name">Weed <span style="font-size:11px;color:var(--cream-dim);font-weight:400">&times;10</span></span></div></td>
+          <td class="tip" data-tip-label="Weed E[Dealer Revenue]" data-tip-calc="30% chance premium: $3,000/unit&#10;70% chance normal: $1,500/unit&#10;&#10;E[price] = 0.30 &times; $3,000 + 0.70 &times; $1,500&#10;= $900 + $1,050 = $1,950/unit&#10;&times; 10 units = $19,500 per visit" data-tip-result="$19,500" style="color:var(--red)">$19,500</td>
+          <td><span class="tip" data-tip-label="Weed MC + Front" data-tip-calc="$3,938 &times; 1.35 Smoke on Water&#10;= $5,316 &times; 10 = $53,163" data-tip-result="$53,163">$53,163</span> <span style="color:var(--green);font-size:11px">+173%</span></td>
+          <td><span class="tip" data-tip-label="Weed MC + Front + HDB" data-tip-calc="$5,316 &times; 1.50 HDB&#10;= $7,974 &times; 10 = $79,740" data-tip-result="$79,740" style="color:var(--green);font-weight:500">$79,740</span> <span style="color:var(--green);font-size:11px">+309%</span></td>
+          <td><span class="tip" data-tip-label="Weed NC Sell" data-tip-calc="Organic Produce&#10;$3,000 per unit &times; 10&#10;= $30,000&#10;Zero supply cost" data-tip-result="$30,000">$30,000</span> <span style="color:var(--green);font-size:11px">+54%</span></td>
+          <td><span class="tip" data-tip-label="Weed NC + HDB" data-tip-calc="$3,000 &times; 1.50 &times; 10&#10;= $45,000&#10;Zero supply cost" data-tip-result="$45,000" style="color:var(--green)">$45,000</span> <span style="color:var(--green);font-size:11px">+131%</span></td>
+        </tr>
+        <tr>
+          <td><div class="prod"><span class="prod-dot acid"></span><span class="prod-name">Acid <span style="font-size:11px;color:var(--cream-dim);font-weight:400">&times;10</span></span></div></td>
+          <td class="tip" data-tip-label="Acid E[Dealer Revenue]" data-tip-calc="35% chance premium: $2,970/unit&#10;65% chance normal: $1,485/unit&#10;&#10;E[price] = 0.35 &times; $2,970 + 0.65 &times; $1,485&#10;= $1,040 + $965 = $2,005/unit&#10;&times; 10 units = $20,048 per visit" data-tip-result="$20,048" style="color:var(--red)">$20,048</td>
+          <td><span class="tip" data-tip-label="Acid Lab Sell" data-tip-calc="$2,095 per unit &times; 10&#10;= $20,950" data-tip-result="$20,950">$20,950</span> <span style="color:var(--green);font-size:11px">+5%</span></td>
+          <td><span class="tip" data-tip-label="Acid Lab + HDB" data-tip-calc="$2,095 &times; 1.50 HDB &times; 10&#10;= $31,425" data-tip-result="$31,425" style="color:var(--green);font-weight:500">$31,425</span> <span style="color:var(--green);font-size:11px">+57%</span></td>
+          <td colspan="2" style="text-align:center;color:var(--cream-dim);font-style:italic;font-family:var(--sans);font-size:12px">Acid is not a Nightclub product</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="verdict" style="margin-top:14px">
+    <div class="verdict-label">The Math Is Clear</div>
+    <p>Even accounting for the chance of premium pricing, MC and Acid Lab sells with HDB earn <strong>2&times; to 4&times; more</strong> than expected dealer revenue for the same product. Even Nightclub sells &mdash; which cost nothing to produce &mdash; match or beat dealer prices. Every unit you divert to a dealer is a unit you're selling at a steep discount to what your businesses would earn.</p>
+  </div>
+</div>
+
+<!-- ═══ 2× WEEK ═══ -->
+<div class="section">
+  <div class="weekly-section">
+    <div class="section-label">When 2&times; Dealer Week Changes the Math</div>
+
+    <div class="verdict wv">
+      <div class="verdict-label">2&times; Week Recommendation &mdash; Worth Your Time (with caveats)</div>
+      <p>During 2&times; weeks, all dealer prices double &mdash; but your MC businesses and Acid Lab still pay more per unit. If you sell your full stock regularly, you're still better off selling through your businesses (or through your Acid Lab with HDB). Dealers don't change that math.</p>
+      <p>Where 2&times; dealers shine is <strong>spare capacity</strong>. If you don't sell the moment you hit full stock &mdash; which realistically describes most players &mdash; dealers let you monetize production that would otherwise sit idle. Three dealer visits per day takes ~15 minutes of driving for an expected <strong>$325,785</strong> in passive-adjacent income on top of your normal rotation.</p>
+      <p>Players who sell Nightclub only and skip MC sells should sell their coke, meth, and acid to dealers during 2&times; weeks &mdash; but not weed, which still earns more through the Nightclub with HDB.</p>
+    </div>
+
+    <div class="section-label" style="margin-top:22px;margin-bottom:10px;font-size:9px;color:var(--weekly);border-bottom-color:var(--weekly-border)">Expected Daily Profit &mdash; 2&times; Week</div>
+
+    <div class="concept-box" style="margin-bottom:14px;border-left-color:var(--weekly)">
+      <div class="verdict-label" style="color:var(--weekly)">Premium Probability</div>
+      <p>Each dealer designates one product as premium (2&times; their already-doubled price). Probabilities: Cocaine 15%, Meth 20%, Weed 30%, Acid 35%. The expected values below weight normal and premium outcomes accordingly.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th style="text-align:left">Product</th>
+          <th>Qty</th>
+          <th>Supply Cost</th>
+          <th>E[Price] / Unit</th>
+          <th>E[Profit] / Visit</th>
+          <th>E[Profit] / Day</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td><div class="prod"><span class="prod-dot coke"></span><span class="prod-name">Cocaine</span></div></td>
+            <td>1</td>
+            <td>$18,750</td>
+            <td class="tip weekly" data-tip-label="Coke 2&times; Expected Price" data-tip-calc="15% chance premium: $40,000 &times; 2 = $80,000&#10;85% chance normal: $20,000 &times; 2 = $40,000&#10;E[price] = 0.15 &times; $80K + 0.85 &times; $40K&#10;= $12,000 + $34,000 = $46,000" data-tip-result="$46,000 / unit">$46,000</td>
+            <td class="tip weekly" data-tip-label="Coke 2&times; Profit / Visit" data-tip-calc="$46,000 E[revenue] &times; 1 unit&#10;&minus; $18,750 supply&#10;= $27,250" data-tip-result="$27,250">$27,250</td>
+            <td class="tip weekly" data-tip-label="Coke 2&times; Daily" data-tip-calc="$27,250 &times; 3 dealers&#10;= $81,750" data-tip-result="$81,750 / day">$81,750</td>
+          </tr>
+          <tr>
+            <td><div class="prod"><span class="prod-dot meth"></span><span class="prod-name">Meth</span></div></td>
+            <td>2</td>
+            <td>$18,750</td>
+            <td class="tip weekly" data-tip-label="Meth 2&times; Expected Price" data-tip-calc="20% chance premium: $8,750 &times; 4 = $35,000&#10;80% chance normal: $8,750 &times; 2 = $17,500&#10;E[price] = 0.20 &times; $35K + 0.80 &times; $17.5K&#10;= $7,000 + $14,000 = $21,000" data-tip-result="$21,000 / unit">$21,000</td>
+            <td class="tip weekly" data-tip-label="Meth 2&times; Profit / Visit" data-tip-calc="$21,000 &times; 2 units = $42,000&#10;&minus; $18,750 supply&#10;= $23,250" data-tip-result="$23,250">$23,250</td>
+            <td class="tip weekly" data-tip-label="Meth 2&times; Daily" data-tip-calc="$23,250 &times; 3 dealers&#10;= $69,750" data-tip-result="$69,750 / day">$69,750</td>
+          </tr>
+          <tr>
+            <td><div class="prod"><span class="prod-dot weed"></span><span class="prod-name">Weed</span></div></td>
+            <td>10</td>
+            <td>$15,000</td>
+            <td class="tip weekly" data-tip-label="Weed 2&times; Expected Price" data-tip-calc="30% chance premium: $1,500 &times; 4 = $6,000&#10;70% chance normal: $1,500 &times; 2 = $3,000&#10;E[price] = 0.30 &times; $6K + 0.70 &times; $3K&#10;= $1,800 + $2,100 = $3,900" data-tip-result="$3,900 / unit">$3,900</td>
+            <td class="tip weekly" data-tip-label="Weed 2&times; Profit / Visit" data-tip-calc="$3,900 &times; 10 units = $39,000&#10;&minus; $15,000 supply&#10;= $24,000" data-tip-result="$24,000">$24,000</td>
+            <td class="tip weekly" data-tip-label="Weed 2&times; Daily" data-tip-calc="$24,000 &times; 3 dealers&#10;= $72,000" data-tip-result="$72,000 / day">$72,000</td>
+          </tr>
+          <tr>
+            <td><div class="prod"><span class="prod-dot acid"></span><span class="prod-name">Acid</span></div></td>
+            <td>10</td>
+            <td>$6,000</td>
+            <td class="tip weekly" data-tip-label="Acid 2&times; Expected Price" data-tip-calc="35% chance premium: $1,485 &times; 4 = $5,940&#10;65% chance normal: $1,485 &times; 2 = $2,970&#10;E[price] = 0.35 &times; $5,940 + 0.65 &times; $2,970&#10;= $2,079 + $1,931 = $4,010" data-tip-result="$4,010 / unit">$4,010</td>
+            <td class="tip weekly" data-tip-label="Acid 2&times; Profit / Visit" data-tip-calc="$4,010 &times; 10 units = $40,095&#10;&minus; $6,000 supply&#10;= $34,095" data-tip-result="$34,095">$34,095</td>
+            <td class="tip weekly" data-tip-label="Acid 2&times; Daily" data-tip-calc="$34,095 &times; 3 dealers&#10;= $102,285" data-tip-result="$102,285 / day">$102,285</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr style="border-top:1px solid var(--weekly-border)">
+            <td colspan="4"></td>
+            <td style="text-align:right;color:var(--weekly);font-weight:500;font-family:var(--mono);font-size:11px;letter-spacing:.1em">DAILY TOTAL</td>
+            <td style="color:var(--weekly);font-weight:600;font-size:15px">$325,785</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="section-label" style="margin-top:28px;margin-bottom:10px;font-size:9px;color:var(--weekly);border-bottom-color:var(--weekly-border)">2&times; Dealer vs. Your Alternatives &mdash; Per Dealer Visit</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+
+      <div>
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:8px">MC / Acid Lab Stock &mdash; Profit <span style="opacity:.5">(revenue &minus; supply cost)</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr>
+              <th style="text-align:left">Product</th>
+              <th>2&times; Dealer</th>
+              <th>Business Sell</th>
+              <th>Business + HDB</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td><div class="prod"><span class="prod-dot coke"></span><span class="prod-name">Cocaine</span></div></td>
+                <td class="tip weekly" data-tip-label="Coke 2&times; Dealer Profit" data-tip-calc="$40,000 revenue&#10;&minus; $18,750 supply&#10;= $21,250" data-tip-result="$21,250">$21,250</td>
+                <td class="tip" data-tip-label="Coke MC Sell Profit" data-tip-calc="$52,500 revenue&#10;&minus; $18,750 supply&#10;= $33,750" data-tip-result="$33,750">$33,750</td>
+                <td class="tip" data-tip-label="Coke MC + HDB Profit" data-tip-calc="$78,750 revenue&#10;&minus; $18,750 supply&#10;= $60,000" data-tip-result="$60,000" style="color:var(--green);font-weight:500">$60,000 <span style="font-size:11px;font-weight:400">+182%</span></td>
+              </tr>
+              <tr>
+                <td><div class="prod"><span class="prod-dot meth"></span><span class="prod-name">Meth</span></div></td>
+                <td class="tip weekly" data-tip-label="Meth 2&times; Dealer Profit" data-tip-calc="$35,000 revenue&#10;&minus; $18,750 supply&#10;= $16,250" data-tip-result="$16,250">$16,250</td>
+                <td class="tip" data-tip-label="Meth MC Sell Profit" data-tip-calc="$44,626 revenue&#10;&minus; $18,750 supply&#10;= $25,876" data-tip-result="$25,876">$25,876</td>
+                <td class="tip" data-tip-label="Meth MC + HDB Profit" data-tip-calc="$66,939 revenue&#10;&minus; $18,750 supply&#10;= $48,189" data-tip-result="$48,189" style="color:var(--green);font-weight:500">$48,189 <span style="font-size:11px;font-weight:400">+197%</span></td>
+              </tr>
+              <tr>
+                <td><div class="prod"><span class="prod-dot weed"></span><span class="prod-name">Weed</span></div></td>
+                <td class="tip weekly" data-tip-label="Weed 2&times; Dealer Profit" data-tip-calc="$30,000 revenue&#10;&minus; $15,000 supply&#10;= $15,000" data-tip-result="$15,000">$15,000</td>
+                <td class="tip" data-tip-label="Weed MC + Front Profit" data-tip-calc="$53,163 revenue (with Smoke on Water)&#10;&minus; $15,000 supply&#10;= $38,163" data-tip-result="$38,163">$38,163</td>
+                <td class="tip" data-tip-label="Weed MC + Front + HDB Profit" data-tip-calc="$79,740 revenue&#10;&minus; $15,000 supply&#10;= $64,740" data-tip-result="$64,740" style="color:var(--green);font-weight:500">$64,740 <span style="font-size:11px;font-weight:400">+332%</span></td>
+              </tr>
+              <tr>
+                <td><div class="prod"><span class="prod-dot acid"></span><span class="prod-name">Acid</span></div></td>
+                <td class="tip weekly" data-tip-label="Acid 2&times; Dealer Profit" data-tip-calc="$29,700 revenue&#10;&minus; $6,000 supply&#10;= $23,700" data-tip-result="$23,700">$23,700</td>
+                <td class="tip" data-tip-label="Acid Lab Sell Profit" data-tip-calc="$20,950 revenue&#10;&minus; $6,000 supply&#10;= $14,950" data-tip-result="$14,950">$14,950</td>
+                <td class="tip" data-tip-label="Acid Lab + HDB Profit" data-tip-calc="$31,425 revenue&#10;&minus; $6,000 supply&#10;= $25,425" data-tip-result="$25,425" style="color:var(--green)">$25,425 <span style="font-size:11px;font-weight:400">+7%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--cream-dim);margin-top:8px;line-height:1.5;opacity:.7">MC sells still earn more, but acid is within 7% through dealers at 2&times;.</div>
+      </div>
+
+      <div>
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:8px">Nightclub Stock &mdash; Gross <span style="opacity:.5">(no supply cost)</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr>
+              <th style="text-align:left">Product</th>
+              <th>2&times; Dealer</th>
+              <th>NC Sell</th>
+              <th>NC + HDB</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td><div class="prod"><span class="prod-dot coke"></span><span class="prod-name">South Am.</span></div></td>
+                <td class="weekly" style="font-weight:600">$40,000</td>
+                <td>$20,000</td>
+                <td class="tip" data-tip-label="Coke NC + HDB" data-tip-calc="$20,000 &times; 1.50 HDB&#10;= $30,000" data-tip-result="$30,000">$30,000 <span style="color:var(--weekly);font-size:11px">&larr; dealer wins</span></td>
+              </tr>
+              <tr>
+                <td><div class="prod"><span class="prod-dot meth"></span><span class="prod-name">Pharma.</span></div></td>
+                <td class="weekly" style="font-weight:600">$35,000</td>
+                <td>$17,000</td>
+                <td class="tip" data-tip-label="Meth NC + HDB" data-tip-calc="$8,500 &times; 1.50 &times; 2 units&#10;= $25,500" data-tip-result="$25,500">$25,500 <span style="color:var(--weekly);font-size:11px">&larr; dealer wins</span></td>
+              </tr>
+              <tr>
+                <td><div class="prod"><span class="prod-dot weed"></span><span class="prod-name">Organic</span></div></td>
+                <td class="weekly">$30,000</td>
+                <td>$30,000</td>
+                <td class="tip" data-tip-label="Weed NC + HDB" data-tip-calc="$3,000 &times; 1.50 &times; 10 units&#10;= $45,000" data-tip-result="$45,000" style="color:var(--green);font-weight:500">$45,000 <span style="font-size:11px;font-weight:400">+50%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--weekly);margin-top:8px;line-height:1.5"><strong>At 2&times;, selling NC coke and meth to dealers beats a Nightclub sell &mdash; even with HDB.</strong></div>
+      </div>
+
+    </div>
+
+        <div class="verdict wv" style="margin-top:14px">
+      <div class="verdict-label">McKillsey&rsquo;s 2&times; Week Take</div>
+      <p>MC businesses and Acid Lab still pay more per unit &mdash; but the gap narrows considerably during 2&times; weeks. The key difference is effort: dealer sales require ~5 minutes of driving per stop with zero setup, while MC sells require full stock, crew coordination, and sell mission time. During 2&times; weeks, dealers become a reasonable low-effort source of income &mdash; $325K/day for 15 minutes of casual driving on top of your normal rotation.</p>
+      <p>The standout: <strong>Acid at 2&times; is within 7% of an Acid Lab sell with HDB</strong>, making dealers nearly as profitable, though the low quantities of product that dealers buy limits the potential for this strategy.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ MECHANICS ═══ -->
+<div class="section">
+  <div class="section-label">Dealer Mechanics Reference</div>
+
+  <div class="mech-grid">
+    <div class="mech-card">
+      <div class="mech-title">Availability</div>
+      <div class="mech-text">Three dealers spawn daily across Los Santos. Locations rotate. Each buys all four products in fixed quantities: <strong>1 coke, 2 meth, 10 weed, 10 acid</strong> per visit.</div>
+    </div>
+    <div class="mech-card">
+      <div class="mech-title">Premium Product</div>
+      <div class="mech-text">Each dealer designates one product as premium, paying <strong>2&times; the normal price</strong> for that product only. Probabilities: Cocaine 15%, Meth 20%, Weed 30%, Acid 35%. Premium assignments rotate with dealer locations.</div>
+    </div>
+    <div class="mech-card">
+      <div class="mech-title">Stock Priority</div>
+      <div class="mech-text">Dealers pull from <strong>MC business stock first</strong>. If your MC business is empty for that product, they pull from your Nightclub warehouse instead. You cannot choose which source to sell from.</div>
+    </div>
+    <div class="mech-card">
+      <div class="mech-title">Production Notes</div>
+      <div class="mech-text">MC businesses produce the same quantity per supply bar regardless of upgrades &mdash; upgrades only affect speed. Acid requires the <strong>equipment upgrade</strong> to produce more per supply cycle (150 min standard, 90 min boosted).</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ METHODOLOGY ═══ -->
+<div class="section">
+  <div class="section-label">Methodology</div>
+  <div class="concept-box">
+    <div class="verdict-label" style="color:var(--cream-dim)">Data Sources & Assumptions</div>
+    <p>Supply costs assume fully upgraded MC businesses and standard acid lab. Dealer prices are ranges observed in-game &mdash; midpoints used for profit calculations where a single figure is shown. MC business sell values are per-unit remote sell prices with full upgrades, no lobby bonus. Nightclub values are per-unit with full equipment upgrade. Per-unit values for the Nightclub column use the standard $/unit without the High Demand Bonus.</p>
+    <p>See <a href="/mc">/mc</a> for full MC business analysis. Weekly bonus impact on dealers is covered in <a href="/weekly">/weekly</a> when active.</p>
+  </div>
+</div>
+
+</main>
+
+<button class="feedback-btn" onclick="openFeedback()">Report Error / Suggest Change</button>
+<div class="modal-overlay" id="feedback-overlay" onclick="if(event.target===this)closeFeedback()">
+  <div class="modal">
+    <div class="modal-title">Report an Error</div>
+    <div class="modal-sub">No login required.</div>
+    <label class="modal-label" style="margin-top:4px">What's wrong?</label>
+    <textarea class="modal-textarea" id="feedback-text" placeholder="Describe the error or suggest a change..."></textarea>
+    <div class="modal-footer">
+      <div class="modal-status" id="modal-status"></div>
+      <div style="display:flex;gap:8px">
+        <button class="modal-cancel-btn" onclick="closeFeedback()">Cancel</button>
+        <button class="modal-send-btn" id="modal-send-btn" onclick="submitFeedback()">Send Report</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// TOOLTIP
+const tipbox=document.getElementById('tipbox');let activeTip=null;
+document.addEventListener('mouseover',e=>{const el=e.target.closest('.tip');if(!el)return;activeTip=el;const l=el.dataset.tipLabel||'',c=el.dataset.tipCalc||'',r=el.dataset.tipResult||'';tipbox.innerHTML=(l?'<span class="tb-label">'+l+'</span>':'')+(c?'<span class="tb-calc">'+c.replace(/\n/g,'<br>').replace(/&#10;/g,'<br>')+'</span>':'')+(r?'<span class="tb-result">'+r+'</span>':'');tipbox.style.display='block';posTip(e);});
+document.addEventListener('mousemove',e=>{if(!activeTip)return;if(!e.target.closest('.tip')){tipbox.style.display='none';activeTip=null;return;}posTip(e);});
+document.addEventListener('mouseout',e=>{if(e.target.closest('.tip')){tipbox.style.display='none';activeTip=null;}});
+function posTip(e){const p=16;let x=e.clientX+p,y=e.clientY+p;if(x+tipbox.offsetWidth>window.innerWidth-p)x=e.clientX-tipbox.offsetWidth-p;if(y+tipbox.offsetHeight>window.innerHeight-p)y=e.clientY-tipbox.offsetHeight-p;tipbox.style.left=x+'px';tipbox.style.top=y+'px';}
+
+// FEEDBACK
+function openFeedback(){document.getElementById('feedback-overlay').classList.add('open');document.getElementById('feedback-text').focus();}
+function closeFeedback(){document.getElementById('feedback-overlay').classList.remove('open');document.getElementById('modal-status').textContent='';}
+async function submitFeedback(){const text=document.getElementById('feedback-text').value.trim();if(!text){document.getElementById('modal-status').textContent='Please describe the issue.';return;}const btn=document.getElementById('modal-send-btn'),status=document.getElementById('modal-status');btn.disabled=true;btn.textContent='Sending...';const fd=new FormData();fd.append('access_key','25c0d000-546c-45cd-be70-ec9abcded581');fd.append('subject','McKillsey Error Report — Dealers');fd.append('message','Page: '+window.location.href+'\n\n'+text);try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});const res=await r.json();if(res.success){status.style.color='var(--green)';status.textContent='Sent. Thank you.';btn.textContent='Sent ✓';setTimeout(()=>{closeFeedback();document.getElementById('feedback-text').value='';btn.disabled=false;btn.textContent='Send Report';status.style.color='';},1800);}else throw new Error();}catch(e){status.style.color='var(--red)';status.textContent='Failed. Try again.';btn.disabled=false;btn.textContent='Send Report';}}
+</script>
+</body>
+</html>
