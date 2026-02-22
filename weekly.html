@@ -36,7 +36,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .reset-track:hover{animation-play-state:paused}
 .reset-city{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--cream-dim);padding:0 20px;white-space:nowrap}
 .reset-city .ct{color:var(--gold);font-weight:500}
-@keyframes resetScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes resetScroll{from{transform:translateX(0)}to{transform:translateX(-25%)}}
 
 /* ── PAGE ── */
 .page{max-width:1400px;margin:0 auto;padding:44px 48px 80px}
@@ -282,7 +282,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       <span class="take-icon">🏍️</span>
       <div class="take-headline">2× Biker Contracts, MC Work & Challenges</div>
       <div class="take-body">
-        If you're chasing the 50 Clubhouse Contracts needed for the Tier 4 challenge, this is the week to grind them — the 2× RP sweetens an otherwise tedious requirement. For everyone else, the payouts are not competitive with running your actual MC businesses, and the time is better spent on the Cash sells and dealer sales above.
+        If you're chasing the 50 Clubhouse Contracts needed for the Tier 4 challenge, this is the week to grind them — the 2× RP sweetens an otherwise tedious requirement. For everyone else, the payouts are not competitive with running your actual MC businesses, and the time is better spent elsewhere.
       </div>
       <span class="take-verdict skip">Completionists only</span>
     </div>
@@ -339,19 +339,19 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       </div>
       <div class="ref-item">
         <span class="ref-multiplier x2">2×$</span>
-        <div class="ref-text"><strong>Street Dealer Sales</strong> — Usually break-even. This week: worth it. See <a href="/dealers" style="color:var(--gold);text-decoration:none;border-bottom:1px dashed var(--gold-dim)">/dealers</a>.</div>
+        <div class="ref-text"><strong>Street Dealer Sales</strong> See <a href="/dealers" style="color:var(--gold);text-decoration:none;border-bottom:1px dashed var(--gold-dim)">/dealers</a>.</div>
       </div>
       <div class="ref-item">
         <span class="ref-multiplier x2">2×$RP</span>
-        <div class="ref-text"><strong>Biker Clubhouse Contracts, MC Work & MC Challenges</strong> — Modest income, not competitive with running your actual businesses.</div>
+        <div class="ref-text"><strong>Biker Clubhouse Contracts, MC Work & MC Challenges</strong></div>
       </div>
       <div class="ref-item">
         <span class="ref-multiplier x2">2×$RP</span>
         <div class="ref-text"><strong>Community Combat Series</strong></div>
       </div>
       <div class="ref-item">
-        <span class="ref-multiplier x3">3×$RP</span>
-        <div class="ref-text"><strong>All Lunar New Year Stunt Races</strong> — 6× for GTA+ Members. Includes the new Senora Derby race for sports vehicles. Part of Featured Series. Through March 4.</div>
+        <span class="ref-multiplier x2">3×$RP</span>
+        <div class="ref-text"><strong>All Lunar New Year Stunt Races</strong> — 6× for GTA+, through March 4</div>
       </div>
     </div>
   </div>
@@ -362,7 +362,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
     <div class="ref-items">
       <div class="ref-item">
         <span class="ref-multiplier disc">−40%</span>
-        <div class="ref-text"><strong>Counterfeit Cash Factories, Upgrades & Modifications</strong> — Must-buy at this price with 2× sells active.</div>
+        <div class="ref-text"><strong>Counterfeit Cash Factories, Upgrades & Modifications</strong></div>
       </div>
       <div class="ref-item">
         <span class="ref-multiplier disc">−30%</span>
@@ -429,7 +429,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       </div>
       <div class="ref-item">
         <span class="ref-bullet">◆</span>
-        <div class="ref-text"><strong>HSW Premium Test Ride</strong> — <a href="https://gtacars.net/gta5/issi8" target="_blank" class="car-link">Weeny Issi Rally</a> <span class="dim">(PS5/XSX/PC Enhanced only)</span></div>
+        <div class="ref-text"><strong>HSW Premium Test Ride</strong> — <a href="https://gtacars.net/gta5/issi8" target="_blank" class="car-link">Weeny Issi Rally</a></div>
       </div>
       <div class="ref-item">
         <span class="ref-bullet">◆</span>
@@ -475,7 +475,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       </div>
       <div class="ref-item">
         <span class="ref-bullet">◆</span>
-        <div class="ref-text"><strong>HSW Time Trial</strong> — Ron Alternates to Elysian Island <span class="dim">(PS5/XSX/PC Enhanced)</span></div>
+        <div class="ref-text"><strong>HSW Time Trial</strong> — Ron Alternates to Elysian Island</div>
       </div>
       <div class="ref-item">
         <span class="ref-bullet">◆</span>
@@ -576,7 +576,7 @@ const CITIES=[
 ];
 const rt=document.getElementById('reset-track');
 let rh='';
-for(let p=0;p<2;p++){
+for(let p=0;p<4;p++){
   rh+='<span class="reset-city" style="color:var(--gold);font-weight:500;letter-spacing:.14em">\u25c6 WEEKLY RESET</span>';
   CITIES.forEach(c=>{rh+='<span class="reset-city">'+c.c+' <span class="ct">'+c.t+'</span></span>';});
 }
