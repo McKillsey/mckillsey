@@ -156,6 +156,13 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
         <button class="toggle-btn" data-val="agg" onclick="si('approach',this)">Aggressive</button>
       </div>
     </div>
+    <div class="input-section"><span class="input-label">Buyer Level</span>
+      <div class="toggle-group" id="buyer-group">
+        <button class="toggle-btn active" data-val="high" onclick="si('buyer',this)">High</button>
+        <button class="toggle-btn" data-val="med" onclick="si('buyer',this)">Medium</button>
+        <button class="toggle-btn" data-val="low" onclick="si('buyer',this)">Low</button>
+      </div>
+    </div>
     <div class="input-section"><span class="input-label">Hard Mode</span>
       <div class="toggle-group yes-no" id="difficulty-group">
         <button class="toggle-btn active" data-val="hard" onclick="si('difficulty',this)">Yes</button>
@@ -237,7 +244,8 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
           <p><strong style="color:var(--cream)">Door assignment</strong> = 4 doors across active hackers. Fastest gets extra doors when uneven.</p>
           <p><strong style="color:var(--cream)">Commute</strong> = piles × s/pile (default 5). Flat total from man-seconds.</p>
           <p><strong style="color:var(--cream)">Collection</strong> = remaining man-seconds ÷ s/unit, floored, capped at max.</p>
-          <p><strong style="color:var(--cream)">Crew</strong> = gross × (hacker% + gunman% + driver%).</p>
+          <p><strong style="color:var(--cream)">Crew</strong> = gross × (hacker% + gunman% + driver% + Lester 5%).</p>
+          <p><strong style="color:var(--cream)">Laundering fee</strong> = 10% of gross for low buyer, 5% for medium, 0% for high. Deducted after crew.</p>
         </div>
       </div>
       <div class="method-section"><h3>Crew Members</h3>
@@ -280,7 +288,7 @@ const H=[{id:'rickie',label:'Rickie Lukens',cut:3,ue:146,ex:102},{id:'yohan',lab
 const GN={karl:{l:'Karl Abolaji',c:5},charlie:{l:'Charlie Reed',c:7},patrick:{l:'Patrick McReary',c:8},gustavo:{l:'Gustavo Mota',c:9},chester:{l:'Chester McCoy',c:10}};
 const DR={karim:{l:'Karim Denz',c:5},zach:{l:'Zach Nelson',c:6},taliana:{l:'Taliana Martinez',c:7},eddie:{l:'Eddie Toh',c:9},chester_d:{l:'Chester McCoy',c:10}};
 let AN=24,AH=28; const HN=1,HH=2,DOORS=4;
-const S={loot:'cash',approach:'sns',difficulty:'hard',gunman:'karl',driver:'karim',hs:[{a:true,s:5},{a:false,s:10},{a:false,s:10},{a:false,s:10}],cpp:5,elite:true,mp:{2:[15],3:[15,15],4:[15,15,15]},dev:false};
+const S={loot:'cash',approach:'sns',buyer:'high',difficulty:'hard',gunman:'karl',driver:'karim',hs:[{a:true,s:5},{a:false,s:10},{a:false,s:10},{a:false,s:10}],cpp:5,elite:true,mp:{2:[15],3:[15,15],4:[15,15,15]},dev:false};
 
 function checkDev(){S.dev=new URLSearchParams(location.search).has('devmode');document.getElementById('devmode-section').style.display=S.dev?'block':'none';}
 function setAnim(m,v){v=Math.max(0,parseInt(v)||0);if(m==='n'){AN=v;document.getElementById('anim-n-in').value=v;document.getElementById('anim-n-sl').value=v;}else{AH=v;document.getElementById('anim-h-in').value=v;document.getElementById('anim-h-sl').value=v;}render();}
@@ -332,12 +340,13 @@ function assignD(slots,vaultTime){
 
 // localStorage
 const LS_KEY='mckillsey_dch';
-function saveState(){try{localStorage.setItem(LS_KEY,JSON.stringify({loot:S.loot,approach:S.approach,difficulty:S.difficulty,gunman:S.gunman,driver:S.driver,hs:S.hs,cpp:S.cpp,elite:S.elite,mp:S.mp}));}catch(e){}}
-function loadState(){try{const d=JSON.parse(localStorage.getItem(LS_KEY));if(!d)return false;if(d.loot)S.loot=d.loot;if(d.approach)S.approach=d.approach;if(d.difficulty)S.difficulty=d.difficulty;if(d.gunman)S.gunman=d.gunman;if(d.driver)S.driver=d.driver;if(d.hs)S.hs=d.hs;if(d.cpp!==undefined)S.cpp=d.cpp;if(d.elite!==undefined)S.elite=d.elite;if(d.mp)S.mp=d.mp;return true;}catch(e){return false;}}
+function saveState(){try{localStorage.setItem(LS_KEY,JSON.stringify({loot:S.loot,approach:S.approach,buyer:S.buyer,difficulty:S.difficulty,gunman:S.gunman,driver:S.driver,hs:S.hs,cpp:S.cpp,elite:S.elite,mp:S.mp}));}catch(e){}}
+function loadState(){try{const d=JSON.parse(localStorage.getItem(LS_KEY));if(!d)return false;if(d.loot)S.loot=d.loot;if(d.approach)S.approach=d.approach;if(d.buyer)S.buyer=d.buyer;if(d.difficulty)S.difficulty=d.difficulty;if(d.gunman)S.gunman=d.gunman;if(d.driver)S.driver=d.driver;if(d.hs)S.hs=d.hs;if(d.cpp!==undefined)S.cpp=d.cpp;if(d.elite!==undefined)S.elite=d.elite;if(d.mp)S.mp=d.mp;return true;}catch(e){return false;}}
 function syncUI(){
   // Toggle buttons
   document.querySelectorAll('#loot-group .toggle-btn').forEach(b=>b.classList.toggle('active',b.dataset.val===S.loot));
   document.querySelectorAll('#approach-group .toggle-btn').forEach(b=>b.classList.toggle('active',b.dataset.val===S.approach));
+  document.querySelectorAll('#buyer-group .toggle-btn').forEach(b=>b.classList.toggle('active',b.dataset.val===S.buyer));
   document.querySelectorAll('#difficulty-group .toggle-btn').forEach(b=>b.classList.toggle('active',b.dataset.val===S.difficulty));
   document.querySelectorAll('#elite-group .toggle-btn').forEach(b=>b.classList.toggle('active',(b.dataset.val==='yes')===S.elite));
   document.querySelectorAll('#gunman-group .toggle-btn').forEach(b=>b.classList.toggle('active',b.dataset.val===S.gunman));
@@ -367,15 +376,18 @@ function calc(hObj,pc){
   const np=vc.u, commT=np*S.cpp, collMS=Math.max(0,tms-hackTotal-commT);
   const uc=Math.min(Math.floor(collMS/vc.ct),vc.u);
   const maxP=isH?vc.maxH:vc.maxN, pu=maxP/vc.u, gross=uc*pu;
-  const gc=GN[S.gunman].c, dc=DR[S.driver].c, hc=hObj.cut, tcp=gc+dc+hc;
-  const crewD=gross*tcp/100, net=gross-crewD;
+  const gc=GN[S.gunman].c, dc=DR[S.driver].c, hc=hObj.cut, lc=5, tcp=gc+dc+hc+lc;
+  const crewD=gross*tcp/100;
+  const buyerFee=S.buyer==='low'?0.10:S.buyer==='med'?0.05:0;
+  const launderD=gross*buyerFee;
+  const net=gross-crewD-launderD;
   const eliteEach=S.elite?(isH?100000:50000):0;
   const SETUP=25000;
   const mps=S.mp[pc]||[], mt=mps.reduce((s,p)=>s+p,0), hp=100-mt, ht2=net*hp/100+eliteEach-SETUP;
   const players=[{label:'Host',pct:hp,take:ht2,isHost:true}];
   mps.forEach((p,i)=>players.push({label:'Player '+(i+2),pct:p,take:net*p/100+eliteEach,isHost:false}));
   const totalWithElite=net+eliteEach*pc-SETUP;
-  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,commT,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,gc,dc,hc,tcp,crewD,net,eliteEach,SETUP,totalWithElite,hp,ht:ht2,players,bad:collMS<=0,smartAlloc:da._smart||false};
+  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,commT,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,gc,dc,hc,lc,tcp,crewD,buyerFee,launderD,net,eliteEach,SETUP,totalWithElite,hp,ht:ht2,players,bad:collMS<=0,smartAlloc:da._smart||false};
 }
 
 const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
@@ -396,8 +408,8 @@ function tipColl(r){
   lines.push('\u2192 '+r.uc+' of '+r.mu+' collected');return lines.join('\n');
 }
 function tipGross(r){const isH=S.difficulty==='hard',vc=V[S.loot],mp=isH?vc.maxH:vc.maxN;return '$'+mp.toLocaleString('en-US')+' \u00f7 '+vc.u+' = '+fmt(r.pu)+'/unit\n'+r.uc+' \u00d7 '+fmt(r.pu)+'\n= '+fmt(r.gross);}
-function tipCrew(r){return 'Hacker: '+r.hc+'%\nGunman: '+r.gc+'%\nDriver: '+r.dc+'%\nTotal: '+r.tcp+'%\n\n'+fmt(r.gross)+' \u00d7 '+r.tcp+'% = '+fmt(r.crewD);}
-function tipNet(r){let s=fmt(r.gross)+' gross\n\u2212 '+fmt(r.crewD)+' crew ('+r.tcp+'%)\n= '+fmt(r.net)+' distributable';if(r.eliteEach>0)s+='\n+ '+fmt(r.eliteEach)+' elite \u00d7 '+r.pc+' players = '+fmt(r.eliteEach*r.pc);s+='\n\u2212 '+fmt(r.SETUP)+' setup fee (host)';s+='\n= '+fmt(r.totalWithElite)+' total to players';return s;}
+function tipCrew(r){return 'Hacker: '+r.hc+'%\nGunman: '+r.gc+'%\nDriver: '+r.dc+'%\nLester: '+r.lc+'%\nTotal: '+r.tcp+'%\n\n'+fmt(r.gross)+' \u00d7 '+r.tcp+'% = '+fmt(r.crewD);}
+function tipNet(r){let s=fmt(r.gross)+' gross\n\u2212 '+fmt(r.crewD)+' crew ('+r.tcp+'%)';if(r.buyerFee>0)s+='\n\u2212 '+fmt(r.launderD)+' laundering ('+(r.buyerFee*100)+'%)';s+='\n= '+fmt(r.net)+' distributable';if(r.eliteEach>0)s+='\n+ '+fmt(r.eliteEach)+' elite \u00d7 '+r.pc+' players = '+fmt(r.eliteEach*r.pc);s+='\n\u2212 '+fmt(r.SETUP)+' setup fee (host)';s+='\n= '+fmt(r.totalWithElite)+' total to players';return s;}
 function tipP(r,p){let s=fmt(r.net)+' \u00d7 '+p.pct+'%\n= '+fmt(r.net*p.pct/100);if(r.eliteEach>0)s+='\n+ '+fmt(r.eliteEach)+' elite bonus';if(p.isHost)s+='\n\u2212 '+fmt(r.SETUP)+' setup fee';s+='\n= '+fmt(p.take);return s;}
 
 function render(){
@@ -442,6 +454,7 @@ function render(){
       html+='<hr class="hdiv">';
       html+='<div class="sr"><span class="sr-l">Gross take</span><span class="sr-v tip" id="'+uid+'-gr">'+fmt(r.gross)+'</span></div>';
       html+='<div class="sr"><span class="sr-l">Crew ('+r.tcp+'%)</span><span class="sr-v neg tip" id="'+uid+'-cr">\u2212'+fmt(r.crewD)+'</span></div>';
+      if(r.buyerFee>0)html+='<div class="sr"><span class="sr-l">Laundering ('+(r.buyerFee*100)+'%)</span><span class="sr-v neg tip" id="'+uid+'-la">\u2212'+fmt(r.launderD)+'</span></div>';
       html+='<hr class="hdiv">';
       html+='<div class="sr"><span class="sr-l">Net to players</span><span class="sr-v hi tip" id="'+uid+'-nt">'+fmt(r.totalWithElite)+'</span></div>';
       html+='<div class="cp-rows">';
@@ -453,6 +466,7 @@ function render(){
         a(uid+'-ms','Man-Seconds',tipMS(r));a(uid+'-hk','Hacking Cost',tipHack(r));
         a(uid+'-cm','Commute Cost',tipComm(r));a(uid+'-cl','Units Collected',tipColl(r));
         a(uid+'-gr','Gross Take',tipGross(r));a(uid+'-cr','Crew Deduction',tipCrew(r));
+        if(r.buyerFee>0)a(uid+'-la','Laundering Fee',fmt(r.gross)+' \u00d7 '+(r.buyerFee*100)+'% = '+fmt(r.launderD));
         a(uid+'-nt','Net to Players',tipNet(r));
         for(let pi=0;pi<r.players.length;pi++)a(uid+'-p'+pi,r.players[pi].label,tipP(r,r.players[pi]));
       },0);
@@ -465,7 +479,7 @@ function render(){
 
 function ac(pc,mi,d){const p=S.mp[pc],nv=p[mi]+d*5;if(nv<15)return;const ot=p.reduce((s,v,i)=>i===mi?s:s+v,0);if(100-ot-nv<15)return;p[mi]=nv;render();}
 
-function buildUrl(){const parts=[S.loot,S.approach,S.difficulty,S.elite?'elite':'noelite','g'+GN[S.gunman].c,'d'+DR[S.driver].c];const as=S.hs.filter(s=>s.a);parts.push('h'+as.map(s=>s.s).join('-'));parts.push('c'+S.cpp);return'mckillsey.com/dch?'+parts.join(',');}
+function buildUrl(){const parts=[S.loot,S.approach,S.buyer,S.difficulty,S.elite?'elite':'noelite','g'+GN[S.gunman].c,'d'+DR[S.driver].c];const as=S.hs.filter(s=>s.a);parts.push('h'+as.map(s=>s.s).join('-'));parts.push('c'+S.cpp);return'mckillsey.com/dch?'+parts.join(',');}
 function updateUrl(){document.getElementById('share-url-text').textContent=buildUrl();}
 function copyUrl(){const url='https://'+buildUrl();const btn=document.getElementById('share-copy-btn');const done=()=>{btn.textContent='Copied!';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},1800);};if(navigator.clipboard)navigator.clipboard.writeText(url).then(done).catch(()=>{const ta=document.createElement('textarea');ta.value=url;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done();});else{const ta=document.createElement('textarea');ta.value=url;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done();}}
 
