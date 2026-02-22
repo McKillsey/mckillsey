@@ -188,7 +188,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
     </div>
     <div class="input-section"><span class="input-label">Hacking Speed</span>
       <div class="hacker-slots">
-        <div class="hacker-slot" id="hslot-0"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 1</span></span></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="10" oninput="shs(0,this.value)"><input type="number" class="num-input" min="0" max="30" value="10" oninput="shs(0,this.value)"><span class="slider-unit">s/hack</span></div></div>
+        <div class="hacker-slot" id="hslot-0"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 1</span></span></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="5" oninput="shs(0,this.value)"><input type="number" class="num-input" min="0" max="30" value="5" oninput="shs(0,this.value)"><span class="slider-unit">s/hack</span></div></div>
         <div class="hacker-slot inactive" id="hslot-1"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 2</span></span><button class="hacker-toggle" onclick="th(1)">Inactive</button></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="10" disabled oninput="shs(1,this.value)"><input type="number" class="num-input" min="0" max="30" value="10" disabled oninput="shs(1,this.value)"><span class="slider-unit">s/hack</span></div></div>
         <div class="hacker-slot inactive" id="hslot-2"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 3</span></span><button class="hacker-toggle" onclick="th(2)">Inactive</button></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="10" disabled oninput="shs(2,this.value)"><input type="number" class="num-input" min="0" max="30" value="10" disabled oninput="shs(2,this.value)"><span class="slider-unit">s/hack</span></div></div>
         <div class="hacker-slot inactive" id="hslot-3"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 4</span></span><button class="hacker-toggle" onclick="th(3)">Inactive</button></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="10" disabled oninput="shs(3,this.value)"><input type="number" class="num-input" min="0" max="30" value="10" disabled oninput="shs(3,this.value)"><span class="slider-unit">s/hack</span></div></div>
@@ -280,7 +280,7 @@ const H=[{id:'rickie',label:'Rickie Lukens',cut:5,ue:146,ex:102},{id:'yohan',lab
 const GN={karl:{l:'Karl Abolaji',c:5},charlie:{l:'Charlie Reed',c:7},patrick:{l:'Patrick McReary',c:8},gustavo:{l:'Gustavo Mota',c:9},chester:{l:'Chester McCoy',c:10}};
 const DR={karim:{l:'Karim Denz',c:5},zach:{l:'Zach Nelson',c:6},taliana:{l:'Taliana Martinez',c:7},eddie:{l:'Eddie Toh',c:9},chester_d:{l:'Chester McCoy',c:10}};
 let AN=24,AH=28; const HN=1,HH=2,DOORS=4;
-const S={loot:'cash',approach:'sns',difficulty:'hard',gunman:'karl',driver:'karim',hs:[{a:true,s:10},{a:false,s:10},{a:false,s:10},{a:false,s:10}],cpp:5,elite:true,mp:{2:[15],3:[15,15],4:[15,15,15]},dev:false};
+const S={loot:'cash',approach:'sns',difficulty:'hard',gunman:'karl',driver:'karim',hs:[{a:true,s:5},{a:false,s:10},{a:false,s:10},{a:false,s:10}],cpp:5,elite:true,mp:{2:[15],3:[15,15],4:[15,15,15]},dev:false};
 
 function checkDev(){S.dev=new URLSearchParams(location.search).has('devmode');document.getElementById('devmode-section').style.display=S.dev?'block':'none';}
 function setAnim(m,v){v=Math.max(0,parseInt(v)||0);if(m==='n'){AN=v;document.getElementById('anim-n-in').value=v;document.getElementById('anim-n-sl').value=v;}else{AH=v;document.getElementById('anim-h-in').value=v;document.getElementById('anim-h-sl').value=v;}render();}
@@ -298,12 +298,69 @@ function hideT(){tipbox.style.display='none';}
 function aT(el,label,calc){el.addEventListener('mouseenter',()=>showT(el,label,calc));el.addEventListener('mouseleave',hideT);}
 
 function getAH(max){return S.hs.map((s,i)=>({...s,idx:i})).filter(s=>s.a).slice(0,max);}
-function assignD(slots){if(!slots.length)return[];const sorted=slots.slice().sort((a,b)=>a.s-b.s);const n=sorted.length,base=Math.floor(DOORS/n),extra=DOORS%n;return sorted.map((h,i)=>({...h,doors:base+(i<extra?1:0)}));}
+function assignD(slots,vaultTime){
+  if(!slots.length)return[];
+  if(slots.length===1)return[{...slots[0],doors:DOORS}];
+  const sorted=slots.slice().sort((a,b)=>a.s-b.s);
+  const fastest=sorted[0], second=sorted[1];
+  const isH=S.difficulty==='hard', hpd=isH?HH:HN, apd=isH?AH:AN;
+  // Smart allocation: if fastest is >=3s faster, they get as many doors as they can do in 2/3 of wall-clock vault time
+  if(fastest.s+3<=second.s){
+    const fastTPD=hpd*fastest.s+apd; // wall-clock seconds per door for fastest
+    const timebudget=Math.floor(vaultTime*2/3);
+    const fastDoors=Math.min(DOORS,Math.floor(timebudget/fastTPD));
+    const remaining=DOORS-fastDoors;
+    if(fastDoors>0&&remaining>=0){
+      const result=[{...fastest,doors:fastDoors}];
+      // Split remaining among slower hackers
+      const slow=sorted.slice(1);
+      if(remaining>0&&slow.length>0){
+        const sBase=Math.floor(remaining/slow.length), sExtra=remaining%slow.length;
+        // Among slow hackers, fastest of them gets extra
+        for(let i=0;i<slow.length;i++) result.push({...slow[i],doors:sBase+(i<sExtra?1:0)});
+      } else {
+        for(const s of slow) result.push({...s,doors:0});
+      }
+      result._smart=true;result._budget=timebudget;
+      return result;
+    }
+  }
+  // Default: even split, fastest gets remainder
+  const n=sorted.length,base=Math.floor(DOORS/n),extra=DOORS%n;
+  return sorted.map((h,i)=>({...h,doors:base+(i<extra?1:0)}));
+}
+
+// localStorage
+const LS_KEY='mckillsey_dch';
+function saveState(){try{localStorage.setItem(LS_KEY,JSON.stringify({loot:S.loot,approach:S.approach,difficulty:S.difficulty,gunman:S.gunman,driver:S.driver,hs:S.hs,cpp:S.cpp,elite:S.elite,mp:S.mp}));}catch(e){}}
+function loadState(){try{const d=JSON.parse(localStorage.getItem(LS_KEY));if(!d)return false;if(d.loot)S.loot=d.loot;if(d.approach)S.approach=d.approach;if(d.difficulty)S.difficulty=d.difficulty;if(d.gunman)S.gunman=d.gunman;if(d.driver)S.driver=d.driver;if(d.hs)S.hs=d.hs;if(d.cpp!==undefined)S.cpp=d.cpp;if(d.elite!==undefined)S.elite=d.elite;if(d.mp)S.mp=d.mp;return true;}catch(e){return false;}}
+function syncUI(){
+  // Toggle buttons
+  document.querySelectorAll('#loot-group .toggle-btn').forEach(b=>b.classList.toggle('active',b.dataset.val===S.loot));
+  document.querySelectorAll('#approach-group .toggle-btn').forEach(b=>b.classList.toggle('active',b.dataset.val===S.approach));
+  document.querySelectorAll('#difficulty-group .toggle-btn').forEach(b=>b.classList.toggle('active',b.dataset.val===S.difficulty));
+  document.querySelectorAll('#elite-group .toggle-btn').forEach(b=>b.classList.toggle('active',(b.dataset.val==='yes')===S.elite));
+  document.querySelectorAll('#gunman-group .toggle-btn').forEach(b=>b.classList.toggle('active',b.dataset.val===S.gunman));
+  document.querySelectorAll('#driver-group .toggle-btn').forEach(b=>b.classList.toggle('active',b.dataset.val===S.driver));
+  // Hacker slots
+  for(let i=0;i<4;i++){
+    const slot=document.getElementById('hslot-'+i);
+    slot.querySelector('.slider-input').value=S.hs[i].s;
+    slot.querySelector('.num-input').value=S.hs[i].s;
+    if(i>0){
+      const tb=slot.querySelector('.hacker-toggle');
+      if(S.hs[i].a){slot.classList.remove('inactive');tb.textContent='Active';tb.classList.add('on');slot.querySelector('.slider-input').disabled=false;slot.querySelector('.num-input').disabled=false;}
+      else{slot.classList.add('inactive');tb.textContent='Inactive';tb.classList.remove('on');slot.querySelector('.slider-input').disabled=true;slot.querySelector('.num-input').disabled=true;}
+    }
+  }
+  // Commute
+  document.getElementById('comm-sl').value=S.cpp;document.getElementById('comm-in').value=S.cpp;
+}
 
 function calc(hObj,pc){
   const isH=S.difficulty==='hard',isE=S.approach==='agg',vc=V[S.loot];
   const vt=isE?hObj.ex:hObj.ue, tms=vt*pc;
-  const slots=getAH(pc), da=assignD(slots);
+  const slots=getAH(pc), da=assignD(slots,vt);
   const hpd=isH?HH:HN, apd=isH?AH:AN;
   let hackTotal=0; const hbd=[];
   for(const h of da){const tpd=hpd*h.s+apd,ht=h.doors*tpd;hackTotal+=ht;hbd.push({idx:h.idx,doors:h.doors,speed:h.s,tpd,total:ht});}
@@ -317,7 +374,7 @@ function calc(hObj,pc){
   const players=[{label:'Host',pct:hp,take:ht2,isHost:true}];
   mps.forEach((p,i)=>players.push({label:'Player '+(i+2),pct:p,take:net*p/100+eliteEach,isHost:false}));
   const totalWithElite=net+eliteEach*pc;
-  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,commT,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,gc,dc,hc,tcp,crewD,net,eliteEach,totalWithElite,hp,ht:ht2,players,bad:collMS<=0};
+  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,commT,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,gc,dc,hc,tcp,crewD,net,eliteEach,totalWithElite,hp,ht:ht2,players,bad:collMS<=0,smartAlloc:da._smart||false};
 }
 
 const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
@@ -326,7 +383,8 @@ const fSec=s=>{const m=Math.floor(s/60),sec=s%60;return m>0?m+':'+sec.toString()
 function tipMS(r){return fSec(r.vt)+' = '+r.vt+' seconds\n\u00d7 '+r.pc+' players\n= '+r.tms+' man-seconds';}
 function tipHack(r){
   const isH=S.difficulty==='hard',hpd=isH?HH:HN,apd=isH?AH:AN,lines=[];
-  for(const h of r.hbd){lines.push('Hacker '+(h.idx+1)+': '+h.doors+' door'+(h.doors>1?'s':''));lines.push('  '+h.doors+' \u00d7 ('+hpd+' hack'+(hpd>1?'s':'')+' \u00d7 '+h.speed+'s + '+apd+'s animation)');lines.push('  = '+h.doors+' \u00d7 '+h.tpd+'s = '+h.total+' man-seconds');}
+  if(r.da._smart){lines.push('SMART ALLOCATION');lines.push('Fastest hacker \u22653s faster \u2192 gets 2/3 of '+r.vt+'s = '+Math.floor(r.vt*2/3)+'s budget');lines.push('');}
+  for(const h of r.hbd){lines.push('Hacker '+(h.idx+1)+': '+h.doors+' door'+(h.doors>1?'s':''));if(h.doors>0){lines.push('  '+h.doors+' \u00d7 ('+hpd+' hack'+(hpd>1?'s':'')+' \u00d7 '+h.speed+'s + '+apd+'s animation)');lines.push('  = '+h.doors+' \u00d7 '+h.tpd+'s = '+h.total+' man-seconds');}else{lines.push('  (no doors assigned)');}}
   lines.push('\nTotal hacking: '+r.hackTotal+' man-seconds');return lines.join('\n');
 }
 function tipComm(r){return r.np+' piles \u00d7 '+S.cpp+'s per pile\n= '+r.commT+' man-seconds';}
@@ -401,6 +459,7 @@ function render(){
     grid.appendChild(col);
   }
   updateUrl();
+  saveState();
 }
 
 function ac(pc,mi,d){const p=S.mp[pc],nv=p[mi]+d*5;if(nv<15)return;const ot=p.reduce((s,v,i)=>i===mi?s:s+v,0);if(100-ot-nv<15)return;p[mi]=nv;render();}
@@ -418,7 +477,7 @@ function handleSS(e){const f=e.target.files[0];if(!f)return;const r=new FileRead
 document.addEventListener('paste',e=>{if(!document.getElementById('fb-overlay').classList.contains('open'))return;const items=e.clipboardData?.items;if(!items)return;for(const item of items){if(item.type.startsWith('image/')){const blob=item.getAsFile();const r=new FileReader();r.onload=ev=>setSS(ev.target.result);r.readAsDataURL(blob);break;}}});
 async function sendFB(){const text=document.getElementById('fb-text').value.trim();if(!text){document.getElementById('fb-status').textContent='Please describe the issue first.';return;}const btn=document.getElementById('fb-send'),st=document.getElementById('fb-status');btn.disabled=true;btn.textContent='Sending...';st.textContent='';let body='Page: '+location.href+'\n\nFeedback:\n'+text;if(ssData){try{const f=new FormData();f.append('key','a3cb2b5f84e2b4e2a7b6c1d9f8e3a4b5');f.append('image',ssData.split(',')[1]);const r=await fetch('https://api.imgbb.com/1/upload',{method:'POST',body:f});const d=await r.json();if(d.success)body+='\n\nScreenshot: '+d.data.url;}catch(e){body+='\n\n(Screenshot failed to upload)';}}const fd=new FormData();fd.append('access_key','25c0d000-546c-45cd-be70-ec9abcded581');fd.append('subject','McKillsey Error Report \u2014 Diamond Casino Heist');fd.append('message',body);try{const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});const result=await res.json();if(result.success){st.style.color='var(--green)';st.textContent='Sent. Thank you.';btn.textContent='Sent \u2713';setTimeout(()=>{closeFB();document.getElementById('fb-text').value='';clearSS();btn.disabled=false;btn.textContent='Send Report';st.style.color='';},1800);}else throw new Error();}catch(e){st.style.color='var(--red)';st.textContent='Failed to send. Try again.';btn.disabled=false;btn.textContent='Send Report';}}
 
-checkDev();render();
+checkDev();loadState();syncUI();render();
 </script>
 </body>
 </html>
