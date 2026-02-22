@@ -221,7 +221,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       </div>
       <div class="method-section"><h3>Hacker Vault Times</h3>
         <table class="method-table"><thead><tr><th>Hacker</th><th>Cut</th><th>Unexposed</th><th>Exposed</th></tr></thead><tbody>
-          <tr><td>Rickie Lukens</td><td>5%</td><td class="val">2:26</td><td class="val">1:42</td></tr>
+          <tr><td>Rickie Lukens</td><td>3%</td><td class="val">2:26</td><td class="val">1:42</td></tr>
           <tr><td>Yohan Blair</td><td>5%</td><td class="val">2:52</td><td class="val">2:01</td></tr>
           <tr><td>Christian Feltz</td><td>7%</td><td class="val">2:59</td><td class="val">2:05</td></tr>
           <tr><td>Paige Harris</td><td>9%</td><td class="val">3:25</td><td class="val">2:23</td></tr>
@@ -235,7 +235,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
           <p><strong style="color:var(--cream)">Hacking cost</strong> = per hacker: doors × (hacks_per_door × s/hack + animation_per_door). Parallel across hackers; each subtracted individually from man-seconds pool.</p>
           <p><strong style="color:var(--cream)">Animation time</strong> = 24s/door normal, 28s/door hard. Hacks per door: 1 normal, 2 hard. Placeholders pending community verification.</p>
           <p><strong style="color:var(--cream)">Door assignment</strong> = 4 doors across active hackers. Fastest gets extra doors when uneven.</p>
-          <p><strong style="color:var(--cream)">Commute</strong> = piles × s/pile (default 10). Flat total from man-seconds.</p>
+          <p><strong style="color:var(--cream)">Commute</strong> = piles × s/pile (default 5). Flat total from man-seconds.</p>
           <p><strong style="color:var(--cream)">Collection</strong> = remaining man-seconds ÷ s/unit, floored, capped at max.</p>
           <p><strong style="color:var(--cream)">Crew</strong> = gross × (hacker% + gunman% + driver%).</p>
         </div>
@@ -251,7 +251,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
           <tr><td>Taliana Martinez</td><td class="val">7%</td></tr><tr><td>Eddie Toh</td><td class="val">9%</td></tr>
           <tr><td>Chester McCoy</td><td class="val">10%</td></tr>
         </tbody></table>
-        <div class="method-notes" style="margin-top:8px"><p>Chester McCoy can serve as both gunman and driver (20% combined).</p></div>
+
       </div>
     </div>
   </div>
@@ -276,7 +276,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 </div>
 <script>
 const V={cash:{label:'Cash',maxN:2115000,maxH:2326500,u:8,ct:38},artwork:{label:'Artwork',maxN:2350000,maxH:2585000,u:6,ct:18},gold:{label:'Gold',maxN:2585000,maxH:2843500,u:8,ct:25},diamonds:{label:'Diamonds',maxN:3290000,maxH:3619000,u:8,ct:38}};
-const H=[{id:'rickie',label:'Rickie Lukens',cut:5,ue:146,ex:102},{id:'yohan',label:'Yohan Blair',cut:5,ue:172,ex:121},{id:'christian',label:'Christian Feltz',cut:7,ue:179,ex:125},{id:'paige',label:'Paige Harris',cut:9,ue:205,ex:143},{id:'avi',label:'Avi Schwartzman',cut:10,ue:210,ex:146}];
+const H=[{id:'rickie',label:'Rickie Lukens',cut:3,ue:146,ex:102},{id:'yohan',label:'Yohan Blair',cut:5,ue:172,ex:121},{id:'christian',label:'Christian Feltz',cut:7,ue:179,ex:125},{id:'paige',label:'Paige Harris',cut:9,ue:205,ex:143},{id:'avi',label:'Avi Schwartzman',cut:10,ue:210,ex:146}];
 const GN={karl:{l:'Karl Abolaji',c:5},charlie:{l:'Charlie Reed',c:7},patrick:{l:'Patrick McReary',c:8},gustavo:{l:'Gustavo Mota',c:9},chester:{l:'Chester McCoy',c:10}};
 const DR={karim:{l:'Karim Denz',c:5},zach:{l:'Zach Nelson',c:6},taliana:{l:'Taliana Martinez',c:7},eddie:{l:'Eddie Toh',c:9},chester_d:{l:'Chester McCoy',c:10}};
 let AN=24,AH=28; const HN=1,HH=2,DOORS=4;
@@ -370,11 +370,12 @@ function calc(hObj,pc){
   const gc=GN[S.gunman].c, dc=DR[S.driver].c, hc=hObj.cut, tcp=gc+dc+hc;
   const crewD=gross*tcp/100, net=gross-crewD;
   const eliteEach=S.elite?(isH?100000:50000):0;
-  const mps=S.mp[pc]||[], mt=mps.reduce((s,p)=>s+p,0), hp=100-mt, ht2=net*hp/100+eliteEach;
+  const SETUP=25000;
+  const mps=S.mp[pc]||[], mt=mps.reduce((s,p)=>s+p,0), hp=100-mt, ht2=net*hp/100+eliteEach-SETUP;
   const players=[{label:'Host',pct:hp,take:ht2,isHost:true}];
   mps.forEach((p,i)=>players.push({label:'Player '+(i+2),pct:p,take:net*p/100+eliteEach,isHost:false}));
-  const totalWithElite=net+eliteEach*pc;
-  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,commT,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,gc,dc,hc,tcp,crewD,net,eliteEach,totalWithElite,hp,ht:ht2,players,bad:collMS<=0,smartAlloc:da._smart||false};
+  const totalWithElite=net+eliteEach*pc-SETUP;
+  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,commT,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,gc,dc,hc,tcp,crewD,net,eliteEach,SETUP,totalWithElite,hp,ht:ht2,players,bad:collMS<=0,smartAlloc:da._smart||false};
 }
 
 const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
@@ -396,8 +397,8 @@ function tipColl(r){
 }
 function tipGross(r){const isH=S.difficulty==='hard',vc=V[S.loot],mp=isH?vc.maxH:vc.maxN;return '$'+mp.toLocaleString('en-US')+' \u00f7 '+vc.u+' = '+fmt(r.pu)+'/unit\n'+r.uc+' \u00d7 '+fmt(r.pu)+'\n= '+fmt(r.gross);}
 function tipCrew(r){return 'Hacker: '+r.hc+'%\nGunman: '+r.gc+'%\nDriver: '+r.dc+'%\nTotal: '+r.tcp+'%\n\n'+fmt(r.gross)+' \u00d7 '+r.tcp+'% = '+fmt(r.crewD);}
-function tipNet(r){let s=fmt(r.gross)+' gross\n\u2212 '+fmt(r.crewD)+' crew ('+r.tcp+'%)\n= '+fmt(r.net)+' distributable';if(r.eliteEach>0)s+='\n+ '+fmt(r.eliteEach)+' elite \u00d7 '+r.pc+' players = '+fmt(r.eliteEach*r.pc)+'\n= '+fmt(r.totalWithElite)+' total to players';return s;}
-function tipP(r,p){let s=fmt(r.net)+' \u00d7 '+p.pct+'%\n= '+fmt(r.net*p.pct/100);if(r.eliteEach>0)s+='\n+ '+fmt(r.eliteEach)+' elite bonus';s+='\n= '+fmt(p.take);return s;}
+function tipNet(r){let s=fmt(r.gross)+' gross\n\u2212 '+fmt(r.crewD)+' crew ('+r.tcp+'%)\n= '+fmt(r.net)+' distributable';if(r.eliteEach>0)s+='\n+ '+fmt(r.eliteEach)+' elite \u00d7 '+r.pc+' players = '+fmt(r.eliteEach*r.pc);s+='\n\u2212 '+fmt(r.SETUP)+' setup fee (host)';s+='\n= '+fmt(r.totalWithElite)+' total to players';return s;}
+function tipP(r,p){let s=fmt(r.net)+' \u00d7 '+p.pct+'%\n= '+fmt(r.net*p.pct/100);if(r.eliteEach>0)s+='\n+ '+fmt(r.eliteEach)+' elite bonus';if(p.isHost)s+='\n\u2212 '+fmt(r.SETUP)+' setup fee';s+='\n= '+fmt(p.take);return s;}
 
 function render(){
   const grid=document.getElementById('matrix-grid');grid.innerHTML='';
