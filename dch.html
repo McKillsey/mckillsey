@@ -369,10 +369,17 @@ function syncUI(){
 function calc(hObj,pc){
   const isH=S.difficulty==='hard',isE=S.approach==='agg',vc=V[S.loot];
   const vt=isE?hObj.ex:hObj.ue, tms=vt*pc;
-  const slots=getAH(pc), da=assignD(slots,vt);
-  const hpd=isH?HH:HN, apd=isH?AH:AN;
-  let hackTotal=0; const hbd=[];
-  for(const h of da){const tpd=hpd*h.s+apd,ht=h.doors*tpd;hackTotal+=ht;hbd.push({idx:h.idx,doors:h.doors,speed:h.s,tpd,total:ht});}
+  const BURN_PER_DOOR=8;
+  let hackTotal=0, hbd=[], da=[];
+  if(isE){
+    // Aggressive: thermal charges, 8 man-seconds per door, no skill required
+    hackTotal=DOORS*BURN_PER_DOOR;
+    da=[];hbd=[{idx:-1,doors:DOORS,speed:0,tpd:BURN_PER_DOOR,total:hackTotal,burn:true}];
+  } else {
+    const slots=getAH(pc); da=assignD(slots,vt);
+    const hpd=isH?HH:HN, apd=isH?AH:AN;
+    for(const h of da){const tpd=hpd*h.s+apd,ht=h.doors*tpd;hackTotal+=ht;hbd.push({idx:h.idx,doors:h.doors,speed:h.s,tpd,total:ht});}
+  }
   const np=vc.u, commT=np*S.cpp, collMS=Math.max(0,tms-hackTotal-commT);
   const uc=Math.min(Math.floor(collMS/vc.ct),vc.u);
   const collectUsed=uc*vc.ct;
@@ -389,7 +396,7 @@ function calc(hObj,pc){
   const players=[{label:'Host',pct:hp,take:ht2,isHost:true}];
   mps.forEach((p,i)=>players.push({label:'Player '+(i+2),pct:p,take:net*p/100+eliteEach,isHost:false}));
   const totalWithElite=net+eliteEach*pc-SETUP;
-  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,commT,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,collectUsed,excess,gc,dc,hc,lc,tcp,crewD,buyerFee,launderD,net,eliteEach,SETUP,totalWithElite,hp,ht:ht2,players,bad:collMS<=0,smartAlloc:da._smart||false};
+  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,commT,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,collectUsed,excess,gc,dc,hc,lc,tcp,crewD,buyerFee,launderD,net,eliteEach,SETUP,totalWithElite,hp,ht:ht2,players,bad:collMS<=0,smartAlloc:da._smart||false,isAgg:isE};
 }
 
 const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
@@ -397,6 +404,7 @@ const fSec=s=>{const m=Math.floor(s/60),sec=s%60;return m>0?m+':'+sec.toString()
 
 function tipMS(r){return fSec(r.vt)+' = '+r.vt+' seconds\n\u00d7 '+r.pc+' players\n= '+r.tms+' man-seconds';}
 function tipHack(r){
+  if(r.isAgg){return 'THERMAL CHARGES (Aggressive)\n4 doors \u00d7 8s per door = 32 man-seconds\nNo hacking required \u2014 anyone can burn locks';}
   const isH=S.difficulty==='hard',hpd=isH?HH:HN,apd=isH?AH:AN,lines=[];
   if(r.da._smart){lines.push('SMART ALLOCATION');lines.push('Fastest hacker \u22653s faster \u2192 gets 2/3 of '+r.vt+'s = '+Math.floor(r.vt*2/3)+'s budget');lines.push('');}
   for(const h of r.hbd){lines.push('Hacker '+(h.idx+1)+': '+h.doors+' door'+(h.doors>1?'s':''));if(h.doors>0){lines.push('  '+h.doors+' \u00d7 ('+hpd+' hack'+(hpd>1?'s':'')+' \u00d7 '+h.speed+'s + '+apd+'s animation)');lines.push('  = '+h.doors+' \u00d7 '+h.tpd+'s = '+h.total+' man-seconds');}else{lines.push('  (no doors assigned)');}}
@@ -450,7 +458,7 @@ function render(){
       if(r.bad)html+='<div class="warning-box">Insufficient vault time to collect any loot with these settings.</div>';
       html+='<div class="sr"><span class="sr-l">Vault time</span><span class="sr-v">'+fSec(r.vt)+'</span></div>';
       html+='<div class="sr"><span class="sr-l">Man-seconds</span><span class="sr-v tip" id="'+uid+'-ms">'+r.tms+'s</span></div>';
-      html+='<div class="sr"><span class="sr-l">Hacking cost</span><span class="sr-v tip" id="'+uid+'-hk">'+r.hackTotal+'s</span></div>';
+      html+='<div class="sr"><span class="sr-l">'+(r.isAgg?'Burn cost':'Hacking cost')+'</span><span class="sr-v tip" id="'+uid+'-hk">'+r.hackTotal+'s</span></div>';
       html+='<div class="sr"><span class="sr-l">Commute cost</span><span class="sr-v tip" id="'+uid+'-cm">'+r.commT+'s</span></div>';
       html+='<div class="sr"><span class="sr-l">Excess time</span><span class="sr-v'+(r.excess<=0?' neg':'')+' tip" id="'+uid+'-ex">'+r.excess+'s</span></div>';
       html+='<div class="sr"><span class="sr-l">Collected</span><span class="sr-v'+(r.uc===r.mu?' gr':'')+' tip" id="'+uid+'-cl">'+r.uc+' of '+r.mu+'</span></div>';
@@ -466,7 +474,7 @@ function render(){
       card.innerHTML=html;col.appendChild(card);
       setTimeout(()=>{
         const e=id=>document.getElementById(id),a=(id,l,c)=>{const el=e(id);if(el)aT(el,l,c);};
-        a(uid+'-ms','Man-Seconds',tipMS(r));a(uid+'-hk','Hacking Cost',tipHack(r));
+        a(uid+'-ms','Man-Seconds',tipMS(r));a(uid+'-hk',r.isAgg?'Thermal Charges':'Hacking Cost',tipHack(r));
         a(uid+'-cm','Commute Cost',tipComm(r));a(uid+'-ex','Excess Time',r.tms+' man-seconds\n\u2212 '+r.hackTotal+' hacking\n\u2212 '+r.collectUsed+' collecting ('+r.uc+' \u00d7 '+r.ct+'s)\n\u2212 '+r.commT+' commute\n= '+r.excess+'s unused');a(uid+'-cl','Units Collected',tipColl(r));
         a(uid+'-gr','Gross Take',tipGross(r));a(uid+'-cr','Crew Deduction',tipCrew(r));
         if(r.buyerFee>0)a(uid+'-la','Laundering Fee',fmt(r.gross)+' \u00d7 '+(r.buyerFee*100)+'% = '+fmt(r.launderD));
