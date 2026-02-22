@@ -78,7 +78,7 @@ tbody tr.best-row{background:rgba(201,168,76,.04)}
 tbody tr.weekly-row{background:rgba(240,192,64,.07);border-bottom:1px solid rgba(240,192,64,.14)}
 td{padding:13px 14px;text-align:right;font-family:var(--mono);font-size:13px;color:var(--cream);vertical-align:middle;white-space:nowrap}
 td:first-child{text-align:left;font-family:var(--sans);white-space:normal;min-width:180px}
-.biz-name{font-family:var(--serif);font-size:13px;color:var(--cream);font-weight:700;display:block}
+.biz-name{font-family:var(--serif);font-size:14px;color:var(--cream);font-weight:700;display:block}
 .biz-slug{font-family:var(--mono);font-size:9px;color:var(--gold-dim);letter-spacing:.06em;display:block;margin-bottom:3px}
 .biz-tag{display:inline-block;font-size:9px;letter-spacing:.05em;text-transform:uppercase;padding:2px 5px;font-family:var(--mono);font-weight:500;margin-right:3px}
 .tag-buff{background:rgba(45,186,114,.15);color:var(--green)}
@@ -115,12 +115,12 @@ body.mode-crew .tbl-solo,body.mode-solofull .tbl-solo{display:none}
 body.mode-solofull .tbl-solofull{display:block}
 body.mode-crew .tbl-solofull,body.mode-solo .tbl-solofull{display:none}
 
-.tier-label{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--cream);padding:14px 14px 10px;background:var(--navy-light);border-bottom:1px solid var(--rule);border-top:2px solid var(--rule)}
+.tier-label{font-family:var(--serif) !important;font-size:14px;font-weight:700;color:var(--cream);padding:14px 14px 10px;background:var(--navy-light);border-bottom:1px solid var(--rule);border-top:2px solid var(--rule)}
 .tier-label .tier-slug{font-family:var(--mono);font-size:10px;color:var(--gold-dim);letter-spacing:.06em;font-weight:400;margin-left:8px}
 .tier-label .tier-meta{font-family:var(--mono);font-size:10px;color:var(--cream-dim);font-weight:400;margin-left:16px;letter-spacing:.04em}
 .tier-label.wk-tier{background:rgba(240,192,64,.08);border-top-color:var(--weekly-border)}
-.stock-label{font-family:var(--serif);font-size:13px;font-weight:700;color:var(--cream)}
-.stock-label.dim{color:var(--cream-dim);font-weight:400}
+.stock-label{font-family:var(--mono);font-size:11px;color:var(--cream)}
+.stock-label.dim{color:var(--cream-dim)}
 
 /* SCENARIO TABLES — full width, no side-by-side overflow */
 .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0}
@@ -368,33 +368,29 @@ body.mode-crew .tbl-solofull,body.mode-solo .tbl-solofull{display:none}
         <tr>
           <td style="padding-left:18px"><span class="stock-label dim">Under 1.5 bars</span></td>
           <td>1</td><td>$37,500</td>
-          <td><span class="tip" data-tip-label="Gross — 1 bar, Invite Only" data-tip-calc="1 × $105,000/bar = $105,000
-No lobby bonus">$105,000</span></td>
-          <td><span class="tip" data-tip-label="Net" data-tip-calc="$105,000 − $37,500 = $67,500">$67,500</span></td>
-          <td><span class="tip" data-tip-label="Active Time — Solo, 1 vehicle" data-tip-calc="10 min sell
-No reciprocity cost">10m</span></td>
-          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="$67,500 ÷ 10 min × 60 = $405,000/hr">$405,000</span></td>
+          <td><span class="tip" data-tip-label="Gross — Cocaine, 1 bar, Invite Only" data-tip-calc="Cocaine sells for $105,000 per bar at base&#10;1 bar sold via 1 vehicle&#10;Invite-only lobby: no lobby bonus applies&#10;&#10;1 × $105,000 = $105,000">$105,000</span></td>
+          <td><span class="tip" data-tip-label="Net Income — Cocaine, 1 bar" data-tip-calc="Gross: $105,000&#10;Supply cost for 1 bar: − $37,500&#10;= $67,500">$67,500</span></td>
+          <td><span class="tip" data-tip-label="Active Time — 1 vehicle, no crew" data-tip-calc="1 delivery vehicle, no convoy&#10;Estimated sell time: 10 min&#10;Solo — no helpers, no reciprocity cost">10m</span></td>
+          <td><span class="tip" data-tip-label="$/Active Hour — Cocaine, 1 bar solo" data-tip-calc="Net income: $67,500&#10;÷ Active time: 10 min × 60&#10;= $405,000/hr&#10;&#10;Note: same rate as 2-bar, since both&#10;use proportional stock and time">$405,000</span></td>
           <td class="dim">—</td>
         </tr>
         <tr>
           <td style="padding-left:18px"><span class="stock-label dim">1.5–2.5 bars</span></td>
-          <td>2</td><td>$75,000</td><td>$210,000</td>
-          <td><span class="tip" data-tip-label="Net" data-tip-calc="$210,000 − $75,000 = $135,000">$135,000</span></td>
+          <td>2</td><td>$75,000</td>
+          <td><span class="tip" data-tip-label="Gross — Cocaine, 2 bars, Invite Only" data-tip-calc="2 bars × $105,000/bar = $210,000&#10;2 delivery vehicles&#10;No lobby bonus">$210,000</span></td>
+          <td><span class="tip" data-tip-label="Net Income — Cocaine, 2 bars" data-tip-calc="Gross: $210,000&#10;Supply cost for 2 bars: − $75,000&#10;= $135,000">$135,000</span></td>
           <td>20m</td>
-          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="$135,000 ÷ 20 min × 60 = $405,000/hr">$405,000</span></td>
+          <td><span class="tip" data-tip-label="$/Active Hour — Cocaine, 2 bars solo" data-tip-calc="Net income: $135,000&#10;÷ Active time: 20 min × 60&#10;= $405,000/hr">$405,000</span></td>
           <td class="dim">—</td>
         </tr>
         <tr class="best-row">
           <td style="padding-left:18px"><span class="stock-label">Full stock</span></td>
           <td>3–4</td><td>$187,500</td>
-          <td><span class="tip" data-tip-label="Gross — Full, Invite Only" data-tip-calc="$525,000 base
-No lobby bonus">$525,000</span></td>
-          <td><span class="tip green" data-tip-label="Net" data-tip-calc="$525,000 − $187,500 = $337,500">$337,500</span></td>
-          <td><span class="tip" data-tip-label="Active Time — Solo Full Stock" data-tip-calc="~30 min sell (multiple vehicles)
-No reciprocity cost">~30m</span></td>
-          <td><span class="tip green" data-tip-label="$/Active Hr" data-tip-calc="$337,500 ÷ 30 min × 60 = $675,000/hr
-No reciprocity — sold solo" data-tip-result="$675,000/hr">$675,000</span></td>
-          <td><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$337,500 ÷ 300 min × 60 = $67,500/hr">$67,500</span></td>
+          <td><span class="tip" data-tip-label="Gross — Cocaine, Full Stock, Invite Only" data-tip-calc="Full stock base remote sale: $525,000&#10;Invite-only lobby: no lobby bonus applies&#10;&#10;$525,000 gross">$525,000</span></td>
+          <td><span class="tip green" data-tip-label="Net Income — Cocaine, Full Stock" data-tip-calc="Gross: $525,000&#10;Full supply cost: − $187,500&#10;= $337,500">$337,500</span></td>
+          <td><span class="tip" data-tip-label="Active Time — Full stock, solo" data-tip-calc="3–4 delivery vehicles at full stock&#10;Estimated sell time: ~30 min&#10;Solo seller — no helpers, no reciprocity cost">~30m</span></td>
+          <td><span class="tip green" data-tip-label="$/Active Hour — Cocaine, Full Stock solo" data-tip-calc="Net income: $337,500&#10;÷ Active time: 30 min × 60&#10;= $675,000/hr&#10;&#10;Solo seller: no reciprocity overhead" data-tip-result="$675,000/hr">$675,000</span></td>
+          <td><span class="tip" data-tip-label="$/Passive Hour — Cocaine" data-tip-calc="Net income: $337,500&#10;÷ Fill time: 300 min × 60&#10;= $67,500/hr&#10;&#10;Measures return on the time the&#10;business is passively manufacturing">$67,500</span></td>
         </tr>
 
         <tr><td colspan="8" class="tier-label wk-tier">Counterfeit Cash<span class="tier-slug">/cash</span><span class="tier-meta">Fill 320m · $150,000 full supply · +35% Car Wash · <span class="wkly">2× this week</span></span></td></tr>
@@ -434,19 +430,64 @@ Normal: $346,800 ÷ 30 × 60 = $693,600/hr" data-tip-result="$1,687,200/hr this 
         </tr>
 
         <tr><td colspan="8" class="tier-label">Methamphetamine Lab<span class="tier-slug">/meth</span><span class="tier-meta">Fill 360m · $187,500 full supply</span></td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label dim">Under 1.5 bars</span></td><td>1</td><td>$37,500</td><td>$89,270</td><td>$51,770</td><td>10m</td><td>$310,620</td><td class="dim">—</td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label dim">1.5–2.5 bars</span></td><td>2</td><td>$75,000</td><td>$178,540</td><td>$103,540</td><td>20m</td><td>$310,620</td><td class="dim">—</td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label">Full stock</span></td><td>3–4</td><td>$187,500</td><td>$446,350</td><td>$258,850</td><td>~30m</td><td>$517,700</td><td>$43,142</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label dim">Under 1.5 bars</span></td><td>1</td><td>$37,500</td>
+          <td><span class="tip" data-tip-label="Gross — Meth, 1 bar, Invite Only" data-tip-calc="Meth sells for $89,270 per bar at base&#10;1 bar via 1 delivery vehicle&#10;No lobby bonus in invite-only&#10;&#10;1 × $89,270 = $89,270">$89,270</span></td>
+          <td><span class="tip" data-tip-label="Net Income — Meth, 1 bar" data-tip-calc="Gross: $89,270&#10;Supply cost for 1 bar: − $37,500&#10;= $51,770">$51,770</span></td>
+          <td>10m</td>
+          <td><span class="tip" data-tip-label="$/Active Hour — Meth, 1 bar solo" data-tip-calc="Net income: $51,770&#10;÷ Active time: 10 min × 60&#10;= $310,620/hr&#10;No reciprocity cost">$310,620</span></td>
+          <td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label dim">1.5–2.5 bars</span></td><td>2</td><td>$75,000</td>
+          <td><span class="tip" data-tip-label="Gross — Meth, 2 bars, Invite Only" data-tip-calc="2 × $89,270/bar = $178,540&#10;2 delivery vehicles, no lobby bonus">$178,540</span></td>
+          <td><span class="tip" data-tip-label="Net Income — Meth, 2 bars" data-tip-calc="Gross: $178,540&#10;Supply cost for 2 bars: − $75,000&#10;= $103,540">$103,540</span></td>
+          <td>20m</td>
+          <td><span class="tip" data-tip-label="$/Active Hour — Meth, 2 bars solo" data-tip-calc="Net income: $103,540&#10;÷ Active time: 20 min × 60&#10;= $310,620/hr">$310,620</span></td>
+          <td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label">Full stock</span></td><td>3–4</td><td>$187,500</td>
+          <td><span class="tip" data-tip-label="Gross — Meth, Full Stock, Invite Only" data-tip-calc="Full stock base remote sale: $446,350&#10;No lobby bonus in invite-only">$446,350</span></td>
+          <td><span class="tip" data-tip-label="Net Income — Meth, Full Stock" data-tip-calc="Gross: $446,350&#10;Full supply cost: − $187,500&#10;= $258,850">$258,850</span></td>
+          <td>~30m</td>
+          <td><span class="tip" data-tip-label="$/Active Hour — Meth, Full Stock solo" data-tip-calc="Net income: $258,850&#10;÷ Active time: 30 min × 60&#10;= $517,700/hr&#10;Solo seller — no reciprocity cost" data-tip-result="$517,700/hr">$517,700</span></td>
+          <td><span class="tip" data-tip-label="$/Passive Hour — Meth" data-tip-calc="Net income: $258,850&#10;÷ Fill time: 360 min × 60&#10;= $43,142/hr">$43,142</span></td></tr>
 
         <tr><td colspan="8" class="tier-label">Weed Farm<span class="tier-slug">/weed</span><span class="tier-meta">Fill 320m · $166,667 full supply · +35% Smoke on the Water</span></td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label dim">Under 1.5 bars</span></td><td>1</td><td>$33,333</td><td>$85,320</td><td>$51,987</td><td>10m</td><td>$311,922</td><td class="dim">—</td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label dim">1.5–2.5 bars</span></td><td>2</td><td>$66,667</td><td>$170,640</td><td>$103,973</td><td>20m</td><td>$311,919</td><td class="dim">—</td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label">Full stock</span></td><td>3–4</td><td>$166,667</td><td>$426,600</td><td>$259,933</td><td>~30m</td><td>$519,866</td><td>$48,737</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label dim">Under 1.5 bars</span></td><td>1</td><td>$33,333</td>
+          <td><span class="tip" data-tip-label="Gross — Weed, 1 bar, Invite Only" data-tip-calc="Weed base: $316,000 full stock&#10;× 1.35 Smoke on the Water front bonus&#10;= $426,600 buffed full stock&#10;&#10;1 bar = $426,600 ÷ 5 bars = $85,320&#10;No lobby bonus in invite-only">$85,320</span></td>
+          <td><span class="tip" data-tip-label="Net Income — Weed, 1 bar" data-tip-calc="Gross: $85,320&#10;Supply cost for 1 bar: − $33,333&#10;= $51,987">$51,987</span></td>
+          <td>10m</td>
+          <td><span class="tip" data-tip-label="$/Active Hour — Weed, 1 bar solo" data-tip-calc="Net income: $51,987&#10;÷ Active time: 10 min × 60&#10;= $311,922/hr&#10;No reciprocity cost">$311,922</span></td>
+          <td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label dim">1.5–2.5 bars</span></td><td>2</td><td>$66,667</td>
+          <td><span class="tip" data-tip-label="Gross — Weed, 2 bars, Invite Only" data-tip-calc="2 × $85,320/bar = $170,640&#10;No lobby bonus">$170,640</span></td>
+          <td><span class="tip" data-tip-label="Net Income — Weed, 2 bars" data-tip-calc="Gross: $170,640&#10;Supply cost for 2 bars: − $66,667&#10;= $103,973">$103,973</span></td>
+          <td>20m</td>
+          <td><span class="tip" data-tip-label="$/Active Hour — Weed, 2 bars solo" data-tip-calc="Net income: $103,973&#10;÷ Active time: 20 min × 60&#10;= $311,919/hr">$311,919</span></td>
+          <td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label">Full stock</span></td><td>3–4</td><td>$166,667</td>
+          <td><span class="tip" data-tip-label="Gross — Weed, Full Stock, Invite Only" data-tip-calc="Weed base remote sale: $316,000&#10;× 1.35 Smoke on the Water = $426,600&#10;No lobby bonus in invite-only">$426,600</span></td>
+          <td><span class="tip" data-tip-label="Net Income — Weed, Full Stock" data-tip-calc="Gross: $426,600&#10;Full supply cost: − $166,667&#10;= $259,933">$259,933</span></td>
+          <td>~30m</td>
+          <td><span class="tip" data-tip-label="$/Active Hour — Weed, Full Stock solo" data-tip-calc="Net income: $259,933&#10;÷ Active time: 30 min × 60&#10;= $519,866/hr&#10;Solo seller — no reciprocity cost" data-tip-result="$519,866/hr">$519,866</span></td>
+          <td><span class="tip" data-tip-label="$/Passive Hour — Weed" data-tip-calc="Net income: $259,933&#10;÷ Fill time: 320 min × 60&#10;= $48,737/hr">$48,737</span></td></tr>
 
         <tr><td colspan="8" class="tier-label">Document Forgery<span class="tier-slug">/docs</span><span class="tier-meta">Fill 180m · $90,000 full supply</span></td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label dim">Under 1.5 bars</span></td><td>1</td><td>$18,000</td><td class="red">$31,800</td><td class="red">$13,800</td><td>10m</td><td class="red">$82,800</td><td class="dim">—</td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label dim">1.5–2.5 bars</span></td><td>2</td><td>$36,000</td><td class="red">$63,600</td><td class="red">$27,600</td><td>20m</td><td class="red">$82,800</td><td class="dim">—</td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label">Full stock</span></td><td>3–4</td><td>$90,000</td><td class="red">$159,000</td><td class="red">$69,000</td><td>~30m</td><td class="red">$138,000</td><td class="red">$23,000</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label dim">Under 1.5 bars</span></td><td>1</td><td>$18,000</td>
+          <td><span class="tip red" data-tip-label="Gross — Forgery, 1 bar, Invite Only" data-tip-calc="Forgery sells for $31,800 per bar at base&#10;1 bar via 1 delivery vehicle&#10;No lobby bonus in invite-only">$31,800</span></td>
+          <td><span class="tip red" data-tip-label="Net Income — Forgery, 1 bar" data-tip-calc="Gross: $31,800&#10;Supply cost for 1 bar: − $18,000&#10;= $13,800">$13,800</span></td>
+          <td>10m</td>
+          <td><span class="tip red" data-tip-label="$/Active Hour — Forgery, 1 bar solo" data-tip-calc="Net income: $13,800&#10;÷ Active time: 10 min × 60&#10;= $82,800/hr&#10;&#10;For context: Coke at 1 bar earns&#10;$405,000/hr under identical conditions">$82,800</span></td>
+          <td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label dim">1.5–2.5 bars</span></td><td>2</td><td>$36,000</td>
+          <td><span class="tip red" data-tip-label="Gross — Forgery, 2 bars, Invite Only" data-tip-calc="2 × $31,800/bar = $63,600&#10;No lobby bonus">$63,600</span></td>
+          <td><span class="tip red" data-tip-label="Net Income — Forgery, 2 bars" data-tip-calc="Gross: $63,600&#10;Supply cost for 2 bars: − $36,000&#10;= $27,600">$27,600</span></td>
+          <td>20m</td>
+          <td><span class="tip red" data-tip-label="$/Active Hour — Forgery, 2 bars solo" data-tip-calc="Net income: $27,600&#10;÷ Active time: 20 min × 60&#10;= $82,800/hr">$82,800</span></td>
+          <td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label">Full stock</span></td><td>3–4</td><td>$90,000</td>
+          <td><span class="tip red" data-tip-label="Gross — Forgery, Full Stock, Invite Only" data-tip-calc="Full stock base remote sale: $159,000&#10;No lobby bonus in invite-only&#10;No front business buff exists for Forgery">$159,000</span></td>
+          <td><span class="tip red" data-tip-label="Net Income — Forgery, Full Stock" data-tip-calc="Gross: $159,000&#10;Full supply cost: − $90,000&#10;= $69,000">$69,000</span></td>
+          <td>~30m</td>
+          <td><span class="tip red" data-tip-label="$/Active Hour — Forgery, Full Stock solo" data-tip-calc="Net income: $69,000&#10;÷ Active time: 30 min × 60&#10;= $138,000/hr&#10;&#10;Coke earns $675,000/hr solo full stock&#10;under identical conditions — 4.9× more">$138,000</span></td>
+          <td><span class="tip red" data-tip-label="$/Passive Hour — Forgery" data-tip-calc="Net income: $69,000&#10;÷ Fill time: 180 min × 60&#10;= $23,000/hr">$23,000</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -534,19 +575,64 @@ Normal: $595,200 ÷ 30 × 60 = $1,190,400/hr" data-tip-result="$2,680,800/hr thi
         </tr>
 
         <tr><td colspan="8" class="tier-label">Methamphetamine Lab<span class="tier-slug">/meth</span><span class="tier-meta">Fill 360m · $187,500 full supply · +50% lobby applied</span></td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label dim">Under 1.5 bars</span></td><td>1</td><td>$37,500</td><td>$133,905</td><td>$96,405</td><td>10m</td><td>$578,430</td><td class="dim">—</td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label dim">1.5–2.5 bars</span></td><td>2</td><td>$75,000</td><td>$267,810</td><td>$192,810</td><td>20m</td><td>$578,430</td><td class="dim">—</td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label">Full stock</span></td><td>3–4</td><td>$187,500</td><td>$669,525</td><td>$482,025</td><td>~30m</td><td>$964,050</td><td>$80,338</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label dim">Under 1.5 bars</span></td><td>1</td><td>$37,500</td>
+          <td><span class="tip" data-tip-label="Gross — Meth, 1 bar, Full Lobby" data-tip-calc="1 bar base value: $89,270&#10;× 1.50 full lobby bonus = $133,905&#10;&#10;Full lobby adds +50% above base">$133,905</span></td>
+          <td><span class="tip" data-tip-label="Net Income — Meth, 1 bar" data-tip-calc="Gross: $133,905&#10;Supply cost for 1 bar: − $37,500&#10;= $96,405">$96,405</span></td>
+          <td>10m</td>
+          <td><span class="tip" data-tip-label="$/Active Hour — Meth, 1 bar, full lobby" data-tip-calc="Net income: $96,405&#10;÷ Active time: 10 min × 60&#10;= $578,430/hr&#10;Solo seller — no reciprocity cost">$578,430</span></td>
+          <td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label dim">1.5–2.5 bars</span></td><td>2</td><td>$75,000</td>
+          <td><span class="tip" data-tip-label="Gross — Meth, 2 bars, Full Lobby" data-tip-calc="2 × $89,270 × 1.50 lobby = $267,810">$267,810</span></td>
+          <td><span class="tip" data-tip-label="Net Income — Meth, 2 bars" data-tip-calc="Gross: $267,810&#10;Supply cost for 2 bars: − $75,000&#10;= $192,810">$192,810</span></td>
+          <td>20m</td>
+          <td><span class="tip" data-tip-label="$/Active Hour — Meth, 2 bars, full lobby" data-tip-calc="Net income: $192,810&#10;÷ Active time: 20 min × 60&#10;= $578,430/hr">$578,430</span></td>
+          <td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label">Full stock</span></td><td>3–4</td><td>$187,500</td>
+          <td><span class="tip" data-tip-label="Gross — Meth, Full Stock, Full Lobby" data-tip-calc="Full stock base remote sale: $446,350&#10;× 1.50 full lobby bonus = $669,525">$669,525</span></td>
+          <td><span class="tip" data-tip-label="Net Income — Meth, Full Stock" data-tip-calc="Gross: $669,525&#10;Full supply cost: − $187,500&#10;= $482,025">$482,025</span></td>
+          <td>~30m</td>
+          <td><span class="tip" data-tip-label="$/Active Hour — Meth, Full Stock, full lobby" data-tip-calc="Net income: $482,025&#10;÷ Active time: 30 min × 60&#10;= $964,050/hr&#10;Solo seller — no reciprocity cost" data-tip-result="$964,050/hr">$964,050</span></td>
+          <td><span class="tip" data-tip-label="$/Passive Hour — Meth" data-tip-calc="Net income: $482,025&#10;÷ Fill time: 360 min × 60&#10;= $80,338/hr">$80,338</span></td></tr>
 
         <tr><td colspan="8" class="tier-label">Weed Farm<span class="tier-slug">/weed</span><span class="tier-meta">Fill 320m · $166,667 full supply · +35% Smoke on the Water · +50% lobby applied</span></td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label dim">Under 1.5 bars</span></td><td>1</td><td>$33,333</td><td>$127,980</td><td>$94,647</td><td>10m</td><td>$567,882</td><td class="dim">—</td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label dim">1.5–2.5 bars</span></td><td>2</td><td>$66,667</td><td>$255,960</td><td>$189,293</td><td>20m</td><td>$567,879</td><td class="dim">—</td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label">Full stock</span></td><td>3–4</td><td>$166,667</td><td>$639,900</td><td>$473,233</td><td>~30m</td><td>$946,466</td><td>$88,731</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label dim">Under 1.5 bars</span></td><td>1</td><td>$33,333</td>
+          <td><span class="tip" data-tip-label="Gross — Weed, 1 bar, Full Lobby" data-tip-calc="Weed base full stock: $316,000&#10;× 1.35 Smoke on the Water = $426,600&#10;1 bar = $85,320&#10;× 1.50 full lobby bonus = $127,980">$127,980</span></td>
+          <td><span class="tip" data-tip-label="Net Income — Weed, 1 bar" data-tip-calc="Gross: $127,980&#10;Supply cost for 1 bar: − $33,333&#10;= $94,647">$94,647</span></td>
+          <td>10m</td>
+          <td><span class="tip" data-tip-label="$/Active Hour — Weed, 1 bar, full lobby" data-tip-calc="Net income: $94,647&#10;÷ Active time: 10 min × 60&#10;= $567,882/hr&#10;Solo seller — no reciprocity cost">$567,882</span></td>
+          <td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label dim">1.5–2.5 bars</span></td><td>2</td><td>$66,667</td>
+          <td><span class="tip" data-tip-label="Gross — Weed, 2 bars, Full Lobby" data-tip-calc="2 × $85,320 × 1.50 lobby = $255,960">$255,960</span></td>
+          <td><span class="tip" data-tip-label="Net Income — Weed, 2 bars" data-tip-calc="Gross: $255,960&#10;Supply cost for 2 bars: − $66,667&#10;= $189,293">$189,293</span></td>
+          <td>20m</td>
+          <td><span class="tip" data-tip-label="$/Active Hour — Weed, 2 bars, full lobby" data-tip-calc="Net income: $189,293&#10;÷ Active time: 20 min × 60&#10;= $567,879/hr">$567,879</span></td>
+          <td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label">Full stock</span></td><td>3–4</td><td>$166,667</td>
+          <td><span class="tip" data-tip-label="Gross — Weed, Full Stock, Full Lobby" data-tip-calc="Weed base remote sale: $316,000&#10;× 1.35 Smoke on the Water = $426,600&#10;× 1.50 full lobby bonus = $639,900">$639,900</span></td>
+          <td><span class="tip" data-tip-label="Net Income — Weed, Full Stock" data-tip-calc="Gross: $639,900&#10;Full supply cost: − $166,667&#10;= $473,233">$473,233</span></td>
+          <td>~30m</td>
+          <td><span class="tip" data-tip-label="$/Active Hour — Weed, Full Stock, full lobby" data-tip-calc="Net income: $473,233&#10;÷ Active time: 30 min × 60&#10;= $946,466/hr&#10;Solo seller — no reciprocity cost" data-tip-result="$946,466/hr">$946,466</span></td>
+          <td><span class="tip" data-tip-label="$/Passive Hour — Weed" data-tip-calc="Net income: $473,233&#10;÷ Fill time: 320 min × 60&#10;= $88,731/hr">$88,731</span></td></tr>
 
         <tr><td colspan="8" class="tier-label">Document Forgery<span class="tier-slug">/docs</span><span class="tier-meta">Fill 180m · $90,000 full supply · +50% lobby applied</span></td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label dim">Under 1.5 bars</span></td><td>1</td><td>$18,000</td><td class="red">$47,700</td><td class="red">$29,700</td><td>10m</td><td class="red">$178,200</td><td class="dim">—</td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label dim">1.5–2.5 bars</span></td><td>2</td><td>$36,000</td><td class="red">$95,400</td><td class="red">$59,400</td><td>20m</td><td class="red">$178,200</td><td class="dim">—</td></tr>
-        <tr><td style="padding-left:18px"><span class="stock-label">Full stock</span></td><td>3–4</td><td>$90,000</td><td class="red">$238,500</td><td class="red">$148,500</td><td>~30m</td><td class="red">$297,000</td><td class="red">$49,500</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label dim">Under 1.5 bars</span></td><td>1</td><td>$18,000</td>
+          <td><span class="tip red" data-tip-label="Gross — Forgery, 1 bar, Full Lobby" data-tip-calc="1 bar base value: $31,800&#10;× 1.50 full lobby bonus = $47,700">$47,700</span></td>
+          <td><span class="tip red" data-tip-label="Net Income — Forgery, 1 bar" data-tip-calc="Gross: $47,700&#10;Supply cost for 1 bar: − $18,000&#10;= $29,700">$29,700</span></td>
+          <td>10m</td>
+          <td><span class="tip red" data-tip-label="$/Active Hour — Forgery, 1 bar, full lobby" data-tip-calc="Net income: $29,700&#10;÷ Active time: 10 min × 60&#10;= $178,200/hr&#10;&#10;Coke earns $720,000/hr under&#10;identical conditions — 4× more">$178,200</span></td>
+          <td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label dim">1.5–2.5 bars</span></td><td>2</td><td>$36,000</td>
+          <td><span class="tip red" data-tip-label="Gross — Forgery, 2 bars, Full Lobby" data-tip-calc="2 × $31,800 × 1.50 lobby = $95,400">$95,400</span></td>
+          <td><span class="tip red" data-tip-label="Net Income — Forgery, 2 bars" data-tip-calc="Gross: $95,400&#10;Supply cost for 2 bars: − $36,000&#10;= $59,400">$59,400</span></td>
+          <td>20m</td>
+          <td><span class="tip red" data-tip-label="$/Active Hour — Forgery, 2 bars, full lobby" data-tip-calc="Net income: $59,400&#10;÷ Active time: 20 min × 60&#10;= $178,200/hr">$178,200</span></td>
+          <td class="dim">—</td></tr>
+        <tr><td style="padding-left:18px"><span class="stock-label">Full stock</span></td><td>3–4</td><td>$90,000</td>
+          <td><span class="tip red" data-tip-label="Gross — Forgery, Full Stock, Full Lobby" data-tip-calc="Full stock base remote sale: $159,000&#10;× 1.50 full lobby bonus = $238,500">$238,500</span></td>
+          <td><span class="tip red" data-tip-label="Net Income — Forgery, Full Stock" data-tip-calc="Gross: $238,500&#10;Full supply cost: − $90,000&#10;= $148,500">$148,500</span></td>
+          <td>~30m</td>
+          <td><span class="tip red" data-tip-label="$/Active Hour — Forgery, Full Stock, full lobby" data-tip-calc="Net income: $148,500&#10;÷ Active time: 30 min × 60&#10;= $297,000/hr&#10;&#10;Coke earns $1,200,000/hr under&#10;identical conditions — 4× more">$297,000</span></td>
+          <td><span class="tip red" data-tip-label="$/Passive Hour — Forgery" data-tip-calc="Net income: $148,500&#10;÷ Fill time: 180 min × 60&#10;= $49,500/hr">$49,500</span></td></tr>
       </tbody>
     </table>
   </div>
