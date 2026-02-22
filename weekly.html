@@ -39,7 +39,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 @keyframes resetScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── PAGE ── */
-.page{max-width:1100px;margin:0 auto;padding:44px 48px 80px}
+.page{max-width:1400px;margin:0 auto;padding:44px 48px 80px}
 .page-title h1{font-family:var(--serif);font-size:34px;font-weight:900;line-height:1.1}
 .page-title .subtitle{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-top:6px}
 
@@ -133,6 +133,10 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .ref-sub-item:last-child{border-bottom:none}
 
 /* ── TOOLTIP ── */
+
+/* REFERENCE GRID */
+.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
+.ref-grid .ref-category{margin-top:16px}
 #tipbox{position:fixed;z-index:9999;width:300px;background:#08111a;border:1px solid var(--gold);padding:12px 14px;font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--cream);pointer-events:none;display:none;box-shadow:0 8px 32px rgba(0,0,0,.6)}
 #tipbox .tb-label{color:var(--gold);font-size:9px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px;border-bottom:1px solid rgba(201,168,76,.2);padding-bottom:5px}
 #tipbox .tb-calc{color:var(--cream-dim)}
@@ -189,7 +193,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .modal-status{font-family:var(--mono);font-size:11px;color:var(--cream-dim);min-height:16px}
 
 
-@media(max-width:900px){
+@media(max-width:900px){.ref-grid{grid-template-columns:1fr}
   .page{padding:20px}
   .site-header{padding-left:20px;padding-right:20px}
   .take-grid{grid-template-columns:1fr}
@@ -325,12 +329,13 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
   <div class="section-label">Full Weekly Reference — February 19 – 26, 2026</div>
 
   <!-- BONUSES -->
-  <div class="ref-category">
+  <div class="ref-grid">
+<div class="ref-category">
     <div class="ref-cat-header">GTA$ & RP Bonuses</div>
     <div class="ref-items">
       <div class="ref-item">
         <span class="ref-multiplier x2">2×$</span>
-        <div class="ref-text"><strong>Counterfeit Cash Sell Missions</strong> — The headline. See impact table above.</div>
+        <div class="ref-text"><strong>Counterfeit Cash Sell Missions</strong></div>
       </div>
       <div class="ref-item">
         <span class="ref-multiplier x2">2×$</span>
@@ -342,7 +347,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       </div>
       <div class="ref-item">
         <span class="ref-multiplier x2">2×$RP</span>
-        <div class="ref-text"><strong>Community Combat Series</strong> — Includes the new GNGR DUNE Pyramid KOTH mode.</div>
+        <div class="ref-text"><strong>Community Combat Series</strong></div>
       </div>
       <div class="ref-item">
         <span class="ref-multiplier x3">3×$RP</span>
@@ -357,7 +362,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
     <div class="ref-items">
       <div class="ref-item">
         <span class="ref-multiplier disc">−40%</span>
-        <div class="ref-text"><strong>Counterfeit Cash Factories, Upgrades & Modifications</strong> — If you don't own one and you are serious about making money, you must buy it. At 40% off with 2× sells active, the payback period compresses to nearly a single week of active play.</div>
+        <div class="ref-text"><strong>Counterfeit Cash Factories, Upgrades & Modifications</strong> — Must-buy at this price with 2× sells active.</div>
       </div>
       <div class="ref-item">
         <span class="ref-multiplier disc">−30%</span>
@@ -393,7 +398,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       </div>
       <div class="ref-item">
         <span class="ref-multiplier disc">−40%</span>
-        <div class="ref-text"><strong>Combat Shotgun</strong> — GTA+ Members only</div>
+        <div class="ref-text"><strong>Combat Shotgun</strong> — GTA+ only</div>
       </div>
       <div class="ref-item">
         <span class="ref-multiplier disc">−10%</span>
@@ -416,7 +421,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       </div>
       <div class="ref-item">
         <span class="ref-bullet">◆</span>
-        <div class="ref-text"><strong>Prize Ride</strong> — <a href="https://gtacars.net/gta5/stingergt" target="_blank" class="car-link">Grotti Stinger GT</a> <span class="dim">(Place Top 4 in LS Car Meet Series)</span></div>
+        <div class="ref-text"><strong>Prize Ride</strong> — <a href="https://gtacars.net/gta5/stingergt" target="_blank" class="car-link">Grotti Stinger GT</a> <span class="dim">Top 4 in LS Car Meet Series</span></div>
       </div>
       <div class="ref-item">
         <span class="ref-bullet">◆</span>
@@ -474,7 +479,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       </div>
       <div class="ref-item">
         <span class="ref-bullet">◆</span>
-        <div class="ref-text"><strong>Premium Race</strong> — Art to Art <span class="dim">(Motorcycle locked)</span></div>
+        <div class="ref-text"><strong>Premium Race</strong> — Art to Art <span class="dim">Motorcycle locked</span></div>
       </div>
 
       <div class="ref-item">
@@ -490,7 +495,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
     <div class="ref-items">
       <div class="ref-item">
         <span class="ref-bullet">◆</span>
-        <div class="ref-text"><strong>Red Year of the Horse Tee</strong> — Free, log in before March 4</div>
+        <div class="ref-text"><strong>Red Year of the Horse Tee</strong> — Free before March 4</div>
       </div>
       <div class="ref-item">
         <span class="ref-bullet">◆</span>
@@ -498,7 +503,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       </div>
       <div class="ref-item">
         <span class="ref-bullet">◆</span>
-        <div class="ref-text"><strong>Yuanbao Collectibles</strong> — 36 scattered across Los Santos. Collect all for $88,888 bonus.</div>
+        <div class="ref-text"><strong>Yuanbao Collectibles</strong> — 36 total, $88,888 for all</div>
       </div>
     </div>
   </div>
@@ -524,7 +529,9 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
      SECTION 4: METHODOLOGY NOTE
      ═══════════════════════════════════════════════ -->
 <div class="section">
-  <div class="section-label">Methodology</div>
+  </div>
+
+<div class="section-label">Methodology</div>
   <div class="concept-box">
     <div class="verdict-label" style="color:var(--cream-dim)">How Weekly Bonuses Flow Through Our Numbers</div>
     <p>When a 2× sell bonus is active, it applies as a multiplier to the base sale price <em>before</em> the lobby bonus. The full chain is: Base Sale × Front Business Bonus × Weekly Multiplier × Lobby Bonus. All numbers on this page and on affected business pages (<a href="/cash" style="color:var(--gold);text-decoration:none;border-bottom:1px dashed var(--gold-dim)">/cash</a>, <a href="/mc" style="color:var(--gold);text-decoration:none;border-bottom:1px dashed var(--gold-dim)">/mc</a>) reflect this stacking. Hover any number with a dashed underline to see the full calculation.</p>
@@ -782,4 +789,6 @@ async function submitFeedback() {
 }
 </script>
 </body>
-</html>
+</html></div>
+
+
