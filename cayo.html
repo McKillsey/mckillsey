@@ -371,7 +371,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
         <h3>Payout Formula</h3>
         <div class="method-notes">
           <p><strong style="color:var(--cream)">Gross loot</strong> = Primary (×1.1 if Hard Mode) + optimal secondary fill across all player bags (×repeat buff if applicable) + $59,500 office safe avg (range: $20,000–$99,000).</p>
-          <p><strong style="color:var(--cream)">Net distributable</strong> = Gross − 10% fencing − 2% Pavel = Gross × 0.88.</p>
+          <p><strong style="color:var(--cream)">Net distributable</strong> = (Primary + Secondary) × 0.88 + Office safe. Fencing (10%) and Pavel (2%) fees apply to loot only — the office safe passes through untouched.</p>
           <p><strong style="color:var(--cream)">Host cut</strong> = distributable × host% + elite bonus − $100,000 setup fee. Each player starts at 15%, adjustable in 5% increments, minimum 15%.</p>
           <p><strong style="color:var(--cream)">Elite Challenge</strong> adds +$50k/player (normal) or +$100k/player (hard) — applied after the split, not subject to fees. Only if all bags are full.</p>
         </div>
@@ -404,8 +404,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
           <p>When the 72hr buff is active, the density order and per-stack values used in the optimizer are adjusted by the buff multiplier before ranking — ensuring the optimal bag allocation is computed on buffed values, not base values.</p>
           <p>Paintings cannot be taken partially — skipped if remaining space &lt; 50%.</p>
           <p>Gold requires at least two players to collect — it is locked behind doors that cannot be opened solo. It is excluded from the Solo scenario entirely. While gold may be accessible solo via glitches, we do not model or endorse such approaches.</p>
-          <p>Bags are allocated host-first as a convention — the host receives the highest-value bag. This is an arbitrary choice; there is no in-game mechanic that enforces it.</p>
-          <p>Secondary values are session averages. Actual payouts may vary ±5%.</p>
+          <p>Bags are allocated host-first as a convention. Secondary values represent averages. Actual payouts may vary ±5%.</p>
         </div>
       </div>
 
@@ -796,9 +795,10 @@ function calcScenario(numPlayers) {
   const secBuff=state.repeatHeist ? REPEAT_BUFF[state.primary] : 1.0;
   const bags=optimizeBags(numPlayers,state.loot,secBuff);
   const secondary=bags.reduce((s,b)=>s+b.totalValue,0);
-  const gross=primaryVal+secondary+OFFICE_SAFE;
-  const fencing=gross*FENCING_FEE, pavel=gross*PAVEL_FEE;
-  const distrib=gross*(1-FENCING_FEE-PAVEL_FEE);
+  const lootBase=primaryVal+secondary;
+  const gross=lootBase+OFFICE_SAFE;
+  const fencing=lootBase*FENCING_FEE, pavel=lootBase*PAVEL_FEE;
+  const distrib=lootBase*(1-FENCING_FEE-PAVEL_FEE)+OFFICE_SAFE;
   const allFull=bags.every(b=>b.totalFill>=0.999);
   const eliteOk=state.eliteSelected&&allFull;
   const eliteEach=eliteOk?(state.hardMode?ELITE_HARD:ELITE_NORMAL):0;
@@ -920,10 +920,10 @@ function render() {
     const tip_secondary = secLines.join('\n');
 
     const tip_safe    = `Range: $20,000–$99,000\nAverage: ${fmt(OFFICE_SAFE)}`;
-    const tip_gross   = `${fmt(sc.primaryVal)} primary\n+ ${fmt(sc.secondary)} secondary\n+ ${fmt(OFFICE_SAFE)} safe\n= ${fmt(sc.gross)}`;
-    const tip_fencing = `${fmt(sc.gross)} × 10% = ${fmt(sc.fencing)}`;
-    const tip_pavel   = `${fmt(sc.gross)} × 2% = ${fmt(sc.pavel)}`;
-    const tip_distrib = `${fmt(sc.gross)} × 88% = ${fmt(sc.distrib)}`;
+    const tip_gross   = `${fmt(sc.primaryVal)} primary\n+ ${fmt(sc.secondary)} secondary\n+ ${fmt(OFFICE_SAFE)} safe (fee-exempt)\n= ${fmt(sc.gross)}`;
+    const tip_fencing = `(${fmt(sc.primaryVal)} + ${fmt(sc.secondary)}) × 10%\n= ${fmt(sc.fencing)}\nOffice safe not subject to fencing fee`;
+    const tip_pavel   = `(${fmt(sc.primaryVal)} + ${fmt(sc.secondary)}) × 2%\n= ${fmt(sc.pavel)}\nOffice safe not subject to Pavel fee`;
+    const tip_distrib = `(${fmt(sc.primaryVal)} + ${fmt(sc.secondary)}) × 88%\n+ ${fmt(OFFICE_SAFE)} safe\n= ${fmt(sc.distrib)}`;
 
     // Player tooltips — clean multiline, no bullets
     const makePlayerTip = (p) => {
