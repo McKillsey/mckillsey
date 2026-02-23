@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>McKillsey & Company — GTA Online Heist Calculators & Business Guides</title>
+<title>McKillsey & Company — GTA Online Strategic Advisory</title>
 <meta name="description" content="GTA Online money-making reference. Cayo Perico calculator, Diamond Casino Heist calculator, MC business guides, and more. Every number transparent, every recommendation backed by math.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -12,6 +12,7 @@
   --cream:#f0ead8; --cream-dim:#9aabbf;
   --gold:#c9a84c; --gold-dim:#8a6f2e;
   --green:#2dba72; --red:#d94f4f;
+  --weekly:#d4a843;
   --rule:rgba(201,168,76,0.18);
   --mono:'IBM Plex Mono',monospace;
   --sans:'IBM Plex Sans',sans-serif;
@@ -37,272 +38,341 @@ body {
 .wordmark .line2{display:block;font-size:22px;padding-left:1.1em}
 .header-tagline{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.1em;text-transform:uppercase;margin-left:auto}
 
-/* ── MAIN ── */
-.main {
-  flex:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:60px 48px;
-}
 
-.center-block {
-  max-width:640px;
-  width:100%;
-  text-align:center;
-}
+/* ── HERO ── */
+.hero{text-align:center;padding:52px 48px 0;max-width:720px;margin:0 auto}
+.hero-title{font-family:var(--serif);font-size:clamp(32px,5vw,52px);font-weight:900;line-height:1.08;color:var(--cream);margin-bottom:8px}
+.hero-title em{font-style:normal;color:var(--gold)}
+.hero-sub{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:20px}
+.hero-copy{font-size:14px;color:var(--cream-dim);line-height:1.7;max-width:540px;margin:0 auto}
+.hero-copy strong{color:var(--cream);font-weight:500}
 
-/* Classified stamp */
-.stamp {
-  display:inline-block;
-  font-family:var(--mono);
-  font-size:11px;
-  letter-spacing:.28em;
-  text-transform:uppercase;
-  color:var(--gold);
-  border:1px solid var(--gold);
-  padding:5px 16px;
-  margin-bottom:36px;
-  opacity:.7;
+/* ── WEEKLY BANNER ── */
+.weekly-banner{
+  max-width:1100px;margin:40px auto 0;padding:0 48px;
 }
-
-/* ── HEADLINE ── */
-.headline {
-  font-family:var(--serif);
-  font-size:clamp(38px,6vw,64px);
-  font-weight:900;
-  line-height:1.05;
-  color:var(--cream);
-  margin-bottom:10px;
-}
-.headline em {
-  font-style:normal;
-  color:var(--gold);
-}
-
-.tagline {
-  font-family:var(--mono);
-  font-size:12px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--cream-dim);
-  margin-bottom:48px;
-}
-
-/* ── DIVIDER ── */
-.rule {
-  border:none;
-  border-top:1px solid var(--rule);
-  margin:0 auto 48px;
-  width:120px;
-}
-
-/* ── BODY COPY ── */
-.body-copy {
-  font-size:15px;
-  color:var(--cream-dim);
-  line-height:1.75;
-  margin-bottom:48px;
-  font-family:var(--sans);
-}
-.body-copy strong {
-  color:var(--cream);
-  font-weight:500;
-}
-
-/* ── BETA CTA ── */
-.beta-card {
-  border:1px solid var(--rule);
-  border-left:3px solid var(--gold);
-  background:rgba(201,168,76,.03);
-  padding:22px 28px;
-  text-align:left;
-  margin-bottom:0;
-}
-.beta-label {
-  font-family:var(--mono);
-  font-size:9px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:var(--gold);
-  margin-bottom:8px;
-  display:block;
-}
-.beta-title {
-  font-family:var(--serif);
-  font-size:20px;
-  font-weight:700;
-  color:var(--cream);
-  margin-bottom:6px;
-}
-.beta-desc {
-  font-family:var(--mono);
-  font-size:11px;
-  color:var(--cream-dim);
-  line-height:1.7;
-  letter-spacing:.03em;
-  margin-bottom:18px;
-}
-.beta-link {
-  display:inline-block;
-  font-family:var(--mono);
-  font-size:11px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--navy);
-  background:var(--gold);
-  padding:10px 22px;
+.weekly-card{
+  display:flex;align-items:center;gap:20px;
+  border:1px solid rgba(212,168,67,.2);border-left:3px solid var(--weekly);
+  background:rgba(212,168,67,.04);
+  padding:16px 24px;
   text-decoration:none;
   transition:background .15s;
-  font-weight:500;
 }
-.beta-link:hover {
-  background:var(--cream);
+.weekly-card:hover{background:rgba(212,168,67,.08)}
+.weekly-flag{
+  font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--weekly);white-space:nowrap;
 }
+.weekly-title{
+  font-family:var(--serif);font-size:16px;font-weight:700;color:var(--cream);
+  flex:1;
+}
+.weekly-detail{
+  font-family:var(--mono);font-size:11px;color:var(--cream-dim);
+  letter-spacing:.04em;
+}
+.weekly-arrow{
+  font-family:var(--mono);font-size:14px;color:var(--weekly);opacity:.5;
+}
+
+/* ── INDEX GRID ── */
+.index-wrap{max-width:1100px;margin:44px auto 0;padding:0 48px 60px;display:grid;grid-template-columns:1fr 1fr;gap:48px}
+
+/* Section headings */
+.idx-section{margin-bottom:0}
+.idx-label{
+  font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--rule);
+}
+
+/* Index cards */
+.idx-card{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 18px;
+  border:1px solid var(--rule);
+  background:rgba(201,168,76,.015);
+  text-decoration:none;
+  transition:background .15s,border-color .15s;
+  margin-bottom:8px;
+}
+.idx-card:hover{background:rgba(201,168,76,.05);border-color:rgba(201,168,76,.3)}
+.idx-card-info{flex:1;min-width:0}
+.idx-card-title{
+  font-family:var(--sans);font-size:14px;font-weight:500;color:var(--cream);
+  margin-bottom:2px;
+}
+.idx-card-desc{
+  font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.03em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.idx-card-arrow{
+  font-family:var(--mono);font-size:13px;color:var(--gold);opacity:.3;
+  transition:opacity .15s;flex-shrink:0;
+}
+.idx-card:hover .idx-card-arrow{opacity:.7}
+
+/* Status badges */
+.badge{
+  font-family:var(--mono);font-size:8px;letter-spacing:.18em;text-transform:uppercase;
+  padding:3px 8px;border-radius:2px;white-space:nowrap;flex-shrink:0;
+}
+.badge-live{background:rgba(45,186,114,.12);color:var(--green);border:1px solid rgba(45,186,114,.2)}
+.badge-beta{background:rgba(201,168,76,.1);color:var(--gold);border:1px solid rgba(201,168,76,.2)}
+.badge-new{background:rgba(45,186,114,.15);color:var(--green);border:1px solid rgba(45,186,114,.25)}
+.badge-dev{background:rgba(154,171,191,.06);color:var(--cream-dim);border:1px solid rgba(154,171,191,.12);opacity:.6}
+
+/* Stub cards (greyed out, no link) */
+.idx-stub{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 18px;
+  border:1px solid rgba(154,171,191,.06);
+  background:rgba(154,171,191,.015);
+  margin-bottom:8px;
+  opacity:.35;
+}
+.idx-stub .idx-card-title{color:var(--cream-dim);font-weight:400}
+
+/* Ghost cards (blank placeholders) */
+.idx-ghost{
+  padding:14px 18px;
+  border:1px dashed rgba(154,171,191,.08);
+  margin-bottom:8px;
+  height:50px;
+  opacity:.2;
+}
+
+/* Right column stacking */
+.right-col .idx-section:not(:first-child){margin-top:36px}
 
 /* ── FOOTER ── */
-.site-footer {
-  border-top:1px solid var(--rule);
-  padding:16px 48px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.footer-copy {
-  font-family:var(--mono);
-  font-size:10px;
-  color:var(--cream-dim);
-  opacity:.45;
-  letter-spacing:.06em;
-}
+.site-footer{border-top:1px solid var(--rule);padding:16px 48px;display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.footer-copy{font-family:var(--mono);font-size:10px;color:var(--cream-dim);opacity:.45;letter-spacing:.06em}
 
-/* ── TICKER ── */
-.ticker-wrap {
-  overflow:hidden;
-  border-top:1px solid var(--rule);
-  border-bottom:1px solid var(--rule);
-  background:rgba(201,168,76,.03);
-  padding:9px 0;
-  margin-bottom:0;
-  position:relative;
-}
-.ticker-wrap::before,
-.ticker-wrap::after {
-  content:'';
-  position:absolute;
-  top:0;bottom:0;width:80px;z-index:2;
-}
-.ticker-wrap::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
-.ticker-wrap::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
-.ticker-track {
-  display:flex;
-  gap:0;
-  width:max-content;
-  animation:ticker 28s linear infinite;
-}
-.ticker-track:hover { animation-play-state:paused; }
-.ticker-item {
-  font-family:var(--mono);
-  font-size:10px;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--cream-dim);
-  padding:0 32px;
-  white-space:nowrap;
-}
-.ticker-item .dot {
-  color:var(--gold);
-  margin-right:8px;
-}
-@keyframes ticker {
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
-}
-
-@media(max-width:600px){
+/* ── RESPONSIVE ── */
+@media(max-width:800px){
   .site-header{padding:16px 20px}
   .header-tagline{display:none}
-  .main{padding:40px 20px}
-  .site-footer{padding:14px 20px}
+  .hero{padding:36px 20px 0}
+  .weekly-banner{padding:0 20px}
+  .index-wrap{padding:0 20px 40px;grid-template-columns:1fr;gap:32px}
+  .site-footer{padding:14px 20px;flex-direction:column;gap:6px;text-align:center}
 }
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="wordmark"><span class="line1">McKillsey</span><span class="line2">&amp; Company</span></div>
+  <a href="/" class="wordmark"><span class="line1">McKillsey</span><span class="line2">&amp; Company</span></a>
   <div class="header-tagline">Strategic Advisory · Los Santos · Blaine County</div>
 </header>
 
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-track" id="ticker-track"></div>
+<!-- HERO -->
+<div class="hero">
+  <h1 class="hero-title">Strategic Advisory for the<br><em>Los Santos Underground</em></h1>
+  <p class="hero-sub" id="tagline"></p>
+  <p class="hero-copy">
+    Every number transparent. Every recommendation backed by math. We tell you what the best play is &mdash; and show you <strong>exactly why.</strong>
+  </p>
 </div>
 
-<main class="main">
-  <div class="center-block">
+<!-- WEEKLY BANNER -->
+<div class="weekly-banner">
+  <a href="/weekly" class="weekly-card">
+    <span class="weekly-flag">The McKillsey Weekly</span>
+    <span class="weekly-title">Week of Feb 19 &mdash; 2&times; Cash, 2&times; Dealers</span>
+    <span class="weekly-detail">Updated every Thursday</span>
+    <span class="weekly-arrow">&rarr;</span>
+  </a>
+</div>
 
-    <div class="stamp">Clearance Level: Pending</div>
+<!-- INDEX -->
+<div class="index-wrap">
 
-    <h1 class="headline">
-      Under<br><em>Construction</em>
-    </h1>
-    <hr class="rule">
+  <!-- LEFT: BUSINESS INTEL -->
+  <div class="left-col">
+    <div class="idx-section">
+      <div class="idx-label">Business Intel</div>
 
-    <p class="body-copy">
-      McKillsey &amp; Company is preparing a comprehensive strategic advisory platform for the Los Santos and Blaine County market. Expect rigorous analysis, transparent methodology, and <strong>no tolerance for leaving money on the table.</strong>
-      <br><br>
-      The full site — covering all major businesses, heists, weekly bonuses, and every decision worth doing the math on — is in active development. In the meantime, our first engagement is live.
-    </p>
+      <a href="/mc" class="idx-card">
+        <div class="idx-card-info">
+          <div class="idx-card-title">MC Businesses</div>
+          <div class="idx-card-desc">Some MC businesses are not at all like others</div>
+        </div>
+        <span class="badge badge-beta">Beta</span>
+        <span class="idx-card-arrow">&rarr;</span>
+      </a>
 
-    <div class="beta-card">
-      <span class="beta-label">Now Live — Early Access</span>
-      <div class="beta-title">Cayo Perico Payout Model</div>
-      <p class="beta-desc">
-        Determine your optimal team size, validate your loot strategy, and stress-test your crew cuts.
-      </p>
-      <a href="/cayo" class="beta-link">Open Model →</a>
+      <div class="idx-stub">
+        <div class="idx-card-info">
+          <div class="idx-card-title">Bunker</div>
+          <div class="idx-card-desc">Sell weapons, but buy research</div>
+        </div>
+        <span class="badge badge-dev">In Dev</span>
+      </div>
+
+      <div class="idx-stub">
+        <div class="idx-card-info">
+          <div class="idx-card-title">Cargo Warehouse</div>
+          <div class="idx-card-desc">Source passively, don't wait to sell</div>
+        </div>
+        <span class="badge badge-dev">In Dev</span>
+      </div>
+
+      <div class="idx-stub">
+        <div class="idx-card-info">
+          <div class="idx-card-title">Hangar</div>
+          <div class="idx-card-desc">Passive or active sourcing both viable</div>
+        </div>
+        <span class="badge badge-dev">In Dev</span>
+      </div>
+
+      <!-- Ghost cards implying more -->
+      <div class="idx-ghost"></div>
+      <div class="idx-ghost"></div>
+      <div class="idx-ghost"></div>
+
     </div>
-
-    <div class="beta-card" style="margin-top:16px;border-left-color:var(--cream-dim);">
-      <span class="beta-label" style="color:var(--cream-dim);">Beta — Numbers Under Review</span>
-      <div class="beta-title">Diamond Casino Heist Vault Time Model</div>
-      <p class="beta-desc">
-        Find your optimal crew composition, including the right hacker and the right team size. Certain model assumptions still being validated by the community.
-      </p>
-      <a href="/dch" class="beta-link" style="background:var(--navy-light);color:var(--cream);border:1px solid var(--rule);">Open Beta →</a>
-    </div>
-
   </div>
-</main>
+
+  <!-- RIGHT: MODELS + INSIGHTS -->
+  <div class="right-col">
+    <div class="idx-section">
+      <div class="idx-label">Models</div>
+
+      <a href="/cayo" class="idx-card">
+        <div class="idx-card-info">
+          <div class="idx-card-title">Cayo Perico Payout Model</div>
+          <div class="idx-card-desc">Optimal team size, loot strategy, crew cut validation</div>
+        </div>
+        <span class="badge badge-live">Live</span>
+        <span class="idx-card-arrow">&rarr;</span>
+      </a>
+
+      <a href="/dch" class="idx-card">
+        <div class="idx-card-info">
+          <div class="idx-card-title">Diamond Casino Heist Vault Time Model</div>
+          <div class="idx-card-desc">Crew composition, hacker selection, take optimization</div>
+        </div>
+        <span class="badge badge-beta">Beta</span>
+        <span class="idx-card-arrow">&rarr;</span>
+      </a>
+
+    </div>
+
+    <div class="idx-section">
+      <div class="idx-label">Insights</div>
+
+      <a href="/dealers" class="idx-card">
+        <div class="idx-card-info">
+          <div class="idx-card-title">Street Dealers</div>
+          <div class="idx-card-desc">When to sell, when to skip &mdash; the math behind dealer economics</div>
+        </div>
+        <span class="badge badge-new">New</span>
+        <span class="idx-card-arrow">&rarr;</span>
+      </a>
+
+      <!-- Ghost cards implying more insights to come -->
+      <div class="idx-ghost"></div>
+
+    </div>
+  </div>
+
+</div>
 
 <footer class="site-footer">
-  <span class="footer-copy">© McKillsey &amp; Company · Los Santos · Blaine County</span>
-  <span class="footer-copy">Non-commercial fan project · Not affiliated with Rockstar Games</span>
+  <span class="footer-copy">&copy; McKillsey &amp; Company &middot; Los Santos &middot; Blaine County</span>
+  <span class="footer-copy">Non-commercial fan project &middot; Not affiliated with Rockstar Games</span>
 </footer>
 
-<script>
-// Ticker items
-const items = [
-  'Cayo Perico Payout Model — Live',
-  'MC Businesses — In Development',
-  'Nightclub Warehouse — In Development',
-  'Bunker — In Development',
-  'Weekly Bonuses — In Development',
-  'Dashboard — In Development',
-  'Casino Heist Vault Time Model — Beta',
-  'Acid Lab — Coming Soon',
-  'Street Dealers — Coming Soon',
-];
 
-// Double items for seamless loop
-const track = document.getElementById('ticker-track');
-[...items, ...items].forEach(text => {
-  const el = document.createElement('span');
-  el.className = 'ticker-item';
-  el.innerHTML = `<span class="dot">◆</span>${text}`;
-  track.appendChild(el);
-});
+
+<script>
+const taglines = [
+    "Where every engagement is a hostile takeover",
+    "Rigorous analysis for illegitimate business",
+    "Pro bono advisory for the criminally ambitious",
+    "The only consultancy with a five-star wanted level",
+    "Turning criminal enterprises into optimized portfolios",
+    "Management consulting for the ungovernable",
+    "Strategy. Execution. Getaway.",
+    "Full-service advisory for the Los Santos underworld",
+    "White-collar thinking for blue-collar crime",
+    "We bill by the heist",
+    "Advising criminal enterprises since 2026",
+    "Our retainer is your trust \u2014 and your cut",
+    "Premium strategy for premium contraband",
+    "When you need a second opinion on your first crime",
+    "Every client is a flight risk \u2014 including us",
+    "Your time has a price \u2014 we calculated it",
+    "Not every dollar is worth earning",
+    "Some money isn\u2019t worth making",
+    "We respect your time more than you do",
+    "If the math doesn\u2019t work, neither should you",
+    "Time is money \u2014 we\u2019ll show you exactly how much",
+    "We calculated your time so you\u2019d stop wasting it",
+    "The ROI on reading this is already positive",
+    "You\u2019re leaving money on the table \u2014 we measured",
+    "Some businesses pay you less than minimum wage \u2014 we\u2019ll name them",
+    "Earning less than your potential is a strategy \u2014 just a bad one",
+    "We do the math so you can do the crime",
+    "We have opinions and we have spreadsheets",
+    "Opinionated analysis backed by transparent math",
+    "We\u2019ll tell you what to do \u2014 and show you why",
+    "We don\u2019t just show data \u2014 we make the call",
+    "Bold recommendations, transparent methodology",
+    "Every recommendation comes with a receipt",
+    "We\u2019re not neutral \u2014 we\u2019re right",
+    "The math doesn\u2019t care about your feelings",
+    "Our advice is free \u2014 ignoring it isn\u2019t",
+    "Neutral analysis is for people without spreadsheets",
+    "Because even crime has an ROI",
+    "Making crime pay \u2014 literally",
+    "Better living through optimized crime",
+    "Our clients commit crimes \u2014 we just commit to the math",
+    "Legal in zero jurisdictions, profitable in all of them",
+    "We\u2019ve never lost a client to the competition \u2014 just to the FIB",
+    "All portfolios diversified \u2014 all getaway vehicles fueled",
+    "Your competitors aren\u2019t grinding smarter \u2014 but you will be",
+    "Where supply runs and supply chains meet",
+    "Lobby bonus is underrated \u2014 we\u2019ll prove it",
+    "No one ever said crime doesn\u2019t pay \u2014 they just didn\u2019t do the math",
+    "We optimize enterprises the FIB pretends don\u2019t exist",
+    "Operating in a regulatory environment best described as \u201cnone\u201d",
+    "Due diligence for the due-for-a-score",
+    "Every criminal empire deserves a CFO",
+    "Our analysts have never been convicted \u2014 of being wrong",
+    "We looked at the numbers \u2014 someone had to",
+    "Someone should do the math \u2014 so we did",
+    "The spreadsheet behind the crime",
+    "This is what happens when consultants play GTA",
+    "Overqualified advice for virtual crime",
+    "A consulting firm for people who run MC businesses",
+    "We take criminal enterprise more seriously than most",
+    "The math is free \u2014 the advice is priceless",
+    "Numbers first, opinions second, apologies never",
+    "We made a spreadsheet and it got out of hand",
+    "Professional-grade advice for a criminal-grade economy",
+    "We overthink GTA so you don\u2019t have to",
+    "This started as a spreadsheet \u2014 we regret nothing",
+    "Delivering alpha in the Los Santos market",
+    "Synergizing your criminal verticals",
+    "Your one-stop shop for actionable criminal intelligence",
+    "Core competency: making you richer",
+    "Value creation through strategic violence",
+    "End-to-end advisory from supply purchase to sell mission",
+    "We bring institutional rigor to your meth lab",
+    "Thought leadership for the Los Santos underclass",
+    "Moving the needle on your net criminal income",
+    "Circle back on your bunker margins",
+    "Deep-dive analytics for the shallow end of the law",
+    "If you\u2019re reading this, your profit margins could be higher",
+    "Transparent methodology for opaque business practices",
+    "Our engagement letters come with a disclaimer \u2014 and a body count",
+    "All analysis peer-reviewed by the crew",
+    "Where PowerPoints meet firepower"
+];
+document.getElementById('tagline').textContent = taglines[Math.floor(Math.random() * taglines.length)];
 </script>
 
 </body>
