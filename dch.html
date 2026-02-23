@@ -426,16 +426,36 @@ function tipP(r,p){let s=fmt(r.net)+' \u00d7 '+p.pct+'%\n= '+fmt(r.net*p.pct/100
 function render(){
   const grid=document.getElementById('matrix-grid');grid.innerHTML='';
   const all=[];for(const pc of[2,3,4])for(const h of H)all.push(calc(h,pc));
-  // Best team (total payout including elite)
-  const bT=all.reduce((a,b)=>b.totalWithElite>a.totalWithElite?b:a);const sT=all.slice().sort((a,b)=>b.totalWithElite-a.totalWithElite);const s2T=sT[1];
+
+  // Best for team: sort by totalWithElite desc, then fewer players wins ties.
+  // "Tie" = adding a player gains less than 5% total. This prevents recommending
+  // a 4th player who adds $30k to a $1.8M pot.
+  const sT=all.slice().sort((a,b)=>{
+    const diff=b.totalWithElite-a.totalWithElite;
+    // If within 5% of each other, prefer fewer players
+    const threshold=Math.max(a.totalWithElite,b.totalWithElite)*0.05;
+    if(Math.abs(diff)<threshold) return a.pc-b.pc;
+    return diff;
+  });
+  const bT=sT[0];const s2T=sT[1];
   const tPct=s2T.totalWithElite>0?((bT.totalWithElite-s2T.totalWithElite)/s2T.totalWithElite*100).toFixed(1):'∞';
+
+  // Build team recommendation text
+  let teamNote='';
+  // Check if a scenario with fewer players collects the same units
+  const fewerSame=all.filter(r=>r.pc<bT.pc&&r.uc===bT.uc&&r.hacker.id===bT.hacker.id);
+  if(fewerSame.length>0){
+    const fewer=fewerSame.sort((a,b)=>a.pc-b.pc)[0];
+    teamNote=' Same loot collected with '+fewer.pc+' players \u2014 fewer splits, everyone earns more.';
+  }
+
   // Best host
   const bH=all.reduce((a,b)=>b.ht>a.ht?b:a);const sH=all.slice().sort((a,b)=>b.ht-a.ht);const s2H=sH[1];
   const hPct=s2H.ht>0?((bH.ht-s2H.ht)/s2H.ht*100).toFixed(1):'∞';
 
   const rec=document.getElementById('rec-banner');
   rec.innerHTML='<div class="verdict"><div class="verdict-label">McKillsey Recommendation</div>'+
-    '<p><strong>Best for the team:</strong> '+bT.pc+' players with '+bT.hacker.label+'. Combined player take peaks at <strong>'+fmt(bT.totalWithElite)+'</strong> (+'+tPct+'% vs '+fmt(s2T.totalWithElite)+' with '+s2T.pc+' players, '+s2T.hacker.label+').</p>'+
+    '<p><strong>Best for the team:</strong> '+bT.pc+' players with '+bT.hacker.label+'. Combined player take peaks at <strong>'+fmt(bT.totalWithElite)+'</strong> (+'+tPct+'% vs '+fmt(s2T.totalWithElite)+' with '+s2T.pc+' players, '+s2T.hacker.label+').'+teamNote+'</p>'+
     '<p><strong>Best for host:</strong> '+bH.pc+' players with '+bH.hacker.label+'. Host take peaks at <strong>'+fmt(bH.ht)+'</strong> (+'+hPct+'% vs '+fmt(s2H.ht)+' with '+s2H.pc+' players, '+s2H.hacker.label+').</p></div>';
 
   for(const pc of[2,3,4]){
