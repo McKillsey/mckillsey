@@ -313,36 +313,50 @@ function hideT(){tipbox.style.display='none';}
 function aT(el,label,calc){el.addEventListener('mouseenter',()=>showT(el,label,calc));el.addEventListener('mouseleave',hideT);}
 
 function getAH(max){return S.hs.map((s,i)=>({...s,idx:i})).filter(s=>s.a).slice(0,max);}
-function assignD(slots,vaultTime){
+function assignD(slots,vaultTime,collectTime,commutePerPile){
   if(!slots.length)return[];
   if(slots.length===1)return[{...slots[0],doors:DOORS}];
-  const sorted=slots.slice().sort((a,b)=>a.s-b.s);
-  const fastest=sorted[0], second=sorted[1];
   const isH=S.difficulty==='hard', hpd=isH?HH:HN, apd=isH?AH:AN;
-  // Smart allocation: if fastest is >=3s faster, they get as many doors as they can do in 2/3 of wall-clock vault time
-  if(fastest.s+3<=second.s){
-    const fastTPD=hpd*fastest.s+apd; // wall-clock seconds per door for fastest
-    const timebudget=Math.floor(vaultTime*2/3);
-    const fastDoors=Math.min(DOORS,Math.floor(timebudget/fastTPD));
-    const remaining=DOORS-fastDoors;
-    if(fastDoors>0&&remaining>=0){
-      const result=[{...fastest,doors:fastDoors}];
-      // Split remaining among slower hackers
-      const slow=sorted.slice(1);
-      if(remaining>0&&slow.length>0){
-        const sBase=Math.floor(remaining/slow.length), sExtra=remaining%slow.length;
-        // Among slow hackers, fastest of them gets extra
-        for(let i=0;i<slow.length;i++) result.push({...slow[i],doors:sBase+(i<sExtra?1:0)});
-      } else {
-        for(const s of slow) result.push({...s,doors:0});
+  // Effective deadline: must finish hacking with enough time to collect one pile and commute
+  const deadline=vaultTime-collectTime-commutePerPile;
+  // Sort fastest first
+  const sorted=slots.slice().sort((a,b)=>a.s-b.s);
+  const tpd=sorted.map(h=>hpd*h.s+apd);
+  const assigned=sorted.map(()=>0);
+  let remaining=DOORS;
+  for(let i=0;i<sorted.length&&remaining>0;i++){
+    const maxByTime=deadline>0?Math.floor(deadline/tpd[i]):0;
+    const give=Math.min(remaining,maxByTime);
+    assigned[i]=give;
+    remaining-=give;
+  }
+  // If still remaining (all hackers ran out of time), force-assign to fastest
+  if(remaining>0)assigned[0]+=remaining;
+
+  // Refinement: move doors from slow to fast if it saves man-seconds
+  let improved=true;
+  while(improved){
+    improved=false;
+    for(let slow=sorted.length-1;slow>0;slow--){
+      if(assigned[slow]===0)continue;
+      for(let fast=0;fast<slow;fast++){
+        const saveSlow=tpd[slow];
+        const costFast=tpd[fast];
+        const fastWallClock=(assigned[fast]+1)*tpd[fast];
+        if(costFast<saveSlow&&fastWallClock<=deadline){
+          assigned[fast]++;assigned[slow]--;improved=true;break;
+        }
       }
-      result._smart=true;result._budget=timebudget;
-      return result;
+      if(improved)break;
     }
   }
-  // Default: even split, fastest gets remainder
-  const n=sorted.length,base=Math.floor(DOORS/n),extra=DOORS%n;
-  return sorted.map((h,i)=>({...h,doors:base+(i<extra?1:0)}));
+
+  const result=sorted.map((h,i)=>({...h,doors:assigned[i]}));
+  if(result.some(h=>h.doors===0))result._smart=true;
+  const nonzero=result.filter(h=>h.doors>0);
+  if(nonzero.length>0&&nonzero.length<sorted.length)result._smart=true;
+  result._budget=deadline;
+  return result;
 }
 
 // localStorage
@@ -383,7 +397,7 @@ function calc(hObj,pc){
     hackTotal=DOORS*BURN_PER_DOOR;
     da=[];hbd=[{idx:-1,doors:DOORS,speed:0,tpd:BURN_PER_DOOR,total:hackTotal,burn:true}];
   } else {
-    const slots=getAH(pc); da=assignD(slots,vt);
+    const slots=getAH(pc); da=assignD(slots,vt,vc.ct,S.cpp);
     const hpd=isH?HH:HN, apd=isH?AH:AN;
     for(const h of da){const tpd=hpd*h.s+apd,ht=h.doors*tpd;hackTotal+=ht;hbd.push({idx:h.idx,doors:h.doors,speed:h.s,tpd,total:ht});}
   }
@@ -413,8 +427,22 @@ function tipMS(r){return fSec(r.vt)+' = '+r.vt+' seconds\n\u00d7 '+r.pc+' player
 function tipHack(r){
   if(r.isAgg){return 'THERMAL CHARGES (Aggressive)\n4 doors \u00d7 8s per door = 32 man-seconds\nNo hacking required \u2014 anyone can burn locks';}
   const isH=S.difficulty==='hard',hpd=isH?HH:HN,apd=isH?AH:AN,lines=[];
-  if(r.da._smart){lines.push('SMART ALLOCATION');lines.push('Fastest hacker \u22653s faster \u2192 gets 2/3 of '+r.vt+'s = '+Math.floor(r.vt*2/3)+'s budget');lines.push('');}
-  for(const h of r.hbd){lines.push('Hacker '+(h.idx+1)+': '+h.doors+' door'+(h.doors>1?'s':''));if(h.doors>0){lines.push('  '+h.doors+' \u00d7 ('+hpd+' hack'+(hpd>1?'s':'')+' \u00d7 '+h.speed+'s + '+apd+'s animation)');lines.push('  = '+h.doors+' \u00d7 '+h.tpd+'s = '+h.total+' man-seconds');}else{lines.push('  (no doors assigned)');}}
+  if(r.da._smart){
+    const dl=r.da._budget;
+    lines.push('OPTIMIZED ALLOCATION');
+    lines.push('Deadline: '+r.vt+'s vault \u2212 '+r.ct+'s collect \u2212 '+S.cpp+'s commute = '+dl+'s');
+    lines.push('Doors assigned to minimize total man-seconds');
+    lines.push('');
+  }
+  for(const h of r.hbd){
+    lines.push('Hacker '+(h.idx+1)+' ('+h.speed+'s/hack): '+h.doors+' door'+(h.doors!==1?'s':''));
+    if(h.doors>0){
+      lines.push('  '+h.doors+' \u00d7 ('+hpd+' hack'+(hpd>1?'s':'')+' \u00d7 '+h.speed+'s + '+apd+'s animation)');
+      lines.push('  = '+h.doors+' \u00d7 '+h.tpd+'s = '+h.total+' man-seconds');
+    } else {
+      lines.push('  Skipped \u2014 collecting loot instead');
+    }
+  }
   lines.push('\nTotal hacking: '+r.hackTotal+' man-seconds');return lines.join('\n');
 }
 function tipComm(r){return r.np+' piles \u00d7 '+S.cpp+'s per pile\n= '+r.commT+' man-seconds';}
