@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nightclub Special Orders Analysis — McKillsey & Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3148;
+  --cream:#f0ead8;--cream-dim:#9aabbf;
+  --gold:#c9a84c;--gold-dim:#8a6f2e;
+  --green:#2dba72;--red:#d94f4f;--amber:#e08c2a;
+  --rule:rgba(201,168,76,.18);
+  --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--serif:'Playfair Display',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size:15px;line-height:1.65}
+.site-header{border-bottom:1px solid var(--rule);padding:20px 48px;display:flex;align-items:center;gap:32px}
+.wordmark{font-family:var(--serif);font-weight:700;color:#b8c8d8;line-height:1.15;text-decoration:none}
+.wordmark .line1{display:block;font-size:26px}
+.wordmark .line2{display:block;font-size:22px;padding-left:1.1em}
+.header-tagline{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.1em;text-transform:uppercase;margin-left:auto}
+.back-link{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--cream-dim);text-decoration:none;border:1px solid var(--rule);padding:5px 12px;transition:all .15s}
+.back-link:hover{color:var(--gold);border-color:var(--gold)}
+.page{max-width:1500px;margin:0 auto;padding:44px 48px 80px}
+.page-title h1{font-family:var(--serif);font-size:34px;font-weight:900;line-height:1.1}
+.page-title .subtitle{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-top:6px}
+.section{margin-top:36px}
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+
+/* STAT GRID */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.stat-card{background:var(--navy-mid);padding:20px 18px}
+.stat-value{font-family:var(--mono);font-size:22px;font-weight:500;color:var(--cream);line-height:1;margin-bottom:4px}
+.stat-value.green{color:var(--green)}.stat-value.gold{color:var(--gold)}.stat-value.red{color:var(--red)}
+.stat-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim)}
+.stat-note{font-family:var(--mono);font-size:10px;color:var(--cream-dim);margin-top:4px}
+
+/* TABLES */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;min-width:1100px}
+thead th{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-align:right;padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap;font-weight:500;position:sticky;top:0;background:var(--navy)}
+thead th.sortable{cursor:pointer;user-select:none;transition:color .15s}
+thead th.sortable:hover{color:var(--cream)}
+thead th.sorted-asc,thead th.sorted-desc{color:var(--cream)}
+thead th:first-child{text-align:left}
+thead th:nth-child(2){text-align:left}
+tbody tr{border-bottom:1px solid rgba(201,168,76,.07);transition:background .1s}
+tbody tr:hover{background:rgba(201,168,76,.03)}
+tbody tr.best-row{background:rgba(45,186,114,.04)}
+tbody tr.worst-row{background:rgba(217,79,79,.03)}
+td{padding:6px 10px;text-align:right;font-family:var(--mono);font-size:12px;color:var(--cream);vertical-align:middle;white-space:nowrap}
+td:first-child{text-align:left;font-family:var(--sans);font-size:12px;white-space:nowrap;min-width:0;max-width:160px;overflow:hidden;text-overflow:ellipsis}
+.items-col{text-align:left !important;font-size:10px !important;color:var(--cream-dim) !important;white-space:nowrap;max-width:180px;overflow:hidden;text-overflow:ellipsis}
+.disp-badge{font-size:10px;color:var(--amber);border-bottom:1px dashed var(--amber) !important;margin-left:4px}
+.dim{color:var(--cream-dim)}.green{color:var(--green)}.red{color:var(--red)}.gold{color:var(--gold)}
+.bench-row td{background:var(--navy-light);font-weight:600;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold)}
+
+/* VERDICT */
+.verdict{border:1px solid var(--rule);border-left:3px solid var(--gold);padding:18px 22px;margin-bottom:12px;background:rgba(201,168,76,.02)}
+.verdict-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.verdict p{font-size:13px;color:var(--cream);line-height:1.7;margin-bottom:7px}
+.verdict p:last-child{margin-bottom:0}
+.verdict em{color:var(--cream-dim);font-style:normal}
+
+/* CONCEPT BOX */
+.concept-box{border:1px solid var(--rule);border-left:3px solid var(--cream-dim);padding:18px 22px;background:rgba(255,255,255,.01);margin-bottom:12px}
+.concept-box .verdict-label{color:var(--cream-dim)}
+.concept-box p{font-size:13px;color:var(--cream);line-height:1.7;margin-bottom:7px}
+.concept-box p:last-child{margin-bottom:0}
+
+/* TOOLTIP */
+#tipbox{position:fixed;z-index:9999;width:340px;background:#08111a;border:1px solid var(--gold);padding:12px 14px;font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--cream);pointer-events:none;display:none;box-shadow:0 8px 32px rgba(0,0,0,.6)}
+#tipbox .tb-label{color:var(--gold);font-size:9px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px;border-bottom:1px solid rgba(201,168,76,.2);padding-bottom:5px}
+#tipbox .tb-calc{color:var(--cream-dim)}
+.tip{border-bottom:1px dashed rgba(201,168,76,.45);cursor:help;display:inline-block}
+
+/* INSIGHTS */
+.insights{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.insight-card{background:var(--navy-mid);padding:22px;border:1px solid var(--rule)}
+.insight-number{font-family:var(--serif);font-size:28px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:6px}
+.insight-number.red{color:var(--red)}
+.insight-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:8px}
+.insight-text{font-size:11px;color:var(--cream);line-height:1.6}
+
+/* FEEDBACK */
+.feedback-btn{position:fixed;bottom:22px;right:22px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--gold);padding:9px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .15s;z-index:100}
+.feedback-btn:hover{background:var(--gold);color:var(--navy)}
+
+@media(max-width:900px){
+  .page{padding:24px 20px 80px}.site-header{padding:14px 20px}.header-tagline{display:none}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .insights{grid-template-columns:1fr 1fr}
+  table{min-width:900px}
+}
+@media(max-width:540px){
+  .stat-grid{grid-template-columns:1fr}
+  .insights{grid-template-columns:1fr}
+  .page-title h1{font-size:28px}
+}
+</style>
+</head>
+<body>
+<div id="tipbox"></div>
+
+<header class="site-header">
+  <a href="/" class="wordmark"><span class="line1">McKillsey</span><span class="line2">&amp; Company</span></a>
+  <a href="/nc" class="back-link">← Nightclub</a>
+  <div class="header-tagline">Strategic Advisory · Los Santos · Blaine County</div>
+</header>
+
+<main class="page">
+
+<div class="page-title">
+  <h1>Special Orders</h1>
+  <div class="subtitle">Nightclub Warehouse — Are They Worth It?</div>
+</div>
+
+<div class="section" style="margin-top:28px">
+  <div class="verdict">
+    <div class="verdict-label">McKillsey Verdict — Skip Them</div>
+    <p>We modeled all 54 known special orders against the standard 20-hour sell cycle. Each order was simulated with optimal technician assignment: order goods produced to warehouse capacity, free techs on the highest-value alternatives, dynamic reassignment as techs complete their tasks. All unit prices use the +35% MC-buffed nightclub warehouse values.</p>
+    <p><strong>No special order beats the standard cycle on both $/passive hr and $/active hr.</strong> Eight orders edge out the benchmark on passive rate, but every one of them is dramatically worse on active — the best-paying winner delivers $2.5M/active hr against the benchmark's $5.5M. Meanwhile, the handful of orders with competitive active rates require 40–60 hours to fill, cratering your passive rate by 30% or more.</p>
+    <p>The remaining 46 orders lose on <em>both</em> metrics. The 5–20% bonus does not compensate for pulling technicians off your top-5 lineup or waiting past the 20-hour mark. Sell your warehouse normally. Ignore special orders entirely.</p>
+  </div>
+</div>
+
+<!-- ═══ AT A GLANCE ═══ -->
+<div class="section">
+  <div class="section-label">The Numbers</div>
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-value red">0 / 54</div>
+      <div class="stat-label">Win on Both Metrics</div>
+      <div class="stat-note">No order beats $/passive and $/active</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value red">42 / 54</div>
+      <div class="stat-label">Lose on Both Metrics</div>
+      <div class="stat-note">Worse passive and worse active</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value red">$38,544</div>
+      <div class="stat-label">Avg $/Passive Hr</div>
+      <div class="stat-note">Benchmark: $45,425 (−15% avg)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value red">$2,556,565</div>
+      <div class="stat-label">Avg $/Active Hr</div>
+      <div class="stat-note">Benchmark: $5,451,000 (−59% avg)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ WHY THEY ALL FAIL ═══ -->
+<div class="section">
+  <div class="section-label">Why No Special Order Wins</div>
+  <div class="insights">
+    <div class="insight-card">
+      <div class="insight-number red">3.4×</div>
+      <div class="insight-label">Production Rate Gap</div>
+      <div class="insight-text">Coke produces $13,500/hr. Forgery produces $4,000/hr. 67% of orders require Weed or Forgery, pulling a tech off your top-5 lineup. The bonus cannot overcome the production hit.</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-number red">−55%</div>
+      <div class="insight-label">Active Hr Collapse</div>
+      <div class="insight-text">The 8 orders that edge out the passive benchmark all deliver terrible $/active hr — averaging $1.3M vs the benchmark $5.5M. You'd sell a fraction of your warehouse for a fraction of the payout.</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-number red">−25%</div>
+      <div class="insight-label">Passive Hr for Big Orders</div>
+      <div class="insight-text">The 4 orders with competitive active rates require 47–63 hours to fill. Waiting that long craters your passive rate by 25–40%. The bonus cannot compensate for 40+ hours of diminishing production.</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-number red">0</div>
+      <div class="insight-label">Orders That Win Both</div>
+      <div class="insight-text">Not a single order in the entire pool beats the standard cycle on both $/passive hr and $/active hr simultaneously. Every order sacrifices one metric to gain on the other — and usually loses on both.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ METHODOLOGY ═══ -->
+<div class="section">
+  <div class="section-label">Methodology</div>
+  <div class="concept-box">
+    <div class="verdict-label">Simulation Details</div>
+    <p>Each order is simulated minute-by-minute with 5 technicians. Three techs must cover the order's required goods; the remaining two are assigned to the highest $/hr goods not already covered. All techs produce to warehouse capacity — the order withdraws its required units at sell time, and remaining stock is sold separately. When any tech fills their good to warehouse max, they are dynamically reassigned to the next most productive available good.</p>
+    <p>Special order payouts are recalculated using +35% MC-buffed nightclub warehouse values (Coke $27,000, Meth $11,475, Cash $4,725) with the listed bonus percentage applied. Non-MC goods (Cargo, Sporting, Weed, Forgery) use standard unit values. Remaining stock is sold with Tony's 10% cut capped at $100K. All figures are invite-only. The benchmark is the standard 20-hour top-5 cycle at $45,425/passive hr.</p>
+    <p><em>Special order compositions sourced from community documentation (54 known orders). Payouts use +35% MC-buffed nightclub warehouse values — this is the most generous assumption for special orders, and they still lose.</em></p>
+  </div>
+</div>
+
+<!-- ═══ FULL TABLE ═══ -->
+<div class="section">
+  <div class="section-label">All 54 Special Orders — Sorted by $/Passive Hr <span style="font-weight:400;letter-spacing:.06em;color:var(--cream-dim)">(click any column header to re-sort)</span></div>
+  <div class="table-wrap">
+    <table id="orders-table">
+      <thead><tr>
+        <th style="text-align:left;max-width:160px" class="sortable" data-col="name">Order</th>
+        <th style="text-align:left;max-width:180px">Required Goods</th>
+        <th class="sortable" data-col="bonus" data-type="num">Bonus</th>
+        <th class="sortable" data-col="fill" data-type="num">Fill Time</th>
+        <th class="sortable" data-col="payout" data-type="num">Order Payout</th>
+        <th class="sortable" data-col="remaining" data-type="num">Remaining Net</th>
+        <th class="sortable" data-col="total" data-type="num">Total Income</th>
+        <th class="sortable sorted-desc" data-col="passive" data-type="num">$/Passive Hr ▼</th>
+        <th class="sortable" data-col="delta" data-type="num">vs Bench</th>
+        <th class="sortable" data-col="active" data-type="num">$/Active Hr</th>
+        <th class="sortable" data-col="actdelta" data-type="num">vs Bench</th>
+      </tr></thead>
+      <tbody>
+        <tr class="bench-row" data-bench="true">
+          <td><strong>BENCHMARK: 20hr Top-5</strong></td>
+          <td class="items-col">Coke, Meth, Cash, Cargo, Sporting</td>
+          <td>—</td>
+          <td>20h</td>
+          <td>—</td>
+          <td>—</td>
+          <td><strong>$908,500</strong></td>
+          <td class="green"><strong>$45,425</strong></td>
+          <td>—</td>
+          <td>$5,451,000</td>
+          <td>—</td>
+        </tr>
+        <tr class="best-row" data-sort-bonus="0.1" data-sort-fill="12.0" data-sort-payout="410602" data-sort-remaining="206842.5" data-sort-total="617444.5" data-sort-passive="51454" data-sort-delta="13.27242707760044" data-sort-active="2463612" data-sort-actdelta="-54.80440286186021">
+          <td>Conch Communications</td>
+          <td class="items-col">11× Meth, 6× Coke, 18× Cash</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 720 min = 12h">12h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $373,275\n11× Meth @ $126,225\n6× Coke @ $162,000\n18× Cash @ $85,050\nBonus (10%): +$37,327\nOrder payout: $410,602">$410,602</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (12h):\n1× Meth = $11,475\n6× Cash = $28,350\n10× Cargo = $100,000\n18× Sporting = $90,000\nGross: $229,825\nTony: −$22,982\nNet: $206,842">$206,842</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $410,602\nRemaining: $206,842\nTotal: $617,444"><strong>$617,444</strong></span></td>
+          <td class="green"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$617,444 ÷ 12h\n= $51,454/hr\nBenchmark: $45,425/hr (+13%)"><strong>$51,454</strong></span></td>
+          <td class="green">+13%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$410,602 ÷ 10 min × 60\n= $2,463,612/hr\nBenchmark: $5,451,000/hr (-55%)">$2,463,612</span></td>
+          <td class="red">-55%</td>
+        </tr>
+        <tr class="best-row" data-sort-bonus="0.1" data-sort-fill="20.3" data-sort-payout="553575" data-sort-remaining="402975.0" data-sort-total="956550.0" data-sort-passive="47043" data-sort-delta="3.561915244909191" data-sort-active="3321450" data-sort-actdelta="-39.06714364336819">
+          <td>Profit Weaver Enterprises <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">61× Weed, 10× Coke, 30× Cash</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 1220 min = 20h 18m">20h 18m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $503,250\n61× Weed @ $91,500\n10× Coke @ $270,000\n30× Cash @ $141,750\nBonus (10%): +$50,325\nOrder payout: $553,575">$553,575</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (20h 18m):\n20× Meth = $229,500\n10× Cash = $47,250\n17× Cargo = $170,000\n1× Forgery = $1,000\nGross: $447,750\nTony: −$44,775\nNet: $402,975">$402,975</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $553,575\nRemaining: $402,975\nTotal: $956,550"><strong>$956,550</strong></span></td>
+          <td class="green"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$956,550 ÷ 20h 18m\n= $47,043/hr\nBenchmark: $45,425/hr (+4%)"><strong>$47,043</strong></span></td>
+          <td class="green">+4%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$553,575 ÷ 10 min × 60\n= $3,321,450/hr\nBenchmark: $5,451,000/hr (-39%)">$3,321,450</span></td>
+          <td class="red">-39%</td>
+        </tr>
+        <tr class="best-row" data-sort-bonus="0.05" data-sort-fill="10.5" data-sort-payout="195195" data-sort-remaining="295267.5" data-sort-total="490462.5" data-sort-passive="46711" data-sort-delta="2.8310401761144743" data-sort-active="1171170" data-sort-actdelta="-78.51458447991195">
+          <td>Exchange Capital Exchange</td>
+          <td class="items-col">9× Cargo, 4× Meth, 10× Sporting</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 630 min = 10h 30m">10h 30m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $185,900\n9× Cargo @ $90,000\n4× Meth @ $45,900\n10× Sporting @ $50,000\nBonus (5%): +$9,295\nOrder payout: $195,195">$195,195</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (10h 30m):\n5× Coke = $135,000\n6× Meth = $68,850\n21× Cash = $99,225\n5× Sporting = $25,000\nGross: $328,075\nTony: −$32,808\nNet: $295,268">$295,268</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $195,195\nRemaining: $295,268\nTotal: $490,462"><strong>$490,462</strong></span></td>
+          <td class="green"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$490,462 ÷ 10h 30m\n= $46,711/hr\nBenchmark: $45,425/hr (+3%)"><strong>$46,711</strong></span></td>
+          <td class="green">+3%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$195,195 ÷ 10 min × 60\n= $1,171,170/hr\nBenchmark: $5,451,000/hr (-79%)">$1,171,170</span></td>
+          <td class="red">-79%</td>
+        </tr>
+        <tr class="best-row" data-sort-bonus="0.1" data-sort-fill="20.0" data-sort-payout="398227" data-sort-remaining="526477.5" data-sort-total="924704.5" data-sort-passive="46235" data-sort-delta="1.7831590533847" data-sort-active="2389362" data-sort-actdelta="-56.166538249862406">
+          <td>Conch Communications <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">9× Cash, 10× Coke, 33× Weed</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 1200 min = 20h">20h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $362,025\n9× Cash @ $42,525\n10× Coke @ $270,000\n33× Weed @ $49,500\nBonus (10%): +$36,202\nOrder payout: $398,227">$398,227</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (20h):\n20× Meth = $229,500\n31× Cash = $146,475\n17× Cargo = $170,000\n26× Weed = $39,000\nGross: $584,975\nTony: −$58,498\nNet: $526,478">$526,478</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $398,227\nRemaining: $526,478\nTotal: $924,704"><strong>$924,704</strong></span></td>
+          <td class="green"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$924,704 ÷ 20h\n= $46,235/hr\nBenchmark: $45,425/hr (+2%)"><strong>$46,235</strong></span></td>
+          <td class="green">+2%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$398,227 ÷ 10 min × 60\n= $2,389,362/hr\nBenchmark: $5,451,000/hr (-56%)">$2,389,362</span></td>
+          <td class="red">-56%</td>
+        </tr>
+        <tr class="best-row" data-sort-bonus="0.05" data-sort-fill="10.7" data-sort-payout="135738" data-sort-remaining="350730.0" data-sort-total="486468.0" data-sort-passive="45606" data-sort-delta="0.3984589983489268" data-sort-active="814428" data-sort-actdelta="-85.05910842047331">
+          <td>East Carraway Holdings</td>
+          <td class="items-col">8× Cash, 16× Sporting, 1× Meth</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 640 min = 10h 42m">10h 42m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $129,275\n8× Cash @ $37,800\n16× Sporting @ $80,000\n1× Meth @ $11,475\nBonus (5%): +$6,463\nOrder payout: $135,738">$135,738</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (10h 42m):\n5× Coke = $135,000\n9× Meth = $103,275\n13× Cash = $61,425\n9× Cargo = $90,000\nGross: $389,700\nTony: −$38,970\nNet: $350,730">$350,730</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $135,738\nRemaining: $350,730\nTotal: $486,468"><strong>$486,468</strong></span></td>
+          <td class="green"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$486,468 ÷ 10h 42m\n= $45,606/hr\nBenchmark: $45,425/hr (+0%)"><strong>$45,606</strong></span></td>
+          <td class="green">+0%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$135,738 ÷ 10 min × 60\n= $814,428/hr\nBenchmark: $5,451,000/hr (-85%)">$814,428</span></td>
+          <td class="red">-85%</td>
+        </tr>
+        <tr class="best-row" data-sort-bonus="0.1" data-sort-fill="18.0" data-sort-payout="307010" data-sort-remaining="513495.0" data-sort-total="820505.0" data-sort-passive="45584" data-sort-delta="0.35002751788662634" data-sort-active="1842060" data-sort-actdelta="-66.20693450742982">
+          <td>Che Dan Group Limited <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Forgery instead.">⚠</span></td>
+          <td class="items-col">36× Cash, 3× Coke, 28× Forgery</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 1080 min = 18h">18h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $279,100\n36× Cash @ $170,100\n3× Coke @ $81,000\n28× Forgery @ $28,000\nBonus (10%): +$27,910\nOrder payout: $307,010">$307,010</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (18h):\n6× Coke = $162,000\n18× Meth = $206,550\n15× Cargo = $150,000\n4× Sporting = $20,000\n32× Forgery = $32,000\nGross: $570,550\nTony: −$57,055\nNet: $513,495">$513,495</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $307,010\nRemaining: $513,495\nTotal: $820,505"><strong>$820,505</strong></span></td>
+          <td class="green"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$820,505 ÷ 18h\n= $45,584/hr\nBenchmark: $45,425/hr (+0%)"><strong>$45,584</strong></span></td>
+          <td class="green">+0%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$307,010 ÷ 10 min × 60\n= $1,842,060/hr\nBenchmark: $5,451,000/hr (-66%)">$1,842,060</span></td>
+          <td class="red">-66%</td>
+        </tr>
+        <tr class="best-row" data-sort-bonus="0.05" data-sort-fill="12.7" data-sort-payout="166950" data-sort-remaining="408442.5" data-sort-total="575392.5" data-sort-passive="45426" data-sort-delta="0.002201430930104568" data-sort-active="1001700" data-sort-actdelta="-81.62355531095213">
+          <td>Tsetse Imports Exports</td>
+          <td class="items-col">1× Cargo, 19× Sporting, 2× Coke</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 760 min = 12h 42m">12h 42m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $159,000\n1× Cargo @ $10,000\n19× Sporting @ $95,000\n2× Coke @ $54,000\nBonus (5%): +$7,950\nOrder payout: $166,950">$166,950</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (12h 42m):\n4× Coke = $108,000\n12× Meth = $137,700\n25× Cash = $118,125\n9× Cargo = $90,000\nGross: $453,825\nTony: −$45,382\nNet: $408,442">$408,442</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $166,950\nRemaining: $408,442\nTotal: $575,392"><strong>$575,392</strong></span></td>
+          <td class="green"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$575,392 ÷ 12h 42m\n= $45,426/hr\nBenchmark: $45,425/hr (+0%)"><strong>$45,426</strong></span></td>
+          <td class="green">+0%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$166,950 ÷ 10 min × 60\n= $1,001,700/hr\nBenchmark: $5,451,000/hr (-82%)">$1,001,700</span></td>
+          <td class="red">-82%</td>
+        </tr>
+        <tr class="best-row" data-sort-bonus="0.05" data-sort-fill="12.7" data-sort-payout="166950" data-sort-remaining="408442.5" data-sort-total="575392.5" data-sort-passive="45426" data-sort-delta="0.002201430930104568" data-sort-active="1001700" data-sort-actdelta="-81.62355531095213">
+          <td>Objectivian Investment Limited</td>
+          <td class="items-col">2× Coke, 19× Sporting, 1× Cargo</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 760 min = 12h 42m">12h 42m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $159,000\n2× Coke @ $54,000\n19× Sporting @ $95,000\n1× Cargo @ $10,000\nBonus (5%): +$7,950\nOrder payout: $166,950">$166,950</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (12h 42m):\n4× Coke = $108,000\n12× Meth = $137,700\n25× Cash = $118,125\n9× Cargo = $90,000\nGross: $453,825\nTony: −$45,382\nNet: $408,442">$408,442</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $166,950\nRemaining: $408,442\nTotal: $575,392"><strong>$575,392</strong></span></td>
+          <td class="green"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$575,392 ÷ 12h 42m\n= $45,426/hr\nBenchmark: $45,425/hr (+0%)"><strong>$45,426</strong></span></td>
+          <td class="green">+0%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$166,950 ÷ 10 min × 60\n= $1,001,700/hr\nBenchmark: $5,451,000/hr (-82%)">$1,001,700</span></td>
+          <td class="red">-82%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="13.5" data-sort-payout="343832" data-sort-remaining="261157.5" data-sort-total="604989.5" data-sort-passive="44814" data-sort-delta="-1.345074298293891" data-sort-active="2062992" data-sort-actdelta="-62.153880022014306">
+          <td>Profit Weaver Enterprises <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Forgery instead.">⚠</span></td>
+          <td class="items-col">50× Forgery, 27× Cash, 5× Coke</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 810 min = 13h 30m">13h 30m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $312,575\n50× Forgery @ $50,000\n27× Cash @ $127,575\n5× Coke @ $135,000\nBonus (10%): +$31,257\nOrder payout: $343,832">$343,832</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (13h 30m):\n1× Coke = $27,000\n13× Meth = $149,175\n11× Cargo = $110,000\n4× Forgery = $4,000\nGross: $290,175\nTony: −$29,018\nNet: $261,158">$261,158</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $343,832\nRemaining: $261,158\nTotal: $604,990"><strong>$604,990</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$604,990 ÷ 13h 30m\n= $44,814/hr\nBenchmark: $45,425/hr (-1%)"><strong>$44,814</strong></span></td>
+          <td class="red">-1%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$343,832 ÷ 10 min × 60\n= $2,062,992/hr\nBenchmark: $5,451,000/hr (-62%)">$2,062,992</span></td>
+          <td class="red">-62%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="9.5" data-sort-payout="254952" data-sort-remaining="168547.5" data-sort-total="423499.5" data-sort-passive="44579" data-sort-delta="-1.8624105668684645" data-sort-active="1529712" data-sort-actdelta="-71.93703907539901">
+          <td>Depredationist Equities <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Forgery instead.">⚠</span></td>
+          <td class="items-col">34× Forgery, 4× Coke, 19× Cash</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 570 min = 9h 30m">9h 30m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $231,775\n34× Forgery @ $34,000\n4× Coke @ $108,000\n19× Cash @ $89,775\nBonus (10%): +$23,177\nOrder payout: $254,952">$254,952</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (9h 30m):\n9× Meth = $103,275\n8× Cargo = $80,000\n4× Forgery = $4,000\nGross: $187,275\nTony: −$18,728\nNet: $168,548">$168,548</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $254,952\nRemaining: $168,548\nTotal: $423,500"><strong>$423,500</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$423,500 ÷ 9h 30m\n= $44,579/hr\nBenchmark: $45,425/hr (-2%)"><strong>$44,579</strong></span></td>
+          <td class="red">-2%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$254,952 ÷ 10 min × 60\n= $1,529,712/hr\nBenchmark: $5,451,000/hr (-72%)">$1,529,712</span></td>
+          <td class="red">-72%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.05" data-sort-fill="7.3" data-sort-payout="120828" data-sort-remaining="204660.0" data-sort-total="325488.0" data-sort-passive="44385" data-sort-delta="-2.289488167308751" data-sort-active="724968" data-sort-actdelta="-86.70027517886626">
+          <td>Objectivian Investment Limited</td>
+          <td class="items-col">11× Sporting, 3× Cash, 4× Meth</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 440 min = 7h 18m">7h 18m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $115,075\n11× Sporting @ $55,000\n3× Cash @ $14,175\n4× Meth @ $45,900\nBonus (5%): +$5,753\nOrder payout: $120,828">$120,828</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (7h 18m):\n3× Coke = $81,000\n3× Meth = $34,425\n11× Cash = $51,975\n6× Cargo = $60,000\nGross: $227,400\nTony: −$22,740\nNet: $204,660">$204,660</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $120,828\nRemaining: $204,660\nTotal: $325,488"><strong>$325,488</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$325,488 ÷ 7h 18m\n= $44,385/hr\nBenchmark: $45,425/hr (-2%)"><strong>$44,385</strong></span></td>
+          <td class="red">-2%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$120,828 ÷ 10 min × 60\n= $724,968/hr\nBenchmark: $5,451,000/hr (-87%)">$724,968</span></td>
+          <td class="red">-87%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="17.7" data-sort-payout="273817" data-sort-remaining="501322.5" data-sort-total="775139.5" data-sort-passive="43876" data-sort-delta="-3.410016510731976" data-sort-active="1642902" data-sort-actdelta="-69.86053935057788">
+          <td>Pacific Rim Finance <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">13× Cash, 53× Weed, 4× Coke</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 1060 min = 17h 42m">17h 42m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $248,925\n13× Cash @ $61,425\n53× Weed @ $79,500\n4× Coke @ $108,000\nBonus (10%): +$24,892\nOrder payout: $273,817">$273,817</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (17h 42m):\n4× Coke = $108,000\n17× Meth = $195,075\n22× Cash = $103,950\n15× Cargo = $150,000\nGross: $557,025\nTony: −$55,702\nNet: $501,322">$501,322</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $273,817\nRemaining: $501,322\nTotal: $775,140"><strong>$775,140</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$775,140 ÷ 17h 42m\n= $43,876/hr\nBenchmark: $45,425/hr (-3%)"><strong>$43,876</strong></span></td>
+          <td class="red">-3%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$273,817 ÷ 10 min × 60\n= $1,642,902/hr\nBenchmark: $5,451,000/hr (-70%)">$1,642,902</span></td>
+          <td class="red">-70%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="18.7" data-sort-payout="254265" data-sort-remaining="564502.5" data-sort-total="818767.5" data-sort-passive="43863" data-sort-delta="-3.4386351128233352" data-sort-active="1525590" data-sort-actdelta="-72.0126582278481">
+          <td>Grandgor Communications <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">56× Weed, 14× Cash, 3× Coke</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 1120 min = 18h 42m">18h 42m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $231,150\n56× Weed @ $84,000\n14× Cash @ $66,150\n3× Coke @ $81,000\nBonus (10%): +$23,115\nOrder payout: $254,265">$254,265</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (18h 42m):\n6× Coke = $162,000\n18× Meth = $206,550\n23× Cash = $108,675\n15× Cargo = $150,000\nGross: $627,225\nTony: −$62,722\nNet: $564,502">$564,502</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $254,265\nRemaining: $564,502\nTotal: $818,768"><strong>$818,768</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$818,768 ÷ 18h 42m\n= $43,863/hr\nBenchmark: $45,425/hr (-3%)"><strong>$43,863</strong></span></td>
+          <td class="red">-3%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$254,265 ÷ 10 min × 60\n= $1,525,590/hr\nBenchmark: $5,451,000/hr (-72%)">$1,525,590</span></td>
+          <td class="red">-72%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.05" data-sort-fill="2.3" data-sort-payout="59850" data-sort-remaining="42165.0" data-sort-total="102015.0" data-sort-passive="43721" data-sort-delta="-3.7512383048981834" data-sort-active="359100" data-sort-actdelta="-93.41221794166208">
+          <td>Offshore Logistics</td>
+          <td class="items-col">1× Coke, 2× Cargo, 2× Sporting</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 140 min = 2h 18m">2h 18m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $57,000\n1× Coke @ $27,000\n2× Cargo @ $20,000\n2× Sporting @ $10,000\nBonus (5%): +$2,850\nOrder payout: $59,850">$59,850</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (2h 18m):\n2× Meth = $22,950\n4× Cash = $18,900\n1× Sporting = $5,000\nGross: $46,850\nTony: −$4,685\nNet: $42,165">$42,165</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $59,850\nRemaining: $42,165\nTotal: $102,015"><strong>$102,015</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$102,015 ÷ 2h 18m\n= $43,721/hr\nBenchmark: $45,425/hr (-4%)"><strong>$43,721</strong></span></td>
+          <td class="red">-4%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$59,850 ÷ 10 min × 60\n= $359,100/hr\nBenchmark: $5,451,000/hr (-93%)">$359,100</span></td>
+          <td class="red">-93%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.05" data-sort-fill="7.0" data-sort-payout="103398" data-sort-remaining="200520.0" data-sort-total="303918.0" data-sort-passive="43417" data-sort-delta="-4.4204733076499725" data-sort-active="620388" data-sort-actdelta="-88.6188222344524">
+          <td>Transparent Finance Investment</td>
+          <td class="items-col">1× Coke, 1× Meth, 6× Cargo</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 420 min = 7h">7h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $98,475\n1× Coke @ $27,000\n1× Meth @ $11,475\n6× Cargo @ $60,000\nBonus (5%): +$4,923\nOrder payout: $103,398">$103,398</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (7h):\n2× Coke = $54,000\n5× Meth = $57,375\n13× Cash = $61,425\n10× Sporting = $50,000\nGross: $222,800\nTony: −$22,280\nNet: $200,520">$200,520</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $103,398\nRemaining: $200,520\nTotal: $303,918"><strong>$303,918</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$303,918 ÷ 7h\n= $43,417/hr\nBenchmark: $45,425/hr (-4%)"><strong>$43,417</strong></span></td>
+          <td class="red">-4%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$103,398 ÷ 10 min × 60\n= $620,388/hr\nBenchmark: $5,451,000/hr (-89%)">$620,388</span></td>
+          <td class="red">-89%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.05" data-sort-fill="10.5" data-sort-payout="112297" data-sort-remaining="340672.5" data-sort-total="452969.5" data-sort-passive="43140" data-sort-delta="-5.030269675288937" data-sort-active="673782" data-sort-actdelta="-87.63929554210237">
+          <td>East Carraway Holdings <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">2× Cash, 5× Weed, 9× Cargo</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 630 min = 10h 30m">10h 30m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $106,950\n2× Cash @ $9,450\n5× Weed @ $7,500\n9× Cargo @ $90,000\nBonus (5%): +$5,347\nOrder payout: $112,297">$112,297</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (10h 30m):\n5× Coke = $135,000\n10× Meth = $114,750\n19× Cash = $89,775\n26× Weed = $39,000\nGross: $378,525\nTony: −$37,852\nNet: $340,672">$340,672</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $112,297\nRemaining: $340,672\nTotal: $452,970"><strong>$452,970</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$452,970 ÷ 10h 30m\n= $43,140/hr\nBenchmark: $45,425/hr (-5%)"><strong>$43,140</strong></span></td>
+          <td class="red">-5%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$112,297 ÷ 10 min × 60\n= $673,782/hr\nBenchmark: $5,451,000/hr (-88%)">$673,782</span></td>
+          <td class="red">-88%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.05" data-sort-fill="8.2" data-sort-payout="129150" data-sort-remaining="218520.0" data-sort-total="347670.0" data-sort-passive="42572" data-sort-delta="-6.280682443588333" data-sort-active="774900" data-sort-actdelta="-85.78425976884975">
+          <td>Tsetse Import Exports <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">2× Weed, 10× Sporting, 7× Cargo</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 490 min = 8h 12m">8h 12m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $123,000\n2× Weed @ $3,000\n10× Sporting @ $50,000\n7× Cargo @ $70,000\nBonus (5%): +$6,150\nOrder payout: $129,150">$129,150</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (8h 12m):\n4× Coke = $108,000\n8× Meth = $91,800\n2× Sporting = $10,000\n22× Weed = $33,000\nGross: $242,800\nTony: −$24,280\nNet: $218,520">$218,520</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $129,150\nRemaining: $218,520\nTotal: $347,670"><strong>$347,670</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$347,670 ÷ 8h 12m\n= $42,572/hr\nBenchmark: $45,425/hr (-6%)"><strong>$42,572</strong></span></td>
+          <td class="red">-6%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$129,150 ÷ 10 min × 60\n= $774,900/hr\nBenchmark: $5,451,000/hr (-86%)">$774,900</span></td>
+          <td class="red">-86%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.05" data-sort-fill="10.5" data-sort-payout="172200" data-sort-remaining="263475.0" data-sort-total="435675.0" data-sort-passive="41493" data-sort-delta="-8.656026417171162" data-sort-active="1033200" data-sort-actdelta="-81.04567969179966">
+          <td>Ameropean Partners <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Forgery instead.">⚠</span></td>
+          <td class="items-col">13× Sporting, 9× Forgery, 9× Cargo</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 630 min = 10h 30m">10h 30m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $164,000\n13× Sporting @ $65,000\n9× Forgery @ $9,000\n9× Cargo @ $90,000\nBonus (5%): +$8,200\nOrder payout: $172,200">$172,200</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (10h 30m):\n5× Coke = $135,000\n10× Meth = $114,750\n2× Sporting = $10,000\n33× Forgery = $33,000\nGross: $292,750\nTony: −$29,275\nNet: $263,475">$263,475</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $172,200\nRemaining: $263,475\nTotal: $435,675"><strong>$435,675</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$435,675 ÷ 10h 30m\n= $41,493/hr\nBenchmark: $45,425/hr (-9%)"><strong>$41,493</strong></span></td>
+          <td class="red">-9%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$172,200 ÷ 10 min × 60\n= $1,033,200/hr\nBenchmark: $5,451,000/hr (-81%)">$1,033,200</span></td>
+          <td class="red">-81%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.05" data-sort-fill="10.7" data-sort-payout="111195" data-sort-remaining="328567.5" data-sort-total="439762.5" data-sort-passive="41228" data-sort-delta="-9.239405613648872" data-sort-active="667170" data-sort-actdelta="-87.76059438635113">
+          <td>Conch Communications <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Forgery instead.">⚠</span></td>
+          <td class="items-col">4× Cash, 16× Sporting, 7× Forgery</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 640 min = 10h 42m">10h 42m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $105,900\n4× Cash @ $18,900\n16× Sporting @ $80,000\n7× Forgery @ $7,000\nBonus (5%): +$5,295\nOrder payout: $111,195">$111,195</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (10h 42m):\n5× Coke = $135,000\n10× Meth = $114,750\n17× Cash = $80,325\n35× Forgery = $35,000\nGross: $365,075\nTony: −$36,508\nNet: $328,568">$328,568</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $111,195\nRemaining: $328,568\nTotal: $439,762"><strong>$439,762</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$439,762 ÷ 10h 42m\n= $41,228/hr\nBenchmark: $45,425/hr (-9%)"><strong>$41,228</strong></span></td>
+          <td class="red">-9%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$111,195 ÷ 10 min × 60\n= $667,170/hr\nBenchmark: $5,451,000/hr (-88%)">$667,170</span></td>
+          <td class="red">-88%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="21.0" data-sort-payout="282975" data-sort-remaining="576675.0" data-sort-total="859650.0" data-sort-passive="40936" data-sort-delta="-9.882223445239406" data-sort-active="1697850" data-sort-actdelta="-68.85250412768299">
+          <td>Chiliad International <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed, Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed, Forgery instead.">⚠</span></td>
+          <td class="items-col">30× Cash, 21× Forgery, 63× Weed</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 1260 min = 21h">21h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $257,250\n30× Cash @ $141,750\n21× Forgery @ $21,000\n63× Weed @ $94,500\nBonus (10%): +$25,725\nOrder payout: $282,975">$282,975</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (21h):\n10× Coke = $270,000\n20× Meth = $229,500\n10× Cash = $47,250\n5× Cargo = $50,000\n1× Sporting = $5,000\n39× Forgery = $39,000\nGross: $640,750\nTony: −$64,075\nNet: $576,675">$576,675</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $282,975\nRemaining: $576,675\nTotal: $859,650"><strong>$859,650</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$859,650 ÷ 21h\n= $40,936/hr\nBenchmark: $45,425/hr (-10%)"><strong>$40,936</strong></span></td>
+          <td class="red">-10%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$282,975 ÷ 10 min × 60\n= $1,697,850/hr\nBenchmark: $5,451,000/hr (-69%)">$1,697,850</span></td>
+          <td class="red">-69%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.05" data-sort-fill="4.0" data-sort-payout="77411" data-sort-remaining="86197.5" data-sort-total="163608.5" data-sort-passive="40902" data-sort-delta="-9.95707209686296" data-sort-active="464466" data-sort-actdelta="-91.47925151348376">
+          <td>Che Dan Group Limited <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">10× Weed, 1× Cash, 2× Coke</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 240 min = 4h">4h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $73,725\n10× Weed @ $15,000\n1× Cash @ $4,725\n2× Coke @ $54,000\nBonus (5%): +$3,686\nOrder payout: $77,411">$77,411</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (4h):\n3× Meth = $34,425\n6× Cash = $28,350\n3× Cargo = $30,000\n2× Weed = $3,000\nGross: $95,775\nTony: −$9,578\nNet: $86,198">$86,198</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $77,411\nRemaining: $86,198\nTotal: $163,608"><strong>$163,608</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$163,608 ÷ 4h\n= $40,902/hr\nBenchmark: $45,425/hr (-10%)"><strong>$40,902</strong></span></td>
+          <td class="red">-10%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$77,411 ÷ 10 min × 60\n= $464,466/hr\nBenchmark: $5,451,000/hr (-91%)">$464,466</span></td>
+          <td class="red">-91%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="25.7" data-sort-payout="454300" data-sort-remaining="594900.0" data-sort-total="1049200.0" data-sort-passive="40878" data-sort-delta="-10.009906439185471" data-sort-active="2725800" data-sort-actdelta="-49.994496422674736">
+          <td>Exchange Capital Exchange <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Forgery instead.">⚠</span></td>
+          <td class="items-col">6× Coke, 22× Cargo, 31× Forgery</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 1540 min = 25h 42m">25h 42m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $413,000\n6× Coke @ $162,000\n22× Cargo @ $220,000\n31× Forgery @ $31,000\nBonus (10%): +$41,300\nOrder payout: $454,300">$454,300</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (25h 42m):\n4× Coke = $108,000\n20× Meth = $229,500\n40× Cash = $189,000\n16× Sporting = $80,000\n17× Weed = $25,500\n29× Forgery = $29,000\nGross: $661,000\nTony: −$66,100\nNet: $594,900">$594,900</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $454,300\nRemaining: $594,900\nTotal: $1,049,200"><strong>$1,049,200</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,049,200 ÷ 25h 42m\n= $40,878/hr\nBenchmark: $45,425/hr (-10%)"><strong>$40,878</strong></span></td>
+          <td class="red">-10%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$454,300 ÷ 10 min × 60\n= $2,725,800/hr\nBenchmark: $5,451,000/hr (-50%)">$2,725,800</span></td>
+          <td class="red">-50%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="29.3" data-sort-payout="442475" data-sort-remaining="751725.0" data-sort-total="1194200.0" data-sort-passive="40711" data-sort-delta="-10.377545404512933" data-sort-active="2654850" data-sort-actdelta="-51.29609246009906">
+          <td>Intermediate Mass Finance Ltd</td>
+          <td class="items-col">6× Meth, 44× Sporting, 24× Cash</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 1760 min = 29h 18m">29h 18m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $402,250\n6× Meth @ $68,850\n44× Sporting @ $220,000\n24× Cash @ $113,400\nBonus (10%): +$40,225\nOrder payout: $442,475">$442,475</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (29h 18m):\n10× Coke = $270,000\n14× Meth = $160,650\n16× Cash = $75,600\n25× Cargo = $250,000\n28× Weed = $42,000\n37× Forgery = $37,000\nGross: $835,250\nTony: −$83,525\nNet: $751,725">$751,725</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $442,475\nRemaining: $751,725\nTotal: $1,194,200"><strong>$1,194,200</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,194,200 ÷ 29h 18m\n= $40,711/hr\nBenchmark: $45,425/hr (-10%)"><strong>$40,711</strong></span></td>
+          <td class="red">-10%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$442,475 ÷ 10 min × 60\n= $2,654,850/hr\nBenchmark: $5,451,000/hr (-51%)">$2,654,850</span></td>
+          <td class="red">-51%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="14.7" data-sort-payout="232100" data-sort-remaining="359707.5" data-sort-total="591807.5" data-sort-passive="40351" data-sort-delta="-11.170060539350578" data-sort-active="1392600" data-sort-actdelta="-74.45239405613648">
+          <td>Objectivian Investment Limited <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed, Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed, Forgery instead.">⚠</span></td>
+          <td class="items-col">44× Weed, 37× Forgery, 4× Coke</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 880 min = 14h 42m">14h 42m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $211,000\n44× Weed @ $66,000\n37× Forgery @ $37,000\n4× Coke @ $108,000\nBonus (10%): +$21,100\nOrder payout: $232,100">$232,100</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (14h 42m):\n3× Coke = $81,000\n14× Meth = $160,650\n29× Cash = $137,025\n21× Forgery = $21,000\nGross: $399,675\nTony: −$39,968\nNet: $359,708">$359,708</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $232,100\nRemaining: $359,708\nTotal: $591,808"><strong>$591,808</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$591,808 ÷ 14h 42m\n= $40,351/hr\nBenchmark: $45,425/hr (-11%)"><strong>$40,351</strong></span></td>
+          <td class="red">-11%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$232,100 ÷ 10 min × 60\n= $1,392,600/hr\nBenchmark: $5,451,000/hr (-74%)">$1,392,600</span></td>
+          <td class="red">-74%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="17.3" data-sort-payout="247500" data-sort-remaining="445252.5" data-sort-total="692752.5" data-sort-passive="39966" data-sort-delta="-12.017611447440837" data-sort-active="1485000" data-sort-actdelta="-72.75729223995597">
+          <td>Ameropean Partners <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed, Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed, Forgery instead.">⚠</span></td>
+          <td class="items-col">4× Coke, 52× Weed, 39× Forgery</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 1040 min = 17h 18m">17h 18m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $225,000\n4× Coke @ $108,000\n52× Weed @ $78,000\n39× Forgery @ $39,000\nBonus (10%): +$22,500\nOrder payout: $247,500">$247,500</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (17h 18m):\n4× Coke = $108,000\n17× Meth = $195,075\n34× Cash = $160,650\n1× Cargo = $10,000\n21× Forgery = $21,000\nGross: $494,725\nTony: −$49,472\nNet: $445,252">$445,252</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $247,500\nRemaining: $445,252\nTotal: $692,752"><strong>$692,752</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$692,752 ÷ 17h 18m\n= $39,966/hr\nBenchmark: $45,425/hr (-12%)"><strong>$39,966</strong></span></td>
+          <td class="red">-12%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$247,500 ÷ 10 min × 60\n= $1,485,000/hr\nBenchmark: $5,451,000/hr (-73%)">$1,485,000</span></td>
+          <td class="red">-73%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="14.0" data-sort-payout="227700" data-sort-remaining="329985.0" data-sort-total="557685.0" data-sort-passive="39835" data-sort-delta="-12.305998899284534" data-sort-active="1366200" data-sort-actdelta="-74.9367088607595">
+          <td>Exchange Capital Exchange <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed, Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed, Forgery instead.">⚠</span></td>
+          <td class="items-col">21× Sporting, 39× Forgery, 42× Weed</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 840 min = 14h">14h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $207,000\n21× Sporting @ $105,000\n39× Forgery @ $39,000\n42× Weed @ $63,000\nBonus (10%): +$20,700\nOrder payout: $227,700">$227,700</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (14h):\n7× Coke = $189,000\n14× Meth = $160,650\n17× Forgery = $17,000\nGross: $366,650\nTony: −$36,665\nNet: $329,985">$329,985</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $227,700\nRemaining: $329,985\nTotal: $557,685"><strong>$557,685</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$557,685 ÷ 14h\n= $39,835/hr\nBenchmark: $45,425/hr (-12%)"><strong>$39,835</strong></span></td>
+          <td class="red">-12%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$227,700 ÷ 10 min × 60\n= $1,366,200/hr\nBenchmark: $5,451,000/hr (-75%)">$1,366,200</span></td>
+          <td class="red">-75%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.05" data-sort-fill="4.0" data-sort-payout="92190" data-sort-remaining="64282.5" data-sort-total="156472.5" data-sort-passive="39118" data-sort-delta="-13.88442487616951" data-sort-active="553140" data-sort-actdelta="-89.85250412768299">
+          <td>FoxHen Enterprises Ltd</td>
+          <td class="items-col">4× Sporting, 3× Cargo, 8× Cash</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 240 min = 4h">4h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $87,800\n4× Sporting @ $20,000\n3× Cargo @ $30,000\n8× Cash @ $37,800\nBonus (5%): +$4,390\nOrder payout: $92,190">$92,190</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (4h):\n1× Coke = $27,000\n3× Meth = $34,425\n2× Sporting = $10,000\nGross: $71,425\nTony: −$7,142\nNet: $64,282">$64,282</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $92,190\nRemaining: $64,282\nTotal: $156,472"><strong>$156,472</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$156,472 ÷ 4h\n= $39,118/hr\nBenchmark: $45,425/hr (-14%)"><strong>$39,118</strong></span></td>
+          <td class="red">-14%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$92,190 ÷ 10 min × 60\n= $553,140/hr\nBenchmark: $5,451,000/hr (-90%)">$553,140</span></td>
+          <td class="red">-90%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.05" data-sort-fill="5.8" data-sort-payout="84000" data-sort-remaining="142965.0" data-sort-total="226965.0" data-sort-passive="38908" data-sort-delta="-14.34672537149147" data-sort-active="504000" data-sort-actdelta="-90.75399009356082">
+          <td>Black Hole Holdings <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">1× Coke, 2× Weed, 5× Cargo</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 350 min = 5h 48m">5h 48m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $80,000\n1× Coke @ $27,000\n2× Weed @ $3,000\n5× Cargo @ $50,000\nBonus (5%): +$4,000\nOrder payout: $84,000">$84,000</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (5h 48m):\n1× Coke = $27,000\n5× Meth = $57,375\n11× Cash = $51,975\n15× Weed = $22,500\nGross: $158,850\nTony: −$15,885\nNet: $142,965">$142,965</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $84,000\nRemaining: $142,965\nTotal: $226,965"><strong>$226,965</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$226,965 ÷ 5h 48m\n= $38,908/hr\nBenchmark: $45,425/hr (-14%)"><strong>$38,908</strong></span></td>
+          <td class="red">-14%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$84,000 ÷ 10 min × 60\n= $504,000/hr\nBenchmark: $5,451,000/hr (-91%)">$504,000</span></td>
+          <td class="red">-91%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="23.0" data-sort-payout="197917" data-sort-remaining="676867.5" data-sort-total="874784.5" data-sort-passive="38034" data-sort-delta="-16.27077600440286" data-sort-active="1187502" data-sort-actdelta="-78.21496973032471">
+          <td>Finance Holdings Logistics <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed, Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed, Forgery instead.">⚠</span></td>
+          <td class="items-col">15× Forgery, 69× Weed, 13× Cash</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 1380 min = 23h">23h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $179,925\n15× Forgery @ $15,000\n69× Weed @ $103,500\n13× Cash @ $61,425\nBonus (10%): +$17,992\nOrder payout: $197,917">$197,917</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (23h):\n10× Coke = $270,000\n20× Meth = $229,500\n27× Cash = $127,575\n6× Cargo = $60,000\n4× Sporting = $20,000\n45× Forgery = $45,000\nGross: $752,075\nTony: −$75,208\nNet: $676,868">$676,868</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $197,917\nRemaining: $676,868\nTotal: $874,784"><strong>$874,784</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$874,784 ÷ 23h\n= $38,034/hr\nBenchmark: $45,425/hr (-16%)"><strong>$38,034</strong></span></td>
+          <td class="red">-16%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$197,917 ÷ 10 min × 60\n= $1,187,502/hr\nBenchmark: $5,451,000/hr (-78%)">$1,187,502</span></td>
+          <td class="red">-78%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.05" data-sort-fill="3.7" data-sort-payout="72922" data-sort-remaining="64395.0" data-sort-total="137317.0" data-sort-passive="37450" data-sort-delta="-17.55641166758393" data-sort-active="437532" data-sort-actdelta="-91.97336268574573">
+          <td>Depredationist Equities <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">11× Weed, 2× Meth, 3× Cargo</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 220 min = 3h 42m">3h 42m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $69,450\n11× Weed @ $16,500\n2× Meth @ $22,950\n3× Cargo @ $30,000\nBonus (5%): +$3,472\nOrder payout: $72,922">$72,922</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (3h 42m):\n1× Coke = $27,000\n1× Meth = $11,475\n7× Cash = $33,075\nGross: $71,550\nTony: −$7,155\nNet: $64,395">$64,395</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $72,922\nRemaining: $64,395\nTotal: $137,317"><strong>$137,317</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$137,317 ÷ 3h 42m\n= $37,450/hr\nBenchmark: $45,425/hr (-18%)"><strong>$37,450</strong></span></td>
+          <td class="red">-18%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$72,922 ÷ 10 min × 60\n= $437,532/hr\nBenchmark: $5,451,000/hr (-92%)">$437,532</span></td>
+          <td class="red">-92%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="38.5" data-sort-payout="713102" data-sort-remaining="717952.5" data-sort-total="1431054.5" data-sort-passive="37170" data-sort-delta="-18.172812328013208" data-sort-active="4278612" data-sort-actdelta="-21.50776004402862">
+          <td>Chiliad International</td>
+          <td class="items-col">33× Cargo, 9× Meth, 43× Sporting</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 2310 min = 38h 30m">38h 30m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $648,275\n33× Cargo @ $330,000\n9× Meth @ $103,275\n43× Sporting @ $215,000\nBonus (10%): +$64,827\nOrder payout: $713,102">$713,102</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (38h 30m):\n10× Coke = $270,000\n11× Meth = $126,225\n40× Cash = $189,000\n14× Sporting = $70,000\n55× Weed = $82,500\n60× Forgery = $60,000\nGross: $797,725\nTony: −$79,772\nNet: $717,952">$717,952</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $713,102\nRemaining: $717,952\nTotal: $1,431,054"><strong>$1,431,054</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,431,054 ÷ 38h 30m\n= $37,170/hr\nBenchmark: $45,425/hr (-18%)"><strong>$37,170</strong></span></td>
+          <td class="red">-18%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$713,102 ÷ 10 min × 60\n= $4,278,612/hr\nBenchmark: $5,451,000/hr (-22%)">$4,278,612</span></td>
+          <td class="red">-22%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.05" data-sort-fill="3.3" data-sort-payout="59167" data-sort-remaining="64282.5" data-sort-total="123449.5" data-sort-passive="37035" data-sort-delta="-18.470005503577326" data-sort-active="355002" data-sort-actdelta="-93.48739680792515">
+          <td>Depredationist Equities <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Forgery instead.">⚠</span></td>
+          <td class="items-col">3× Forgery, 5× Sporting, 6× Cash</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 200 min = 3h 18m">3h 18m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $56,350\n3× Forgery @ $3,000\n5× Sporting @ $25,000\n6× Cash @ $28,350\nBonus (5%): +$2,817\nOrder payout: $59,167">$59,167</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (3h 18m):\n1× Coke = $27,000\n3× Meth = $34,425\n10× Forgery = $10,000\nGross: $71,425\nTony: −$7,142\nNet: $64,282">$64,282</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $59,167\nRemaining: $64,282\nTotal: $123,450"><strong>$123,450</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$123,450 ÷ 3h 18m\n= $37,035/hr\nBenchmark: $45,425/hr (-18%)"><strong>$37,035</strong></span></td>
+          <td class="red">-18%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$59,167 ÷ 10 min × 60\n= $355,002/hr\nBenchmark: $5,451,000/hr (-93%)">$355,002</span></td>
+          <td class="red">-93%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="33.8" data-sort-payout="588692" data-sort-remaining="646492.5" data-sort-total="1235184.5" data-sort-passive="36508" data-sort-delta="-19.630159603742435" data-sort-active="3532152" data-sort-actdelta="-35.20176114474408">
+          <td>Transparent Finance Investment <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">13× Meth, 29× Cargo, 64× Weed</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 2030 min = 33h 48m">33h 48m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $535,175\n13× Meth @ $149,175\n29× Cargo @ $290,000\n64× Weed @ $96,000\nBonus (10%): +$53,517\nOrder payout: $588,692">$588,692</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (33h 48m):\n10× Coke = $270,000\n7× Meth = $80,325\n40× Cash = $189,000\n20× Sporting = $100,000\n16× Weed = $24,000\n55× Forgery = $55,000\nGross: $718,325\nTony: −$71,832\nNet: $646,492">$646,492</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $588,692\nRemaining: $646,492\nTotal: $1,235,184"><strong>$1,235,184</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,235,184 ÷ 33h 48m\n= $36,508/hr\nBenchmark: $45,425/hr (-20%)"><strong>$36,508</strong></span></td>
+          <td class="red">-20%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$588,692 ÷ 10 min × 60\n= $3,532,152/hr\nBenchmark: $5,451,000/hr (-35%)">$3,532,152</span></td>
+          <td class="red">-35%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="32.0" data-sort-payout="491700" data-sort-remaining="674550.0" data-sort-total="1166250.0" data-sort-passive="36445" data-sort-delta="-19.768849752339023" data-sort-active="2950200" data-sort-actdelta="-45.8778205833792">
+          <td>Abrolhos Import Exports <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">5× Coke, 48× Sporting, 48× Weed</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 1920 min = 32h">32h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $447,000\n5× Coke @ $135,000\n48× Sporting @ $240,000\n48× Weed @ $72,000\nBonus (10%): +$44,700\nOrder payout: $491,700">$491,700</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (32h):\n5× Coke = $135,000\n20× Meth = $229,500\n40× Cash = $189,000\n10× Cargo = $100,000\n32× Weed = $48,000\n48× Forgery = $48,000\nGross: $749,500\nTony: −$74,950\nNet: $674,550">$674,550</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $491,700\nRemaining: $674,550\nTotal: $1,166,250"><strong>$1,166,250</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,166,250 ÷ 32h\n= $36,445/hr\nBenchmark: $45,425/hr (-20%)"><strong>$36,445</strong></span></td>
+          <td class="red">-20%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$491,700 ÷ 10 min × 60\n= $2,950,200/hr\nBenchmark: $5,451,000/hr (-46%)">$2,950,200</span></td>
+          <td class="red">-46%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="30.0" data-sort-payout="361157" data-sort-remaining="729157.5" data-sort-total="1090314.5" data-sort-passive="36344" data-sort-delta="-19.991194276279582" data-sort-active="2166942" data-sort-actdelta="-60.24689047881123">
+          <td>Conch Communications <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Forgery instead.">⚠</span></td>
+          <td class="items-col">7× Meth, 45× Sporting, 23× Forgery</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 1800 min = 30h">30h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $328,325\n7× Meth @ $80,325\n45× Sporting @ $225,000\n23× Forgery @ $23,000\nBonus (10%): +$32,832\nOrder payout: $361,157">$361,157</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (30h):\n10× Coke = $270,000\n13× Meth = $149,175\n40× Cash = $189,000\n12× Cargo = $120,000\n30× Weed = $45,000\n37× Forgery = $37,000\nGross: $810,175\nTony: −$81,018\nNet: $729,158">$729,158</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $361,157\nRemaining: $729,158\nTotal: $1,090,314"><strong>$1,090,314</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,090,314 ÷ 30h\n= $36,344/hr\nBenchmark: $45,425/hr (-20%)"><strong>$36,344</strong></span></td>
+          <td class="red">-20%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$361,157 ÷ 10 min × 60\n= $2,166,942/hr\nBenchmark: $5,451,000/hr (-60%)">$2,166,942</span></td>
+          <td class="red">-60%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="42.0" data-sort-payout="699600" data-sort-remaining="816750.0" data-sort-total="1516350.0" data-sort-passive="36104" data-sort-delta="-20.519537699504678" data-sort-active="4197600" data-sort-actdelta="-22.99394606494221">
+          <td>Abrolhos Import Exports <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">74× Weed, 21× Cargo, 63× Sporting</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 2520 min = 42h">42h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $636,000\n74× Weed @ $111,000\n21× Cargo @ $210,000\n63× Sporting @ $315,000\nBonus (10%): +$63,600\nOrder payout: $699,600">$699,600</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (42h):\n10× Coke = $270,000\n20× Meth = $229,500\n40× Cash = $189,000\n15× Cargo = $150,000\n6× Weed = $9,000\n60× Forgery = $60,000\nGross: $907,500\nTony: −$90,750\nNet: $816,750">$816,750</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $699,600\nRemaining: $816,750\nTotal: $1,516,350"><strong>$1,516,350</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,516,350 ÷ 42h\n= $36,104/hr\nBenchmark: $45,425/hr (-21%)"><strong>$36,104</strong></span></td>
+          <td class="red">-21%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$699,600 ÷ 10 min × 60\n= $4,197,600/hr\nBenchmark: $5,451,000/hr (-23%)">$4,197,600</span></td>
+          <td class="red">-23%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="42.0" data-sort-payout="693550" data-sort-remaining="817200.0" data-sort-total="1510750.0" data-sort-passive="35970" data-sort-delta="-20.814529444138692" data-sort-active="4161300" data-sort-actdelta="-23.659878921298844">
+          <td>FoxHen Enterprises Ltd <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">34× Sporting, 67× Weed, 36× Cargo</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 2520 min = 42h">42h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $630,500\n34× Sporting @ $170,000\n67× Weed @ $100,500\n36× Cargo @ $360,000\nBonus (10%): +$63,050\nOrder payout: $693,550">$693,550</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (42h):\n10× Coke = $270,000\n20× Meth = $229,500\n40× Cash = $189,000\n28× Sporting = $140,000\n13× Weed = $19,500\n60× Forgery = $60,000\nGross: $908,000\nTony: −$90,800\nNet: $817,200">$817,200</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $693,550\nRemaining: $817,200\nTotal: $1,510,750"><strong>$1,510,750</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,510,750 ÷ 42h\n= $35,970/hr\nBenchmark: $45,425/hr (-21%)"><strong>$35,970</strong></span></td>
+          <td class="red">-21%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$693,550 ÷ 10 min × 60\n= $4,161,300/hr\nBenchmark: $5,451,000/hr (-24%)">$4,161,300</span></td>
+          <td class="red">-24%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.05" data-sort-fill="3.5" data-sort-payout="58800" data-sort-remaining="66082.5" data-sort-total="124882.5" data-sort-passive="35681" data-sort-delta="-21.450742982938912" data-sort-active="352800" data-sort-actdelta="-93.52779306549257">
+          <td>Che Dan Group Limited <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Forgery instead.">⚠</span></td>
+          <td class="items-col">4× Sporting, 3× Cargo, 6× Forgery</td>
+          <td class="dim">5%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 210 min = 3h 30m">3h 30m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $56,000\n4× Sporting @ $20,000\n3× Cargo @ $30,000\n6× Forgery @ $6,000\nBonus (5%): +$2,800\nOrder payout: $58,800">$58,800</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (3h 30m):\n1× Coke = $27,000\n3× Meth = $34,425\n1× Sporting = $5,000\n7× Forgery = $7,000\nGross: $73,425\nTony: −$7,342\nNet: $66,082">$66,082</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $58,800\nRemaining: $66,082\nTotal: $124,882"><strong>$124,882</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$124,882 ÷ 3h 30m\n= $35,681/hr\nBenchmark: $45,425/hr (-21%)"><strong>$35,681</strong></span></td>
+          <td class="red">-21%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$58,800 ÷ 10 min × 60\n= $352,800/hr\nBenchmark: $5,451,000/hr (-94%)">$352,800</span></td>
+          <td class="red">-94%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="36.2" data-sort-payout="507650" data-sort-remaining="753300.0" data-sort-total="1260950.0" data-sort-passive="34865" data-sort-delta="-23.247110621904238" data-sort-active="3045900" data-sort-actdelta="-44.1221794166208">
+          <td>Conch Communications <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed, Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed, Forgery instead.">⚠</span></td>
+          <td class="items-col">36× Forgery, 77× Weed, 31× Cargo</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 2170 min = 36h 12m">36h 12m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $461,500\n36× Forgery @ $36,000\n77× Weed @ $115,500\n31× Cargo @ $310,000\nBonus (10%): +$46,150\nOrder payout: $507,650">$507,650</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (36h 12m):\n10× Coke = $270,000\n20× Meth = $229,500\n40× Cash = $189,000\n24× Sporting = $120,000\n3× Weed = $4,500\n24× Forgery = $24,000\nGross: $837,000\nTony: −$83,700\nNet: $753,300">$753,300</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $507,650\nRemaining: $753,300\nTotal: $1,260,950"><strong>$1,260,950</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,260,950 ÷ 36h 12m\n= $34,865/hr\nBenchmark: $45,425/hr (-23%)"><strong>$34,865</strong></span></td>
+          <td class="red">-23%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$507,650 ÷ 10 min × 60\n= $3,045,900/hr\nBenchmark: $5,451,000/hr (-44%)">$3,045,900</span></td>
+          <td class="red">-44%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="36.7" data-sort-payout="602882" data-sort-remaining="661882.5" data-sort-total="1264764.5" data-sort-passive="34494" data-sort-delta="-24.063841496973033" data-sort-active="3617292" data-sort-actdelta="-33.63984589983489">
+          <td>Conch Communications <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">52× Weed, 17× Meth, 55× Sporting</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 2200 min = 36h 42m">36h 42m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $548,075\n52× Weed @ $78,000\n17× Meth @ $195,075\n55× Sporting @ $275,000\nBonus (10%): +$54,807\nOrder payout: $602,882">$602,882</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (36h 42m):\n10× Coke = $270,000\n3× Meth = $34,425\n40× Cash = $189,000\n14× Cargo = $140,000\n28× Weed = $42,000\n60× Forgery = $60,000\nGross: $735,425\nTony: −$73,542\nNet: $661,882">$661,882</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $602,882\nRemaining: $661,882\nTotal: $1,264,764"><strong>$1,264,764</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,264,764 ÷ 36h 42m\n= $34,494/hr\nBenchmark: $45,425/hr (-24%)"><strong>$34,494</strong></span></td>
+          <td class="red">-24%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$602,882 ÷ 10 min × 60\n= $3,617,292/hr\nBenchmark: $5,451,000/hr (-34%)">$3,617,292</span></td>
+          <td class="red">-34%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.2" data-sort-fill="55.3" data-sort-payout="1248090" data-sort-remaining="642082.5" data-sort-total="1890172.5" data-sort-passive="34160" data-sort-delta="-24.799119427627957" data-sort-active="7488540" data-sort-actdelta="37.379196477710515">
+          <td>Old Media Enterprises</td>
+          <td class="items-col">43× Cargo, 83× Sporting, 17× Meth</td>
+          <td class="green">20%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 3320 min = 55h 18m">55h 18m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $1,040,075\n43× Cargo @ $430,000\n83× Sporting @ $415,000\n17× Meth @ $195,075\nBonus (20%): +$208,015\nOrder payout: $1,248,090">$1,248,090</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (55h 18m):\n10× Coke = $270,000\n3× Meth = $34,425\n40× Cash = $189,000\n4× Cargo = $40,000\n80× Weed = $120,000\n60× Forgery = $60,000\nGross: $713,425\nTony: −$71,342\nNet: $642,082">$642,082</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $1,248,090\nRemaining: $642,082\nTotal: $1,890,172"><strong>$1,890,172</strong></span></td>
+          <td class=""><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,890,172 ÷ 55h 18m\n= $34,160/hr\nBenchmark: $45,425/hr (-25%)"><strong>$34,160</strong></span></td>
+          <td class="red">-25%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$1,248,090 ÷ 10 min × 60\n= $7,488,540/hr\nBenchmark: $5,451,000/hr (+37%)">$7,488,540</span></td>
+          <td class="green">+37%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="46.7" data-sort-payout="592212" data-sort-remaining="973625" data-sort-total="1565837" data-sort-passive="33554" data-sort-delta="-26.133186571271327" data-sort-active="3553272" data-sort-actdelta="-34.81430930104568">
+          <td>Ameropean Partners</td>
+          <td class="items-col">5× Meth, 3× Coke, 40× Cargo</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 2800 min = 46h 42m">46h 42m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $538,375\n5× Meth @ $57,375\n3× Coke @ $81,000\n40× Cargo @ $400,000\nBonus (10%): +$53,837\nOrder payout: $592,212">$592,212</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (46h 42m):\n7× Coke = $189,000\n15× Meth = $172,125\n40× Cash = $189,000\n69× Sporting = $345,000\n79× Weed = $118,500\n60× Forgery = $60,000\nGross: $1,073,625\nTony: −$100,000\nNet: $973,625">$973,625</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $592,212\nRemaining: $973,625\nTotal: $1,565,837"><strong>$1,565,837</strong></span></td>
+          <td class="red"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,565,837 ÷ 46h 42m\n= $33,554/hr\nBenchmark: $45,425/hr (-26%)"><strong>$33,554</strong></span></td>
+          <td class="red">-26%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$592,212 ÷ 10 min × 60\n= $3,553,272/hr\nBenchmark: $5,451,000/hr (-35%)">$3,553,272</span></td>
+          <td class="red">-35%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="42.0" data-sort-payout="665032" data-sort-remaining="705532.5" data-sort-total="1370564.5" data-sort-passive="32632" data-sort-delta="-28.162905888827737" data-sort-active="3990192" data-sort-actdelta="-26.79889928453495">
+          <td>OffShore Logistics <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">36× Cargo, 27× Cash, 78× Weed</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 2520 min = 42h">42h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $604,575\n36× Cargo @ $360,000\n27× Cash @ $127,575\n78× Weed @ $117,000\nBonus (10%): +$60,457\nOrder payout: $665,032">$665,032</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (42h):\n10× Coke = $270,000\n20× Meth = $229,500\n13× Cash = $61,425\n32× Sporting = $160,000\n2× Weed = $3,000\n60× Forgery = $60,000\nGross: $783,925\nTony: −$78,392\nNet: $705,532">$705,532</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $665,032\nRemaining: $705,532\nTotal: $1,370,564"><strong>$1,370,564</strong></span></td>
+          <td class="red"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,370,564 ÷ 42h\n= $32,632/hr\nBenchmark: $45,425/hr (-28%)"><strong>$32,632</strong></span></td>
+          <td class="red">-28%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$665,032 ÷ 10 min × 60\n= $3,990,192/hr\nBenchmark: $5,451,000/hr (-27%)">$3,990,192</span></td>
+          <td class="red">-27%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.1" data-sort-fill="50.7" data-sort-payout="766975" data-sort-remaining="883125.0" data-sort-total="1650100.0" data-sort-passive="32568" data-sort-delta="-28.303797468354432" data-sort-active="4601850" data-sort-actdelta="-15.577875619152447">
+          <td>Black Hole Holdings</td>
+          <td class="items-col">19× Meth, 76× Sporting, 21× Cash</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 3040 min = 50h 42m">50h 42m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $697,250\n19× Meth @ $218,025\n76× Sporting @ $380,000\n21× Cash @ $99,225\nBonus (10%): +$69,725\nOrder payout: $766,975">$766,975</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (50h 42m):\n10× Coke = $270,000\n1× Meth = $11,475\n19× Cash = $89,775\n43× Cargo = $430,000\n80× Weed = $120,000\n60× Forgery = $60,000\nGross: $981,250\nTony: −$98,125\nNet: $883,125">$883,125</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $766,975\nRemaining: $883,125\nTotal: $1,650,100"><strong>$1,650,100</strong></span></td>
+          <td class="red"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,650,100 ÷ 50h 42m\n= $32,568/hr\nBenchmark: $45,425/hr (-28%)"><strong>$32,568</strong></span></td>
+          <td class="red">-28%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$766,975 ÷ 10 min × 60\n= $4,601,850/hr\nBenchmark: $5,451,000/hr (-16%)">$4,601,850</span></td>
+          <td class="red">-16%</td>
+        </tr>
+        <tr class="" data-sort-bonus="0.2" data-sort-fill="61.3" data-sort-payout="1278090" data-sort-remaining="687082.5" data-sort-total="1965172.5" data-sort-passive="32041" data-sort-delta="-29.463951568519537" data-sort-active="7668540" data-sort-actdelta="40.68134287286737">
+          <td>Amir Group Investments</td>
+          <td class="items-col">92× Sporting, 17× Meth, 41× Cargo</td>
+          <td class="green">20%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 3680 min = 61h 18m">61h 18m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $1,065,075\n92× Sporting @ $460,000\n17× Meth @ $195,075\n41× Cargo @ $410,000\nBonus (20%): +$213,015\nOrder payout: $1,278,090">$1,278,090</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (61h 18m):\n10× Coke = $270,000\n3× Meth = $34,425\n40× Cash = $189,000\n9× Cargo = $90,000\n80× Weed = $120,000\n60× Forgery = $60,000\nGross: $763,425\nTony: −$76,342\nNet: $687,082">$687,082</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $1,278,090\nRemaining: $687,082\nTotal: $1,965,172"><strong>$1,965,172</strong></span></td>
+          <td class="red"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,965,172 ÷ 61h 18m\n= $32,041/hr\nBenchmark: $45,425/hr (-29%)"><strong>$32,041</strong></span></td>
+          <td class="red">-29%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$1,278,090 ÷ 10 min × 60\n= $7,668,540/hr\nBenchmark: $5,451,000/hr (+41%)">$7,668,540</span></td>
+          <td class="green">+41%</td>
+        </tr>
+        <tr class="worst-row" data-sort-bonus="0.1" data-sort-fill="56.0" data-sort-payout="970337" data-sort-remaining="788737.5" data-sort-total="1759074.5" data-sort-passive="31412" data-sort-delta="-30.848651623555313" data-sort-active="5822022" data-sort-actdelta="6.806494221243808">
+          <td>Pacific Rim Finance</td>
+          <td class="items-col">15× Meth, 29× Cargo, 84× Sporting</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 3360 min = 56h">56h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $882,125\n15× Meth @ $172,125\n29× Cargo @ $290,000\n84× Sporting @ $420,000\nBonus (10%): +$88,212\nOrder payout: $970,337">$970,337</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (56h):\n10× Coke = $270,000\n5× Meth = $57,375\n40× Cash = $189,000\n18× Cargo = $180,000\n80× Weed = $120,000\n60× Forgery = $60,000\nGross: $876,375\nTony: −$87,638\nNet: $788,738">$788,738</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $970,337\nRemaining: $788,738\nTotal: $1,759,074"><strong>$1,759,074</strong></span></td>
+          <td class="red"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,759,074 ÷ 56h\n= $31,412/hr\nBenchmark: $45,425/hr (-31%)"><strong>$31,412</strong></span></td>
+          <td class="red">-31%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$970,337 ÷ 10 min × 60\n= $5,822,022/hr\nBenchmark: $5,451,000/hr (+7%)">$5,822,022</span></td>
+          <td class="green">+7%</td>
+        </tr>
+        <tr class="worst-row" data-sort-bonus="0.1" data-sort-fill="44.7" data-sort-payout="650815" data-sort-remaining="739665.0" data-sort-total="1390480.0" data-sort-passive="31130" data-sort-delta="-31.469455145844798" data-sort-active="3904890" data-sort-actdelta="-28.36378646119978">
+          <td>Exchange Capital Exchange <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">67× Sporting, 14× Meth, 64× Weed</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 2680 min = 44h 42m">44h 42m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $591,650\n67× Sporting @ $335,000\n14× Meth @ $160,650\n64× Weed @ $96,000\nBonus (10%): +$59,165\nOrder payout: $650,815">$650,815</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (44h 42m):\n10× Coke = $270,000\n6× Meth = $68,850\n40× Cash = $189,000\n21× Cargo = $210,000\n16× Weed = $24,000\n60× Forgery = $60,000\nGross: $821,850\nTony: −$82,185\nNet: $739,665">$739,665</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $650,815\nRemaining: $739,665\nTotal: $1,390,480"><strong>$1,390,480</strong></span></td>
+          <td class="red"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,390,480 ÷ 44h 42m\n= $31,130/hr\nBenchmark: $45,425/hr (-31%)"><strong>$31,130</strong></span></td>
+          <td class="red">-31%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$650,815 ÷ 10 min × 60\n= $3,904,890/hr\nBenchmark: $5,451,000/hr (-28%)">$3,904,890</span></td>
+          <td class="red">-28%</td>
+        </tr>
+        <tr class="worst-row" data-sort-bonus="0.1" data-sort-fill="47.8" data-sort-payout="637147" data-sort-remaining="849847.5" data-sort-total="1486994.5" data-sort-passive="31087" data-sort-delta="-31.564116675839294" data-sort-active="3822882" data-sort-actdelta="-29.86824435883324">
+          <td>Tsetse Import Exports <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Forgery instead.">⚠</span></td>
+          <td class="items-col">43× Forgery, 41× Cargo, 11× Meth</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 2870 min = 47h 48m">47h 48m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $579,225\n43× Forgery @ $43,000\n41× Cargo @ $410,000\n11× Meth @ $126,225\nBonus (10%): +$57,922\nOrder payout: $637,147">$637,147</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (47h 48m):\n10× Coke = $270,000\n9× Meth = $103,275\n40× Cash = $189,000\n49× Sporting = $245,000\n80× Weed = $120,000\n17× Forgery = $17,000\nGross: $944,275\nTony: −$94,428\nNet: $849,848">$849,848</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $637,147\nRemaining: $849,848\nTotal: $1,486,994"><strong>$1,486,994</strong></span></td>
+          <td class="red"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,486,994 ÷ 47h 48m\n= $31,087/hr\nBenchmark: $45,425/hr (-32%)"><strong>$31,087</strong></span></td>
+          <td class="red">-32%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$637,147 ÷ 10 min × 60\n= $3,822,882/hr\nBenchmark: $5,451,000/hr (-30%)">$3,822,882</span></td>
+          <td class="red">-30%</td>
+        </tr>
+        <tr class="worst-row" data-sort-bonus="0.1" data-sort-fill="56.0" data-sort-payout="761750" data-sort-remaining="976000" data-sort-total="1737750" data-sort-passive="31031" data-sort-delta="-31.68739680792515" data-sort-active="4570500" data-sort-actdelta="-16.152999449642266">
+          <td>Grandgor Communications <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">48× Cargo, 26× Sporting, 55× Weed</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 3360 min = 56h">56h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $692,500\n48× Cargo @ $480,000\n26× Sporting @ $130,000\n55× Weed @ $82,500\nBonus (10%): +$69,250\nOrder payout: $761,750">$761,750</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (56h):\n10× Coke = $270,000\n20× Meth = $229,500\n40× Cash = $189,000\n58× Sporting = $290,000\n25× Weed = $37,500\n60× Forgery = $60,000\nGross: $1,076,000\nTony: −$100,000\nNet: $976,000">$976,000</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $761,750\nRemaining: $976,000\nTotal: $1,737,750"><strong>$1,737,750</strong></span></td>
+          <td class="red"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,737,750 ÷ 56h\n= $31,031/hr\nBenchmark: $45,425/hr (-32%)"><strong>$31,031</strong></span></td>
+          <td class="red">-32%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$761,750 ÷ 10 min × 60\n= $4,570,500/hr\nBenchmark: $5,451,000/hr (-16%)">$4,570,500</span></td>
+          <td class="red">-16%</td>
+        </tr>
+        <tr class="worst-row" data-sort-bonus="0.1" data-sort-fill="58.7" data-sort-payout="720857" data-sort-remaining="1053175" data-sort-total="1774032" data-sort-passive="30239" data-sort-delta="-33.43093010456797" data-sort-active="4325142" data-sort-actdelta="-20.654155200880574">
+          <td>Depredationist Equities</td>
+          <td class="items-col">88× Sporting, 13× Meth, 14× Cash</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 3520 min = 58h 42m">58h 42m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $655,325\n88× Sporting @ $440,000\n13× Meth @ $149,175\n14× Cash @ $66,150\nBonus (10%): +$65,532\nOrder payout: $720,857">$720,857</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (58h 42m):\n10× Coke = $270,000\n7× Meth = $80,325\n26× Cash = $122,850\n50× Cargo = $500,000\n80× Weed = $120,000\n60× Forgery = $60,000\nGross: $1,153,175\nTony: −$100,000\nNet: $1,053,175">$1,053,175</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $720,857\nRemaining: $1,053,175\nTotal: $1,774,032"><strong>$1,774,032</strong></span></td>
+          <td class="red"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,774,032 ÷ 58h 42m\n= $30,239/hr\nBenchmark: $45,425/hr (-33%)"><strong>$30,239</strong></span></td>
+          <td class="red">-33%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$720,857 ÷ 10 min × 60\n= $4,325,142/hr\nBenchmark: $5,451,000/hr (-21%)">$4,325,142</span></td>
+          <td class="red">-21%</td>
+        </tr>
+        <tr class="worst-row" data-sort-bonus="0.1" data-sort-fill="62.7" data-sort-payout="1142900" data-sort-remaining="719550.0" data-sort-total="1862450.0" data-sort-passive="29720" data-sort-delta="-34.57347275729224" data-sort-active="6857400" data-sort-actdelta="25.800770500825536">
+          <td>East Carraway Holdings</td>
+          <td class="items-col">38× Cargo, 7× Coke, 94× Sporting</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 3760 min = 62h 42m">62h 42m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $1,039,000\n38× Cargo @ $380,000\n7× Coke @ $189,000\n94× Sporting @ $470,000\nBonus (10%): +$103,900\nOrder payout: $1,142,900">$1,142,900</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (62h 42m):\n3× Coke = $81,000\n20× Meth = $229,500\n40× Cash = $189,000\n12× Cargo = $120,000\n80× Weed = $120,000\n60× Forgery = $60,000\nGross: $799,500\nTony: −$79,950\nNet: $719,550">$719,550</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $1,142,900\nRemaining: $719,550\nTotal: $1,862,450"><strong>$1,862,450</strong></span></td>
+          <td class="red"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,862,450 ÷ 62h 42m\n= $29,720/hr\nBenchmark: $45,425/hr (-35%)"><strong>$29,720</strong></span></td>
+          <td class="red">-35%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$1,142,900 ÷ 10 min × 60\n= $6,857,400/hr\nBenchmark: $5,451,000/hr (+26%)">$6,857,400</span></td>
+          <td class="green">+26%</td>
+        </tr>
+        <tr class="worst-row" data-sort-bonus="0.1" data-sort-fill="54.0" data-sort-payout="618640" data-sort-remaining="941100" data-sort-total="1559740" data-sort-passive="28884" data-sort-delta="-36.41386901485966" data-sort-active="3711840" data-sort-actdelta="-31.9053384700055">
+          <td>East Carraway Holdings <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Forgery instead.">⚠</span></td>
+          <td class="items-col">24× Cash, 81× Sporting, 44× Forgery</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 3240 min = 54h">54h</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $562,400\n24× Cash @ $113,400\n81× Sporting @ $405,000\n44× Forgery @ $44,000\nBonus (10%): +$56,240\nOrder payout: $618,640">$618,640</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (54h):\n10× Coke = $270,000\n20× Meth = $229,500\n16× Cash = $75,600\n33× Cargo = $330,000\n80× Weed = $120,000\n16× Forgery = $16,000\nGross: $1,041,100\nTony: −$100,000\nNet: $941,100">$941,100</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $618,640\nRemaining: $941,100\nTotal: $1,559,740"><strong>$1,559,740</strong></span></td>
+          <td class="red"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,559,740 ÷ 54h\n= $28,884/hr\nBenchmark: $45,425/hr (-36%)"><strong>$28,884</strong></span></td>
+          <td class="red">-36%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$618,640 ÷ 10 min × 60\n= $3,711,840/hr\nBenchmark: $5,451,000/hr (-32%)">$3,711,840</span></td>
+          <td class="red">-32%</td>
+        </tr>
+        <tr class="worst-row" data-sort-bonus="0.1" data-sort-fill="58.7" data-sort-payout="761200" data-sort-remaining="851850.0" data-sort-total="1613050.0" data-sort-passive="27495" data-sort-delta="-39.471656576774905" data-sort-active="4567200" data-sort-actdelta="-16.213538800220142">
+          <td>Exchange Capital Exchange <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Weed\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Weed instead.">⚠</span></td>
+          <td class="items-col">24× Weed, 88× Sporting, 8× Coke</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 3520 min = 58h 42m">58h 42m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $692,000\n24× Weed @ $36,000\n88× Sporting @ $440,000\n8× Coke @ $216,000\nBonus (10%): +$69,200\nOrder payout: $761,200">$761,200</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (58h 42m):\n2× Coke = $54,000\n20× Meth = $229,500\n40× Cash = $189,000\n33× Cargo = $330,000\n56× Weed = $84,000\n60× Forgery = $60,000\nGross: $946,500\nTony: −$94,650\nNet: $851,850">$851,850</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $761,200\nRemaining: $851,850\nTotal: $1,613,050"><strong>$1,613,050</strong></span></td>
+          <td class="red"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,613,050 ÷ 58h 42m\n= $27,495/hr\nBenchmark: $45,425/hr (-39%)"><strong>$27,495</strong></span></td>
+          <td class="red">-39%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$761,200 ÷ 10 min × 60\n= $4,567,200/hr\nBenchmark: $5,451,000/hr (-16%)">$4,567,200</span></td>
+          <td class="red">-16%</td>
+        </tr>
+        <tr class="worst-row" data-sort-bonus="0.1" data-sort-fill="63.3" data-sort-payout="737220" data-sort-remaining="983300" data-sort-total="1720520" data-sort-passive="27166" data-sort-delta="-40.19592735277931" data-sort-active="4423320" data-sort-actdelta="-18.85305448541552">
+          <td>Che Dan Group Limited <span class="tip disp-badge" data-tip-label="Tech Displacement" data-tip-calc="Order requires: Forgery\nThese are not in the optimal top-5 lineup.\nA technician is pulled from a top-5 good\nto produce Forgery instead.">⚠</span></td>
+          <td class="items-col">95× Sporting, 32× Cash, 44× Forgery</td>
+          <td class="gold">10%</td>
+          <td><span class="tip" data-tip-label="Fill Time" data-tip-calc="5 techs, dynamic reassignment\nBottleneck: 3800 min = 63h 18m">63h 18m</span></td>
+          <td><span class="tip" data-tip-label="Order Payout" data-tip-calc="Buffed NC base: $670,200\n95× Sporting @ $475,000\n32× Cash @ $151,200\n44× Forgery @ $44,000\nBonus (10%): +$67,020\nOrder payout: $737,220">$737,220</span></td>
+          <td><span class="tip" data-tip-label="Remaining Stock" data-tip-calc="Free tech production (63h 18m):\n10× Coke = $270,000\n20× Meth = $229,500\n8× Cash = $37,800\n41× Cargo = $410,000\n80× Weed = $120,000\n16× Forgery = $16,000\nGross: $1,083,300\nTony: −$100,000\nNet: $983,300">$983,300</span></td>
+          <td><span class="tip" data-tip-label="Total Income" data-tip-calc="Order: $737,220\nRemaining: $983,300\nTotal: $1,720,520"><strong>$1,720,520</strong></span></td>
+          <td class="red"><span class="tip" data-tip-label="$/Passive Hr" data-tip-calc="$1,720,520 ÷ 63h 18m\n= $27,166/hr\nBenchmark: $45,425/hr (-40%)"><strong>$27,166</strong></span></td>
+          <td class="red">-40%</td>
+          <td><span class="tip" data-tip-label="$/Active Hr" data-tip-calc="Order payout only:\n$737,220 ÷ 10 min × 60\n= $4,423,320/hr\nBenchmark: $5,451,000/hr (-19%)">$4,423,320</span></td>
+          <td class="red">-19%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>
+
+</main>
+
+<button class="feedback-btn" onclick="alert('Feedback form coming soon')">Report Error / Suggest Change</button>
+
+<script>
+// Tooltip
+const tipbox = document.getElementById('tipbox');
+let activeTip = null;
+document.addEventListener('mouseover', e => {
+  const el = e.target.closest('.tip');
+  if (!el) return;
+  activeTip = el;
+  const label = el.dataset.tipLabel || '';
+  const calc  = el.dataset.tipCalc  || '';
+  tipbox.innerHTML =
+    (label ? '<span class="tb-label">' + label + '</span>' : '') +
+    (calc  ? '<span class="tb-calc">' + calc.replace(/\\n/g,'<br>') + '</span>' : '');
+  tipbox.style.display = 'block';
+  positionTip(e);
+});
+document.addEventListener('mousemove', e => {
+  if (!activeTip) return;
+  if (!e.target.closest('.tip')) { tipbox.style.display = 'none'; activeTip = null; return; }
+  positionTip(e);
+});
+document.addEventListener('mouseout', e => {
+  if (!e.target.closest('.tip')) { tipbox.style.display = 'none'; activeTip = null; }
+});
+function positionTip(e) {
+  const tw = 340, th = tipbox.offsetHeight || 120;
+  const vw = window.innerWidth, vh = window.innerHeight;
+  let x = e.clientX - tw / 2, y = e.clientY - th - 14;
+  if (x < 8) x = 8;
+  if (x + tw > vw - 8) x = vw - tw - 8;
+  if (y < 8) y = e.clientY + 20;
+  tipbox.style.left = x + 'px';
+  tipbox.style.top = y + 'px';
+}// Column sorting
+(function() {
+  const table = document.getElementById('orders-table');
+  if (!table) return;
+  const tbody = table.querySelector('tbody');
+  const headers = table.querySelectorAll('th.sortable');
+  let currentSort = 'passive';
+  let currentDir = 'desc';
+
+  function sortTable(col, dir) {
+    const rows = Array.from(tbody.querySelectorAll('tr:not([data-bench])'));
+    const isNum = headers[Array.from(headers).findIndex(h => h.dataset.col === col)]?.dataset.type === 'num';
+
+    rows.sort((a, b) => {
+      let va, vb;
+      if (col === 'name') {
+        va = a.cells[0].textContent.trim();
+        vb = b.cells[0].textContent.trim();
+        return dir === 'asc' ? va.localeCompare(vb) : vb.localeCompare(va);
+      }
+      va = parseFloat(a.dataset['sort' + col.charAt(0).toUpperCase() + col.slice(1)] || 0);
+      vb = parseFloat(b.dataset['sort' + col.charAt(0).toUpperCase() + col.slice(1)] || 0);
+      // Map data-sort attribute names
+      const attrMap = {
+        bonus: 'sortBonus', fill: 'sortFill', payout: 'sortPayout',
+        remaining: 'sortRemaining', total: 'sortTotal', passive: 'sortPassive',
+        delta: 'sortDelta', active: 'sortActive', actdelta: 'sortActdelta'
+      };
+      va = parseFloat(a.dataset[attrMap[col]] || 0);
+      vb = parseFloat(b.dataset[attrMap[col]] || 0);
+      return dir === 'asc' ? va - vb : vb - va;
+    });
+
+    // Re-append rows (benchmark stays first)
+    rows.forEach(r => tbody.appendChild(r));
+  }
+
+  headers.forEach(th => {
+    th.addEventListener('click', function() {
+      const col = this.dataset.col;
+      let dir;
+      if (currentSort === col) {
+        dir = currentDir === 'desc' ? 'asc' : 'desc';
+      } else {
+        dir = this.dataset.type === 'num' ? 'desc' : 'asc';
+      }
+      currentSort = col;
+      currentDir = dir;
+
+      // Update header indicators
+      headers.forEach(h => {
+        h.classList.remove('sorted-asc', 'sorted-desc');
+        h.textContent = h.textContent.replace(/ [▲▼]$/, '');
+      });
+      this.classList.add(dir === 'asc' ? 'sorted-asc' : 'sorted-desc');
+      this.textContent += dir === 'asc' ? ' ▲' : ' ▼';
+
+      sortTable(col, dir);
+    });
+  });
+})();
+</script>
+</body>
+</html>
