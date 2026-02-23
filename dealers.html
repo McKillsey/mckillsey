@@ -137,6 +137,14 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .modal-cancel-btn{background:none;border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:10px 16px;cursor:pointer}
 .modal-cancel-btn:hover{border-color:var(--cream-dim);color:var(--cream)}
 .modal-status{font-family:var(--mono);font-size:11px;color:var(--cream-dim);min-height:16px}
+.screenshot-zone{width:100%;min-height:80px;background:var(--navy);border:1px dashed rgba(201,168,76,.35);display:flex;align-items:center;justify-content:center;margin-top:14px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .15s}
+.screenshot-zone:hover{border-color:var(--gold)}
+.screenshot-zone.has-image{border-style:solid;border-color:var(--gold)}
+.screenshot-zone img{max-width:100%;max-height:220px;display:block}
+.screenshot-hint{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.06em;text-align:center;padding:20px;pointer-events:none}
+.screenshot-hint span{color:var(--gold)}
+.screenshot-clear{position:absolute;top:6px;right:8px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;padding:2px 8px;cursor:pointer;display:none}
+.screenshot-zone.has-image .screenshot-clear{display:block}
 
 @media(max-width:1100px){.comp-grid{grid-template-columns:1fr}.mech-grid{grid-template-columns:1fr}}
 @media(max-width:900px){.page{padding:20px}.site-header{padding-left:20px;padding-right:20px}}
@@ -511,9 +519,15 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 <div class="modal-overlay" id="feedback-overlay" onclick="if(event.target===this)closeFeedback()">
   <div class="modal">
     <div class="modal-title">Report an Error</div>
-    <div class="modal-sub">No login required.</div>
+    <div class="modal-sub">No login required. Screenshot optional.</div>
     <label class="modal-label" style="margin-top:4px">What's wrong?</label>
     <textarea class="modal-textarea" id="feedback-text" placeholder="Describe the error or suggest a change..."></textarea>
+    <div class="screenshot-zone" id="screenshot-zone" onclick="document.getElementById('screenshot-file').click()">
+      <div class="screenshot-hint" id="screenshot-hint"><span>Paste</span> a screenshot or <span>click</span> to upload</div>
+      <img id="screenshot-preview" style="display:none">
+      <button class="screenshot-clear" id="screenshot-clear" onclick="event.stopPropagation();clearScreenshot()">✕ Remove</button>
+    </div>
+    <input type="file" id="screenshot-file" accept="image/*" style="display:none" onchange="handleFileSelect(event)">
     <div class="modal-footer">
       <div class="modal-status" id="modal-status"></div>
       <div style="display:flex;gap:8px">
@@ -533,9 +547,14 @@ document.addEventListener('mouseout',e=>{if(e.target.closest('.tip')){tipbox.sty
 function posTip(e){const p=16;let x=e.clientX+p,y=e.clientY+p;if(x+tipbox.offsetWidth>window.innerWidth-p)x=e.clientX-tipbox.offsetWidth-p;if(y+tipbox.offsetHeight>window.innerHeight-p)y=e.clientY-tipbox.offsetHeight-p;tipbox.style.left=x+'px';tipbox.style.top=y+'px';}
 
 // FEEDBACK
+let screenshotData = null;
 function openFeedback(){document.getElementById('feedback-overlay').classList.add('open');document.getElementById('feedback-text').focus();}
 function closeFeedback(){document.getElementById('feedback-overlay').classList.remove('open');document.getElementById('modal-status').textContent='';}
-async function submitFeedback(){const text=document.getElementById('feedback-text').value.trim();if(!text){document.getElementById('modal-status').textContent='Please describe the issue.';return;}const btn=document.getElementById('modal-send-btn'),status=document.getElementById('modal-status');btn.disabled=true;btn.textContent='Sending...';const fd=new FormData();fd.append('access_key','25c0d000-546c-45cd-be70-ec9abcded581');fd.append('subject','McKillsey Error Report — Dealers');fd.append('message','Page: '+window.location.href+'\n\n'+text);try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});const res=await r.json();if(res.success){status.style.color='var(--green)';status.textContent='Sent. Thank you.';btn.textContent='Sent ✓';setTimeout(()=>{closeFeedback();document.getElementById('feedback-text').value='';btn.disabled=false;btn.textContent='Send Report';status.style.color='';},1800);}else throw new Error();}catch(e){status.style.color='var(--red)';status.textContent='Failed. Try again.';btn.disabled=false;btn.textContent='Send Report';}}
+function setScreenshot(dataUrl){screenshotData=dataUrl;const p=document.getElementById('screenshot-preview'),h=document.getElementById('screenshot-hint');p.src=dataUrl;p.style.display='block';h.style.display='none';document.getElementById('screenshot-zone').classList.add('has-image');}
+function clearScreenshot(){screenshotData=null;const p=document.getElementById('screenshot-preview'),h=document.getElementById('screenshot-hint');p.src='';p.style.display='none';h.style.display='';document.getElementById('screenshot-zone').classList.remove('has-image');document.getElementById('screenshot-file').value='';}
+function handleFileSelect(e){const file=e.target.files[0];if(!file)return;const r=new FileReader();r.onload=ev=>setScreenshot(ev.target.result);r.readAsDataURL(file);}
+document.addEventListener('paste',e=>{if(!document.getElementById('feedback-overlay').classList.contains('open'))return;const items=e.clipboardData?.items;if(!items)return;for(const item of items){if(item.type.startsWith('image/')){e.preventDefault();const r=new FileReader();r.onload=ev=>setScreenshot(ev.target.result);r.readAsDataURL(item.getAsFile());break;}}});
+async function submitFeedback(){const text=document.getElementById('feedback-text').value.trim();if(!text){document.getElementById('modal-status').textContent='Please describe the issue first.';return;}const btn=document.getElementById('modal-send-btn'),status=document.getElementById('modal-status');btn.disabled=true;btn.textContent='Sending...';status.textContent='';let body='Page: '+location.href+'\n\nFeedback:\n'+text;if(screenshotData){try{const imgForm=new FormData();imgForm.append('key','a3cb2b5f84e2b4e2a7b6c1d9f8e3a4b5');imgForm.append('image',screenshotData.split(',')[1]);const imgRes=await fetch('https://api.imgbb.com/1/upload',{method:'POST',body:imgForm});const imgData=await imgRes.json();if(imgData.success)body+='\n\nScreenshot: '+imgData.data.url;}catch(e){body+='\n\n(Screenshot failed to upload)';}}const fd=new FormData();fd.append('access_key','25c0d000-546c-45cd-be70-ec9abcded581');fd.append('subject','McKillsey Error Report — Dealers');fd.append('message',body);try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});const res=await r.json();if(res.success){status.style.color='var(--green)';status.textContent='Sent. Thank you.';btn.textContent='Sent ✓';setTimeout(()=>{closeFeedback();document.getElementById('feedback-text').value='';clearScreenshot();btn.disabled=false;btn.textContent='Send Report';status.style.color='';},1800);}else throw new Error();}catch(e){status.style.color='var(--red)';status.textContent='Failed. Try again.';btn.disabled=false;btn.textContent='Send Report';}}
 </script>
 </body>
 </html>
