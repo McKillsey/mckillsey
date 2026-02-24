@@ -146,7 +146,7 @@ a:hover { text-decoration: underline; }
 }
 .week-date {
   font-family: var(--mono); font-size: 12px; color: var(--gold);
-  white-space: nowrap; min-width: 140px;
+  white-space: nowrap; width: 140px; flex-shrink: 0;
 }
 .week-date .week-dur {
   font-size: 9px; color: var(--cream-dim); margin-left: 6px; letter-spacing: .04em;
@@ -155,7 +155,7 @@ a:hover { text-decoration: underline; }
   font-family: var(--sans); font-size: 13px; color: var(--cream); font-weight: 500;
   flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.week-tags { display: flex; gap: 5px; flex-wrap: wrap; flex-shrink: 0; max-width: 480px; }
+.week-tags { display: flex; gap: 5px; flex-wrap: wrap; flex-shrink: 0; max-width: 560px; }
 .week-tag {
   display: inline-flex; align-items: center; gap: 4px;
   font-family: var(--mono); font-size: 9px; letter-spacing: .04em; text-transform: uppercase;
@@ -434,8 +434,10 @@ function searchFor(term) {
 
 /* ═══ HISTORY ═══ */
 function pushState(q) {
-  var url = q ? '?q=' + encodeURIComponent(q) : location.pathname;
-  history.pushState({q: q}, '', url);
+  try {
+    var url = q ? '?q=' + encodeURIComponent(q) : location.pathname;
+    history.pushState({q: q}, '', url);
+  } catch(e) {}
 }
 
 window.addEventListener('popstate', function(e) {
@@ -553,8 +555,7 @@ function renderTimeline() {
       tags += '<span class="week-tag ' + t.c + '" onclick="event.stopPropagation();searchFor(\'' + escAttr(t.t) + '\')"><span class="tag-mult">' + t.m + '</span> ' + escHtml(t.t) + '</span>';
     }
     var meta = [];
-    if (w.vc) meta.push(w.vc + ' vehicle disc.');
-    if (w.pc) meta.push(w.pc + ' property disc.');
+    
 
     html += '<div class="week-card" data-week="' + w.id + '" onclick="toggleWeek(this)">' +
       '<div class="week-header">' +
@@ -596,7 +597,7 @@ function toggleWeek(card) {
 
   h += '<div class="detail-grid">';
 
-  /* Col 1: Bonuses */
+  /* Col 1: Bonuses, Challenge, Salvage Yard, FIB File */
   h += '<div class="detail-section"><div class="detail-section-title">Bonuses</div>';
   for (var i = 0; i < w.bonuses.length; i++) {
     var b = w.bonuses[i];
@@ -615,35 +616,16 @@ function toggleWeek(card) {
       h += '<div class="detail-item"><span class="d-label">Reward:</span> <span class="gold">' + rhtml + '</span></div>';
     }
   }
-  h += '</div>';
-
-  /* Col 2: Vehicles */
-  h += '<div class="detail-section"><div class="detail-section-title">Showrooms</div>';
-  h += '<div class="detail-item"><span class="d-label">Luxury Autos:</span></div>';
-  for (var i = 0; i < w.lux.length; i++) {
-    h += '<div class="detail-item" style="padding-left:8px">' + sl(w.lux[i]) + '</div>';
-  }
-  h += '<div class="detail-item" style="margin-top:6px"><span class="d-label">Premium Deluxe:</span></div>';
-  for (var i = 0; i < w.pdm.length; i++) {
-    h += '<div class="detail-item" style="padding-left:8px">' + sl(w.pdm[i]) + '</div>';
-  }
-  h += '<div class="detail-section-title" style="margin-top:10px">Vehicles</div>';
-  h += '<div class="detail-item"><span class="d-label">Podium:</span> ' + sl(w.podium) + '</div>';
-  h += '<div class="detail-item"><span class="d-label">Prize Ride:</span> ' + sl(w.prize) + '</div>';
-  h += '<div class="detail-item"><span class="d-label">Test Rides:</span></div>';
-  for (var i = 0; i < w.test.length; i++) {
-    h += '<div class="detail-item" style="padding-left:8px">' + sl(w.test[i]) + '</div>';
-  }
-  if (w.ptest) h += '<div class="detail-item"><span class="d-label">HSW Test:</span> ' + sl(w.ptest) + '</div>';
   h += '<div class="detail-section-title" style="margin-top:10px">Salvage Yard</div>';
   for (var i = 0; i < w.salvage.length; i++) {
     var s = w.salvage[i];
     h += '<div class="detail-item"><span class="dim" style="font-size:10px">' + escHtml(s.r.replace('The ','').replace(' Robbery','')) + '</span> ' + sl(s.v) + '</div>';
   }
-  h += '<div class="detail-item" style="margin-top:6px"><span class="d-label">FIB:</span> ' + sl(w.fib) + '</div>';
+  h += '<div class="detail-section-title" style="margin-top:10px">FIB Priority File</div>';
+  h += '<div class="detail-item">' + sl(w.fib) + '</div>';
   h += '</div>';
 
-  /* Col 3: Discounts */
+  /* Col 2: Property Discounts, Vehicle Discounts */
   h += '<div class="detail-section"><div class="detail-section-title">Property Discounts</div>';
   if (w.disc_p.length) {
     for (var i = 0; i < w.disc_p.length; i++) {
@@ -664,9 +646,29 @@ function toggleWeek(card) {
   } else {
     h += '<div class="detail-item dim">None this week</div>';
   }
-  h += '<div class="detail-section-title" style="margin-top:10px">Time Trials</div>';
+  h += '</div>';
+
+  /* Col 3: Time Trials, Vehicles, Showrooms */
+  h += '<div class="detail-section"><div class="detail-section-title">Time Trials</div>';
   h += '<div class="detail-item"><span class="d-label">TT:</span> ' + sl(w.tt) + '</div>';
   if (w.hsw_tt) h += '<div class="detail-item"><span class="d-label">HSW:</span> ' + sl(w.hsw_tt) + '</div>';
+  h += '<div class="detail-section-title" style="margin-top:10px">Vehicles</div>';
+  h += '<div class="detail-item"><span class="d-label">Podium:</span> ' + sl(w.podium) + '</div>';
+  h += '<div class="detail-item"><span class="d-label">Prize Ride:</span> ' + sl(w.prize) + '</div>';
+  h += '<div class="detail-item"><span class="d-label">Test Rides:</span></div>';
+  for (var i = 0; i < w.test.length; i++) {
+    h += '<div class="detail-item" style="padding-left:8px">' + sl(w.test[i]) + '</div>';
+  }
+  if (w.ptest) h += '<div class="detail-item"><span class="d-label">HSW Test:</span> ' + sl(w.ptest) + '</div>';
+  h += '<div class="detail-section-title" style="margin-top:10px">Showrooms</div>';
+  h += '<div class="detail-item"><span class="d-label">Luxury Autos:</span></div>';
+  for (var i = 0; i < w.lux.length; i++) {
+    h += '<div class="detail-item" style="padding-left:8px">' + sl(w.lux[i]) + '</div>';
+  }
+  h += '<div class="detail-item" style="margin-top:6px"><span class="d-label">Premium Deluxe:</span></div>';
+  for (var i = 0; i < w.pdm.length; i++) {
+    h += '<div class="detail-item" style="padding-left:8px">' + sl(w.pdm[i]) + '</div>';
+  }
   h += '</div>';
 
   h += '</div>'; /* close detail-grid */
@@ -707,7 +709,7 @@ function initFromURL() {
   var q = params.get('q');
   if (q) {
     document.getElementById('search').value = q;
-    history.replaceState({q: q}, '', location.href);
+    try { history.replaceState({q: q}, '', location.href); } catch(e) {}
     doSearch(q);
   }
 }
