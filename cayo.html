@@ -159,9 +159,12 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .methodology h2{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
 .methodology-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .method-section h3{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
-.method-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:11px}
-.method-table th{text-align:left;color:var(--cream-dim);font-weight:normal;padding:3px 10px 3px 0;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
-.method-table td{padding:3px 10px 3px 0;color:var(--cream);border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top}
+.method-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:11px;table-layout:fixed}
+.method-table thead tr{border-bottom:1px solid var(--gold);opacity:.9}
+.method-table th{text-align:left;color:var(--cream-dim);font-weight:normal;padding:5px 0 6px 8px;font-size:9px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.method-table td{padding:5px 0 5px 8px;text-align:left;color:var(--cream);border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle;white-space:nowrap}
+.method-table td:first-child{color:var(--cream-dim)}
+.method-table tbody tr:hover{background:rgba(255,255,255,.025)}
 .method-table td.range{color:var(--cream-dim);font-size:10px}
 .method-table td.avg{color:var(--gold)}
 .method-notes{font-family:var(--mono);font-size:11px;color:var(--cream-dim);line-height:1.7}
@@ -354,6 +357,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       <div class="method-section">
         <h3>Primary Targets</h3>
         <table class="method-table">
+          <colgroup><col style="width:40%"><col style="width:30%"><col style="width:30%"></colgroup>
           <thead><tr><th>Target</th><th>Normal</th><th>Hard Mode</th></tr></thead>
           <tbody>
             <tr><td>Sinsimito Tequila</td><td class="avg">$630,000</td> <td class="avg">$693,000</td></tr>
@@ -366,15 +370,16 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       </div>
 
       <div class="method-section">
-        <h3>Secondary Loot — Per Stack Averages</h3>
+        <h3>Secondary Loot</h3>
         <table class="method-table">
-          <thead><tr><th>Loot</th><th>Avg/Stack</th><th>Bag Fill</th><th>Observed Range</th></tr></thead>
+          <colgroup><col style="width:22%"><col style="width:19%"><col style="width:15%"><col style="width:19%"><col style="width:25%"></colgroup>
+          <thead><tr><th>Loot</th><th>Avg/Stack</th><th>Bag Fill</th><th>Value/Full Bag</th><th>Observed Range</th></tr></thead>
           <tbody>
-            <tr><td>Cash</td>    <td class="avg">$81,000</td>  <td>25%</td>   <td class="range">$78,750–$83,250</td></tr>
-            <tr><td>Weed</td>    <td class="avg">$132,750</td> <td>37.5%</td> <td class="range">$130,500–$135,000</td></tr>
-            <tr><td>Painting</td><td class="avg">$168,750</td> <td>50%</td>   <td class="range">$157,500–$180,000</td></tr>
-            <tr><td>Cocaine</td> <td class="avg">$200,250</td> <td>50%</td>   <td class="range">$198,000–$202,500</td></tr>
-            <tr><td>Gold</td>    <td class="avg">$330,833</td> <td>66.7%</td> <td class="range">$328,333–$333,333</td></tr>
+            <tr><td>Cash</td>    <td class="avg">$81,000</td>  <td>25%</td>   <td class="avg">$324,000</td> <td class="range">$78,750–$83,250</td></tr>
+            <tr><td>Painting</td><td class="avg">$168,750</td> <td>50%</td>   <td class="avg">$337,500</td> <td class="range">$157,500–$180,000</td></tr>
+            <tr><td>Weed</td>    <td class="avg">$132,750</td> <td>37.5%</td> <td class="avg">$354,000</td> <td class="range">$130,500–$135,000</td></tr>
+            <tr><td>Cocaine</td> <td class="avg">$200,250</td> <td>50%</td>   <td class="avg">$400,500</td> <td class="range">$198,000–$202,500</td></tr>
+            <tr><td>Gold</td>    <td class="avg">$330,833</td> <td>66.7%</td> <td class="avg">$496,250</td> <td class="range">$328,333–$333,333</td></tr>
           </tbody>
         </table>
         <div class="method-notes" style="margin-top:10px">
@@ -398,6 +403,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
           <p>When a new heist scope is started within 72 hours of the previous heist completion, secondary loot values are buffed based on the primary target. The buff applies to all secondary loot types equally.</p>
         </div>
         <table class="method-table" style="margin-top:10px">
+          <colgroup><col style="width:55%"><col style="width:45%"></colgroup>
           <thead><tr><th>Primary Target</th><th>Secondary Buff</th></tr></thead>
           <tbody>
             <tr><td>Sinsimito Tequila</td><td class="avg">×1.20 (+20%)</td></tr>
