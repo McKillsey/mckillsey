@@ -675,33 +675,43 @@ function toggleWeek(card) {
   detail.innerHTML = h;
 }
 
-/* ═══ FILTERS ═══ */
-document.getElementById('filters').addEventListener('click', function(e) {
-  var pill = e.target.closest('.filter-pill');
-  if (!pill) return;
-  document.querySelectorAll('.filter-pill').forEach(function(p) { p.classList.remove('active'); });
-  pill.classList.add('active');
-  activeFilter = pill.dataset.filter;
-  var q = document.getElementById('search').value.trim();
-  if (q.length >= 2) doSearch(q);
-});
-
-/* ═══ SEARCH INPUT ═══ */
-document.getElementById('search').addEventListener('input', function(e) {
-  clearTimeout(searchTimeout);
-  var val = e.target.value.trim();
-  searchTimeout = setTimeout(function() {
-    pushState(val);
-    doSearch(val);
-  }, 200);
-});
-
-/* ═══ HINT CLICKS ═══ */
-document.querySelector('.search-hint').addEventListener('click', function(e) {
-  if (e.target.tagName === 'SPAN') {
-    searchFor(e.target.textContent);
+/* ═══ EVENT BINDING ═══ */
+function bindUIEvents() {
+  var filters = document.getElementById('filters');
+  if (filters) {
+    filters.addEventListener('click', function(e) {
+      var pill = e.target.closest('.filter-pill');
+      if (!pill) return;
+      var pills = document.querySelectorAll('.filter-pill');
+      for (var i = 0; i < pills.length; i++) pills[i].classList.remove('active');
+      pill.classList.add('active');
+      activeFilter = pill.dataset.filter;
+      var q = document.getElementById('search').value.trim();
+      if (q.length >= 2) doSearch(q);
+    });
   }
-});
+
+  var searchInput = document.getElementById('search');
+  if (searchInput) {
+    searchInput.addEventListener('input', function(e) {
+      clearTimeout(searchTimeout);
+      var val = e.target.value.trim();
+      searchTimeout = setTimeout(function() {
+        pushState(val);
+        doSearch(val);
+      }, 200);
+    });
+  }
+
+  var hint = document.querySelector('.search-hint');
+  if (hint) {
+    hint.addEventListener('click', function(e) {
+      if (e.target.tagName === 'SPAN') {
+        searchFor(e.target.textContent);
+      }
+    });
+  }
+}
 
 /* ═══ URL INIT ═══ */
 function initFromURL() {
@@ -804,6 +814,7 @@ function submitFeedback() {
 }
 
 /* ═══ INIT ═══ */
+bindUIEvents();
 renderTimeline();
 initFromURL();
 
