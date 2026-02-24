@@ -37,6 +37,10 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .toggle-group.yes-no .toggle-btn.active{color:var(--green);border-bottom-color:var(--green)}
 .toggle-group.full-width{width:100%;flex-direction:column;border:none;gap:3px}
 .toggle-group.full-width .toggle-btn{border:1px solid var(--rule);text-align:center}
+.toggle-group.equal-2{width:100%}
+.toggle-group.equal-2 .toggle-btn{flex:1;text-align:center}
+.toggle-group.equal-3{width:100%}
+.toggle-group.equal-3 .toggle-btn{flex:1;text-align:center}
 .toggle-group.equal-5{width:100%}
 .toggle-group.equal-5 .toggle-btn{flex:1;text-align:center;padding:8px 6px}
 .hacker-slots{display:flex;flex-direction:column;gap:14px}
@@ -57,6 +61,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .num-input:disabled{opacity:.25;color:var(--cream-dim)}
 .slider-unit{font-family:var(--mono);font-size:10px;color:var(--cream-dim)}
 .hacker-slot.inactive .hacker-slot-label{color:var(--cream-dim);opacity:.5}
+.hacker-slot.inactive .slider-row{opacity:.4}
 .devmode-section{border:1px dashed var(--amber);padding:14px;margin-bottom:24px;background:rgba(224,140,42,.04)}
 .devmode-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;display:block}
 .devmode-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}.devmode-row:last-child{margin-bottom:0}
@@ -93,23 +98,25 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .hacker-name{font-family:var(--serif);font-size:13px;font-weight:700;color:var(--cream)}
 .hacker-card-body{padding:12px 14px;flex:1}
 .sr{display:flex;justify-content:space-between;align-items:baseline;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04)}.sr:last-child{border-bottom:none}
-.sr-l{font-family:var(--mono);font-size:11px;color:var(--cream-dim)}.sr-v{font-family:var(--mono);font-size:11px;color:var(--cream)}
-.sr-v.hi{color:var(--gold);font-size:12px;font-weight:500}.sr-v.gr{color:var(--green)}.sr-v.neg{color:var(--red)}
+.sr-l{font-family:var(--mono);font-size:11px;color:var(--cream-dim)}.sr-v{font-family:var(--mono);font-size:11px;color:var(--cream);padding-right:.55em}
+.sr-v.tip{padding-right:0;margin-right:.55em}
+.sr-v.hi{color:var(--gold);font-size:12px;font-weight:500}.sr-v.gr{color:var(--green)}.sr-v.neg{color:var(--red);padding-right:0;margin-right:0}
 .hdiv{border:none;border-top:1px solid var(--rule);margin:4px 0}
 .cp-rows{margin-top:6px}.cp-row{display:flex;justify-content:space-between;align-items:baseline;padding:2px 0}
 .cp-l{font-family:var(--mono);font-size:10px;color:var(--cream-dim)}.cp-l.host{color:var(--gold)}
-.cp-v{font-family:var(--mono);font-size:11px;color:var(--green)}.cp-v.host{color:var(--gold)}
+.cp-v{font-family:var(--mono);font-size:11px;color:var(--green);padding-right:.55em}.cp-v.tip{padding-right:0;margin-right:.55em}.cp-v.host{color:var(--gold)}
 .warning-box{background:rgba(217,79,79,.08);border:1px solid rgba(217,79,79,.3);padding:7px 10px;font-family:var(--mono);font-size:10px;color:var(--red);margin-bottom:10px;line-height:1.5}
 #tipbox{position:fixed;z-index:9999;max-width:380px;background:#08111a;border:1px solid var(--gold);padding:12px 14px;font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--cream);pointer-events:none;display:none;box-shadow:0 8px 32px rgba(0,0,0,.6)}
 #tipbox .tb-label{color:var(--gold);font-size:9px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px;border-bottom:1px solid rgba(201,168,76,.2);padding-bottom:5px}
-#tipbox .tb-calc{color:var(--cream-dim)}.tip{border-bottom:1px dashed rgba(201,168,76,.45);cursor:help;display:inline}
+#tipbox .tb-calc{color:var(--cream-dim)}.tip{border-bottom:1px dashed rgba(201,168,76,.45);cursor:help;display:inline-block}
 .methodology{margin-top:40px;border:1px solid var(--rule);padding:24px;background:rgba(255,255,255,.01)}
 .methodology h2{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
 .methodology-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .method-section h3{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
 .method-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:11px}
 .method-table th{text-align:left;color:var(--cream-dim);font-weight:normal;padding:3px 10px 3px 0;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
-.method-table td{padding:3px 10px 3px 0;color:var(--cream);border-bottom:1px solid rgba(255,255,255,.04)}.method-table td.val{color:var(--gold)}
+.method-table th.val{text-align:right}
+.method-table td{padding:3px 10px 3px 0;color:var(--cream);border-bottom:1px solid rgba(255,255,255,.04)}.method-table td.val{color:var(--gold);text-align:right}
 .method-notes{font-family:var(--mono);font-size:11px;color:var(--cream-dim);line-height:1.7}.method-notes p{margin-bottom:8px}
 .feedback-btn{position:fixed;bottom:22px;right:22px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--gold);padding:9px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .15s;z-index:100}
 .feedback-btn:hover{background:var(--gold);color:var(--navy)}
@@ -164,20 +171,20 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       </div>
     </div>
     <div class="input-section"><span class="input-label">Buyer Level</span>
-      <div class="toggle-group" id="buyer-group">
+      <div class="toggle-group equal-3" id="buyer-group">
         <button class="toggle-btn active" data-val="high" onclick="si('buyer',this)">High</button>
         <button class="toggle-btn" data-val="med" onclick="si('buyer',this)">Medium</button>
         <button class="toggle-btn" data-val="low" onclick="si('buyer',this)">Low</button>
       </div>
     </div>
     <div class="input-section"><span class="input-label">Hard Mode</span>
-      <div class="toggle-group yes-no" id="difficulty-group">
+      <div class="toggle-group equal-2 yes-no" id="difficulty-group">
         <button class="toggle-btn active" data-val="hard" onclick="si('difficulty',this)">Yes</button>
         <button class="toggle-btn" data-val="normal" onclick="si('difficulty',this)">No</button>
       </div>
     </div>
     <div class="input-section"><span class="input-label">Elite Challenge</span>
-      <div class="toggle-group yes-no" id="elite-group">
+      <div class="toggle-group equal-2 yes-no" id="elite-group">
         <button class="toggle-btn active" data-val="yes" onclick="setElite(this)">Yes</button>
         <button class="toggle-btn" data-val="no" onclick="setElite(this)">No</button>
       </div>
@@ -203,9 +210,9 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
     <div class="input-section"><span class="input-label">Hacking Speed</span>
       <div class="hacker-slots">
         <div class="hacker-slot" id="hslot-0"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 1</span></span></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="5" oninput="shs(0,this.value)"><input type="number" class="num-input" min="0" max="30" value="5" oninput="shs(0,this.value)"><span class="slider-unit">s/hack</span></div></div>
-        <div class="hacker-slot inactive" id="hslot-1"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 2</span></span><button class="hacker-toggle" onclick="th(1)">Inactive</button></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="10" disabled oninput="shs(1,this.value)"><input type="number" class="num-input" min="0" max="30" value="10" disabled oninput="shs(1,this.value)"><span class="slider-unit">s/hack</span></div></div>
-        <div class="hacker-slot inactive" id="hslot-2"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 3</span></span><button class="hacker-toggle" onclick="th(2)">Inactive</button></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="10" disabled oninput="shs(2,this.value)"><input type="number" class="num-input" min="0" max="30" value="10" disabled oninput="shs(2,this.value)"><span class="slider-unit">s/hack</span></div></div>
-        <div class="hacker-slot inactive" id="hslot-3"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 4</span></span><button class="hacker-toggle" onclick="th(3)">Inactive</button></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="10" disabled oninput="shs(3,this.value)"><input type="number" class="num-input" min="0" max="30" value="10" disabled oninput="shs(3,this.value)"><span class="slider-unit">s/hack</span></div></div>
+        <div class="hacker-slot inactive" id="hslot-1"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 2</span></span><button class="hacker-toggle" onclick="th(1)">Inactive</button></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="10" oninput="shs(1,this.value)"><input type="number" class="num-input" min="0" max="30" value="10" oninput="shs(1,this.value)"><span class="slider-unit">s/hack</span></div></div>
+        <div class="hacker-slot inactive" id="hslot-2"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 3</span></span><button class="hacker-toggle" onclick="th(2)">Inactive</button></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="10" oninput="shs(2,this.value)"><input type="number" class="num-input" min="0" max="30" value="10" oninput="shs(2,this.value)"><span class="slider-unit">s/hack</span></div></div>
+        <div class="hacker-slot inactive" id="hslot-3"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 4</span></span><button class="hacker-toggle" onclick="th(3)">Inactive</button></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="10" oninput="shs(3,this.value)"><input type="number" class="num-input" min="0" max="30" value="10" oninput="shs(3,this.value)"><span class="slider-unit">s/hack</span></div></div>
       </div>
     </div>
     <div class="input-section"><span class="input-label">Commute Time Per Loot / Door</span>
@@ -226,20 +233,20 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
   <div class="methodology"><h2>How the Vault Time Model Works</h2>
     <div class="methodology-grid">
       <div class="method-section"><h3>Vault Contents</h3>
-        <table class="method-table"><thead><tr><th>Loot</th><th>Normal</th><th>Hard (+10%)</th><th>Units</th><th>Collect</th></tr></thead><tbody>
-          <tr><td>Cash</td><td class="val">$2,115,000</td><td class="val">$2,326,500</td><td>8 carts</td><td>38s</td></tr>
-          <tr><td>Artwork</td><td class="val">$2,350,000</td><td class="val">$2,585,000</td><td>6 pieces</td><td>18s</td></tr>
-          <tr><td>Gold</td><td class="val">$2,585,000</td><td class="val">$2,843,500</td><td>8 carts</td><td>25s</td></tr>
-          <tr><td>Diamonds</td><td class="val">$3,290,000</td><td class="val">$3,619,000</td><td>8 carts</td><td>38s</td></tr>
+        <table class="method-table"><thead><tr><th>Loot</th><th class="val">Normal</th><th class="val">Hard (+10%)</th><th class="val">Units</th><th class="val">Collect</th></tr></thead><tbody>
+          <tr><td>Cash</td><td class="val">$2,115,000</td><td class="val">$2,326,500</td><td class="val">8 carts</td><td class="val">38s</td></tr>
+          <tr><td>Artwork</td><td class="val">$2,350,000</td><td class="val">$2,585,000</td><td class="val">6 pieces</td><td class="val">18s</td></tr>
+          <tr><td>Gold</td><td class="val">$2,585,000</td><td class="val">$2,843,500</td><td class="val">8 carts</td><td class="val">25s</td></tr>
+          <tr><td>Diamonds</td><td class="val">$3,290,000</td><td class="val">$3,619,000</td><td class="val">8 carts</td><td class="val">38s</td></tr>
         </tbody></table>
       </div>
       <div class="method-section"><h3>Hacker Vault Times</h3>
-        <table class="method-table"><thead><tr><th>Hacker</th><th>Cut</th><th>Unexposed</th><th>Exposed</th></tr></thead><tbody>
-          <tr><td>Rickie Lukens</td><td>3%</td><td class="val">2:26</td><td class="val">1:42</td></tr>
-          <tr><td>Yohan Blair</td><td>5%</td><td class="val">2:52</td><td class="val">2:01</td></tr>
-          <tr><td>Christian Feltz</td><td>7%</td><td class="val">2:59</td><td class="val">2:05</td></tr>
-          <tr><td>Paige Harris</td><td>9%</td><td class="val">3:25</td><td class="val">2:23</td></tr>
-          <tr><td>Avi Schwartzman</td><td>10%</td><td class="val">3:30</td><td class="val">2:26</td></tr>
+        <table class="method-table"><thead><tr><th>Hacker</th><th class="val">Cut</th><th class="val">Unexposed</th><th class="val">Exposed</th></tr></thead><tbody>
+          <tr><td>Rickie Lukens</td><td class="val">3%</td><td class="val">2:26</td><td class="val">1:42</td></tr>
+          <tr><td>Yohan Blair</td><td class="val">5%</td><td class="val">2:52</td><td class="val">2:01</td></tr>
+          <tr><td>Christian Feltz</td><td class="val">7%</td><td class="val">2:59</td><td class="val">2:05</td></tr>
+          <tr><td>Paige Harris</td><td class="val">9%</td><td class="val">3:25</td><td class="val">2:23</td></tr>
+          <tr><td>Avi Schwartzman</td><td class="val">10%</td><td class="val">3:30</td><td class="val">2:26</td></tr>
         </tbody></table>
         <div class="method-notes" style="margin-top:8px"><p>Unexposed = Silent &amp; Sneaky, The Big Con. Exposed = Aggressive.</p></div>
       </div>
@@ -256,12 +263,12 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
         </div>
       </div>
       <div class="method-section"><h3>Crew Members</h3>
-        <table class="method-table"><thead><tr><th>Gunman</th><th>Cut</th></tr></thead><tbody>
+        <table class="method-table"><thead><tr><th>Gunman</th><th class="val">Cut</th></tr></thead><tbody>
           <tr><td>Karl Abolaji</td><td class="val">5%</td></tr><tr><td>Charlie Reed</td><td class="val">7%</td></tr>
           <tr><td>Patrick McReary</td><td class="val">8%</td></tr><tr><td>Gustavo Mota</td><td class="val">9%</td></tr>
           <tr><td>Chester McCoy</td><td class="val">10%</td></tr>
         </tbody></table>
-        <table class="method-table" style="margin-top:12px"><thead><tr><th>Driver</th><th>Cut</th></tr></thead><tbody>
+        <table class="method-table" style="margin-top:12px"><thead><tr><th>Driver</th><th class="val">Cut</th></tr></thead><tbody>
           <tr><td>Karim Denz</td><td class="val">5%</td></tr><tr><td>Zach Nelson</td><td class="val">6%</td></tr>
           <tr><td>Taliana Martinez</td><td class="val">7%</td></tr><tr><td>Eddie Toh</td><td class="val">9%</td></tr>
           <tr><td>Chester McCoy</td><td class="val">10%</td></tr>
@@ -302,8 +309,18 @@ function setAnim(m,v){v=Math.max(0,parseInt(v)||0);if(m==='n'){AN=v;document.get
 
 function si(key,btn){S[key]=btn.dataset.val;document.querySelectorAll('#'+key+'-group .toggle-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
 function setElite(btn){S.elite=(btn.dataset.val==='yes');document.querySelectorAll('#elite-group .toggle-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
-function th(i){S.hs[i].a=!S.hs[i].a;const sl=document.getElementById('hslot-'+i),tb=sl.querySelector('.hacker-toggle'),si2=sl.querySelector('.slider-input'),ni=sl.querySelector('.num-input');if(S.hs[i].a){sl.classList.remove('inactive');tb.textContent='Active';tb.classList.add('on');si2.disabled=false;ni.disabled=false;}else{sl.classList.add('inactive');tb.textContent='Inactive';tb.classList.remove('on');si2.disabled=true;ni.disabled=true;}render();}
-function shs(i,v){v=Math.max(0,Math.min(30,parseInt(v)||0));S.hs[i].s=v;const sl=document.getElementById('hslot-'+i);sl.querySelector('.slider-input').value=v;sl.querySelector('.num-input').value=v;render();}
+function th(i){S.hs[i].a=!S.hs[i].a;const sl=document.getElementById('hslot-'+i),tb=sl.querySelector('.hacker-toggle');if(S.hs[i].a){sl.classList.remove('inactive');tb.textContent='Active';tb.classList.add('on');}else{sl.classList.add('inactive');tb.textContent='Inactive';tb.classList.remove('on');}render();}
+function shs(i,v){
+  v=Math.max(0,Math.min(30,parseInt(v)||0));S.hs[i].s=v;
+  // Auto-activate if inactive (slots 1-3)
+  if(i>0&&!S.hs[i].a){
+    S.hs[i].a=true;
+    const sl=document.getElementById('hslot-'+i),tb=sl.querySelector('.hacker-toggle');
+    sl.classList.remove('inactive');tb.textContent='Active';tb.classList.add('on');
+    sl.querySelector('.slider-input').disabled=false;sl.querySelector('.num-input').disabled=false;
+  }
+  const sl=document.getElementById('hslot-'+i);sl.querySelector('.slider-input').value=v;sl.querySelector('.num-input').value=v;render();
+}
 function sc(v){v=Math.max(3,Math.min(15,parseInt(v)||5));S.cpp=v;document.getElementById('comm-sl').value=v;document.getElementById('comm-in').value=v;render();}
 
 const tipbox=document.getElementById('tipbox');
@@ -368,8 +385,8 @@ function syncUI(){
     slot.querySelector('.num-input').value=S.hs[i].s;
     if(i>0){
       const tb=slot.querySelector('.hacker-toggle');
-      if(S.hs[i].a){slot.classList.remove('inactive');tb.textContent='Active';tb.classList.add('on');slot.querySelector('.slider-input').disabled=false;slot.querySelector('.num-input').disabled=false;}
-      else{slot.classList.add('inactive');tb.textContent='Inactive';tb.classList.remove('on');slot.querySelector('.slider-input').disabled=true;slot.querySelector('.num-input').disabled=true;}
+      if(S.hs[i].a){slot.classList.remove('inactive');tb.textContent='Active';tb.classList.add('on');}
+      else{slot.classList.add('inactive');tb.textContent='Inactive';tb.classList.remove('on');}
     }
   }
   // Commute
@@ -394,7 +411,8 @@ function calc(hObj,pc){
   const collMS=Math.max(0,tms-hackTotal-lootCommT);
   const uc=Math.min(Math.floor(collMS/vc.ct),vc.u);
   const collectUsed=uc*vc.ct;
-  const excess=tms-hackTotal-lootCommT-collectUsed;
+  const lootTotal=collectUsed+lootCommT;
+  const excess=tms-hackTotal-lootTotal;
   const maxP=isH?vc.maxH:vc.maxN, pu=maxP/vc.u, gross=uc*pu;
   const gc=GN[S.gunman].c, dc=DR[S.driver].c, hc=hObj.cut, lc=5, tcp=gc+dc+hc+lc;
   const crewD=gross*tcp/100;
@@ -407,10 +425,11 @@ function calc(hObj,pc){
   const players=[{label:'Host',pct:hp,take:ht2,isHost:true}];
   mps.forEach((p,i)=>players.push({label:'Player '+(i+2),pct:p,take:net*p/100+eliteEach,isHost:false}));
   const totalWithElite=net+eliteEach*pc-SETUP;
-  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,lootCommT,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,collectUsed,excess,gc,dc,hc,lc,tcp,crewD,buyerFee,launderD,net,eliteEach,SETUP,totalWithElite,hp,ht:ht2,players,bad:collMS<=0,smartAlloc:da._smart||false,isAgg:isE};
+  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,lootCommT,lootTotal,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,collectUsed,excess,gc,dc,hc,lc,tcp,crewD,buyerFee,launderD,net,eliteEach,SETUP,totalWithElite,hp,ht:ht2,players,bad:collMS<=0,smartAlloc:da._smart||false,isAgg:isE};
 }
 
-const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
+const fmt=n=>'$'+Math.round(Math.abs(n)).toLocaleString('en-US');
+const fmtNeg=n=>'('+fmt(n)+')';
 const fSec=s=>{const m=Math.floor(s/60),sec=s%60;return m>0?m+':'+sec.toString().padStart(2,'0'):sec+'s';};
 
 function tipMS(r){return fSec(r.vt)+' = '+r.vt+' seconds\n\u00d7 '+r.pc+' players\n= '+r.tms+' manseconds';}
@@ -434,9 +453,9 @@ function tipHack(r){
   }
   lines.push('\nTotal: '+r.hackTotal+' manseconds');return lines.join('\n');
 }
-function tipComm(r){return r.np+' piles \u00d7 '+S.cpp+'s each\n= '+r.lootCommT+' manseconds\n\n(Door commute included in hacking cost)';}
+function tipComm(r){return 'COLLECTION\n'+r.uc+' units \u00d7 '+r.ct+'s each = '+r.collectUsed+'s\n\nCOMMUTE\n'+r.np+' piles \u00d7 '+S.cpp+'s each = '+r.lootCommT+'s\n\nTotal: '+r.collectUsed+' + '+r.lootCommT+' = '+r.lootTotal+' manseconds';}
 function tipColl(r){
-  const lines=['MANSECONDS BUDGET','Total: '+r.tms,'\u2212 Hacking + commute: '+r.hackTotal,'\u2212 Loot + commute: '+r.lootCommT,'= '+r.collMS+' manseconds for collection','','COLLECTION',r.collMS+' \u00f7 '+r.ct+'s per unit'];
+  const lines=['AVAILABLE FOR LOOTING','Manseconds: '+r.tms,'\u2212 Hacking + commute: '+r.hackTotal,'\u2212 Loot commute: '+r.lootCommT+' ('+r.np+' piles \u00d7 '+S.cpp+'s)','= '+r.collMS+' manseconds for collection','','COLLECTION',r.collMS+' \u00f7 '+r.ct+'s per unit'];
   const raw=Math.floor(r.collMS/r.ct);lines.push('= '+raw+' units (floored)');
   if(raw>r.mu)lines.push('Capped at '+r.mu+' (all available)');
   lines.push('\u2192 '+r.uc+' of '+r.mu+' collected');return lines.join('\n');
@@ -503,13 +522,13 @@ function render(){
       html+='<div class="sr"><span class="sr-l">Vault time</span><span class="sr-v">'+fSec(r.vt)+'</span></div>';
       html+='<div class="sr"><span class="sr-l">Manseconds</span><span class="sr-v tip" id="'+uid+'-ms">'+r.tms+'s</span></div>';
       html+='<div class="sr"><span class="sr-l">'+(r.isAgg?'Burn + commute':'Hacking + commute')+'</span><span class="sr-v tip" id="'+uid+'-hk">'+r.hackTotal+'s</span></div>';
-      html+='<div class="sr"><span class="sr-l">Loot + commute</span><span class="sr-v tip" id="'+uid+'-cm">'+r.lootCommT+'s</span></div>';
+      html+='<div class="sr"><span class="sr-l">Loot + commute</span><span class="sr-v tip" id="'+uid+'-cm">'+r.lootTotal+'s</span></div>';
       html+='<div class="sr"><span class="sr-l">Excess time</span><span class="sr-v'+(r.excess<=0?' neg':'')+' tip" id="'+uid+'-ex">'+r.excess+'s</span></div>';
       html+='<div class="sr"><span class="sr-l">Collected</span><span class="sr-v'+(r.uc===r.mu?' gr':'')+' tip" id="'+uid+'-cl">'+r.uc+' of '+r.mu+'</span></div>';
       html+='<hr class="hdiv">';
       html+='<div class="sr"><span class="sr-l">Gross take</span><span class="sr-v tip" id="'+uid+'-gr">'+fmt(r.gross)+'</span></div>';
-      html+='<div class="sr"><span class="sr-l">Crew ('+r.tcp+'%)</span><span class="sr-v neg tip" id="'+uid+'-cr">\u2212'+fmt(r.crewD)+'</span></div>';
-      if(r.buyerFee>0)html+='<div class="sr"><span class="sr-l">Laundering ('+(r.buyerFee*100)+'%)</span><span class="sr-v neg tip" id="'+uid+'-la">\u2212'+fmt(r.launderD)+'</span></div>';
+      html+='<div class="sr"><span class="sr-l">Crew ('+r.tcp+'%)</span><span class="sr-v neg tip" id="'+uid+'-cr">'+fmtNeg(r.crewD)+'</span></div>';
+      if(r.buyerFee>0)html+='<div class="sr"><span class="sr-l">Laundering ('+(r.buyerFee*100)+'%)</span><span class="sr-v neg tip" id="'+uid+'-la">'+fmtNeg(r.launderD)+'</span></div>';
       html+='<hr class="hdiv">';
       html+='<div class="sr"><span class="sr-l">Net to players</span><span class="sr-v hi tip" id="'+uid+'-nt">'+fmt(r.totalWithElite)+'</span></div>';
       html+='<div class="cp-rows">';
@@ -521,7 +540,7 @@ function render(){
         a(uid+'-ms','Manseconds',tipMS(r));a(uid+'-hk',r.isAgg?'Thermal Charges':'Hacking + Commute',tipHack(r));
         a(uid+'-cm','Loot + Commute',tipComm(r));
         const exClock=Math.round(r.excess/r.pc);
-        a(uid+'-ex','Excess Time',r.tms+' manseconds\n\u2212 '+r.hackTotal+' hacking + door commute\n\u2212 '+r.lootCommT+' loot + commute\n\u2212 '+r.collectUsed+' collecting ('+r.uc+' \u00d7 '+r.ct+'s)\n= '+r.excess+'s manseconds unused\n\n\u00f7 '+r.pc+' players = '+exClock+'s clock time');
+        a(uid+'-ex','Excess Time',r.tms+' manseconds\n\u2212 '+r.hackTotal+' hacking + commute\n\u2212 '+r.lootTotal+' loot + commute\n= '+r.excess+'s manseconds unused\n\n\u00f7 '+r.pc+' players = '+exClock+'s clock time');
         a(uid+'-cl','Units Collected',tipColl(r));
         a(uid+'-gr','Gross Take',tipGross(r));a(uid+'-cr','Crew Deduction',tipCrew(r));
         if(r.buyerFee>0)a(uid+'-la','Laundering Fee',fmt(r.gross)+' \u00d7 '+(r.buyerFee*100)+'% = '+fmt(r.launderD));
