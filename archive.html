@@ -417,7 +417,7 @@ function daysBetween(a, b) {
 function sl(text, term) {
   if (!text) return '';
   var st = term || text;
-  return '<span class="sl" onclick="event.stopPropagation();searchFor(\'' + escAttr(st) + '\')">' + escHtml(text) + '</span>';
+  return '<span class="sl" onclick="event.stopPropagation();searchFor(\'' + escAttr(st) + '\')">' + escHtml(text) + '<\/span>';
 }
 
 function searchFor(term) {
@@ -477,7 +477,7 @@ function doSearch(query) {
   tlSection.style.display = 'none';
 
   if (results.length === 0) {
-    list.innerHTML = '<div class="no-results"><div class="nr-icon">\u2205</div>No results for "' + escHtml(query) + '"<br><span class="dim" style="font-size:12px">Try a different search term or broaden your filter</span></div>';
+    list.innerHTML = '<div class="no-results"><div class="nr-icon">\u2205<\/div>No results for "' + escHtml(query) + '"<br><span class="dim" style="font-size:12px">Try a different search term or broaden your filter<\/span><\/div>';
     countEl.textContent = '0 results';
     statsPanel.style.display = 'none';
     return;
@@ -500,17 +500,17 @@ function doSearch(query) {
     var ds = daysSince(last);
     statsPanel.style.display = 'grid';
     statsPanel.innerHTML =
-      '<div class="stat-card"><div class="stat-value gold">' + uniqueWeeks.length + '</div><div class="stat-label">Total Appearances</div></div>' +
-      '<div class="stat-card"><div class="stat-value">' + avgGap + 'd</div><div class="stat-label">Avg Gap Between</div></div>' +
-      '<div class="stat-card"><div class="stat-value">' + fmtDate(last) + '</div><div class="stat-label">Last Occurrence</div></div>' +
-      '<div class="stat-card"><div class="stat-value ' + (ds > avgGap ? 'amber' : 'green') + '">' + ds + 'd</div><div class="stat-label">Days Since Last</div></div>';
+      '<div class="stat-card"><div class="stat-value gold">' + uniqueWeeks.length + '<\/div><div class="stat-label">Total Appearances<\/div><\/div>' +
+      '<div class="stat-card"><div class="stat-value">' + avgGap + 'd<\/div><div class="stat-label">Avg Gap Between<\/div><\/div>' +
+      '<div class="stat-card"><div class="stat-value">' + fmtDate(last) + '<\/div><div class="stat-label">Last Occurrence<\/div><\/div>' +
+      '<div class="stat-card"><div class="stat-value ' + (ds > avgGap ? 'amber' : 'green') + '">' + ds + 'd<\/div><div class="stat-label">Days Since Last<\/div><\/div>';
   } else if (uniqueWeeks.length === 1) {
     statsPanel.style.display = 'grid';
     statsPanel.innerHTML =
-      '<div class="stat-card"><div class="stat-value gold">1</div><div class="stat-label">Total Appearances</div></div>' +
-      '<div class="stat-card"><div class="stat-value dim">\u2014</div><div class="stat-label">Avg Gap Between</div></div>' +
-      '<div class="stat-card"><div class="stat-value">' + fmtDate(uniqueWeeks[0]) + '</div><div class="stat-label">Last Occurrence</div></div>' +
-      '<div class="stat-card"><div class="stat-value">' + daysSince(uniqueWeeks[0]) + 'd</div><div class="stat-label">Days Since Last</div></div>';
+      '<div class="stat-card"><div class="stat-value gold">1<\/div><div class="stat-label">Total Appearances<\/div><\/div>' +
+      '<div class="stat-card"><div class="stat-value dim">\u2014<\/div><div class="stat-label">Avg Gap Between<\/div><\/div>' +
+      '<div class="stat-card"><div class="stat-value">' + fmtDate(uniqueWeeks[0]) + '<\/div><div class="stat-label">Last Occurrence<\/div><\/div>' +
+      '<div class="stat-card"><div class="stat-value">' + daysSince(uniqueWeeks[0]) + 'd<\/div><div class="stat-label">Days Since Last<\/div><\/div>';
   } else {
     statsPanel.style.display = 'none';
   }
@@ -524,14 +524,14 @@ function doSearch(query) {
     var label = TYPE_LABELS[r.y] || r.y;
     var termHtml = highlightMatch(r.t, query);
     html += '<div class="result-item">' +
-      '<div class="result-date">' + fmtDate(r.s) + '</div>' +
+      '<div class="result-date">' + fmtDate(r.s) + '<\/div>' +
       '<div class="result-body">' +
-        '<div class="result-term">' + termHtml + '<span class="result-badge ' + badge + '">' + label + '</span></div>' +
-        '<div class="result-detail">' + escHtml(r.d) + '</div>' +
-      '</div></div>';
+        '<div class="result-term">' + termHtml + '<span class="result-badge ' + badge + '">' + label + '<\/span><\/div>' +
+        '<div class="result-detail">' + escHtml(r.d) + '<\/div>' +
+      '<\/div><\/div>';
   }
   if (results.length > 60) {
-    html += '<div class="no-results" style="padding:16px"><span class="dim">Showing 60 of ' + results.length + ' results.</span></div>';
+    html += '<div class="no-results" style="padding:16px"><span class="dim">Showing 60 of ' + results.length + ' results.<\/span><\/div>';
   }
   list.innerHTML = html;
 }
@@ -540,7 +540,7 @@ function highlightMatch(text, query) {
   var lower = text.toLowerCase();
   var idx = lower.indexOf(query.toLowerCase());
   if (idx === -1) return escHtml(text);
-  return escHtml(text.substring(0, idx)) + '<mark>' + escHtml(text.substring(idx, idx + query.length)) + '</mark>' + escHtml(text.substring(idx + query.length));
+  return escHtml(text.substring(0, idx)) + '<mark>' + escHtml(text.substring(idx, idx + query.length)) + '<\/mark>' + escHtml(text.substring(idx + query.length));
 }
 
 /* ═══ TIMELINE ═══ */
@@ -552,21 +552,21 @@ function renderTimeline() {
     var tags = '';
     for (var j = 0; j < w.tags.length; j++) {
       var t = w.tags[j];
-      tags += '<span class="week-tag ' + t.c + '" onclick="event.stopPropagation();searchFor(\'' + escAttr(t.t) + '\')"><span class="tag-mult">' + t.m + '</span> ' + escHtml(t.t) + '</span>';
+      tags += '<span class="week-tag ' + t.c + '" onclick="event.stopPropagation();searchFor(\'' + escAttr(t.t) + '\')"><span class="tag-mult">' + t.m + '<\/span> ' + escHtml(t.t) + '<\/span>';
     }
     var meta = [];
     
 
     html += '<div class="week-card" data-week="' + w.id + '" onclick="toggleWeek(this)">' +
       '<div class="week-header">' +
-        '<div class="week-date">' + fmtRange(w.start, w.end) + '<span class="week-dur">' + w.days + 'd</span></div>' +
-        '<div class="week-name">' + escHtml(w.name) + '</div>' +
-        '<div class="week-tags">' + tags + '</div>' +
-        '<div class="week-meta">' + meta.join(' \u00b7 ') + '</div>' +
-        '<span class="week-expand-icon">\u203a</span>' +
-      '</div>' +
-      '<div class="week-detail" id="detail-' + w.id + '"></div>' +
-    '</div>';
+        '<div class="week-date">' + fmtRange(w.start, w.end) + '<span class="week-dur">' + w.days + 'd<\/span><\/div>' +
+        '<div class="week-name">' + escHtml(w.name) + '<\/div>' +
+        '<div class="week-tags">' + tags + '<\/div>' +
+        '<div class="week-meta">' + meta.join(' \u00b7 ') + '<\/div>' +
+        '<span class="week-expand-icon">\u203a<\/span>' +
+      '<\/div>' +
+      '<div class="week-detail" id="detail-' + w.id + '"><\/div>' +
+    '<\/div>';
   }
   container.innerHTML = html;
 }
@@ -591,87 +591,87 @@ function toggleWeek(card) {
   /* Overlay badges */
   if (w.ov && w.ov.length) {
     for (var i = 0; i < w.ov.length; i++) {
-      h += '<span class="overlay-badge sl" onclick="event.stopPropagation();searchFor(\'' + escAttr(w.ov[i]) + '\')">' + escHtml(w.ov[i]) + '</span>';
+      h += '<span class="overlay-badge sl" onclick="event.stopPropagation();searchFor(\'' + escAttr(w.ov[i]) + '\')">' + escHtml(w.ov[i]) + '<\/span>';
     }
   }
 
   h += '<div class="detail-grid">';
 
   /* Col 1: Bonuses, Challenge, Salvage Yard, FIB File */
-  h += '<div class="detail-section"><div class="detail-section-title">Bonuses</div>';
+  h += '<div class="detail-section"><div class="detail-section-title">Bonuses<\/div>';
   for (var i = 0; i < w.bonuses.length; i++) {
     var b = w.bonuses[i];
     var mult = b.m.split(' ')[0];
-    var gp = b.g ? ' <span class="dim">(' + sl('GTA+', 'GTA+') + ' ' + escHtml(b.g) + ')</span>' : '';
-    h += '<div class="detail-item"><span class="d-mult sl" onclick="event.stopPropagation();searchFor(\'' + escAttr(mult) + '\')">' + escHtml(mult) + '</span> ' + sl(b.a) + gp + '</div>';
+    var gp = b.g ? ' <span class="dim">(' + sl('GTA+', 'GTA+') + ' ' + escHtml(b.g) + ')<\/span>' : '';
+    h += '<div class="detail-item"><span class="d-mult sl" onclick="event.stopPropagation();searchFor(\'' + escAttr(mult) + '\')">' + escHtml(mult) + '<\/span> ' + sl(b.a) + gp + '<\/div>';
   }
-  h += '<div class="detail-section-title" style="margin-top:10px">Weekly Challenge</div>';
+  h += '<div class="detail-section-title" style="margin-top:10px">Weekly Challenge<\/div>';
   if (w.ch) {
-    h += '<div class="detail-item">' + sl(w.ch) + '</div>';
+    h += '<div class="detail-item">' + sl(w.ch) + '<\/div>';
     var reward = [];
     if (w.chc) reward.push('$' + w.chc.toLocaleString());
     if (w.chr) reward.push(w.chr);
     if (reward.length) {
       var rhtml = reward.map(function(r) { return w.chr && r === w.chr ? sl(r) : escHtml(r); }).join(' + ');
-      h += '<div class="detail-item"><span class="d-label">Reward:</span> <span class="gold">' + rhtml + '</span></div>';
+      h += '<div class="detail-item"><span class="d-label">Reward:<\/span> <span class="gold">' + rhtml + '<\/span><\/div>';
     }
   }
-  h += '<div class="detail-section-title" style="margin-top:10px">Salvage Yard</div>';
+  h += '<div class="detail-section-title" style="margin-top:10px">Salvage Yard<\/div>';
   for (var i = 0; i < w.salvage.length; i++) {
     var s = w.salvage[i];
-    h += '<div class="detail-item"><span class="dim" style="font-size:10px">' + escHtml(s.r.replace('The ','').replace(' Robbery','')) + '</span> ' + sl(s.v) + '</div>';
+    h += '<div class="detail-item"><span class="dim" style="font-size:10px">' + escHtml(s.r.replace('The ','').replace(' Robbery','')) + '<\/span> ' + sl(s.v) + '<\/div>';
   }
-  h += '<div class="detail-section-title" style="margin-top:10px">FIB Priority File</div>';
-  h += '<div class="detail-item">' + sl(w.fib) + '</div>';
-  h += '</div>';
+  h += '<div class="detail-section-title" style="margin-top:10px">FIB Priority File<\/div>';
+  h += '<div class="detail-item">' + sl(w.fib) + '<\/div>';
+  h += '<\/div>';
 
   /* Col 2: Property Discounts, Vehicle Discounts */
-  h += '<div class="detail-section"><div class="detail-section-title">Property Discounts</div>';
+  h += '<div class="detail-section"><div class="detail-section-title">Property Discounts<\/div>';
   if (w.disc_p.length) {
     for (var i = 0; i < w.disc_p.length; i++) {
       var d = w.disc_p[i];
-      h += '<div class="detail-item"><span class="d-pct sl" onclick="event.stopPropagation();searchFor(\'' + d.p + '%\')">' + d.p + '%</span> ' + sl(d.i) + '</div>';
+      h += '<div class="detail-item"><span class="d-pct sl" onclick="event.stopPropagation();searchFor(\'' + d.p + '%\')">' + d.p + '%<\/span> ' + sl(d.i) + '<\/div>';
     }
   } else {
-    h += '<div class="detail-item dim">None this week</div>';
+    h += '<div class="detail-item dim">None this week<\/div>';
   }
-  h += '<div class="detail-section-title" style="margin-top:10px">Vehicle Discounts</div>';
+  h += '<div class="detail-section-title" style="margin-top:10px">Vehicle Discounts<\/div>';
   if (w.disc_v.length) {
     var max = Math.min(w.disc_v.length, 12);
     for (var i = 0; i < max; i++) {
       var d = w.disc_v[i];
-      h += '<div class="detail-item"><span class="d-pct sl" onclick="event.stopPropagation();searchFor(\'' + d.p + '%\')">' + d.p + '%</span> ' + sl(d.i) + '</div>';
+      h += '<div class="detail-item"><span class="d-pct sl" onclick="event.stopPropagation();searchFor(\'' + d.p + '%\')">' + d.p + '%<\/span> ' + sl(d.i) + '<\/div>';
     }
-    if (w.disc_v.length > 12) h += '<div class="detail-item dim">+' + (w.disc_v.length - 12) + ' more</div>';
+    if (w.disc_v.length > 12) h += '<div class="detail-item dim">+' + (w.disc_v.length - 12) + ' more<\/div>';
   } else {
-    h += '<div class="detail-item dim">None this week</div>';
+    h += '<div class="detail-item dim">None this week<\/div>';
   }
-  h += '</div>';
+  h += '<\/div>';
 
   /* Col 3: Time Trials, Vehicles, Showrooms */
-  h += '<div class="detail-section"><div class="detail-section-title">Time Trials</div>';
-  h += '<div class="detail-item"><span class="d-label">TT:</span> ' + sl(w.tt) + '</div>';
-  if (w.hsw_tt) h += '<div class="detail-item"><span class="d-label">HSW:</span> ' + sl(w.hsw_tt) + '</div>';
-  h += '<div class="detail-section-title" style="margin-top:10px">Vehicles</div>';
-  h += '<div class="detail-item"><span class="d-label">Podium:</span> ' + sl(w.podium) + '</div>';
-  h += '<div class="detail-item"><span class="d-label">Prize Ride:</span> ' + sl(w.prize) + '</div>';
-  h += '<div class="detail-item"><span class="d-label">Test Rides:</span></div>';
+  h += '<div class="detail-section"><div class="detail-section-title">Time Trials<\/div>';
+  h += '<div class="detail-item"><span class="d-label">TT:<\/span> ' + sl(w.tt) + '<\/div>';
+  if (w.hsw_tt) h += '<div class="detail-item"><span class="d-label">HSW:<\/span> ' + sl(w.hsw_tt) + '<\/div>';
+  h += '<div class="detail-section-title" style="margin-top:10px">Vehicles<\/div>';
+  h += '<div class="detail-item"><span class="d-label">Podium:<\/span> ' + sl(w.podium) + '<\/div>';
+  h += '<div class="detail-item"><span class="d-label">Prize Ride:<\/span> ' + sl(w.prize) + '<\/div>';
+  h += '<div class="detail-item"><span class="d-label">Test Rides:<\/span><\/div>';
   for (var i = 0; i < w.test.length; i++) {
-    h += '<div class="detail-item" style="padding-left:8px">' + sl(w.test[i]) + '</div>';
+    h += '<div class="detail-item" style="padding-left:8px">' + sl(w.test[i]) + '<\/div>';
   }
-  if (w.ptest) h += '<div class="detail-item"><span class="d-label">HSW Test:</span> ' + sl(w.ptest) + '</div>';
-  h += '<div class="detail-section-title" style="margin-top:10px">Showrooms</div>';
-  h += '<div class="detail-item"><span class="d-label">Luxury Autos:</span></div>';
+  if (w.ptest) h += '<div class="detail-item"><span class="d-label">HSW Test:<\/span> ' + sl(w.ptest) + '<\/div>';
+  h += '<div class="detail-section-title" style="margin-top:10px">Showrooms<\/div>';
+  h += '<div class="detail-item"><span class="d-label">Luxury Autos:<\/span><\/div>';
   for (var i = 0; i < w.lux.length; i++) {
-    h += '<div class="detail-item" style="padding-left:8px">' + sl(w.lux[i]) + '</div>';
+    h += '<div class="detail-item" style="padding-left:8px">' + sl(w.lux[i]) + '<\/div>';
   }
-  h += '<div class="detail-item" style="margin-top:6px"><span class="d-label">Premium Deluxe:</span></div>';
+  h += '<div class="detail-item" style="margin-top:6px"><span class="d-label">Premium Deluxe:<\/span><\/div>';
   for (var i = 0; i < w.pdm.length; i++) {
-    h += '<div class="detail-item" style="padding-left:8px">' + sl(w.pdm[i]) + '</div>';
+    h += '<div class="detail-item" style="padding-left:8px">' + sl(w.pdm[i]) + '<\/div>';
   }
-  h += '</div>';
+  h += '<\/div>';
 
-  h += '</div>'; /* close detail-grid */
+  h += '<\/div>'; /* close detail-grid */
   detail.innerHTML = h;
 }
 
