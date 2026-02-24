@@ -64,8 +64,9 @@ a:hover { text-decoration: underline; }
 .search-input:focus { border-color: var(--gold); }
 .search-input::placeholder { color: var(--cream-dim); opacity: .6; }
 .search-icon {
-  position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
-  color: var(--cream-dim); font-size: 16px; pointer-events: none;
+  position: absolute; left: 16px; top: 15px;
+  color: var(--cream-dim); font-size: 15px; pointer-events: none;
+  font-style: normal; line-height: 1;
 }
 .search-hint {
   font-family: var(--mono); font-size: 10px; color: var(--cream-dim);
@@ -157,7 +158,7 @@ a:hover { text-decoration: underline; }
 .week-tag {
   display: inline-flex; align-items: center; gap: 4px;
   font-family: var(--mono); font-size: 9px; letter-spacing: .04em; text-transform: uppercase;
-  padding: 2px 7px; white-space: nowrap;
+  padding: 2px 7px; white-space: nowrap; cursor: pointer;
 }
 .week-tag.g { background: rgba(45,186,114,.12); color: var(--green); }
 .week-tag.o { background: rgba(201,168,76,.12); color: var(--gold); }
@@ -192,6 +193,8 @@ a:hover { text-decoration: underline; }
 .detail-item .d-label { color: var(--cream-dim); font-family: var(--mono); font-size: 10px; }
 .detail-item .d-mult { font-family: var(--mono); font-size: 10px; color: var(--green); font-weight: 500; }
 .detail-item .d-pct { font-family: var(--mono); font-size: 10px; color: var(--gold); font-weight: 500; }
+.sl { cursor: pointer; transition: color .1s; }
+.sl:hover { color: var(--gold); }
 .overlay-badge {
   display: inline-block; font-family: var(--mono); font-size: 8px; letter-spacing: .06em;
   text-transform: uppercase; padding: 2px 6px; background: rgba(224,140,42,.15);
@@ -436,7 +439,7 @@ function doSearch(query) {
   tlSection.style.display = 'none';
 
   if (results.length === 0) {
-    list.innerHTML = `<div class="no-results"><div class="nr-icon">∅</div>No results for "<span class="nr-term">${escHtml(query)}</span>"<br><span class="dim" style="font-size:12px">Try a different search term or broaden your filter</span></div>`;
+    list.innerHTML = `<div class="no-results"><div class="nr-icon">∅<\/div>No results for "<span class="nr-term">${escHtml(query)}<\/span>"<br><span class="dim" style="font-size:12px">Try a different search term or broaden your filter<\/span><\/div>`;
     countEl.textContent = '0 results';
     statsPanel.style.display = 'none';
     return;
@@ -457,19 +460,19 @@ function doSearch(query) {
 
     statsPanel.style.display = 'grid';
     statsPanel.innerHTML = `
-      <div class="stat-card"><div class="stat-value gold">${uniqueWeeks.length}</div><div class="stat-label">Total Appearances</div></div>
-      <div class="stat-card"><div class="stat-value">${avgGap}d</div><div class="stat-label">Avg Gap Between</div></div>
-      <div class="stat-card"><div class="stat-value">${fmtDate(lastDate)}</div><div class="stat-label">Last Occurrence</div></div>
-      <div class="stat-card"><div class="stat-value ${dSince > avgGap ? 'amber' : 'green'}">${dSince}d</div><div class="stat-label">Days Since Last</div></div>
+      <div class="stat-card"><div class="stat-value gold">${uniqueWeeks.length}<\/div><div class="stat-label">Total Appearances<\/div><\/div>
+      <div class="stat-card"><div class="stat-value">${avgGap}d<\/div><div class="stat-label">Avg Gap Between<\/div><\/div>
+      <div class="stat-card"><div class="stat-value">${fmtDate(lastDate)}<\/div><div class="stat-label">Last Occurrence<\/div><\/div>
+      <div class="stat-card"><div class="stat-value ${dSince > avgGap ? 'amber' : 'green'}">${dSince}d<\/div><div class="stat-label">Days Since Last<\/div><\/div>
     `;
   } else if (uniqueWeeks.length === 1) {
     const dSince = daysSince(uniqueWeeks[0]);
     statsPanel.style.display = 'grid';
     statsPanel.innerHTML = `
-      <div class="stat-card"><div class="stat-value gold">1</div><div class="stat-label">Total Appearances</div></div>
-      <div class="stat-card"><div class="stat-value dim">—</div><div class="stat-label">Avg Gap Between</div></div>
-      <div class="stat-card"><div class="stat-value">${fmtDate(uniqueWeeks[0])}</div><div class="stat-label">Last Occurrence</div></div>
-      <div class="stat-card"><div class="stat-value">${dSince}d</div><div class="stat-label">Days Since Last</div></div>
+      <div class="stat-card"><div class="stat-value gold">1<\/div><div class="stat-label">Total Appearances<\/div><\/div>
+      <div class="stat-card"><div class="stat-value dim">—<\/div><div class="stat-label">Avg Gap Between<\/div><\/div>
+      <div class="stat-card"><div class="stat-value">${fmtDate(uniqueWeeks[0])}<\/div><div class="stat-label">Last Occurrence<\/div><\/div>
+      <div class="stat-card"><div class="stat-value">${dSince}d<\/div><div class="stat-label">Days Since Last<\/div><\/div>
     `;
   } else {
     statsPanel.style.display = 'none';
@@ -482,27 +485,27 @@ function doSearch(query) {
     const label = TYPE_LABELS[r.y] || r.y;
     const termHtml = highlightMatch(r.t, query);
     return `<div class="result-item">
-      <div class="result-date">${fmtDate(r.s)}</div>
+      <div class="result-date">${fmtDate(r.s)}<\/div>
       <div class="result-body">
-        <div class="result-term">${termHtml}<span class="result-badge ${badge}">${label}</span></div>
-        <div class="result-detail">${escHtml(r.d)}</div>
-      </div>
-    </div>`;
+        <div class="result-term">${termHtml}<span class="result-badge ${badge}">${label}<\/span><\/div>
+        <div class="result-detail">${escHtml(r.d)}<\/div>
+      <\/div>
+    <\/div>`;
   }).join('');
 
   if (results.length > 60) {
-    list.innerHTML += `<div class="no-results" style="padding:16px"><span class="dim">Showing 60 of ${results.length} results. Narrow your search for more specific results.</span></div>`;
+    list.innerHTML += `<div class="no-results" style="padding:16px"><span class="dim">Showing 60 of ${results.length} results. Narrow your search for more specific results.<\/span><\/div>`;
   }
 }
 
 function highlightMatch(text, query) {
   const idx = text.toLowerCase().indexOf(query.toLowerCase());
   if (idx === -1) return escHtml(text);
-  return escHtml(text.substring(0, idx)) + '<mark>' + escHtml(text.substring(idx, idx + query.length)) + '</mark>' + escHtml(text.substring(idx + query.length));
+  return escHtml(text.substring(0, idx)) + '<mark>' + escHtml(text.substring(idx, idx + query.length)) + '<\/mark>' + escHtml(text.substring(idx + query.length));
 }
 
 function escHtml(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return s.replace(/&/g,'&amp;').replace(/\x3c/g,'&lt;').replace(/>/g,'&gt;');
 }
 
 /* ═══ TIMELINE ═══ */
@@ -510,24 +513,47 @@ function renderTimeline() {
   const container = document.getElementById('timeline');
   container.innerHTML = TL.map(w => {
     const tags = w.tags.map(t =>
-      `<span class="week-tag ${t.c}"><span class="tag-mult">${t.m}</span> ${escHtml(t.t)}</span>`
+      `<span class="week-tag ${t.c}" onclick="event.stopPropagation();searchFor('${escAttr(t.t)}')"><span class="tag-mult">${t.m}<\/span> ${escHtml(t.t)}<\/span>`
     ).join('');
-    const overlays = w.ov.map(o => `<span class="overlay-badge">${escHtml(o)}</span>`).join('');
+    const overlays = w.ov.map(o => `<span class="overlay-badge">${escHtml(o)}<\/span>`).join('');
     const meta = [];
     if (w.vc) meta.push(w.vc + ' vehicle disc.');
     if (w.pc) meta.push(w.pc + ' property disc.');
 
     return `<div class="week-card" data-week="${w.id}" onclick="toggleWeek(this)">
       <div class="week-header">
-        <div class="week-date">${fmtDateRange(w.start, w.end)}<span class="week-dur">${w.days}d</span></div>
-        <div class="week-name">${escHtml(w.name)}</div>
-        <div class="week-tags">${tags}</div>
-        <div class="week-meta">${meta.join(' · ')}</div>
-        <span class="week-expand-icon">›</span>
-      </div>
-      <div class="week-detail" id="detail-${w.id}"></div>
-    </div>`;
+        <div class="week-date">${fmtDateRange(w.start, w.end)}<span class="week-dur">${w.days}d<\/span><\/div>
+        <div class="week-name">${escHtml(w.name)}<\/div>
+        <div class="week-tags">${tags}<\/div>
+        <div class="week-meta">${meta.join(' · ')}<\/div>
+        <span class="week-expand-icon">›<\/span>
+      <\/div>
+      <div class="week-detail" id="detail-${w.id}"><\/div>
+    <\/div>`;
   }).join('');
+}
+
+function searchFor(term) {
+  const input = document.getElementById('search');
+  input.value = term;
+  input.focus();
+  // Reset filter to all
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  document.querySelector('.filter-pill[data-filter="all"]').classList.add('active');
+  activeFilter = 'all';
+  doSearch(term);
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function sl(text, searchTerm) {
+  // Make a clickable search link. searchTerm defaults to text.
+  if (!text) return '';
+  const st = searchTerm || text;
+  return `<span class="sl" onclick="event.stopPropagation();searchFor('${escAttr(st)}')">${escHtml(text)}<\/span>`;
+}
+
+function escAttr(s) {
+  return s.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'&quot;');
 }
 
 function toggleWeek(card) {
@@ -549,62 +575,63 @@ function toggleWeek(card) {
 
   // Overlay events
   if (w.ov && w.ov.length) {
-    html += w.ov.map(o => `<span class="overlay-badge">${escHtml(o)}</span>`).join('');
+    html += w.ov.map(o => `<span class="overlay-badge sl" onclick="event.stopPropagation();searchFor('${escAttr(o)}')">${escHtml(o)}<\/span>`).join('');
   }
 
   html += '<div class="detail-grid">';
 
   // Column 1: Bonuses
-  html += '<div class="detail-section"><div class="detail-section-title">Bonuses</div>';
+  html += '<div class="detail-section"><div class="detail-section-title">Bonuses<\/div>';
   for (const b of w.bonuses) {
-    const gp = b.g ? ` <span class="dim">(${b.g} GTA+)</span>` : '';
-    html += `<div class="detail-item"><span class="d-mult">${escHtml(b.m.split(' ')[0])}</span> ${escHtml(b.a)}${gp}</div>`;
+    const mult = b.m.split(' ')[0];
+    const gp = b.g ? ` <span class="dim">(${b.g} GTA+)<\/span>` : '';
+    html += `<div class="detail-item"><span class="d-mult sl" onclick="event.stopPropagation();searchFor('${escAttr(mult)}')">${escHtml(mult)}<\/span> ${sl(b.a)}${gp}<\/div>`;
   }
   if (w.ch) {
-    html += `<div class="detail-item" style="margin-top:8px"><span class="d-label">Challenge:</span> ${escHtml(w.ch)}</div>`;
+    html += `<div class="detail-item" style="margin-top:8px"><span class="d-label">Challenge:<\/span> ${sl(w.ch)}<\/div>`;
     const reward = [];
     if (w.chc) reward.push('$' + w.chc.toLocaleString());
     if (w.chr) reward.push(w.chr);
-    if (reward.length) html += `<div class="detail-item"><span class="d-label">Reward:</span> <span class="gold">${escHtml(reward.join(' + '))}</span></div>`;
+    if (reward.length) html += `<div class="detail-item"><span class="d-label">Reward:<\/span> <span class="gold">${reward.map(r => w.chr && r === w.chr ? sl(r) : escHtml(r)).join(' + ')}<\/span><\/div>`;
   }
-  html += `<div class="detail-item" style="margin-top:8px"><span class="d-label">FIB:</span> ${escHtml(w.fib)}</div>`;
-  html += '</div>';
+  html += `<div class="detail-item" style="margin-top:8px"><span class="d-label">FIB:<\/span> ${sl(w.fib)}<\/div>`;
+  html += '<\/div>';
 
   // Column 2: Vehicles
-  html += '<div class="detail-section"><div class="detail-section-title">Vehicles</div>';
-  html += `<div class="detail-item"><span class="d-label">Podium:</span> ${escHtml(w.podium)}</div>`;
-  html += `<div class="detail-item"><span class="d-label">Prize Ride:</span> ${escHtml(w.prize)}</div>`;
-  if (w.test.length) html += `<div class="detail-item"><span class="d-label">Test Rides:</span> ${w.test.map(escHtml).join(', ')}</div>`;
-  if (w.ptest) html += `<div class="detail-item"><span class="d-label">HSW Test:</span> ${escHtml(w.ptest)}</div>`;
-  html += `<div class="detail-section-title" style="margin-top:10px">Salvage Yard</div>`;
+  html += '<div class="detail-section"><div class="detail-section-title">Vehicles<\/div>';
+  html += `<div class="detail-item"><span class="d-label">Podium:<\/span> ${sl(w.podium)}<\/div>`;
+  html += `<div class="detail-item"><span class="d-label">Prize Ride:<\/span> ${sl(w.prize)}<\/div>`;
+  if (w.test.length) html += `<div class="detail-item"><span class="d-label">Test Rides:<\/span> ${w.test.map(v => sl(v)).join(', ')}<\/div>`;
+  if (w.ptest) html += `<div class="detail-item"><span class="d-label">HSW Test:<\/span> ${sl(w.ptest)}<\/div>`;
+  html += `<div class="detail-section-title" style="margin-top:10px">Salvage Yard<\/div>`;
   for (const s of w.salvage) {
-    html += `<div class="detail-item"><span class="dim" style="font-size:10px">${escHtml(s.r.replace('The ','').replace(' Robbery',''))}</span> ${escHtml(s.v)}</div>`;
+    html += `<div class="detail-item"><span class="dim" style="font-size:10px">${escHtml(s.r.replace('The ','').replace(' Robbery',''))}<\/span> ${sl(s.v)}<\/div>`;
   }
-  html += `<div class="detail-section-title" style="margin-top:10px">Showrooms</div>`;
-  html += `<div class="detail-item"><span class="d-label">Luxury:</span> ${w.lux.map(escHtml).join(', ')}</div>`;
-  html += `<div class="detail-item"><span class="d-label">Deluxe:</span> ${w.pdm.map(escHtml).join(', ')}</div>`;
-  html += '</div>';
+  html += `<div class="detail-section-title" style="margin-top:10px">Showrooms<\/div>`;
+  html += `<div class="detail-item"><span class="d-label">Luxury:<\/span> ${w.lux.map(v => sl(v)).join(', ')}<\/div>`;
+  html += `<div class="detail-item"><span class="d-label">Deluxe:<\/span> ${w.pdm.map(v => sl(v)).join(', ')}<\/div>`;
+  html += '<\/div>';
 
   // Column 3: Discounts
-  html += '<div class="detail-section"><div class="detail-section-title">Property Discounts</div>';
+  html += '<div class="detail-section"><div class="detail-section-title">Property Discounts<\/div>';
   if (w.disc_p.length) {
-    for (const d of w.disc_p) html += `<div class="detail-item"><span class="d-pct">${d.p}%</span> ${escHtml(d.i)}</div>`;
+    for (const d of w.disc_p) html += `<div class="detail-item"><span class="d-pct sl" onclick="event.stopPropagation();searchFor('${d.p}%')">${d.p}%<\/span> ${sl(d.i)}<\/div>`;
   } else {
-    html += '<div class="detail-item dim">None this week</div>';
+    html += '<div class="detail-item dim">None this week<\/div>';
   }
-  html += `<div class="detail-section-title" style="margin-top:10px">Vehicle Discounts</div>`;
+  html += `<div class="detail-section-title" style="margin-top:10px">Vehicle Discounts<\/div>`;
   if (w.disc_v.length) {
-    for (const d of w.disc_v.slice(0,10)) html += `<div class="detail-item"><span class="d-pct">${d.p}%</span> ${escHtml(d.i)}</div>`;
-    if (w.disc_v.length > 10) html += `<div class="detail-item dim">+${w.disc_v.length - 10} more</div>`;
+    for (const d of w.disc_v.slice(0,10)) html += `<div class="detail-item"><span class="d-pct sl" onclick="event.stopPropagation();searchFor('${d.p}%')">${d.p}%<\/span> ${sl(d.i)}<\/div>`;
+    if (w.disc_v.length > 10) html += `<div class="detail-item dim">+${w.disc_v.length - 10} more<\/div>`;
   } else {
-    html += '<div class="detail-item dim">None this week</div>';
+    html += '<div class="detail-item dim">None this week<\/div>';
   }
-  html += `<div class="detail-section-title" style="margin-top:10px">Time Trials</div>`;
-  html += `<div class="detail-item"><span class="d-label">TT:</span> ${escHtml(w.tt)}</div>`;
-  if (w.hsw_tt) html += `<div class="detail-item"><span class="d-label">HSW:</span> ${escHtml(w.hsw_tt)}</div>`;
-  html += '</div>';
+  html += `<div class="detail-section-title" style="margin-top:10px">Time Trials<\/div>`;
+  html += `<div class="detail-item"><span class="d-label">TT:<\/span> ${sl(w.tt)}<\/div>`;
+  if (w.hsw_tt) html += `<div class="detail-item"><span class="d-label">HSW:<\/span> ${sl(w.hsw_tt)}<\/div>`;
+  html += '<\/div>';
 
-  html += '</div>'; // close detail-grid
+  html += '<\/div>'; // close detail-grid
   detail.innerHTML = html;
 }
 
