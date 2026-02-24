@@ -208,8 +208,8 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
         <div class="hacker-slot inactive" id="hslot-3"><div class="hacker-slot-header"><span class="hacker-slot-label"><span class="slot-num">Hacker 4</span></span><button class="hacker-toggle" onclick="th(3)">Inactive</button></div><div class="slider-row"><input type="range" class="slider-input" min="0" max="30" value="10" disabled oninput="shs(3,this.value)"><input type="number" class="num-input" min="0" max="30" value="10" disabled oninput="shs(3,this.value)"><span class="slider-unit">s/hack</span></div></div>
       </div>
     </div>
-    <div class="input-section"><span class="input-label">Commute Time Per Loot Pile</span>
-      <div class="slider-row"><input type="range" class="slider-input" min="5" max="15" value="5" style="flex:1" oninput="sc(this.value)" id="comm-sl"><input type="number" class="num-input" min="5" max="15" value="5" id="comm-in" oninput="sc(this.value)"><span class="slider-unit">s/pile</span></div>
+    <div class="input-section"><span class="input-label">Commute Time Per Loot / Door</span>
+      <div class="slider-row"><input type="range" class="slider-input" min="3" max="15" value="5" style="flex:1" oninput="sc(this.value)" id="comm-sl"><input type="number" class="num-input" min="3" max="15" value="5" id="comm-in" oninput="sc(this.value)"><span class="slider-unit">s each</span></div>
     </div>
     <div class="share-section"><span class="input-label">Share This Setup</span>
       <div class="share-url-box"><span class="share-url-text" id="share-url-text"></span><button class="share-copy-btn" id="share-copy-btn" onclick="copyUrl()">Copy</button></div>
@@ -246,10 +246,10 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       <div class="method-section"><h3>Man-Seconds Budget Model</h3>
         <div class="method-notes">
           <p><strong style="color:var(--cream)">Total man-seconds</strong> = vault time × player count.</p>
-          <p><strong style="color:var(--cream)">Hacking cost</strong> = per hacker: doors × (hacks_per_door × s/hack + animation_per_door). Parallel across hackers; each subtracted individually from man-seconds pool.</p>
+          <p><strong style="color:var(--cream)">Hacking + commute</strong> = per hacker: doors × (commute + hacks_per_door × s/hack + animation_per_door). Door commute included. Greedy optimizer assigns doors to minimize total manseconds, respecting each hacker's wall-clock deadline (vault time − one collect − one commute).</p>
           <p><strong style="color:var(--cream)">Animation time</strong> = 24s/door normal, 28s/door hard. Hacks per door: 1 normal, 2 hard. Placeholders pending community verification.</p>
           <p><strong style="color:var(--cream)">Door assignment</strong> = 4 doors across active hackers. Fastest gets extra doors when uneven.</p>
-          <p><strong style="color:var(--cream)">Commute</strong> = piles × s/pile (default 5). Flat total from man-seconds.</p>
+          <p><strong style="color:var(--cream)">Loot + commute</strong> = piles × s/each (default 5). Same commute rate applies to both doors and loot piles. Door commute is folded into hacking cost above.</p>
           <p><strong style="color:var(--cream)">Collection</strong> = remaining man-seconds ÷ s/unit, floored, capped at max.</p>
           <p><strong style="color:var(--cream)">Crew</strong> = gross × (hacker% + gunman% + driver% + Lester 5%).</p>
           <p><strong style="color:var(--cream)">Laundering fee</strong> = 10% of gross for low buyer, 5% for medium, 0% for high. Deducted after crew.</p>
@@ -304,7 +304,7 @@ function si(key,btn){S[key]=btn.dataset.val;document.querySelectorAll('#'+key+'-
 function setElite(btn){S.elite=(btn.dataset.val==='yes');document.querySelectorAll('#elite-group .toggle-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
 function th(i){S.hs[i].a=!S.hs[i].a;const sl=document.getElementById('hslot-'+i),tb=sl.querySelector('.hacker-toggle'),si2=sl.querySelector('.slider-input'),ni=sl.querySelector('.num-input');if(S.hs[i].a){sl.classList.remove('inactive');tb.textContent='Active';tb.classList.add('on');si2.disabled=false;ni.disabled=false;}else{sl.classList.add('inactive');tb.textContent='Inactive';tb.classList.remove('on');si2.disabled=true;ni.disabled=true;}render();}
 function shs(i,v){v=Math.max(0,Math.min(30,parseInt(v)||0));S.hs[i].s=v;const sl=document.getElementById('hslot-'+i);sl.querySelector('.slider-input').value=v;sl.querySelector('.num-input').value=v;render();}
-function sc(v){v=Math.max(5,Math.min(15,parseInt(v)||10));S.cpp=v;document.getElementById('comm-sl').value=v;document.getElementById('comm-in').value=v;render();}
+function sc(v){v=Math.max(3,Math.min(15,parseInt(v)||5));S.cpp=v;document.getElementById('comm-sl').value=v;document.getElementById('comm-in').value=v;render();}
 
 const tipbox=document.getElementById('tipbox');
 document.addEventListener('mousemove',e=>{if(tipbox.style.display==='block'){let x=e.clientX+14,y=e.clientY-8;if(x+tipbox.offsetWidth>innerWidth-10)x=e.clientX-tipbox.offsetWidth-14;if(y+tipbox.offsetHeight>innerHeight-10)y=innerHeight-tipbox.offsetHeight-10;if(y<10)y=10;tipbox.style.left=x+'px';tipbox.style.top=y+'px';}});
@@ -313,26 +313,21 @@ function hideT(){tipbox.style.display='none';}
 function aT(el,label,calc){el.addEventListener('mouseenter',()=>showT(el,label,calc));el.addEventListener('mouseleave',hideT);}
 
 function getAH(max){return S.hs.map((s,i)=>({...s,idx:i})).filter(s=>s.a).slice(0,max);}
-function assignD(slots,vaultTime,collectTime,commutePerPile){
+function assignD(slots,vaultTime,collectTime,commute){
   if(!slots.length)return[];
-  if(slots.length===1)return[{...slots[0],doors:DOORS}];
   const isH=S.difficulty==='hard', hpd=isH?HH:HN, apd=isH?AH:AN;
-  // Effective deadline: must finish hacking with enough time to collect one pile and commute
-  const deadline=vaultTime-collectTime-commutePerPile;
-  // Sort fastest first
+  const deadline=vaultTime-collectTime-commute;
   const sorted=slots.slice().sort((a,b)=>a.s-b.s);
-  const tpd=sorted.map(h=>hpd*h.s+apd);
+  // tpd includes commute to door + hacks + animation
+  const tpd=sorted.map(h=>commute+hpd*h.s+apd);
   const assigned=sorted.map(()=>0);
   let remaining=DOORS;
   for(let i=0;i<sorted.length&&remaining>0;i++){
     const maxByTime=deadline>0?Math.floor(deadline/tpd[i]):0;
-    const give=Math.min(remaining,maxByTime);
-    assigned[i]=give;
-    remaining-=give;
+    assigned[i]=Math.min(remaining,maxByTime);
+    remaining-=assigned[i];
   }
-  // If still remaining (all hackers ran out of time), force-assign to fastest
   if(remaining>0)assigned[0]+=remaining;
-
   // Refinement: move doors from slow to fast if it saves man-seconds
   let improved=true;
   while(improved){
@@ -340,21 +335,15 @@ function assignD(slots,vaultTime,collectTime,commutePerPile){
     for(let slow=sorted.length-1;slow>0;slow--){
       if(assigned[slow]===0)continue;
       for(let fast=0;fast<slow;fast++){
-        const saveSlow=tpd[slow];
-        const costFast=tpd[fast];
-        const fastWallClock=(assigned[fast]+1)*tpd[fast];
-        if(costFast<saveSlow&&fastWallClock<=deadline){
+        if(tpd[fast]<tpd[slow]&&(assigned[fast]+1)*tpd[fast]<=deadline){
           assigned[fast]++;assigned[slow]--;improved=true;break;
         }
       }
       if(improved)break;
     }
   }
-
   const result=sorted.map((h,i)=>({...h,doors:assigned[i]}));
-  if(result.some(h=>h.doors===0))result._smart=true;
-  const nonzero=result.filter(h=>h.doors>0);
-  if(nonzero.length>0&&nonzero.length<sorted.length)result._smart=true;
+  if(result.some(h=>h.doors===0)||result.filter(h=>h.doors>0).length<sorted.length)result._smart=true;
   result._budget=deadline;
   return result;
 }
@@ -393,18 +382,19 @@ function calc(hObj,pc){
   const BURN_PER_DOOR=8;
   let hackTotal=0, hbd=[], da=[];
   if(isE){
-    // Aggressive: thermal charges, 8 man-seconds per door, no skill required
-    hackTotal=DOORS*BURN_PER_DOOR;
-    da=[];hbd=[{idx:-1,doors:DOORS,speed:0,tpd:BURN_PER_DOOR,total:hackTotal,burn:true}];
+    const burnTPD=BURN_PER_DOOR+S.cpp;
+    hackTotal=DOORS*burnTPD;
+    da=[];hbd=[{idx:-1,doors:DOORS,speed:0,tpd:burnTPD,total:hackTotal,burn:true}];
   } else {
     const slots=getAH(pc); da=assignD(slots,vt,vc.ct,S.cpp);
     const hpd=isH?HH:HN, apd=isH?AH:AN;
-    for(const h of da){const tpd=hpd*h.s+apd,ht=h.doors*tpd;hackTotal+=ht;hbd.push({idx:h.idx,doors:h.doors,speed:h.s,tpd,total:ht});}
+    for(const h of da){const tpd=S.cpp+hpd*h.s+apd,ht=h.doors*tpd;hackTotal+=ht;hbd.push({idx:h.idx,doors:h.doors,speed:h.s,tpd,total:ht});}
   }
-  const np=vc.u, commT=np*S.cpp, collMS=Math.max(0,tms-hackTotal-commT);
+  const np=vc.u, lootCommT=np*S.cpp;
+  const collMS=Math.max(0,tms-hackTotal-lootCommT);
   const uc=Math.min(Math.floor(collMS/vc.ct),vc.u);
   const collectUsed=uc*vc.ct;
-  const excess=tms-hackTotal-commT-collectUsed;
+  const excess=tms-hackTotal-lootCommT-collectUsed;
   const maxP=isH?vc.maxH:vc.maxN, pu=maxP/vc.u, gross=uc*pu;
   const gc=GN[S.gunman].c, dc=DR[S.driver].c, hc=hObj.cut, lc=5, tcp=gc+dc+hc+lc;
   const crewD=gross*tcp/100;
@@ -417,37 +407,36 @@ function calc(hObj,pc){
   const players=[{label:'Host',pct:hp,take:ht2,isHost:true}];
   mps.forEach((p,i)=>players.push({label:'Player '+(i+2),pct:p,take:net*p/100+eliteEach,isHost:false}));
   const totalWithElite=net+eliteEach*pc-SETUP;
-  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,commT,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,collectUsed,excess,gc,dc,hc,lc,tcp,crewD,buyerFee,launderD,net,eliteEach,SETUP,totalWithElite,hp,ht:ht2,players,bad:collMS<=0,smartAlloc:da._smart||false,isAgg:isE};
+  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,lootCommT,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,collectUsed,excess,gc,dc,hc,lc,tcp,crewD,buyerFee,launderD,net,eliteEach,SETUP,totalWithElite,hp,ht:ht2,players,bad:collMS<=0,smartAlloc:da._smart||false,isAgg:isE};
 }
 
 const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
 const fSec=s=>{const m=Math.floor(s/60),sec=s%60;return m>0?m+':'+sec.toString().padStart(2,'0'):sec+'s';};
 
-function tipMS(r){return fSec(r.vt)+' = '+r.vt+' seconds\n\u00d7 '+r.pc+' players\n= '+r.tms+' man-seconds';}
+function tipMS(r){return fSec(r.vt)+' = '+r.vt+' seconds\n\u00d7 '+r.pc+' players\n= '+r.tms+' manseconds';}
 function tipHack(r){
-  if(r.isAgg){return 'THERMAL CHARGES (Aggressive)\n4 doors \u00d7 8s per door = 32 man-seconds\nNo hacking required \u2014 anyone can burn locks';}
+  if(r.isAgg){return 'THERMAL CHARGES (Aggressive)\n4 doors \u00d7 ('+8+'s burn + '+S.cpp+'s commute)\n= 4 \u00d7 '+(8+S.cpp)+'s = '+r.hackTotal+' manseconds\nNo hacking required \u2014 anyone can burn locks';}
   const isH=S.difficulty==='hard',hpd=isH?HH:HN,apd=isH?AH:AN,lines=[];
-  if(r.da._smart){
-    const dl=r.da._budget;
+  if(r.hbd.length>1){
+    const dl=r.da._budget||r.vt;
     lines.push('OPTIMIZED ALLOCATION');
     lines.push('Deadline: '+r.vt+'s vault \u2212 '+r.ct+'s collect \u2212 '+S.cpp+'s commute = '+dl+'s');
-    lines.push('Doors assigned to minimize total man-seconds');
     lines.push('');
   }
   for(const h of r.hbd){
     lines.push('Hacker '+(h.idx+1)+' ('+h.speed+'s/hack): '+h.doors+' door'+(h.doors!==1?'s':''));
     if(h.doors>0){
-      lines.push('  '+h.doors+' \u00d7 ('+hpd+' hack'+(hpd>1?'s':'')+' \u00d7 '+h.speed+'s + '+apd+'s animation)');
-      lines.push('  = '+h.doors+' \u00d7 '+h.tpd+'s = '+h.total+' man-seconds');
+      lines.push('  '+h.doors+' \u00d7 ('+S.cpp+'s commute + '+hpd+' hack'+(hpd>1?'s':'')+' \u00d7 '+h.speed+'s + '+apd+'s anim)');
+      lines.push('  = '+h.doors+' \u00d7 '+h.tpd+'s = '+h.total+' manseconds');
     } else {
       lines.push('  Skipped \u2014 collecting loot instead');
     }
   }
-  lines.push('\nTotal hacking: '+r.hackTotal+' man-seconds');return lines.join('\n');
+  lines.push('\nTotal: '+r.hackTotal+' manseconds');return lines.join('\n');
 }
-function tipComm(r){return r.np+' piles \u00d7 '+S.cpp+'s per pile\n= '+r.commT+' man-seconds';}
+function tipComm(r){return r.np+' piles \u00d7 '+S.cpp+'s each\n= '+r.lootCommT+' manseconds\n\n(Door commute included in hacking cost)';}
 function tipColl(r){
-  const lines=['MAN-SECONDS BUDGET','Total: '+r.tms,'\u2212 Hacking: '+r.hackTotal,'\u2212 Commute: '+r.commT,'= '+r.collMS+' man-seconds for collection','','COLLECTION',r.collMS+' \u00f7 '+r.ct+'s per unit'];
+  const lines=['MANSECONDS BUDGET','Total: '+r.tms,'\u2212 Hacking + commute: '+r.hackTotal,'\u2212 Loot + commute: '+r.lootCommT,'= '+r.collMS+' manseconds for collection','','COLLECTION',r.collMS+' \u00f7 '+r.ct+'s per unit'];
   const raw=Math.floor(r.collMS/r.ct);lines.push('= '+raw+' units (floored)');
   if(raw>r.mu)lines.push('Capped at '+r.mu+' (all available)');
   lines.push('\u2192 '+r.uc+' of '+r.mu+' collected');return lines.join('\n');
@@ -512,9 +501,9 @@ function render(){
       let html='<div class="hacker-card-header"><span class="hacker-name">'+r.hacker.label+' — '+r.hacker.cut+'%</span><span class="hacker-rank">'+(rank===0?'Best':rank===1?'2nd':'3rd')+'</span></div><div class="hacker-card-body">';
       if(r.bad)html+='<div class="warning-box">Insufficient vault time to collect any loot with these settings.</div>';
       html+='<div class="sr"><span class="sr-l">Vault time</span><span class="sr-v">'+fSec(r.vt)+'</span></div>';
-      html+='<div class="sr"><span class="sr-l">Man-seconds</span><span class="sr-v tip" id="'+uid+'-ms">'+r.tms+'s</span></div>';
-      html+='<div class="sr"><span class="sr-l">'+(r.isAgg?'Burn cost':'Hacking cost')+'</span><span class="sr-v tip" id="'+uid+'-hk">'+r.hackTotal+'s</span></div>';
-      html+='<div class="sr"><span class="sr-l">Commute cost</span><span class="sr-v tip" id="'+uid+'-cm">'+r.commT+'s</span></div>';
+      html+='<div class="sr"><span class="sr-l">Manseconds</span><span class="sr-v tip" id="'+uid+'-ms">'+r.tms+'s</span></div>';
+      html+='<div class="sr"><span class="sr-l">'+(r.isAgg?'Burn + commute':'Hacking + commute')+'</span><span class="sr-v tip" id="'+uid+'-hk">'+r.hackTotal+'s</span></div>';
+      html+='<div class="sr"><span class="sr-l">Loot + commute</span><span class="sr-v tip" id="'+uid+'-cm">'+r.lootCommT+'s</span></div>';
       html+='<div class="sr"><span class="sr-l">Excess time</span><span class="sr-v'+(r.excess<=0?' neg':'')+' tip" id="'+uid+'-ex">'+r.excess+'s</span></div>';
       html+='<div class="sr"><span class="sr-l">Collected</span><span class="sr-v'+(r.uc===r.mu?' gr':'')+' tip" id="'+uid+'-cl">'+r.uc+' of '+r.mu+'</span></div>';
       html+='<hr class="hdiv">';
@@ -529,8 +518,11 @@ function render(){
       card.innerHTML=html;col.appendChild(card);
       setTimeout(()=>{
         const e=id=>document.getElementById(id),a=(id,l,c)=>{const el=e(id);if(el)aT(el,l,c);};
-        a(uid+'-ms','Man-Seconds',tipMS(r));a(uid+'-hk',r.isAgg?'Thermal Charges':'Hacking Cost',tipHack(r));
-        a(uid+'-cm','Commute Cost',tipComm(r));a(uid+'-ex','Excess Time',r.tms+' man-seconds\n\u2212 '+r.hackTotal+' hacking\n\u2212 '+r.collectUsed+' collecting ('+r.uc+' \u00d7 '+r.ct+'s)\n\u2212 '+r.commT+' commute\n= '+r.excess+'s unused');a(uid+'-cl','Units Collected',tipColl(r));
+        a(uid+'-ms','Manseconds',tipMS(r));a(uid+'-hk',r.isAgg?'Thermal Charges':'Hacking + Commute',tipHack(r));
+        a(uid+'-cm','Loot + Commute',tipComm(r));
+        const exClock=Math.round(r.excess/r.pc);
+        a(uid+'-ex','Excess Time',r.tms+' manseconds\n\u2212 '+r.hackTotal+' hacking + door commute\n\u2212 '+r.lootCommT+' loot + commute\n\u2212 '+r.collectUsed+' collecting ('+r.uc+' \u00d7 '+r.ct+'s)\n= '+r.excess+'s manseconds unused\n\n\u00f7 '+r.pc+' players = '+exClock+'s clock time');
+        a(uid+'-cl','Units Collected',tipColl(r));
         a(uid+'-gr','Gross Take',tipGross(r));a(uid+'-cr','Crew Deduction',tipCrew(r));
         if(r.buyerFee>0)a(uid+'-la','Laundering Fee',fmt(r.gross)+' \u00d7 '+(r.buyerFee*100)+'% = '+fmt(r.launderD));
         a(uid+'-nt','Net to Players',tipNet(r));
@@ -608,7 +600,7 @@ function parseUrl(){
       }
       // commute (cN)
       if(p.match(/^c\d+$/)){
-        S.cpp=Math.max(5,Math.min(15,parseInt(p.slice(1))));
+        S.cpp=Math.max(3,Math.min(15,parseInt(p.slice(1))));
       }
     }
     return true;
