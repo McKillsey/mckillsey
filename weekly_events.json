@@ -1,0 +1,4435 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "source": "r/gtaonline PapaXan weekly posts",
+    "generated": "2026-02-24",
+    "weeks_count": 16,
+    "date_range": "2025-10-23 to 2026-02-26",
+    "last_updated": "2026-02-24",
+    "notes": "MVP database: 15 weeks from Oct 30, 2025 to Feb 26, 2026. Extracted from r/gtaonline PapaXan weekly posts."
+  },
+  "weeks": [
+    {
+      "id": "2026-02-19",
+      "name": "Biker Bonuses Week",
+      "date_start": "2026-02-19",
+      "date_end": "2026-02-26",
+      "duration_days": 7,
+      "overlay_events": [
+        {
+          "name": "Lunar New Year",
+          "date_end": "2026-03-04",
+          "rewards": [
+            "Red Year of the Horse Tee",
+            "Horse Masks free",
+            "Horse Tattoos free"
+          ],
+          "bonuses": [
+            "3X Lunar Stunt Races (6X GTA+)"
+          ],
+          "collectibles": [
+            "Yuanbao Collectibles"
+          ]
+        }
+      ],
+      "podium_vehicle": "Karin Sultan RS Classic",
+      "prize_ride": {
+        "vehicle": "Grotti Stinger GT",
+        "challenge": "Place Top 4 in LS Car Meet Series"
+      },
+      "time_trial": "Maze Bank Arena",
+      "premium_race": {
+        "name": "Art to Art",
+        "class": "Motorcycle"
+      },
+      "test_rides": [
+        {
+          "vehicle": "Benefactor Streiter",
+          "removed": true
+        },
+        {
+          "vehicle": "Dewbauchee Rapid GT Classic",
+          "removed": true
+        },
+        {
+          "vehicle": "Enus Cognoscenti Cabrio",
+          "removed": true
+        }
+      ],
+      "hsw_time_trial": "Ron Alternates to Elysian Island",
+      "premium_test_ride": "Weeny Issi Rally",
+      "salvage_yard": [
+        {
+          "robbery": "The Gangbanger Robbery",
+          "vehicle": "Dewbauchee Champion"
+        },
+        {
+          "robbery": "The Podium Robbery",
+          "vehicle": "Karin Everon"
+        },
+        {
+          "robbery": "The McTony Robbery",
+          "vehicle": "BF Weevil"
+        }
+      ],
+      "weekly_challenge": {
+        "task": "Win 2 Stunt Races",
+        "reward_cash": 100000,
+        "reward_item": null
+      },
+      "fib_priority_file": "The Black Box File",
+      "luxury_autos": [
+        "Dinka LSCM Jester RR",
+        "Übermacht Sentinel XS4"
+      ],
+      "premium_deluxe": [
+        {
+          "vehicle": "Enus Super Diamond",
+          "removed": true
+        },
+        {
+          "vehicle": "Enus Cognoscenti",
+          "removed": true
+        },
+        {
+          "vehicle": "Dewbauchee JB 700",
+          "removed": true
+        },
+        {
+          "vehicle": "Albany Alpha",
+          "removed": true
+        },
+        {
+          "vehicle": "Western Zombie Bobber",
+          "removed": true
+        }
+      ],
+      "daily_objectives": {
+        "thursday": "Complete a Street Dealer Delivery",
+        "friday": "Participate in a Stunt Race",
+        "saturday": "Complete a Last Dose mission",
+        "sunday": "Participate in a Freemode Event",
+        "monday": "Participate in the Community Series",
+        "tuesday": "Complete a Biker Clubhouse Contract",
+        "wednesday": "Participate in the Featured Series"
+      },
+      "bonuses": [
+        {
+          "activity": "Lunar New Year Stunt Races",
+          "multiplier": "3X GTA$/RP",
+          "gta_plus_multiplier": "6X GTA$/RP"
+        },
+        {
+          "activity": "Counterfeit Cash Sell Missions",
+          "multiplier": "2X GTA$"
+        },
+        {
+          "activity": "Street Dealer Sales",
+          "multiplier": "2X GTA$"
+        },
+        {
+          "activity": "Biker Clubhouse Contracts",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "MC Work",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "MC Challenges",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Community Combat Series",
+          "multiplier": "2X GTA$/RP"
+        }
+      ],
+      "discounts": {
+        "properties": [
+          {
+            "item": "Counterfeit Cash Factories",
+            "percent": 40
+          },
+          {
+            "item": "Counterfeit Cash Factory Upgrades and Modifications",
+            "percent": 40
+          }
+        ],
+        "vehicles": [
+          {
+            "item": "Cargobob (Jetsam)",
+            "percent": 30
+          },
+          {
+            "item": "Cargobob",
+            "percent": 30
+          },
+          {
+            "item": "Canis Terminus",
+            "percent": 30
+          },
+          {
+            "item": "HVY Insurgent Pick-Up",
+            "percent": 30
+          },
+          {
+            "item": "Vapid Caracara",
+            "percent": 30
+          },
+          {
+            "item": "Vapid Retinue Mk II",
+            "percent": 30
+          },
+          {
+            "item": "Vapid Slamtruck",
+            "percent": 30
+          },
+          {
+            "item": "Declasse Walton L35 Stock",
+            "percent": 30
+          },
+          {
+            "item": "Ocelot Jugular",
+            "percent": 30
+          },
+          {
+            "item": "Declasse Drift Tampa",
+            "percent": 30
+          },
+          {
+            "item": "Vulcar Nebula Turbo",
+            "percent": 30
+          },
+          {
+            "item": "Dinka Jester Classic",
+            "percent": 30
+          }
+        ]
+      },
+      "gun_van": {
+        "featured_discounts": [
+          {
+            "item": "Baseball Bat",
+            "discount": "Free"
+          },
+          {
+            "item": "Military Rifle",
+            "discount": "40% off"
+          },
+          {
+            "item": "Combat Shotgun",
+            "discount": "40% off GTA+"
+          }
+        ],
+        "stock": [
+          {
+            "weapon": "Military Rifle",
+            "discount": "40%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Combat Shotgun",
+            "discount": "10%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Battle Rifle",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Homing Launcher",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "MG",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Baseball Bat",
+            "discount": "Free",
+            "gta_plus_discount": "Free"
+          },
+          {
+            "weapon": "Sticky Bomb",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Molotov",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Proximity Mine",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          }
+        ]
+      },
+      "new_content": [],
+      "returning_content": []
+    },
+    {
+      "id": "2026-02-12",
+      "name": "Itali Classic Release / Valentine's + Lunar New Year",
+      "date_start": "2026-02-12",
+      "date_end": "2026-02-19",
+      "duration_days": 7,
+      "overlay_events": [
+        {
+          "name": "Valentine's Event",
+          "date_end": "2026-02-18",
+          "rewards": [
+            "Valentines Onesie"
+          ],
+          "bonuses": [
+            "3X Deadline Duet",
+            "4X Associate/Bodyguard Salaries",
+            "50% Valentine's Clothing",
+            "50% Shotaro"
+          ],
+          "collectibles": []
+        },
+        {
+          "name": "Lunar New Year",
+          "date_end": "2026-03-04",
+          "rewards": [
+            "Red Year of the Horse Tee",
+            "Horse Masks free",
+            "Horse Tattoos free"
+          ],
+          "bonuses": [
+            "3X Lunar Stunt Races (6X GTA+)"
+          ],
+          "collectibles": [
+            "Yuanbao Collectibles"
+          ]
+        }
+      ],
+      "podium_vehicle": "Bravado Buffalo EVX",
+      "prize_ride": {
+        "vehicle": "Lampadati Corsita",
+        "challenge": "Place Top 2 in LS Car Meet Series"
+      },
+      "time_trial": "Up N Atom",
+      "premium_race": {
+        "name": "Muscle In",
+        "class": "Muscle"
+      },
+      "test_rides": [
+        {
+          "vehicle": "Ocelot Locust",
+          "removed": false
+        },
+        {
+          "vehicle": "Dewbauchee Rapid GT Cabrio",
+          "removed": true
+        },
+        {
+          "vehicle": "Coil Voltic",
+          "removed": true
+        }
+      ],
+      "hsw_time_trial": "Textile City to Stab City",
+      "premium_test_ride": "Coil Cyclone II",
+      "salvage_yard": [
+        {
+          "robbery": "The Duggan Robbery",
+          "vehicle": "Obey Omnis e-GT"
+        },
+        {
+          "robbery": "The Cargo Ship Robbery",
+          "vehicle": "Pfister Comet Safari"
+        },
+        {
+          "robbery": "The Gangbanger Robbery",
+          "vehicle": "Vapid Caracara 4x4"
+        }
+      ],
+      "weekly_challenge": {
+        "task": "Earn GTA$100,000 as Associate/Bodyguard",
+        "reward_cash": 100000,
+        "reward_item": "Valentines Blazer"
+      },
+      "fib_priority_file": "The Project Breakaway File",
+      "luxury_autos": [
+        "Albany Roosevelt",
+        "Classique Broadway"
+      ],
+      "premium_deluxe": [
+        {
+          "vehicle": "LCC Innovation",
+          "removed": true
+        },
+        {
+          "vehicle": "Declasse Tulip",
+          "removed": true
+        },
+        {
+          "vehicle": "Vulcar Fagaloa",
+          "removed": true
+        },
+        {
+          "vehicle": "Dinka Thrust",
+          "removed": false
+        },
+        {
+          "vehicle": "Vapid Hustler",
+          "removed": true
+        }
+      ],
+      "daily_objectives": {
+        "wednesday": "Participate in a Land Race",
+        "thursday": "Complete a Contact Mission",
+        "friday": "Participate in a Sea Race",
+        "saturday": "Participate in the Community Series",
+        "sunday": "Participate in the Featured Series",
+        "monday": "Complete a Doomsday Heist Setup",
+        "tuesday": "Participate in a Bike Race"
+      },
+      "bonuses": [
+        {
+          "activity": "Cayo Perico Primary Target",
+          "multiplier": "Boosted Pink Diamond chance (50%)"
+        },
+        {
+          "activity": "CEO/VIP Work",
+          "multiplier": "4X GTA$/RP"
+        },
+        {
+          "activity": "Community Series",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Lunar New Year Stunt Races",
+          "multiplier": "3X GTA$/RP",
+          "gta_plus_multiplier": "6X GTA$/RP"
+        },
+        {
+          "activity": "Deadline Duet",
+          "multiplier": "3X GTA$/RP",
+          "note": "Valentine's overlay"
+        },
+        {
+          "activity": "Associate/Bodyguard Salaries",
+          "multiplier": "4X",
+          "note": "Valentine's overlay"
+        }
+      ],
+      "discounts": {
+        "properties": [
+          {
+            "item": "Executive Offices",
+            "percent": 40
+          },
+          {
+            "item": "Executive Office Upgrades",
+            "percent": 40
+          }
+        ],
+        "vehicles": [
+          {
+            "item": "Karin Hotring Everon",
+            "percent": 30
+          },
+          {
+            "item": "Declasse Tulip M-100",
+            "percent": 30
+          },
+          {
+            "item": "Dewbauchee Vagner",
+            "percent": 30
+          },
+          {
+            "item": "Declasse Tahoma Coupe",
+            "percent": 30
+          },
+          {
+            "item": "Pfister Neon",
+            "percent": 30
+          },
+          {
+            "item": "Coil Raiden",
+            "percent": 30
+          },
+          {
+            "item": "Jobuilt Velum 5-Seater",
+            "percent": 30
+          },
+          {
+            "item": "Declasse Yosemite 1500",
+            "percent": 30
+          },
+          {
+            "item": "Pegassi Torero",
+            "percent": 30
+          },
+          {
+            "item": "Grotti Cheetah Classic",
+            "percent": 30
+          }
+        ]
+      },
+      "gun_van": {
+        "featured_discounts": [
+          {
+            "item": "Gusenberg Sweeper",
+            "discount": "Free"
+          },
+          {
+            "item": "Tactical SMG",
+            "discount": "30% off GTA+"
+          }
+        ],
+        "stock": [
+          {
+            "weapon": "Military Rifle",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Tactical SMG",
+            "discount": "10%",
+            "gta_plus_discount": "30%"
+          },
+          {
+            "weapon": "Gusenberg Sweeper",
+            "discount": "Free",
+            "gta_plus_discount": "Free"
+          },
+          {
+            "weapon": "Sniper Rifle",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Assault SMG",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Pool Cue",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Pipe Bomb",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Proximity Mine",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Sticky Bomb",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          }
+        ]
+      },
+      "new_content": [
+        "Lunar New Year Stunt Race: The Senora Derby",
+        "Vehicle: Grotti Itali Classic"
+      ],
+      "returning_content": []
+    },
+    {
+      "id": "2026-02-05",
+      "name": "Valentine's Start / Deadline Duet / Meth Week",
+      "date_start": "2026-02-05",
+      "date_end": "2026-02-12",
+      "duration_days": 7,
+      "overlay_events": [
+        {
+          "name": "Valentine's Event",
+          "date_end": "2026-02-18",
+          "rewards": [
+            "Valentines Onesie"
+          ],
+          "bonuses": [
+            "3X Deadline Duet",
+            "4X Associate/Bodyguard Salaries",
+            "50% Valentine's Clothing",
+            "50% Shotaro"
+          ],
+          "collectibles": []
+        }
+      ],
+      "podium_vehicle": "Invetero Coquette D1",
+      "prize_ride": {
+        "vehicle": "Übermacht Rhinehart",
+        "challenge": "Win in LS Car Meet Series Once"
+      },
+      "time_trial": "Cypress Flats",
+      "premium_race": {
+        "name": "Senora Freeway",
+        "class": "Super"
+      },
+      "test_rides": [
+        {
+          "vehicle": "Lampadati Pigalle",
+          "removed": true
+        },
+        {
+          "vehicle": "Bravado Verlierer",
+          "removed": true
+        },
+        {
+          "vehicle": "Ocelot Lynx",
+          "removed": true
+        }
+      ],
+      "hsw_time_trial": "Sandy Shores to La Puerta",
+      "premium_test_ride": "Maibatsu MonstroCiti",
+      "salvage_yard": [
+        {
+          "robbery": "The Cargo Ship Robbery",
+          "vehicle": "Grotti Furia"
+        },
+        {
+          "robbery": "The McTony Robbery",
+          "vehicle": "Classique Broadway"
+        },
+        {
+          "robbery": "The Gangbanger Robbery",
+          "vehicle": "Bravado Greenwood"
+        }
+      ],
+      "weekly_challenge": {
+        "task": "Win two Adversary Modes",
+        "reward_cash": 100000,
+        "reward_item": null
+      },
+      "fib_priority_file": "The Fine Art File",
+      "luxury_autos": [
+        "Benefactor Vorschlaghammer",
+        "Übermacht Sentinel GTS"
+      ],
+      "premium_deluxe": [
+        {
+          "vehicle": "Western Rat Bike",
+          "removed": true
+        },
+        {
+          "vehicle": "Dinka Enduro",
+          "removed": true
+        },
+        {
+          "vehicle": "Declasse Tornado Rat Rod",
+          "removed": true
+        },
+        {
+          "vehicle": "Hijak Ruston",
+          "removed": true
+        },
+        {
+          "vehicle": "Lampadati Michelli GT",
+          "removed": true
+        }
+      ],
+      "daily_objectives": {
+        "wednesday": "Participate in an Adversary Mode",
+        "thursday": "Participate in a Capture - GTA",
+        "friday": "Complete a Payphone Hit",
+        "saturday": "Participate in a Freemode Challenge",
+        "sunday": "Complete a Short Trip",
+        "monday": "Participate in the Community Series",
+        "tuesday": "Complete a Contact Mission"
+      },
+      "bonuses": [
+        {
+          "activity": "Meth Production Speed",
+          "multiplier": "2X"
+        },
+        {
+          "activity": "Bunker Research Missions",
+          "multiplier": "2X GTA$/RP/Research"
+        },
+        {
+          "activity": "Short Trips",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Community Race Series",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Deadline Duet",
+          "multiplier": "3X GTA$/RP",
+          "note": "Valentine's overlay"
+        },
+        {
+          "activity": "Associate/Bodyguard Salaries",
+          "multiplier": "4X",
+          "note": "Valentine's overlay"
+        }
+      ],
+      "discounts": {
+        "properties": [
+          {
+            "item": "Meth Lab Properties",
+            "percent": 40
+          },
+          {
+            "item": "Meth Lab Upgrades",
+            "percent": 40
+          }
+        ],
+        "vehicles": [
+          {
+            "item": "Emperor ETR1",
+            "percent": 30
+          },
+          {
+            "item": "Överflöd Autarch",
+            "percent": 30
+          },
+          {
+            "item": "Pfister Comet S2",
+            "percent": 30
+          },
+          {
+            "item": "Nagasaki Weaponized Dinghy",
+            "percent": 30
+          },
+          {
+            "item": "Benefactor Vorschlaghammer",
+            "percent": 30
+          },
+          {
+            "item": "Gallivanter Baller ST-D",
+            "percent": 30
+          },
+          {
+            "item": "HVY Vetir",
+            "percent": 30
+          },
+          {
+            "item": "Western Powersurge",
+            "percent": 30
+          },
+          {
+            "item": "Western Company Rogue",
+            "percent": 30
+          },
+          {
+            "item": "Karin Futo GTX",
+            "percent": 30
+          },
+          {
+            "item": "Truffade Nero",
+            "percent": 30
+          },
+          {
+            "item": "Vulcar Warrener HKR",
+            "percent": 30
+          }
+        ]
+      },
+      "gun_van": {
+        "featured_discounts": [
+          {
+            "item": "Service Carbine",
+            "discount": "30% off"
+          },
+          {
+            "item": "Compact EMP Launcher",
+            "discount": "30% off GTA+"
+          }
+        ],
+        "stock": [
+          {
+            "weapon": "Combat Shotgun",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Service Carbine",
+            "discount": "30%",
+            "gta_plus_discount": "30%"
+          },
+          {
+            "weapon": "Compact EMP Launcher",
+            "discount": "10%",
+            "gta_plus_discount": "30%"
+          },
+          {
+            "weapon": "RPG",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Marksman Pistol",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Pool Cue",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Proximity Mine",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Sticky Bomb",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Molotov",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          }
+        ]
+      },
+      "new_content": [
+        "Deadline Duet Adversary Mode",
+        "Pfister Astrale available to non-GTA+ on Legendary Motorsports"
+      ],
+      "returning_content": []
+    },
+    {
+      "id": "2026-01-29",
+      "name": "New Odd Jobs / Cocaine Week",
+      "date_start": "2026-01-29",
+      "date_end": "2026-02-05",
+      "duration_days": 7,
+      "overlay_events": [],
+      "podium_vehicle": "Mammoth Patriot Mil-Spec",
+      "prize_ride": {
+        "vehicle": "Declasse Tampa GT",
+        "challenge": "Place Top 4 in LS Car Meet Series"
+      },
+      "time_trial": "Sawmill",
+      "premium_race": {
+        "name": "Down the Drain",
+        "class": "Muscle"
+      },
+      "test_rides": [
+        {
+          "vehicle": "Benefactor Feltzer",
+          "removed": true
+        },
+        {
+          "vehicle": "BF Bifta",
+          "removed": true
+        },
+        {
+          "vehicle": "Lampadati Furore GT",
+          "removed": true
+        }
+      ],
+      "hsw_time_trial": "Del Perro Beach to Murietta Heights",
+      "premium_test_ride": "Karin Vivanite",
+      "salvage_yard": [
+        {
+          "robbery": "The Gangbanger Robbery",
+          "vehicle": "Canis Kamacho"
+        },
+        {
+          "robbery": "The Duggan Robbery",
+          "vehicle": "Declasse Drift Yosemite"
+        },
+        {
+          "robbery": "The Podium Robbery",
+          "vehicle": "Grotti Stinger TT"
+        }
+      ],
+      "weekly_challenge": {
+        "task": "Complete 5 Pizza Deliveries",
+        "reward_cash": 300000,
+        "reward_item": "Pizza This Tee"
+      },
+      "fib_priority_file": "The Brute Force File",
+      "luxury_autos": [
+        "Progen Luiva",
+        "Vapid Uranus LozSpeed"
+      ],
+      "premium_deluxe": [
+        {
+          "vehicle": "Pegassi Pizza Boy",
+          "removed": false
+        },
+        {
+          "vehicle": "Declasse Lifeguard",
+          "removed": false
+        },
+        {
+          "vehicle": "Annis Hardy",
+          "removed": false,
+          "note": "Taxi Import livery"
+        },
+        {
+          "vehicle": "Übermacht Cypher",
+          "removed": false,
+          "note": "Drift Taxi livery"
+        },
+        {
+          "vehicle": "Karin 190z",
+          "removed": false
+        }
+      ],
+      "daily_objectives": {
+        "wednesday": "Complete a Pizza Delivery",
+        "thursday": "Participate in a Stunt Race",
+        "friday": "Participate in the Community Series",
+        "saturday": "Complete a Safeguard mission",
+        "sunday": "Participate in a Freemode Challenge",
+        "monday": "Complete an RC Time Trial",
+        "tuesday": "Complete a Taxi mission"
+      },
+      "bonuses": [
+        {
+          "activity": "5 different Odd Jobs completed",
+          "multiplier": "Clothing Reward",
+          "note": "Downtown Cab Co. Revere Collar Shirt (72hr)"
+        },
+        {
+          "activity": "Firefighter",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Forklift Operator",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Paper Route",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Taxi Work",
+          "multiplier": "2X GTA$"
+        },
+        {
+          "activity": "Pizza Delivery",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "QuickiePharm",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Safeguard",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "RC Time Trials",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Featured Series: Issi Classic Races",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Community Race Series",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Cocaine Production Speed",
+          "multiplier": "2X"
+        },
+        {
+          "activity": "Pegassi Pizza Boy",
+          "multiplier": "Free"
+        }
+      ],
+      "discounts": {
+        "properties": [
+          {
+            "item": "Cocaine Lockup Properties",
+            "percent": 40
+          },
+          {
+            "item": "Cocaine Lockup Upgrades",
+            "percent": 40
+          }
+        ],
+        "vehicles": [
+          {
+            "item": "MTL Fire Truck",
+            "percent": 30
+          },
+          {
+            "item": "Brute Bobcat Security Stockade",
+            "percent": 30
+          },
+          {
+            "item": "Brute Stockade",
+            "percent": 30
+          },
+          {
+            "item": "Vapid Taxi",
+            "percent": 30
+          },
+          {
+            "item": "Pegassi Zorrusso",
+            "percent": 30
+          },
+          {
+            "item": "MTL Dune",
+            "percent": 30
+          },
+          {
+            "item": "Nagasaki Outlaw",
+            "percent": 30
+          },
+          {
+            "item": "Blimp",
+            "percent": 30
+          },
+          {
+            "item": "Buckingham Shamal",
+            "percent": 30
+          },
+          {
+            "item": "Dinka Veto Modern",
+            "percent": 30
+          },
+          {
+            "item": "Declasse Hotring Sabre",
+            "percent": 30
+          },
+          {
+            "item": "Übermacht Sentinel Classic",
+            "percent": 30
+          },
+          {
+            "item": "Grotti Cheetah",
+            "percent": 30
+          },
+          {
+            "item": "Canis Freecrawler",
+            "percent": 30
+          }
+        ]
+      },
+      "gun_van": {
+        "featured_discounts": [
+          {
+            "item": "Service Carbine",
+            "discount": "50% off"
+          },
+          {
+            "item": "Military Rifle",
+            "discount": "30% off GTA+"
+          }
+        ],
+        "stock": [
+          {
+            "weapon": "Service Carbine",
+            "discount": "50%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Compact EMP Launcher",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Military Rifle",
+            "discount": "10%",
+            "gta_plus_discount": "30%"
+          },
+          {
+            "weapon": "Sweeper Shotgun",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Combat PDW",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Switchblade",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Proximity Mine",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Sticky Bomb",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Tear Gas",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          }
+        ]
+      },
+      "new_content": [
+        "Firefighter Odd Job",
+        "Forklift Operator Odd Job",
+        "Paper Route Odd Job"
+      ],
+      "returning_content": []
+    },
+    {
+      "id": "2026-01-22",
+      "name": "Auto Shop / Document Forgery Week",
+      "date_start": "2026-01-22",
+      "date_end": "2026-01-29",
+      "duration_days": 7,
+      "overlay_events": [],
+      "podium_vehicle": "Vapid FMJ",
+      "prize_ride": {
+        "vehicle": "Pegassi Tempesta",
+        "challenge": "Place Top 5 in LS Car Meet Series Once"
+      },
+      "time_trial": "Up Chiliad",
+      "premium_race": {
+        "name": "At the Races",
+        "class": "Off-Road"
+      },
+      "test_rides": [
+        {
+          "vehicle": "Invetero Coquette",
+          "removed": true
+        },
+        {
+          "vehicle": "Nagasaki Hot Rod Blazer",
+          "removed": true
+        },
+        {
+          "vehicle": "Western Daemon",
+          "removed": true
+        }
+      ],
+      "hsw_time_trial": "East Vinewood to Vespucci Beach",
+      "premium_test_ride": "Grotti Brioso",
+      "salvage_yard": [
+        {
+          "robbery": "The Gangbanger Robbery",
+          "vehicle": "Albany Cavalcade XL"
+        },
+        {
+          "robbery": "The Podium Robbery",
+          "vehicle": "Maibatsu Penumbra FF"
+        },
+        {
+          "robbery": "The Duggan Robbery",
+          "vehicle": "Pfister Astron"
+        }
+      ],
+      "weekly_challenge": {
+        "task": "Complete 3 Auto Shop Client Jobs",
+        "reward_cash": 100000,
+        "reward_item": null
+      },
+      "fib_priority_file": "The Black Box File",
+      "luxury_autos": [
+        "Överflöd Pipistrello",
+        "Grotti LSCM Cheetah Classic"
+      ],
+      "premium_deluxe": [
+        {
+          "vehicle": "Karin Everon RS",
+          "removed": false
+        },
+        {
+          "vehicle": "Weeny Dynasty",
+          "removed": false
+        },
+        {
+          "vehicle": "Överflöd Entity XF",
+          "removed": true
+        },
+        {
+          "vehicle": "Pegassi Esskey",
+          "removed": true
+        },
+        {
+          "vehicle": "Dinka Verus",
+          "removed": true
+        }
+      ],
+      "daily_objectives": {
+        "wednesday": "Participate in a Land Race",
+        "thursday": "Complete a Madrazo Hit",
+        "friday": "Participate in the Community Series",
+        "saturday": "Complete an Auto Shop Client Job",
+        "sunday": "Participate in a Transform Race",
+        "monday": "Sell Document Forgery product",
+        "tuesday": "Participate in the Featured Series"
+      },
+      "bonuses": [
+        {
+          "activity": "Madrazo Hits",
+          "multiplier": "3X GTA$/RP"
+        },
+        {
+          "activity": "Community Combat Series",
+          "multiplier": "3X GTA$/RP"
+        },
+        {
+          "activity": "Featured Series: Transform Races",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Document Forgery Sell Missions",
+          "multiplier": "2X GTA$"
+        },
+        {
+          "activity": "Auto Shop Client Jobs",
+          "multiplier": "2X GTA$ + Car Meet Rep",
+          "gta_plus_multiplier": "4X GTA$"
+        }
+      ],
+      "discounts": {
+        "properties": [
+          {
+            "item": "Auto Shop Properties",
+            "percent": 40
+          },
+          {
+            "item": "Auto Shop Upgrades",
+            "percent": 40
+          },
+          {
+            "item": "Document Forgery Offices",
+            "percent": 40
+          },
+          {
+            "item": "Document Forgery Upgrades",
+            "percent": 40
+          }
+        ],
+        "vehicles": [
+          {
+            "item": "Vapid Firebolt ASP",
+            "percent": 30
+          },
+          {
+            "item": "Pfister 811",
+            "percent": 30
+          },
+          {
+            "item": "Truffade Z-Type",
+            "percent": 30
+          },
+          {
+            "item": "Classique Broadway",
+            "percent": 30
+          }
+        ]
+      },
+      "gun_van": {
+        "featured_discounts": [
+          {
+            "item": "Railgun",
+            "discount": "30% off"
+          },
+          {
+            "item": "Battle Rifle",
+            "discount": "40% off GTA+"
+          }
+        ],
+        "stock": [
+          {
+            "weapon": "Railgun",
+            "discount": "30%",
+            "gta_plus_discount": "30%"
+          },
+          {
+            "weapon": "Combat Shotgun",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Battle Rifle",
+            "discount": "10%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Gusenberg Sweeper",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Carbine Rifle",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Nightstick",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Grenade",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Tear Gas",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Molotov",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          }
+        ]
+      },
+      "new_content": [
+        "Mosh Mosh livery for Karin Everon RS"
+      ],
+      "returning_content": []
+    },
+    {
+      "id": "2026-01-15",
+      "name": "Mansion Raid / Nightclub Income Week",
+      "date_start": "2026-01-15",
+      "date_end": "2026-01-22",
+      "duration_days": 7,
+      "overlay_events": [],
+      "podium_vehicle": "Declasse Impaler LX",
+      "prize_ride": {
+        "vehicle": "Grotti Itali GTO",
+        "challenge": "Place Top 2 in LS Car Meet Series 4 days in a row"
+      },
+      "time_trial": "Storm Drain",
+      "premium_race": {
+        "name": "Wiwang Park",
+        "class": "Sports"
+      },
+      "test_rides": [
+        {
+          "vehicle": "Grotti Carbonizzare",
+          "removed": true
+        },
+        {
+          "vehicle": "Grotti GT500",
+          "removed": true
+        },
+        {
+          "vehicle": "Grotti Stinger",
+          "removed": true
+        }
+      ],
+      "hsw_time_trial": "North Chumash to Palomino Highlands",
+      "premium_test_ride": "Annis Euros X32",
+      "salvage_yard": [
+        {
+          "robbery": "The McTony Robbery",
+          "vehicle": "Albany Cavalcade XL"
+        },
+        {
+          "robbery": "The Duggan Robbery",
+          "vehicle": "Mammoth Patriot Mil-Spec"
+        },
+        {
+          "robbery": "The Cargo Ship Robbery",
+          "vehicle": "Pegassi Zorrusso"
+        }
+      ],
+      "weekly_challenge": {
+        "task": "Complete one Business Battle",
+        "reward_cash": 100000,
+        "reward_item": null
+      },
+      "fib_priority_file": "The Project Breakaway File",
+      "most_wanted_targets": "GTAWEB",
+      "luxury_autos": [
+        "Grotti GT750",
+        "Übermacht Sentinel XS24"
+      ],
+      "premium_deluxe": [
+        {
+          "vehicle": "Dewbauchee Rapid GT",
+          "removed": true
+        },
+        {
+          "vehicle": "Vapid Blade",
+          "removed": true
+        },
+        {
+          "vehicle": "Canis Kalahari",
+          "removed": true
+        },
+        {
+          "vehicle": "Dundreary Landstalker XL",
+          "removed": true
+        },
+        {
+          "vehicle": "LCC Avarus",
+          "removed": true
+        }
+      ],
+      "daily_objectives": {
+        "thursday": "Complete a First Dose mission",
+        "friday": "Participate in a Freemode Challenge",
+        "saturday": "Participate in Hot Bomb",
+        "sunday": "Participate in an Air Race",
+        "monday": "Participate in a Business Battle",
+        "tuesday": "Complete a Last Dose mission",
+        "wednesday": "Participate in a Capture - GTA"
+      },
+      "bonuses": [
+        {
+          "activity": "Win a match of Mansion Raid",
+          "multiplier": "GTA$200,000 bonus (72hr)"
+        },
+        {
+          "activity": "Business Battles",
+          "multiplier": "4X GTA$/RP and Nightclub Goods"
+        },
+        {
+          "activity": "Mansion Raid",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "G's Cache",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Community Race Series",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Nightclub Daily Income",
+          "multiplier": "2X GTA$"
+        }
+      ],
+      "discounts": {
+        "properties": [
+          {
+            "item": "Nightclub Properties",
+            "percent": 40
+          },
+          {
+            "item": "Nightclub Upgrades and Modifications",
+            "percent": 40
+          }
+        ],
+        "vehicles": [
+          {
+            "item": "Cheval Taipan",
+            "percent": 30
+          },
+          {
+            "item": "Declasse Vigero ZX",
+            "percent": 30
+          },
+          {
+            "item": "Obey Omnis e-GT",
+            "percent": 30
+          },
+          {
+            "item": "Albany Cavalcade XL",
+            "percent": 30
+          },
+          {
+            "item": "Vapid Dominator FX",
+            "percent": 30
+          },
+          {
+            "item": "Rhino Tank",
+            "percent": 30
+          },
+          {
+            "item": "Karin Everon",
+            "percent": 30
+          },
+          {
+            "item": "Albany Hermes",
+            "percent": 30
+          },
+          {
+            "item": "Dashound",
+            "percent": 30
+          }
+        ]
+      },
+      "gun_van": {
+        "featured_discounts": [
+          {
+            "item": "Railgun",
+            "discount": "50% off"
+          },
+          {
+            "item": "Stun Gun",
+            "discount": "40% off GTA+"
+          }
+        ],
+        "stock": [
+          {
+            "weapon": "Stun Gun",
+            "discount": "10%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Railgun",
+            "discount": "50%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Battle Rifle",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Combat MG",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Pistol .50",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Nightstick",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Proximity Mine",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Sticky Bomb",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Pipe Bomb",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          }
+        ]
+      },
+      "new_content": [
+        "Mansion Raid Adversary Mode"
+      ],
+      "returning_content": []
+    },
+    {
+      "id": "2026-01-08",
+      "name": "Legal Fronts / Counterfeit Cash / Car Wash Week",
+      "date_start": "2026-01-08",
+      "date_end": "2026-01-15",
+      "duration_days": 7,
+      "overlay_events": [],
+      "podium_vehicle": "Übermacht Rebla GTS",
+      "prize_ride": {
+        "vehicle": "Maxwell Vagrant",
+        "challenge": "Place Top 2 in LS Car Meet Series 4 days in a row"
+      },
+      "time_trial": "Fort Zancudo",
+      "premium_race": {
+        "name": "Route 68",
+        "class": "Muscle"
+      },
+      "test_rides": [
+        {
+          "vehicle": "Dinka Jester (Racecar)",
+          "removed": true
+        },
+        {
+          "vehicle": "Enus Stafford",
+          "removed": true
+        },
+        {
+          "vehicle": "Benefactor XLS",
+          "removed": true
+        }
+      ],
+      "hsw_time_trial": "Pacific Bluffs to Mount Gordo",
+      "premium_test_ride": "Pfister Astron Custom",
+      "salvage_yard": [
+        {
+          "robbery": "The Podium Robbery",
+          "vehicle": "Dinka Blista Kanjo"
+        },
+        {
+          "robbery": "The McTony Robbery",
+          "vehicle": "Bravado Gauntlet Hellfire"
+        },
+        {
+          "robbery": "The Gangbanger Robbery",
+          "vehicle": "Överflöd Autarch"
+        }
+      ],
+      "weekly_challenge": {
+        "task": "Complete 3 Hands On Car Wash Legal Jobs",
+        "reward_cash": 100000,
+        "reward_item": null
+      },
+      "fib_priority_file": "The Fine Art File",
+      "luxury_autos": [
+        "Pfister X-Treme",
+        "Vapid FMJ MK V"
+      ],
+      "premium_deluxe": [
+        {
+          "vehicle": "Invetero Coquette BlackFin",
+          "removed": false
+        },
+        {
+          "vehicle": "Dewbauchee Exemplar",
+          "removed": false
+        },
+        {
+          "vehicle": "Vapid Retinue",
+          "removed": false
+        },
+        {
+          "vehicle": "Canis Seminole Frontier",
+          "removed": false
+        },
+        {
+          "vehicle": "Western Wolfsbane",
+          "removed": false
+        }
+      ],
+      "daily_objectives": {
+        "thursday": "Participate in a Bike Race",
+        "friday": "Participate in the Pursuit Series",
+        "saturday": "Participate in a Capture - Hold",
+        "sunday": "Participate in Hasta La Vista",
+        "monday": "Play a game of Darts",
+        "tuesday": "Complete a Project Overthrow mission",
+        "wednesday": "Complete a Contact Mission"
+      },
+      "bonuses": [
+        {
+          "activity": "HSW Race Series",
+          "multiplier": "4X GTA$/RP"
+        },
+        {
+          "activity": "Hands On Car Wash (Legal Side)",
+          "multiplier": "3X GTA$/RP"
+        },
+        {
+          "activity": "Higgins Helitours (Legal Side)",
+          "multiplier": "3X GTA$/RP"
+        },
+        {
+          "activity": "Smoke on the Water (Legal Side)",
+          "multiplier": "3X GTA$/RP"
+        },
+        {
+          "activity": "Counterfeit Cash Sell Missions (Biker + NC)",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Operation Paper Trail",
+          "multiplier": "2X GTA$/RP",
+          "gta_plus_multiplier": "4X"
+        },
+        {
+          "activity": "Featured Series: Hasta La Vista",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Community Combat Series",
+          "multiplier": "2X GTA$/RP"
+        }
+      ],
+      "discounts": {
+        "properties": [
+          {
+            "item": "Hands On Car Wash Property",
+            "percent": 100,
+            "note": "Free"
+          },
+          {
+            "item": "Counterfeit Cash Factories",
+            "percent": 40
+          },
+          {
+            "item": "Counterfeit Cash Factory Upgrades and Modifications",
+            "percent": 40
+          }
+        ],
+        "vehicles": [
+          {
+            "item": "Grotti LSCM Cheetah Classic",
+            "percent": 30
+          },
+          {
+            "item": "Western Reever",
+            "percent": 30
+          },
+          {
+            "item": "Nagasaki Buzzard Attack Chopper",
+            "percent": 30
+          },
+          {
+            "item": "HVY Chernobog",
+            "percent": 30
+          },
+          {
+            "item": "JoBuilt Hauler Custom",
+            "percent": 30
+          },
+          {
+            "item": "Dinka Sugoi",
+            "percent": 30
+          },
+          {
+            "item": "Vapid Clique Wagon",
+            "percent": 30
+          },
+          {
+            "item": "Gallivanter Baller ST",
+            "percent": 30
+          },
+          {
+            "item": "Buckingham Maverick",
+            "percent": 30
+          },
+          {
+            "item": "Prison Bus",
+            "percent": 30
+          },
+          {
+            "item": "Grotti Brioso 300",
+            "percent": 30
+          }
+        ]
+      },
+      "gun_van": {
+        "featured_discounts": [
+          {
+            "item": "Military Rifle",
+            "discount": "50% off"
+          },
+          {
+            "item": "Stun Gun",
+            "discount": "30% off GTA+"
+          }
+        ],
+        "stock": [
+          {
+            "weapon": "Stun Gun",
+            "discount": "10%",
+            "gta_plus_discount": "30%"
+          },
+          {
+            "weapon": "Service Carbine",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Military Rifle",
+            "discount": "50%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Homing Launcher",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Vintage Pistol",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Battle Axe",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Pipe Bomb",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Molotov",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Proximity Mine",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          }
+        ]
+      },
+      "new_content": [
+        "Pfister Astrale available to GTA+ subscribers"
+      ],
+      "returning_content": []
+    },
+    {
+      "id": "2025-12-18",
+      "name": "Holiday Event / Cluckin' Bell / Weed Week",
+      "date_start": "2025-12-18",
+      "date_end": "2026-01-08",
+      "duration_days": 21,
+      "overlay_events": [
+        {
+          "name": "Holiday Event",
+          "date_end": "2026-01-07",
+          "rewards": [
+            "Season's Greetings Sweater",
+            "New Year Fireworks Bodysuit",
+            "Snowball Launcher",
+            "Candy Cane",
+            "Firework Launcher with 20 Rockets",
+            "Snacks/Armor/Ammo refills"
+          ],
+          "bonuses": [
+            "Snow (Dec 23-29)",
+            "Free SuperVolito Carbon helicopter (Dec 23-29)",
+            "Rockstar Propaganda Red Festive Tree Hat (Dec 18-31)"
+          ],
+          "collectibles": []
+        },
+        {
+          "name": "Returning Holiday Content",
+          "rewards": [],
+          "bonuses": [
+            "Yeti Hunt",
+            "The Gooch",
+            "Weazel Plaza Shootout",
+            "eCola Happy Holidays Hauler",
+            "Snowball Fights",
+            "Entourage (Remix)"
+          ],
+          "collectibles": [],
+          "date_end": "2026-01-08"
+        },
+        {
+          "name": "VIP Gold Tier Rewards (through Jan 7)",
+          "rewards": [
+            "GTA$2,000,000 off Mansion Properties",
+            "Black Rockstar Varsity Crewneck"
+          ],
+          "bonuses": [],
+          "collectibles": [],
+          "date_end": "2026-01-07"
+        }
+      ],
+      "podium_vehicle": "Bollokan Envisage",
+      "prize_ride": {
+        "vehicle": "Pfister Comet Safari",
+        "challenge": "Win one race in LS Car Meet Series",
+        "note": "Limited-time Trees Camo livery"
+      },
+      "time_trial": "Great Ocean Highway Mount Gordo",
+      "premium_race": {
+        "name": "Arms Race",
+        "class": "Super"
+      },
+      "test_rides": [
+        {
+          "vehicle": "Dewbauchee Seven-70",
+          "removed": true
+        },
+        {
+          "vehicle": "Vapid Clique",
+          "removed": true
+        },
+        {
+          "vehicle": "Declasse Vamos",
+          "removed": true
+        }
+      ],
+      "hsw_time_trial": "Textile City to Stab City Ron Alternates",
+      "premium_test_ride": "Übermacht Sentinel XS",
+      "salvage_yard": [
+        {
+          "robbery": "The Gangbanger Robbery",
+          "vehicle": "Vapid Clique",
+          "note": "Merry Cliquemas livery, CLAIMABLE"
+        },
+        {
+          "robbery": "The Podium Robbery",
+          "vehicle": "Ocelot Virtue"
+        },
+        {
+          "robbery": "The Cargo Ship Robbery",
+          "vehicle": "Bravado Buffalo STX"
+        }
+      ],
+      "weekly_challenge": {
+        "task": "Rotating: Sell $100K (Dec 18-22), Win 4 Adversary Modes (Dec 23-29), Complete CB Raid as Leader (Dec 30-Jan 7)",
+        "reward_cash": 300000,
+        "reward_item": "Krampus Sweater"
+      },
+      "fib_priority_file": "The Brute Force File",
+      "luxury_autos": [
+        "Progen Luiva",
+        "Vapid FMJ MK V"
+      ],
+      "premium_deluxe": [
+        {
+          "vehicle": "Ocelot Ardent",
+          "removed": false,
+          "note": "Candy Cane livery"
+        },
+        {
+          "vehicle": "HVY Nightshark",
+          "removed": false,
+          "note": "Deck the Halls livery"
+        },
+        {
+          "vehicle": "BF Dune FAV",
+          "removed": false,
+          "note": "It's a Wrap livery"
+        },
+        {
+          "vehicle": "Pfister Comet S2 Cabrio",
+          "removed": false,
+          "note": "Santa's New Sled livery"
+        },
+        {
+          "vehicle": "Albany Alpha",
+          "removed": false
+        }
+      ],
+      "daily_objectives": {
+        "thursday": "Participate in a Non-Contact Race",
+        "friday": "Participate in VIP Work",
+        "saturday": "Play a match of Tennis",
+        "sunday": "Participate in Overtime Rumble",
+        "monday": "Participate in the Drag Race Series",
+        "tuesday": "Complete The Diamond Casino Heist Finale",
+        "wednesday": "Participate in Games Masters"
+      },
+      "bonuses": [
+        {
+          "activity": "Cluckin' Bell Finale as Leader",
+          "multiplier": "GTA$500,000 one-time bonus (72hr)"
+        },
+        {
+          "activity": "Cluckin' Bell Finale as Associate/Bodyguard",
+          "multiplier": "GTA$500,000 one-time bonus (72hr)"
+        },
+        {
+          "activity": "Weed Sell Missions (Biker + NC)",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Community Series",
+          "multiplier": "2X GTA$/RP",
+          "gta_plus_multiplier": "4X"
+        },
+        {
+          "activity": "Featured Series: Overtime Rumble",
+          "multiplier": "2X GTA$/RP"
+        }
+      ],
+      "discounts": {
+        "properties": [
+          {
+            "item": "Weed Farm Businesses",
+            "percent": 40
+          },
+          {
+            "item": "Weed Farm Business Upgrades and Modifications",
+            "percent": 40
+          }
+        ],
+        "vehicles": [
+          {
+            "item": "Annis Remus",
+            "percent": 30
+          },
+          {
+            "item": "Karin S95",
+            "percent": 30
+          },
+          {
+            "item": "Enus Deity",
+            "percent": 30
+          },
+          {
+            "item": "Sea Sparrow",
+            "percent": 30
+          },
+          {
+            "item": "Dinka RT3000",
+            "percent": 30
+          },
+          {
+            "item": "Declasse Walton L35",
+            "percent": 30
+          },
+          {
+            "item": "Pegassi Reaper",
+            "percent": 30
+          },
+          {
+            "item": "Albany Brigham",
+            "percent": 30
+          },
+          {
+            "item": "Progen Itali GTB",
+            "percent": 30
+          },
+          {
+            "item": "HVY Insurgent",
+            "percent": 30
+          }
+        ]
+      },
+      "gun_van": {
+        "featured_discounts": [
+          {
+            "item": "Service Carbine",
+            "discount": "40% off"
+          },
+          {
+            "item": "Stun Gun",
+            "discount": "40% off GTA+"
+          }
+        ],
+        "stock": [
+          {
+            "weapon": "Stun Gun",
+            "discount": "10%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Service Carbine",
+            "discount": "40%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Combat Shotgun",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Compact Grenade Launcher",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Vintage Pistol",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Up-n-Atomizer",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Unholy Hellbringer",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Railgun",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "El Strickler",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Grenade",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          }
+        ]
+      },
+      "new_content": [],
+      "returning_content": []
+    },
+    {
+      "id": "2025-12-10",
+      "name": "Safehouse in the Hills DLC / Meth / Hotring Week",
+      "date_start": "2025-12-10",
+      "date_end": "2025-12-18",
+      "duration_days": 8,
+      "overlay_events": [],
+      "podium_vehicle": "Ubermacht SC1",
+      "prize_ride": {
+        "vehicle": "Overflod Entity XXR",
+        "challenge": "Place top 3 for 2 days in a row in LS Car Meet Series"
+      },
+      "time_trial": "Observatory",
+      "premium_race": {
+        "name": "Across the Wilderness",
+        "class": "Off-Road"
+      },
+      "test_rides": [
+        {
+          "vehicle": "Dewbauchee JB 700",
+          "removed": false
+        },
+        {
+          "vehicle": "Dewbauchee Rapid GT",
+          "removed": false
+        },
+        {
+          "vehicle": "Benefactor Surano",
+          "removed": false
+        }
+      ],
+      "hsw_time_trial": "Sandy Shores",
+      "premium_test_ride": "Weeny Issi Rally",
+      "salvage_yard": [
+        {
+          "robbery": "The Cargo Ship Robbery",
+          "vehicle": "Ubermacht Sentinel Classic"
+        },
+        {
+          "robbery": "The Duggan Robbery",
+          "vehicle": "Lampadati Viseris"
+        },
+        {
+          "robbery": "The McTony Robbery",
+          "vehicle": "Enus Deity"
+        }
+      ],
+      "weekly_challenge": {
+        "task": "Complete the KnoWay Out Finale as Leader",
+        "reward_cash": 400000,
+        "reward_item": null
+      },
+      "fib_priority_file": "The Black Box File",
+      "luxury_autos": [
+        "Übermacht Sentinel XS4",
+        "Pfister X-Treme"
+      ],
+      "premium_deluxe": [
+        {
+          "vehicle": "Vapid Hustler",
+          "removed": false
+        },
+        {
+          "vehicle": "Western Rat Bike",
+          "removed": false
+        },
+        {
+          "vehicle": "Dewbauchee Rapid GT Classic",
+          "removed": false
+        },
+        {
+          "vehicle": "Dinka Enduro",
+          "removed": false
+        },
+        {
+          "vehicle": "Ocelot Locust",
+          "removed": false
+        }
+      ],
+      "daily_objectives": {
+        "wednesday": "Participate in a Freemode Event",
+        "thursday": "Participate in the Featured Series",
+        "friday": "Play a round of Golf",
+        "saturday": "Participate in the Community Series",
+        "sunday": "Participate in a Land Race"
+      },
+      "bonuses": [
+        {
+          "activity": "Hotring Races",
+          "multiplier": "3X GTA$/RP"
+        },
+        {
+          "activity": "Meth Sell Missions (Biker + NC)",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Community Series",
+          "multiplier": "2X GTA$/RP",
+          "gta_plus_multiplier": "4X"
+        },
+        {
+          "activity": "Best in Snow",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "CHRISTMAS CRISSCROSS",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Christmas Karts",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Reservoir Ice Race 2",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Issi Winter Sports",
+          "multiplier": "2X GTA$/RP"
+        }
+      ],
+      "discounts": {
+        "properties": [
+          {
+            "item": "MC Meth Businesses (+ Upgrades)",
+            "percent": 40
+          }
+        ],
+        "vehicles": [
+          {
+            "item": "Pfister Astron",
+            "percent": 30
+          },
+          {
+            "item": "Schyster Deviant",
+            "percent": 30
+          },
+          {
+            "item": "Progen GP1",
+            "percent": 30
+          },
+          {
+            "item": "Grotti Turismo Omaggio",
+            "percent": 30
+          },
+          {
+            "item": "Canis Castigator",
+            "percent": 30
+          },
+          {
+            "item": "Vapid Dominator GTT",
+            "percent": 30
+          },
+          {
+            "item": "Pegassi Osiris",
+            "percent": 30
+          },
+          {
+            "item": "Pfister Comet Safari",
+            "percent": 30
+          },
+          {
+            "item": "Vapid Ellie",
+            "percent": 30
+          },
+          {
+            "item": "Vapid Trophy Truck",
+            "percent": 30
+          }
+        ]
+      },
+      "gun_van": {
+        "featured_discounts": [
+          {
+            "item": "Combat Shotgun",
+            "discount": "50% off"
+          },
+          {
+            "item": "Compact EMP Launcher",
+            "discount": "40% off GTA+"
+          }
+        ],
+        "stock": [
+          {
+            "weapon": "Combat Shotgun",
+            "discount": "50%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Compact EMP Launcher",
+            "discount": "10%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Tactical SMG",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Marksman Rifle",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Pump Shotgun",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Widowmaker",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Molotov",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Sticky Bomb",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Tear Gas",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          }
+        ]
+      },
+      "new_content": [
+        "A Safehouse In The Hills DLC"
+      ],
+      "returning_content": []
+    },
+    {
+      "id": "2025-12-04",
+      "name": "Pre-DLC Extension / Yacht 5X + FIB 4X / VIP Finale",
+      "date_start": "2025-12-04",
+      "date_end": "2025-12-10",
+      "duration_days": 6,
+      "overlay_events": [
+        {
+          "name": "VIP Program",
+          "date_end": "2025-12-08",
+          "rewards": [
+            "Free Übermacht Revolter (Sessanta Nove livery)",
+            "Santo Capra Cap",
+            "Black Santo Capra Ornate Tee",
+            "Black Santo Capra Ornate Mini Dress",
+            "Black Santo Capra Coin Pool Sliders"
+          ],
+          "bonuses": [],
+          "collectibles": []
+        },
+        {
+          "name": "VIP Gold Tier",
+          "date_end": "2025-12-08",
+          "rewards": [
+            "GTA$2,000,000 off Prix Luxury Real Estate",
+            "GTA$1,000,000 cash bonus",
+            "Rockstar Varsity Crew Neck Sweater"
+          ],
+          "bonuses": [],
+          "collectibles": []
+        }
+      ],
+      "podium_vehicle": "Annis S80RR",
+      "prize_ride": {
+        "vehicle": "Annis Euros",
+        "challenge": "Place Top 2 in LS Car Meet Series for 3 days in a row"
+      },
+      "time_trial": "Del Perro Pier",
+      "premium_race": {
+        "name": "Congestion Charge",
+        "class": "Super"
+      },
+      "test_rides": [
+        {
+          "vehicle": "Ocelot Lynx",
+          "removed": true
+        },
+        {
+          "vehicle": "Lampadati Michelli GT",
+          "removed": true
+        },
+        {
+          "vehicle": "Karin 190z",
+          "removed": true
+        }
+      ],
+      "hsw_time_trial": "Del Perro Pier",
+      "premium_test_ride": "Bravado Buffalo EVX",
+      "salvage_yard": [
+        {
+          "robbery": "The Gangbanger Robbery",
+          "vehicle": "Grotti Stinger GT"
+        },
+        {
+          "robbery": "The Duggan Robbery",
+          "vehicle": "Dinka Jester RR"
+        },
+        {
+          "robbery": "The Cargo Ship Robbery",
+          "vehicle": "Ocelot Jugular"
+        }
+      ],
+      "weekly_challenge": {
+        "task": "Complete 2 FIB Files",
+        "reward_cash": 0,
+        "reward_item": ""
+      },
+      "fib_priority_file": "The Fine Art File",
+      "luxury_autos": [
+        "Übermacht Revolter (Sessanta Nove livery)",
+        "Bravado Banshee GTS"
+      ],
+      "premium_deluxe": [
+        {
+          "vehicle": "Dewbauchee Champion",
+          "removed": false
+        },
+        {
+          "vehicle": "Benefactor LM87",
+          "removed": false
+        },
+        {
+          "vehicle": "Pegassi Tezeract",
+          "removed": false
+        },
+        {
+          "vehicle": "Pegassi Ignus",
+          "removed": false
+        },
+        {
+          "vehicle": "Progen Emerus",
+          "removed": false
+        }
+      ],
+      "daily_objectives": {
+        "thursday": "Complete a Last Dose mission",
+        "friday": "Participate in Deadline",
+        "saturday": "Participate in an Air Race",
+        "sunday": "Participate in the Featured Series",
+        "monday": "Participate in the Drag Race Series",
+        "tuesday": "Participate in a Sea Race",
+        "wednesday": "Participate in the Community Series"
+      },
+      "bonuses": [
+        {
+          "activity": "A Superyacht Life Missions",
+          "multiplier": "5X GTA$/RP"
+        },
+        {
+          "activity": "FIB Priority File",
+          "multiplier": "4X GTA$"
+        },
+        {
+          "activity": "Community Combat Series",
+          "multiplier": "3X GTA$/RP"
+        },
+        {
+          "activity": "New Listings Missions",
+          "multiplier": "2X GTA$/RP",
+          "gta_plus_multiplier": "4X",
+          "note": "Missions removed Dec 8"
+        },
+        {
+          "activity": "Shipwrecks",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Featured Series: Deadline",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Login Reward",
+          "multiplier": "Pluck Me Sweater"
+        }
+      ],
+      "discounts": {
+        "properties": [
+          {
+            "item": "Galaxy Super Yachts",
+            "percent": 40
+          },
+          {
+            "item": "Galaxy Super Yacht Modifications",
+            "percent": 40
+          },
+          {
+            "item": "Free Yacht Upgrade to Aquarius",
+            "percent": 100,
+            "note": "Orion/Pisces owners, small fee on PC"
+          }
+        ],
+        "vehicles": [
+          {
+            "item": "Benefactor LM87",
+            "percent": 30
+          },
+          {
+            "item": "Progen Emerus",
+            "percent": 30
+          },
+          {
+            "item": "Progen Tyrus",
+            "percent": 30
+          },
+          {
+            "item": "Överflöd Tyrant",
+            "percent": 30
+          },
+          {
+            "item": "Ocelot XA-21",
+            "percent": 30
+          },
+          {
+            "item": "Declasse Granger 3600LX",
+            "percent": 30
+          },
+          {
+            "item": "Bravado Banshee GTS",
+            "percent": 30
+          },
+          {
+            "item": "Übermacht Niobe",
+            "percent": 30
+          },
+          {
+            "item": "Vysser Neo",
+            "percent": 30
+          },
+          {
+            "item": "Vapid Caracara",
+            "percent": 30
+          },
+          {
+            "item": "Lampadati Cinquemila",
+            "percent": 30
+          },
+          {
+            "item": "Lampadati Komoda",
+            "percent": 30
+          },
+          {
+            "item": "Annis ZR350",
+            "percent": 30
+          },
+          {
+            "item": "Coil Raiden",
+            "percent": 30
+          },
+          {
+            "item": "Karin Technical",
+            "percent": 30
+          },
+          {
+            "item": "Übermacht Zion Classic",
+            "percent": 30
+          }
+        ]
+      },
+      "gun_van": {
+        "featured_discounts": [
+          {
+            "item": "Compact EMP Launcher",
+            "discount": "50% off"
+          },
+          {
+            "item": "Railgun",
+            "discount": "50% off GTA+"
+          }
+        ],
+        "stock": [
+          {
+            "weapon": "Railgun",
+            "discount": "30%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Compact EMP Launcher",
+            "discount": "50%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Battle Rifle",
+            "discount": "30%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Heavy Rifle",
+            "discount": "30%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Precision Rifle",
+            "discount": "30%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Widowmaker",
+            "discount": "30%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Up-n-Atomizer",
+            "discount": "30%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Baseball Bat",
+            "discount": "Free",
+            "gta_plus_discount": "Free"
+          },
+          {
+            "weapon": "Sticky Bomb",
+            "discount": "30%",
+            "gta_plus_discount": "40%"
+          }
+        ]
+      },
+      "new_content": [],
+      "returning_content": []
+    },
+    {
+      "id": "2025-11-27",
+      "name": "Black Friday / Yacht 5X / VIP Program",
+      "date_start": "2025-11-27",
+      "date_end": "2025-12-04",
+      "duration_days": 7,
+      "overlay_events": [
+        {
+          "name": "VIP Program",
+          "date_end": "2025-12-07",
+          "rewards": [
+            "Free Übermacht Revolter (Sessanta Nove livery)",
+            "Santo Capra Cap",
+            "Black Santo Capra Ornate Tee",
+            "Black Santo Capra Ornate Mini Dress",
+            "Black Santo Capra Coin Pool Sliders"
+          ],
+          "bonuses": [],
+          "collectibles": []
+        },
+        {
+          "name": "VIP Gold Tier",
+          "date_end": "2025-12-07",
+          "rewards": [
+            "GTA$2,000,000 off Prix Luxury Real Estate",
+            "GTA$1,000,000 cash bonus",
+            "Rockstar Varsity Crew Neck Sweater"
+          ],
+          "bonuses": [],
+          "collectibles": []
+        },
+        {
+          "name": "Black Friday (through Dec 3)",
+          "rewards": [],
+          "bonuses": [],
+          "collectibles": [],
+          "date_end": "2025-12-03"
+        }
+      ],
+      "podium_vehicle": "Annis S80RR",
+      "prize_ride": {
+        "vehicle": "Annis Euros",
+        "challenge": "Place Top 2 in LS Car Meet Series for 3 days in a row"
+      },
+      "time_trial": "Del Perro Pier",
+      "premium_race": {
+        "name": "Congestion Charge",
+        "class": "Super"
+      },
+      "test_rides": [
+        {
+          "vehicle": "Ocelot Lynx",
+          "removed": true
+        },
+        {
+          "vehicle": "Lampadati Michelli GT",
+          "removed": true
+        },
+        {
+          "vehicle": "Karin 190z",
+          "removed": true
+        }
+      ],
+      "hsw_time_trial": "Del Perro Pier",
+      "premium_test_ride": "Bravado Buffalo EVX",
+      "salvage_yard": [
+        {
+          "robbery": "The Gangbanger Robbery",
+          "vehicle": "Grotti Stinger GT"
+        },
+        {
+          "robbery": "The Duggan Robbery",
+          "vehicle": "Dinka Jester RR"
+        },
+        {
+          "robbery": "The Cargo Ship Robbery",
+          "vehicle": "Ocelot Jugular"
+        }
+      ],
+      "weekly_challenge": {
+        "task": "Complete three A Superyacht Life Missions",
+        "reward_cash": 100000,
+        "reward_item": "Vibrant Check Smoking Jacket"
+      },
+      "fib_priority_file": "The Fine Art File",
+      "luxury_autos": [
+        "Übermacht Revolter",
+        "Bravado Banshee GTS"
+      ],
+      "premium_deluxe": [
+        {
+          "vehicle": "Dewbauchee Champion",
+          "removed": false
+        },
+        {
+          "vehicle": "Benefactor LM87",
+          "removed": false
+        },
+        {
+          "vehicle": "Pegassi Tezeract",
+          "removed": false
+        },
+        {
+          "vehicle": "Pegassi Ignus",
+          "removed": false
+        },
+        {
+          "vehicle": "Progen Emerus",
+          "removed": false
+        }
+      ],
+      "daily_objectives": {
+        "thursday": "Complete a Last Dose mission",
+        "friday": "Participate in Deadline",
+        "saturday": "Participate in an Air Race",
+        "sunday": "Participate in the Featured Series",
+        "monday": "Participate in the Drag Race Series",
+        "tuesday": "Participate in a Sea Race",
+        "wednesday": "Participate in the Community Series"
+      },
+      "bonuses": [
+        {
+          "activity": "Pluck Me Sweater",
+          "multiplier": "Free login reward"
+        },
+        {
+          "activity": "A Superyacht Life Missions",
+          "multiplier": "5X GTA$/RP"
+        },
+        {
+          "activity": "FIB Priority File",
+          "multiplier": "4X GTA$"
+        },
+        {
+          "activity": "Community Combat Series",
+          "multiplier": "3X GTA$/RP"
+        },
+        {
+          "activity": "New Listings Missions",
+          "multiplier": "2X GTA$/RP",
+          "gta_plus_multiplier": "4X"
+        },
+        {
+          "activity": "Shipwrecks",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Featured Series: Deadline",
+          "multiplier": "2X GTA$/RP"
+        }
+      ],
+      "discounts": {
+        "properties": [
+          {
+            "item": "Galaxy Super Yachts",
+            "percent": 40
+          },
+          {
+            "item": "Galaxy Super Yacht Modifications",
+            "percent": 40
+          },
+          {
+            "item": "Aquarius upgrade from Orion/Pisces",
+            "percent": 100,
+            "note": "Free (small fee PC)"
+          }
+        ],
+        "vehicles": [
+          {
+            "item": "Benefactor LM87",
+            "percent": 30
+          },
+          {
+            "item": "Progen Emerus",
+            "percent": 30
+          },
+          {
+            "item": "Progen Tyrus",
+            "percent": 30
+          },
+          {
+            "item": "Överflöd Tyrant",
+            "percent": 30
+          },
+          {
+            "item": "Ocelot XA-21",
+            "percent": 30
+          },
+          {
+            "item": "Declasse Granger 3600LX",
+            "percent": 30
+          },
+          {
+            "item": "Bravado Banshee GTS",
+            "percent": 30
+          },
+          {
+            "item": "Übermacht Niobe",
+            "percent": 30
+          },
+          {
+            "item": "Vysser Neo",
+            "percent": 30
+          },
+          {
+            "item": "Vapid Caracara",
+            "percent": 30
+          },
+          {
+            "item": "Lampadati Cinquemila",
+            "percent": 30
+          },
+          {
+            "item": "Lampadati Komoda",
+            "percent": 30
+          },
+          {
+            "item": "Annis ZR350",
+            "percent": 30
+          },
+          {
+            "item": "Coil Raiden",
+            "percent": 30
+          },
+          {
+            "item": "Karin Technical",
+            "percent": 30
+          },
+          {
+            "item": "Übermacht Zion Classic",
+            "percent": 30
+          }
+        ],
+        "black_friday": [
+          {
+            "item": "Mammoth Avenger",
+            "percent": 70
+          },
+          {
+            "item": "Mammoth Avenger Upgrades and Modifications",
+            "percent": 70
+          },
+          {
+            "item": "Benefactor Terrorbyte",
+            "percent": 50
+          },
+          {
+            "item": "Benefactor Terrorbyte Upgrades and Modifications",
+            "percent": 50
+          },
+          {
+            "item": "Eclipse Blvd Garage",
+            "percent": 50
+          },
+          {
+            "item": "Garment Factory",
+            "percent": 50
+          },
+          {
+            "item": "Nightclubs",
+            "percent": 50
+          },
+          {
+            "item": "Nightclub Upgrades and Modifications",
+            "percent": 50
+          },
+          {
+            "item": "Hangars",
+            "percent": 50
+          },
+          {
+            "item": "Hangar Upgrades and Modifications",
+            "percent": 50
+          },
+          {
+            "item": "McKenzie Field Hangar",
+            "percent": 50
+          },
+          {
+            "item": "Hands On Car Wash",
+            "percent": 50
+          },
+          {
+            "item": "Higgins Helitours",
+            "percent": 50
+          },
+          {
+            "item": "Smoke on the Water",
+            "percent": 50
+          },
+          {
+            "item": "High-End Apartments",
+            "percent": 50
+          },
+          {
+            "item": "Mammoth F-160 Raiju",
+            "percent": 40
+          },
+          {
+            "item": "Imponte Deluxo",
+            "percent": 40
+          },
+          {
+            "item": "Pegassi Toreador",
+            "percent": 40
+          },
+          {
+            "item": "Mammoth Hydra",
+            "percent": 40
+          },
+          {
+            "item": "TM-02 Khanjali",
+            "percent": 40
+          },
+          {
+            "item": "B-11 Strikeforce",
+            "percent": 40
+          },
+          {
+            "item": "Dewbauchee Champion",
+            "percent": 40
+          },
+          {
+            "item": "Pegassi Tezeract",
+            "percent": 40
+          },
+          {
+            "item": "Pegassi Ignus",
+            "percent": 40
+          },
+          {
+            "item": "Declasse Vigero ZX Convertible",
+            "percent": 40
+          },
+          {
+            "item": "Bravado Buffalo STX",
+            "percent": 40
+          },
+          {
+            "item": "Buckingham Swift Deluxe",
+            "percent": 40
+          },
+          {
+            "item": "Buckingham Luxor",
+            "percent": 40
+          }
+        ]
+      },
+      "gun_van": {
+        "featured_discounts": [
+          {
+            "item": "Compact EMP Launcher",
+            "discount": "50% off"
+          },
+          {
+            "item": "Railgun",
+            "discount": "50% off GTA+"
+          }
+        ],
+        "stock": [
+          {
+            "weapon": "Railgun",
+            "discount": "30%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Compact EMP Launcher",
+            "discount": "50%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Battle Rifle",
+            "discount": "30%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Heavy Rifle",
+            "discount": "30%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Precision Rifle",
+            "discount": "30%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Widowmaker",
+            "discount": "30%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Up-n-Atomizer",
+            "discount": "30%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Baseball Bat",
+            "discount": "Free",
+            "gta_plus_discount": "Free"
+          },
+          {
+            "weapon": "Sticky Bomb",
+            "discount": "30%",
+            "gta_plus_discount": "40%"
+          }
+        ]
+      },
+      "new_content": [],
+      "returning_content": []
+    },
+    {
+      "id": "2025-11-20",
+      "name": "Casino Heist / New Listings / Open Wheel Week",
+      "date_start": "2025-11-20",
+      "date_end": "2025-11-27",
+      "duration_days": 7,
+      "overlay_events": [
+        {
+          "name": "VIP Program",
+          "date_end": "2025-12-07",
+          "rewards": [
+            "Free Übermacht Revolter (Sessanta Nove livery)",
+            "Santo Capra Cap",
+            "Black Santo Capra Ornate Tee",
+            "Black Santo Capra Ornate Mini Dress",
+            "Black Santo Capra Coin Pool Sliders"
+          ],
+          "bonuses": [],
+          "collectibles": []
+        },
+        {
+          "name": "VIP Gold Tier",
+          "date_end": "2025-12-07",
+          "rewards": [
+            "GTA$2,000,000 off Prix Luxury Real Estate",
+            "GTA$1,000,000 cash bonus",
+            "Rockstar Varsity Crew Neck Sweater"
+          ],
+          "bonuses": [],
+          "collectibles": []
+        }
+      ],
+      "podium_vehicle": "Dinka Jester Classic",
+      "prize_ride": {
+        "vehicle": "Gallivanter Baller ST",
+        "challenge": "Place Top 4 in LS Car Meet Series for 2 days in a row"
+      },
+      "time_trial": "El Burro Heights",
+      "premium_race": {
+        "name": "Eight Figure Bonus",
+        "class": "Sports Classic"
+      },
+      "test_rides": [
+        {
+          "vehicle": "Western Zombie Bobber",
+          "removed": true
+        },
+        {
+          "vehicle": "Weeny Dynasty",
+          "removed": true
+        },
+        {
+          "vehicle": "Nagasaki Hot Rod Blazer",
+          "removed": true
+        }
+      ],
+      "hsw_time_trial": "East Vinewood to Vespucci Beach",
+      "premium_test_ride": "Principe Deveste Eight",
+      "salvage_yard": [
+        {
+          "robbery": "The Podium Robbery",
+          "vehicle": "Dinka Sugoi"
+        },
+        {
+          "robbery": "The McTony Robbery",
+          "vehicle": "Gallivanter Baller ST-D"
+        },
+        {
+          "robbery": "The Duggan Robbery",
+          "vehicle": "Enus Jubilee"
+        }
+      ],
+      "weekly_challenge": {
+        "task": "Complete The Diamond Casino Heist two times",
+        "reward_cash": 100000,
+        "reward_item": "The Diamond Strike Vest"
+      },
+      "fib_priority_file": "The Black Box File",
+      "luxury_autos": [
+        "Übermacht Revolter",
+        "Karin Everon RS"
+      ],
+      "premium_deluxe": [
+        {
+          "vehicle": "Lampadati Furore GT",
+          "removed": true
+        },
+        {
+          "vehicle": "Western Cliffhanger",
+          "removed": true
+        },
+        {
+          "vehicle": "Bravado Verlierer",
+          "removed": true
+        },
+        {
+          "vehicle": "Hijak Ruston",
+          "removed": true
+        },
+        {
+          "vehicle": "LCC Innovation",
+          "removed": true
+        }
+      ],
+      "daily_objectives": {
+        "thursday": "Participate in a Land Race",
+        "friday": "Play a game of Darts",
+        "saturday": "Complete a Diamond Casino Heist Prep",
+        "sunday": "Participate in the Community Series",
+        "monday": "Complete The Diamond Casino Heist Finale",
+        "tuesday": "Participate in a King of the Hill",
+        "wednesday": "Complete a First Dose mission"
+      },
+      "bonuses": [
+        {
+          "activity": "Open Wheel Races",
+          "multiplier": "3X GTA$/RP"
+        },
+        {
+          "activity": "New Listings Missions",
+          "multiplier": "2X GTA$/RP",
+          "gta_plus_multiplier": "4X"
+        },
+        {
+          "activity": "The Diamond Casino Heist Finale",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Casino Story Missions",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Casino Work",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Community Race Series",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Casino Daily Visitor Chips",
+          "multiplier": "2X"
+        },
+        {
+          "activity": "GTA+ Diamond Casino Heist",
+          "multiplier": "Guaranteed Diamonds in vault",
+          "note": "GTA+ only"
+        }
+      ],
+      "discounts": {
+        "properties": [
+          {
+            "item": "Casino Master Penthouse",
+            "percent": 100,
+            "note": "Free"
+          },
+          {
+            "item": "Casino Master Penthouse Party Package",
+            "percent": 100,
+            "note": "Free for GTA+"
+          },
+          {
+            "item": "Arcade Properties",
+            "percent": 30
+          },
+          {
+            "item": "Arcade Upgrades and Modifications",
+            "percent": 30
+          }
+        ],
+        "vehicles": [
+          {
+            "item": "RUNE Zhaba",
+            "percent": 30
+          },
+          {
+            "item": "Invade and Persuade Tank",
+            "percent": 30
+          },
+          {
+            "item": "Maxwell Vagrant",
+            "percent": 30
+          },
+          {
+            "item": "Karin Sultan Classic",
+            "percent": 30
+          },
+          {
+            "item": "Dinka Blista Kanjo",
+            "percent": 30
+          },
+          {
+            "item": "HVY Insurgent Pick-Up",
+            "percent": 30
+          },
+          {
+            "item": "Karin Sultan RS Classic",
+            "percent": 30
+          },
+          {
+            "item": "Imponte Arbiter GT",
+            "percent": 30,
+            "note": "PS5/XBX/PCE only"
+          },
+          {
+            "item": "Maibatsu Penumbra FF",
+            "percent": 30
+          },
+          {
+            "item": "Albany V-STR",
+            "percent": 30
+          },
+          {
+            "item": "Vulcar Warrener HKR",
+            "percent": 30
+          },
+          {
+            "item": "Declasse Mamba",
+            "percent": 30
+          },
+          {
+            "item": "Lampadati Tropos Rallye",
+            "percent": 30
+          },
+          {
+            "item": "Dinka Vindicator",
+            "percent": 30
+          },
+          {
+            "item": "BF Surfer Custom",
+            "percent": 30
+          }
+        ]
+      },
+      "gun_van": {
+        "featured_discounts": [
+          {
+            "item": "Heavy Rifle",
+            "discount": "50% off"
+          },
+          {
+            "item": "Military Rifle",
+            "discount": "30% off GTA+"
+          }
+        ],
+        "stock": [
+          {
+            "weapon": "Military Rifle",
+            "discount": "10%",
+            "gta_plus_discount": "30%"
+          },
+          {
+            "weapon": "Battle Rifle",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Heavy Rifle",
+            "discount": "50%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Marksman Rifle",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "MG",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Nightstick",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Baseball Bat",
+            "discount": "Free",
+            "gta_plus_discount": "Free"
+          },
+          {
+            "weapon": "Pipe Bomb",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Proximity Mine",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Sticky Bomb",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          }
+        ]
+      },
+      "new_content": [],
+      "returning_content": [
+        "Open Wheel Races"
+      ]
+    },
+    {
+      "id": "2025-11-13",
+      "name": "New Listings Launch / Vehicle Cargo / CEO Week",
+      "date_start": "2025-11-13",
+      "date_end": "2025-11-20",
+      "duration_days": 7,
+      "overlay_events": [
+        {
+          "name": "VIP Program",
+          "date_end": "2025-12-07",
+          "rewards": [
+            "Free Übermacht Revolter (Sessanta Nove livery)",
+            "Santo Capra Cap",
+            "Black Santo Capra Ornate Tee",
+            "Black Santo Capra Ornate Mini Dress",
+            "Black Santo Capra Coin Pool Sliders"
+          ],
+          "bonuses": [],
+          "collectibles": []
+        },
+        {
+          "name": "VIP Gold Tier",
+          "date_end": "2025-12-07",
+          "rewards": [
+            "GTA$2,000,000 off Prix Luxury Real Estate",
+            "GTA$1,000,000 cash bonus",
+            "Rockstar Varsity Crew Neck Sweater"
+          ],
+          "bonuses": [],
+          "collectibles": []
+        }
+      ],
+      "podium_vehicle": "Declasse Tahoma Coupe",
+      "prize_ride": {
+        "vehicle": "Annis RE-7B",
+        "challenge": "Place Top 2 in LS Car Meet Series"
+      },
+      "time_trial": "Lake Vinewood Estate",
+      "premium_race": {
+        "name": "Downtown Underground",
+        "class": "Super"
+      },
+      "test_rides": [
+        {
+          "vehicle": "Enus Cognoscenti",
+          "removed": true
+        },
+        {
+          "vehicle": "Enus Super Diamond",
+          "removed": true
+        },
+        {
+          "vehicle": "Vulcar Warrener",
+          "removed": true
+        }
+      ],
+      "hsw_time_trial": "North Chumash to Palomino Highlands",
+      "premium_test_ride": "Benefactor Stirling GT",
+      "salvage_yard": [
+        {
+          "robbery": "The Duggan Robbery",
+          "vehicle": "Vysser Neo"
+        },
+        {
+          "robbery": "The Cargo Ship Robbery",
+          "vehicle": "Hijak Ruston"
+        },
+        {
+          "robbery": "The Podium Robbery",
+          "vehicle": "Karin Previon"
+        }
+      ],
+      "weekly_challenge": {
+        "task": "Complete three VIP Work Missions",
+        "reward_cash": 100000,
+        "reward_item": "LS Smoking Jacket"
+      },
+      "fib_priority_file": "The Fine Art File",
+      "luxury_autos": [
+        "Übermacht Sentinel GTS",
+        "Übermacht Revolter"
+      ],
+      "premium_deluxe": [
+        {
+          "vehicle": "Vapid Riata",
+          "removed": true
+        },
+        {
+          "vehicle": "Pegassi Esskey",
+          "removed": true
+        },
+        {
+          "vehicle": "BF Bifta",
+          "removed": true
+        },
+        {
+          "vehicle": "Dinka Jester",
+          "removed": true
+        },
+        {
+          "vehicle": "Coil Brawler",
+          "removed": true
+        }
+      ],
+      "daily_objectives": {
+        "thursday": "Participate in the Featured Series",
+        "friday": "Complete a Special Vehicle Work",
+        "saturday": "Participate in a Bike Race",
+        "sunday": "Participate in a Freemode Challenge",
+        "monday": "Participate in the Community Series",
+        "tuesday": "Participate in VIP Work",
+        "wednesday": "Participate in the Drag Race Series"
+      },
+      "bonuses": [
+        {
+          "activity": "VIP Work and Challenges",
+          "multiplier": "3X GTA$/RP"
+        },
+        {
+          "activity": "Associate and Bodyguard Salaries",
+          "multiplier": "3X"
+        },
+        {
+          "activity": "New Listings Missions",
+          "multiplier": "2X GTA$/RP",
+          "gta_plus_multiplier": "4X"
+        },
+        {
+          "activity": "Vehicle Cargo Sell Missions",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Special Vehicle Work",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Random Transform Races",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Community Combat Series",
+          "multiplier": "2X GTA$/RP"
+        }
+      ],
+      "discounts": {
+        "properties": [
+          {
+            "item": "Lombank West Executive Office",
+            "percent": 100,
+            "note": "Free"
+          },
+          {
+            "item": "Executive Office Properties",
+            "percent": 50
+          },
+          {
+            "item": "Executive Office Garages",
+            "percent": 50
+          },
+          {
+            "item": "Executive Office Upgrades and Modifications",
+            "percent": 50
+          }
+        ],
+        "vehicles": [
+          {
+            "item": "Imponte Nightshade",
+            "percent": 50
+          },
+          {
+            "item": "Benefactor Schafter LWB (Armored)",
+            "percent": 50
+          },
+          {
+            "item": "Benefactor Schafter LWB",
+            "percent": 50
+          },
+          {
+            "item": "Benefactor Schafter V12 (Armored)",
+            "percent": 50
+          },
+          {
+            "item": "Benefactor Schafter V12",
+            "percent": 50
+          },
+          {
+            "item": "Enus Cognoscenti 55 (Armored)",
+            "percent": 50
+          },
+          {
+            "item": "Enus Cognoscenti 55",
+            "percent": 50
+          },
+          {
+            "item": "Gallivanter Baller LE (Armored)",
+            "percent": 50
+          },
+          {
+            "item": "Lampadati Corsita",
+            "percent": 30
+          },
+          {
+            "item": "Karin Hotring Everon",
+            "percent": 30
+          },
+          {
+            "item": "Pfister Growler",
+            "percent": 30
+          },
+          {
+            "item": "Buckingham Vestra",
+            "percent": 30
+          },
+          {
+            "item": "Pegassi Monroe",
+            "percent": 30
+          },
+          {
+            "item": "Dinka Marquis",
+            "percent": 30
+          },
+          {
+            "item": "Maxwell Asbo",
+            "percent": 30
+          },
+          {
+            "item": "Declasse Tampa",
+            "percent": 30
+          }
+        ]
+      },
+      "gun_van": {
+        "featured_discounts": [
+          {
+            "item": "Compact EMP Launcher",
+            "discount": "50% off"
+          },
+          {
+            "item": "Tactical SMG",
+            "discount": "40% off GTA+"
+          }
+        ],
+        "stock": [
+          {
+            "weapon": "Compact EMP Launcher",
+            "discount": "50%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Tactical SMG",
+            "discount": "10%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Service Carbine",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Double Barrel Shotgun",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Micro SMG",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Machete",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Baseball Bat",
+            "discount": "Free",
+            "gta_plus_discount": "Free"
+          },
+          {
+            "weapon": "Proximity Mine",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Pipe Bomb",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Tear Gas",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          }
+        ]
+      },
+      "new_content": [
+        "New Listings Missions",
+        "Cel Shaded livery for Übermacht Sentinel GTS"
+      ],
+      "returning_content": [
+        "Known Unknowns",
+        "Unknown Unknowns"
+      ]
+    },
+    {
+      "id": "2025-11-06",
+      "name": "Cayo Perico Panther / Kosatka Week",
+      "date_start": "2025-11-06",
+      "date_end": "2025-11-13",
+      "duration_days": 7,
+      "overlay_events": [],
+      "podium_vehicle": "Mammoth Squaddie",
+      "prize_ride": {
+        "vehicle": "Canis Terminus",
+        "challenge": "Place Top 2 in LS Car Meet Series for 4 days in a row"
+      },
+      "time_trial": "Elysian Island II",
+      "premium_race": {
+        "name": "Boots on the Ground",
+        "class": "Motorcycle"
+      },
+      "test_rides": [
+        {
+          "vehicle": "Canis Kalahari",
+          "removed": true
+        },
+        {
+          "vehicle": "Coil Voltic",
+          "removed": true
+        },
+        {
+          "vehicle": "Dinka Verus",
+          "removed": true
+        }
+      ],
+      "hsw_time_trial": "Pacific Bluffs to Mount Gordo",
+      "premium_test_ride": "Grotti Brioso RA",
+      "salvage_yard": [
+        {
+          "robbery": "The Gangbanger Robbery",
+          "vehicle": "Annis Hellion"
+        },
+        {
+          "robbery": "The Cargo Ship Robbery",
+          "vehicle": "Annis Euros"
+        },
+        {
+          "robbery": "The McTony Robbery",
+          "vehicle": "Toundra Panthere"
+        }
+      ],
+      "weekly_challenge": {
+        "task": "Complete The Cayo Perico Heist once",
+        "reward_cash": 100000,
+        "reward_item": "Strickler Hat"
+      },
+      "fib_priority_file": "The Project Breakaway File",
+      "luxury_autos": [
+        "Declasse Tampa GT",
+        "Karin Woodlander"
+      ],
+      "premium_deluxe": [
+        {
+          "vehicle": "Grotti Cheetah",
+          "removed": true
+        },
+        {
+          "vehicle": "Enus Cognoscenti Cabrio",
+          "removed": true
+        },
+        {
+          "vehicle": "Western Daemon (Custom)",
+          "removed": true
+        },
+        {
+          "vehicle": "Dinka Thrust",
+          "removed": true
+        },
+        {
+          "vehicle": "Invetero Coquette BlackFin",
+          "removed": true
+        }
+      ],
+      "daily_objectives": {
+        "thursday": "Participate in a Capture",
+        "friday": "Complete a Lowrider mission",
+        "saturday": "Complete a Diamond Casino Heist Prep",
+        "sunday": "Participate in the Cayo Perico Series",
+        "monday": "Participate in a Parachute Jump",
+        "tuesday": "Participate in the Survival Series",
+        "wednesday": "Participate in an Air Race"
+      },
+      "bonuses": [
+        {
+          "activity": "Cayo Perico Primary Target",
+          "multiplier": "Guaranteed Panther Statue (first heist this week)"
+        },
+        {
+          "activity": "Buried Stashes",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Cayo Perico Motor Wars",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Community Race Series",
+          "multiplier": "2X GTA$/RP"
+        }
+      ],
+      "discounts": {
+        "properties": [],
+        "vehicles": [
+          {
+            "item": "RUNE Kosatka",
+            "percent": 40
+          },
+          {
+            "item": "Dinka Veto Modern",
+            "percent": 40
+          },
+          {
+            "item": "Dinka Veto Classic",
+            "percent": 40
+          },
+          {
+            "item": "Grotti Brioso 300",
+            "percent": 40
+          },
+          {
+            "item": "Maibatsu Manchez Scout",
+            "percent": 40
+          },
+          {
+            "item": "Western Reever",
+            "percent": 30
+          },
+          {
+            "item": "Buckingham Nimbus",
+            "percent": 30
+          },
+          {
+            "item": "Albany Cavalcade XL",
+            "percent": 30
+          },
+          {
+            "item": "Truffade Nero",
+            "percent": 30
+          },
+          {
+            "item": "Declasse Drift Yosemite",
+            "percent": 30
+          },
+          {
+            "item": "Nagasaki Ultralight",
+            "percent": 30
+          },
+          {
+            "item": "Pegassi Speeder",
+            "percent": 30
+          },
+          {
+            "item": "Western Company Mallard",
+            "percent": 30
+          }
+        ]
+      },
+      "gun_van": {
+        "featured_discounts": [
+          {
+            "item": "Precision Rifle",
+            "discount": "40% off"
+          },
+          {
+            "item": "Military Rifle",
+            "discount": "30% off GTA+"
+          }
+        ],
+        "stock": [
+          {
+            "weapon": "Combat Shotgun",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Precision Rifle",
+            "discount": "40%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Military Rifle",
+            "discount": "10%",
+            "gta_plus_discount": "30%"
+          },
+          {
+            "weapon": "El Strickler",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Compact Rifle",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Advanced Rifle",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Machete",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Baseball Bat",
+            "discount": "Free",
+            "gta_plus_discount": "Free"
+          },
+          {
+            "weapon": "Tear Gas",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Proximity Mine",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Sticky Bomb",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          }
+        ]
+      },
+      "new_content": [],
+      "returning_content": [
+        "Cayo Perico Motor Wars"
+      ]
+    },
+    {
+      "id": "2025-10-30",
+      "name": "Halloween Finale / Day of the Dead / Slasher Week",
+      "date_start": "2025-10-30",
+      "date_end": "2025-11-06",
+      "duration_days": 7,
+      "overlay_events": [
+        {
+          "name": "Halloween Event",
+          "date_end": "2025-11-03",
+          "rewards": [
+            "Halloween Parachute Bag",
+            "Gray Space Interloper Outfit (UFO abduction)",
+            "Día de Muertos Tee",
+            "Floral Calaca Mask",
+            "Romance Calaca Mask"
+          ],
+          "bonuses": [
+            "Halloween Weather through Nov 3",
+            "UFO Appearances",
+            "UFO Abduction Event",
+            "Slasher Adversary Mode"
+          ],
+          "collectibles": [
+            "Jack O'Lanterns"
+          ]
+        }
+      ],
+      "podium_vehicle": "Ocelot Penetrator",
+      "prize_ride": {
+        "vehicle": "Ocelot Ardent",
+        "challenge": "Place Top 2 in LS Car Meet Series"
+      },
+      "time_trial": "Pillbox Hill",
+      "premium_race": {
+        "name": "Taking Off",
+        "class": "Super"
+      },
+      "test_rides": [
+        {
+          "vehicle": "Pegassi Vacca",
+          "removed": true
+        },
+        {
+          "vehicle": "Vapid Blade",
+          "removed": true
+        },
+        {
+          "vehicle": "Enus Stafford",
+          "removed": true
+        }
+      ],
+      "hsw_time_trial": "Terminal to Chiliad Mountain State Wilderness",
+      "premium_test_ride": "Declasse Vigero ZX",
+      "salvage_yard": [
+        {
+          "robbery": "The Cargo Ship Robbery",
+          "vehicle": "Truffade Thrax"
+        },
+        {
+          "robbery": "The Duggan Robbery",
+          "vehicle": "Lampadati Casco"
+        },
+        {
+          "robbery": "The McTony Robbery",
+          "vehicle": "Vapid Ellie"
+        }
+      ],
+      "weekly_challenge": {
+        "task": "Win one Adversary Mode",
+        "reward_cash": 200000,
+        "reward_item": "Gray Hooded Skull Mask"
+      },
+      "fib_priority_file": "The Brute Force File",
+      "luxury_autos": [
+        "Benefactor Krieger",
+        "Överflöd Pipistrello"
+      ],
+      "premium_deluxe": [
+        {
+          "vehicle": "Grotti GT500",
+          "removed": true
+        },
+        {
+          "vehicle": "Dewbauchee Seven-70",
+          "removed": true
+        },
+        {
+          "vehicle": "Albany Fränken Stange",
+          "removed": false,
+          "note": "30% Off"
+        },
+        {
+          "vehicle": "Declasse Tornado Rat Rod",
+          "removed": false,
+          "note": "30% Off"
+        },
+        {
+          "vehicle": "Chariot Romero Hearse",
+          "removed": false,
+          "note": "30% Off"
+        }
+      ],
+      "daily_objectives": {
+        "thursday": "Participate in a Clubhouse Contract",
+        "friday": "Complete a Doomsday Heist Prep",
+        "saturday": "Participate in Slasher",
+        "sunday": "Participate in the Community Series",
+        "monday": "Participate in Buzzer Beater",
+        "tuesday": "Participate in a Parachute Jump",
+        "wednesday": "Participate in a GTA Race"
+      },
+      "bonuses": [
+        {
+          "activity": "Ludendorff Cemetery Survival",
+          "multiplier": "3X GTA$/RP"
+        },
+        {
+          "activity": "Slasher",
+          "multiplier": "2X GTA$/RP",
+          "gta_plus_multiplier": "4X"
+        },
+        {
+          "activity": "Jack O'Lanterns Collectibles",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Halloween Community Series",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Benefactor Krieger",
+          "multiplier": "Free"
+        }
+      ],
+      "discounts": {
+        "properties": [],
+        "vehicles": [
+          {
+            "item": "LCC Sanctus",
+            "percent": 30
+          },
+          {
+            "item": "Albany Lurcher",
+            "percent": 30
+          },
+          {
+            "item": "Albany Fränken Stange",
+            "percent": 30
+          },
+          {
+            "item": "Declasse Tornado Rat Rod",
+            "percent": 30
+          },
+          {
+            "item": "Chariot Romero Hearse",
+            "percent": 30
+          },
+          {
+            "item": "Übermacht Sentinel Classic",
+            "percent": 30
+          },
+          {
+            "item": "Bravado Dorado",
+            "percent": 30
+          },
+          {
+            "item": "Vapid Caracara 4x4",
+            "percent": 30
+          },
+          {
+            "item": "Gallivanter Baller ST-D",
+            "percent": 30
+          },
+          {
+            "item": "Vapid Retinue Mk II",
+            "percent": 30
+          },
+          {
+            "item": "MTL Wastelander",
+            "percent": 30
+          },
+          {
+            "item": "Vom Feuer Anti-Aircraft Trailer",
+            "percent": 30
+          },
+          {
+            "item": "Shitzu Hakuchou Drag",
+            "percent": 30
+          },
+          {
+            "item": "Mobile Operations Center",
+            "percent": 30
+          },
+          {
+            "item": "Declasse Bugstars Burrito",
+            "percent": 30
+          }
+        ],
+        "other": [
+          {
+            "item": "Halloween Masks",
+            "percent": 100,
+            "note": "Free"
+          },
+          {
+            "item": "Sugar Skull Face Paints",
+            "percent": 100,
+            "note": "Free"
+          },
+          {
+            "item": "Skull Tattoos",
+            "percent": 100,
+            "note": "Free"
+          },
+          {
+            "item": "Arena War Outfits",
+            "percent": 30
+          }
+        ]
+      },
+      "gun_van": {
+        "featured_discounts": [
+          {
+            "item": "Battle Rifle",
+            "discount": "30% off"
+          },
+          {
+            "item": "The Shocker",
+            "discount": "50% off GTA+"
+          },
+          {
+            "item": "Widowmaker",
+            "discount": "50% off GTA+"
+          },
+          {
+            "item": "Up-N-Atomizer",
+            "discount": "50% off GTA+"
+          },
+          {
+            "item": "Unholy Hellbringer",
+            "discount": "50% off GTA+"
+          },
+          {
+            "item": "Stun Gun",
+            "discount": "30% off GTA+"
+          }
+        ],
+        "stock": [
+          {
+            "weapon": "Battle Rifle",
+            "discount": "30%",
+            "gta_plus_discount": "30%"
+          },
+          {
+            "weapon": "Combat Shotgun",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Stun Gun",
+            "discount": "10%",
+            "gta_plus_discount": "30%"
+          },
+          {
+            "weapon": "The Shocker",
+            "discount": "10%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Widowmaker",
+            "discount": "10%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Up-n-Atomizer",
+            "discount": "10%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Unholy Hellbringer",
+            "discount": "10%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Sticky Bomb",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Tear Gas",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Pipe Bomb",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          }
+        ]
+      },
+      "new_content": [
+        "Slasher Adversary Mode"
+      ],
+      "returning_content": []
+    },
+    {
+      "id": "2025-10-23",
+      "name": "Halloween / Counterfeit Cash / Ludendorff Week",
+      "date_start": "2025-10-23",
+      "date_end": "2025-10-30",
+      "duration_days": 7,
+      "overlay_events": [
+        {
+          "name": "Halloween Event",
+          "date_end": "2025-11-03",
+          "rewards": [
+            "White Vintage Vampire Mask"
+          ],
+          "bonuses": [
+            "Halloween Weather",
+            "Peyote Plants",
+            "UFO Appearances",
+            "Ludendorff Cemetery Survival",
+            "Condemned Adversary Mode"
+          ],
+          "collectibles": [
+            "Peyote Plants",
+            "UFO Photos"
+          ]
+        }
+      ],
+      "podium_vehicle": "Vapid Dominator ASP",
+      "prize_ride": {
+        "vehicle": "Classique Broadway",
+        "challenge": "Place Top 4 in LS Car Meet Series for 2 days in a row"
+      },
+      "time_trial": "LSIA II",
+      "premium_race": {
+        "name": "A Sign of Things to Come",
+        "class": "Motorcycle"
+      },
+      "test_rides": [
+        {
+          "vehicle": "Dinka Jester (Racecar)",
+          "removed": true
+        },
+        {
+          "vehicle": "Dewbauchee Massacro (Racecar)",
+          "removed": true
+        },
+        {
+          "vehicle": "Benefactor Feltzer",
+          "removed": true
+        }
+      ],
+      "hsw_time_trial": "Ron Alternates to Elysian Island",
+      "premium_test_ride": "Pegassi Weaponized Ignus",
+      "salvage_yard": [
+        {
+          "robbery": "The Gangbanger Robbery",
+          "vehicle": "Canis Seminole Frontier"
+        },
+        {
+          "robbery": "The Cargo Ship Robbery",
+          "vehicle": "Übermacht Cypher"
+        },
+        {
+          "robbery": "The Duggan Robbery",
+          "vehicle": "Pfister Neon"
+        }
+      ],
+      "weekly_challenge": {
+        "task": "Survive four Waves of a Survival",
+        "reward_cash": 200000,
+        "reward_item": "Gray Jumping Spider Mask"
+      },
+      "fib_priority_file": "The Brute Force File",
+      "luxury_autos": [
+        "Benefactor Krieger",
+        "Invetero Coquette D1"
+      ],
+      "premium_deluxe": [
+        {
+          "vehicle": "Declasse Vamos",
+          "removed": true
+        },
+        {
+          "vehicle": "Vulcar Fagaloa",
+          "removed": true
+        },
+        {
+          "vehicle": "Albany Fränken Stange",
+          "removed": false
+        },
+        {
+          "vehicle": "Declasse Tornado Rat Rod",
+          "removed": false
+        },
+        {
+          "vehicle": "Chariot Romero Hearse",
+          "removed": false
+        }
+      ],
+      "daily_objectives": {
+        "thursday": "Participate in the Featured Series",
+        "friday": "Participate in a Freemode Event",
+        "saturday": "Participate in a Survival",
+        "sunday": "Participate in a Business Battle",
+        "monday": "Participate in the Drift Race Series",
+        "tuesday": "Participate in a Freemode Challenge",
+        "wednesday": "Participate in the Community Series"
+      },
+      "bonuses": [
+        {
+          "activity": "Ludendorff Cemetery Survival",
+          "multiplier": "3X GTA$/RP"
+        },
+        {
+          "activity": "Condemned",
+          "multiplier": "2X GTA$/RP",
+          "gta_plus_multiplier": "4X"
+        },
+        {
+          "activity": "Counterfeit Cash Sell Missions",
+          "multiplier": "2X GTA$/RP",
+          "gta_plus_multiplier": "4X",
+          "note": "Includes Biker Business and Nightclub Goods"
+        },
+        {
+          "activity": "Halloween Community Series",
+          "multiplier": "2X GTA$/RP"
+        },
+        {
+          "activity": "Benefactor Krieger",
+          "multiplier": "Free"
+        }
+      ],
+      "discounts": {
+        "properties": [],
+        "vehicles": [
+          {
+            "item": "Benefactor Krieger",
+            "percent": 100,
+            "note": "Free through Nov 5"
+          },
+          {
+            "item": "LCC Sanctus",
+            "percent": 30
+          },
+          {
+            "item": "Albany Lurcher",
+            "percent": 30
+          },
+          {
+            "item": "Albany Fränken Stange",
+            "percent": 30
+          },
+          {
+            "item": "Declasse Tornado Rat Rod",
+            "percent": 30
+          },
+          {
+            "item": "Chariot Romero Hearse",
+            "percent": 30
+          },
+          {
+            "item": "Buckingham Shamal",
+            "percent": 30
+          },
+          {
+            "item": "Fathom FR36",
+            "percent": 30
+          },
+          {
+            "item": "Benefactor Vorschlaghammer",
+            "percent": 30
+          },
+          {
+            "item": "Vapid Winky",
+            "percent": 30
+          },
+          {
+            "item": "Bravado Greenwood",
+            "percent": 30
+          },
+          {
+            "item": "Pfister Comet SR",
+            "percent": 30
+          },
+          {
+            "item": "Western Powersurge",
+            "percent": 30
+          },
+          {
+            "item": "Obey I-Wagen",
+            "percent": 30
+          },
+          {
+            "item": "Annis Savestra",
+            "percent": 30
+          },
+          {
+            "item": "Lampadati Casco",
+            "percent": 30
+          }
+        ],
+        "other": [
+          {
+            "item": "Halloween Masks",
+            "percent": 100,
+            "note": "Free"
+          },
+          {
+            "item": "Arena War Outfits",
+            "percent": 30
+          }
+        ]
+      },
+      "gun_van": {
+        "featured_discounts": [
+          {
+            "item": "Heavy Rifle",
+            "discount": "40% off"
+          },
+          {
+            "item": "The Shocker",
+            "discount": "50% off GTA+"
+          },
+          {
+            "item": "Widowmaker",
+            "discount": "50% off GTA+"
+          },
+          {
+            "item": "Up-N-Atomizer",
+            "discount": "50% off GTA+"
+          },
+          {
+            "item": "Unholy Hellbringer",
+            "discount": "50% off GTA+"
+          },
+          {
+            "item": "Tactical SMG",
+            "discount": "30% off GTA+"
+          }
+        ],
+        "stock": [
+          {
+            "weapon": "Combat Shotgun",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Heavy Rifle",
+            "discount": "40%",
+            "gta_plus_discount": "40%"
+          },
+          {
+            "weapon": "Tactical SMG",
+            "discount": "10%",
+            "gta_plus_discount": "30%"
+          },
+          {
+            "weapon": "The Shocker",
+            "discount": "10%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Widowmaker",
+            "discount": "10%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Up-n-Atomizer",
+            "discount": "10%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Unholy Hellbringer",
+            "discount": "10%",
+            "gta_plus_discount": "50%"
+          },
+          {
+            "weapon": "Molotov",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Pipe Bomb",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          },
+          {
+            "weapon": "Tear Gas",
+            "discount": "10%",
+            "gta_plus_discount": "20%"
+          }
+        ]
+      },
+      "new_content": [],
+      "returning_content": []
+    }
+  ]
+}
