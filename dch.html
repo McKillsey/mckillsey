@@ -10,7 +10,7 @@
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
   plausible.init()
 </script>
-<meta name="description" content="GTA Online Diamond Casino Heist calculator. Optimize vault time, hacker selection, and crew composition across 2-4 players. Man-seconds budget model with full math in every tooltip.">
+<meta name="description" content="GTA Online Diamond Casino Heist calculator. Optimize vault time, hacker selection, and crew composition across 2-4 players. Manseconds budget model with full math in every tooltip.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3148;--cream:#f0ead8;--cream-dim:#9aabbf;--gold:#c9a84c;--gold-dim:#8a6f2e;--green:#2dba72;--red:#d94f4f;--amber:#e08c2a;--rule:rgba(201,168,76,0.18);--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--serif:'Playfair Display',serif}
@@ -118,6 +118,11 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .method-table th.val{text-align:right}
 .method-table td{padding:3px 10px 3px 0;color:var(--cream);border-bottom:1px solid rgba(255,255,255,.04)}.method-table td.val{color:var(--gold);text-align:right}
 .method-notes{font-family:var(--mono);font-size:11px;color:var(--cream-dim);line-height:1.7}.method-notes p{margin-bottom:8px}
+.layout-tag{font-family:var(--mono);font-size:8px;letter-spacing:.06em;text-transform:uppercase;padding:1px 5px;white-space:nowrap;vertical-align:middle;margin-left:4px}
+.tag-opt{background:rgba(45,186,114,.12);color:var(--green)}.tag-pess{background:rgba(217,79,79,.12);color:var(--red)}
+.layout-best td{color:var(--green)}.layout-worst td{color:var(--red)}
+.layout-table{table-layout:fixed}.layout-table th,.layout-table td{width:20%}
+.green{color:var(--green) !important}.red{color:var(--red) !important}
 .feedback-btn{position:fixed;bottom:22px;right:22px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--gold);padding:9px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .15s;z-index:100}
 .feedback-btn:hover{background:var(--gold);color:var(--navy)}
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;display:none;align-items:center;justify-content:center}.modal-overlay.open{display:flex}
@@ -250,16 +255,39 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
         </tbody></table>
         <div class="method-notes" style="margin-top:8px"><p>Unexposed = Silent &amp; Sneaky, The Big Con. Exposed = Aggressive.</p></div>
       </div>
-      <div class="method-section"><h3>Man-Seconds Budget Model</h3>
+      <div class="method-section"><h3>Vault Layouts — Cash / Gold / Diamonds</h3>
+        <table class="method-table layout-table"><thead><tr><th>Layout</th><th class="val">Free</th><th class="val">1&nbsp;Door</th><th class="val">2&nbsp;Doors</th><th class="val">Doors</th></tr></thead><tbody>
+          <tr><td>1</td><td class="val">4</td><td class="val">3</td><td class="val">1</td><td class="val">4</td></tr>
+          <tr><td>2</td><td class="val">5</td><td class="val">2</td><td class="val">1</td><td class="val green">3</td></tr>
+          <tr><td>3</td><td class="val red">2</td><td class="val">4</td><td class="val">2</td><td class="val">4</td></tr>
+          <tr><td>4</td><td class="val">4</td><td class="val">3</td><td class="val">1</td><td class="val">4</td></tr>
+          <tr class="layout-worst"><td>5 <span class="layout-tag tag-pess">Pessimistic</span></td><td class="val red">2</td><td class="val">3</td><td class="val red">3</td><td class="val red">5</td></tr>
+          <tr class="layout-best"><td>6 <span class="layout-tag tag-opt">Optimistic</span></td><td class="val">4</td><td class="val">4</td><td class="val green">0</td><td class="val green">3</td></tr>
+        </tbody></table>
+      </div>
+      <div class="method-section"><h3>Vault Layouts — Artwork</h3>
+        <table class="method-table layout-table"><thead><tr><th>Layout</th><th class="val">Free</th><th class="val">1&nbsp;Door</th><th class="val">2&nbsp;Doors</th><th class="val">Doors</th></tr></thead><tbody>
+          <tr><td>1</td><td class="val">1</td><td class="val">4</td><td class="val">1</td><td class="val">4</td></tr>
+          <tr><td>2</td><td class="val">2</td><td class="val">3</td><td class="val">1</td><td class="val">4</td></tr>
+          <tr><td>3</td><td class="val">1</td><td class="val">5</td><td class="val green">0</td><td class="val green">3</td></tr>
+          <tr class="layout-best"><td>4 <span class="layout-tag tag-opt">Optimistic</span></td><td class="val green">3</td><td class="val">2</td><td class="val">1</td><td class="val green">3</td></tr>
+          <tr class="layout-worst"><td>5 <span class="layout-tag tag-pess">Pessimistic</span></td><td class="val red">0</td><td class="val">4</td><td class="val red">2</td><td class="val">4</td></tr>
+          <tr><td>6</td><td class="val">2</td><td class="val">3</td><td class="val">1</td><td class="val">4</td></tr>
+        </tbody></table>
+      </div>
+      <div class="method-section"><h3>Manseconds Budget Model</h3>
         <div class="method-notes">
-          <p><strong style="color:var(--cream)">Total man-seconds</strong> = vault time × player count.</p>
-          <p><strong style="color:var(--cream)">Hacking + commute</strong> = per hacker: doors × (commute + hacks_per_door × s/hack + animation_per_door). Door commute included. Greedy optimizer assigns doors to minimize total manseconds, respecting each hacker's wall-clock deadline (vault time − one collect − one commute).</p>
-          <p><strong style="color:var(--cream)">Animation time</strong> = 24s/door normal, 28s/door hard. Hacks per door: 1 normal, 2 hard. Placeholders pending community verification.</p>
-          <p><strong style="color:var(--cream)">Door assignment</strong> = 4 doors across active hackers. Fastest gets extra doors when uneven.</p>
-          <p><strong style="color:var(--cream)">Loot + commute</strong> = piles × s/each (default 5). Same commute rate applies to both doors and loot piles. Door commute is folded into hacking cost above.</p>
-          <p><strong style="color:var(--cream)">Collection</strong> = remaining man-seconds ÷ s/unit, floored, capped at max.</p>
+          <p><strong style="color:var(--cream)">Total manseconds</strong> = vault time × player count. This is the team's total available work capacity inside the vault.</p>
+          <p><strong style="color:var(--cream)">Hacking + commute</strong> = per hacker: doors × (commute + hacks_per_door × s/hack + animation). Commute to each door is included. A greedy optimizer assigns doors to minimize total manseconds spent hacking, subject to a wall-clock deadline: each hacker must finish before vault time − one collect − one commute, or the loot behind that door is inaccessible.</p>
+          <p><strong style="color:var(--cream)">Animation</strong> = 24s/door normal, 28s/door hard. Hacks per door: 1 normal, 2 hard.</p>
+          <p><strong style="color:var(--cream)">Door count</strong> = determined by vault layout (see tables above). The model uses a "normal" layout (4 doors) as the base case. Tooltips show the impact of a pessimistic layout (5 doors for cash/gold/diamonds, 0 free piles for artwork).</p>
+          <p><strong style="color:var(--cream)">Idle time</strong> = when non-hacking players outnumber free loot piles, excess players wait idle until the first door opens. Wasted manseconds = waiting players × time for fastest hacker to open one door. Relevant mainly in pessimistic artwork vaults (0 free piles).</p>
+          <p><strong style="color:var(--cream)">Loot + commute</strong> = per pile: collect time (grabbing) + commute (walking to it). Total = piles collected × (collect + commute). Door commute is separate and folded into hacking cost.</p>
+          <p><strong style="color:var(--cream)">Collection</strong> = remaining manseconds ÷ s/unit, floored, capped at accessible piles.</p>
           <p><strong style="color:var(--cream)">Crew</strong> = gross × (hacker% + gunman% + driver% + Lester 5%).</p>
-          <p><strong style="color:var(--cream)">Laundering fee</strong> = 10% of gross for low buyer, 5% for medium, 0% for high. Deducted after crew.</p>
+          <p><strong style="color:var(--cream)">Laundering</strong> = 10% of gross for low buyer, 5% for medium, 0% for high. Deducted after crew.</p>
+          <p><strong style="color:var(--cream)">Elite challenge</strong> = +$50k/player (normal) or +$100k/player (hard). Applied after percentage split.</p>
+          <p><strong style="color:var(--cream)">Setup fee</strong> = $25,000 deducted from host's take.</p>
         </div>
       </div>
       <div class="method-section"><h3>Crew Members</h3>
@@ -297,11 +325,15 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
   </div>
 </div>
 <script>
-const V={cash:{label:'Cash',maxN:2115000,maxH:2326500,u:8,ct:38},artwork:{label:'Artwork',maxN:2350000,maxH:2585000,u:6,ct:18},gold:{label:'Gold',maxN:2585000,maxH:2843500,u:8,ct:25},diamonds:{label:'Diamonds',maxN:3290000,maxH:3619000,u:8,ct:38}};
+const LAYOUTS={
+  cgd:{normal:{doors:4,free:4},pess:{doors:5,free:2}},
+  art:{normal:{doors:4,free:2},pess:{doors:4,free:0}}
+};
+const V={cash:{label:'Cash',maxN:2115000,maxH:2326500,u:8,ct:38,ly:'cgd'},artwork:{label:'Artwork',maxN:2350000,maxH:2585000,u:6,ct:18,ly:'art'},gold:{label:'Gold',maxN:2585000,maxH:2843500,u:8,ct:25,ly:'cgd'},diamonds:{label:'Diamonds',maxN:3290000,maxH:3619000,u:8,ct:38,ly:'cgd'}};
 const H=[{id:'rickie',label:'Rickie Lukens',cut:3,ue:146,ex:102},{id:'yohan',label:'Yohan Blair',cut:5,ue:172,ex:121},{id:'christian',label:'Christian Feltz',cut:7,ue:179,ex:125},{id:'paige',label:'Paige Harris',cut:9,ue:205,ex:143},{id:'avi',label:'Avi Schwartzman',cut:10,ue:210,ex:146}];
 const GN={karl:{l:'Karl Abolaji',c:5},charlie:{l:'Charlie Reed',c:7},patrick:{l:'Patrick McReary',c:8},gustavo:{l:'Gustavo Mota',c:9},chester:{l:'Chester McCoy',c:10}};
 const DR={karim:{l:'Karim Denz',c:5},zach:{l:'Zach Nelson',c:6},taliana:{l:'Taliana Martinez',c:7},eddie:{l:'Eddie Toh',c:9},chester_d:{l:'Chester McCoy',c:10}};
-let AN=24,AH=28; const HN=1,HH=2,DOORS=4;
+let AN=24,AH=28; const HN=1,HH=2;
 const S={loot:'cash',approach:'sns',buyer:'high',difficulty:'hard',gunman:'karl',driver:'karim',hs:[{a:true,s:5},{a:false,s:10},{a:false,s:10},{a:false,s:10}],cpp:5,elite:true,mp:{2:[15],3:[15,15],4:[15,15,15]},dev:false};
 
 function checkDev(){S.dev=new URLSearchParams(location.search).has('devmode');document.getElementById('devmode-section').style.display=S.dev?'block':'none';}
@@ -330,7 +362,8 @@ function hideT(){tipbox.style.display='none';}
 function aT(el,label,calc){el.addEventListener('mouseenter',()=>showT(el,label,calc));el.addEventListener('mouseleave',hideT);}
 
 function getAH(max){return S.hs.map((s,i)=>({...s,idx:i})).filter(s=>s.a).slice(0,max);}
-function assignD(slots,vaultTime,collectTime,commute){
+function assignD(slots,vaultTime,collectTime,commute,doors){
+  if(!doors)doors=4;
   if(!slots.length)return[];
   const isH=S.difficulty==='hard', hpd=isH?HH:HN, apd=isH?AH:AN;
   const deadline=vaultTime-collectTime-commute;
@@ -338,14 +371,14 @@ function assignD(slots,vaultTime,collectTime,commute){
   // tpd includes commute to door + hacks + animation
   const tpd=sorted.map(h=>commute+hpd*h.s+apd);
   const assigned=sorted.map(()=>0);
-  let remaining=DOORS;
+  let remaining=doors;
   for(let i=0;i<sorted.length&&remaining>0;i++){
     const maxByTime=deadline>0?Math.floor(deadline/tpd[i]):0;
     assigned[i]=Math.min(remaining,maxByTime);
     remaining-=assigned[i];
   }
   if(remaining>0)assigned[0]+=remaining;
-  // Refinement: move doors from slow to fast if it saves man-seconds
+  // Refinement: move doors from slow to fast if it saves manseconds
   let improved=true;
   while(improved){
     improved=false;
@@ -362,6 +395,11 @@ function assignD(slots,vaultTime,collectTime,commute){
   const result=sorted.map((h,i)=>({...h,doors:assigned[i]}));
   if(result.some(h=>h.doors===0)||result.filter(h=>h.doors>0).length<sorted.length)result._smart=true;
   result._budget=deadline;
+  // Check if any hacker exceeds the deadline (from force-assign)
+  result._overbudget=false;
+  for(let i=0;i<result.length;i++){
+    if(result[i].doors*tpd[i]>deadline){result._overbudget=true;break;}
+  }
   return result;
 }
 
@@ -393,26 +431,41 @@ function syncUI(){
   document.getElementById('comm-sl').value=S.cpp;document.getElementById('comm-in').value=S.cpp;
 }
 
-function calc(hObj,pc){
+function calc(hObj,pc,layout){
   const isH=S.difficulty==='hard',isE=S.approach==='agg',vc=V[S.loot];
+  if(!layout)layout=LAYOUTS[vc.ly].normal;
+  const doors=layout.doors;
   const vt=isE?hObj.ex:hObj.ue, tms=vt*pc;
   const BURN_PER_DOOR=8;
   let hackTotal=0, hbd=[], da=[];
+  // Determine hacker count for idle calculation
+  const hackerCount=isE?0:Math.min(getAH(pc).length,pc);
   if(isE){
     const burnTPD=BURN_PER_DOOR+S.cpp;
-    hackTotal=DOORS*burnTPD;
-    da=[];hbd=[{idx:-1,doors:DOORS,speed:0,tpd:burnTPD,total:hackTotal,burn:true}];
+    hackTotal=doors*burnTPD;
+    da=[];hbd=[{idx:-1,doors:doors,speed:0,tpd:burnTPD,total:hackTotal,burn:true}];
   } else {
-    const slots=getAH(pc); da=assignD(slots,vt,vc.ct,S.cpp);
+    const slots=getAH(pc); da=assignD(slots,vt,vc.ct,S.cpp,doors);
     const hpd=isH?HH:HN, apd=isH?AH:AN;
     for(const h of da){const tpd=S.cpp+hpd*h.s+apd,ht=h.doors*tpd;hackTotal+=ht;hbd.push({idx:h.idx,doors:h.doors,speed:h.s,tpd,total:ht});}
   }
+  // Idle time: non-hackers who can't start looting because not enough free piles
+  const nonHackers=pc-hackerCount;
+  const waitingPlayers=Math.max(0,nonHackers-layout.free);
+  // They wait for the fastest hacker to finish first door
+  let firstDoorTime=0;
+  if(waitingPlayers>0&&hbd.length>0){
+    const fastest=hbd.filter(h=>h.doors>0).sort((a,b)=>a.tpd-b.tpd)[0];
+    if(fastest)firstDoorTime=fastest.tpd;
+  }
+  const idleMS=waitingPlayers*firstDoorTime;
+
   const np=vc.u, lootCommT=np*S.cpp;
-  const collMS=Math.max(0,tms-hackTotal-lootCommT);
+  const collMS=Math.max(0,tms-hackTotal-lootCommT-idleMS);
   const uc=Math.min(Math.floor(collMS/vc.ct),vc.u);
   const collectUsed=uc*vc.ct;
   const lootTotal=collectUsed+lootCommT;
-  const excess=tms-hackTotal-lootTotal;
+  const excess=tms-hackTotal-lootTotal-idleMS;
   const maxP=isH?vc.maxH:vc.maxN, pu=maxP/vc.u, gross=uc*pu;
   const gc=GN[S.gunman].c, dc=DR[S.driver].c, hc=hObj.cut, lc=5, tcp=gc+dc+hc+lc;
   const crewD=gross*tcp/100;
@@ -425,7 +478,7 @@ function calc(hObj,pc){
   const players=[{label:'Host',pct:hp,take:ht2,isHost:true}];
   mps.forEach((p,i)=>players.push({label:'Player '+(i+2),pct:p,take:net*p/100+eliteEach,isHost:false}));
   const totalWithElite=net+eliteEach*pc-SETUP;
-  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,lootCommT,lootTotal,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,collectUsed,excess,gc,dc,hc,lc,tcp,crewD,buyerFee,launderD,net,eliteEach,SETUP,totalWithElite,hp,ht:ht2,players,bad:collMS<=0,smartAlloc:da._smart||false,isAgg:isE};
+  return{hacker:hObj,pc,vt,tms,da,hackTotal,hbd,lootCommT,lootTotal,np,collMS,uc,mu:vc.u,pu,gross,ct:vc.ct,collectUsed,excess,gc,dc,hc,lc,tcp,crewD,buyerFee,launderD,net,eliteEach,SETUP,totalWithElite,hp,ht:ht2,players,bad:collMS<=0,smartAlloc:da._smart||false,isAgg:isE,doors,idleMS,waitingPlayers,firstDoorTime,layout};
 }
 
 const fmt=n=>'$'+Math.round(Math.abs(n)).toLocaleString('en-US');
@@ -434,19 +487,29 @@ const fSec=s=>{const m=Math.floor(s/60),sec=s%60;return m>0?m+':'+sec.toString()
 
 function tipMS(r){return fSec(r.vt)+' = '+r.vt+' seconds\n\u00d7 '+r.pc+' players\n= '+r.tms+' manseconds';}
 function tipHack(r){
-  if(r.isAgg){return 'THERMAL CHARGES (Aggressive)\n4 doors \u00d7 ('+8+'s burn + '+S.cpp+'s commute)\n= 4 \u00d7 '+(8+S.cpp)+'s = '+r.hackTotal+' manseconds\nNo hacking required \u2014 anyone can burn locks';}
+  if(r.isAgg){return 'THERMAL CHARGES (Aggressive)\n'+r.doors+' doors \u00d7 ('+8+'s burn + '+S.cpp+'s commute)\n= '+r.doors+' \u00d7 '+(8+S.cpp)+'s = '+r.hackTotal+' manseconds\nNo hacking required \u2014 anyone can burn locks';}
   const isH=S.difficulty==='hard',hpd=isH?HH:HN,apd=isH?AH:AN,lines=[];
+  const dl=r.da._budget||r.vt;
   if(r.hbd.length>1){
-    const dl=r.da._budget||r.vt;
     lines.push('OPTIMIZED ALLOCATION');
     lines.push('Deadline: '+r.vt+'s vault \u2212 '+r.ct+'s collect \u2212 '+S.cpp+'s commute = '+dl+'s');
+    if(r.da._overbudget)lines.push('\u26a0 Not all doors fit within deadline');
     lines.push('');
+  } else {
+    const wallClock=r.hbd[0].doors*r.hbd[0].tpd;
+    if(wallClock>dl){
+      lines.push('Deadline: '+r.vt+'s vault \u2212 '+r.ct+'s collect \u2212 '+S.cpp+'s commute = '+dl+'s');
+      lines.push('\u26a0 Hacking ('+wallClock+'s) exceeds deadline ('+dl+'s)');
+      lines.push('');
+    }
   }
   for(const h of r.hbd){
+    const wallClock=h.doors*h.tpd;
+    const over=wallClock>dl;
     lines.push('Hacker '+(h.idx+1)+' ('+h.speed+'s/hack): '+h.doors+' door'+(h.doors!==1?'s':''));
     if(h.doors>0){
       lines.push('  '+h.doors+' \u00d7 ('+S.cpp+'s commute + '+hpd+' hack'+(hpd>1?'s':'')+' \u00d7 '+h.speed+'s + '+apd+'s anim)');
-      lines.push('  = '+h.doors+' \u00d7 '+h.tpd+'s = '+h.total+' manseconds');
+      lines.push('  = '+h.doors+' \u00d7 '+h.tpd+'s = '+h.total+' manseconds'+(over?' \u26a0 '+wallClock+'s > '+dl+'s deadline':''));
     } else {
       lines.push('  Skipped \u2014 collecting loot instead');
     }
@@ -464,6 +527,23 @@ function tipGross(r){const isH=S.difficulty==='hard',vc=V[S.loot],mp=isH?vc.maxH
 function tipCrew(r){return 'Hacker: '+r.hc+'%\nGunman: '+r.gc+'%\nDriver: '+r.dc+'%\nLester: '+r.lc+'%\nTotal: '+r.tcp+'%\n\n'+fmt(r.gross)+' \u00d7 '+r.tcp+'% = '+fmt(r.crewD);}
 function tipNet(r){let s=fmt(r.gross)+' gross\n\u2212 '+fmt(r.crewD)+' crew ('+r.tcp+'%)';if(r.buyerFee>0)s+='\n\u2212 '+fmt(r.launderD)+' laundering ('+(r.buyerFee*100)+'%)';s+='\n= '+fmt(r.net)+' distributable';if(r.eliteEach>0)s+='\n+ '+fmt(r.eliteEach)+' elite \u00d7 '+r.pc+' players = '+fmt(r.eliteEach*r.pc);s+='\n\u2212 '+fmt(r.SETUP)+' setup fee (host)';s+='\n= '+fmt(r.totalWithElite)+' total to players';return s;}
 function tipP(r,p){let s=fmt(r.net)+' \u00d7 '+p.pct+'%\n= '+fmt(r.net*p.pct/100);if(r.eliteEach>0)s+='\n+ '+fmt(r.eliteEach)+' elite bonus';if(p.isHost)s+='\n\u2212 '+fmt(r.SETUP)+' setup fee';s+='\n= '+fmt(p.take);return s;}
+
+function pessSummary(r,p){
+  if(!p)return '';
+  // Always show if layouts differ (different doors or free piles)
+  if(p.doors===r.doors&&p.layout.free===r.layout.free)return '';
+  const lines=['\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500','\u26a0 PESSIMISTIC VAULT'];
+  if(p.doors!==r.doors)lines.push('Doors: '+r.doors+' \u2192 '+p.doors);
+  if(p.layout.free!==r.layout.free)lines.push('Free piles: '+r.layout.free+' \u2192 '+p.layout.free);
+  if(p.idleMS>0)lines.push('Idle: '+p.waitingPlayers+' player'+(p.waitingPlayers>1?'s':'')+' \u00d7 '+p.firstDoorTime+'s = '+p.idleMS+'s wasted');
+  if(p.hackTotal!==r.hackTotal)lines.push('Hacking: '+r.hackTotal+'s \u2192 '+p.hackTotal+'s');
+  if(p.uc!==r.uc)lines.push('Collected: '+r.uc+'/'+r.mu+' \u2192 '+p.uc+'/'+p.mu);
+  lines.push('Net: '+fmt(r.totalWithElite)+' \u2192 '+fmt(p.totalWithElite));
+  const diff=p.totalWithElite-r.totalWithElite;
+  if(diff<0)lines.push('Downside: '+fmtNeg(Math.abs(diff)));
+  else lines.push('No impact \u2014 enough time either way');
+  return lines.join('\n');
+}
 
 function render(){
   const grid=document.getElementById('matrix-grid');grid.innerHTML='';
@@ -514,8 +594,13 @@ function render(){
     col.appendChild(hdr);
 
     const results=H.map(h=>calc(h,pc));results.sort((a,b)=>b.totalWithElite-a.totalWithElite);
+    const vc=V[S.loot], pessLayout=LAYOUTS[vc.ly].pess;
+    const pessResults=H.map(h=>calc(h,pc,pessLayout));
+    // Index pessimistic by hacker id for lookup
+    const pessMap={};pessResults.forEach(r=>{pessMap[r.hacker.id]=r;});
     for(let rank=0;rank<3;rank++){
       const r=results[rank],uid='c'+pc+'r'+rank;
+      const p=pessMap[r.hacker.id];
       const card=document.createElement('div');card.className='hacker-card rank-'+(rank+1);
       let html='<div class="hacker-card-header"><span class="hacker-name">'+r.hacker.label+' — '+r.hacker.cut+'%</span><span class="hacker-rank">'+(rank===0?'Best':rank===1?'2nd':'3rd')+'</span></div><div class="hacker-card-body">';
       if(r.bad)html+='<div class="warning-box">Insufficient vault time to collect any loot with these settings.</div>';
@@ -537,14 +622,19 @@ function render(){
       card.innerHTML=html;col.appendChild(card);
       setTimeout(()=>{
         const e=id=>document.getElementById(id),a=(id,l,c)=>{const el=e(id);if(el)aT(el,l,c);};
-        a(uid+'-ms','Manseconds',tipMS(r));a(uid+'-hk',r.isAgg?'Thermal Charges':'Hacking + Commute',tipHack(r));
+        const ps=pessSummary(r,p);
+        a(uid+'-ms','Manseconds',tipMS(r));
+        a(uid+'-hk',r.isAgg?'Thermal Charges':'Hacking + Commute',tipHack(r)+ps);
         a(uid+'-cm','Loot + Commute',tipComm(r));
         const exClock=Math.round(r.excess/r.pc);
-        a(uid+'-ex','Excess Time',r.tms+' manseconds\n\u2212 '+r.hackTotal+' hacking + commute\n\u2212 '+r.lootTotal+' loot + commute\n= '+r.excess+'s manseconds unused\n\n\u00f7 '+r.pc+' players = '+exClock+'s clock time');
-        a(uid+'-cl','Units Collected',tipColl(r));
+        let exTip=r.tms+' manseconds\n\u2212 '+r.hackTotal+' hacking + commute';
+        if(r.idleMS>0)exTip+='\n\u2212 '+r.idleMS+' idle (waiting for door)';
+        exTip+='\n\u2212 '+r.lootTotal+' loot + commute\n= '+r.excess+'s manseconds unused\n\n\u00f7 '+r.pc+' players = '+exClock+'s clock time';
+        a(uid+'-ex','Excess Time',exTip);
+        a(uid+'-cl','Units Collected',tipColl(r)+ps);
         a(uid+'-gr','Gross Take',tipGross(r));a(uid+'-cr','Crew Deduction',tipCrew(r));
         if(r.buyerFee>0)a(uid+'-la','Laundering Fee',fmt(r.gross)+' \u00d7 '+(r.buyerFee*100)+'% = '+fmt(r.launderD));
-        a(uid+'-nt','Net to Players',tipNet(r));
+        a(uid+'-nt','Net to Players',tipNet(r)+ps);
         for(let pi=0;pi<r.players.length;pi++)a(uid+'-p'+pi,r.players[pi].label,tipP(r,r.players[pi]));
       },0);
     }
