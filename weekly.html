@@ -17,7 +17,7 @@
   --navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3148;
   --cream:#f0ead8;--cream-dim:#9aabbf;
   --gold:#c9a84c;--gold-dim:#8a6f2e;
-  --green:#2dba72;--red:#e8773a;--amber:#f0b429;
+  --green:#2dba72;--red:#d94f4f;--amber:#e08c2a;
   --weekly:#f0c040;--weekly-bg:rgba(240,192,64,0.08);--weekly-border:rgba(240,192,64,0.35);
   --rule:rgba(201,168,76,0.18);
   --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--serif:'Playfair Display',serif;
@@ -646,7 +646,7 @@ function renderTable(m){
   const d=D[m];document.getElementById('mode-assumptions').textContent=d.note;
   let html='';
   d.biz.forEach(b=>{
-    let tags='';(b.tg||[]).forEach(t=>{tags+=t.includes('This Week')?'<span class="biz-tag tag-weekly">★ '+t+'</span>':'<span class="biz-tag tag-buff">▲ '+t+'</span>';});
+    let tags='';(b.tg||[]).forEach(t=>{tags+=t.includes('This Week')?'<span class="biz-tag tag-weekly">'+t+'</span>':'<span class="biz-tag tag-buff">'+t+'</span>';});
     let rv,pv,hr,ph,cls=b.bad?'color:var(--red)':'';
     if(b.w){
       let rpct=pct(b.rv,b.rw),ppct=pct(b.pv,b.pw),hpct=pct(b.hr,b.hw),phpct=pct(b.ph,b.phw);

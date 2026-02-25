@@ -101,7 +101,7 @@ td:first-child{text-align:left}
 .rtbl tbody tr{border-bottom:1px solid rgba(201,168,76,.07)}
 .rtbl tbody tr.best-row{background:rgba(201,168,76,.04)}
 .rtbl tbody tr.worst-row{background:rgba(232,119,58,.04)}
-.rtbl td{padding:7px 14px;text-align:right;font-family:var(--mono);font-size:12px;color:var(--cream);vertical-align:middle;white-space:nowrap}
+.rtbl td{padding:7px calc(14px + .6em) 7px 14px;text-align:right;font-family:var(--mono);font-size:12px;color:var(--cream);vertical-align:middle;white-space:nowrap}.rtbl td.rneg{padding-right:14px}
 .rtbl td:first-child{text-align:left;font-family:var(--sans);font-size:12px;font-weight:500;color:var(--cream);white-space:normal}
 .rtbl td:first-child.dim-label{font-weight:400;color:var(--cream-dim)}
 .rtbl td.green{color:var(--green)}
@@ -413,11 +413,11 @@ body.mode-crew .tbl-solofull,body.mode-solo .tbl-solofull{display:none}
             <td><span class="tip" data-tip-label="Stock — HDB" data-tip-calc="30 units × $7,000 × 1.5 × 1.5 = $472,500">$472,500</span></td>
           </tr>
           <tr><td>Supply consumed</td>
-            <td><span class="tip red" data-tip-label="Supply — Research" data-tip-calc="1 unit / 210 sec → 1 bar = 350 min&#10;210 ÷ 350 = 60% → $75K × 0.6 = $45,000">($45,000)</span></td>
-            <td><span class="tip red" data-tip-label="Supply — Production" data-tip-calc="1 bar / 140 min&#10;210 ÷ 140 = 1.5 bars × $75K = $112,500">($112,500)</span></td>
-            <td class="red">($112,500)</td>
+            <td class="rneg"><span class="tip red" data-tip-label="Supply — Research" data-tip-calc="1 unit / 210 sec → 1 bar = 350 min&#10;210 ÷ 350 = 60% → $75K × 0.6 = $45,000">($45,000)</span></td>
+            <td class="rneg"><span class="tip red" data-tip-label="Supply — Production" data-tip-calc="1 bar / 140 min&#10;210 ÷ 140 = 1.5 bars × $75K = $112,500">($112,500)</span></td>
+            <td class="red rneg">($112,500)</td>
           </tr>
-          <tr><td>Fast-track cost</td><td class="dim">—</td><td class="red">($225,000)</td><td class="red">($225,000)</td></tr>
+          <tr><td>Fast-track cost</td><td class="dim">—</td><td class="red rneg">($225,000)</td><td class="red rneg">($225,000)</td></tr>
           <tr><td>Active time (amortized)</td>
             <td class="green">0 min</td>
             <td><span class="tip" data-tip-label="Active — Crew, Amortized" data-tip-calc="Full stock crew sell = 40 min active burden&#10;Full stock = 100 units&#10;Per cycle you produce 30 units&#10;&#10;Sells per cycle = 30 ÷ 100 = 0.3 sells&#10;40 min × 0.3 = 12 min amortized per cycle">12 min</span></td>
@@ -426,15 +426,15 @@ body.mode-crew .tbl-solofull,body.mode-solo .tbl-solofull{display:none}
           <tr><td class="dim-label">Research obtained</td><td>1 project</td><td>1 project</td><td>1 project</td></tr>
           <tr><td class="dim-label">Wait time per project</td><td class="dim">3.5 hours</td><td class="dim">—</td><td class="dim">—</td></tr>
           <tr class="best-row"><td><strong>Net cash per project</strong></td>
-            <td><strong class="red">($45,000)</strong></td>
-            <td class="red">($22,500)</td>
+            <td class="rneg"><strong class="red">($45,000)</strong></td>
+            <td class="red rneg">($22,500)</td>
             <td class="green"><strong>$135,000</strong></td>
           </tr>
           <tr class="divider-row"><td colspan="4" style="font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding-bottom:6px">Over All 51 Projects</td></tr>
           <tr><td>Total supply</td>
-            <td><span class="tip red" data-tip-label="Supply × 51 — Research" data-tip-calc="$45,000 × 51 = $2,295,000">($2,295,000)</span></td>
-            <td><span class="tip red" data-tip-label="Supply × 51 — Production" data-tip-calc="$112,500 × 51 = $5,737,500">($5,737,500)</span></td>
-            <td class="red">($5,737,500)</td>
+            <td class="rneg"><span class="tip red" data-tip-label="Supply × 51 — Research" data-tip-calc="$45,000 × 51 = $2,295,000">($2,295,000)</span></td>
+            <td class="rneg"><span class="tip red" data-tip-label="Supply × 51 — Production" data-tip-calc="$112,500 × 51 = $5,737,500">($5,737,500)</span></td>
+            <td class="red rneg">($5,737,500)</td>
           </tr>
           <tr><td>Total gross revenue</td>
             <td class="red">$0</td>
@@ -443,8 +443,8 @@ body.mode-crew .tbl-solofull,body.mode-solo .tbl-solofull{display:none}
           </tr>
           <tr><td>Total fast-track</td>
             <td class="dim">$0</td>
-            <td><span class="tip red" data-tip-label="Fast-Track × 51" data-tip-calc="$225,000 × 51 = $11,475,000">($11,475,000)</span></td>
-            <td class="red">($11,475,000)</td>
+            <td class="rneg"><span class="tip red" data-tip-label="Fast-Track × 51" data-tip-calc="$225,000 × 51 = $11,475,000">($11,475,000)</span></td>
+            <td class="red rneg">($11,475,000)</td>
           </tr>
           <tr><td>Total active time</td>
             <td class="green">0 hr</td>
@@ -453,8 +453,8 @@ body.mode-crew .tbl-solofull,body.mode-solo .tbl-solofull{display:none}
           </tr>
           <tr><td class="dim-label">Total passive time</td><td>178 hr</td><td>178 hr</td><td>178 hr</td></tr>
           <tr class="best-row"><td><strong>Net cash — 51 projects</strong></td>
-            <td><strong class="red">($2,295,000)</strong></td>
-            <td><strong class="red">($1,147,500)</strong></td>
+            <td class="rneg"><strong class="red">($2,295,000)</strong></td>
+            <td class="rneg"><strong class="red">($1,147,500)</strong></td>
             <td class="green"><strong>$6,885,000</strong></td>
           </tr>
           </tr>
@@ -479,10 +479,10 @@ body.mode-crew .tbl-solofull,body.mode-solo .tbl-solofull{display:none}
             <td><span class="tip" data-tip-label="Stock — Base LS" data-tip-calc="30 × $7,000 × 1.5 = $315,000&#10;No lobby bonus">$315,000</span></td>
           </tr>
           <tr><td>Supply consumed</td>
-            <td><span class="tip red" data-tip-label="Supply — Research" data-tip-calc="60% of bar = $45,000">($45,000)</span></td>
-            <td><span class="tip red" data-tip-label="Supply — Production" data-tip-calc="1.5 bars × $75K = $112,500">($112,500)</span></td>
+            <td class="rneg"><span class="tip red" data-tip-label="Supply — Research" data-tip-calc="60% of bar = $45,000">($45,000)</span></td>
+            <td class="rneg"><span class="tip red" data-tip-label="Supply — Production" data-tip-calc="1.5 bars × $75K = $112,500">($112,500)</span></td>
           </tr>
-          <tr><td>Fast-track cost</td><td class="dim">—</td><td class="red">($225,000)</td></tr>
+          <tr><td>Fast-track cost</td><td class="dim">—</td><td class="red rneg">($225,000)</td></tr>
           <tr><td>Active time (amortized)</td>
             <td class="green">0 min</td>
             <td><span class="tip" data-tip-label="Active — Solo, Amortized" data-tip-calc="Solo sell at 50 units = 22.5 min&#10;Per cycle you produce 30 units&#10;&#10;Sells per cycle = 30 ÷ 50 = 0.6 sells&#10;22.5 min × 0.6 = 13.5 min amortized per cycle">13.5 min</span></td>
@@ -490,21 +490,21 @@ body.mode-crew .tbl-solofull,body.mode-solo .tbl-solofull{display:none}
           <tr><td class="dim-label">Research obtained</td><td>1 project</td><td>1 project</td></tr>
           <tr><td class="dim-label">Wait time per project</td><td class="dim">3.5 hours</td><td class="dim">—</td></tr>
           <tr class="best-row"><td><strong>Net cash per project</strong></td>
-            <td><strong class="red">($45,000)</strong></td>
-            <td><strong class="red">($22,500)</strong></td>
+            <td class="rneg"><strong class="red">($45,000)</strong></td>
+            <td class="rneg"><strong class="red">($22,500)</strong></td>
           </tr>
           <tr class="divider-row"><td colspan="3" style="font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding-bottom:6px">Over All 51 Projects</td></tr>
-          <tr><td>Total supply</td><td class="red">($2,295,000)</td><td class="red">($5,737,500)</td></tr>
+          <tr><td>Total supply</td><td class="red rneg">($2,295,000)</td><td class="red rneg">($5,737,500)</td></tr>
           <tr><td>Total gross revenue</td><td class="red">$0</td><td>$16,065,000</td></tr>
-          <tr><td>Total fast-track</td><td class="dim">$0</td><td class="red">($11,475,000)</td></tr>
+          <tr><td>Total fast-track</td><td class="dim">$0</td><td class="red rneg">($11,475,000)</td></tr>
           <tr><td>Total active time</td>
             <td class="green">0 hr</td>
             <td><span class="tip" data-tip-label="Active — 51 Cycles, Solo" data-tip-calc="13.5 min per cycle × 51 = 689 min = 11.5 hr&#10;&#10;Equivalent to ~30.6 sells at 50 units&#10;(51 × 30 units = 1,530 units ÷ 50 per sell)">11.5 hr</span></td>
           </tr>
           <tr><td class="dim-label">Total passive time</td><td>178 hr</td><td>178 hr</td></tr>
           <tr class="best-row"><td><strong>Net cash — 51 projects</strong></td>
-            <td><strong class="red">($2,295,000)</strong></td>
-            <td><strong class="red">($1,147,500)</strong></td>
+            <td class="rneg"><strong class="red">($2,295,000)</strong></td>
+            <td class="rneg"><strong class="red">($1,147,500)</strong></td>
           </tr>
         </tbody>
       </table>
@@ -529,11 +529,11 @@ body.mode-crew .tbl-solofull,body.mode-solo .tbl-solofull{display:none}
             <td><span class="tip" data-tip-label="Stock — HDB" data-tip-calc="30 × $7,000 × 1.5 × 1.5 = $472,500">$472,500</span></td>
           </tr>
           <tr><td>Supply consumed</td>
-            <td><span class="tip red" data-tip-label="Supply — Research" data-tip-calc="60% of bar = $45,000">($45,000)</span></td>
-            <td class="red">($112,500)</td>
-            <td class="red">($112,500)</td>
+            <td class="rneg"><span class="tip red" data-tip-label="Supply — Research" data-tip-calc="60% of bar = $45,000">($45,000)</span></td>
+            <td class="red rneg">($112,500)</td>
+            <td class="red rneg">($112,500)</td>
           </tr>
-          <tr><td>Fast-track cost</td><td class="dim">—</td><td class="red">($225,000)</td><td class="red">($225,000)</td></tr>
+          <tr><td>Fast-track cost</td><td class="dim">—</td><td class="red rneg">($225,000)</td><td class="red rneg">($225,000)</td></tr>
           <tr><td>Active time (amortized)</td>
             <td class="green">0 min</td>
             <td><span class="tip" data-tip-label="Active — Solo, Amortized" data-tip-calc="Solo sell at 50 units = 22.5 min&#10;Per cycle you produce 30 units&#10;&#10;Sells per cycle = 30 ÷ 50 = 0.6 sells&#10;22.5 min × 0.6 = 13.5 min per cycle">13.5 min</span></td>
@@ -542,14 +542,14 @@ body.mode-crew .tbl-solofull,body.mode-solo .tbl-solofull{display:none}
           <tr><td class="dim-label">Research obtained</td><td>1 project</td><td>1 project</td><td>1 project</td></tr>
           <tr><td class="dim-label">Wait time per project</td><td class="dim">3.5 hours</td><td class="dim">—</td><td class="dim">—</td></tr>
           <tr class="best-row"><td><strong>Net cash per project</strong></td>
-            <td><strong class="red">($45,000)</strong></td>
-            <td class="red">($22,500)</td>
+            <td class="rneg"><strong class="red">($45,000)</strong></td>
+            <td class="red rneg">($22,500)</td>
             <td class="green"><strong>$135,000</strong></td>
           </tr>
           <tr class="divider-row"><td colspan="4" style="font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding-bottom:6px">Over All 51 Projects</td></tr>
-          <tr><td>Total supply</td><td class="red">($2,295,000)</td><td class="red">($5,737,500)</td><td class="red">($5,737,500)</td></tr>
+          <tr><td>Total supply</td><td class="red rneg">($2,295,000)</td><td class="red rneg">($5,737,500)</td><td class="red rneg">($5,737,500)</td></tr>
           <tr><td>Total gross revenue</td><td class="red">$0</td><td>$16,065,000</td><td>$24,097,500</td></tr>
-          <tr><td>Total fast-track</td><td class="dim">$0</td><td class="red">($11,475,000)</td><td class="red">($11,475,000)</td></tr>
+          <tr><td>Total fast-track</td><td class="dim">$0</td><td class="red rneg">($11,475,000)</td><td class="red rneg">($11,475,000)</td></tr>
           <tr><td>Total active time</td>
             <td class="green">0 hr</td>
             <td><span class="tip" data-tip-label="Active — 51 Cycles, Solo Full" data-tip-calc="13.5 min per cycle × 51 = 689 min = 11.5 hr">11.5 hr</span></td>
@@ -557,8 +557,8 @@ body.mode-crew .tbl-solofull,body.mode-solo .tbl-solofull{display:none}
           </tr>
           <tr><td class="dim-label">Total passive time</td><td>178 hr</td><td>178 hr</td><td>178 hr</td></tr>
           <tr class="best-row"><td><strong>Net cash — 51 projects</strong></td>
-            <td><strong class="red">($2,295,000)</strong></td>
-            <td><strong class="red">($1,147,500)</strong></td>
+            <td class="rneg"><strong class="red">($2,295,000)</strong></td>
+            <td class="rneg"><strong class="red">($1,147,500)</strong></td>
             <td class="green"><strong>$6,885,000</strong></td>
           </tr>
         </tbody>

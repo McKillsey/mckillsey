@@ -16,7 +16,7 @@
   --navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3148;
   --cream:#f0ead8;--cream-dim:#9aabbf;
   --gold:#c9a84c;--gold-dim:#8a6f2e;
-  --green:#2dba72;--red:#e8773a;--amber:#f0b429;
+  --green:#2dba72;--red:#d94f4f;--amber:#e08c2a;
   --weekly:#f0c040;--weekly-bg:rgba(240,192,64,0.08);--weekly-border:rgba(240,192,64,0.35);
   --rule:rgba(201,168,76,0.18);
   --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--serif:'Playfair Display',serif;
@@ -176,10 +176,10 @@ body.mode-solofull .scenario-grid.tbl-solofull{display:grid}
 .concept-box p:last-child{margin-bottom:0}
 .code{font-family:var(--mono);font-size:11px;color:var(--gold)}
 .unc{border-bottom:1.5px dashed var(--amber);cursor:help}
-.unc-pill{font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;background:rgba(240,180,41,.2);color:var(--amber);padding:1px 5px;margin-left:4px;vertical-align:middle;border:1px solid rgba(240,180,41,.35);white-space:nowrap}
+.unc-pill{font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;background:rgba(224,140,42,.2);color:var(--amber);padding:1px 5px;margin-left:4px;vertical-align:middle;border:1px solid rgba(224,140,42,.35);white-space:nowrap}
 
-.unconf{border-bottom:1px dashed rgba(240,180,41,.6);cursor:help;display:inline-block}
-.unconf-pill{display:inline-block;font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;background:rgba(240,180,41,.18);color:var(--amber);padding:1px 5px;margin-left:5px;vertical-align:middle;border:1px solid rgba(240,180,41,.3)}
+.unconf{border-bottom:1px dashed rgba(224,140,42,.6);cursor:help;display:inline-block}
+.unconf-pill{display:inline-block;font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;background:rgba(224,140,42,.18);color:var(--amber);padding:1px 5px;margin-left:5px;vertical-align:middle;border:1px solid rgba(224,140,42,.3)}
 
 .feedback-btn{position:fixed;bottom:22px;right:22px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--gold);padding:9px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .15s;z-index:100}
 .feedback-btn:hover{background:var(--gold);color:var(--navy)}
@@ -296,7 +296,7 @@ body.mode-solofull .scenario-grid.tbl-solofull{display:grid}
         </tr>
         <!-- CASH WEEKLY -->
         <tr class="weekly-row">
-          <td><span class="biz-name">Counterfeit Cash</span><span class="biz-slug">/cash</span><span class="biz-tag tag-buff">▲ +35% Car Wash</span> <span class="biz-tag tag-weekly">★ 2× this week</span></td>
+          <td><span class="biz-name">Counterfeit Cash</span><span class="biz-slug">/cash</span><span class="biz-tag tag-buff">+35% Car Wash</span> <span class="biz-tag tag-weekly">2× this week</span></td>
           <td><span class="tip" data-tip-label="Supply Expense — Cash" data-tip-calc="Full stock costs $150,000 to supply&#10;Cheapest of the top-tier MC businesses">$150,000</span></td>
           <td>
             <span class="tip wt" data-tip-label="Gross Revenue — Cash, This Week" data-tip-calc="Confirmed base sale (w/ Car Wash): $496,140&#10;× 2.00 weekly bonus = $992,280&#10;× 1.50 full lobby bonus = $1,488,420&#10;&#10;Normal week (no 2×):&#10;$496,140 × 1.50 = $744,210" data-tip-result="$1,488,420 this week · $744,210 normal" data-tip-result-class="wk"><span class="wkly">$1,488,420</span></span>
@@ -319,7 +319,7 @@ body.mode-solofull .scenario-grid.tbl-solofull{display:grid}
         </tr>
         <!-- WEED -->
         <tr>
-          <td><span class="biz-name">Weed Farm</span><span class="biz-slug">/weed</span><span class="biz-tag tag-buff">▲ +35% Smoke on the Water</span></td>
+          <td><span class="biz-name">Weed Farm</span><span class="biz-slug">/weed</span><span class="biz-tag tag-buff">+35% Smoke on the Water</span></td>
           <td><span class="tip" data-tip-label="Supply Expense — Weed" data-tip-calc="Full stock costs $120,000 to supply&#10;Cheapest of the top-tier MC businesses&#10;alongside Counterfeit Cash">$120,000</span></td>
           <td><span class="tip" data-tip-label="Gross Revenue — Crew + Full Lobby" data-tip-calc="Base remote sale: $314,281&#10;× 1.35 Smoke on the Water front bonus = $425,280&#10;× 1.50 lobby bonus = $637,920&#10;&#10;Without front bonus:&#10;$314,281 × 1.50 = $471,421" data-tip-result="$637,920 with front · $471,421 without">$637,920</span></td>
           <td>

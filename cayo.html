@@ -18,7 +18,7 @@
   --navy:#0d1b2a; --navy-mid:#162436; --navy-light:#1e3148;
   --cream:#f0ead8; --cream-dim:#9aabbf;
   --gold:#c9a84c; --gold-dim:#8a6f2e;
-  --green:#2dba72; --red:#e8773a; --amber:#f0b429;
+  --green:#2dba72; --red:#d94f4f; --amber:#e08c2a;
   --weekly:#f0c040; --weekly-bg:rgba(240,192,64,0.08); --weekly-border:rgba(240,192,64,0.35);
   --rule:rgba(201,168,76,0.18);
   --mono:'IBM Plex Mono',monospace;
@@ -103,7 +103,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .scenario-badge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px}
 .badge-best{background:rgba(45,186,114,.2);color:var(--green)}
 .badge-elite{background:rgba(201,168,76,.15);color:var(--gold)}
-.badge-no-elite{background:rgba(232,119,58,.15);color:var(--red)}
+.badge-no-elite{background:rgba(217,79,79,.15);color:var(--red)}
 
 .scenario-body{padding:16px}
 
@@ -152,7 +152,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .bag-fill-inner.under{background:var(--red)}
 
 /* ── WARNING ── */
-.warning-box{background:rgba(232,119,58,.08);border:1px solid rgba(232,119,58,.3);padding:7px 10px;font-family:var(--mono);font-size:10px;color:var(--red);margin-bottom:10px;line-height:1.5}
+.warning-box{background:rgba(217,79,79,.08);border:1px solid rgba(217,79,79,.3);padding:7px 10px;font-family:var(--mono);font-size:10px;color:var(--red);margin-bottom:10px;line-height:1.5}
 
 /* ── METHODOLOGY ── */
 .methodology{margin-top:40px;border:1px solid var(--rule);padding:24px;background:rgba(255,255,255,.01)}
@@ -896,7 +896,7 @@ function render() {
     let eliteBadge='', eliteWarning='';
     if (state.eliteSelected) {
       if (sc.eliteOk) eliteBadge=`<span class="scenario-badge badge-elite">Elite ✓</span>`;
-      else { eliteBadge=`<span class="scenario-badge badge-no-elite">✕ Elite</span>`; eliteWarning=`<div class="warning-box">Not enough loot to fill all ${np} bags — Elite bonus excluded for this player count.</div>`; }
+      else { eliteBadge=`<span class="scenario-badge badge-no-elite">Elite ✗</span>`; eliteWarning=`<div class="warning-box">Not enough loot to fill all ${np} bags — Elite bonus excluded for this player count.</div>`; }
     }
     const goldNote = (np===1 && state.loot.gold > 0)
       ? `<div class="warning-box">Gold excluded from solo — requires two players to access. Not modelled.</div>`
