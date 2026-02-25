@@ -60,8 +60,7 @@ h1{font-family:var(--serif);font-size:34px;font-weight:900;}
 
 .col-head{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding:7px 14px;border-bottom:1px solid rgba(201,168,76,.14);background:rgba(201,168,76,.02);flex-shrink:0;white-space:nowrap;}
 
-.r2-cells,.r3-cells{display:grid;flex:1;align-self:stretch;}
-.r4-cells{display:flex;flex-direction:column;flex:1;}
+.r2-cells,.r3-cells,.r4-cells{display:grid;flex:1;align-self:stretch;}
 
 /* r2-cell and r3-group each occupy one grid row (defined by inline grid-template-rows on parent) */
 .r2-cell{
@@ -180,7 +179,7 @@ h1{font-family:var(--serif);font-size:34px;font-weight:900;}
   <div class="flow">
     <div class="col col-r2">
       <div class="col-head">Round 2</div>
-      <div class="r2-cells" style="grid-template-rows:2fr 1fr 1fr 2fr 3fr 1fr">
+      <div class="r2-cells" style="grid-template-rows:2fr 1fr 1fr 1fr 3fr 1fr">
       <div class="r2-cell" style="--flex:2">
         <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/bullet" target="_blank" rel="noopener">Bullet</a></div>
         <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-live">3</span><span class="b b-gone">4</span><span class="b b-elim">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-live">8</span></div>
@@ -193,7 +192,7 @@ h1{font-family:var(--serif);font-size:34px;font-weight:900;}
         <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/f620" target="_blank" rel="noopener">F620</a></div>
         <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-live">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-live">8</span></div>
       </div>
-      <div class="r2-cell" style="--flex:2">
+      <div class="r2-cell" style="--flex:1">
         <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a></div>
         <div class="badges"><span class="b b-live">1</span><span class="b b-gone">2</span><span class="b b-live">3</span><span class="b b-gone">4</span><span class="b b-elim">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-elim">8</span></div>
       </div>
@@ -209,7 +208,7 @@ h1{font-family:var(--serif);font-size:34px;font-weight:900;}
     </div>
     <div class="col col-r3">
       <div class="col-head">Round 3</div>
-      <div class="r3-cells" style="grid-template-rows:2fr 1fr 1fr 2fr 3fr 1fr">
+      <div class="r3-cells" style="grid-template-rows:2fr 1fr 1fr 1fr 3fr 1fr">
       <div class="r3-group" style="--flex:2">
         <div class="r3-cell">
           <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a></div>
@@ -232,11 +231,7 @@ h1{font-family:var(--serif);font-size:34px;font-weight:900;}
           <div class="badges"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-elim">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-elim">8</span></div>
         </div>
       </div>
-      <div class="r3-group" style="--flex:2">
-        <div class="r3-cell">
-          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/carbonizzare" target="_blank" rel="noopener">Carbonizzare</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/schafter2" target="_blank" rel="noopener">Schafter</a></div>
-          <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-gone">8</span></div>
-        </div>
+      <div class="r3-group" style="--flex:1">
         <div class="r3-cell">
           <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/f620" target="_blank" rel="noopener">F620</a></div>
           <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-gone">8</span></div>
@@ -266,7 +261,7 @@ h1{font-family:var(--serif);font-size:34px;font-weight:900;}
     </div>
     <div class="col col-r4">
       <div class="col-head">Round 4 — confirmed list</div>
-      <div class="r4-cells">
+      <div class="r4-cells" style="grid-template-rows:2fr 1fr 1fr 1fr 3fr 1fr">
       <div class="r4-group" style="--flex:2">
       <div class="r4-cell">
         <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-conf">8</span></div>
@@ -293,12 +288,7 @@ h1{font-family:var(--serif);font-size:34px;font-weight:900;}
         <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/sentinel2" target="_blank" rel="noopener">Sentinel</a> · <a class="car-link" href="https://gtacars.net/gta5/schwarzer" target="_blank" rel="noopener">Schwartzer</a> · <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a> · <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> · <a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a></span></div>
       </div>
       </div>
-      <div class="r4-group" style="--flex:2">
-      <div class="r4-cell">
-        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-conf">7</span><span class="b b-gone">8</span></div>
-        <div class="cn">List 7</div>
-        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/sentinel2" target="_blank" rel="noopener">Sentinel</a> · <a class="car-link" href="https://gtacars.net/gta5/schwarzer" target="_blank" rel="noopener">Schwartzer</a> · <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a> · <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> · <a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a></span></div>
-      </div>
+      <div class="r4-group" style="--flex:1">
       <div class="r4-cell">
         <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-conf">7</span><span class="b b-gone">8</span></div>
         <div class="cn">List 7</div>
@@ -331,8 +321,7 @@ h1{font-family:var(--serif);font-size:34px;font-weight:900;}
       </div>
       </div>
     </div>
-  </div>
-</div>
+  </div></div>
 
 <div class="r1-section">
   <div class="r1-header">
@@ -430,7 +419,7 @@ h1{font-family:var(--serif);font-size:34px;font-weight:900;}
     </div>
     <div class="col col-r4">
       <div class="col-head">Round 4 — confirmed list</div>
-      <div class="r4-cells">
+      <div class="r4-cells" style="grid-template-rows:1fr 2fr 2fr 1fr 3fr 1fr">
       <div class="r4-group" style="--flex:1">
       <div class="r4-cell">
         <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-conf">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
@@ -602,7 +591,7 @@ h1{font-family:var(--serif);font-size:34px;font-weight:900;}
     </div>
     <div class="col col-r4">
       <div class="col-head">Round 4 — confirmed list</div>
-      <div class="r4-cells">
+      <div class="r4-cells" style="grid-template-rows:2fr 2fr 2fr 2fr 2fr 2fr">
       <div class="r4-group" style="--flex:2">
       <div class="r4-cell">
         <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-conf">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
