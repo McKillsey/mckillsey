@@ -144,7 +144,7 @@ body.mode-solofull .scenario-grid.tbl-solofull{display:grid}
 .badge-weekly{background:var(--weekly);color:var(--navy);font-weight:500}
 .badge-norm{background:rgba(255,255,255,.07);color:var(--cream-dim)}
 .stbl{width:100%;border-collapse:collapse;table-layout:fixed}
-.stbl td{padding:6px 0;font-family:var(--mono);font-size:12px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;color:var(--cream);white-space:normal;word-break:break-word}
+.stbl td{padding:6px 0;font-family:var(--mono);font-size:12px;border-bottom:1px solid rgba(255,255,255,.04);text-align:right;color:var(--cream);white-space:normal;word-break:break-word}.stbl td:last-child{padding-right:.6em}.stbl td.rneg{padding-right:0}
 .stbl td:first-child{text-align:left;color:var(--cream-dim);padding-right:12px;width:55%}
 .stbl tr.total td{border-top:1px solid var(--rule);border-bottom:none;padding-top:9px;font-size:13px}
 .stbl tr.total td:last-child{color:var(--green)}
@@ -672,7 +672,7 @@ Normal: $148,553 ÷ 10 × 60 = $891,315/hr" data-tip-result-class="wk"><span cla
         <tr><td>Base payout (Car Wash +35%)</td><td>$496,140</td></tr>
         <tr><td>2× weekly bonus</td><td>× 2.00 = $992,280</td></tr>
         <tr><td>Full lobby bonus (+50%)</td><td>× 1.50 = $1,488,420</td></tr>
-        <tr><td>Supply expense</td><td>− $150,000</td></tr>
+        <tr><td>Supply expense</td><td class="rneg">($150,000)</td></tr>
         <tr><td>Net income</td><td class="wkly">$1,338,420</td></tr>
         <tr><td>Your sell time</td><td>10 min</td></tr>
         <tr><td>Reciprocity (2 helpers × 10 min)</td><td>+ 20 min</td></tr>
@@ -685,7 +685,7 @@ Normal: $148,553 ÷ 10 × 60 = $891,315/hr" data-tip-result-class="wk"><span cla
       <table class="stbl">
         <tr><td>Base payout (Car Wash +35%)</td><td>$496,140</td></tr>
         <tr><td>Full lobby bonus (+50%)</td><td>× 1.50 = $744,210</td></tr>
-        <tr><td>Supply expense</td><td>− $150,000</td></tr>
+        <tr><td>Supply expense</td><td class="rneg">($150,000)</td></tr>
         <tr><td>Net income</td><td class="green">$594,210</td></tr>
         <tr><td>Your sell time</td><td>10 min</td></tr>
         <tr><td>Reciprocity (2 helpers × 10 min)</td><td>+ 20 min</td></tr>
@@ -698,7 +698,7 @@ Normal: $148,553 ÷ 10 × 60 = $891,315/hr" data-tip-result-class="wk"><span cla
       <table class="stbl">
         <tr><td>Base payout</td><td>$525,000</td></tr>
         <tr><td>Full lobby bonus (+50%)</td><td>× 1.50 = $787,500</td></tr>
-        <tr><td>Supply expense</td><td>− $187,500</td></tr>
+        <tr><td>Supply expense</td><td class="rneg">($187,500)</td></tr>
         <tr><td>Net income</td><td class="green">$600,000</td></tr>
         <tr><td>Your sell time</td><td>10 min</td></tr>
         <tr><td>Reciprocity (2 helpers × 10 min)</td><td>+ 20 min</td></tr>
@@ -715,7 +715,7 @@ Normal: $148,553 ÷ 10 × 60 = $891,315/hr" data-tip-result-class="wk"><span cla
       <table class="stbl">
         <tr><td>Base payout (Car Wash +35%)</td><td>$496,140</td></tr>
         <tr><td>2× weekly bonus</td><td>× 2.00 = $992,280</td></tr>
-        <tr><td>Supply expense</td><td>− $150,000</td></tr>
+        <tr><td>Supply expense</td><td class="rneg">($150,000)</td></tr>
         <tr><td>Net income</td><td class="wkly">$842,280</td></tr>
         <tr><td>Sell time (full stock, solo)</td><td>45 min</td></tr>
         <tr class="total wt"><td>$/active hr</td><td>45 min → $1,123,040/hr</td></tr>
@@ -726,7 +726,7 @@ Normal: $148,553 ÷ 10 × 60 = $891,315/hr" data-tip-result-class="wk"><span cla
       <div><span class="scenario-badge badge-rec">Normal</span></div>
       <table class="stbl">
         <tr><td>Base payout (Car Wash +35%)</td><td>$496,140</td></tr>
-        <tr><td>Supply expense</td><td>− $150,000</td></tr>
+        <tr><td>Supply expense</td><td class="rneg">($150,000)</td></tr>
         <tr><td>Net income</td><td class="green">$346,140</td></tr>
         <tr><td>Sell time (full stock, solo)</td><td>45 min</td></tr>
         <tr class="total"><td>$/active hr</td><td>45 min → <span class="green">$461,520/hr</span></td></tr>
@@ -737,7 +737,7 @@ Normal: $148,553 ÷ 10 × 60 = $891,315/hr" data-tip-result-class="wk"><span cla
       <div><span class="scenario-badge badge-norm">Normal Week #1</span></div>
       <table class="stbl">
         <tr><td>Base payout</td><td>$525,000</td></tr>
-        <tr><td>Supply expense</td><td>− $187,500</td></tr>
+        <tr><td>Supply expense</td><td class="rneg">($187,500)</td></tr>
         <tr><td>Net income</td><td class="green">$337,500</td></tr>
         <tr><td>Sell time (full stock, solo)</td><td>45 min</td></tr>
         <tr class="total"><td>$/active hr</td><td>45 min → <span class="green">$450,000/hr</span></td></tr>
@@ -754,7 +754,7 @@ Normal: $148,553 ÷ 10 × 60 = $891,315/hr" data-tip-result-class="wk"><span cla
         <tr><td>Base payout (Car Wash +35%)</td><td>$496,140</td></tr>
         <tr><td>2× weekly bonus</td><td>× 2.00 = $992,280</td></tr>
         <tr><td>Full lobby bonus (+50%)</td><td>× 1.50 = $1,488,420</td></tr>
-        <tr><td>Supply expense</td><td>− $150,000</td></tr>
+        <tr><td>Supply expense</td><td class="rneg">($150,000)</td></tr>
         <tr><td>Net income</td><td class="wkly">$1,338,420</td></tr>
         <tr><td>Sell time (full stock, solo)</td><td>45 min</td></tr>
         <tr class="total wt"><td>$/active hr</td><td>45 min → $1,784,560/hr</td></tr>
@@ -766,7 +766,7 @@ Normal: $148,553 ÷ 10 × 60 = $891,315/hr" data-tip-result-class="wk"><span cla
       <table class="stbl">
         <tr><td>Base payout (Car Wash +35%)</td><td>$496,140</td></tr>
         <tr><td>Full lobby bonus (+50%)</td><td>× 1.50 = $744,210</td></tr>
-        <tr><td>Supply expense</td><td>− $150,000</td></tr>
+        <tr><td>Supply expense</td><td class="rneg">($150,000)</td></tr>
         <tr><td>Net income</td><td class="green">$594,210</td></tr>
         <tr><td>Sell time (full stock, solo)</td><td>45 min</td></tr>
         <tr class="total"><td>$/active hr</td><td>45 min → <span class="green">$792,280/hr</span></td></tr>
@@ -778,7 +778,7 @@ Normal: $148,553 ÷ 10 × 60 = $891,315/hr" data-tip-result-class="wk"><span cla
       <table class="stbl">
         <tr><td>Base payout</td><td>$525,000</td></tr>
         <tr><td>Full lobby bonus (+50%)</td><td>× 1.50 = $787,500</td></tr>
-        <tr><td>Supply expense</td><td>− $187,500</td></tr>
+        <tr><td>Supply expense</td><td class="rneg">($187,500)</td></tr>
         <tr><td>Net income</td><td class="green">$600,000</td></tr>
         <tr><td>Sell time (full stock, solo)</td><td>45 min</td></tr>
         <tr class="total"><td>$/active hr</td><td>45 min → <span class="green">$800,000/hr</span></td></tr>

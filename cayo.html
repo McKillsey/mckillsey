@@ -58,7 +58,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .toggle-btn:last-child{border-right:none}
 .toggle-btn:hover{background:var(--navy-light);color:var(--cream)}
 .toggle-btn.active{background:var(--navy-light);color:var(--gold);border-bottom:2px solid var(--gold)}
-.toggle-group.yes-no .toggle-btn.active{color:var(--green);border-bottom-color:var(--green)}
+.toggle-group.yes-no .toggle-btn.active{color:var(--green);border-bottom-color:var(--green)}.toggle-group.equal-2{width:100%}.toggle-group.equal-2 .toggle-btn{flex:1;text-align:center}
 
 /* Loot quantity steppers */
 .loot-grid{display:flex;flex-direction:column;gap:8px}
@@ -129,9 +129,9 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .math-row{display:flex;justify-content:space-between;align-items:baseline;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04)}
 .math-row:last-child{border-bottom:none}
 .math-label{font-family:var(--mono);font-size:12px;color:var(--cream-dim)}
-.math-val{font-family:var(--mono);font-size:12px;color:var(--cream)}
+.math-val{font-family:var(--mono);font-size:12px;color:var(--cream);padding-right:.55em}
 .math-val.pos{color:var(--green)}
-.math-val.neg{color:var(--red)}
+.math-val.neg{color:var(--red);padding-right:0}.math-val.tip{padding-right:0;margin-right:.55em}.math-val.neg.tip{margin-right:0}
 .math-divider{border:none;border-top:1px solid var(--rule);margin:5px 0}
 .math-total .math-label{color:var(--cream);font-size:12px}
 .math-total .math-val{color:var(--gold);font-size:13px;font-weight:500}
@@ -295,7 +295,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 
     <div class="input-section">
       <span class="input-label">Hard Mode</span>
-      <div class="toggle-group yes-no" id="hardmode-group">
+      <div class="toggle-group yes-no equal-2" id="hardmode-group">
         <button class="toggle-btn active" data-val="yes" onclick="setToggle('hardMode','yes',this)">Yes</button>
         <button class="toggle-btn"        data-val="no"  onclick="setToggle('hardMode','no',this)">No</button>
       </div>
@@ -303,7 +303,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 
     <div class="input-section">
       <span class="input-label">Elite Challenge</span>
-      <div class="toggle-group yes-no" id="elite-group">
+      <div class="toggle-group yes-no equal-2" id="elite-group">
         <button class="toggle-btn active" data-val="yes" onclick="setToggle('eliteSelected','yes',this)">Yes</button>
         <button class="toggle-btn"        data-val="no"  onclick="setToggle('eliteSelected','no',this)">No</button>
       </div>
@@ -311,7 +311,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 
     <div class="input-section">
       <span class="input-label">Heist Within 72 Hours</span>
-      <div class="toggle-group yes-no" id="repeat-group">
+      <div class="toggle-group yes-no equal-2" id="repeat-group">
         <button class="toggle-btn active" data-val="yes" onclick="setToggle('repeatHeist','yes',this)">Yes</button>
         <button class="toggle-btn"        data-val="no"  onclick="setToggle('repeatHeist','no',this)">No</button>
       </div>
@@ -320,7 +320,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 
     <div class="input-section">
       <span class="input-label">Ignore Office Safe</span>
-      <div class="toggle-group yes-no" id="ignoresafe-group">
+      <div class="toggle-group yes-no equal-2" id="ignoresafe-group">
         <button class="toggle-btn"        data-val="yes" onclick="setToggle('ignoreSafe','yes',this)">Yes</button>
         <button class="toggle-btn active" data-val="no"  onclick="setToggle('ignoreSafe','no',this)">No</button>
       </div>
@@ -961,7 +961,7 @@ function render() {
       const base = sc.distrib * p.pct / 100;
       const lines = [`${fmt(sc.distrib)} × ${p.pct}% = ${fmt(base)}`];
       if (sc.eliteOk) lines.push(`+ ${fmt(sc.eliteEach)} elite bonus`);
-      if (p.isHost)   lines.push(`− ${fmt(SETUP_FEE)} setup fee`);
+      if (p.isHost)   lines.push(`(${fmt(SETUP_FEE)}) setup fee`);
       lines.push(`= ${fmt(p.finalPayout)}`);
       return lines.join('\n');
     };
@@ -998,11 +998,11 @@ function render() {
           </div>
           <div class="math-row">
             <span class="math-label">− Fencing fee (10%)</span>
-            <span class="math-val neg tip" id="tip-p-${np}-fencing">−${fmt(sc.fencing)}</span>
+            <span class="math-val neg tip" id="tip-p-${np}-fencing">(${fmt(sc.fencing)})</span>
           </div>
           <div class="math-row">
             <span class="math-label">− Pavel fee (2%)</span>
-            <span class="math-val neg tip" id="tip-p-${np}-pavel">−${fmt(sc.pavel)}</span>
+            <span class="math-val neg tip" id="tip-p-${np}-pavel">(${fmt(sc.pavel)})</span>
           </div>
           <hr class="math-divider">
           <div class="math-row math-total">
