@@ -13,7 +13,7 @@
 <meta name="description" content="GTA Online Diamond Casino Heist calculator. Optimize vault time, hacker selection, and crew composition across 2-4 players. Manseconds budget model with full math in every tooltip.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3148;--cream:#f0ead8;--cream-dim:#9aabbf;--gold:#c9a84c;--gold-dim:#8a6f2e;--green:#2dba72;--red:#d94f4f;--amber:#e08c2a;--rule:rgba(201,168,76,0.18);--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--serif:'Playfair Display',serif}
+:root{--navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3148;--cream:#f0ead8;--cream-dim:#9aabbf;--gold:#c9a84c;--gold-dim:#8a6f2e;--green:#2dba72;--red:#e8773a;--amber:#f0b429;--rule:rgba(201,168,76,0.18);--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--serif:'Playfair Display',serif}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size:15px;line-height:1.65}
 .site-header{border-bottom:1px solid var(--rule);padding:20px 48px;display:flex;align-items:center;gap:32px}
@@ -62,7 +62,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .slider-unit{font-family:var(--mono);font-size:10px;color:var(--cream-dim)}
 .hacker-slot.inactive .hacker-slot-label{color:var(--cream-dim);opacity:.5}
 .hacker-slot.inactive .slider-row{opacity:.4}
-.devmode-section{border:1px dashed var(--amber);padding:14px;margin-bottom:24px;background:rgba(224,140,42,.04)}
+.devmode-section{border:1px dashed var(--amber);padding:14px;margin-bottom:24px;background:rgba(240,180,41,.04)}
 .devmode-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;display:block}
 .devmode-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}.devmode-row:last-child{margin-bottom:0}
 .devmode-row-label{font-family:var(--mono);font-size:10px;color:var(--cream-dim);width:120px;flex-shrink:0}
@@ -105,7 +105,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .cp-rows{margin-top:6px}.cp-row{display:flex;justify-content:space-between;align-items:baseline;padding:2px 0}
 .cp-l{font-family:var(--mono);font-size:10px;color:var(--cream-dim)}.cp-l.host{color:var(--gold)}
 .cp-v{font-family:var(--mono);font-size:11px;color:var(--green);padding-right:.55em}.cp-v.tip{padding-right:0;margin-right:.55em}.cp-v.host{color:var(--gold)}
-.warning-box{background:rgba(217,79,79,.08);border:1px solid rgba(217,79,79,.3);padding:7px 10px;font-family:var(--mono);font-size:10px;color:var(--red);margin-bottom:10px;line-height:1.5}
+.warning-box{background:rgba(232,119,58,.08);border:1px solid rgba(232,119,58,.3);padding:7px 10px;font-family:var(--mono);font-size:10px;color:var(--red);margin-bottom:10px;line-height:1.5}
 #tipbox{position:fixed;z-index:9999;max-width:380px;background:#08111a;border:1px solid var(--gold);padding:12px 14px;font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--cream);pointer-events:none;display:none;box-shadow:0 8px 32px rgba(0,0,0,.6)}
 #tipbox .tb-label{color:var(--gold);font-size:9px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px;border-bottom:1px solid rgba(201,168,76,.2);padding-bottom:5px}
 #tipbox .tb-calc{color:var(--cream-dim)}.tip{border-bottom:1px dashed rgba(201,168,76,.45);cursor:help;display:inline-block}
@@ -119,7 +119,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .method-table td{padding:3px 10px 3px 0;color:var(--cream);border-bottom:1px solid rgba(255,255,255,.04)}.method-table td.val{color:var(--gold);text-align:right}
 .method-notes{font-family:var(--mono);font-size:11px;color:var(--cream-dim);line-height:1.7}.method-notes p{margin-bottom:8px}
 .layout-tag{font-family:var(--mono);font-size:8px;letter-spacing:.06em;text-transform:uppercase;padding:1px 5px;white-space:nowrap;vertical-align:middle;margin-left:4px}
-.tag-opt{background:rgba(45,186,114,.12);color:var(--green)}.tag-pess{background:rgba(217,79,79,.12);color:var(--red)}
+.tag-opt{background:rgba(45,186,114,.12);color:var(--green)}.tag-pess{background:rgba(232,119,58,.12);color:var(--red)}
 .layout-best td{color:var(--green)}.layout-worst td{color:var(--red)}
 .layout-table{table-layout:fixed}.layout-table th,.layout-table td{width:20%}
 .green{color:var(--green) !important}.red{color:var(--red) !important}
@@ -261,8 +261,8 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
           <tr><td>2</td><td class="val">5</td><td class="val">2</td><td class="val">1</td><td class="val green">3</td></tr>
           <tr><td>3</td><td class="val red">2</td><td class="val">4</td><td class="val">2</td><td class="val">4</td></tr>
           <tr><td>4</td><td class="val">4</td><td class="val">3</td><td class="val">1</td><td class="val">4</td></tr>
-          <tr class="layout-worst"><td>5 <span class="layout-tag tag-pess">Pessimistic</span></td><td class="val red">2</td><td class="val">3</td><td class="val red">3</td><td class="val red">5</td></tr>
-          <tr class="layout-best"><td>6 <span class="layout-tag tag-opt">Optimistic</span></td><td class="val">4</td><td class="val">4</td><td class="val green">0</td><td class="val green">3</td></tr>
+          <tr class="layout-worst"><td>5 <span class="layout-tag tag-pess">✕ Pessimistic</span></td><td class="val red">2</td><td class="val">3</td><td class="val red">3</td><td class="val red">5</td></tr>
+          <tr class="layout-best"><td>6 <span class="layout-tag tag-opt">▲ Optimistic</span></td><td class="val">4</td><td class="val">4</td><td class="val green">0</td><td class="val green">3</td></tr>
         </tbody></table>
       </div>
       <div class="method-section"><h3>Vault Layouts — Artwork</h3>
@@ -270,8 +270,8 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
           <tr><td>1</td><td class="val">1</td><td class="val">4</td><td class="val">1</td><td class="val">4</td></tr>
           <tr><td>2</td><td class="val">2</td><td class="val">3</td><td class="val">1</td><td class="val">4</td></tr>
           <tr><td>3</td><td class="val">1</td><td class="val">5</td><td class="val green">0</td><td class="val green">3</td></tr>
-          <tr class="layout-best"><td>4 <span class="layout-tag tag-opt">Optimistic</span></td><td class="val green">3</td><td class="val">2</td><td class="val">1</td><td class="val green">3</td></tr>
-          <tr class="layout-worst"><td>5 <span class="layout-tag tag-pess">Pessimistic</span></td><td class="val red">0</td><td class="val">4</td><td class="val red">2</td><td class="val">4</td></tr>
+          <tr class="layout-best"><td>4 <span class="layout-tag tag-opt">▲ Optimistic</span></td><td class="val green">3</td><td class="val">2</td><td class="val">1</td><td class="val green">3</td></tr>
+          <tr class="layout-worst"><td>5 <span class="layout-tag tag-pess">✕ Pessimistic</span></td><td class="val red">0</td><td class="val">4</td><td class="val red">2</td><td class="val">4</td></tr>
           <tr><td>6</td><td class="val">2</td><td class="val">3</td><td class="val">1</td><td class="val">4</td></tr>
         </tbody></table>
       </div>

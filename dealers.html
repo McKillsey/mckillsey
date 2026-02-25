@@ -17,7 +17,7 @@
   --navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3148;
   --cream:#f0ead8;--cream-dim:#9aabbf;
   --gold:#c9a84c;--gold-dim:#8a6f2e;
-  --green:#2dba72;--red:#d94f4f;--amber:#e08c2a;
+  --green:#2dba72;--red:#e8773a;--amber:#f0b429;
   --weekly:#f0c040;--weekly-bg:rgba(240,192,64,0.08);--weekly-border:rgba(240,192,64,0.35);
   --rule:rgba(201,168,76,0.18);
   --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--serif:'Playfair Display',serif;
@@ -43,7 +43,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 
 /* VERDICT */
 .verdict{border:1px solid var(--rule);border-left:3px solid var(--gold);padding:18px 22px;margin-bottom:12px;background:rgba(201,168,76,.02)}
-.verdict.skip{border-left-color:var(--red);background:rgba(217,79,79,.03)}
+.verdict.skip{border-left-color:var(--red);background:rgba(232,119,58,.03)}
 .verdict.go{border-left-color:var(--green);background:rgba(45,186,114,.03)}
 .verdict.wv{border-left-color:var(--weekly);background:var(--weekly-bg);border-color:var(--weekly-border)}
 .verdict-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
@@ -91,7 +91,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .comp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:0}
 .comp-card{background:var(--navy-mid);border:1px solid var(--rule);padding:18px 20px}
 .comp-card.best-card{border-color:rgba(45,186,114,.35);background:rgba(45,186,114,.04)}
-.comp-card.worst-card{border-color:rgba(217,79,79,.25);background:rgba(217,79,79,.03)}
+.comp-card.worst-card{border-color:rgba(232,119,58,.25);background:rgba(232,119,58,.03)}
 .comp-card-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;display:block}
 .comp-card .comp-card-label{color:var(--cream-dim)}
 .comp-card.best-card .comp-card-label{color:var(--green)}

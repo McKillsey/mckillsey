@@ -16,7 +16,7 @@
   --navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3148;
   --cream:#f0ead8;--cream-dim:#9aabbf;
   --gold:#c9a84c;--gold-dim:#8a6f2e;
-  --green:#2dba72;--red:#d94f4f;--amber:#e08c2a;
+  --green:#2dba72;--red:#e8773a;--amber:#f0b429;
   --rule:rgba(201,168,76,.18);
   --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--serif:'Playfair Display',serif;
 }
@@ -51,14 +51,14 @@ thead th{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transfo
 thead th:first-child{text-align:left}
 tbody tr{border-bottom:1px solid rgba(201,168,76,.07)}
 tbody tr.best-row{background:rgba(201,168,76,.04)}
-tbody tr.worst-row{background:rgba(217,79,79,.04)}
+tbody tr.worst-row{background:rgba(232,119,58,.04)}
 td{padding:7px 14px;text-align:right;font-family:var(--mono);font-size:13px;color:var(--cream);vertical-align:middle;white-space:nowrap}
 td:first-child{text-align:left;font-family:var(--sans);white-space:normal;min-width:180px}
 .biz-name{font-family:var(--serif);font-size:13px;color:var(--cream);font-weight:700;display:inline}
 .biz-sub{font-family:var(--mono);font-size:9px;color:var(--gold-dim);letter-spacing:.06em;display:inline;margin-left:8px}
 .biz-tag{display:inline-block;font-size:9px;letter-spacing:.05em;text-transform:uppercase;padding:2px 5px;font-family:var(--mono);font-weight:500;margin-right:3px;float:right;margin-top:4px}
 .tag-top5{background:rgba(45,186,114,.15);color:var(--green)}
-.tag-skip{background:rgba(217,79,79,.15);color:var(--red)}
+.tag-skip{background:rgba(232,119,58,.15);color:var(--red)}
 .dim{color:var(--cream-dim)}.green{color:var(--green)}.red{color:var(--red)}.gold{color:var(--gold)}
 .rb{display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;border-radius:50%;font-size:9px;font-weight:600;font-family:var(--sans);background:var(--navy-light);color:var(--cream-dim);vertical-align:middle;margin-right:3px}
 .rb.g{background:var(--gold);color:var(--navy)}
@@ -222,7 +222,7 @@ td:first-child{text-align:left;font-family:var(--sans);white-space:normal;min-wi
       </tr></thead>
       <tbody>
         <tr class="best-row">
-          <td><span class="biz-name">South American Imports</span><span class="biz-sub">Cocaine Lockup</span><span class="biz-tag tag-top5">Assign</span></td>
+          <td><span class="biz-name">South American Imports</span><span class="biz-sub">Cocaine Lockup</span><span class="biz-tag tag-top5">▲ Assign</span></td>
           <td><span class="tip" data-tip-label="Value per Unit — Coke" data-tip-calc="Base: $20,000&#10;+35% MC goods buff (all platforms, v1.59)&#10;$20,000 × 1.35 = $27,000">$27,000</span></td>
           <td>10</td>
           <td>120</td>
@@ -231,7 +231,7 @@ td:first-child{text-align:left;font-family:var(--sans);white-space:normal;min-wi
           <td><span class="tip green" data-tip-label="$/Passive Hr — Coke" data-tip-calc="$270,000 ÷ 1,200 min × 60&#10;= $13,500/hr"><span class="rb g">1</span>$13,500</span></td>
         </tr>
         <tr class="best-row">
-          <td><span class="biz-name">Pharmaceutical Research</span><span class="biz-sub">Meth Lab</span><span class="biz-tag tag-top5">Assign</span></td>
+          <td><span class="biz-name">Pharmaceutical Research</span><span class="biz-sub">Meth Lab</span><span class="biz-tag tag-top5">▲ Assign</span></td>
           <td><span class="tip" data-tip-label="Value per Unit — Meth" data-tip-calc="Base: $8,500&#10;+35% MC goods buff&#10;$8,500 × 1.35 = $11,475">$11,475</span></td>
           <td>20</td>
           <td>60</td>
@@ -240,7 +240,7 @@ td:first-child{text-align:left;font-family:var(--sans);white-space:normal;min-wi
           <td><span class="tip" data-tip-label="$/Passive Hr — Meth" data-tip-calc="$229,500 ÷ 1,200 min × 60&#10;= $11,475/hr"><span class="rb g">2</span>$11,475</span></td>
         </tr>
         <tr class="best-row">
-          <td><span class="biz-name">Cash Creation</span><span class="biz-sub">Counterfeit Cash Factory</span><span class="biz-tag tag-top5">Assign</span></td>
+          <td><span class="biz-name">Cash Creation</span><span class="biz-sub">Counterfeit Cash Factory</span><span class="biz-tag tag-top5">▲ Assign</span></td>
           <td><span class="tip" data-tip-label="Value per Unit — Cash" data-tip-calc="Base: $3,500&#10;+35% MC goods buff&#10;$3,500 × 1.35 = $4,725">$4,725</span></td>
           <td>40</td>
           <td>30</td>
@@ -249,7 +249,7 @@ td:first-child{text-align:left;font-family:var(--sans);white-space:normal;min-wi
           <td><span class="tip" data-tip-label="$/Passive Hr — Cash" data-tip-calc="$189,000 ÷ 1,200 min × 60&#10;= $9,450/hr"><span class="rb g">3</span>$9,450</span></td>
         </tr>
         <tr>
-          <td><span class="biz-name">Cargo &amp; Shipments</span><span class="biz-sub">CEO Crates / Hangar</span><span class="biz-tag tag-top5">Assign</span></td>
+          <td><span class="biz-name">Cargo &amp; Shipments</span><span class="biz-sub">CEO Crates / Hangar</span><span class="biz-tag tag-top5">▲ Assign</span></td>
           <td>$10,000</td>
           <td>50</td>
           <td>70</td>
@@ -258,7 +258,7 @@ td:first-child{text-align:left;font-family:var(--sans);white-space:normal;min-wi
           <td><span class="tip" data-tip-label="$/Passive Hr — Cargo" data-tip-calc="$500,000 ÷ 3,500 min × 60&#10;= $8,571/hr"><span class="rb g">4</span>$8,571</span></td>
         </tr>
         <tr>
-          <td><span class="biz-name">Sporting Goods</span><span class="biz-sub">Bunker</span><span class="biz-tag tag-top5">Assign</span></td>
+          <td><span class="biz-name">Sporting Goods</span><span class="biz-sub">Bunker</span><span class="biz-tag tag-top5">▲ Assign</span></td>
           <td>$5,000</td>
           <td>100</td>
           <td>40</td>
@@ -267,22 +267,22 @@ td:first-child{text-align:left;font-family:var(--sans);white-space:normal;min-wi
           <td><span class="tip" data-tip-label="$/Passive Hr — Sporting" data-tip-calc="$500,000 ÷ 4,000 min × 60&#10;= $7,500/hr"><span class="rb g">5</span>$7,500</span></td>
         </tr>
         <tr class="worst-row">
-          <td><span class="biz-name" style="color:var(--cream-dim)">Organic Produce</span><span class="biz-sub">Weed Farm</span><span class="biz-tag tag-skip">Skip</span></td>
+          <td><span class="biz-name" style="color:var(--cream-dim)">Organic Produce</span><span class="biz-sub">Weed Farm</span><span class="biz-tag tag-skip">✕ Skip</span></td>
           <td class="dim"><span class="tip" data-tip-label="Value per Unit — Weed (NC)" data-tip-calc="$1,500 per unit (post-buff value)&#10;MC goods buff (+35%) is included.&#10;Base was ~$1,111 pre-buff.">$1,500</span></td>
           <td class="dim">80</td>
           <td class="dim">20</td>
           <td class="dim">1,600m</td>
           <td class="dim">$120,000</td>
-          <td class="red"><span class="rb" style="background:rgba(217,79,79,.15);color:var(--red)">6</span>$4,500</td>
+          <td class="red"><span class="rb" style="background:rgba(232,119,58,.15);color:var(--red)">6</span>$4,500</td>
         </tr>
         <tr class="worst-row">
-          <td><span class="biz-name" style="color:var(--cream-dim)">Printing &amp; Copying</span><span class="biz-sub">Document Forgery</span><span class="biz-tag tag-skip">Skip</span></td>
+          <td><span class="biz-name" style="color:var(--cream-dim)">Printing &amp; Copying</span><span class="biz-sub">Document Forgery</span><span class="biz-tag tag-skip">✕ Skip</span></td>
           <td class="dim">$1,000</td>
           <td class="dim">60</td>
           <td class="dim">15</td>
           <td class="dim">900m</td>
           <td class="dim">$60,000</td>
-          <td class="red"><span class="rb" style="background:rgba(217,79,79,.15);color:var(--red)">7</span>$4,000</td>
+          <td class="red"><span class="rb" style="background:rgba(232,119,58,.15);color:var(--red)">7</span>$4,000</td>
         </tr>
       </tbody>
     </table>
