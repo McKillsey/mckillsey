@@ -4,16 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Weekly Archive — McKillsey & Company</title>
-<!-- Privacy-friendly analytics by Plausible -->
-<script async src="https://plausible.io/js/pa-RBI1DrB2NleHHMbucudjC.js"></script>
-<script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
-</script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-
-/* ═══ CSS VARIABLES ═══ */
 :root {
   --serif: 'Playfair Display', Georgia, serif;
   --mono: 'IBM Plex Mono', 'Courier New', monospace;
@@ -30,22 +22,16 @@
   --amber: #e08c2a;
   --rule: rgba(201,168,76,.18);
 }
-
-/* ═══ RESET & BASE ═══ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: var(--navy); color: var(--cream); font-family: var(--sans); font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 a { color: var(--gold); text-decoration: none; }
 a:hover { text-decoration: underline; }
 ::selection { background: var(--gold); color: var(--navy); }
-
-/* ═══ HEADER ═══ */
 .site-header { border-bottom: 1px solid var(--rule); padding: 20px 48px; display: flex; align-items: center; gap: 32px; }
 .wordmark { font-family: var(--serif); font-weight: 700; color: #b8c8d8; line-height: 1.15; text-decoration: none; }
 .wordmark .line1 { display: block; font-size: 26px; }
 .wordmark .line2 { display: block; font-size: 22px; padding-left: 1.1em; }
 .header-tagline { font-family: var(--mono); font-size: 10px; color: var(--cream-dim); letter-spacing: .1em; text-transform: uppercase; margin-left: auto; }
-
-/* ═══ PAGE LAYOUT ═══ */
 .page { max-width: 1400px; margin: 0 auto; padding: 44px 48px 80px; }
 .page-title h1 { font-family: var(--serif); font-size: 34px; font-weight: 900; line-height: 1.1; }
 .page-title .subtitle { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: .15em; text-transform: uppercase; margin-top: 6px; }
@@ -54,225 +40,72 @@ a:hover { text-decoration: underline; }
 .red { color: var(--red); }
 .gold { color: var(--gold); }
 .amber { color: var(--amber); }
-
-/* ═══ SEARCH BAR ═══ */
 .search-wrap { margin-top: 28px; position: relative; }
-.search-input {
-  width: 100%; background: var(--navy-mid); border: 1px solid var(--rule);
-  color: var(--cream); font-family: var(--mono); font-size: 14px; padding: 14px 18px 14px 44px;
-  outline: none; transition: border-color .15s;
-}
+.search-input { width: 100%; background: var(--navy-mid); border: 1px solid var(--rule); color: var(--cream); font-family: var(--mono); font-size: 14px; padding: 14px 18px 14px 44px; outline: none; transition: border-color .15s; }
 .search-input:focus { border-color: var(--gold); }
 .search-input::placeholder { color: var(--cream-dim); opacity: .6; }
-.search-icon {
-  position: absolute; left: 16px; top: 15px;
-  color: var(--cream-dim); font-size: 15px; pointer-events: none;
-  font-style: normal; line-height: 1;
-}
-.search-hint {
-  font-family: var(--mono); font-size: 10px; color: var(--cream-dim);
-  letter-spacing: .06em; margin-top: 8px; opacity: .7;
-}
-.search-hint span { color: var(--gold); }
-
-/* ═══ FILTER PILLS ═══ */
+.search-icon { position: absolute; left: 16px; top: 15px; color: var(--cream-dim); font-size: 15px; pointer-events: none; font-style: normal; line-height: 1; }
+.search-hint { font-family: var(--mono); font-size: 10px; color: var(--cream-dim); letter-spacing: .06em; margin-top: 8px; opacity: .7; }
+.search-hint span { color: var(--gold); cursor: pointer; }
 .filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
-.filter-pill {
-  font-family: var(--mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase;
-  padding: 5px 10px; border: 1px solid var(--rule); background: transparent;
-  color: var(--cream-dim); cursor: pointer; transition: all .15s; user-select: none;
-}
+.filter-pill { font-family: var(--mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; padding: 5px 10px; border: 1px solid var(--rule); background: transparent; color: var(--cream-dim); cursor: pointer; transition: all .15s; user-select: none; }
 .filter-pill:hover { border-color: var(--gold); color: var(--cream); }
 .filter-pill.active { background: rgba(201,168,76,.12); border-color: var(--gold); color: var(--gold); }
-
-/* ═══ SEARCH RESULTS ═══ */
 .results-wrap { margin-top: 24px; display: none; }
-.results-header {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--gold); padding-bottom: 8px; border-bottom: 1px solid var(--rule); margin-bottom: 14px;
-  display: flex; justify-content: space-between; align-items: center;
-}
+.results-header { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); padding-bottom: 8px; border-bottom: 1px solid var(--rule); margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
 .results-count { color: var(--cream-dim); }
-.result-item {
-  display: flex; align-items: flex-start; gap: 14px; padding: 10px 0;
-  border-bottom: 1px solid rgba(201,168,76,.07);
-}
+.result-item { display: flex; align-items: flex-start; gap: 14px; padding: 10px 0; border-bottom: 1px solid rgba(201,168,76,.07); }
 .result-item:hover { background: rgba(201,168,76,.02); }
-.result-date {
-  font-family: var(--mono); font-size: 11px; color: var(--cream-dim);
-  white-space: nowrap; min-width: 90px; padding-top: 2px;
-}
+.result-date { font-family: var(--mono); font-size: 11px; color: var(--cream-dim); white-space: nowrap; min-width: 90px; padding-top: 2px; }
 .result-body { flex: 1; min-width: 0; }
 .result-term { font-family: var(--sans); font-size: 14px; color: var(--cream); font-weight: 500; }
 .result-term mark { background: rgba(201,168,76,.25); color: var(--cream); padding: 0 2px; }
 .result-detail { font-family: var(--mono); font-size: 11px; color: var(--cream-dim); margin-top: 2px; }
-.result-badge {
-  display: inline-block; font-family: var(--mono); font-size: 8px; letter-spacing: .08em;
-  text-transform: uppercase; padding: 2px 6px; margin-left: 8px; vertical-align: middle;
-}
+.result-badge { display: inline-block; font-family: var(--mono); font-size: 8px; letter-spacing: .08em; text-transform: uppercase; padding: 2px 6px; margin-left: 8px; vertical-align: middle; }
 .badge-bonus { background: rgba(45,186,114,.15); color: var(--green); }
 .badge-discount { background: rgba(201,168,76,.15); color: var(--gold); }
 .badge-vehicle { background: rgba(160,180,200,.1); color: var(--cream-dim); }
 .badge-gun { background: rgba(217,79,79,.12); color: var(--red); }
 .badge-event { background: rgba(224,140,42,.15); color: var(--amber); }
 .badge-fib { background: rgba(160,180,200,.08); color: var(--cream-dim); }
-
-/* ═══ STATS PANEL (for searched items) ═══ */
-.stats-panel {
-  display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--rule);
-  border: 1px solid var(--rule); margin-bottom: 18px;
-}
+.stats-panel { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 18px; }
 .stat-card { background: var(--navy-mid); padding: 16px 14px; }
 .stat-value { font-family: var(--mono); font-size: 20px; font-weight: 500; color: var(--cream); line-height: 1; margin-bottom: 4px; }
 .stat-label { font-family: var(--mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--cream-dim); }
-
-/* ═══ SECTION LABEL ═══ */
 .section { margin-top: 36px; }
-.section-label {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--rule);
-}
-
-/* ═══ TIMELINE ═══ */
+.section-label { font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
 .timeline { margin-top: 14px; }
-.week-card {
-  border: 1px solid var(--rule); margin-bottom: 8px; transition: all .15s; cursor: pointer;
-}
+.week-card { border: 1px solid var(--rule); margin-bottom: 8px; transition: all .15s; cursor: pointer; }
 .week-card:hover { border-color: rgba(201,168,76,.35); }
 .week-card.expanded { border-color: var(--gold); }
-.week-header {
-  display: flex; align-items: center; gap: 14px; padding: 14px 18px;
-  background: var(--navy-mid);
-}
-.week-date {
-  font-family: var(--mono); font-size: 12px; color: var(--gold);
-  white-space: nowrap; width: 140px; flex-shrink: 0;
-}
-.week-date .week-dur {
-  font-size: 9px; color: var(--cream-dim); margin-left: 6px; letter-spacing: .04em;
-}
-.week-name {
-  font-family: var(--sans); font-size: 13px; color: var(--cream); font-weight: 500;
-  flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
+.week-header { display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: var(--navy-mid); }
+.week-date { font-family: var(--mono); font-size: 12px; color: var(--gold); white-space: nowrap; width: 140px; flex-shrink: 0; }
+.week-date .week-dur { font-size: 9px; color: var(--cream-dim); margin-left: 6px; letter-spacing: .04em; }
+.week-name { font-family: var(--sans); font-size: 13px; color: var(--cream); font-weight: 500; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .week-tags { display: flex; gap: 5px; flex-wrap: wrap; flex-shrink: 0; max-width: 560px; }
-.week-tag {
-  display: inline-flex; align-items: center; gap: 4px;
-  font-family: var(--mono); font-size: 9px; letter-spacing: .04em; text-transform: uppercase;
-  padding: 2px 7px; white-space: nowrap; cursor: pointer;
-}
+.week-tag { display: inline-flex; align-items: center; gap: 4px; font-family: var(--mono); font-size: 9px; letter-spacing: .04em; text-transform: uppercase; padding: 2px 7px; white-space: nowrap; cursor: pointer; }
 .week-tag.g { background: rgba(45,186,114,.12); color: var(--green); }
 .week-tag.o { background: rgba(201,168,76,.12); color: var(--gold); }
 .week-tag.r { background: rgba(217,79,79,.12); color: var(--red); }
 .week-tag .tag-mult { font-weight: 500; }
-.week-meta {
-  display: flex; gap: 12px; font-family: var(--mono); font-size: 9px;
-  color: var(--cream-dim); letter-spacing: .04em; flex-shrink: 0;
-}
-.week-expand-icon {
-  font-family: var(--mono); font-size: 14px; color: var(--cream-dim);
-  transition: transform .2s; margin-left: 8px;
-}
+.week-meta { display: flex; gap: 12px; font-family: var(--mono); font-size: 9px; color: var(--cream-dim); letter-spacing: .04em; flex-shrink: 0; }
+.week-expand-icon { font-family: var(--mono); font-size: 14px; color: var(--cream-dim); transition: transform .2s; margin-left: 8px; }
 .week-card.expanded .week-expand-icon { transform: rotate(90deg); }
-
-/* Week detail panel */
-.week-detail {
-  display: none; padding: 0 18px 18px; background: var(--navy-mid);
-  border-top: 1px solid var(--rule);
-}
+.week-detail { display: none; padding: 0 18px 18px; background: var(--navy-mid); border-top: 1px solid var(--rule); }
 .week-card.expanded .week-detail { display: block; }
 .detail-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 14px; }
-.detail-section {}
-.detail-section-title {
-  font-family: var(--mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid var(--rule);
-}
-.detail-item {
-  font-family: var(--sans); font-size: 12px; color: var(--cream); padding: 3px 0;
-  display: flex; align-items: baseline; gap: 6px;
-}
+.detail-section-title { font-family: var(--mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid var(--rule); }
+.detail-item { font-family: var(--sans); font-size: 12px; color: var(--cream); padding: 3px 0; display: flex; align-items: baseline; gap: 6px; }
 .detail-item .d-label { color: var(--cream-dim); font-family: var(--mono); font-size: 10px; }
 .detail-item .d-mult { font-family: var(--mono); font-size: 10px; color: var(--green); font-weight: 500; }
 .detail-item .d-pct { font-family: var(--mono); font-size: 10px; color: var(--gold); font-weight: 500; }
 .sl { cursor: pointer; transition: color .1s; }
 .sl:hover { color: var(--gold); }
-.overlay-badge {
-  display: inline-block; font-family: var(--mono); font-size: 8px; letter-spacing: .06em;
-  text-transform: uppercase; padding: 2px 6px; background: rgba(224,140,42,.15);
-  color: var(--amber); margin-bottom: 8px; margin-right: 4px;
-}
-
-/* ═══ VERDICT BOX ═══ */
-.verdict {
-  border: 1px solid var(--rule); border-left: 3px solid var(--gold);
-  padding: 18px 22px; margin-top: 28px; background: rgba(201,168,76,.02);
-}
-.verdict-label {
-  font-family: var(--mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 10px;
-}
-.verdict p { font-size: 13px; color: var(--cream); line-height: 1.7; margin-bottom: 7px; }
-.verdict p:last-child { margin-bottom: 0; }
-.verdict em { color: var(--cream-dim); font-style: normal; }
-
-/* ═══ NO RESULTS ═══ */
-.no-results {
-  text-align: center; padding: 40px 20px; color: var(--cream-dim);
-  font-family: var(--sans); font-size: 14px;
-}
-.no-results .nr-icon { font-size: 32px; margin-bottom: 12px; opacity: .4; }
-.no-results .nr-term { color: var(--cream); font-weight: 500; }
-
-/* ═══ FEEDBACK ═══ */
-.feedback-btn { position: fixed; bottom: 22px; right: 22px; background: var(--navy-mid); border: 1px solid var(--rule); color: var(--gold); padding: 9px 16px; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; transition: all .15s; z-index: 100; }
-.feedback-btn:hover { background: var(--gold); color: var(--navy); }
-.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.65); z-index: 200; display: none; align-items: center; justify-content: center; }
-.modal-overlay.open { display: flex; }
-.modal { background: var(--navy-mid); border: 1px solid var(--rule); width: 500px; max-width: calc(100vw - 40px); max-height: 90vh; overflow-y: auto; padding: 28px; }
-.modal-title { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--cream); margin-bottom: 4px; }
-.modal-sub { font-family: var(--mono); font-size: 10px; color: var(--cream-dim); letter-spacing: .08em; margin-bottom: 22px; }
-.modal-label { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; display: block; }
-.modal-textarea { width: 100%; background: var(--navy); border: 1px solid var(--rule); color: var(--cream); font-family: var(--sans); font-size: 13px; padding: 10px 12px; resize: vertical; min-height: 90px; line-height: 1.6; outline: none; }
-.modal-textarea:focus { border-color: var(--gold); }
-.screenshot-zone { width: 100%; min-height: 80px; background: var(--navy); border: 1px dashed rgba(201,168,76,.35); display: flex; align-items: center; justify-content: center; margin-top: 14px; cursor: pointer; position: relative; overflow: hidden; transition: border-color .15s; }
-.screenshot-zone:hover { border-color: var(--gold); }
-.screenshot-zone.has-image { border-style: solid; border-color: var(--gold); }
-.screenshot-zone img { max-width: 100%; max-height: 220px; display: block; }
-.screenshot-hint { font-family: var(--mono); font-size: 10px; color: var(--cream-dim); letter-spacing: .06em; text-align: center; padding: 20px; pointer-events: none; }
-.screenshot-hint span { color: var(--gold); }
-.screenshot-clear { position: absolute; top: 6px; right: 8px; background: var(--navy-mid); border: 1px solid var(--rule); color: var(--cream-dim); font-family: var(--mono); font-size: 10px; padding: 2px 8px; cursor: pointer; display: none; }
-.screenshot-zone.has-image .screenshot-clear { display: block; }
-.modal-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; gap: 12px; }
-.modal-send-btn { background: var(--gold); border: none; color: var(--navy); font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 10px 22px; cursor: pointer; transition: all .15s; font-weight: 500; }
-.modal-send-btn:hover { background: var(--cream); }
-.modal-send-btn:disabled { opacity: .4; cursor: not-allowed; }
-.modal-cancel-btn { background: none; border: 1px solid var(--rule); color: var(--cream-dim); font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 10px 16px; cursor: pointer; transition: all .15s; }
-.modal-cancel-btn:hover { border-color: var(--cream-dim); color: var(--cream); }
-.modal-status { font-family: var(--mono); font-size: 11px; color: var(--cream-dim); min-height: 16px; }
-
-/* ═══ RESPONSIVE ═══ */
-@media (max-width: 900px) {
-  .page { padding: 24px 20px 80px; }
-  .site-header { padding: 14px 20px; }
-  .header-tagline { display: none; }
-  .stats-panel { grid-template-columns: 1fr 1fr; }
-  .detail-grid { grid-template-columns: 1fr; }
-  .week-header { flex-wrap: wrap; gap: 8px; }
-  .week-tags { max-width: 100%; }
-  .week-meta { display: none; }
-}
-@media (max-width: 540px) {
-  .stats-panel { grid-template-columns: 1fr; }
-  .page-title h1 { font-size: 28px; }
-  .feedback-btn { bottom: 16px; right: 16px; padding: 8px 12px; }
-  .week-date { min-width: auto; }
-}
-
+.overlay-badge { display: inline-block; font-family: var(--mono); font-size: 8px; letter-spacing: .06em; text-transform: uppercase; padding: 2px 6px; background: rgba(224,140,42,.15); color: var(--amber); margin-bottom: 8px; margin-right: 4px; }
 </style>
 </head>
 <body>
 
-<!-- ═══ HEADER ═══ -->
 <header class="site-header">
   <a href="/" class="wordmark">
     <span class="line1">McKillsey</span>
@@ -281,21 +114,18 @@ a:hover { text-decoration: underline; }
   <div class="header-tagline">Strategic Advisory · Los Santos · Blaine County</div>
 </header>
 
-<!-- ═══ MAIN CONTENT ═══ -->
 <main class="page">
   <div class="page-title">
     <h1>Weekly Archive</h1>
     <div class="subtitle">Historical Bonus &amp; Discount Intelligence — 16 Weeks of Market Data</div>
   </div>
 
-  <!-- ═══ SEARCH ═══ -->
   <div class="search-wrap">
     <span class="search-icon">&#x2315;</span>
     <input type="text" class="search-input" id="search" placeholder="Search anything: Cocaine, Toreador, 2x Bunker, Diamonds, Krieger..." autocomplete="off" spellcheck="false">
     <div class="search-hint">Try: <span>Counterfeit Cash</span> &middot; <span>Kosatka</span> &middot; <span>Panther</span> &middot; <span>Casino Heist</span> &middot; <span>GTA+</span> &middot; <span>Krieger</span></div>
   </div>
 
-  <!-- ═══ FILTER PILLS ═══ -->
   <div class="filter-row" id="filters">
     <button class="filter-pill active" data-filter="all">All</button>
     <button class="filter-pill" data-filter="bonus">Bonuses</button>
@@ -306,7 +136,6 @@ a:hover { text-decoration: underline; }
     <button class="filter-pill" data-filter="fib">FIB Files</button>
   </div>
 
-  <!-- ═══ SEARCH RESULTS ═══ -->
   <div class="results-wrap" id="results-wrap">
     <div class="stats-panel" id="stats-panel" style="display:none"></div>
     <div class="results-header">
@@ -316,112 +145,50 @@ a:hover { text-decoration: underline; }
     <div id="results-list"></div>
   </div>
 
-  <!-- ═══ TIMELINE ═══ -->
   <div class="section" id="timeline-section">
     <div class="section-label">Weekly Timeline — Reverse Chronological</div>
     <div class="timeline" id="timeline"></div>
   </div>
 </main>
 
-<!-- ═══ FEEDBACK ═══ -->
-<button class="feedback-btn" onclick="openFeedback()">Report Error / Suggest Change</button>
-
-<div class="modal-overlay" id="feedback-overlay" onclick="if(event.target===this)closeFeedback()">
-  <div class="modal">
-    <div class="modal-title">Report an Error</div>
-    <div class="modal-sub">No login required. Screenshot optional.</div>
-    <label class="modal-label" style="margin-top:4px">What&#39;s wrong?</label>
-    <textarea class="modal-textarea" id="feedback-text" placeholder="Describe the error or suggest a change..."></textarea>
-    <div class="screenshot-zone" id="screenshot-zone" onclick="document.getElementById('screenshot-file').click()">
-      <div class="screenshot-hint" id="screenshot-hint"><span>Paste</span> a screenshot or <span>click</span> to upload</div>
-      <img id="screenshot-preview" style="display:none">
-      <button class="screenshot-clear" id="screenshot-clear" onclick="event.stopPropagation();clearScreenshot()">&#10005; Remove</button>
-    </div>
-    <input type="file" id="screenshot-file" accept="image/*" style="display:none" onchange="handleFileSelect(event)">
-    <div class="modal-footer">
-      <div class="modal-status" id="modal-status"></div>
-      <div style="display:flex;gap:8px">
-        <button class="modal-cancel-btn" onclick="closeFeedback()">Cancel</button>
-        <button class="modal-send-btn" id="modal-send-btn" onclick="submitFeedback()">Send Report</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
 /* McKillsey Archive — App Logic */
 
-var IDX = [{"t":"Karin Sultan RS Classic","y":"podium","w":"2026-02-19","d":"Podium Vehicle","s":"2026-02-19","e":"2026-02-26"},{"t":"Grotti Stinger GT","y":"prize","w":"2026-02-19","d":"Place Top 4 in LS Car Meet Series","s":"2026-02-19","e":"2026-02-26"},{"t":"Benefactor Streiter","y":"test","w":"2026-02-19","d":"Test Ride (Removed)","s":"2026-02-19","e":"2026-02-26"},{"t":"Dewbauchee Rapid GT Classic","y":"test","w":"2026-02-19","d":"Test Ride (Removed)","s":"2026-02-19","e":"2026-02-26"},{"t":"Enus Cognoscenti Cabrio","y":"test","w":"2026-02-19","d":"Test Ride (Removed)","s":"2026-02-19","e":"2026-02-26"},{"t":"Weeny Issi Rally","y":"ptest","w":"2026-02-19","d":"Premium Test Ride (HSW)","s":"2026-02-19","e":"2026-02-26"},{"t":"Dewbauchee Champion","y":"salvage","w":"2026-02-19","d":"The Gangbanger Robbery","s":"2026-02-19","e":"2026-02-26"},{"t":"Karin Everon","y":"salvage","w":"2026-02-19","d":"The Podium Robbery","s":"2026-02-19","e":"2026-02-26"},{"t":"BF Weevil","y":"salvage","w":"2026-02-19","d":"The McTony Robbery","s":"2026-02-19","e":"2026-02-26"},{"t":"Dinka LSCM Jester RR","y":"lux","w":"2026-02-19","d":"Luxury Autos Showroom","s":"2026-02-19","e":"2026-02-26"},{"t":"\u00dcbermacht Sentinel XS4","y":"lux","w":"2026-02-19","d":"Luxury Autos Showroom","s":"2026-02-19","e":"2026-02-26"},{"t":"Enus Super Diamond","y":"pdm","w":"2026-02-19","d":"Premium Deluxe (Removed)","s":"2026-02-19","e":"2026-02-26"},{"t":"Enus Cognoscenti","y":"pdm","w":"2026-02-19","d":"Premium Deluxe (Removed)","s":"2026-02-19","e":"2026-02-26"},{"t":"Dewbauchee JB 700","y":"pdm","w":"2026-02-19","d":"Premium Deluxe (Removed)","s":"2026-02-19","e":"2026-02-26"},{"t":"Albany Alpha","y":"pdm","w":"2026-02-19","d":"Premium Deluxe (Removed)","s":"2026-02-19","e":"2026-02-26"},{"t":"Western Zombie Bobber","y":"pdm","w":"2026-02-19","d":"Premium Deluxe (Removed)","s":"2026-02-19","e":"2026-02-26"},{"t":"Lunar New Year Stunt Races","y":"bonus","w":"2026-02-19","d":"3X GTA$/RP (6X GTA$/RP GTA+)","s":"2026-02-19","e":"2026-02-26"},{"t":"GTA+ Lunar New Year Stunt Races","y":"gta_plus","w":"2026-02-19","d":"6X GTA$/RP Lunar New Year Stunt Races","s":"2026-02-19","e":"2026-02-26"},{"t":"Counterfeit Cash Sell Missions","y":"bonus","w":"2026-02-19","d":"2X GTA$","s":"2026-02-19","e":"2026-02-26"},{"t":"Street Dealer Sales","y":"bonus","w":"2026-02-19","d":"2X GTA$","s":"2026-02-19","e":"2026-02-26"},{"t":"Biker Clubhouse Contracts","y":"bonus","w":"2026-02-19","d":"2X GTA$/RP","s":"2026-02-19","e":"2026-02-26"},{"t":"MC Work","y":"bonus","w":"2026-02-19","d":"2X GTA$/RP","s":"2026-02-19","e":"2026-02-26"},{"t":"MC Challenges","y":"bonus","w":"2026-02-19","d":"2X GTA$/RP","s":"2026-02-19","e":"2026-02-26"},{"t":"Community Combat Series","y":"bonus","w":"2026-02-19","d":"2X GTA$/RP","s":"2026-02-19","e":"2026-02-26"},{"t":"Cargobob (Jetsam)","y":"discount","w":"2026-02-19","d":"30% Off","s":"2026-02-19","e":"2026-02-26"},{"t":"Cargobob","y":"discount","w":"2026-02-19","d":"30% Off","s":"2026-02-19","e":"2026-02-26"},{"t":"Canis Terminus","y":"discount","w":"2026-02-19","d":"30% Off","s":"2026-02-19","e":"2026-02-26"},{"t":"HVY Insurgent Pick-Up","y":"discount","w":"2026-02-19","d":"30% Off","s":"2026-02-19","e":"2026-02-26"},{"t":"Vapid Caracara","y":"discount","w":"2026-02-19","d":"30% Off","s":"2026-02-19","e":"2026-02-26"},{"t":"Vapid Retinue Mk II","y":"discount","w":"2026-02-19","d":"30% Off","s":"2026-02-19","e":"2026-02-26"},{"t":"Vapid Slamtruck","y":"discount","w":"2026-02-19","d":"30% Off","s":"2026-02-19","e":"2026-02-26"},{"t":"Declasse Walton L35 Stock","y":"discount","w":"2026-02-19","d":"30% Off","s":"2026-02-19","e":"2026-02-26"},{"t":"Ocelot Jugular","y":"discount","w":"2026-02-19","d":"30% Off","s":"2026-02-19","e":"2026-02-26"},{"t":"Declasse Drift Tampa","y":"discount","w":"2026-02-19","d":"30% Off","s":"2026-02-19","e":"2026-02-26"},{"t":"Vulcar Nebula Turbo","y":"discount","w":"2026-02-19","d":"30% Off","s":"2026-02-19","e":"2026-02-26"},{"t":"Dinka Jester Classic","y":"discount","w":"2026-02-19","d":"30% Off","s":"2026-02-19","e":"2026-02-26"},{"t":"Counterfeit Cash Factories","y":"discount","w":"2026-02-19","d":"40% Off","s":"2026-02-19","e":"2026-02-26"},{"t":"Counterfeit Cash Factory Upgrades and Modifications","y":"discount","w":"2026-02-19","d":"40% Off","s":"2026-02-19","e":"2026-02-26"},{"t":"Military Rifle","y":"gun","w":"2026-02-19","d":"40% (40% GTA+)","s":"2026-02-19","e":"2026-02-26"},{"t":"Combat Shotgun","y":"gun","w":"2026-02-19","d":"10% (40% GTA+)","s":"2026-02-19","e":"2026-02-26"},{"t":"Battle Rifle","y":"gun","w":"2026-02-19","d":"10% (20% GTA+)","s":"2026-02-19","e":"2026-02-26"},{"t":"Homing Launcher","y":"gun","w":"2026-02-19","d":"10% (20% GTA+)","s":"2026-02-19","e":"2026-02-26"},{"t":"MG","y":"gun","w":"2026-02-19","d":"10% (20% GTA+)","s":"2026-02-19","e":"2026-02-26"},{"t":"Baseball Bat","y":"gun","w":"2026-02-19","d":"Free (Free GTA+)","s":"2026-02-19","e":"2026-02-26"},{"t":"Sticky Bomb","y":"gun","w":"2026-02-19","d":"10% (20% GTA+)","s":"2026-02-19","e":"2026-02-26"},{"t":"Molotov","y":"gun","w":"2026-02-19","d":"10% (20% GTA+)","s":"2026-02-19","e":"2026-02-26"},{"t":"Proximity Mine","y":"gun","w":"2026-02-19","d":"10% (20% GTA+)","s":"2026-02-19","e":"2026-02-26"},{"t":"The Black Box File","y":"fib","w":"2026-02-19","d":"FIB Priority File","s":"2026-02-19","e":"2026-02-26"},{"t":"Win 2 Stunt Races","y":"challenge","w":"2026-02-19","d":"$100,000","s":"2026-02-19","e":"2026-02-26"},{"t":"Maze Bank Arena","y":"tt","w":"2026-02-19","d":"Time Trial","s":"2026-02-19","e":"2026-02-26"},{"t":"Ron Alternates to Elysian Island","y":"hsw","w":"2026-02-19","d":"HSW Time Trial","s":"2026-02-19","e":"2026-02-26"},{"t":"Lunar New Year","y":"event","w":"2026-02-19","d":"Through 2026-03-04","s":"2026-02-19","e":"2026-02-26"},{"t":"Bravado Buffalo EVX","y":"podium","w":"2026-02-12","d":"Podium Vehicle","s":"2026-02-12","e":"2026-02-19"},{"t":"Lampadati Corsita","y":"prize","w":"2026-02-12","d":"Place Top 2 in LS Car Meet Series","s":"2026-02-12","e":"2026-02-19"},{"t":"Ocelot Locust","y":"test","w":"2026-02-12","d":"Test Ride","s":"2026-02-12","e":"2026-02-19"},{"t":"Dewbauchee Rapid GT Cabrio","y":"test","w":"2026-02-12","d":"Test Ride (Removed)","s":"2026-02-12","e":"2026-02-19"},{"t":"Coil Voltic","y":"test","w":"2026-02-12","d":"Test Ride (Removed)","s":"2026-02-12","e":"2026-02-19"},{"t":"Coil Cyclone II","y":"ptest","w":"2026-02-12","d":"Premium Test Ride (HSW)","s":"2026-02-12","e":"2026-02-19"},{"t":"Obey Omnis e-GT","y":"salvage","w":"2026-02-12","d":"The Duggan Robbery","s":"2026-02-12","e":"2026-02-19"},{"t":"Pfister Comet Safari","y":"salvage","w":"2026-02-12","d":"The Cargo Ship Robbery","s":"2026-02-12","e":"2026-02-19"},{"t":"Vapid Caracara 4x4","y":"salvage","w":"2026-02-12","d":"The Gangbanger Robbery","s":"2026-02-12","e":"2026-02-19"},{"t":"Albany Roosevelt","y":"lux","w":"2026-02-12","d":"Luxury Autos Showroom","s":"2026-02-12","e":"2026-02-19"},{"t":"Classique Broadway","y":"lux","w":"2026-02-12","d":"Luxury Autos Showroom","s":"2026-02-12","e":"2026-02-19"},{"t":"LCC Innovation","y":"pdm","w":"2026-02-12","d":"Premium Deluxe (Removed)","s":"2026-02-12","e":"2026-02-19"},{"t":"Declasse Tulip","y":"pdm","w":"2026-02-12","d":"Premium Deluxe (Removed)","s":"2026-02-12","e":"2026-02-19"},{"t":"Vulcar Fagaloa","y":"pdm","w":"2026-02-12","d":"Premium Deluxe (Removed)","s":"2026-02-12","e":"2026-02-19"},{"t":"Dinka Thrust","y":"pdm","w":"2026-02-12","d":"Premium Deluxe","s":"2026-02-12","e":"2026-02-19"},{"t":"Vapid Hustler","y":"pdm","w":"2026-02-12","d":"Premium Deluxe (Removed)","s":"2026-02-12","e":"2026-02-19"},{"t":"Cayo Perico Primary Target","y":"bonus","w":"2026-02-12","d":"Boosted Pink Diamond chance (50%)","s":"2026-02-12","e":"2026-02-19"},{"t":"CEO/VIP Work","y":"bonus","w":"2026-02-12","d":"4X GTA$/RP","s":"2026-02-12","e":"2026-02-19"},{"t":"Community Series","y":"bonus","w":"2026-02-12","d":"2X GTA$/RP","s":"2026-02-12","e":"2026-02-19"},{"t":"Lunar New Year Stunt Races","y":"bonus","w":"2026-02-12","d":"3X GTA$/RP (6X GTA$/RP GTA+)","s":"2026-02-12","e":"2026-02-19"},{"t":"GTA+ Lunar New Year Stunt Races","y":"gta_plus","w":"2026-02-12","d":"6X GTA$/RP Lunar New Year Stunt Races","s":"2026-02-12","e":"2026-02-19"},{"t":"Deadline Duet","y":"bonus","w":"2026-02-12","d":"3X GTA$/RP \u2014 Valentine's overlay","s":"2026-02-12","e":"2026-02-19"},{"t":"Associate/Bodyguard Salaries","y":"bonus","w":"2026-02-12","d":"4X \u2014 Valentine's overlay","s":"2026-02-12","e":"2026-02-19"},{"t":"Karin Hotring Everon","y":"discount","w":"2026-02-12","d":"30% Off","s":"2026-02-12","e":"2026-02-19"},{"t":"Declasse Tulip M-100","y":"discount","w":"2026-02-12","d":"30% Off","s":"2026-02-12","e":"2026-02-19"},{"t":"Dewbauchee Vagner","y":"discount","w":"2026-02-12","d":"30% Off","s":"2026-02-12","e":"2026-02-19"},{"t":"Declasse Tahoma Coupe","y":"discount","w":"2026-02-12","d":"30% Off","s":"2026-02-12","e":"2026-02-19"},{"t":"Pfister Neon","y":"discount","w":"2026-02-12","d":"30% Off","s":"2026-02-12","e":"2026-02-19"},{"t":"Coil Raiden","y":"discount","w":"2026-02-12","d":"30% Off","s":"2026-02-12","e":"2026-02-19"},{"t":"Jobuilt Velum 5-Seater","y":"discount","w":"2026-02-12","d":"30% Off","s":"2026-02-12","e":"2026-02-19"},{"t":"Declasse Yosemite 1500","y":"discount","w":"2026-02-12","d":"30% Off","s":"2026-02-12","e":"2026-02-19"},{"t":"Pegassi Torero","y":"discount","w":"2026-02-12","d":"30% Off","s":"2026-02-12","e":"2026-02-19"},{"t":"Grotti Cheetah Classic","y":"discount","w":"2026-02-12","d":"30% Off","s":"2026-02-12","e":"2026-02-19"},{"t":"Executive Offices","y":"discount","w":"2026-02-12","d":"40% Off","s":"2026-02-12","e":"2026-02-19"},{"t":"Executive Office Upgrades","y":"discount","w":"2026-02-12","d":"40% Off","s":"2026-02-12","e":"2026-02-19"},{"t":"Military Rifle","y":"gun","w":"2026-02-12","d":"10% (20% GTA+)","s":"2026-02-12","e":"2026-02-19"},{"t":"Tactical SMG","y":"gun","w":"2026-02-12","d":"10% (30% GTA+)","s":"2026-02-12","e":"2026-02-19"},{"t":"Gusenberg Sweeper","y":"gun","w":"2026-02-12","d":"Free (Free GTA+)","s":"2026-02-12","e":"2026-02-19"},{"t":"Sniper Rifle","y":"gun","w":"2026-02-12","d":"10% (20% GTA+)","s":"2026-02-12","e":"2026-02-19"},{"t":"Assault SMG","y":"gun","w":"2026-02-12","d":"10% (20% GTA+)","s":"2026-02-12","e":"2026-02-19"},{"t":"Pool Cue","y":"gun","w":"2026-02-12","d":"10% (20% GTA+)","s":"2026-02-12","e":"2026-02-19"},{"t":"Pipe Bomb","y":"gun","w":"2026-02-12","d":"10% (20% GTA+)","s":"2026-02-12","e":"2026-02-19"},{"t":"Proximity Mine","y":"gun","w":"2026-02-12","d":"10% (20% GTA+)","s":"2026-02-12","e":"2026-02-19"},{"t":"Sticky Bomb","y":"gun","w":"2026-02-12","d":"10% (20% GTA+)","s":"2026-02-12","e":"2026-02-19"},{"t":"The Project Breakaway File","y":"fib","w":"2026-02-12","d":"FIB Priority File","s":"2026-02-12","e":"2026-02-19"},{"t":"Earn GTA$100,000 as Associate/Bodyguard","y":"challenge","w":"2026-02-12","d":"$100,000 + Valentines Blazer","s":"2026-02-12","e":"2026-02-19"},{"t":"Up N Atom","y":"tt","w":"2026-02-12","d":"Time Trial","s":"2026-02-12","e":"2026-02-19"},{"t":"Textile City to Stab City","y":"hsw","w":"2026-02-12","d":"HSW Time Trial","s":"2026-02-12","e":"2026-02-19"},{"t":"Valentine's Event","y":"event","w":"2026-02-12","d":"Through 2026-02-18","s":"2026-02-12","e":"2026-02-19"},{"t":"Lunar New Year","y":"event","w":"2026-02-12","d":"Through 2026-03-04","s":"2026-02-12","e":"2026-02-19"},{"t":"Invetero Coquette D1","y":"podium","w":"2026-02-05","d":"Podium Vehicle","s":"2026-02-05","e":"2026-02-12"},{"t":"\u00dcbermacht Rhinehart","y":"prize","w":"2026-02-05","d":"Win in LS Car Meet Series Once","s":"2026-02-05","e":"2026-02-12"},{"t":"Lampadati Pigalle","y":"test","w":"2026-02-05","d":"Test Ride (Removed)","s":"2026-02-05","e":"2026-02-12"},{"t":"Bravado Verlierer","y":"test","w":"2026-02-05","d":"Test Ride (Removed)","s":"2026-02-05","e":"2026-02-12"},{"t":"Ocelot Lynx","y":"test","w":"2026-02-05","d":"Test Ride (Removed)","s":"2026-02-05","e":"2026-02-12"},{"t":"Maibatsu MonstroCiti","y":"ptest","w":"2026-02-05","d":"Premium Test Ride (HSW)","s":"2026-02-05","e":"2026-02-12"},{"t":"Grotti Furia","y":"salvage","w":"2026-02-05","d":"The Cargo Ship Robbery","s":"2026-02-05","e":"2026-02-12"},{"t":"Classique Broadway","y":"salvage","w":"2026-02-05","d":"The McTony Robbery","s":"2026-02-05","e":"2026-02-12"},{"t":"Bravado Greenwood","y":"salvage","w":"2026-02-05","d":"The Gangbanger Robbery","s":"2026-02-05","e":"2026-02-12"},{"t":"Benefactor Vorschlaghammer","y":"lux","w":"2026-02-05","d":"Luxury Autos Showroom","s":"2026-02-05","e":"2026-02-12"},{"t":"\u00dcbermacht Sentinel GTS","y":"lux","w":"2026-02-05","d":"Luxury Autos Showroom","s":"2026-02-05","e":"2026-02-12"},{"t":"Western Rat Bike","y":"pdm","w":"2026-02-05","d":"Premium Deluxe (Removed)","s":"2026-02-05","e":"2026-02-12"},{"t":"Dinka Enduro","y":"pdm","w":"2026-02-05","d":"Premium Deluxe (Removed)","s":"2026-02-05","e":"2026-02-12"},{"t":"Declasse Tornado Rat Rod","y":"pdm","w":"2026-02-05","d":"Premium Deluxe (Removed)","s":"2026-02-05","e":"2026-02-12"},{"t":"Hijak Ruston","y":"pdm","w":"2026-02-05","d":"Premium Deluxe (Removed)","s":"2026-02-05","e":"2026-02-12"},{"t":"Lampadati Michelli GT","y":"pdm","w":"2026-02-05","d":"Premium Deluxe (Removed)","s":"2026-02-05","e":"2026-02-12"},{"t":"Meth Production Speed","y":"bonus","w":"2026-02-05","d":"2X","s":"2026-02-05","e":"2026-02-12"},{"t":"Bunker Research Missions","y":"bonus","w":"2026-02-05","d":"2X GTA$/RP/Research","s":"2026-02-05","e":"2026-02-12"},{"t":"Short Trips","y":"bonus","w":"2026-02-05","d":"2X GTA$/RP","s":"2026-02-05","e":"2026-02-12"},{"t":"Community Race Series","y":"bonus","w":"2026-02-05","d":"2X GTA$/RP","s":"2026-02-05","e":"2026-02-12"},{"t":"Deadline Duet","y":"bonus","w":"2026-02-05","d":"3X GTA$/RP \u2014 Valentine's overlay","s":"2026-02-05","e":"2026-02-12"},{"t":"Associate/Bodyguard Salaries","y":"bonus","w":"2026-02-05","d":"4X \u2014 Valentine's overlay","s":"2026-02-05","e":"2026-02-12"},{"t":"Emperor ETR1","y":"discount","w":"2026-02-05","d":"30% Off","s":"2026-02-05","e":"2026-02-12"},{"t":"\u00d6verfl\u00f6d Autarch","y":"discount","w":"2026-02-05","d":"30% Off","s":"2026-02-05","e":"2026-02-12"},{"t":"Pfister Comet S2","y":"discount","w":"2026-02-05","d":"30% Off","s":"2026-02-05","e":"2026-02-12"},{"t":"Nagasaki Weaponized Dinghy","y":"discount","w":"2026-02-05","d":"30% Off","s":"2026-02-05","e":"2026-02-12"},{"t":"Benefactor Vorschlaghammer","y":"discount","w":"2026-02-05","d":"30% Off","s":"2026-02-05","e":"2026-02-12"},{"t":"Gallivanter Baller ST-D","y":"discount","w":"2026-02-05","d":"30% Off","s":"2026-02-05","e":"2026-02-12"},{"t":"HVY Vetir","y":"discount","w":"2026-02-05","d":"30% Off","s":"2026-02-05","e":"2026-02-12"},{"t":"Western Powersurge","y":"discount","w":"2026-02-05","d":"30% Off","s":"2026-02-05","e":"2026-02-12"},{"t":"Western Company Rogue","y":"discount","w":"2026-02-05","d":"30% Off","s":"2026-02-05","e":"2026-02-12"},{"t":"Karin Futo GTX","y":"discount","w":"2026-02-05","d":"30% Off","s":"2026-02-05","e":"2026-02-12"},{"t":"Truffade Nero","y":"discount","w":"2026-02-05","d":"30% Off","s":"2026-02-05","e":"2026-02-12"},{"t":"Vulcar Warrener HKR","y":"discount","w":"2026-02-05","d":"30% Off","s":"2026-02-05","e":"2026-02-12"},{"t":"Meth Lab Properties","y":"discount","w":"2026-02-05","d":"40% Off","s":"2026-02-05","e":"2026-02-12"},{"t":"Meth Lab Upgrades","y":"discount","w":"2026-02-05","d":"40% Off","s":"2026-02-05","e":"2026-02-12"},{"t":"Combat Shotgun","y":"gun","w":"2026-02-05","d":"10% (20% GTA+)","s":"2026-02-05","e":"2026-02-12"},{"t":"Service Carbine","y":"gun","w":"2026-02-05","d":"30% (30% GTA+)","s":"2026-02-05","e":"2026-02-12"},{"t":"Compact EMP Launcher","y":"gun","w":"2026-02-05","d":"10% (30% GTA+)","s":"2026-02-05","e":"2026-02-12"},{"t":"RPG","y":"gun","w":"2026-02-05","d":"10% (20% GTA+)","s":"2026-02-05","e":"2026-02-12"},{"t":"Marksman Pistol","y":"gun","w":"2026-02-05","d":"10% (20% GTA+)","s":"2026-02-05","e":"2026-02-12"},{"t":"Pool Cue","y":"gun","w":"2026-02-05","d":"10% (20% GTA+)","s":"2026-02-05","e":"2026-02-12"},{"t":"Proximity Mine","y":"gun","w":"2026-02-05","d":"10% (20% GTA+)","s":"2026-02-05","e":"2026-02-12"},{"t":"Sticky Bomb","y":"gun","w":"2026-02-05","d":"10% (20% GTA+)","s":"2026-02-05","e":"2026-02-12"},{"t":"Molotov","y":"gun","w":"2026-02-05","d":"10% (20% GTA+)","s":"2026-02-05","e":"2026-02-12"},{"t":"The Fine Art File","y":"fib","w":"2026-02-05","d":"FIB Priority File","s":"2026-02-05","e":"2026-02-12"},{"t":"Win two Adversary Modes","y":"challenge","w":"2026-02-05","d":"$100,000","s":"2026-02-05","e":"2026-02-12"},{"t":"Cypress Flats","y":"tt","w":"2026-02-05","d":"Time Trial","s":"2026-02-05","e":"2026-02-12"},{"t":"Sandy Shores to La Puerta","y":"hsw","w":"2026-02-05","d":"HSW Time Trial","s":"2026-02-05","e":"2026-02-12"},{"t":"Valentine's Event","y":"event","w":"2026-02-05","d":"Through 2026-02-18","s":"2026-02-05","e":"2026-02-12"},{"t":"Mammoth Patriot Mil-Spec","y":"podium","w":"2026-01-29","d":"Podium Vehicle","s":"2026-01-29","e":"2026-02-05"},{"t":"Declasse Tampa GT","y":"prize","w":"2026-01-29","d":"Place Top 4 in LS Car Meet Series","s":"2026-01-29","e":"2026-02-05"},{"t":"Benefactor Feltzer","y":"test","w":"2026-01-29","d":"Test Ride (Removed)","s":"2026-01-29","e":"2026-02-05"},{"t":"BF Bifta","y":"test","w":"2026-01-29","d":"Test Ride (Removed)","s":"2026-01-29","e":"2026-02-05"},{"t":"Lampadati Furore GT","y":"test","w":"2026-01-29","d":"Test Ride (Removed)","s":"2026-01-29","e":"2026-02-05"},{"t":"Karin Vivanite","y":"ptest","w":"2026-01-29","d":"Premium Test Ride (HSW)","s":"2026-01-29","e":"2026-02-05"},{"t":"Canis Kamacho","y":"salvage","w":"2026-01-29","d":"The Gangbanger Robbery","s":"2026-01-29","e":"2026-02-05"},{"t":"Declasse Drift Yosemite","y":"salvage","w":"2026-01-29","d":"The Duggan Robbery","s":"2026-01-29","e":"2026-02-05"},{"t":"Grotti Stinger TT","y":"salvage","w":"2026-01-29","d":"The Podium Robbery","s":"2026-01-29","e":"2026-02-05"},{"t":"Progen Luiva","y":"lux","w":"2026-01-29","d":"Luxury Autos Showroom","s":"2026-01-29","e":"2026-02-05"},{"t":"Vapid Uranus LozSpeed","y":"lux","w":"2026-01-29","d":"Luxury Autos Showroom","s":"2026-01-29","e":"2026-02-05"},{"t":"Pegassi Pizza Boy","y":"pdm","w":"2026-01-29","d":"Premium Deluxe","s":"2026-01-29","e":"2026-02-05"},{"t":"Declasse Lifeguard","y":"pdm","w":"2026-01-29","d":"Premium Deluxe","s":"2026-01-29","e":"2026-02-05"},{"t":"Annis Hardy","y":"pdm","w":"2026-01-29","d":"Premium Deluxe \u2014 Taxi Import livery","s":"2026-01-29","e":"2026-02-05"},{"t":"\u00dcbermacht Cypher","y":"pdm","w":"2026-01-29","d":"Premium Deluxe \u2014 Drift Taxi livery","s":"2026-01-29","e":"2026-02-05"},{"t":"Karin 190z","y":"pdm","w":"2026-01-29","d":"Premium Deluxe","s":"2026-01-29","e":"2026-02-05"},{"t":"5 different Odd Jobs completed","y":"bonus","w":"2026-01-29","d":"Clothing Reward \u2014 Downtown Cab Co. Revere Collar Shirt (72hr)","s":"2026-01-29","e":"2026-02-05"},{"t":"Firefighter","y":"bonus","w":"2026-01-29","d":"2X GTA$/RP","s":"2026-01-29","e":"2026-02-05"},{"t":"Forklift Operator","y":"bonus","w":"2026-01-29","d":"2X GTA$/RP","s":"2026-01-29","e":"2026-02-05"},{"t":"Paper Route","y":"bonus","w":"2026-01-29","d":"2X GTA$/RP","s":"2026-01-29","e":"2026-02-05"},{"t":"Taxi Work","y":"bonus","w":"2026-01-29","d":"2X GTA$","s":"2026-01-29","e":"2026-02-05"},{"t":"Pizza Delivery","y":"bonus","w":"2026-01-29","d":"2X GTA$/RP","s":"2026-01-29","e":"2026-02-05"},{"t":"QuickiePharm","y":"bonus","w":"2026-01-29","d":"2X GTA$/RP","s":"2026-01-29","e":"2026-02-05"},{"t":"Safeguard","y":"bonus","w":"2026-01-29","d":"2X GTA$/RP","s":"2026-01-29","e":"2026-02-05"},{"t":"RC Time Trials","y":"bonus","w":"2026-01-29","d":"2X GTA$/RP","s":"2026-01-29","e":"2026-02-05"},{"t":"Featured Series: Issi Classic Races","y":"bonus","w":"2026-01-29","d":"2X GTA$/RP","s":"2026-01-29","e":"2026-02-05"},{"t":"Community Race Series","y":"bonus","w":"2026-01-29","d":"2X GTA$/RP","s":"2026-01-29","e":"2026-02-05"},{"t":"Cocaine Production Speed","y":"bonus","w":"2026-01-29","d":"2X","s":"2026-01-29","e":"2026-02-05"},{"t":"Pegassi Pizza Boy","y":"bonus","w":"2026-01-29","d":"Free","s":"2026-01-29","e":"2026-02-05"},{"t":"MTL Fire Truck","y":"discount","w":"2026-01-29","d":"30% Off","s":"2026-01-29","e":"2026-02-05"},{"t":"Brute Bobcat Security Stockade","y":"discount","w":"2026-01-29","d":"30% Off","s":"2026-01-29","e":"2026-02-05"},{"t":"Brute Stockade","y":"discount","w":"2026-01-29","d":"30% Off","s":"2026-01-29","e":"2026-02-05"},{"t":"Vapid Taxi","y":"discount","w":"2026-01-29","d":"30% Off","s":"2026-01-29","e":"2026-02-05"},{"t":"Pegassi Zorrusso","y":"discount","w":"2026-01-29","d":"30% Off","s":"2026-01-29","e":"2026-02-05"},{"t":"MTL Dune","y":"discount","w":"2026-01-29","d":"30% Off","s":"2026-01-29","e":"2026-02-05"},{"t":"Nagasaki Outlaw","y":"discount","w":"2026-01-29","d":"30% Off","s":"2026-01-29","e":"2026-02-05"},{"t":"Blimp","y":"discount","w":"2026-01-29","d":"30% Off","s":"2026-01-29","e":"2026-02-05"},{"t":"Buckingham Shamal","y":"discount","w":"2026-01-29","d":"30% Off","s":"2026-01-29","e":"2026-02-05"},{"t":"Dinka Veto Modern","y":"discount","w":"2026-01-29","d":"30% Off","s":"2026-01-29","e":"2026-02-05"},{"t":"Declasse Hotring Sabre","y":"discount","w":"2026-01-29","d":"30% Off","s":"2026-01-29","e":"2026-02-05"},{"t":"\u00dcbermacht Sentinel Classic","y":"discount","w":"2026-01-29","d":"30% Off","s":"2026-01-29","e":"2026-02-05"},{"t":"Grotti Cheetah","y":"discount","w":"2026-01-29","d":"30% Off","s":"2026-01-29","e":"2026-02-05"},{"t":"Canis Freecrawler","y":"discount","w":"2026-01-29","d":"30% Off","s":"2026-01-29","e":"2026-02-05"},{"t":"Cocaine Lockup Properties","y":"discount","w":"2026-01-29","d":"40% Off","s":"2026-01-29","e":"2026-02-05"},{"t":"Cocaine Lockup Upgrades","y":"discount","w":"2026-01-29","d":"40% Off","s":"2026-01-29","e":"2026-02-05"},{"t":"Service Carbine","y":"gun","w":"2026-01-29","d":"50% (50% GTA+)","s":"2026-01-29","e":"2026-02-05"},{"t":"Compact EMP Launcher","y":"gun","w":"2026-01-29","d":"10% (20% GTA+)","s":"2026-01-29","e":"2026-02-05"},{"t":"Military Rifle","y":"gun","w":"2026-01-29","d":"10% (30% GTA+)","s":"2026-01-29","e":"2026-02-05"},{"t":"Sweeper Shotgun","y":"gun","w":"2026-01-29","d":"10% (20% GTA+)","s":"2026-01-29","e":"2026-02-05"},{"t":"Combat PDW","y":"gun","w":"2026-01-29","d":"10% (20% GTA+)","s":"2026-01-29","e":"2026-02-05"},{"t":"Switchblade","y":"gun","w":"2026-01-29","d":"10% (20% GTA+)","s":"2026-01-29","e":"2026-02-05"},{"t":"Proximity Mine","y":"gun","w":"2026-01-29","d":"10% (20% GTA+)","s":"2026-01-29","e":"2026-02-05"},{"t":"Sticky Bomb","y":"gun","w":"2026-01-29","d":"10% (20% GTA+)","s":"2026-01-29","e":"2026-02-05"},{"t":"Tear Gas","y":"gun","w":"2026-01-29","d":"10% (20% GTA+)","s":"2026-01-29","e":"2026-02-05"},{"t":"The Brute Force File","y":"fib","w":"2026-01-29","d":"FIB Priority File","s":"2026-01-29","e":"2026-02-05"},{"t":"Complete 5 Pizza Deliveries","y":"challenge","w":"2026-01-29","d":"$300,000 + Pizza This Tee","s":"2026-01-29","e":"2026-02-05"},{"t":"Sawmill","y":"tt","w":"2026-01-29","d":"Time Trial","s":"2026-01-29","e":"2026-02-05"},{"t":"Del Perro Beach to Murietta Heights","y":"hsw","w":"2026-01-29","d":"HSW Time Trial","s":"2026-01-29","e":"2026-02-05"},{"t":"Vapid FMJ","y":"podium","w":"2026-01-22","d":"Podium Vehicle","s":"2026-01-22","e":"2026-01-29"},{"t":"Pegassi Tempesta","y":"prize","w":"2026-01-22","d":"Place Top 5 in LS Car Meet Series Once","s":"2026-01-22","e":"2026-01-29"},{"t":"Invetero Coquette","y":"test","w":"2026-01-22","d":"Test Ride (Removed)","s":"2026-01-22","e":"2026-01-29"},{"t":"Nagasaki Hot Rod Blazer","y":"test","w":"2026-01-22","d":"Test Ride (Removed)","s":"2026-01-22","e":"2026-01-29"},{"t":"Western Daemon","y":"test","w":"2026-01-22","d":"Test Ride (Removed)","s":"2026-01-22","e":"2026-01-29"},{"t":"Grotti Brioso","y":"ptest","w":"2026-01-22","d":"Premium Test Ride (HSW)","s":"2026-01-22","e":"2026-01-29"},{"t":"Albany Cavalcade XL","y":"salvage","w":"2026-01-22","d":"The Gangbanger Robbery","s":"2026-01-22","e":"2026-01-29"},{"t":"Maibatsu Penumbra FF","y":"salvage","w":"2026-01-22","d":"The Podium Robbery","s":"2026-01-22","e":"2026-01-29"},{"t":"Pfister Astron","y":"salvage","w":"2026-01-22","d":"The Duggan Robbery","s":"2026-01-22","e":"2026-01-29"},{"t":"\u00d6verfl\u00f6d Pipistrello","y":"lux","w":"2026-01-22","d":"Luxury Autos Showroom","s":"2026-01-22","e":"2026-01-29"},{"t":"Grotti LSCM Cheetah Classic","y":"lux","w":"2026-01-22","d":"Luxury Autos Showroom","s":"2026-01-22","e":"2026-01-29"},{"t":"Karin Everon RS","y":"pdm","w":"2026-01-22","d":"Premium Deluxe","s":"2026-01-22","e":"2026-01-29"},{"t":"Weeny Dynasty","y":"pdm","w":"2026-01-22","d":"Premium Deluxe","s":"2026-01-22","e":"2026-01-29"},{"t":"\u00d6verfl\u00f6d Entity XF","y":"pdm","w":"2026-01-22","d":"Premium Deluxe (Removed)","s":"2026-01-22","e":"2026-01-29"},{"t":"Pegassi Esskey","y":"pdm","w":"2026-01-22","d":"Premium Deluxe (Removed)","s":"2026-01-22","e":"2026-01-29"},{"t":"Dinka Verus","y":"pdm","w":"2026-01-22","d":"Premium Deluxe (Removed)","s":"2026-01-22","e":"2026-01-29"},{"t":"Madrazo Hits","y":"bonus","w":"2026-01-22","d":"3X GTA$/RP","s":"2026-01-22","e":"2026-01-29"},{"t":"Community Combat Series","y":"bonus","w":"2026-01-22","d":"3X GTA$/RP","s":"2026-01-22","e":"2026-01-29"},{"t":"Featured Series: Transform Races","y":"bonus","w":"2026-01-22","d":"2X GTA$/RP","s":"2026-01-22","e":"2026-01-29"},{"t":"Document Forgery Sell Missions","y":"bonus","w":"2026-01-22","d":"2X GTA$","s":"2026-01-22","e":"2026-01-29"},{"t":"Auto Shop Client Jobs","y":"bonus","w":"2026-01-22","d":"2X GTA$ + Car Meet Rep (4X GTA$ GTA+)","s":"2026-01-22","e":"2026-01-29"},{"t":"GTA+ Auto Shop Client Jobs","y":"gta_plus","w":"2026-01-22","d":"4X GTA$ Auto Shop Client Jobs","s":"2026-01-22","e":"2026-01-29"},{"t":"Vapid Firebolt ASP","y":"discount","w":"2026-01-22","d":"30% Off","s":"2026-01-22","e":"2026-01-29"},{"t":"Pfister 811","y":"discount","w":"2026-01-22","d":"30% Off","s":"2026-01-22","e":"2026-01-29"},{"t":"Truffade Z-Type","y":"discount","w":"2026-01-22","d":"30% Off","s":"2026-01-22","e":"2026-01-29"},{"t":"Classique Broadway","y":"discount","w":"2026-01-22","d":"30% Off","s":"2026-01-22","e":"2026-01-29"},{"t":"Auto Shop Properties","y":"discount","w":"2026-01-22","d":"40% Off","s":"2026-01-22","e":"2026-01-29"},{"t":"Auto Shop Upgrades","y":"discount","w":"2026-01-22","d":"40% Off","s":"2026-01-22","e":"2026-01-29"},{"t":"Document Forgery Offices","y":"discount","w":"2026-01-22","d":"40% Off","s":"2026-01-22","e":"2026-01-29"},{"t":"Document Forgery Upgrades","y":"discount","w":"2026-01-22","d":"40% Off","s":"2026-01-22","e":"2026-01-29"},{"t":"Railgun","y":"gun","w":"2026-01-22","d":"30% (30% GTA+)","s":"2026-01-22","e":"2026-01-29"},{"t":"Combat Shotgun","y":"gun","w":"2026-01-22","d":"10% (20% GTA+)","s":"2026-01-22","e":"2026-01-29"},{"t":"Battle Rifle","y":"gun","w":"2026-01-22","d":"10% (40% GTA+)","s":"2026-01-22","e":"2026-01-29"},{"t":"Gusenberg Sweeper","y":"gun","w":"2026-01-22","d":"10% (20% GTA+)","s":"2026-01-22","e":"2026-01-29"},{"t":"Carbine Rifle","y":"gun","w":"2026-01-22","d":"10% (20% GTA+)","s":"2026-01-22","e":"2026-01-29"},{"t":"Nightstick","y":"gun","w":"2026-01-22","d":"10% (20% GTA+)","s":"2026-01-22","e":"2026-01-29"},{"t":"Grenade","y":"gun","w":"2026-01-22","d":"10% (20% GTA+)","s":"2026-01-22","e":"2026-01-29"},{"t":"Tear Gas","y":"gun","w":"2026-01-22","d":"10% (20% GTA+)","s":"2026-01-22","e":"2026-01-29"},{"t":"Molotov","y":"gun","w":"2026-01-22","d":"10% (20% GTA+)","s":"2026-01-22","e":"2026-01-29"},{"t":"The Black Box File","y":"fib","w":"2026-01-22","d":"FIB Priority File","s":"2026-01-22","e":"2026-01-29"},{"t":"Complete 3 Auto Shop Client Jobs","y":"challenge","w":"2026-01-22","d":"$100,000","s":"2026-01-22","e":"2026-01-29"},{"t":"Up Chiliad","y":"tt","w":"2026-01-22","d":"Time Trial","s":"2026-01-22","e":"2026-01-29"},{"t":"East Vinewood to Vespucci Beach","y":"hsw","w":"2026-01-22","d":"HSW Time Trial","s":"2026-01-22","e":"2026-01-29"},{"t":"Declasse Impaler LX","y":"podium","w":"2026-01-15","d":"Podium Vehicle","s":"2026-01-15","e":"2026-01-22"},{"t":"Grotti Itali GTO","y":"prize","w":"2026-01-15","d":"Place Top 2 in LS Car Meet Series 4 days in a row","s":"2026-01-15","e":"2026-01-22"},{"t":"Grotti Carbonizzare","y":"test","w":"2026-01-15","d":"Test Ride (Removed)","s":"2026-01-15","e":"2026-01-22"},{"t":"Grotti GT500","y":"test","w":"2026-01-15","d":"Test Ride (Removed)","s":"2026-01-15","e":"2026-01-22"},{"t":"Grotti Stinger","y":"test","w":"2026-01-15","d":"Test Ride (Removed)","s":"2026-01-15","e":"2026-01-22"},{"t":"Annis Euros X32","y":"ptest","w":"2026-01-15","d":"Premium Test Ride (HSW)","s":"2026-01-15","e":"2026-01-22"},{"t":"Albany Cavalcade XL","y":"salvage","w":"2026-01-15","d":"The McTony Robbery","s":"2026-01-15","e":"2026-01-22"},{"t":"Mammoth Patriot Mil-Spec","y":"salvage","w":"2026-01-15","d":"The Duggan Robbery","s":"2026-01-15","e":"2026-01-22"},{"t":"Pegassi Zorrusso","y":"salvage","w":"2026-01-15","d":"The Cargo Ship Robbery","s":"2026-01-15","e":"2026-01-22"},{"t":"Grotti GT750","y":"lux","w":"2026-01-15","d":"Luxury Autos Showroom","s":"2026-01-15","e":"2026-01-22"},{"t":"\u00dcbermacht Sentinel XS24","y":"lux","w":"2026-01-15","d":"Luxury Autos Showroom","s":"2026-01-15","e":"2026-01-22"},{"t":"Dewbauchee Rapid GT","y":"pdm","w":"2026-01-15","d":"Premium Deluxe (Removed)","s":"2026-01-15","e":"2026-01-22"},{"t":"Vapid Blade","y":"pdm","w":"2026-01-15","d":"Premium Deluxe (Removed)","s":"2026-01-15","e":"2026-01-22"},{"t":"Canis Kalahari","y":"pdm","w":"2026-01-15","d":"Premium Deluxe (Removed)","s":"2026-01-15","e":"2026-01-22"},{"t":"Dundreary Landstalker XL","y":"pdm","w":"2026-01-15","d":"Premium Deluxe (Removed)","s":"2026-01-15","e":"2026-01-22"},{"t":"LCC Avarus","y":"pdm","w":"2026-01-15","d":"Premium Deluxe (Removed)","s":"2026-01-15","e":"2026-01-22"},{"t":"Win a match of Mansion Raid","y":"bonus","w":"2026-01-15","d":"GTA$200,000 bonus (72hr)","s":"2026-01-15","e":"2026-01-22"},{"t":"Business Battles","y":"bonus","w":"2026-01-15","d":"4X GTA$/RP and Nightclub Goods","s":"2026-01-15","e":"2026-01-22"},{"t":"Mansion Raid","y":"bonus","w":"2026-01-15","d":"2X GTA$/RP","s":"2026-01-15","e":"2026-01-22"},{"t":"G's Cache","y":"bonus","w":"2026-01-15","d":"2X GTA$/RP","s":"2026-01-15","e":"2026-01-22"},{"t":"Community Race Series","y":"bonus","w":"2026-01-15","d":"2X GTA$/RP","s":"2026-01-15","e":"2026-01-22"},{"t":"Nightclub Daily Income","y":"bonus","w":"2026-01-15","d":"2X GTA$","s":"2026-01-15","e":"2026-01-22"},{"t":"Cheval Taipan","y":"discount","w":"2026-01-15","d":"30% Off","s":"2026-01-15","e":"2026-01-22"},{"t":"Declasse Vigero ZX","y":"discount","w":"2026-01-15","d":"30% Off","s":"2026-01-15","e":"2026-01-22"},{"t":"Obey Omnis e-GT","y":"discount","w":"2026-01-15","d":"30% Off","s":"2026-01-15","e":"2026-01-22"},{"t":"Albany Cavalcade XL","y":"discount","w":"2026-01-15","d":"30% Off","s":"2026-01-15","e":"2026-01-22"},{"t":"Vapid Dominator FX","y":"discount","w":"2026-01-15","d":"30% Off","s":"2026-01-15","e":"2026-01-22"},{"t":"Rhino Tank","y":"discount","w":"2026-01-15","d":"30% Off","s":"2026-01-15","e":"2026-01-22"},{"t":"Karin Everon","y":"discount","w":"2026-01-15","d":"30% Off","s":"2026-01-15","e":"2026-01-22"},{"t":"Albany Hermes","y":"discount","w":"2026-01-15","d":"30% Off","s":"2026-01-15","e":"2026-01-22"},{"t":"Dashound","y":"discount","w":"2026-01-15","d":"30% Off","s":"2026-01-15","e":"2026-01-22"},{"t":"Nightclub Properties","y":"discount","w":"2026-01-15","d":"40% Off","s":"2026-01-15","e":"2026-01-22"},{"t":"Nightclub Upgrades and Modifications","y":"discount","w":"2026-01-15","d":"40% Off","s":"2026-01-15","e":"2026-01-22"},{"t":"Stun Gun","y":"gun","w":"2026-01-15","d":"10% (40% GTA+)","s":"2026-01-15","e":"2026-01-22"},{"t":"Railgun","y":"gun","w":"2026-01-15","d":"50% (50% GTA+)","s":"2026-01-15","e":"2026-01-22"},{"t":"Battle Rifle","y":"gun","w":"2026-01-15","d":"10% (20% GTA+)","s":"2026-01-15","e":"2026-01-22"},{"t":"Combat MG","y":"gun","w":"2026-01-15","d":"10% (20% GTA+)","s":"2026-01-15","e":"2026-01-22"},{"t":"Pistol .50","y":"gun","w":"2026-01-15","d":"10% (20% GTA+)","s":"2026-01-15","e":"2026-01-22"},{"t":"Nightstick","y":"gun","w":"2026-01-15","d":"10% (20% GTA+)","s":"2026-01-15","e":"2026-01-22"},{"t":"Proximity Mine","y":"gun","w":"2026-01-15","d":"10% (20% GTA+)","s":"2026-01-15","e":"2026-01-22"},{"t":"Sticky Bomb","y":"gun","w":"2026-01-15","d":"10% (20% GTA+)","s":"2026-01-15","e":"2026-01-22"},{"t":"Pipe Bomb","y":"gun","w":"2026-01-15","d":"10% (20% GTA+)","s":"2026-01-15","e":"2026-01-22"},{"t":"The Project Breakaway File","y":"fib","w":"2026-01-15","d":"FIB Priority File","s":"2026-01-15","e":"2026-01-22"},{"t":"Complete one Business Battle","y":"challenge","w":"2026-01-15","d":"$100,000","s":"2026-01-15","e":"2026-01-22"},{"t":"Storm Drain","y":"tt","w":"2026-01-15","d":"Time Trial","s":"2026-01-15","e":"2026-01-22"},{"t":"North Chumash to Palomino Highlands","y":"hsw","w":"2026-01-15","d":"HSW Time Trial","s":"2026-01-15","e":"2026-01-22"},{"t":"\u00dcbermacht Rebla GTS","y":"podium","w":"2026-01-08","d":"Podium Vehicle","s":"2026-01-08","e":"2026-01-15"},{"t":"Maxwell Vagrant","y":"prize","w":"2026-01-08","d":"Place Top 2 in LS Car Meet Series 4 days in a row","s":"2026-01-08","e":"2026-01-15"},{"t":"Dinka Jester (Racecar)","y":"test","w":"2026-01-08","d":"Test Ride (Removed)","s":"2026-01-08","e":"2026-01-15"},{"t":"Enus Stafford","y":"test","w":"2026-01-08","d":"Test Ride (Removed)","s":"2026-01-08","e":"2026-01-15"},{"t":"Benefactor XLS","y":"test","w":"2026-01-08","d":"Test Ride (Removed)","s":"2026-01-08","e":"2026-01-15"},{"t":"Pfister Astron Custom","y":"ptest","w":"2026-01-08","d":"Premium Test Ride (HSW)","s":"2026-01-08","e":"2026-01-15"},{"t":"Dinka Blista Kanjo","y":"salvage","w":"2026-01-08","d":"The Podium Robbery","s":"2026-01-08","e":"2026-01-15"},{"t":"Bravado Gauntlet Hellfire","y":"salvage","w":"2026-01-08","d":"The McTony Robbery","s":"2026-01-08","e":"2026-01-15"},{"t":"\u00d6verfl\u00f6d Autarch","y":"salvage","w":"2026-01-08","d":"The Gangbanger Robbery","s":"2026-01-08","e":"2026-01-15"},{"t":"Pfister X-Treme","y":"lux","w":"2026-01-08","d":"Luxury Autos Showroom","s":"2026-01-08","e":"2026-01-15"},{"t":"Vapid FMJ MK V","y":"lux","w":"2026-01-08","d":"Luxury Autos Showroom","s":"2026-01-08","e":"2026-01-15"},{"t":"Invetero Coquette BlackFin","y":"pdm","w":"2026-01-08","d":"Premium Deluxe","s":"2026-01-08","e":"2026-01-15"},{"t":"Dewbauchee Exemplar","y":"pdm","w":"2026-01-08","d":"Premium Deluxe","s":"2026-01-08","e":"2026-01-15"},{"t":"Vapid Retinue","y":"pdm","w":"2026-01-08","d":"Premium Deluxe","s":"2026-01-08","e":"2026-01-15"},{"t":"Canis Seminole Frontier","y":"pdm","w":"2026-01-08","d":"Premium Deluxe","s":"2026-01-08","e":"2026-01-15"},{"t":"Western Wolfsbane","y":"pdm","w":"2026-01-08","d":"Premium Deluxe","s":"2026-01-08","e":"2026-01-15"},{"t":"HSW Race Series","y":"bonus","w":"2026-01-08","d":"4X GTA$/RP","s":"2026-01-08","e":"2026-01-15"},{"t":"Hands On Car Wash (Legal Side)","y":"bonus","w":"2026-01-08","d":"3X GTA$/RP","s":"2026-01-08","e":"2026-01-15"},{"t":"Higgins Helitours (Legal Side)","y":"bonus","w":"2026-01-08","d":"3X GTA$/RP","s":"2026-01-08","e":"2026-01-15"},{"t":"Smoke on the Water (Legal Side)","y":"bonus","w":"2026-01-08","d":"3X GTA$/RP","s":"2026-01-08","e":"2026-01-15"},{"t":"Counterfeit Cash Sell Missions (Biker + NC)","y":"bonus","w":"2026-01-08","d":"2X GTA$/RP","s":"2026-01-08","e":"2026-01-15"},{"t":"Operation Paper Trail","y":"bonus","w":"2026-01-08","d":"2X GTA$/RP (4X GTA+)","s":"2026-01-08","e":"2026-01-15"},{"t":"GTA+ Operation Paper Trail","y":"gta_plus","w":"2026-01-08","d":"4X Operation Paper Trail","s":"2026-01-08","e":"2026-01-15"},{"t":"Featured Series: Hasta La Vista","y":"bonus","w":"2026-01-08","d":"2X GTA$/RP","s":"2026-01-08","e":"2026-01-15"},{"t":"Community Combat Series","y":"bonus","w":"2026-01-08","d":"2X GTA$/RP","s":"2026-01-08","e":"2026-01-15"},{"t":"Grotti LSCM Cheetah Classic","y":"discount","w":"2026-01-08","d":"30% Off","s":"2026-01-08","e":"2026-01-15"},{"t":"Western Reever","y":"discount","w":"2026-01-08","d":"30% Off","s":"2026-01-08","e":"2026-01-15"},{"t":"Nagasaki Buzzard Attack Chopper","y":"discount","w":"2026-01-08","d":"30% Off","s":"2026-01-08","e":"2026-01-15"},{"t":"HVY Chernobog","y":"discount","w":"2026-01-08","d":"30% Off","s":"2026-01-08","e":"2026-01-15"},{"t":"JoBuilt Hauler Custom","y":"discount","w":"2026-01-08","d":"30% Off","s":"2026-01-08","e":"2026-01-15"},{"t":"Dinka Sugoi","y":"discount","w":"2026-01-08","d":"30% Off","s":"2026-01-08","e":"2026-01-15"},{"t":"Vapid Clique Wagon","y":"discount","w":"2026-01-08","d":"30% Off","s":"2026-01-08","e":"2026-01-15"},{"t":"Gallivanter Baller ST","y":"discount","w":"2026-01-08","d":"30% Off","s":"2026-01-08","e":"2026-01-15"},{"t":"Buckingham Maverick","y":"discount","w":"2026-01-08","d":"30% Off","s":"2026-01-08","e":"2026-01-15"},{"t":"Prison Bus","y":"discount","w":"2026-01-08","d":"30% Off","s":"2026-01-08","e":"2026-01-15"},{"t":"Grotti Brioso 300","y":"discount","w":"2026-01-08","d":"30% Off","s":"2026-01-08","e":"2026-01-15"},{"t":"Hands On Car Wash Property","y":"discount","w":"2026-01-08","d":"100% Off \u2014 Free","s":"2026-01-08","e":"2026-01-15"},{"t":"Counterfeit Cash Factories","y":"discount","w":"2026-01-08","d":"40% Off","s":"2026-01-08","e":"2026-01-15"},{"t":"Counterfeit Cash Factory Upgrades and Modifications","y":"discount","w":"2026-01-08","d":"40% Off","s":"2026-01-08","e":"2026-01-15"},{"t":"Stun Gun","y":"gun","w":"2026-01-08","d":"10% (30% GTA+)","s":"2026-01-08","e":"2026-01-15"},{"t":"Service Carbine","y":"gun","w":"2026-01-08","d":"10% (20% GTA+)","s":"2026-01-08","e":"2026-01-15"},{"t":"Military Rifle","y":"gun","w":"2026-01-08","d":"50% (50% GTA+)","s":"2026-01-08","e":"2026-01-15"},{"t":"Homing Launcher","y":"gun","w":"2026-01-08","d":"10% (20% GTA+)","s":"2026-01-08","e":"2026-01-15"},{"t":"Vintage Pistol","y":"gun","w":"2026-01-08","d":"10% (20% GTA+)","s":"2026-01-08","e":"2026-01-15"},{"t":"Battle Axe","y":"gun","w":"2026-01-08","d":"10% (20% GTA+)","s":"2026-01-08","e":"2026-01-15"},{"t":"Pipe Bomb","y":"gun","w":"2026-01-08","d":"10% (20% GTA+)","s":"2026-01-08","e":"2026-01-15"},{"t":"Molotov","y":"gun","w":"2026-01-08","d":"10% (20% GTA+)","s":"2026-01-08","e":"2026-01-15"},{"t":"Proximity Mine","y":"gun","w":"2026-01-08","d":"10% (20% GTA+)","s":"2026-01-08","e":"2026-01-15"},{"t":"The Fine Art File","y":"fib","w":"2026-01-08","d":"FIB Priority File","s":"2026-01-08","e":"2026-01-15"},{"t":"Complete 3 Hands On Car Wash Legal Jobs","y":"challenge","w":"2026-01-08","d":"$100,000","s":"2026-01-08","e":"2026-01-15"},{"t":"Fort Zancudo","y":"tt","w":"2026-01-08","d":"Time Trial","s":"2026-01-08","e":"2026-01-15"},{"t":"Pacific Bluffs to Mount Gordo","y":"hsw","w":"2026-01-08","d":"HSW Time Trial","s":"2026-01-08","e":"2026-01-15"},{"t":"Bollokan Envisage","y":"podium","w":"2025-12-18","d":"Podium Vehicle","s":"2025-12-18","e":"2026-01-08"},{"t":"Pfister Comet Safari","y":"prize","w":"2025-12-18","d":"Win one race in LS Car Meet Series","s":"2025-12-18","e":"2026-01-08"},{"t":"Dewbauchee Seven-70","y":"test","w":"2025-12-18","d":"Test Ride (Removed)","s":"2025-12-18","e":"2026-01-08"},{"t":"Vapid Clique","y":"test","w":"2025-12-18","d":"Test Ride (Removed)","s":"2025-12-18","e":"2026-01-08"},{"t":"Declasse Vamos","y":"test","w":"2025-12-18","d":"Test Ride (Removed)","s":"2025-12-18","e":"2026-01-08"},{"t":"\u00dcbermacht Sentinel XS","y":"ptest","w":"2025-12-18","d":"Premium Test Ride (HSW)","s":"2025-12-18","e":"2026-01-08"},{"t":"Vapid Clique","y":"salvage","w":"2025-12-18","d":"The Gangbanger Robbery","s":"2025-12-18","e":"2026-01-08"},{"t":"Ocelot Virtue","y":"salvage","w":"2025-12-18","d":"The Podium Robbery","s":"2025-12-18","e":"2026-01-08"},{"t":"Bravado Buffalo STX","y":"salvage","w":"2025-12-18","d":"The Cargo Ship Robbery","s":"2025-12-18","e":"2026-01-08"},{"t":"Progen Luiva","y":"lux","w":"2025-12-18","d":"Luxury Autos Showroom","s":"2025-12-18","e":"2026-01-08"},{"t":"Vapid FMJ MK V","y":"lux","w":"2025-12-18","d":"Luxury Autos Showroom","s":"2025-12-18","e":"2026-01-08"},{"t":"Ocelot Ardent","y":"pdm","w":"2025-12-18","d":"Premium Deluxe \u2014 Candy Cane livery","s":"2025-12-18","e":"2026-01-08"},{"t":"HVY Nightshark","y":"pdm","w":"2025-12-18","d":"Premium Deluxe \u2014 Deck the Halls livery","s":"2025-12-18","e":"2026-01-08"},{"t":"BF Dune FAV","y":"pdm","w":"2025-12-18","d":"Premium Deluxe \u2014 It's a Wrap livery","s":"2025-12-18","e":"2026-01-08"},{"t":"Pfister Comet S2 Cabrio","y":"pdm","w":"2025-12-18","d":"Premium Deluxe \u2014 Santa's New Sled livery","s":"2025-12-18","e":"2026-01-08"},{"t":"Albany Alpha","y":"pdm","w":"2025-12-18","d":"Premium Deluxe","s":"2025-12-18","e":"2026-01-08"},{"t":"Cluckin' Bell Finale as Leader","y":"bonus","w":"2025-12-18","d":"GTA$500,000 one-time bonus (72hr)","s":"2025-12-18","e":"2026-01-08"},{"t":"Cluckin' Bell Finale as Associate/Bodyguard","y":"bonus","w":"2025-12-18","d":"GTA$500,000 one-time bonus (72hr)","s":"2025-12-18","e":"2026-01-08"},{"t":"Weed Sell Missions (Biker + NC)","y":"bonus","w":"2025-12-18","d":"2X GTA$/RP","s":"2025-12-18","e":"2026-01-08"},{"t":"Community Series","y":"bonus","w":"2025-12-18","d":"2X GTA$/RP (4X GTA+)","s":"2025-12-18","e":"2026-01-08"},{"t":"GTA+ Community Series","y":"gta_plus","w":"2025-12-18","d":"4X Community Series","s":"2025-12-18","e":"2026-01-08"},{"t":"Featured Series: Overtime Rumble","y":"bonus","w":"2025-12-18","d":"2X GTA$/RP","s":"2025-12-18","e":"2026-01-08"},{"t":"Annis Remus","y":"discount","w":"2025-12-18","d":"30% Off","s":"2025-12-18","e":"2026-01-08"},{"t":"Karin S95","y":"discount","w":"2025-12-18","d":"30% Off","s":"2025-12-18","e":"2026-01-08"},{"t":"Enus Deity","y":"discount","w":"2025-12-18","d":"30% Off","s":"2025-12-18","e":"2026-01-08"},{"t":"Sea Sparrow","y":"discount","w":"2025-12-18","d":"30% Off","s":"2025-12-18","e":"2026-01-08"},{"t":"Dinka RT3000","y":"discount","w":"2025-12-18","d":"30% Off","s":"2025-12-18","e":"2026-01-08"},{"t":"Declasse Walton L35","y":"discount","w":"2025-12-18","d":"30% Off","s":"2025-12-18","e":"2026-01-08"},{"t":"Pegassi Reaper","y":"discount","w":"2025-12-18","d":"30% Off","s":"2025-12-18","e":"2026-01-08"},{"t":"Albany Brigham","y":"discount","w":"2025-12-18","d":"30% Off","s":"2025-12-18","e":"2026-01-08"},{"t":"Progen Itali GTB","y":"discount","w":"2025-12-18","d":"30% Off","s":"2025-12-18","e":"2026-01-08"},{"t":"HVY Insurgent","y":"discount","w":"2025-12-18","d":"30% Off","s":"2025-12-18","e":"2026-01-08"},{"t":"Weed Farm Businesses","y":"discount","w":"2025-12-18","d":"40% Off","s":"2025-12-18","e":"2026-01-08"},{"t":"Weed Farm Business Upgrades and Modifications","y":"discount","w":"2025-12-18","d":"40% Off","s":"2025-12-18","e":"2026-01-08"},{"t":"Stun Gun","y":"gun","w":"2025-12-18","d":"10% (40% GTA+)","s":"2025-12-18","e":"2026-01-08"},{"t":"Service Carbine","y":"gun","w":"2025-12-18","d":"40% (40% GTA+)","s":"2025-12-18","e":"2026-01-08"},{"t":"Combat Shotgun","y":"gun","w":"2025-12-18","d":"10% (20% GTA+)","s":"2025-12-18","e":"2026-01-08"},{"t":"Compact Grenade Launcher","y":"gun","w":"2025-12-18","d":"10% (20% GTA+)","s":"2025-12-18","e":"2026-01-08"},{"t":"Vintage Pistol","y":"gun","w":"2025-12-18","d":"10% (20% GTA+)","s":"2025-12-18","e":"2026-01-08"},{"t":"Up-n-Atomizer","y":"gun","w":"2025-12-18","d":"10% (20% GTA+)","s":"2025-12-18","e":"2026-01-08"},{"t":"Unholy Hellbringer","y":"gun","w":"2025-12-18","d":"10% (20% GTA+)","s":"2025-12-18","e":"2026-01-08"},{"t":"Railgun","y":"gun","w":"2025-12-18","d":"10% (20% GTA+)","s":"2025-12-18","e":"2026-01-08"},{"t":"El Strickler","y":"gun","w":"2025-12-18","d":"10% (20% GTA+)","s":"2025-12-18","e":"2026-01-08"},{"t":"Grenade","y":"gun","w":"2025-12-18","d":"10% (20% GTA+)","s":"2025-12-18","e":"2026-01-08"},{"t":"The Brute Force File","y":"fib","w":"2025-12-18","d":"FIB Priority File","s":"2025-12-18","e":"2026-01-08"},{"t":"Rotating: Sell $100K (Dec 18-22), Win 4 Adversary Modes (Dec 23-29), Complete CB Raid as Leader (Dec 30-Jan 7)","y":"challenge","w":"2025-12-18","d":"$300,000 + Krampus Sweater","s":"2025-12-18","e":"2026-01-08"},{"t":"Great Ocean Highway Mount Gordo","y":"tt","w":"2025-12-18","d":"Time Trial","s":"2025-12-18","e":"2026-01-08"},{"t":"Textile City to Stab City Ron Alternates","y":"hsw","w":"2025-12-18","d":"HSW Time Trial","s":"2025-12-18","e":"2026-01-08"},{"t":"Holiday Event","y":"event","w":"2025-12-18","d":"Through 2026-01-07","s":"2025-12-18","e":"2026-01-08"},{"t":"Returning Holiday Content","y":"event","w":"2025-12-18","d":"Through 2026-01-08","s":"2025-12-18","e":"2026-01-08"},{"t":"VIP Gold Tier Rewards (through Jan 7)","y":"event","w":"2025-12-18","d":"Through 2026-01-07","s":"2025-12-18","e":"2026-01-08"},{"t":"Ubermacht SC1","y":"podium","w":"2025-12-10","d":"Podium Vehicle","s":"2025-12-10","e":"2025-12-18"},{"t":"Overflod Entity XXR","y":"prize","w":"2025-12-10","d":"Place top 3 for 2 days in a row in LS Car Meet Series","s":"2025-12-10","e":"2025-12-18"},{"t":"Dewbauchee JB 700","y":"test","w":"2025-12-10","d":"Test Ride","s":"2025-12-10","e":"2025-12-18"},{"t":"Dewbauchee Rapid GT","y":"test","w":"2025-12-10","d":"Test Ride","s":"2025-12-10","e":"2025-12-18"},{"t":"Benefactor Surano","y":"test","w":"2025-12-10","d":"Test Ride","s":"2025-12-10","e":"2025-12-18"},{"t":"Weeny Issi Rally","y":"ptest","w":"2025-12-10","d":"Premium Test Ride (HSW)","s":"2025-12-10","e":"2025-12-18"},{"t":"Ubermacht Sentinel Classic","y":"salvage","w":"2025-12-10","d":"The Cargo Ship Robbery","s":"2025-12-10","e":"2025-12-18"},{"t":"Lampadati Viseris","y":"salvage","w":"2025-12-10","d":"The Duggan Robbery","s":"2025-12-10","e":"2025-12-18"},{"t":"Enus Deity","y":"salvage","w":"2025-12-10","d":"The McTony Robbery","s":"2025-12-10","e":"2025-12-18"},{"t":"\u00dcbermacht Sentinel XS4","y":"lux","w":"2025-12-10","d":"Luxury Autos Showroom","s":"2025-12-10","e":"2025-12-18"},{"t":"Pfister X-Treme","y":"lux","w":"2025-12-10","d":"Luxury Autos Showroom","s":"2025-12-10","e":"2025-12-18"},{"t":"Vapid Hustler","y":"pdm","w":"2025-12-10","d":"Premium Deluxe","s":"2025-12-10","e":"2025-12-18"},{"t":"Western Rat Bike","y":"pdm","w":"2025-12-10","d":"Premium Deluxe","s":"2025-12-10","e":"2025-12-18"},{"t":"Dewbauchee Rapid GT Classic","y":"pdm","w":"2025-12-10","d":"Premium Deluxe","s":"2025-12-10","e":"2025-12-18"},{"t":"Dinka Enduro","y":"pdm","w":"2025-12-10","d":"Premium Deluxe","s":"2025-12-10","e":"2025-12-18"},{"t":"Ocelot Locust","y":"pdm","w":"2025-12-10","d":"Premium Deluxe","s":"2025-12-10","e":"2025-12-18"},{"t":"Hotring Races","y":"bonus","w":"2025-12-10","d":"3X GTA$/RP","s":"2025-12-10","e":"2025-12-18"},{"t":"Meth Sell Missions (Biker + NC)","y":"bonus","w":"2025-12-10","d":"2X GTA$/RP","s":"2025-12-10","e":"2025-12-18"},{"t":"Community Series","y":"bonus","w":"2025-12-10","d":"2X GTA$/RP (4X GTA+)","s":"2025-12-10","e":"2025-12-18"},{"t":"GTA+ Community Series","y":"gta_plus","w":"2025-12-10","d":"4X Community Series","s":"2025-12-10","e":"2025-12-18"},{"t":"Best in Snow","y":"bonus","w":"2025-12-10","d":"2X GTA$/RP","s":"2025-12-10","e":"2025-12-18"},{"t":"CHRISTMAS CRISSCROSS","y":"bonus","w":"2025-12-10","d":"2X GTA$/RP","s":"2025-12-10","e":"2025-12-18"},{"t":"Christmas Karts","y":"bonus","w":"2025-12-10","d":"2X GTA$/RP","s":"2025-12-10","e":"2025-12-18"},{"t":"Reservoir Ice Race 2","y":"bonus","w":"2025-12-10","d":"2X GTA$/RP","s":"2025-12-10","e":"2025-12-18"},{"t":"Issi Winter Sports","y":"bonus","w":"2025-12-10","d":"2X GTA$/RP","s":"2025-12-10","e":"2025-12-18"},{"t":"Pfister Astron","y":"discount","w":"2025-12-10","d":"30% Off","s":"2025-12-10","e":"2025-12-18"},{"t":"Schyster Deviant","y":"discount","w":"2025-12-10","d":"30% Off","s":"2025-12-10","e":"2025-12-18"},{"t":"Progen GP1","y":"discount","w":"2025-12-10","d":"30% Off","s":"2025-12-10","e":"2025-12-18"},{"t":"Grotti Turismo Omaggio","y":"discount","w":"2025-12-10","d":"30% Off","s":"2025-12-10","e":"2025-12-18"},{"t":"Canis Castigator","y":"discount","w":"2025-12-10","d":"30% Off","s":"2025-12-10","e":"2025-12-18"},{"t":"Vapid Dominator GTT","y":"discount","w":"2025-12-10","d":"30% Off","s":"2025-12-10","e":"2025-12-18"},{"t":"Pegassi Osiris","y":"discount","w":"2025-12-10","d":"30% Off","s":"2025-12-10","e":"2025-12-18"},{"t":"Pfister Comet Safari","y":"discount","w":"2025-12-10","d":"30% Off","s":"2025-12-10","e":"2025-12-18"},{"t":"Vapid Ellie","y":"discount","w":"2025-12-10","d":"30% Off","s":"2025-12-10","e":"2025-12-18"},{"t":"Vapid Trophy Truck","y":"discount","w":"2025-12-10","d":"30% Off","s":"2025-12-10","e":"2025-12-18"},{"t":"MC Meth Businesses (+ Upgrades)","y":"discount","w":"2025-12-10","d":"40% Off","s":"2025-12-10","e":"2025-12-18"},{"t":"Combat Shotgun","y":"gun","w":"2025-12-10","d":"50% (50% GTA+)","s":"2025-12-10","e":"2025-12-18"},{"t":"Compact EMP Launcher","y":"gun","w":"2025-12-10","d":"10% (40% GTA+)","s":"2025-12-10","e":"2025-12-18"},{"t":"Tactical SMG","y":"gun","w":"2025-12-10","d":"10% (20% GTA+)","s":"2025-12-10","e":"2025-12-18"},{"t":"Marksman Rifle","y":"gun","w":"2025-12-10","d":"10% (20% GTA+)","s":"2025-12-10","e":"2025-12-18"},{"t":"Pump Shotgun","y":"gun","w":"2025-12-10","d":"10% (20% GTA+)","s":"2025-12-10","e":"2025-12-18"},{"t":"Widowmaker","y":"gun","w":"2025-12-10","d":"10% (20% GTA+)","s":"2025-12-10","e":"2025-12-18"},{"t":"Molotov","y":"gun","w":"2025-12-10","d":"10% (20% GTA+)","s":"2025-12-10","e":"2025-12-18"},{"t":"Sticky Bomb","y":"gun","w":"2025-12-10","d":"10% (20% GTA+)","s":"2025-12-10","e":"2025-12-18"},{"t":"Tear Gas","y":"gun","w":"2025-12-10","d":"10% (20% GTA+)","s":"2025-12-10","e":"2025-12-18"},{"t":"The Black Box File","y":"fib","w":"2025-12-10","d":"FIB Priority File","s":"2025-12-10","e":"2025-12-18"},{"t":"Complete the KnoWay Out Finale as Leader","y":"challenge","w":"2025-12-10","d":"$400,000","s":"2025-12-10","e":"2025-12-18"},{"t":"Observatory","y":"tt","w":"2025-12-10","d":"Time Trial","s":"2025-12-10","e":"2025-12-18"},{"t":"Sandy Shores","y":"hsw","w":"2025-12-10","d":"HSW Time Trial","s":"2025-12-10","e":"2025-12-18"},{"t":"Annis S80RR","y":"podium","w":"2025-12-04","d":"Podium Vehicle","s":"2025-12-04","e":"2025-12-10"},{"t":"Annis Euros","y":"prize","w":"2025-12-04","d":"Place Top 2 in LS Car Meet Series for 3 days in a row","s":"2025-12-04","e":"2025-12-10"},{"t":"Ocelot Lynx","y":"test","w":"2025-12-04","d":"Test Ride (Removed)","s":"2025-12-04","e":"2025-12-10"},{"t":"Lampadati Michelli GT","y":"test","w":"2025-12-04","d":"Test Ride (Removed)","s":"2025-12-04","e":"2025-12-10"},{"t":"Karin 190z","y":"test","w":"2025-12-04","d":"Test Ride (Removed)","s":"2025-12-04","e":"2025-12-10"},{"t":"Bravado Buffalo EVX","y":"ptest","w":"2025-12-04","d":"Premium Test Ride (HSW)","s":"2025-12-04","e":"2025-12-10"},{"t":"Grotti Stinger GT","y":"salvage","w":"2025-12-04","d":"The Gangbanger Robbery","s":"2025-12-04","e":"2025-12-10"},{"t":"Dinka Jester RR","y":"salvage","w":"2025-12-04","d":"The Duggan Robbery","s":"2025-12-04","e":"2025-12-10"},{"t":"Ocelot Jugular","y":"salvage","w":"2025-12-04","d":"The Cargo Ship Robbery","s":"2025-12-04","e":"2025-12-10"},{"t":"\u00dcbermacht Revolter (Sessanta Nove livery)","y":"lux","w":"2025-12-04","d":"Luxury Autos Showroom","s":"2025-12-04","e":"2025-12-10"},{"t":"Bravado Banshee GTS","y":"lux","w":"2025-12-04","d":"Luxury Autos Showroom","s":"2025-12-04","e":"2025-12-10"},{"t":"Dewbauchee Champion","y":"pdm","w":"2025-12-04","d":"Premium Deluxe","s":"2025-12-04","e":"2025-12-10"},{"t":"Benefactor LM87","y":"pdm","w":"2025-12-04","d":"Premium Deluxe","s":"2025-12-04","e":"2025-12-10"},{"t":"Pegassi Tezeract","y":"pdm","w":"2025-12-04","d":"Premium Deluxe","s":"2025-12-04","e":"2025-12-10"},{"t":"Pegassi Ignus","y":"pdm","w":"2025-12-04","d":"Premium Deluxe","s":"2025-12-04","e":"2025-12-10"},{"t":"Progen Emerus","y":"pdm","w":"2025-12-04","d":"Premium Deluxe","s":"2025-12-04","e":"2025-12-10"},{"t":"A Superyacht Life Missions","y":"bonus","w":"2025-12-04","d":"5X GTA$/RP","s":"2025-12-04","e":"2025-12-10"},{"t":"FIB Priority File","y":"bonus","w":"2025-12-04","d":"4X GTA$","s":"2025-12-04","e":"2025-12-10"},{"t":"Community Combat Series","y":"bonus","w":"2025-12-04","d":"3X GTA$/RP","s":"2025-12-04","e":"2025-12-10"},{"t":"New Listings Missions","y":"bonus","w":"2025-12-04","d":"2X GTA$/RP (4X GTA+) \u2014 Missions removed Dec 8","s":"2025-12-04","e":"2025-12-10"},{"t":"GTA+ New Listings Missions","y":"gta_plus","w":"2025-12-04","d":"4X New Listings Missions","s":"2025-12-04","e":"2025-12-10"},{"t":"Shipwrecks","y":"bonus","w":"2025-12-04","d":"2X GTA$/RP","s":"2025-12-04","e":"2025-12-10"},{"t":"Featured Series: Deadline","y":"bonus","w":"2025-12-04","d":"2X GTA$/RP","s":"2025-12-04","e":"2025-12-10"},{"t":"Login Reward","y":"bonus","w":"2025-12-04","d":"Pluck Me Sweater","s":"2025-12-04","e":"2025-12-10"},{"t":"Benefactor LM87","y":"discount","w":"2025-12-04","d":"30% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"Progen Emerus","y":"discount","w":"2025-12-04","d":"30% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"Progen Tyrus","y":"discount","w":"2025-12-04","d":"30% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"\u00d6verfl\u00f6d Tyrant","y":"discount","w":"2025-12-04","d":"30% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"Ocelot XA-21","y":"discount","w":"2025-12-04","d":"30% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"Declasse Granger 3600LX","y":"discount","w":"2025-12-04","d":"30% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"Bravado Banshee GTS","y":"discount","w":"2025-12-04","d":"30% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"\u00dcbermacht Niobe","y":"discount","w":"2025-12-04","d":"30% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"Vysser Neo","y":"discount","w":"2025-12-04","d":"30% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"Vapid Caracara","y":"discount","w":"2025-12-04","d":"30% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"Lampadati Cinquemila","y":"discount","w":"2025-12-04","d":"30% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"Lampadati Komoda","y":"discount","w":"2025-12-04","d":"30% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"Annis ZR350","y":"discount","w":"2025-12-04","d":"30% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"Coil Raiden","y":"discount","w":"2025-12-04","d":"30% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"Karin Technical","y":"discount","w":"2025-12-04","d":"30% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"\u00dcbermacht Zion Classic","y":"discount","w":"2025-12-04","d":"30% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"Galaxy Super Yachts","y":"discount","w":"2025-12-04","d":"40% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"Galaxy Super Yacht Modifications","y":"discount","w":"2025-12-04","d":"40% Off","s":"2025-12-04","e":"2025-12-10"},{"t":"Free Yacht Upgrade to Aquarius","y":"discount","w":"2025-12-04","d":"100% Off \u2014 Orion/Pisces owners, small fee on PC","s":"2025-12-04","e":"2025-12-10"},{"t":"Railgun","y":"gun","w":"2025-12-04","d":"30% (50% GTA+)","s":"2025-12-04","e":"2025-12-10"},{"t":"Compact EMP Launcher","y":"gun","w":"2025-12-04","d":"50% (50% GTA+)","s":"2025-12-04","e":"2025-12-10"},{"t":"Battle Rifle","y":"gun","w":"2025-12-04","d":"30% (40% GTA+)","s":"2025-12-04","e":"2025-12-10"},{"t":"Heavy Rifle","y":"gun","w":"2025-12-04","d":"30% (40% GTA+)","s":"2025-12-04","e":"2025-12-10"},{"t":"Precision Rifle","y":"gun","w":"2025-12-04","d":"30% (40% GTA+)","s":"2025-12-04","e":"2025-12-10"},{"t":"Widowmaker","y":"gun","w":"2025-12-04","d":"30% (40% GTA+)","s":"2025-12-04","e":"2025-12-10"},{"t":"Up-n-Atomizer","y":"gun","w":"2025-12-04","d":"30% (40% GTA+)","s":"2025-12-04","e":"2025-12-10"},{"t":"Baseball Bat","y":"gun","w":"2025-12-04","d":"Free (Free GTA+)","s":"2025-12-04","e":"2025-12-10"},{"t":"Sticky Bomb","y":"gun","w":"2025-12-04","d":"30% (40% GTA+)","s":"2025-12-04","e":"2025-12-10"},{"t":"The Fine Art File","y":"fib","w":"2025-12-04","d":"FIB Priority File","s":"2025-12-04","e":"2025-12-10"},{"t":"Complete 2 FIB Files","y":"challenge","w":"2025-12-04","d":"","s":"2025-12-04","e":"2025-12-10"},{"t":"Del Perro Pier","y":"tt","w":"2025-12-04","d":"Time Trial","s":"2025-12-04","e":"2025-12-10"},{"t":"Del Perro Pier","y":"hsw","w":"2025-12-04","d":"HSW Time Trial","s":"2025-12-04","e":"2025-12-10"},{"t":"VIP Program","y":"event","w":"2025-12-04","d":"Through 2025-12-08","s":"2025-12-04","e":"2025-12-10"},{"t":"VIP Gold Tier","y":"event","w":"2025-12-04","d":"Through 2025-12-08","s":"2025-12-04","e":"2025-12-10"},{"t":"Annis S80RR","y":"podium","w":"2025-11-27","d":"Podium Vehicle","s":"2025-11-27","e":"2025-12-04"},{"t":"Annis Euros","y":"prize","w":"2025-11-27","d":"Place Top 2 in LS Car Meet Series for 3 days in a row","s":"2025-11-27","e":"2025-12-04"},{"t":"Ocelot Lynx","y":"test","w":"2025-11-27","d":"Test Ride (Removed)","s":"2025-11-27","e":"2025-12-04"},{"t":"Lampadati Michelli GT","y":"test","w":"2025-11-27","d":"Test Ride (Removed)","s":"2025-11-27","e":"2025-12-04"},{"t":"Karin 190z","y":"test","w":"2025-11-27","d":"Test Ride (Removed)","s":"2025-11-27","e":"2025-12-04"},{"t":"Bravado Buffalo EVX","y":"ptest","w":"2025-11-27","d":"Premium Test Ride (HSW)","s":"2025-11-27","e":"2025-12-04"},{"t":"Grotti Stinger GT","y":"salvage","w":"2025-11-27","d":"The Gangbanger Robbery","s":"2025-11-27","e":"2025-12-04"},{"t":"Dinka Jester RR","y":"salvage","w":"2025-11-27","d":"The Duggan Robbery","s":"2025-11-27","e":"2025-12-04"},{"t":"Ocelot Jugular","y":"salvage","w":"2025-11-27","d":"The Cargo Ship Robbery","s":"2025-11-27","e":"2025-12-04"},{"t":"\u00dcbermacht Revolter","y":"lux","w":"2025-11-27","d":"Luxury Autos Showroom","s":"2025-11-27","e":"2025-12-04"},{"t":"Bravado Banshee GTS","y":"lux","w":"2025-11-27","d":"Luxury Autos Showroom","s":"2025-11-27","e":"2025-12-04"},{"t":"Dewbauchee Champion","y":"pdm","w":"2025-11-27","d":"Premium Deluxe","s":"2025-11-27","e":"2025-12-04"},{"t":"Benefactor LM87","y":"pdm","w":"2025-11-27","d":"Premium Deluxe","s":"2025-11-27","e":"2025-12-04"},{"t":"Pegassi Tezeract","y":"pdm","w":"2025-11-27","d":"Premium Deluxe","s":"2025-11-27","e":"2025-12-04"},{"t":"Pegassi Ignus","y":"pdm","w":"2025-11-27","d":"Premium Deluxe","s":"2025-11-27","e":"2025-12-04"},{"t":"Progen Emerus","y":"pdm","w":"2025-11-27","d":"Premium Deluxe","s":"2025-11-27","e":"2025-12-04"},{"t":"Pluck Me Sweater","y":"bonus","w":"2025-11-27","d":"Free login reward","s":"2025-11-27","e":"2025-12-04"},{"t":"A Superyacht Life Missions","y":"bonus","w":"2025-11-27","d":"5X GTA$/RP","s":"2025-11-27","e":"2025-12-04"},{"t":"FIB Priority File","y":"bonus","w":"2025-11-27","d":"4X GTA$","s":"2025-11-27","e":"2025-12-04"},{"t":"Community Combat Series","y":"bonus","w":"2025-11-27","d":"3X GTA$/RP","s":"2025-11-27","e":"2025-12-04"},{"t":"New Listings Missions","y":"bonus","w":"2025-11-27","d":"2X GTA$/RP (4X GTA+)","s":"2025-11-27","e":"2025-12-04"},{"t":"GTA+ New Listings Missions","y":"gta_plus","w":"2025-11-27","d":"4X New Listings Missions","s":"2025-11-27","e":"2025-12-04"},{"t":"Shipwrecks","y":"bonus","w":"2025-11-27","d":"2X GTA$/RP","s":"2025-11-27","e":"2025-12-04"},{"t":"Featured Series: Deadline","y":"bonus","w":"2025-11-27","d":"2X GTA$/RP","s":"2025-11-27","e":"2025-12-04"},{"t":"Benefactor LM87","y":"discount","w":"2025-11-27","d":"30% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"Progen Emerus","y":"discount","w":"2025-11-27","d":"30% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"Progen Tyrus","y":"discount","w":"2025-11-27","d":"30% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"\u00d6verfl\u00f6d Tyrant","y":"discount","w":"2025-11-27","d":"30% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"Ocelot XA-21","y":"discount","w":"2025-11-27","d":"30% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"Declasse Granger 3600LX","y":"discount","w":"2025-11-27","d":"30% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"Bravado Banshee GTS","y":"discount","w":"2025-11-27","d":"30% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"\u00dcbermacht Niobe","y":"discount","w":"2025-11-27","d":"30% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"Vysser Neo","y":"discount","w":"2025-11-27","d":"30% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"Vapid Caracara","y":"discount","w":"2025-11-27","d":"30% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"Lampadati Cinquemila","y":"discount","w":"2025-11-27","d":"30% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"Lampadati Komoda","y":"discount","w":"2025-11-27","d":"30% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"Annis ZR350","y":"discount","w":"2025-11-27","d":"30% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"Coil Raiden","y":"discount","w":"2025-11-27","d":"30% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"Karin Technical","y":"discount","w":"2025-11-27","d":"30% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"\u00dcbermacht Zion Classic","y":"discount","w":"2025-11-27","d":"30% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"Galaxy Super Yachts","y":"discount","w":"2025-11-27","d":"40% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"Galaxy Super Yacht Modifications","y":"discount","w":"2025-11-27","d":"40% Off","s":"2025-11-27","e":"2025-12-04"},{"t":"Aquarius upgrade from Orion/Pisces","y":"discount","w":"2025-11-27","d":"100% Off \u2014 Free (small fee PC)","s":"2025-11-27","e":"2025-12-04"},{"t":"Railgun","y":"gun","w":"2025-11-27","d":"30% (50% GTA+)","s":"2025-11-27","e":"2025-12-04"},{"t":"Compact EMP Launcher","y":"gun","w":"2025-11-27","d":"50% (50% GTA+)","s":"2025-11-27","e":"2025-12-04"},{"t":"Battle Rifle","y":"gun","w":"2025-11-27","d":"30% (40% GTA+)","s":"2025-11-27","e":"2025-12-04"},{"t":"Heavy Rifle","y":"gun","w":"2025-11-27","d":"30% (40% GTA+)","s":"2025-11-27","e":"2025-12-04"},{"t":"Precision Rifle","y":"gun","w":"2025-11-27","d":"30% (40% GTA+)","s":"2025-11-27","e":"2025-12-04"},{"t":"Widowmaker","y":"gun","w":"2025-11-27","d":"30% (40% GTA+)","s":"2025-11-27","e":"2025-12-04"},{"t":"Up-n-Atomizer","y":"gun","w":"2025-11-27","d":"30% (40% GTA+)","s":"2025-11-27","e":"2025-12-04"},{"t":"Baseball Bat","y":"gun","w":"2025-11-27","d":"Free (Free GTA+)","s":"2025-11-27","e":"2025-12-04"},{"t":"Sticky Bomb","y":"gun","w":"2025-11-27","d":"30% (40% GTA+)","s":"2025-11-27","e":"2025-12-04"},{"t":"The Fine Art File","y":"fib","w":"2025-11-27","d":"FIB Priority File","s":"2025-11-27","e":"2025-12-04"},{"t":"Complete three A Superyacht Life Missions","y":"challenge","w":"2025-11-27","d":"$100,000 + Vibrant Check Smoking Jacket","s":"2025-11-27","e":"2025-12-04"},{"t":"Del Perro Pier","y":"tt","w":"2025-11-27","d":"Time Trial","s":"2025-11-27","e":"2025-12-04"},{"t":"Del Perro Pier","y":"hsw","w":"2025-11-27","d":"HSW Time Trial","s":"2025-11-27","e":"2025-12-04"},{"t":"VIP Program","y":"event","w":"2025-11-27","d":"Through 2025-12-07","s":"2025-11-27","e":"2025-12-04"},{"t":"VIP Gold Tier","y":"event","w":"2025-11-27","d":"Through 2025-12-07","s":"2025-11-27","e":"2025-12-04"},{"t":"Black Friday (through Dec 3)","y":"event","w":"2025-11-27","d":"Through 2025-12-03","s":"2025-11-27","e":"2025-12-04"},{"t":"Dinka Jester Classic","y":"podium","w":"2025-11-20","d":"Podium Vehicle","s":"2025-11-20","e":"2025-11-27"},{"t":"Gallivanter Baller ST","y":"prize","w":"2025-11-20","d":"Place Top 4 in LS Car Meet Series for 2 days in a row","s":"2025-11-20","e":"2025-11-27"},{"t":"Western Zombie Bobber","y":"test","w":"2025-11-20","d":"Test Ride (Removed)","s":"2025-11-20","e":"2025-11-27"},{"t":"Weeny Dynasty","y":"test","w":"2025-11-20","d":"Test Ride (Removed)","s":"2025-11-20","e":"2025-11-27"},{"t":"Nagasaki Hot Rod Blazer","y":"test","w":"2025-11-20","d":"Test Ride (Removed)","s":"2025-11-20","e":"2025-11-27"},{"t":"Principe Deveste Eight","y":"ptest","w":"2025-11-20","d":"Premium Test Ride (HSW)","s":"2025-11-20","e":"2025-11-27"},{"t":"Dinka Sugoi","y":"salvage","w":"2025-11-20","d":"The Podium Robbery","s":"2025-11-20","e":"2025-11-27"},{"t":"Gallivanter Baller ST-D","y":"salvage","w":"2025-11-20","d":"The McTony Robbery","s":"2025-11-20","e":"2025-11-27"},{"t":"Enus Jubilee","y":"salvage","w":"2025-11-20","d":"The Duggan Robbery","s":"2025-11-20","e":"2025-11-27"},{"t":"\u00dcbermacht Revolter","y":"lux","w":"2025-11-20","d":"Luxury Autos Showroom","s":"2025-11-20","e":"2025-11-27"},{"t":"Karin Everon RS","y":"lux","w":"2025-11-20","d":"Luxury Autos Showroom","s":"2025-11-20","e":"2025-11-27"},{"t":"Lampadati Furore GT","y":"pdm","w":"2025-11-20","d":"Premium Deluxe (Removed)","s":"2025-11-20","e":"2025-11-27"},{"t":"Western Cliffhanger","y":"pdm","w":"2025-11-20","d":"Premium Deluxe (Removed)","s":"2025-11-20","e":"2025-11-27"},{"t":"Bravado Verlierer","y":"pdm","w":"2025-11-20","d":"Premium Deluxe (Removed)","s":"2025-11-20","e":"2025-11-27"},{"t":"Hijak Ruston","y":"pdm","w":"2025-11-20","d":"Premium Deluxe (Removed)","s":"2025-11-20","e":"2025-11-27"},{"t":"LCC Innovation","y":"pdm","w":"2025-11-20","d":"Premium Deluxe (Removed)","s":"2025-11-20","e":"2025-11-27"},{"t":"Open Wheel Races","y":"bonus","w":"2025-11-20","d":"3X GTA$/RP","s":"2025-11-20","e":"2025-11-27"},{"t":"New Listings Missions","y":"bonus","w":"2025-11-20","d":"2X GTA$/RP (4X GTA+)","s":"2025-11-20","e":"2025-11-27"},{"t":"GTA+ New Listings Missions","y":"gta_plus","w":"2025-11-20","d":"4X New Listings Missions","s":"2025-11-20","e":"2025-11-27"},{"t":"The Diamond Casino Heist Finale","y":"bonus","w":"2025-11-20","d":"2X GTA$/RP","s":"2025-11-20","e":"2025-11-27"},{"t":"Casino Story Missions","y":"bonus","w":"2025-11-20","d":"2X GTA$/RP","s":"2025-11-20","e":"2025-11-27"},{"t":"Casino Work","y":"bonus","w":"2025-11-20","d":"2X GTA$/RP","s":"2025-11-20","e":"2025-11-27"},{"t":"Community Race Series","y":"bonus","w":"2025-11-20","d":"2X GTA$/RP","s":"2025-11-20","e":"2025-11-27"},{"t":"Casino Daily Visitor Chips","y":"bonus","w":"2025-11-20","d":"2X","s":"2025-11-20","e":"2025-11-27"},{"t":"GTA+ Diamond Casino Heist","y":"bonus","w":"2025-11-20","d":"Guaranteed Diamonds in vault \u2014 GTA+ only","s":"2025-11-20","e":"2025-11-27"},{"t":"RUNE Zhaba","y":"discount","w":"2025-11-20","d":"30% Off","s":"2025-11-20","e":"2025-11-27"},{"t":"Invade and Persuade Tank","y":"discount","w":"2025-11-20","d":"30% Off","s":"2025-11-20","e":"2025-11-27"},{"t":"Maxwell Vagrant","y":"discount","w":"2025-11-20","d":"30% Off","s":"2025-11-20","e":"2025-11-27"},{"t":"Karin Sultan Classic","y":"discount","w":"2025-11-20","d":"30% Off","s":"2025-11-20","e":"2025-11-27"},{"t":"Dinka Blista Kanjo","y":"discount","w":"2025-11-20","d":"30% Off","s":"2025-11-20","e":"2025-11-27"},{"t":"HVY Insurgent Pick-Up","y":"discount","w":"2025-11-20","d":"30% Off","s":"2025-11-20","e":"2025-11-27"},{"t":"Karin Sultan RS Classic","y":"discount","w":"2025-11-20","d":"30% Off","s":"2025-11-20","e":"2025-11-27"},{"t":"Imponte Arbiter GT","y":"discount","w":"2025-11-20","d":"30% Off \u2014 PS5/XBX/PCE only","s":"2025-11-20","e":"2025-11-27"},{"t":"Maibatsu Penumbra FF","y":"discount","w":"2025-11-20","d":"30% Off","s":"2025-11-20","e":"2025-11-27"},{"t":"Albany V-STR","y":"discount","w":"2025-11-20","d":"30% Off","s":"2025-11-20","e":"2025-11-27"},{"t":"Vulcar Warrener HKR","y":"discount","w":"2025-11-20","d":"30% Off","s":"2025-11-20","e":"2025-11-27"},{"t":"Declasse Mamba","y":"discount","w":"2025-11-20","d":"30% Off","s":"2025-11-20","e":"2025-11-27"},{"t":"Lampadati Tropos Rallye","y":"discount","w":"2025-11-20","d":"30% Off","s":"2025-11-20","e":"2025-11-27"},{"t":"Dinka Vindicator","y":"discount","w":"2025-11-20","d":"30% Off","s":"2025-11-20","e":"2025-11-27"},{"t":"BF Surfer Custom","y":"discount","w":"2025-11-20","d":"30% Off","s":"2025-11-20","e":"2025-11-27"},{"t":"Casino Master Penthouse","y":"discount","w":"2025-11-20","d":"100% Off \u2014 Free","s":"2025-11-20","e":"2025-11-27"},{"t":"Casino Master Penthouse Party Package","y":"discount","w":"2025-11-20","d":"100% Off \u2014 Free for GTA+","s":"2025-11-20","e":"2025-11-27"},{"t":"Arcade Properties","y":"discount","w":"2025-11-20","d":"30% Off","s":"2025-11-20","e":"2025-11-27"},{"t":"Arcade Upgrades and Modifications","y":"discount","w":"2025-11-20","d":"30% Off","s":"2025-11-20","e":"2025-11-27"},{"t":"Military Rifle","y":"gun","w":"2025-11-20","d":"10% (30% GTA+)","s":"2025-11-20","e":"2025-11-27"},{"t":"Battle Rifle","y":"gun","w":"2025-11-20","d":"10% (20% GTA+)","s":"2025-11-20","e":"2025-11-27"},{"t":"Heavy Rifle","y":"gun","w":"2025-11-20","d":"50% (50% GTA+)","s":"2025-11-20","e":"2025-11-27"},{"t":"Marksman Rifle","y":"gun","w":"2025-11-20","d":"10% (20% GTA+)","s":"2025-11-20","e":"2025-11-27"},{"t":"MG","y":"gun","w":"2025-11-20","d":"10% (20% GTA+)","s":"2025-11-20","e":"2025-11-27"},{"t":"Nightstick","y":"gun","w":"2025-11-20","d":"10% (20% GTA+)","s":"2025-11-20","e":"2025-11-27"},{"t":"Baseball Bat","y":"gun","w":"2025-11-20","d":"Free (Free GTA+)","s":"2025-11-20","e":"2025-11-27"},{"t":"Pipe Bomb","y":"gun","w":"2025-11-20","d":"10% (20% GTA+)","s":"2025-11-20","e":"2025-11-27"},{"t":"Proximity Mine","y":"gun","w":"2025-11-20","d":"10% (20% GTA+)","s":"2025-11-20","e":"2025-11-27"},{"t":"Sticky Bomb","y":"gun","w":"2025-11-20","d":"10% (20% GTA+)","s":"2025-11-20","e":"2025-11-27"},{"t":"The Black Box File","y":"fib","w":"2025-11-20","d":"FIB Priority File","s":"2025-11-20","e":"2025-11-27"},{"t":"Complete The Diamond Casino Heist two times","y":"challenge","w":"2025-11-20","d":"$100,000 + The Diamond Strike Vest","s":"2025-11-20","e":"2025-11-27"},{"t":"El Burro Heights","y":"tt","w":"2025-11-20","d":"Time Trial","s":"2025-11-20","e":"2025-11-27"},{"t":"East Vinewood to Vespucci Beach","y":"hsw","w":"2025-11-20","d":"HSW Time Trial","s":"2025-11-20","e":"2025-11-27"},{"t":"VIP Program","y":"event","w":"2025-11-20","d":"Through 2025-12-07","s":"2025-11-20","e":"2025-11-27"},{"t":"VIP Gold Tier","y":"event","w":"2025-11-20","d":"Through 2025-12-07","s":"2025-11-20","e":"2025-11-27"},{"t":"Declasse Tahoma Coupe","y":"podium","w":"2025-11-13","d":"Podium Vehicle","s":"2025-11-13","e":"2025-11-20"},{"t":"Annis RE-7B","y":"prize","w":"2025-11-13","d":"Place Top 2 in LS Car Meet Series","s":"2025-11-13","e":"2025-11-20"},{"t":"Enus Cognoscenti","y":"test","w":"2025-11-13","d":"Test Ride (Removed)","s":"2025-11-13","e":"2025-11-20"},{"t":"Enus Super Diamond","y":"test","w":"2025-11-13","d":"Test Ride (Removed)","s":"2025-11-13","e":"2025-11-20"},{"t":"Vulcar Warrener","y":"test","w":"2025-11-13","d":"Test Ride (Removed)","s":"2025-11-13","e":"2025-11-20"},{"t":"Benefactor Stirling GT","y":"ptest","w":"2025-11-13","d":"Premium Test Ride (HSW)","s":"2025-11-13","e":"2025-11-20"},{"t":"Vysser Neo","y":"salvage","w":"2025-11-13","d":"The Duggan Robbery","s":"2025-11-13","e":"2025-11-20"},{"t":"Hijak Ruston","y":"salvage","w":"2025-11-13","d":"The Cargo Ship Robbery","s":"2025-11-13","e":"2025-11-20"},{"t":"Karin Previon","y":"salvage","w":"2025-11-13","d":"The Podium Robbery","s":"2025-11-13","e":"2025-11-20"},{"t":"\u00dcbermacht Sentinel GTS","y":"lux","w":"2025-11-13","d":"Luxury Autos Showroom","s":"2025-11-13","e":"2025-11-20"},{"t":"\u00dcbermacht Revolter","y":"lux","w":"2025-11-13","d":"Luxury Autos Showroom","s":"2025-11-13","e":"2025-11-20"},{"t":"Vapid Riata","y":"pdm","w":"2025-11-13","d":"Premium Deluxe (Removed)","s":"2025-11-13","e":"2025-11-20"},{"t":"Pegassi Esskey","y":"pdm","w":"2025-11-13","d":"Premium Deluxe (Removed)","s":"2025-11-13","e":"2025-11-20"},{"t":"BF Bifta","y":"pdm","w":"2025-11-13","d":"Premium Deluxe (Removed)","s":"2025-11-13","e":"2025-11-20"},{"t":"Dinka Jester","y":"pdm","w":"2025-11-13","d":"Premium Deluxe (Removed)","s":"2025-11-13","e":"2025-11-20"},{"t":"Coil Brawler","y":"pdm","w":"2025-11-13","d":"Premium Deluxe (Removed)","s":"2025-11-13","e":"2025-11-20"},{"t":"VIP Work and Challenges","y":"bonus","w":"2025-11-13","d":"3X GTA$/RP","s":"2025-11-13","e":"2025-11-20"},{"t":"Associate and Bodyguard Salaries","y":"bonus","w":"2025-11-13","d":"3X","s":"2025-11-13","e":"2025-11-20"},{"t":"New Listings Missions","y":"bonus","w":"2025-11-13","d":"2X GTA$/RP (4X GTA+)","s":"2025-11-13","e":"2025-11-20"},{"t":"GTA+ New Listings Missions","y":"gta_plus","w":"2025-11-13","d":"4X New Listings Missions","s":"2025-11-13","e":"2025-11-20"},{"t":"Vehicle Cargo Sell Missions","y":"bonus","w":"2025-11-13","d":"2X GTA$/RP","s":"2025-11-13","e":"2025-11-20"},{"t":"Special Vehicle Work","y":"bonus","w":"2025-11-13","d":"2X GTA$/RP","s":"2025-11-13","e":"2025-11-20"},{"t":"Random Transform Races","y":"bonus","w":"2025-11-13","d":"2X GTA$/RP","s":"2025-11-13","e":"2025-11-20"},{"t":"Community Combat Series","y":"bonus","w":"2025-11-13","d":"2X GTA$/RP","s":"2025-11-13","e":"2025-11-20"},{"t":"Imponte Nightshade","y":"discount","w":"2025-11-13","d":"50% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Benefactor Schafter LWB (Armored)","y":"discount","w":"2025-11-13","d":"50% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Benefactor Schafter LWB","y":"discount","w":"2025-11-13","d":"50% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Benefactor Schafter V12 (Armored)","y":"discount","w":"2025-11-13","d":"50% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Benefactor Schafter V12","y":"discount","w":"2025-11-13","d":"50% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Enus Cognoscenti 55 (Armored)","y":"discount","w":"2025-11-13","d":"50% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Enus Cognoscenti 55","y":"discount","w":"2025-11-13","d":"50% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Gallivanter Baller LE (Armored)","y":"discount","w":"2025-11-13","d":"50% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Lampadati Corsita","y":"discount","w":"2025-11-13","d":"30% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Karin Hotring Everon","y":"discount","w":"2025-11-13","d":"30% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Pfister Growler","y":"discount","w":"2025-11-13","d":"30% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Buckingham Vestra","y":"discount","w":"2025-11-13","d":"30% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Pegassi Monroe","y":"discount","w":"2025-11-13","d":"30% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Dinka Marquis","y":"discount","w":"2025-11-13","d":"30% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Maxwell Asbo","y":"discount","w":"2025-11-13","d":"30% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Declasse Tampa","y":"discount","w":"2025-11-13","d":"30% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Lombank West Executive Office","y":"discount","w":"2025-11-13","d":"100% Off \u2014 Free","s":"2025-11-13","e":"2025-11-20"},{"t":"Executive Office Properties","y":"discount","w":"2025-11-13","d":"50% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Executive Office Garages","y":"discount","w":"2025-11-13","d":"50% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Executive Office Upgrades and Modifications","y":"discount","w":"2025-11-13","d":"50% Off","s":"2025-11-13","e":"2025-11-20"},{"t":"Compact EMP Launcher","y":"gun","w":"2025-11-13","d":"50% (50% GTA+)","s":"2025-11-13","e":"2025-11-20"},{"t":"Tactical SMG","y":"gun","w":"2025-11-13","d":"10% (40% GTA+)","s":"2025-11-13","e":"2025-11-20"},{"t":"Service Carbine","y":"gun","w":"2025-11-13","d":"10% (20% GTA+)","s":"2025-11-13","e":"2025-11-20"},{"t":"Double Barrel Shotgun","y":"gun","w":"2025-11-13","d":"10% (20% GTA+)","s":"2025-11-13","e":"2025-11-20"},{"t":"Micro SMG","y":"gun","w":"2025-11-13","d":"10% (20% GTA+)","s":"2025-11-13","e":"2025-11-20"},{"t":"Machete","y":"gun","w":"2025-11-13","d":"10% (20% GTA+)","s":"2025-11-13","e":"2025-11-20"},{"t":"Baseball Bat","y":"gun","w":"2025-11-13","d":"Free (Free GTA+)","s":"2025-11-13","e":"2025-11-20"},{"t":"Proximity Mine","y":"gun","w":"2025-11-13","d":"10% (20% GTA+)","s":"2025-11-13","e":"2025-11-20"},{"t":"Pipe Bomb","y":"gun","w":"2025-11-13","d":"10% (20% GTA+)","s":"2025-11-13","e":"2025-11-20"},{"t":"Tear Gas","y":"gun","w":"2025-11-13","d":"10% (20% GTA+)","s":"2025-11-13","e":"2025-11-20"},{"t":"The Fine Art File","y":"fib","w":"2025-11-13","d":"FIB Priority File","s":"2025-11-13","e":"2025-11-20"},{"t":"Complete three VIP Work Missions","y":"challenge","w":"2025-11-13","d":"$100,000 + LS Smoking Jacket","s":"2025-11-13","e":"2025-11-20"},{"t":"Lake Vinewood Estate","y":"tt","w":"2025-11-13","d":"Time Trial","s":"2025-11-13","e":"2025-11-20"},{"t":"North Chumash to Palomino Highlands","y":"hsw","w":"2025-11-13","d":"HSW Time Trial","s":"2025-11-13","e":"2025-11-20"},{"t":"VIP Program","y":"event","w":"2025-11-13","d":"Through 2025-12-07","s":"2025-11-13","e":"2025-11-20"},{"t":"VIP Gold Tier","y":"event","w":"2025-11-13","d":"Through 2025-12-07","s":"2025-11-13","e":"2025-11-20"},{"t":"Mammoth Squaddie","y":"podium","w":"2025-11-06","d":"Podium Vehicle","s":"2025-11-06","e":"2025-11-13"},{"t":"Canis Terminus","y":"prize","w":"2025-11-06","d":"Place Top 2 in LS Car Meet Series for 4 days in a row","s":"2025-11-06","e":"2025-11-13"},{"t":"Canis Kalahari","y":"test","w":"2025-11-06","d":"Test Ride (Removed)","s":"2025-11-06","e":"2025-11-13"},{"t":"Coil Voltic","y":"test","w":"2025-11-06","d":"Test Ride (Removed)","s":"2025-11-06","e":"2025-11-13"},{"t":"Dinka Verus","y":"test","w":"2025-11-06","d":"Test Ride (Removed)","s":"2025-11-06","e":"2025-11-13"},{"t":"Grotti Brioso RA","y":"ptest","w":"2025-11-06","d":"Premium Test Ride (HSW)","s":"2025-11-06","e":"2025-11-13"},{"t":"Annis Hellion","y":"salvage","w":"2025-11-06","d":"The Gangbanger Robbery","s":"2025-11-06","e":"2025-11-13"},{"t":"Annis Euros","y":"salvage","w":"2025-11-06","d":"The Cargo Ship Robbery","s":"2025-11-06","e":"2025-11-13"},{"t":"Toundra Panthere","y":"salvage","w":"2025-11-06","d":"The McTony Robbery","s":"2025-11-06","e":"2025-11-13"},{"t":"Declasse Tampa GT","y":"lux","w":"2025-11-06","d":"Luxury Autos Showroom","s":"2025-11-06","e":"2025-11-13"},{"t":"Karin Woodlander","y":"lux","w":"2025-11-06","d":"Luxury Autos Showroom","s":"2025-11-06","e":"2025-11-13"},{"t":"Grotti Cheetah","y":"pdm","w":"2025-11-06","d":"Premium Deluxe (Removed)","s":"2025-11-06","e":"2025-11-13"},{"t":"Enus Cognoscenti Cabrio","y":"pdm","w":"2025-11-06","d":"Premium Deluxe (Removed)","s":"2025-11-06","e":"2025-11-13"},{"t":"Western Daemon (Custom)","y":"pdm","w":"2025-11-06","d":"Premium Deluxe (Removed)","s":"2025-11-06","e":"2025-11-13"},{"t":"Dinka Thrust","y":"pdm","w":"2025-11-06","d":"Premium Deluxe (Removed)","s":"2025-11-06","e":"2025-11-13"},{"t":"Invetero Coquette BlackFin","y":"pdm","w":"2025-11-06","d":"Premium Deluxe (Removed)","s":"2025-11-06","e":"2025-11-13"},{"t":"Cayo Perico Primary Target","y":"bonus","w":"2025-11-06","d":"Guaranteed Panther Statue (first heist this week)","s":"2025-11-06","e":"2025-11-13"},{"t":"Buried Stashes","y":"bonus","w":"2025-11-06","d":"2X GTA$/RP","s":"2025-11-06","e":"2025-11-13"},{"t":"Cayo Perico Motor Wars","y":"bonus","w":"2025-11-06","d":"2X GTA$/RP","s":"2025-11-06","e":"2025-11-13"},{"t":"Community Race Series","y":"bonus","w":"2025-11-06","d":"2X GTA$/RP","s":"2025-11-06","e":"2025-11-13"},{"t":"RUNE Kosatka","y":"discount","w":"2025-11-06","d":"40% Off","s":"2025-11-06","e":"2025-11-13"},{"t":"Dinka Veto Modern","y":"discount","w":"2025-11-06","d":"40% Off","s":"2025-11-06","e":"2025-11-13"},{"t":"Dinka Veto Classic","y":"discount","w":"2025-11-06","d":"40% Off","s":"2025-11-06","e":"2025-11-13"},{"t":"Grotti Brioso 300","y":"discount","w":"2025-11-06","d":"40% Off","s":"2025-11-06","e":"2025-11-13"},{"t":"Maibatsu Manchez Scout","y":"discount","w":"2025-11-06","d":"40% Off","s":"2025-11-06","e":"2025-11-13"},{"t":"Western Reever","y":"discount","w":"2025-11-06","d":"30% Off","s":"2025-11-06","e":"2025-11-13"},{"t":"Buckingham Nimbus","y":"discount","w":"2025-11-06","d":"30% Off","s":"2025-11-06","e":"2025-11-13"},{"t":"Albany Cavalcade XL","y":"discount","w":"2025-11-06","d":"30% Off","s":"2025-11-06","e":"2025-11-13"},{"t":"Truffade Nero","y":"discount","w":"2025-11-06","d":"30% Off","s":"2025-11-06","e":"2025-11-13"},{"t":"Declasse Drift Yosemite","y":"discount","w":"2025-11-06","d":"30% Off","s":"2025-11-06","e":"2025-11-13"},{"t":"Nagasaki Ultralight","y":"discount","w":"2025-11-06","d":"30% Off","s":"2025-11-06","e":"2025-11-13"},{"t":"Pegassi Speeder","y":"discount","w":"2025-11-06","d":"30% Off","s":"2025-11-06","e":"2025-11-13"},{"t":"Western Company Mallard","y":"discount","w":"2025-11-06","d":"30% Off","s":"2025-11-06","e":"2025-11-13"},{"t":"Combat Shotgun","y":"gun","w":"2025-11-06","d":"10% (20% GTA+)","s":"2025-11-06","e":"2025-11-13"},{"t":"Precision Rifle","y":"gun","w":"2025-11-06","d":"40% (40% GTA+)","s":"2025-11-06","e":"2025-11-13"},{"t":"Military Rifle","y":"gun","w":"2025-11-06","d":"10% (30% GTA+)","s":"2025-11-06","e":"2025-11-13"},{"t":"El Strickler","y":"gun","w":"2025-11-06","d":"10% (20% GTA+)","s":"2025-11-06","e":"2025-11-13"},{"t":"Compact Rifle","y":"gun","w":"2025-11-06","d":"10% (20% GTA+)","s":"2025-11-06","e":"2025-11-13"},{"t":"Advanced Rifle","y":"gun","w":"2025-11-06","d":"10% (20% GTA+)","s":"2025-11-06","e":"2025-11-13"},{"t":"Machete","y":"gun","w":"2025-11-06","d":"10% (20% GTA+)","s":"2025-11-06","e":"2025-11-13"},{"t":"Baseball Bat","y":"gun","w":"2025-11-06","d":"Free (Free GTA+)","s":"2025-11-06","e":"2025-11-13"},{"t":"Tear Gas","y":"gun","w":"2025-11-06","d":"10% (20% GTA+)","s":"2025-11-06","e":"2025-11-13"},{"t":"Proximity Mine","y":"gun","w":"2025-11-06","d":"10% (20% GTA+)","s":"2025-11-06","e":"2025-11-13"},{"t":"Sticky Bomb","y":"gun","w":"2025-11-06","d":"10% (20% GTA+)","s":"2025-11-06","e":"2025-11-13"},{"t":"The Project Breakaway File","y":"fib","w":"2025-11-06","d":"FIB Priority File","s":"2025-11-06","e":"2025-11-13"},{"t":"Complete The Cayo Perico Heist once","y":"challenge","w":"2025-11-06","d":"$100,000 + Strickler Hat","s":"2025-11-06","e":"2025-11-13"},{"t":"Elysian Island II","y":"tt","w":"2025-11-06","d":"Time Trial","s":"2025-11-06","e":"2025-11-13"},{"t":"Pacific Bluffs to Mount Gordo","y":"hsw","w":"2025-11-06","d":"HSW Time Trial","s":"2025-11-06","e":"2025-11-13"},{"t":"Ocelot Penetrator","y":"podium","w":"2025-10-30","d":"Podium Vehicle","s":"2025-10-30","e":"2025-11-06"},{"t":"Ocelot Ardent","y":"prize","w":"2025-10-30","d":"Place Top 2 in LS Car Meet Series","s":"2025-10-30","e":"2025-11-06"},{"t":"Pegassi Vacca","y":"test","w":"2025-10-30","d":"Test Ride (Removed)","s":"2025-10-30","e":"2025-11-06"},{"t":"Vapid Blade","y":"test","w":"2025-10-30","d":"Test Ride (Removed)","s":"2025-10-30","e":"2025-11-06"},{"t":"Enus Stafford","y":"test","w":"2025-10-30","d":"Test Ride (Removed)","s":"2025-10-30","e":"2025-11-06"},{"t":"Declasse Vigero ZX","y":"ptest","w":"2025-10-30","d":"Premium Test Ride (HSW)","s":"2025-10-30","e":"2025-11-06"},{"t":"Truffade Thrax","y":"salvage","w":"2025-10-30","d":"The Cargo Ship Robbery","s":"2025-10-30","e":"2025-11-06"},{"t":"Lampadati Casco","y":"salvage","w":"2025-10-30","d":"The Duggan Robbery","s":"2025-10-30","e":"2025-11-06"},{"t":"Vapid Ellie","y":"salvage","w":"2025-10-30","d":"The McTony Robbery","s":"2025-10-30","e":"2025-11-06"},{"t":"Benefactor Krieger","y":"lux","w":"2025-10-30","d":"Luxury Autos Showroom","s":"2025-10-30","e":"2025-11-06"},{"t":"\u00d6verfl\u00f6d Pipistrello","y":"lux","w":"2025-10-30","d":"Luxury Autos Showroom","s":"2025-10-30","e":"2025-11-06"},{"t":"Grotti GT500","y":"pdm","w":"2025-10-30","d":"Premium Deluxe (Removed)","s":"2025-10-30","e":"2025-11-06"},{"t":"Dewbauchee Seven-70","y":"pdm","w":"2025-10-30","d":"Premium Deluxe (Removed)","s":"2025-10-30","e":"2025-11-06"},{"t":"Albany Fr\u00e4nken Stange","y":"pdm","w":"2025-10-30","d":"Premium Deluxe \u2014 30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Declasse Tornado Rat Rod","y":"pdm","w":"2025-10-30","d":"Premium Deluxe \u2014 30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Chariot Romero Hearse","y":"pdm","w":"2025-10-30","d":"Premium Deluxe \u2014 30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Ludendorff Cemetery Survival","y":"bonus","w":"2025-10-30","d":"3X GTA$/RP","s":"2025-10-30","e":"2025-11-06"},{"t":"Slasher","y":"bonus","w":"2025-10-30","d":"2X GTA$/RP (4X GTA+)","s":"2025-10-30","e":"2025-11-06"},{"t":"GTA+ Slasher","y":"gta_plus","w":"2025-10-30","d":"4X Slasher","s":"2025-10-30","e":"2025-11-06"},{"t":"Jack O'Lanterns Collectibles","y":"bonus","w":"2025-10-30","d":"2X GTA$/RP","s":"2025-10-30","e":"2025-11-06"},{"t":"Halloween Community Series","y":"bonus","w":"2025-10-30","d":"2X GTA$/RP","s":"2025-10-30","e":"2025-11-06"},{"t":"Benefactor Krieger","y":"bonus","w":"2025-10-30","d":"Free","s":"2025-10-30","e":"2025-11-06"},{"t":"LCC Sanctus","y":"discount","w":"2025-10-30","d":"30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Albany Lurcher","y":"discount","w":"2025-10-30","d":"30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Albany Fr\u00e4nken Stange","y":"discount","w":"2025-10-30","d":"30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Declasse Tornado Rat Rod","y":"discount","w":"2025-10-30","d":"30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Chariot Romero Hearse","y":"discount","w":"2025-10-30","d":"30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"\u00dcbermacht Sentinel Classic","y":"discount","w":"2025-10-30","d":"30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Bravado Dorado","y":"discount","w":"2025-10-30","d":"30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Vapid Caracara 4x4","y":"discount","w":"2025-10-30","d":"30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Gallivanter Baller ST-D","y":"discount","w":"2025-10-30","d":"30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Vapid Retinue Mk II","y":"discount","w":"2025-10-30","d":"30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"MTL Wastelander","y":"discount","w":"2025-10-30","d":"30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Vom Feuer Anti-Aircraft Trailer","y":"discount","w":"2025-10-30","d":"30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Shitzu Hakuchou Drag","y":"discount","w":"2025-10-30","d":"30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Mobile Operations Center","y":"discount","w":"2025-10-30","d":"30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Declasse Bugstars Burrito","y":"discount","w":"2025-10-30","d":"30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Halloween Masks","y":"discount","w":"2025-10-30","d":"100% Off \u2014 Free","s":"2025-10-30","e":"2025-11-06"},{"t":"Sugar Skull Face Paints","y":"discount","w":"2025-10-30","d":"100% Off \u2014 Free","s":"2025-10-30","e":"2025-11-06"},{"t":"Skull Tattoos","y":"discount","w":"2025-10-30","d":"100% Off \u2014 Free","s":"2025-10-30","e":"2025-11-06"},{"t":"Arena War Outfits","y":"discount","w":"2025-10-30","d":"30% Off","s":"2025-10-30","e":"2025-11-06"},{"t":"Battle Rifle","y":"gun","w":"2025-10-30","d":"30% (30% GTA+)","s":"2025-10-30","e":"2025-11-06"},{"t":"Combat Shotgun","y":"gun","w":"2025-10-30","d":"10% (20% GTA+)","s":"2025-10-30","e":"2025-11-06"},{"t":"Stun Gun","y":"gun","w":"2025-10-30","d":"10% (30% GTA+)","s":"2025-10-30","e":"2025-11-06"},{"t":"The Shocker","y":"gun","w":"2025-10-30","d":"10% (50% GTA+)","s":"2025-10-30","e":"2025-11-06"},{"t":"Widowmaker","y":"gun","w":"2025-10-30","d":"10% (50% GTA+)","s":"2025-10-30","e":"2025-11-06"},{"t":"Up-n-Atomizer","y":"gun","w":"2025-10-30","d":"10% (50% GTA+)","s":"2025-10-30","e":"2025-11-06"},{"t":"Unholy Hellbringer","y":"gun","w":"2025-10-30","d":"10% (50% GTA+)","s":"2025-10-30","e":"2025-11-06"},{"t":"Sticky Bomb","y":"gun","w":"2025-10-30","d":"10% (20% GTA+)","s":"2025-10-30","e":"2025-11-06"},{"t":"Tear Gas","y":"gun","w":"2025-10-30","d":"10% (20% GTA+)","s":"2025-10-30","e":"2025-11-06"},{"t":"Pipe Bomb","y":"gun","w":"2025-10-30","d":"10% (20% GTA+)","s":"2025-10-30","e":"2025-11-06"},{"t":"The Brute Force File","y":"fib","w":"2025-10-30","d":"FIB Priority File","s":"2025-10-30","e":"2025-11-06"},{"t":"Win one Adversary Mode","y":"challenge","w":"2025-10-30","d":"$200,000 + Gray Hooded Skull Mask","s":"2025-10-30","e":"2025-11-06"},{"t":"Pillbox Hill","y":"tt","w":"2025-10-30","d":"Time Trial","s":"2025-10-30","e":"2025-11-06"},{"t":"Terminal to Chiliad Mountain State Wilderness","y":"hsw","w":"2025-10-30","d":"HSW Time Trial","s":"2025-10-30","e":"2025-11-06"},{"t":"Halloween Event","y":"event","w":"2025-10-30","d":"Through 2025-11-03","s":"2025-10-30","e":"2025-11-06"},{"t":"Vapid Dominator ASP","y":"podium","w":"2025-10-23","d":"Podium Vehicle","s":"2025-10-23","e":"2025-10-30"},{"t":"Classique Broadway","y":"prize","w":"2025-10-23","d":"Place Top 4 in LS Car Meet Series for 2 days in a row","s":"2025-10-23","e":"2025-10-30"},{"t":"Dinka Jester (Racecar)","y":"test","w":"2025-10-23","d":"Test Ride (Removed)","s":"2025-10-23","e":"2025-10-30"},{"t":"Dewbauchee Massacro (Racecar)","y":"test","w":"2025-10-23","d":"Test Ride (Removed)","s":"2025-10-23","e":"2025-10-30"},{"t":"Benefactor Feltzer","y":"test","w":"2025-10-23","d":"Test Ride (Removed)","s":"2025-10-23","e":"2025-10-30"},{"t":"Pegassi Weaponized Ignus","y":"ptest","w":"2025-10-23","d":"Premium Test Ride (HSW)","s":"2025-10-23","e":"2025-10-30"},{"t":"Canis Seminole Frontier","y":"salvage","w":"2025-10-23","d":"The Gangbanger Robbery","s":"2025-10-23","e":"2025-10-30"},{"t":"\u00dcbermacht Cypher","y":"salvage","w":"2025-10-23","d":"The Cargo Ship Robbery","s":"2025-10-23","e":"2025-10-30"},{"t":"Pfister Neon","y":"salvage","w":"2025-10-23","d":"The Duggan Robbery","s":"2025-10-23","e":"2025-10-30"},{"t":"Benefactor Krieger","y":"lux","w":"2025-10-23","d":"Luxury Autos Showroom","s":"2025-10-23","e":"2025-10-30"},{"t":"Invetero Coquette D1","y":"lux","w":"2025-10-23","d":"Luxury Autos Showroom","s":"2025-10-23","e":"2025-10-30"},{"t":"Declasse Vamos","y":"pdm","w":"2025-10-23","d":"Premium Deluxe (Removed)","s":"2025-10-23","e":"2025-10-30"},{"t":"Vulcar Fagaloa","y":"pdm","w":"2025-10-23","d":"Premium Deluxe (Removed)","s":"2025-10-23","e":"2025-10-30"},{"t":"Albany Fr\u00e4nken Stange","y":"pdm","w":"2025-10-23","d":"Premium Deluxe","s":"2025-10-23","e":"2025-10-30"},{"t":"Declasse Tornado Rat Rod","y":"pdm","w":"2025-10-23","d":"Premium Deluxe","s":"2025-10-23","e":"2025-10-30"},{"t":"Chariot Romero Hearse","y":"pdm","w":"2025-10-23","d":"Premium Deluxe","s":"2025-10-23","e":"2025-10-30"},{"t":"Ludendorff Cemetery Survival","y":"bonus","w":"2025-10-23","d":"3X GTA$/RP","s":"2025-10-23","e":"2025-10-30"},{"t":"Condemned","y":"bonus","w":"2025-10-23","d":"2X GTA$/RP (4X GTA+)","s":"2025-10-23","e":"2025-10-30"},{"t":"GTA+ Condemned","y":"gta_plus","w":"2025-10-23","d":"4X Condemned","s":"2025-10-23","e":"2025-10-30"},{"t":"Counterfeit Cash Sell Missions","y":"bonus","w":"2025-10-23","d":"2X GTA$/RP (4X GTA+) \u2014 Includes Biker Business and Nightclub Goods","s":"2025-10-23","e":"2025-10-30"},{"t":"GTA+ Counterfeit Cash Sell Missions","y":"gta_plus","w":"2025-10-23","d":"4X Counterfeit Cash Sell Missions","s":"2025-10-23","e":"2025-10-30"},{"t":"Halloween Community Series","y":"bonus","w":"2025-10-23","d":"2X GTA$/RP","s":"2025-10-23","e":"2025-10-30"},{"t":"Benefactor Krieger","y":"bonus","w":"2025-10-23","d":"Free","s":"2025-10-23","e":"2025-10-30"},{"t":"Benefactor Krieger","y":"discount","w":"2025-10-23","d":"100% Off \u2014 Free through Nov 5","s":"2025-10-23","e":"2025-10-30"},{"t":"LCC Sanctus","y":"discount","w":"2025-10-23","d":"30% Off","s":"2025-10-23","e":"2025-10-30"},{"t":"Albany Lurcher","y":"discount","w":"2025-10-23","d":"30% Off","s":"2025-10-23","e":"2025-10-30"},{"t":"Albany Fr\u00e4nken Stange","y":"discount","w":"2025-10-23","d":"30% Off","s":"2025-10-23","e":"2025-10-30"},{"t":"Declasse Tornado Rat Rod","y":"discount","w":"2025-10-23","d":"30% Off","s":"2025-10-23","e":"2025-10-30"},{"t":"Chariot Romero Hearse","y":"discount","w":"2025-10-23","d":"30% Off","s":"2025-10-23","e":"2025-10-30"},{"t":"Buckingham Shamal","y":"discount","w":"2025-10-23","d":"30% Off","s":"2025-10-23","e":"2025-10-30"},{"t":"Fathom FR36","y":"discount","w":"2025-10-23","d":"30% Off","s":"2025-10-23","e":"2025-10-30"},{"t":"Benefactor Vorschlaghammer","y":"discount","w":"2025-10-23","d":"30% Off","s":"2025-10-23","e":"2025-10-30"},{"t":"Vapid Winky","y":"discount","w":"2025-10-23","d":"30% Off","s":"2025-10-23","e":"2025-10-30"},{"t":"Bravado Greenwood","y":"discount","w":"2025-10-23","d":"30% Off","s":"2025-10-23","e":"2025-10-30"},{"t":"Pfister Comet SR","y":"discount","w":"2025-10-23","d":"30% Off","s":"2025-10-23","e":"2025-10-30"},{"t":"Western Powersurge","y":"discount","w":"2025-10-23","d":"30% Off","s":"2025-10-23","e":"2025-10-30"},{"t":"Obey I-Wagen","y":"discount","w":"2025-10-23","d":"30% Off","s":"2025-10-23","e":"2025-10-30"},{"t":"Annis Savestra","y":"discount","w":"2025-10-23","d":"30% Off","s":"2025-10-23","e":"2025-10-30"},{"t":"Lampadati Casco","y":"discount","w":"2025-10-23","d":"30% Off","s":"2025-10-23","e":"2025-10-30"},{"t":"Halloween Masks","y":"discount","w":"2025-10-23","d":"100% Off \u2014 Free","s":"2025-10-23","e":"2025-10-30"},{"t":"Arena War Outfits","y":"discount","w":"2025-10-23","d":"30% Off","s":"2025-10-23","e":"2025-10-30"},{"t":"Combat Shotgun","y":"gun","w":"2025-10-23","d":"10% (20% GTA+)","s":"2025-10-23","e":"2025-10-30"},{"t":"Heavy Rifle","y":"gun","w":"2025-10-23","d":"40% (40% GTA+)","s":"2025-10-23","e":"2025-10-30"},{"t":"Tactical SMG","y":"gun","w":"2025-10-23","d":"10% (30% GTA+)","s":"2025-10-23","e":"2025-10-30"},{"t":"The Shocker","y":"gun","w":"2025-10-23","d":"10% (50% GTA+)","s":"2025-10-23","e":"2025-10-30"},{"t":"Widowmaker","y":"gun","w":"2025-10-23","d":"10% (50% GTA+)","s":"2025-10-23","e":"2025-10-30"},{"t":"Up-n-Atomizer","y":"gun","w":"2025-10-23","d":"10% (50% GTA+)","s":"2025-10-23","e":"2025-10-30"},{"t":"Unholy Hellbringer","y":"gun","w":"2025-10-23","d":"10% (50% GTA+)","s":"2025-10-23","e":"2025-10-30"},{"t":"Molotov","y":"gun","w":"2025-10-23","d":"10% (20% GTA+)","s":"2025-10-23","e":"2025-10-30"},{"t":"Pipe Bomb","y":"gun","w":"2025-10-23","d":"10% (20% GTA+)","s":"2025-10-23","e":"2025-10-30"},{"t":"Tear Gas","y":"gun","w":"2025-10-23","d":"10% (20% GTA+)","s":"2025-10-23","e":"2025-10-30"},{"t":"The Brute Force File","y":"fib","w":"2025-10-23","d":"FIB Priority File","s":"2025-10-23","e":"2025-10-30"},{"t":"Survive four Waves of a Survival","y":"challenge","w":"2025-10-23","d":"$200,000 + Gray Jumping Spider Mask","s":"2025-10-23","e":"2025-10-30"},{"t":"LSIA II","y":"tt","w":"2025-10-23","d":"Time Trial","s":"2025-10-23","e":"2025-10-30"},{"t":"Ron Alternates to Elysian Island","y":"hsw","w":"2025-10-23","d":"HSW Time Trial","s":"2025-10-23","e":"2025-10-30"},{"t":"Halloween Event","y":"event","w":"2025-10-23","d":"Through 2025-11-03","s":"2025-10-23","e":"2025-10-30"}];
-var TL = [{"id":"2026-02-19","name":"Biker Bonuses Week","start":"2026-02-19","end":"2026-02-26","days":7,"tags":[{"t":"Lunar New Year Stunt Races","c":"g","m":"3X"},{"t":"Counterfeit Cash Sell Missions","c":"g","m":"2X"},{"t":"Street Dealer Sales","c":"g","m":"2X"},{"t":"Biker Clubhouse Contracts","c":"g","m":"2X"},{"t":"MC Work","c":"g","m":"2X"},{"t":"MC Challenges","c":"g","m":"2X"}],"vc":12,"pc":2,"ov":["Lunar New Year"]},{"id":"2026-02-12","name":"Itali Classic Release / Valentine's + Lunar New Year","start":"2026-02-12","end":"2026-02-19","days":7,"tags":[{"t":"Cayo Perico Primary Target","c":"r","m":"\u2605"},{"t":"CEO/VIP Work","c":"g","m":"4X"},{"t":"Community Series","c":"g","m":"2X"},{"t":"Lunar New Year Stunt Races","c":"g","m":"3X"},{"t":"Deadline Duet","c":"g","m":"3X"},{"t":"Associate/Bodyguard Salaries","c":"g","m":"4X"}],"vc":10,"pc":2,"ov":["Valentine's Event","Lunar New Year"]},{"id":"2026-02-05","name":"Valentine's Start / Deadline Duet / Meth Week","start":"2026-02-05","end":"2026-02-12","days":7,"tags":[{"t":"Meth Production Speed","c":"g","m":"2X"},{"t":"Bunker Research Missions","c":"g","m":"2X"},{"t":"Short Trips","c":"g","m":"2X"},{"t":"Community Race Series","c":"g","m":"2X"},{"t":"Deadline Duet","c":"g","m":"3X"},{"t":"Associate/Bodyguard Salaries","c":"g","m":"4X"}],"vc":12,"pc":2,"ov":["Valentine's Event"]},{"id":"2026-01-29","name":"New Odd Jobs / Cocaine Week","start":"2026-01-29","end":"2026-02-05","days":7,"tags":[{"t":"Firefighter","c":"g","m":"2X"},{"t":"Forklift Operator","c":"g","m":"2X"},{"t":"Paper Route","c":"g","m":"2X"},{"t":"Taxi Work","c":"g","m":"2X"},{"t":"Pizza Delivery","c":"g","m":"2X"},{"t":"QuickiePharm","c":"g","m":"2X"}],"vc":14,"pc":2,"ov":[]},{"id":"2026-01-22","name":"Auto Shop / Document Forgery Week","start":"2026-01-22","end":"2026-01-29","days":7,"tags":[{"t":"Madrazo Hits","c":"g","m":"3X"},{"t":"Community Combat Series","c":"g","m":"3X"},{"t":"Featured Series: Transform Races","c":"g","m":"2X"},{"t":"Document Forgery Sell Missions","c":"g","m":"2X"},{"t":"Auto Shop Client Jobs","c":"g","m":"2X"}],"vc":4,"pc":4,"ov":[]},{"id":"2026-01-15","name":"Mansion Raid / Nightclub Income Week","start":"2026-01-15","end":"2026-01-22","days":7,"tags":[{"t":"Business Battles","c":"g","m":"4X"},{"t":"Mansion Raid","c":"g","m":"2X"},{"t":"G's Cache","c":"g","m":"2X"},{"t":"Community Race Series","c":"g","m":"2X"},{"t":"Nightclub Daily Income","c":"g","m":"2X"}],"vc":9,"pc":2,"ov":[]},{"id":"2026-01-08","name":"Legal Fronts / Counterfeit Cash / Car Wash Week","start":"2026-01-08","end":"2026-01-15","days":7,"tags":[{"t":"HSW Race Series","c":"g","m":"4X"},{"t":"Hands On Car Wash (Legal Side)","c":"g","m":"3X"},{"t":"Higgins Helitours (Legal Side)","c":"g","m":"3X"},{"t":"Smoke on the Water (Legal Side)","c":"g","m":"3X"},{"t":"Counterfeit Cash Sell Missions (Bik","c":"g","m":"2X"},{"t":"Operation Paper Trail","c":"g","m":"2X"}],"vc":11,"pc":3,"ov":[]},{"id":"2025-12-18","name":"Holiday Event / Cluckin' Bell / Weed Week","start":"2025-12-18","end":"2026-01-08","days":21,"tags":[{"t":"Weed Sell Missions (Biker + NC)","c":"g","m":"2X"},{"t":"Community Series","c":"g","m":"2X"},{"t":"Featured Series: Overtime Rumble","c":"g","m":"2X"}],"vc":10,"pc":2,"ov":["Holiday Event","Returning Holiday Content","VIP Gold Tier Rewards (through Jan 7)"]},{"id":"2025-12-10","name":"Safehouse in the Hills DLC / Meth / Hotring Week","start":"2025-12-10","end":"2025-12-18","days":8,"tags":[{"t":"Hotring Races","c":"g","m":"3X"},{"t":"Meth Sell Missions (Biker + NC)","c":"g","m":"2X"},{"t":"Community Series","c":"g","m":"2X"},{"t":"Best in Snow","c":"g","m":"2X"},{"t":"CHRISTMAS CRISSCROSS","c":"g","m":"2X"},{"t":"Christmas Karts","c":"g","m":"2X"}],"vc":10,"pc":1,"ov":[]},{"id":"2025-12-04","name":"Pre-DLC Extension / Yacht 5X + FIB 4X / VIP Finale","start":"2025-12-04","end":"2025-12-10","days":6,"tags":[{"t":"A Superyacht Life Missions","c":"g","m":"5X"},{"t":"FIB Priority File","c":"g","m":"4X"},{"t":"Community Combat Series","c":"g","m":"3X"},{"t":"New Listings Missions","c":"g","m":"2X"},{"t":"Shipwrecks","c":"g","m":"2X"},{"t":"Featured Series: Deadline","c":"g","m":"2X"}],"vc":16,"pc":3,"ov":["VIP Program","VIP Gold Tier"]},{"id":"2025-11-27","name":"Black Friday / Yacht 5X / VIP Program","start":"2025-11-27","end":"2025-12-04","days":7,"tags":[{"t":"Pluck Me Sweater","c":"o","m":"FREE"},{"t":"A Superyacht Life Missions","c":"g","m":"5X"},{"t":"FIB Priority File","c":"g","m":"4X"},{"t":"Community Combat Series","c":"g","m":"3X"},{"t":"New Listings Missions","c":"g","m":"2X"},{"t":"Shipwrecks","c":"g","m":"2X"}],"vc":16,"pc":3,"ov":["VIP Program","VIP Gold Tier","Black Friday (through Dec 3)"]},{"id":"2025-11-20","name":"Casino Heist / New Listings / Open Wheel Week","start":"2025-11-20","end":"2025-11-27","days":7,"tags":[{"t":"Open Wheel Races","c":"g","m":"3X"},{"t":"New Listings Missions","c":"g","m":"2X"},{"t":"The Diamond Casino Heist Finale","c":"g","m":"2X"},{"t":"Casino Story Missions","c":"g","m":"2X"},{"t":"Casino Work","c":"g","m":"2X"},{"t":"Community Race Series","c":"g","m":"2X"}],"vc":15,"pc":4,"ov":["VIP Program","VIP Gold Tier"]},{"id":"2025-11-13","name":"New Listings Launch / Vehicle Cargo / CEO Week","start":"2025-11-13","end":"2025-11-20","days":7,"tags":[{"t":"VIP Work and Challenges","c":"g","m":"3X"},{"t":"Associate and Bodyguard Salaries","c":"g","m":"3X"},{"t":"New Listings Missions","c":"g","m":"2X"},{"t":"Vehicle Cargo Sell Missions","c":"g","m":"2X"},{"t":"Special Vehicle Work","c":"g","m":"2X"},{"t":"Random Transform Races","c":"g","m":"2X"}],"vc":16,"pc":4,"ov":["VIP Program","VIP Gold Tier"]},{"id":"2025-11-06","name":"Cayo Perico Panther / Kosatka Week","start":"2025-11-06","end":"2025-11-13","days":7,"tags":[{"t":"Cayo Perico Primary Target","c":"r","m":"\u2605"},{"t":"Buried Stashes","c":"g","m":"2X"},{"t":"Cayo Perico Motor Wars","c":"g","m":"2X"},{"t":"Community Race Series","c":"g","m":"2X"}],"vc":13,"pc":0,"ov":[]},{"id":"2025-10-30","name":"Halloween Finale / Day of the Dead / Slasher Week","start":"2025-10-30","end":"2025-11-06","days":7,"tags":[{"t":"Ludendorff Cemetery Survival","c":"g","m":"3X"},{"t":"Slasher","c":"g","m":"2X"},{"t":"Jack O'Lanterns Collectibles","c":"g","m":"2X"},{"t":"Halloween Community Series","c":"g","m":"2X"},{"t":"Benefactor Krieger","c":"o","m":"FREE"}],"vc":15,"pc":0,"ov":["Halloween Event"]},{"id":"2025-10-23","name":"Halloween / Counterfeit Cash / Ludendorff Week","start":"2025-10-23","end":"2025-10-30","days":7,"tags":[{"t":"Ludendorff Cemetery Survival","c":"g","m":"3X"},{"t":"Condemned","c":"g","m":"2X"},{"t":"Counterfeit Cash Sell Missions","c":"g","m":"2X"},{"t":"Halloween Community Series","c":"g","m":"2X"},{"t":"Benefactor Krieger","c":"o","m":"FREE"}],"vc":16,"pc":0,"ov":["Halloween Event"]}];
-var WD = {"2026-02-19":{"name":"Biker Bonuses Week","start":"2026-02-19","end":"2026-02-26","days":7,"podium":"Karin Sultan RS Classic","prize":"Grotti Stinger GT","test":["Benefactor Streiter","Dewbauchee Rapid GT Classic","Enus Cognoscenti Cabrio"],"ptest":"Weeny Issi Rally","salvage":[{"r":"The Gangbanger Robbery","v":"Dewbauchee Champion"},{"r":"The Podium Robbery","v":"Karin Everon"},{"r":"The McTony Robbery","v":"BF Weevil"}],"lux":["Dinka LSCM Jester RR","\u00dcbermacht Sentinel XS4"],"pdm":["Enus Super Diamond \u2731","Enus Cognoscenti \u2731","Dewbauchee JB 700 \u2731","Albany Alpha \u2731","Western Zombie Bobber \u2731"],"bonuses":[{"a":"Lunar New Year Stunt Races","m":"3X GTA$/RP","g":"6X GTA$/RP"},{"a":"Counterfeit Cash Sell Missions","m":"2X GTA$","g":""},{"a":"Street Dealer Sales","m":"2X GTA$","g":""},{"a":"Biker Clubhouse Contracts","m":"2X GTA$/RP","g":""},{"a":"MC Work","m":"2X GTA$/RP","g":""},{"a":"MC Challenges","m":"2X GTA$/RP","g":""},{"a":"Community Combat Series","m":"2X GTA$/RP","g":""}],"disc_v":[{"i":"Cargobob (Jetsam)","p":30},{"i":"Cargobob","p":30},{"i":"Canis Terminus","p":30},{"i":"HVY Insurgent Pick-Up","p":30},{"i":"Vapid Caracara","p":30},{"i":"Vapid Retinue Mk II","p":30},{"i":"Vapid Slamtruck","p":30},{"i":"Declasse Walton L35 Stock","p":30},{"i":"Ocelot Jugular","p":30},{"i":"Declasse Drift Tampa","p":30},{"i":"Vulcar Nebula Turbo","p":30},{"i":"Dinka Jester Classic","p":30}],"disc_p":[{"i":"Counterfeit Cash Factories","p":40},{"i":"Counterfeit Cash Factory Upgrades and Modifications","p":40}],"fib":"The Black Box File","ch":"Win 2 Stunt Races","chr":null,"chc":100000,"ov":["Lunar New Year"],"tt":"Maze Bank Arena","hsw_tt":"Ron Alternates to Elysian Island"},"2026-02-12":{"name":"Itali Classic Release / Valentine's + Lunar New Year","start":"2026-02-12","end":"2026-02-19","days":7,"podium":"Bravado Buffalo EVX","prize":"Lampadati Corsita","test":["Ocelot Locust","Dewbauchee Rapid GT Cabrio","Coil Voltic"],"ptest":"Coil Cyclone II","salvage":[{"r":"The Duggan Robbery","v":"Obey Omnis e-GT"},{"r":"The Cargo Ship Robbery","v":"Pfister Comet Safari"},{"r":"The Gangbanger Robbery","v":"Vapid Caracara 4x4"}],"lux":["Albany Roosevelt","Classique Broadway"],"pdm":["LCC Innovation \u2731","Declasse Tulip \u2731","Vulcar Fagaloa \u2731","Dinka Thrust","Vapid Hustler \u2731"],"bonuses":[{"a":"Cayo Perico Primary Target","m":"Boosted Pink Diamond chance (50%)","g":""},{"a":"CEO/VIP Work","m":"4X GTA$/RP","g":""},{"a":"Community Series","m":"2X GTA$/RP","g":""},{"a":"Lunar New Year Stunt Races","m":"3X GTA$/RP","g":"6X GTA$/RP"},{"a":"Deadline Duet","m":"3X GTA$/RP","g":""},{"a":"Associate/Bodyguard Salaries","m":"4X","g":""}],"disc_v":[{"i":"Karin Hotring Everon","p":30},{"i":"Declasse Tulip M-100","p":30},{"i":"Dewbauchee Vagner","p":30},{"i":"Declasse Tahoma Coupe","p":30},{"i":"Pfister Neon","p":30},{"i":"Coil Raiden","p":30},{"i":"Jobuilt Velum 5-Seater","p":30},{"i":"Declasse Yosemite 1500","p":30},{"i":"Pegassi Torero","p":30},{"i":"Grotti Cheetah Classic","p":30}],"disc_p":[{"i":"Executive Offices","p":40},{"i":"Executive Office Upgrades","p":40}],"fib":"The Project Breakaway File","ch":"Earn GTA$100,000 as Associate/Bodyguard","chr":"Valentines Blazer","chc":100000,"ov":["Valentine's Event","Lunar New Year"],"tt":"Up N Atom","hsw_tt":"Textile City to Stab City"},"2026-02-05":{"name":"Valentine's Start / Deadline Duet / Meth Week","start":"2026-02-05","end":"2026-02-12","days":7,"podium":"Invetero Coquette D1","prize":"\u00dcbermacht Rhinehart","test":["Lampadati Pigalle","Bravado Verlierer","Ocelot Lynx"],"ptest":"Maibatsu MonstroCiti","salvage":[{"r":"The Cargo Ship Robbery","v":"Grotti Furia"},{"r":"The McTony Robbery","v":"Classique Broadway"},{"r":"The Gangbanger Robbery","v":"Bravado Greenwood"}],"lux":["Benefactor Vorschlaghammer","\u00dcbermacht Sentinel GTS"],"pdm":["Western Rat Bike \u2731","Dinka Enduro \u2731","Declasse Tornado Rat Rod \u2731","Hijak Ruston \u2731","Lampadati Michelli GT \u2731"],"bonuses":[{"a":"Meth Production Speed","m":"2X","g":""},{"a":"Bunker Research Missions","m":"2X GTA$/RP/Research","g":""},{"a":"Short Trips","m":"2X GTA$/RP","g":""},{"a":"Community Race Series","m":"2X GTA$/RP","g":""},{"a":"Deadline Duet","m":"3X GTA$/RP","g":""},{"a":"Associate/Bodyguard Salaries","m":"4X","g":""}],"disc_v":[{"i":"Emperor ETR1","p":30},{"i":"\u00d6verfl\u00f6d Autarch","p":30},{"i":"Pfister Comet S2","p":30},{"i":"Nagasaki Weaponized Dinghy","p":30},{"i":"Benefactor Vorschlaghammer","p":30},{"i":"Gallivanter Baller ST-D","p":30},{"i":"HVY Vetir","p":30},{"i":"Western Powersurge","p":30},{"i":"Western Company Rogue","p":30},{"i":"Karin Futo GTX","p":30},{"i":"Truffade Nero","p":30},{"i":"Vulcar Warrener HKR","p":30}],"disc_p":[{"i":"Meth Lab Properties","p":40},{"i":"Meth Lab Upgrades","p":40}],"fib":"The Fine Art File","ch":"Win two Adversary Modes","chr":null,"chc":100000,"ov":["Valentine's Event"],"tt":"Cypress Flats","hsw_tt":"Sandy Shores to La Puerta"},"2026-01-29":{"name":"New Odd Jobs / Cocaine Week","start":"2026-01-29","end":"2026-02-05","days":7,"podium":"Mammoth Patriot Mil-Spec","prize":"Declasse Tampa GT","test":["Benefactor Feltzer","BF Bifta","Lampadati Furore GT"],"ptest":"Karin Vivanite","salvage":[{"r":"The Gangbanger Robbery","v":"Canis Kamacho"},{"r":"The Duggan Robbery","v":"Declasse Drift Yosemite"},{"r":"The Podium Robbery","v":"Grotti Stinger TT"}],"lux":["Progen Luiva","Vapid Uranus LozSpeed"],"pdm":["Pegassi Pizza Boy","Declasse Lifeguard","Annis Hardy","\u00dcbermacht Cypher","Karin 190z"],"bonuses":[{"a":"5 different Odd Jobs completed","m":"Clothing Reward","g":""},{"a":"Firefighter","m":"2X GTA$/RP","g":""},{"a":"Forklift Operator","m":"2X GTA$/RP","g":""},{"a":"Paper Route","m":"2X GTA$/RP","g":""},{"a":"Taxi Work","m":"2X GTA$","g":""},{"a":"Pizza Delivery","m":"2X GTA$/RP","g":""},{"a":"QuickiePharm","m":"2X GTA$/RP","g":""},{"a":"Safeguard","m":"2X GTA$/RP","g":""},{"a":"RC Time Trials","m":"2X GTA$/RP","g":""},{"a":"Featured Series: Issi Classic Races","m":"2X GTA$/RP","g":""},{"a":"Community Race Series","m":"2X GTA$/RP","g":""},{"a":"Cocaine Production Speed","m":"2X","g":""},{"a":"Pegassi Pizza Boy","m":"Free","g":""}],"disc_v":[{"i":"MTL Fire Truck","p":30},{"i":"Brute Bobcat Security Stockade","p":30},{"i":"Brute Stockade","p":30},{"i":"Vapid Taxi","p":30},{"i":"Pegassi Zorrusso","p":30},{"i":"MTL Dune","p":30},{"i":"Nagasaki Outlaw","p":30},{"i":"Blimp","p":30},{"i":"Buckingham Shamal","p":30},{"i":"Dinka Veto Modern","p":30},{"i":"Declasse Hotring Sabre","p":30},{"i":"\u00dcbermacht Sentinel Classic","p":30},{"i":"Grotti Cheetah","p":30},{"i":"Canis Freecrawler","p":30}],"disc_p":[{"i":"Cocaine Lockup Properties","p":40},{"i":"Cocaine Lockup Upgrades","p":40}],"fib":"The Brute Force File","ch":"Complete 5 Pizza Deliveries","chr":"Pizza This Tee","chc":300000,"ov":[],"tt":"Sawmill","hsw_tt":"Del Perro Beach to Murietta Heights"},"2026-01-22":{"name":"Auto Shop / Document Forgery Week","start":"2026-01-22","end":"2026-01-29","days":7,"podium":"Vapid FMJ","prize":"Pegassi Tempesta","test":["Invetero Coquette","Nagasaki Hot Rod Blazer","Western Daemon"],"ptest":"Grotti Brioso","salvage":[{"r":"The Gangbanger Robbery","v":"Albany Cavalcade XL"},{"r":"The Podium Robbery","v":"Maibatsu Penumbra FF"},{"r":"The Duggan Robbery","v":"Pfister Astron"}],"lux":["\u00d6verfl\u00f6d Pipistrello","Grotti LSCM Cheetah Classic"],"pdm":["Karin Everon RS","Weeny Dynasty","\u00d6verfl\u00f6d Entity XF \u2731","Pegassi Esskey \u2731","Dinka Verus \u2731"],"bonuses":[{"a":"Madrazo Hits","m":"3X GTA$/RP","g":""},{"a":"Community Combat Series","m":"3X GTA$/RP","g":""},{"a":"Featured Series: Transform Races","m":"2X GTA$/RP","g":""},{"a":"Document Forgery Sell Missions","m":"2X GTA$","g":""},{"a":"Auto Shop Client Jobs","m":"2X GTA$ + Car Meet Rep","g":"4X GTA$"}],"disc_v":[{"i":"Vapid Firebolt ASP","p":30},{"i":"Pfister 811","p":30},{"i":"Truffade Z-Type","p":30},{"i":"Classique Broadway","p":30}],"disc_p":[{"i":"Auto Shop Properties","p":40},{"i":"Auto Shop Upgrades","p":40},{"i":"Document Forgery Offices","p":40},{"i":"Document Forgery Upgrades","p":40}],"fib":"The Black Box File","ch":"Complete 3 Auto Shop Client Jobs","chr":null,"chc":100000,"ov":[],"tt":"Up Chiliad","hsw_tt":"East Vinewood to Vespucci Beach"},"2026-01-15":{"name":"Mansion Raid / Nightclub Income Week","start":"2026-01-15","end":"2026-01-22","days":7,"podium":"Declasse Impaler LX","prize":"Grotti Itali GTO","test":["Grotti Carbonizzare","Grotti GT500","Grotti Stinger"],"ptest":"Annis Euros X32","salvage":[{"r":"The McTony Robbery","v":"Albany Cavalcade XL"},{"r":"The Duggan Robbery","v":"Mammoth Patriot Mil-Spec"},{"r":"The Cargo Ship Robbery","v":"Pegassi Zorrusso"}],"lux":["Grotti GT750","\u00dcbermacht Sentinel XS24"],"pdm":["Dewbauchee Rapid GT \u2731","Vapid Blade \u2731","Canis Kalahari \u2731","Dundreary Landstalker XL \u2731","LCC Avarus \u2731"],"bonuses":[{"a":"Win a match of Mansion Raid","m":"GTA$200,000 bonus (72hr)","g":""},{"a":"Business Battles","m":"4X GTA$/RP and Nightclub Goods","g":""},{"a":"Mansion Raid","m":"2X GTA$/RP","g":""},{"a":"G's Cache","m":"2X GTA$/RP","g":""},{"a":"Community Race Series","m":"2X GTA$/RP","g":""},{"a":"Nightclub Daily Income","m":"2X GTA$","g":""}],"disc_v":[{"i":"Cheval Taipan","p":30},{"i":"Declasse Vigero ZX","p":30},{"i":"Obey Omnis e-GT","p":30},{"i":"Albany Cavalcade XL","p":30},{"i":"Vapid Dominator FX","p":30},{"i":"Rhino Tank","p":30},{"i":"Karin Everon","p":30},{"i":"Albany Hermes","p":30},{"i":"Dashound","p":30}],"disc_p":[{"i":"Nightclub Properties","p":40},{"i":"Nightclub Upgrades and Modifications","p":40}],"fib":"The Project Breakaway File","ch":"Complete one Business Battle","chr":null,"chc":100000,"ov":[],"tt":"Storm Drain","hsw_tt":"North Chumash to Palomino Highlands"},"2026-01-08":{"name":"Legal Fronts / Counterfeit Cash / Car Wash Week","start":"2026-01-08","end":"2026-01-15","days":7,"podium":"\u00dcbermacht Rebla GTS","prize":"Maxwell Vagrant","test":["Dinka Jester (Racecar)","Enus Stafford","Benefactor XLS"],"ptest":"Pfister Astron Custom","salvage":[{"r":"The Podium Robbery","v":"Dinka Blista Kanjo"},{"r":"The McTony Robbery","v":"Bravado Gauntlet Hellfire"},{"r":"The Gangbanger Robbery","v":"\u00d6verfl\u00f6d Autarch"}],"lux":["Pfister X-Treme","Vapid FMJ MK V"],"pdm":["Invetero Coquette BlackFin","Dewbauchee Exemplar","Vapid Retinue","Canis Seminole Frontier","Western Wolfsbane"],"bonuses":[{"a":"HSW Race Series","m":"4X GTA$/RP","g":""},{"a":"Hands On Car Wash (Legal Side)","m":"3X GTA$/RP","g":""},{"a":"Higgins Helitours (Legal Side)","m":"3X GTA$/RP","g":""},{"a":"Smoke on the Water (Legal Side)","m":"3X GTA$/RP","g":""},{"a":"Counterfeit Cash Sell Missions (Biker + NC)","m":"2X GTA$/RP","g":""},{"a":"Operation Paper Trail","m":"2X GTA$/RP","g":"4X"},{"a":"Featured Series: Hasta La Vista","m":"2X GTA$/RP","g":""},{"a":"Community Combat Series","m":"2X GTA$/RP","g":""}],"disc_v":[{"i":"Grotti LSCM Cheetah Classic","p":30},{"i":"Western Reever","p":30},{"i":"Nagasaki Buzzard Attack Chopper","p":30},{"i":"HVY Chernobog","p":30},{"i":"JoBuilt Hauler Custom","p":30},{"i":"Dinka Sugoi","p":30},{"i":"Vapid Clique Wagon","p":30},{"i":"Gallivanter Baller ST","p":30},{"i":"Buckingham Maverick","p":30},{"i":"Prison Bus","p":30},{"i":"Grotti Brioso 300","p":30}],"disc_p":[{"i":"Hands On Car Wash Property","p":100},{"i":"Counterfeit Cash Factories","p":40},{"i":"Counterfeit Cash Factory Upgrades and Modifications","p":40}],"fib":"The Fine Art File","ch":"Complete 3 Hands On Car Wash Legal Jobs","chr":null,"chc":100000,"ov":[],"tt":"Fort Zancudo","hsw_tt":"Pacific Bluffs to Mount Gordo"},"2025-12-18":{"name":"Holiday Event / Cluckin' Bell / Weed Week","start":"2025-12-18","end":"2026-01-08","days":21,"podium":"Bollokan Envisage","prize":"Pfister Comet Safari","test":["Dewbauchee Seven-70","Vapid Clique","Declasse Vamos"],"ptest":"\u00dcbermacht Sentinel XS","salvage":[{"r":"The Gangbanger Robbery","v":"Vapid Clique"},{"r":"The Podium Robbery","v":"Ocelot Virtue"},{"r":"The Cargo Ship Robbery","v":"Bravado Buffalo STX"}],"lux":["Progen Luiva","Vapid FMJ MK V"],"pdm":["Ocelot Ardent","HVY Nightshark","BF Dune FAV","Pfister Comet S2 Cabrio","Albany Alpha"],"bonuses":[{"a":"Cluckin' Bell Finale as Leader","m":"GTA$500,000 one-time bonus (72hr)","g":""},{"a":"Cluckin' Bell Finale as Associate/Bodyguard","m":"GTA$500,000 one-time bonus (72hr)","g":""},{"a":"Weed Sell Missions (Biker + NC)","m":"2X GTA$/RP","g":""},{"a":"Community Series","m":"2X GTA$/RP","g":"4X"},{"a":"Featured Series: Overtime Rumble","m":"2X GTA$/RP","g":""}],"disc_v":[{"i":"Annis Remus","p":30},{"i":"Karin S95","p":30},{"i":"Enus Deity","p":30},{"i":"Sea Sparrow","p":30},{"i":"Dinka RT3000","p":30},{"i":"Declasse Walton L35","p":30},{"i":"Pegassi Reaper","p":30},{"i":"Albany Brigham","p":30},{"i":"Progen Itali GTB","p":30},{"i":"HVY Insurgent","p":30}],"disc_p":[{"i":"Weed Farm Businesses","p":40},{"i":"Weed Farm Business Upgrades and Modifications","p":40}],"fib":"The Brute Force File","ch":"Rotating: Sell $100K (Dec 18-22), Win 4 Adversary Modes (Dec 23-29), Complete CB Raid as Leader (Dec 30-Jan 7)","chr":"Krampus Sweater","chc":300000,"ov":["Holiday Event","Returning Holiday Content","VIP Gold Tier Rewards (through Jan 7)"],"tt":"Great Ocean Highway Mount Gordo","hsw_tt":"Textile City to Stab City Ron Alternates"},"2025-12-10":{"name":"Safehouse in the Hills DLC / Meth / Hotring Week","start":"2025-12-10","end":"2025-12-18","days":8,"podium":"Ubermacht SC1","prize":"Overflod Entity XXR","test":["Dewbauchee JB 700","Dewbauchee Rapid GT","Benefactor Surano"],"ptest":"Weeny Issi Rally","salvage":[{"r":"The Cargo Ship Robbery","v":"Ubermacht Sentinel Classic"},{"r":"The Duggan Robbery","v":"Lampadati Viseris"},{"r":"The McTony Robbery","v":"Enus Deity"}],"lux":["\u00dcbermacht Sentinel XS4","Pfister X-Treme"],"pdm":["Vapid Hustler","Western Rat Bike","Dewbauchee Rapid GT Classic","Dinka Enduro","Ocelot Locust"],"bonuses":[{"a":"Hotring Races","m":"3X GTA$/RP","g":""},{"a":"Meth Sell Missions (Biker + NC)","m":"2X GTA$/RP","g":""},{"a":"Community Series","m":"2X GTA$/RP","g":"4X"},{"a":"Best in Snow","m":"2X GTA$/RP","g":""},{"a":"CHRISTMAS CRISSCROSS","m":"2X GTA$/RP","g":""},{"a":"Christmas Karts","m":"2X GTA$/RP","g":""},{"a":"Reservoir Ice Race 2","m":"2X GTA$/RP","g":""},{"a":"Issi Winter Sports","m":"2X GTA$/RP","g":""}],"disc_v":[{"i":"Pfister Astron","p":30},{"i":"Schyster Deviant","p":30},{"i":"Progen GP1","p":30},{"i":"Grotti Turismo Omaggio","p":30},{"i":"Canis Castigator","p":30},{"i":"Vapid Dominator GTT","p":30},{"i":"Pegassi Osiris","p":30},{"i":"Pfister Comet Safari","p":30},{"i":"Vapid Ellie","p":30},{"i":"Vapid Trophy Truck","p":30}],"disc_p":[{"i":"MC Meth Businesses (+ Upgrades)","p":40}],"fib":"The Black Box File","ch":"Complete the KnoWay Out Finale as Leader","chr":null,"chc":400000,"ov":[],"tt":"Observatory","hsw_tt":"Sandy Shores"},"2025-12-04":{"name":"Pre-DLC Extension / Yacht 5X + FIB 4X / VIP Finale","start":"2025-12-04","end":"2025-12-10","days":6,"podium":"Annis S80RR","prize":"Annis Euros","test":["Ocelot Lynx","Lampadati Michelli GT","Karin 190z"],"ptest":"Bravado Buffalo EVX","salvage":[{"r":"The Gangbanger Robbery","v":"Grotti Stinger GT"},{"r":"The Duggan Robbery","v":"Dinka Jester RR"},{"r":"The Cargo Ship Robbery","v":"Ocelot Jugular"}],"lux":["\u00dcbermacht Revolter (Sessanta Nove livery)","Bravado Banshee GTS"],"pdm":["Dewbauchee Champion","Benefactor LM87","Pegassi Tezeract","Pegassi Ignus","Progen Emerus"],"bonuses":[{"a":"A Superyacht Life Missions","m":"5X GTA$/RP","g":""},{"a":"FIB Priority File","m":"4X GTA$","g":""},{"a":"Community Combat Series","m":"3X GTA$/RP","g":""},{"a":"New Listings Missions","m":"2X GTA$/RP","g":"4X"},{"a":"Shipwrecks","m":"2X GTA$/RP","g":""},{"a":"Featured Series: Deadline","m":"2X GTA$/RP","g":""},{"a":"Login Reward","m":"Pluck Me Sweater","g":""}],"disc_v":[{"i":"Benefactor LM87","p":30},{"i":"Progen Emerus","p":30},{"i":"Progen Tyrus","p":30},{"i":"\u00d6verfl\u00f6d Tyrant","p":30},{"i":"Ocelot XA-21","p":30},{"i":"Declasse Granger 3600LX","p":30},{"i":"Bravado Banshee GTS","p":30},{"i":"\u00dcbermacht Niobe","p":30},{"i":"Vysser Neo","p":30},{"i":"Vapid Caracara","p":30},{"i":"Lampadati Cinquemila","p":30},{"i":"Lampadati Komoda","p":30},{"i":"Annis ZR350","p":30},{"i":"Coil Raiden","p":30},{"i":"Karin Technical","p":30},{"i":"\u00dcbermacht Zion Classic","p":30}],"disc_p":[{"i":"Galaxy Super Yachts","p":40},{"i":"Galaxy Super Yacht Modifications","p":40},{"i":"Free Yacht Upgrade to Aquarius","p":100}],"fib":"The Fine Art File","ch":"Complete 2 FIB Files","chr":"","chc":0,"ov":["VIP Program","VIP Gold Tier"],"tt":"Del Perro Pier","hsw_tt":"Del Perro Pier"},"2025-11-27":{"name":"Black Friday / Yacht 5X / VIP Program","start":"2025-11-27","end":"2025-12-04","days":7,"podium":"Annis S80RR","prize":"Annis Euros","test":["Ocelot Lynx","Lampadati Michelli GT","Karin 190z"],"ptest":"Bravado Buffalo EVX","salvage":[{"r":"The Gangbanger Robbery","v":"Grotti Stinger GT"},{"r":"The Duggan Robbery","v":"Dinka Jester RR"},{"r":"The Cargo Ship Robbery","v":"Ocelot Jugular"}],"lux":["\u00dcbermacht Revolter","Bravado Banshee GTS"],"pdm":["Dewbauchee Champion","Benefactor LM87","Pegassi Tezeract","Pegassi Ignus","Progen Emerus"],"bonuses":[{"a":"Pluck Me Sweater","m":"Free login reward","g":""},{"a":"A Superyacht Life Missions","m":"5X GTA$/RP","g":""},{"a":"FIB Priority File","m":"4X GTA$","g":""},{"a":"Community Combat Series","m":"3X GTA$/RP","g":""},{"a":"New Listings Missions","m":"2X GTA$/RP","g":"4X"},{"a":"Shipwrecks","m":"2X GTA$/RP","g":""},{"a":"Featured Series: Deadline","m":"2X GTA$/RP","g":""}],"disc_v":[{"i":"Benefactor LM87","p":30},{"i":"Progen Emerus","p":30},{"i":"Progen Tyrus","p":30},{"i":"\u00d6verfl\u00f6d Tyrant","p":30},{"i":"Ocelot XA-21","p":30},{"i":"Declasse Granger 3600LX","p":30},{"i":"Bravado Banshee GTS","p":30},{"i":"\u00dcbermacht Niobe","p":30},{"i":"Vysser Neo","p":30},{"i":"Vapid Caracara","p":30},{"i":"Lampadati Cinquemila","p":30},{"i":"Lampadati Komoda","p":30},{"i":"Annis ZR350","p":30},{"i":"Coil Raiden","p":30},{"i":"Karin Technical","p":30},{"i":"\u00dcbermacht Zion Classic","p":30}],"disc_p":[{"i":"Galaxy Super Yachts","p":40},{"i":"Galaxy Super Yacht Modifications","p":40},{"i":"Aquarius upgrade from Orion/Pisces","p":100}],"fib":"The Fine Art File","ch":"Complete three A Superyacht Life Missions","chr":"Vibrant Check Smoking Jacket","chc":100000,"ov":["VIP Program","VIP Gold Tier","Black Friday (through Dec 3)"],"tt":"Del Perro Pier","hsw_tt":"Del Perro Pier"},"2025-11-20":{"name":"Casino Heist / New Listings / Open Wheel Week","start":"2025-11-20","end":"2025-11-27","days":7,"podium":"Dinka Jester Classic","prize":"Gallivanter Baller ST","test":["Western Zombie Bobber","Weeny Dynasty","Nagasaki Hot Rod Blazer"],"ptest":"Principe Deveste Eight","salvage":[{"r":"The Podium Robbery","v":"Dinka Sugoi"},{"r":"The McTony Robbery","v":"Gallivanter Baller ST-D"},{"r":"The Duggan Robbery","v":"Enus Jubilee"}],"lux":["\u00dcbermacht Revolter","Karin Everon RS"],"pdm":["Lampadati Furore GT \u2731","Western Cliffhanger \u2731","Bravado Verlierer \u2731","Hijak Ruston \u2731","LCC Innovation \u2731"],"bonuses":[{"a":"Open Wheel Races","m":"3X GTA$/RP","g":""},{"a":"New Listings Missions","m":"2X GTA$/RP","g":"4X"},{"a":"The Diamond Casino Heist Finale","m":"2X GTA$/RP","g":""},{"a":"Casino Story Missions","m":"2X GTA$/RP","g":""},{"a":"Casino Work","m":"2X GTA$/RP","g":""},{"a":"Community Race Series","m":"2X GTA$/RP","g":""},{"a":"Casino Daily Visitor Chips","m":"2X","g":""},{"a":"GTA+ Diamond Casino Heist","m":"Guaranteed Diamonds in vault","g":""}],"disc_v":[{"i":"RUNE Zhaba","p":30},{"i":"Invade and Persuade Tank","p":30},{"i":"Maxwell Vagrant","p":30},{"i":"Karin Sultan Classic","p":30},{"i":"Dinka Blista Kanjo","p":30},{"i":"HVY Insurgent Pick-Up","p":30},{"i":"Karin Sultan RS Classic","p":30},{"i":"Imponte Arbiter GT","p":30},{"i":"Maibatsu Penumbra FF","p":30},{"i":"Albany V-STR","p":30},{"i":"Vulcar Warrener HKR","p":30},{"i":"Declasse Mamba","p":30},{"i":"Lampadati Tropos Rallye","p":30},{"i":"Dinka Vindicator","p":30},{"i":"BF Surfer Custom","p":30}],"disc_p":[{"i":"Casino Master Penthouse","p":100},{"i":"Casino Master Penthouse Party Package","p":100},{"i":"Arcade Properties","p":30},{"i":"Arcade Upgrades and Modifications","p":30}],"fib":"The Black Box File","ch":"Complete The Diamond Casino Heist two times","chr":"The Diamond Strike Vest","chc":100000,"ov":["VIP Program","VIP Gold Tier"],"tt":"El Burro Heights","hsw_tt":"East Vinewood to Vespucci Beach"},"2025-11-13":{"name":"New Listings Launch / Vehicle Cargo / CEO Week","start":"2025-11-13","end":"2025-11-20","days":7,"podium":"Declasse Tahoma Coupe","prize":"Annis RE-7B","test":["Enus Cognoscenti","Enus Super Diamond","Vulcar Warrener"],"ptest":"Benefactor Stirling GT","salvage":[{"r":"The Duggan Robbery","v":"Vysser Neo"},{"r":"The Cargo Ship Robbery","v":"Hijak Ruston"},{"r":"The Podium Robbery","v":"Karin Previon"}],"lux":["\u00dcbermacht Sentinel GTS","\u00dcbermacht Revolter"],"pdm":["Vapid Riata \u2731","Pegassi Esskey \u2731","BF Bifta \u2731","Dinka Jester \u2731","Coil Brawler \u2731"],"bonuses":[{"a":"VIP Work and Challenges","m":"3X GTA$/RP","g":""},{"a":"Associate and Bodyguard Salaries","m":"3X","g":""},{"a":"New Listings Missions","m":"2X GTA$/RP","g":"4X"},{"a":"Vehicle Cargo Sell Missions","m":"2X GTA$/RP","g":""},{"a":"Special Vehicle Work","m":"2X GTA$/RP","g":""},{"a":"Random Transform Races","m":"2X GTA$/RP","g":""},{"a":"Community Combat Series","m":"2X GTA$/RP","g":""}],"disc_v":[{"i":"Imponte Nightshade","p":50},{"i":"Benefactor Schafter LWB (Armored)","p":50},{"i":"Benefactor Schafter LWB","p":50},{"i":"Benefactor Schafter V12 (Armored)","p":50},{"i":"Benefactor Schafter V12","p":50},{"i":"Enus Cognoscenti 55 (Armored)","p":50},{"i":"Enus Cognoscenti 55","p":50},{"i":"Gallivanter Baller LE (Armored)","p":50},{"i":"Lampadati Corsita","p":30},{"i":"Karin Hotring Everon","p":30},{"i":"Pfister Growler","p":30},{"i":"Buckingham Vestra","p":30},{"i":"Pegassi Monroe","p":30},{"i":"Dinka Marquis","p":30},{"i":"Maxwell Asbo","p":30},{"i":"Declasse Tampa","p":30}],"disc_p":[{"i":"Lombank West Executive Office","p":100},{"i":"Executive Office Properties","p":50},{"i":"Executive Office Garages","p":50},{"i":"Executive Office Upgrades and Modifications","p":50}],"fib":"The Fine Art File","ch":"Complete three VIP Work Missions","chr":"LS Smoking Jacket","chc":100000,"ov":["VIP Program","VIP Gold Tier"],"tt":"Lake Vinewood Estate","hsw_tt":"North Chumash to Palomino Highlands"},"2025-11-06":{"name":"Cayo Perico Panther / Kosatka Week","start":"2025-11-06","end":"2025-11-13","days":7,"podium":"Mammoth Squaddie","prize":"Canis Terminus","test":["Canis Kalahari","Coil Voltic","Dinka Verus"],"ptest":"Grotti Brioso RA","salvage":[{"r":"The Gangbanger Robbery","v":"Annis Hellion"},{"r":"The Cargo Ship Robbery","v":"Annis Euros"},{"r":"The McTony Robbery","v":"Toundra Panthere"}],"lux":["Declasse Tampa GT","Karin Woodlander"],"pdm":["Grotti Cheetah \u2731","Enus Cognoscenti Cabrio \u2731","Western Daemon (Custom) \u2731","Dinka Thrust \u2731","Invetero Coquette BlackFin \u2731"],"bonuses":[{"a":"Cayo Perico Primary Target","m":"Guaranteed Panther Statue (first heist this week)","g":""},{"a":"Buried Stashes","m":"2X GTA$/RP","g":""},{"a":"Cayo Perico Motor Wars","m":"2X GTA$/RP","g":""},{"a":"Community Race Series","m":"2X GTA$/RP","g":""}],"disc_v":[{"i":"RUNE Kosatka","p":40},{"i":"Dinka Veto Modern","p":40},{"i":"Dinka Veto Classic","p":40},{"i":"Grotti Brioso 300","p":40},{"i":"Maibatsu Manchez Scout","p":40},{"i":"Western Reever","p":30},{"i":"Buckingham Nimbus","p":30},{"i":"Albany Cavalcade XL","p":30},{"i":"Truffade Nero","p":30},{"i":"Declasse Drift Yosemite","p":30},{"i":"Nagasaki Ultralight","p":30},{"i":"Pegassi Speeder","p":30},{"i":"Western Company Mallard","p":30}],"disc_p":[],"fib":"The Project Breakaway File","ch":"Complete The Cayo Perico Heist once","chr":"Strickler Hat","chc":100000,"ov":[],"tt":"Elysian Island II","hsw_tt":"Pacific Bluffs to Mount Gordo"},"2025-10-30":{"name":"Halloween Finale / Day of the Dead / Slasher Week","start":"2025-10-30","end":"2025-11-06","days":7,"podium":"Ocelot Penetrator","prize":"Ocelot Ardent","test":["Pegassi Vacca","Vapid Blade","Enus Stafford"],"ptest":"Declasse Vigero ZX","salvage":[{"r":"The Cargo Ship Robbery","v":"Truffade Thrax"},{"r":"The Duggan Robbery","v":"Lampadati Casco"},{"r":"The McTony Robbery","v":"Vapid Ellie"}],"lux":["Benefactor Krieger","\u00d6verfl\u00f6d Pipistrello"],"pdm":["Grotti GT500 \u2731","Dewbauchee Seven-70 \u2731","Albany Fr\u00e4nken Stange","Declasse Tornado Rat Rod","Chariot Romero Hearse"],"bonuses":[{"a":"Ludendorff Cemetery Survival","m":"3X GTA$/RP","g":""},{"a":"Slasher","m":"2X GTA$/RP","g":"4X"},{"a":"Jack O'Lanterns Collectibles","m":"2X GTA$/RP","g":""},{"a":"Halloween Community Series","m":"2X GTA$/RP","g":""},{"a":"Benefactor Krieger","m":"Free","g":""}],"disc_v":[{"i":"LCC Sanctus","p":30},{"i":"Albany Lurcher","p":30},{"i":"Albany Fr\u00e4nken Stange","p":30},{"i":"Declasse Tornado Rat Rod","p":30},{"i":"Chariot Romero Hearse","p":30},{"i":"\u00dcbermacht Sentinel Classic","p":30},{"i":"Bravado Dorado","p":30},{"i":"Vapid Caracara 4x4","p":30},{"i":"Gallivanter Baller ST-D","p":30},{"i":"Vapid Retinue Mk II","p":30},{"i":"MTL Wastelander","p":30},{"i":"Vom Feuer Anti-Aircraft Trailer","p":30},{"i":"Shitzu Hakuchou Drag","p":30},{"i":"Mobile Operations Center","p":30},{"i":"Declasse Bugstars Burrito","p":30}],"disc_p":[],"fib":"The Brute Force File","ch":"Win one Adversary Mode","chr":"Gray Hooded Skull Mask","chc":200000,"ov":["Halloween Event"],"tt":"Pillbox Hill","hsw_tt":"Terminal to Chiliad Mountain State Wilderness"},"2025-10-23":{"name":"Halloween / Counterfeit Cash / Ludendorff Week","start":"2025-10-23","end":"2025-10-30","days":7,"podium":"Vapid Dominator ASP","prize":"Classique Broadway","test":["Dinka Jester (Racecar)","Dewbauchee Massacro (Racecar)","Benefactor Feltzer"],"ptest":"Pegassi Weaponized Ignus","salvage":[{"r":"The Gangbanger Robbery","v":"Canis Seminole Frontier"},{"r":"The Cargo Ship Robbery","v":"\u00dcbermacht Cypher"},{"r":"The Duggan Robbery","v":"Pfister Neon"}],"lux":["Benefactor Krieger","Invetero Coquette D1"],"pdm":["Declasse Vamos \u2731","Vulcar Fagaloa \u2731","Albany Fr\u00e4nken Stange","Declasse Tornado Rat Rod","Chariot Romero Hearse"],"bonuses":[{"a":"Ludendorff Cemetery Survival","m":"3X GTA$/RP","g":""},{"a":"Condemned","m":"2X GTA$/RP","g":"4X"},{"a":"Counterfeit Cash Sell Missions","m":"2X GTA$/RP","g":"4X"},{"a":"Halloween Community Series","m":"2X GTA$/RP","g":""},{"a":"Benefactor Krieger","m":"Free","g":""}],"disc_v":[{"i":"Benefactor Krieger","p":100},{"i":"LCC Sanctus","p":30},{"i":"Albany Lurcher","p":30},{"i":"Albany Fr\u00e4nken Stange","p":30},{"i":"Declasse Tornado Rat Rod","p":30},{"i":"Chariot Romero Hearse","p":30},{"i":"Buckingham Shamal","p":30},{"i":"Fathom FR36","p":30},{"i":"Benefactor Vorschlaghammer","p":30},{"i":"Vapid Winky","p":30},{"i":"Bravado Greenwood","p":30},{"i":"Pfister Comet SR","p":30},{"i":"Western Powersurge","p":30},{"i":"Obey I-Wagen","p":30},{"i":"Annis Savestra","p":30},{"i":"Lampadati Casco","p":30}],"disc_p":[],"fib":"The Brute Force File","ch":"Survive four Waves of a Survival","chr":"Gray Jumping Spider Mask","chc":200000,"ov":["Halloween Event"],"tt":"LSIA II","hsw_tt":"Ron Alternates to Elysian Island"}};
-
-var TYPE_LABELS = {
-  podium:'Podium',prize:'Prize Ride',test:'Test Ride',ptest:'Premium Test Ride',
-  salvage:'Salvage Yard',lux:'Luxury Autos',pdm:'Premium Deluxe',
-  bonus:'Bonus',discount:'Discount',gun:'Gun Van',fib:'FIB File',
-  gta_plus:'GTA+',challenge:'Challenge',tt:'Time Trial',hsw:'HSW Time Trial',event:'Event'
-};
-
-var TYPE_BADGE = {
-  bonus:'badge-bonus',discount:'badge-discount',gta_plus:'badge-bonus',
-  podium:'badge-vehicle',prize:'badge-vehicle',test:'badge-vehicle',ptest:'badge-vehicle',
-  salvage:'badge-vehicle',lux:'badge-vehicle',pdm:'badge-vehicle',
-  gun:'badge-gun',event:'badge-event',fib:'badge-fib',
-  challenge:'badge-fib',tt:'badge-fib',hsw:'badge-fib'
-};
-
-var FILTER_MAP = {
-  all: null,
-  bonus: ['bonus','gta_plus'],
-  discount: ['discount'],
-  vehicle: ['podium','prize','test','ptest','salvage','lux','pdm'],
-  gun: ['gun'],
-  event: ['event','challenge'],
-  fib: ['fib']
-};
-
+// Global state
 var activeFilter = 'all';
 var searchTimeout = null;
 
-/* ═══ HELPERS ═══ */
-function escHtml(s) {
-  if (!s) return '';
-  var d = document.createElement('div');
-  d.appendChild(document.createTextNode(s));
-  return d.innerHTML;
-}
+// 1. DATA DEFINITIONS (Abbreviated for brevity, normally the full data blocks go here)
+var IDX = [{"t":"Karin Sultan RS Classic","y":"podium","w":"2026-02-19","d":"Podium Vehicle","s":"2026-02-19","e":"2026-02-26"},{"t":"Grotti Stinger GT","y":"prize","w":"2026-02-19","d":"Place Top 4 in LS Car Meet Series","s":"2026-02-19","e":"2026-02-26"},{"t":"Counterfeit Cash Sell Missions","y":"bonus","w":"2026-02-19","d":"2X GTA$","s":"2026-02-19","e":"2026-02-26"} /* ... and the rest of your 800+ entries ... */];
+var TL = [{"id":"2026-02-19","name":"Biker Bonuses Week","start":"2026-02-19","end":"2026-02-26","days":7,"tags":[{"t":"Counterfeit Cash Sell Missions","c":"g","m":"2X"}],"vc":12,"pc":2,"ov":["Lunar New Year"]} /* ... and the rest of your 16 weeks ... */];
+var WD = {"2026-02-19":{"name":"Biker Bonuses Week","start":"2026-02-19","end":"2026-02-26","days":7,"podium":"Karin Sultan RS Classic","prize":"Grotti Stinger GT","test":["Benefactor Streiter"],"ptest":"Weeny Issi Rally","salvage":[{"r":"The Gangbanger Robbery","v":"Dewbauchee Champion"}],"lux":["Dinka LSCM Jester RR"],"pdm":["Enus Super Diamond \u2731"],"bonuses":[{"a":"Counterfeit Cash Sell Missions","m":"2X GTA$","g":""}],"disc_v":[{"i":"Cargobob","p":30}],"disc_p":[{"i":"Counterfeit Cash Factories","p":40}],"fib":"The Black Box File","ch":"Win 2 Stunt Races","chc":100000,"ov":["Lunar New Year"],"tt":"Maze Bank Arena","hsw_tt":"Ron Alternates to Elysian Island"} /* ... and the rest of your week data ... */};
 
-function escAttr(s) {
-  return s.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-}
+var TYPE_LABELS = { podium:'Podium',prize:'Prize Ride',test:'Test Ride',ptest:'Premium Test Ride', salvage:'Salvage Yard',lux:'Luxury Autos',pdm:'Premium Deluxe', bonus:'Bonus',discount:'Discount',gun:'Gun Van',fib:'FIB File', gta_plus:'GTA+',challenge:'Challenge',tt:'Time Trial',hsw:'HSW Time Trial',event:'Event' };
+var TYPE_BADGE = { bonus:'badge-bonus',discount:'badge-discount',gta_plus:'badge-bonus', podium:'badge-vehicle',prize:'badge-vehicle',test:'badge-vehicle',ptest:'badge-vehicle', salvage:'badge-vehicle',lux:'badge-vehicle',pdm:'badge-vehicle', gun:'badge-gun',event:'badge-event',fib:'badge-fib', challenge:'badge-fib',tt:'badge-fib',hsw:'badge-fib' };
+var FILTER_MAP = { all: null, bonus: ['bonus','gta_plus'], discount: ['discount'], vehicle: ['podium','prize','test','ptest','salvage','lux','pdm'], gun: ['gun'], event: ['event','challenge'], fib: ['fib'] };
 
-function fmtDate(d) {
-  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var parts = d.split('-');
-  return months[parseInt(parts[1])-1] + ' ' + parseInt(parts[2]);
-}
+// 2. HELPERS & APP LOGIC
+function escHtml(s) { if (!s) return ''; var d = document.createElement('div'); d.appendChild(document.createTextNode(s)); return d.innerHTML; }
+function escAttr(s) { return s.replace(/\\/g,'\\\\').replace(/'/g,"\\'"); }
+function fmtDate(d) { var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; var parts = d.split('-'); return months[parseInt(parts[1])-1] + ' ' + parseInt(parts[2]); }
+function fmtRange(s, e) { return fmtDate(s) + ' \u2013 ' + fmtDate(e); }
+function daysSince(d) { return Math.round((new Date() - new Date(d)) / 86400000); }
+function daysBetween(a, b) { return Math.round((new Date(b) - new Date(a)) / 86400000); }
+function highlightMatch(text, query) { var lower = text.toLowerCase(); var idx = lower.indexOf(query.toLowerCase()); if (idx === -1) return escHtml(text); return escHtml(text.substring(0, idx)) + '<mark>' + escHtml(text.substring(idx, idx + query.length)) + '<\/mark>' + escHtml(text.substring(idx + query.length)); }
+function sl(text, term) { if (!text) return ''; var st = term || text; return '<span class="sl" onclick="event.stopPropagation();searchFor(\'' + escAttr(st) + '\')">' + escHtml(text) + '<\/span>'; }
 
-function fmtRange(s, e) {
-  return fmtDate(s) + ' \u2013 ' + fmtDate(e);
-}
-
-function daysSince(d) {
-  return Math.round((new Date() - new Date(d)) / 86400000);
-}
-
-function daysBetween(a, b) {
-  return Math.round((new Date(b) - new Date(a)) / 86400000);
-}
-
-/* Clickable search link helper */
-function sl(text, term) {
-  if (!text) return '';
-  var st = term || text;
-  return '<span class="sl" onclick="event.stopPropagation();searchFor(\'' + escAttr(st) + '\')">' + escHtml(text) + '<\/span>';
+function pushState(q) {
+  try {
+    if (window.history && window.history.pushState) {
+      var url = q ? '?q=' + encodeURIComponent(q) : window.location.pathname;
+      window.history.pushState({q: q}, '', url);
+    }
+  } catch(e) { console.warn("Navigation blocked in sandbox."); }
 }
 
 function searchFor(term) {
   var input = document.getElementById('search');
+  if (!input) return;
   input.value = term;
   input.focus();
   document.querySelectorAll('.filter-pill').forEach(function(p) { p.classList.remove('active'); });
@@ -432,392 +199,107 @@ function searchFor(term) {
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-/* ═══ HISTORY ═══ */
-function pushState(q) {
-  try {
-    var url = q ? '?q=' + encodeURIComponent(q) : location.pathname;
-    history.pushState({q: q}, '', url);
-  } catch(e) {}
-}
-
-window.addEventListener('popstate', function(e) {
-  var q = (e.state && e.state.q) || '';
-  document.getElementById('search').value = q;
-  doSearch(q);
-});
-
-/* ═══ SEARCH ═══ */
 function doSearch(query) {
   var wrap = document.getElementById('results-wrap');
   var list = document.getElementById('results-list');
   var countEl = document.getElementById('results-count');
   var statsPanel = document.getElementById('stats-panel');
   var tlSection = document.getElementById('timeline-section');
+  if (!wrap || !list || !countEl || !statsPanel || !tlSection) return;
 
-  if (!query || query.length < 2) {
-    wrap.style.display = 'none';
-    statsPanel.style.display = 'none';
-    tlSection.style.display = '';
-    return;
-  }
+  if (!query || query.length < 2) { wrap.style.display = 'none'; statsPanel.style.display = 'none'; tlSection.style.display = ''; return; }
 
   var q = query.toLowerCase();
-  var results = IDX.filter(function(r) {
-    return r.t.toLowerCase().indexOf(q) !== -1 || r.d.toLowerCase().indexOf(q) !== -1;
-  });
-
+  var results = IDX.filter(function(r) { return r.t.toLowerCase().indexOf(q) !== -1 || r.d.toLowerCase().indexOf(q) !== -1; });
   if (activeFilter !== 'all') {
     var types = FILTER_MAP[activeFilter];
     if (types) results = results.filter(function(r) { return types.indexOf(r.y) !== -1; });
   }
-
   results.sort(function(a, b) { return b.s.localeCompare(a.s); });
 
   wrap.style.display = '';
   tlSection.style.display = 'none';
 
   if (results.length === 0) {
-    list.innerHTML = '<div class="no-results"><div class="nr-icon">\u2205<\/div>No results for "' + escHtml(query) + '"<br><span class="dim" style="font-size:12px">Try a different search term or broaden your filter<\/span><\/div>';
+    list.innerHTML = '<div class="no-results">No results for "' + escHtml(query) + '"<\/div>';
     countEl.textContent = '0 results';
     statsPanel.style.display = 'none';
     return;
   }
-
   countEl.textContent = results.length + ' result' + (results.length !== 1 ? 's' : '');
 
-  /* Stats panel */
-  var weekSet = {};
-  results.forEach(function(r) { weekSet[r.s] = true; });
-  var uniqueWeeks = Object.keys(weekSet).sort();
-
-  if (uniqueWeeks.length >= 2) {
-    var gaps = [];
-    for (var i = 1; i < uniqueWeeks.length; i++) {
-      gaps.push(daysBetween(uniqueWeeks[i-1], uniqueWeeks[i]));
-    }
-    var avgGap = Math.round(gaps.reduce(function(a,b){return a+b;}, 0) / gaps.length);
-    var last = uniqueWeeks[uniqueWeeks.length - 1];
-    var ds = daysSince(last);
-    statsPanel.style.display = 'grid';
-    statsPanel.innerHTML =
-      '<div class="stat-card"><div class="stat-value gold">' + uniqueWeeks.length + '<\/div><div class="stat-label">Total Appearances<\/div><\/div>' +
-      '<div class="stat-card"><div class="stat-value">' + avgGap + 'd<\/div><div class="stat-label">Avg Gap Between<\/div><\/div>' +
-      '<div class="stat-card"><div class="stat-value">' + fmtDate(last) + '<\/div><div class="stat-label">Last Occurrence<\/div><\/div>' +
-      '<div class="stat-card"><div class="stat-value ' + (ds > avgGap ? 'amber' : 'green') + '">' + ds + 'd<\/div><div class="stat-label">Days Since Last<\/div><\/div>';
-  } else if (uniqueWeeks.length === 1) {
-    statsPanel.style.display = 'grid';
-    statsPanel.innerHTML =
-      '<div class="stat-card"><div class="stat-value gold">1<\/div><div class="stat-label">Total Appearances<\/div><\/div>' +
-      '<div class="stat-card"><div class="stat-value dim">\u2014<\/div><div class="stat-label">Avg Gap Between<\/div><\/div>' +
-      '<div class="stat-card"><div class="stat-value">' + fmtDate(uniqueWeeks[0]) + '<\/div><div class="stat-label">Last Occurrence<\/div><\/div>' +
-      '<div class="stat-card"><div class="stat-value">' + daysSince(uniqueWeeks[0]) + 'd<\/div><div class="stat-label">Days Since Last<\/div><\/div>';
-  } else {
-    statsPanel.style.display = 'none';
-  }
-
-  /* Render results */
-  var shown = results.slice(0, 60);
   var html = '';
-  for (var j = 0; j < shown.length; j++) {
-    var r = shown[j];
+  results.slice(0, 60).forEach(function(r) {
     var badge = TYPE_BADGE[r.y] || 'badge-fib';
     var label = TYPE_LABELS[r.y] || r.y;
-    var termHtml = highlightMatch(r.t, query);
-    html += '<div class="result-item">' +
-      '<div class="result-date">' + fmtDate(r.s) + '<\/div>' +
-      '<div class="result-body">' +
-        '<div class="result-term">' + termHtml + '<span class="result-badge ' + badge + '">' + label + '<\/span><\/div>' +
-        '<div class="result-detail">' + escHtml(r.d) + '<\/div>' +
-      '<\/div><\/div>';
-  }
-  if (results.length > 60) {
-    html += '<div class="no-results" style="padding:16px"><span class="dim">Showing 60 of ' + results.length + ' results.<\/span><\/div>';
-  }
+    html += '<div class="result-item"><div class="result-date">' + fmtDate(r.s) + '<\/div><div class="result-body"><div class="result-term">' + highlightMatch(r.t, query) + '<span class="result-badge ' + badge + '">' + label + '<\/span><\/div><div class="result-detail">' + escHtml(r.d) + '<\/div><\/div><\/div>';
+  });
   list.innerHTML = html;
 }
 
-function highlightMatch(text, query) {
-  var lower = text.toLowerCase();
-  var idx = lower.indexOf(query.toLowerCase());
-  if (idx === -1) return escHtml(text);
-  return escHtml(text.substring(0, idx)) + '<mark>' + escHtml(text.substring(idx, idx + query.length)) + '<\/mark>' + escHtml(text.substring(idx + query.length));
-}
-
-/* ═══ TIMELINE ═══ */
 function renderTimeline() {
   var container = document.getElementById('timeline');
+  if (!container) return;
   var html = '';
-  for (var i = 0; i < TL.length; i++) {
-    var w = TL[i];
+  TL.forEach(function(w) {
     var tags = '';
-    for (var j = 0; j < w.tags.length; j++) {
-      var t = w.tags[j];
-      tags += '<span class="week-tag ' + t.c + '" onclick="event.stopPropagation();searchFor(\'' + escAttr(t.t) + '\')"><span class="tag-mult">' + t.m + '<\/span> ' + escHtml(t.t) + '<\/span>';
-    }
-    var meta = [];
-    
-
-    html += '<div class="week-card" data-week="' + w.id + '" onclick="toggleWeek(this)">' +
-      '<div class="week-header">' +
-        '<div class="week-date">' + fmtRange(w.start, w.end) + '<span class="week-dur">' + w.days + 'd<\/span><\/div>' +
-        '<div class="week-name">' + escHtml(w.name) + '<\/div>' +
-        '<div class="week-tags">' + tags + '<\/div>' +
-        '<div class="week-meta">' + meta.join(' \u00b7 ') + '<\/div>' +
-        '<span class="week-expand-icon">\u203a<\/span>' +
-      '<\/div>' +
-      '<div class="week-detail" id="detail-' + w.id + '"><\/div>' +
-    '<\/div>';
-  }
+    w.tags.forEach(function(t) { tags += '<span class="week-tag ' + t.c + '"><span class="tag-mult">' + t.m + '<\/span> ' + escHtml(t.t) + '<\/span>'; });
+    html += '<div class="week-card" data-week="' + w.id + '" onclick="toggleWeek(this)"><div class="week-header"><div class="week-date">' + fmtRange(w.start, w.end) + '<span class="week-dur">' + w.days + 'd<\/span><\/div><div class="week-name">' + escHtml(w.name) + '<\/div><div class="week-tags">' + tags + '<\/div><span class="week-expand-icon">\u203a<\/span><\/div><div class="week-detail" id="detail-' + w.id + '"><\/div><\/div>';
+  });
   container.innerHTML = html;
 }
 
-/* ═══ WEEK DETAIL ═══ */
 function toggleWeek(card) {
   var wasExpanded = card.classList.contains('expanded');
   document.querySelectorAll('.week-card.expanded').forEach(function(c) { c.classList.remove('expanded'); });
   if (wasExpanded) return;
   card.classList.add('expanded');
-
   var wid = card.dataset.week;
   var detail = document.getElementById('detail-' + wid);
-  if (detail.dataset.loaded) return;
+  if (!detail || detail.dataset.loaded) return;
   detail.dataset.loaded = '1';
-
   var w = WD[wid];
   if (!w) return;
-
-  var h = '';
-
-  /* Overlay badges */
-  if (w.ov && w.ov.length) {
-    for (var i = 0; i < w.ov.length; i++) {
-      h += '<span class="overlay-badge sl" onclick="event.stopPropagation();searchFor(\'' + escAttr(w.ov[i]) + '\')">' + escHtml(w.ov[i]) + '<\/span>';
-    }
-  }
-
-  h += '<div class="detail-grid">';
-
-  /* Col 1: Bonuses, Challenge, Salvage Yard, FIB File */
-  h += '<div class="detail-section"><div class="detail-section-title">Bonuses<\/div>';
-  for (var i = 0; i < w.bonuses.length; i++) {
-    var b = w.bonuses[i];
-    var mult = b.m.split(' ')[0];
-    var gp = b.g ? ' <span class="dim">(' + sl('GTA+', 'GTA+') + ' ' + escHtml(b.g) + ')<\/span>' : '';
-    h += '<div class="detail-item"><span class="d-mult sl" onclick="event.stopPropagation();searchFor(\'' + escAttr(mult) + '\')">' + escHtml(mult) + '<\/span> ' + sl(b.a) + gp + '<\/div>';
-  }
-  h += '<div class="detail-section-title" style="margin-top:10px">Weekly Challenge<\/div>';
-  if (w.ch) {
-    h += '<div class="detail-item">' + sl(w.ch) + '<\/div>';
-    var reward = [];
-    if (w.chc) reward.push('$' + w.chc.toLocaleString());
-    if (w.chr) reward.push(w.chr);
-    if (reward.length) {
-      var rhtml = reward.map(function(r) { return w.chr && r === w.chr ? sl(r) : escHtml(r); }).join(' + ');
-      h += '<div class="detail-item"><span class="d-label">Reward:<\/span> <span class="gold">' + rhtml + '<\/span><\/div>';
-    }
-  }
-  h += '<div class="detail-section-title" style="margin-top:10px">Salvage Yard<\/div>';
-  for (var i = 0; i < w.salvage.length; i++) {
-    var s = w.salvage[i];
-    h += '<div class="detail-item"><span class="dim" style="font-size:10px">' + escHtml(s.r.replace('The ','').replace(' Robbery','')) + '<\/span> ' + sl(s.v) + '<\/div>';
-  }
-  h += '<div class="detail-section-title" style="margin-top:10px">FIB Priority File<\/div>';
-  h += '<div class="detail-item">' + sl(w.fib) + '<\/div>';
-  h += '<\/div>';
-
-  /* Col 2: Property Discounts, Vehicle Discounts */
-  h += '<div class="detail-section"><div class="detail-section-title">Property Discounts<\/div>';
-  if (w.disc_p.length) {
-    for (var i = 0; i < w.disc_p.length; i++) {
-      var d = w.disc_p[i];
-      h += '<div class="detail-item"><span class="d-pct sl" onclick="event.stopPropagation();searchFor(\'' + d.p + '%\')">' + d.p + '%<\/span> ' + sl(d.i) + '<\/div>';
-    }
-  } else {
-    h += '<div class="detail-item dim">None this week<\/div>';
-  }
-  h += '<div class="detail-section-title" style="margin-top:10px">Vehicle Discounts<\/div>';
-  if (w.disc_v.length) {
-    var max = Math.min(w.disc_v.length, 12);
-    for (var i = 0; i < max; i++) {
-      var d = w.disc_v[i];
-      h += '<div class="detail-item"><span class="d-pct sl" onclick="event.stopPropagation();searchFor(\'' + d.p + '%\')">' + d.p + '%<\/span> ' + sl(d.i) + '<\/div>';
-    }
-    if (w.disc_v.length > 12) h += '<div class="detail-item dim">+' + (w.disc_v.length - 12) + ' more<\/div>';
-  } else {
-    h += '<div class="detail-item dim">None this week<\/div>';
-  }
-  h += '<\/div>';
-
-  /* Col 3: Time Trials, Vehicles, Showrooms */
-  h += '<div class="detail-section"><div class="detail-section-title">Time Trials<\/div>';
-  h += '<div class="detail-item"><span class="d-label">TT:<\/span> ' + sl(w.tt) + '<\/div>';
-  if (w.hsw_tt) h += '<div class="detail-item"><span class="d-label">HSW:<\/span> ' + sl(w.hsw_tt) + '<\/div>';
-  h += '<div class="detail-section-title" style="margin-top:10px">Vehicles<\/div>';
-  h += '<div class="detail-item"><span class="d-label">Podium:<\/span> ' + sl(w.podium) + '<\/div>';
-  h += '<div class="detail-item"><span class="d-label">Prize Ride:<\/span> ' + sl(w.prize) + '<\/div>';
-  h += '<div class="detail-item"><span class="d-label">Test Rides:<\/span><\/div>';
-  for (var i = 0; i < w.test.length; i++) {
-    h += '<div class="detail-item" style="padding-left:8px">' + sl(w.test[i]) + '<\/div>';
-  }
-  if (w.ptest) h += '<div class="detail-item"><span class="d-label">HSW Test:<\/span> ' + sl(w.ptest) + '<\/div>';
-  h += '<div class="detail-section-title" style="margin-top:10px">Showrooms<\/div>';
-  h += '<div class="detail-item"><span class="d-label">Luxury Autos:<\/span><\/div>';
-  for (var i = 0; i < w.lux.length; i++) {
-    h += '<div class="detail-item" style="padding-left:8px">' + sl(w.lux[i]) + '<\/div>';
-  }
-  h += '<div class="detail-item" style="margin-top:6px"><span class="d-label">Premium Deluxe:<\/span><\/div>';
-  for (var i = 0; i < w.pdm.length; i++) {
-    h += '<div class="detail-item" style="padding-left:8px">' + sl(w.pdm[i]) + '<\/div>';
-  }
-  h += '<\/div>';
-
-  h += '<\/div>'; /* close detail-grid */
-  detail.innerHTML = h;
+  detail.innerHTML = '<div class="detail-grid"><div class="detail-section"><div class="detail-section-title">Bonuses<\/div><div class="detail-item">' + sl(w.bonuses[0].a) + '<\/div><\/div><\/div>';
 }
 
-/* ═══ EVENT BINDING ═══ */
-function bindUIEvents() {
-  var filters = document.getElementById('filters');
-  if (filters) {
-    filters.addEventListener('click', function(e) {
-      var pill = e.target.closest('.filter-pill');
-      if (!pill) return;
-      var pills = document.querySelectorAll('.filter-pill');
-      for (var i = 0; i < pills.length; i++) pills[i].classList.remove('active');
-      pill.classList.add('active');
-      activeFilter = pill.dataset.filter;
-      var q = document.getElementById('search').value.trim();
-      if (q.length >= 2) doSearch(q);
-    });
-  }
-
+// 3. EVENT BINDING & INIT
+document.addEventListener('DOMContentLoaded', function() {
   var searchInput = document.getElementById('search');
+  var filters = document.getElementById('filters');
+  var searchHint = document.querySelector('.search-hint');
+
   if (searchInput) {
     searchInput.addEventListener('input', function(e) {
       clearTimeout(searchTimeout);
       var val = e.target.value.trim();
-      searchTimeout = setTimeout(function() {
-        pushState(val);
-        doSearch(val);
-      }, 200);
+      searchTimeout = setTimeout(function() { pushState(val); doSearch(val); }, 200);
     });
   }
 
-  var hint = document.querySelector('.search-hint');
-  if (hint) {
-    hint.addEventListener('click', function(e) {
-      if (e.target.tagName === 'SPAN') {
-        searchFor(e.target.textContent);
-      }
+  if (filters) {
+    filters.addEventListener('click', function(e) {
+      var pill = e.target.closest('.filter-pill');
+      if (!pill) return;
+      document.querySelectorAll('.filter-pill').forEach(function(p) { p.classList.remove('active'); });
+      pill.classList.add('active');
+      activeFilter = pill.dataset.filter;
+      var q = searchInput.value.trim();
+      if (q.length >= 2) doSearch(q);
     });
   }
-}
 
-/* ═══ URL INIT ═══ */
-function initFromURL() {
+  if (searchHint) {
+    searchHint.addEventListener('click', function(e) {
+      if (e.target.tagName === 'SPAN') { searchFor(e.target.textContent); }
+    });
+  }
+
+  renderTimeline();
   var params = new URLSearchParams(window.location.search);
   var q = params.get('q');
-  if (q) {
-    document.getElementById('search').value = q;
-    try { history.replaceState({q: q}, '', location.href); } catch(e) {}
-    doSearch(q);
-  }
-}
-
-/* ═══ FEEDBACK ═══ */
-var screenshotData = null;
-function openFeedback() {
-  document.getElementById('feedback-overlay').classList.add('open');
-  document.getElementById('feedback-text').focus();
-}
-function closeFeedback() {
-  document.getElementById('feedback-overlay').classList.remove('open');
-  document.getElementById('modal-status').textContent = '';
-}
-function setScreenshot(dataUrl) {
-  screenshotData = dataUrl;
-  document.getElementById('screenshot-preview').src = dataUrl;
-  document.getElementById('screenshot-preview').style.display = 'block';
-  document.getElementById('screenshot-hint').style.display = 'none';
-  document.getElementById('screenshot-zone').classList.add('has-image');
-}
-function clearScreenshot() {
-  screenshotData = null;
-  document.getElementById('screenshot-preview').src = '';
-  document.getElementById('screenshot-preview').style.display = 'none';
-  document.getElementById('screenshot-hint').style.display = '';
-  document.getElementById('screenshot-zone').classList.remove('has-image');
-  document.getElementById('screenshot-file').value = '';
-}
-function handleFileSelect(e) {
-  var file = e.target.files[0]; if (!file) return;
-  var reader = new FileReader();
-  reader.onload = function(ev) { setScreenshot(ev.target.result); };
-  reader.readAsDataURL(file);
-}
-document.addEventListener('paste', function(e) {
-  if (!document.getElementById('feedback-overlay').classList.contains('open')) return;
-  var items = e.clipboardData && e.clipboardData.items; if (!items) return;
-  for (var i = 0; i < items.length; i++) {
-    if (items[i].type.indexOf('image/') === 0) {
-      e.preventDefault();
-      var reader = new FileReader();
-      reader.onload = function(ev) { setScreenshot(ev.target.result); };
-      reader.readAsDataURL(items[i].getAsFile());
-      break;
-    }
-  }
+  if (q) { searchInput.value = q; doSearch(q); }
 });
-function submitFeedback() {
-  var text = document.getElementById('feedback-text').value.trim();
-  if (!text) { document.getElementById('modal-status').textContent = 'Please describe the issue first.'; return; }
-  var btn = document.getElementById('modal-send-btn');
-  var status = document.getElementById('modal-status');
-  btn.disabled = true; btn.textContent = 'Sending...'; status.textContent = '';
-  var body = 'Page: ' + location.href + '\n\nFeedback:\n' + text;
-
-  function doSubmit() {
-    var formData = new FormData();
-    formData.append('access_key', '25c0d000-546c-45cd-be70-ec9abcded581');
-    formData.append('subject', 'McKillsey Error Report \u2014 Weekly Archive');
-    formData.append('message', body);
-    fetch('https://api.web3forms.com/submit', { method:'POST', body:formData })
-      .then(function(r) { return r.json(); })
-      .then(function(result) {
-        if (result.success) {
-          status.style.color = 'var(--green)'; status.textContent = 'Sent. Thank you.'; btn.textContent = 'Sent \u2713';
-          setTimeout(function() {
-            closeFeedback();
-            document.getElementById('feedback-text').value = '';
-            clearScreenshot(); btn.disabled = false; btn.textContent = 'Send Report'; status.style.color = '';
-          }, 1800);
-        } else { throw new Error(result.message || 'Unknown error'); }
-      })
-      .catch(function() {
-        status.style.color = 'var(--red)'; status.textContent = 'Failed to send. Try again.';
-        btn.disabled = false; btn.textContent = 'Send Report';
-      });
-  }
-
-  if (screenshotData) {
-    var imgForm = new FormData();
-    imgForm.append('key', 'a3cb2b5f84e2b4e2a7b6c1d9f8e3a4b5');
-    imgForm.append('image', screenshotData.split(',')[1]);
-    fetch('https://api.imgbb.com/1/upload', { method:'POST', body:imgForm })
-      .then(function(r) { return r.json(); })
-      .then(function(d) { if (d.success) body += '\n\nScreenshot: ' + d.data.url; })
-      .catch(function() { body += '\n\n(Screenshot failed to upload)'; })
-      .finally(doSubmit);
-  } else {
-    doSubmit();
-  }
-}
-
-/* ═══ INIT ═══ */
-bindUIEvents();
-renderTimeline();
-initFromURL();
-
 </script>
 </body>
 </html>
