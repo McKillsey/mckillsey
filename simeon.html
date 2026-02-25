@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simeon Didn't Text — McKillsey & Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0d1b2a; --navy-mid:#162436;
+  --cream:#f0ead8; --cream-dim:#9aabbf;
+  --gold:#c9a84c; --green:#2dba72; --amber:#e08c2a;
+  --rule:rgba(201,168,76,.18);
+  --serif:'Playfair Display',serif;
+  --mono:'IBM Plex Mono',monospace;
+  --sans:'IBM Plex Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--navy);color:var(--cream);font-family:var(--mono);}
+
+.site-header{border-bottom:1px solid var(--rule);padding:20px 48px;display:flex;align-items:center;gap:32px;}
+.wordmark{font-family:var(--serif);font-weight:700;color:#b8c8d8;line-height:1.15;text-decoration:none;}
+.wordmark .line1{display:block;font-size:26px;}
+.wordmark .line2{display:block;font-size:22px;padding-left:1.1em;}
+.header-tagline{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.1em;text-transform:uppercase;margin-left:auto;}
+
+.page{max-width:1400px;margin:0 auto;padding:52px 48px 80px;}
+.blurb{max-width:720px;margin-top:22px;}
+.blurb p{font-family:var(--sans);font-size:13px;color:var(--cream-dim);line-height:1.8;margin-bottom:10px;}
+.blurb p:last-child{margin-bottom:0;}
+h1{font-family:var(--serif);font-size:34px;font-weight:900;}
+.subtitle{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-top:6px;}
+
+/* legend */
+.legend{font-size:10px;color:var(--cream-dim);margin-top:20px;display:flex;gap:20px;flex-wrap:wrap;align-items:center;}
+.l-swatch{display:inline-flex;align-items:center;gap:6px;}
+.lbadge{font-size:9px;font-family:var(--mono);padding:1px 5px;border-radius:2px;font-weight:600;line-height:1.6;}
+.lbadge.gone  {background:rgba(255,255,255,.04);color:rgba(154,171,191,.25);text-decoration:line-through;}
+.lbadge.elim  {background:rgba(224,140,42,.18);color:var(--amber);}
+.lbadge.live  {background:rgba(240,234,216,.08);color:rgba(240,234,216,.5);}
+.lbadge.conf  {background:rgba(45,186,114,.2);color:var(--green);}
+
+/* R1 section */
+.r1-section{margin-top:44px;}
+.r1-section+.r1-section{margin-top:52px;}
+.r1-header{display:flex;align-items:center;gap:14px;padding-bottom:12px;border-bottom:1px solid var(--rule);flex-wrap:wrap;}
+.r1-tag{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);flex-shrink:0;}
+.r1-name{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--cream);text-decoration:none;}
+.r1-or{font-size:12px;color:var(--cream-dim);}
+.r1-done{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-left:auto;display:flex;align-items:center;gap:5px;flex-shrink:0;}
+.dot-g{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;}
+.r1-badges{display:flex;gap:3px;align-items:center;margin-left:4px;}
+
+/* flow table — all borders are 1px, single opacity throughout */
+.flow{display:flex;align-items:stretch;width:100%;border:1px solid rgba(201,168,76,.14);border-top:none;}
+.col{display:flex;flex-direction:column;border-right:1px solid rgba(201,168,76,.14);flex-shrink:0;}
+.col:last-child{border-right:none;flex:1;}
+.col-r2{width:19%;}
+.col-r3{width:23%;}
+
+.col-head{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding:7px 14px;border-bottom:1px solid rgba(201,168,76,.14);background:rgba(201,168,76,.02);flex-shrink:0;white-space:nowrap;}
+
+.r2-cells,.r3-cells{display:grid;flex:1;align-self:stretch;}
+.r4-cells{display:flex;flex-direction:column;flex:1;}
+
+/* r2-cell and r3-group each occupy one grid row (defined by inline grid-template-rows on parent) */
+.r2-cell{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:9px 14px;
+  border-bottom:1px solid rgba(201,168,76,.14);
+}
+.r2-cell:last-child{border-bottom:none;}
+.r2-cell:nth-child(odd){background:rgba(255,255,255,.01);}
+
+.r3-group{display:flex;flex-direction:column;border-bottom:1px solid rgba(201,168,76,.14);}
+.r3-group:last-child{border-bottom:none;}
+.r3-group:nth-child(odd){background:rgba(255,255,255,.01);}
+
+.r3-cell{flex:1;display:flex;flex-direction:column;justify-content:center;padding:9px 14px;border-bottom:1px solid rgba(201,168,76,.14);}
+.r3-cell:last-child{border-bottom:none;}
+
+.r4-group{flex:var(--flex,1);display:flex;flex-direction:column;border-bottom:1px solid rgba(201,168,76,.14);}
+.r4-group:last-child{border-bottom:none;}
+.r4-group:nth-child(odd){background:rgba(45,186,114,.02);}
+.r4-group:nth-child(even){background:rgba(45,186,114,.01);}
+
+.r4-cell{flex:1;display:flex;flex-direction:column;justify-content:center;padding:9px 16px;border-bottom:1px solid rgba(201,168,76,.14);}
+.r4-cell:last-child{border-bottom:none;}
+
+/* car name */
+.cn{font-size:11px;font-weight:500;line-height:1.35;display:flex;flex-wrap:wrap;align-items:center;gap:0;margin-bottom:5px;}
+.cn .sl{color:var(--cream-dim);font-size:10px;margin:0 3px;}
+.r2-cell .cn{color:var(--cream);}
+.r3-cell .cn{color:var(--cream-dim);}
+.r4-cell .cn{color:var(--green);margin-bottom:3px;}
+
+/* list badges strip */
+.badges{display:flex;gap:3px;flex-wrap:wrap;margin-top:1px;}
+.b{
+  font-family:var(--mono);font-size:9px;font-weight:600;
+  padding:1px 5px;border-radius:2px;line-height:1.6;
+  transition:none;
+}
+.b-gone{background:rgba(255,255,255,.04);color:rgba(154,171,191,.2);text-decoration:line-through;}
+.b-elim{background:rgba(224,140,42,.18);color:var(--amber);}
+.b-live{background:rgba(240,234,216,.09);color:rgba(240,234,216,.45);}
+.b-conf{background:rgba(45,186,114,.22);color:var(--green);}
+
+/* guaranteed cars list */
+.guar-cars{display:flex;flex-direction:column;gap:2px;margin-top:4px;}
+.guar-car{font-size:10px;color:rgba(45,186,114,.7);}
+
+/* feedback */
+.feedback-btn{position:fixed;bottom:22px;right:22px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--gold);padding:9px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .15s;z-index:100;}
+.feedback-btn:hover{background:var(--gold);color:var(--navy);}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;display:none;align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--navy-mid);border:1px solid var(--rule);width:500px;max-width:calc(100vw - 40px);max-height:90vh;overflow-y:auto;padding:28px;}
+.modal-title{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--cream);margin-bottom:4px;}
+.modal-sub{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.08em;margin-bottom:22px;}
+.modal-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block;}
+.modal-textarea{width:100%;background:var(--navy);border:1px solid var(--rule);color:var(--cream);font-family:var(--sans);font-size:13px;padding:10px 12px;resize:vertical;min-height:90px;line-height:1.6;outline:none;}
+.modal-textarea:focus{border-color:var(--gold);}
+.screenshot-zone{width:100%;min-height:80px;background:var(--navy);border:1px dashed rgba(201,168,76,.35);display:flex;align-items:center;justify-content:center;margin-top:14px;cursor:pointer;position:relative;overflow:hidden;}
+.screenshot-hint{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.06em;text-align:center;padding:20px;pointer-events:none;}
+.screenshot-hint span{color:var(--gold);}
+.screenshot-clear{position:absolute;top:6px;right:8px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;padding:2px 8px;cursor:pointer;display:none;}
+.screenshot-zone.has-image .screenshot-clear{display:block;}
+.screenshot-zone.has-image{border-style:solid;border-color:var(--gold);}
+.screenshot-zone img{max-width:100%;max-height:220px;display:block;}
+.modal-footer{display:flex;align-items:center;justify-content:space-between;margin-top:18px;gap:12px;}
+.modal-send-btn{background:var(--gold);border:none;color:var(--navy);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 22px;cursor:pointer;font-weight:500;}
+.modal-send-btn:hover{background:var(--cream);}
+.modal-send-btn:disabled{opacity:.4;cursor:not-allowed;}
+.modal-cancel-btn{background:none;border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:10px 16px;cursor:pointer;}
+.modal-cancel-btn:hover{border-color:var(--cream-dim);color:var(--cream);}
+.modal-status{font-family:var(--mono);font-size:11px;color:var(--cream-dim);min-height:16px;}
+
+/* blurb car links — visible underline to indicate hyperlink */
+.blurb-link{color:var(--cream);text-decoration:underline;text-decoration-color:rgba(240,234,216,.35);text-underline-offset:2px;transition:text-decoration-color .12s;}
+.blurb-link:hover{text-decoration-color:var(--cream);}
+
+/* gtacars links */
+.car-link{color:inherit;text-decoration:none;border-bottom:1px dashed rgba(201,168,76,.3);transition:border-color .12s;}
+.car-link:hover{border-bottom-color:var(--gold);}
+.r4-cell .car-link{color:var(--green);border-bottom-color:rgba(45,186,114,.3);}
+.r4-cell .car-link:hover{border-bottom-color:var(--green);}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="wordmark"><span class="line1">McKillsey</span><span class="line2">&amp; Company</span></a>
+  <div class="header-tagline">Strategic Advisory · Los Santos · Blaine County</div>
+</header>
+
+<main class="page">
+  <h1>Simeon Didn't Text</h1>
+  <div class="subtitle">Daily Export · Blind Acquisition</div>
+
+  <div class="blurb">
+    <p>Simeon cycles through eight fixed lists of cars. He doesn't always text — but he's never working off a ninth. That structure means you can find a car he wants in at most four attempts, starting from any of four common targets.</p>
+    <p>Steal a <a href="https://gtacars.net/gta5/banshee" target="_blank" rel="noopener" class="blurb-link">Banshee</a>, <a href="https://gtacars.net/gta5/coquette" target="_blank" rel="noopener" class="blurb-link">Coquette</a>, <a href="https://gtacars.net/gta5/infernus" target="_blank" rel="noopener" class="blurb-link">Infernus</a>, or <a href="https://gtacars.net/gta5/sentinel2" target="_blank" rel="noopener" class="blurb-link">Sentinel</a>. No two-star wanted level means it wasn't on his list — but you've just eliminated three of the eight possibilities. Work down through the rounds below. Seven times out of eight you'll have a deliver by round three. On the rare fourth miss, you know exactly which list it is and every car on it.</p>
+  </div>
+
+  <div class="legend">
+    <span class="l-swatch"><span class="lbadge gone">N</span> already eliminated</span>
+    <span class="l-swatch"><span class="lbadge elim">N</span> eliminated by this grab</span>
+    <span class="l-swatch"><span class="lbadge live">N</span> still possible</span>
+    <span class="l-swatch"><span class="lbadge conf">N</span> confirmed</span>
+  </div>
+
+<div class="r1-section">
+  <div class="r1-header">
+    <span class="r1-tag">Round 1</span>
+    <a href="https://gtacars.net/gta5/banshee" target="_blank" rel="noopener" class="r1-name">Banshee</a>
+    <div class="r1-badges"><span class="b b-live">1</span><span class="b b-elim">2</span><span class="b b-live">3</span><span class="b b-elim">4</span><span class="b b-live">5</span><span class="b b-elim">6</span><span class="b b-live">7</span><span class="b b-live">8</span></div>
+    <span class="r1-done"><span class="dot-g"></span>find it — deliver</span>
+  </div>
+  <div class="flow">
+    <div class="col col-r2">
+      <div class="col-head">Round 2</div>
+      <div class="r2-cells" style="grid-template-rows:2fr 1fr 1fr 2fr 3fr 1fr">
+      <div class="r2-cell" style="--flex:2">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/bullet" target="_blank" rel="noopener">Bullet</a></div>
+        <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-live">3</span><span class="b b-gone">4</span><span class="b b-elim">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-live">8</span></div>
+      </div>
+      <div class="r2-cell" style="--flex:1">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/carbonizzare" target="_blank" rel="noopener">Carbonizzare</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/schafter2" target="_blank" rel="noopener">Schafter</a></div>
+        <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-live">3</span><span class="b b-gone">4</span><span class="b b-live">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-elim">8</span></div>
+      </div>
+      <div class="r2-cell" style="--flex:1">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/f620" target="_blank" rel="noopener">F620</a></div>
+        <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-live">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-live">8</span></div>
+      </div>
+      <div class="r2-cell" style="--flex:2">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a></div>
+        <div class="badges"><span class="b b-live">1</span><span class="b b-gone">2</span><span class="b b-live">3</span><span class="b b-gone">4</span><span class="b b-elim">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-elim">8</span></div>
+      </div>
+      <div class="r2-cell" style="--flex:3">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a></div>
+        <div class="badges"><span class="b b-live">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-live">5</span><span class="b b-gone">6</span><span class="b b-elim">7</span><span class="b b-live">8</span></div>
+      </div>
+      <div class="r2-cell" style="--flex:1">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/rocoto" target="_blank" rel="noopener">Rocoto</a></div>
+        <div class="badges"><span class="b b-live">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-live">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-elim">8</span></div>
+      </div>
+      </div>
+    </div>
+    <div class="col col-r3">
+      <div class="col-head">Round 3</div>
+      <div class="r3-cells" style="grid-template-rows:2fr 1fr 1fr 2fr 3fr 1fr">
+      <div class="r3-group" style="--flex:2">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a></div>
+          <div class="badges"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-elim">7</span><span class="b b-live">8</span></div>
+        </div>
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/rocoto" target="_blank" rel="noopener">Rocoto</a></div>
+          <div class="badges"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-elim">8</span></div>
+        </div>
+      </div>
+      <div class="r3-group" style="--flex:1">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a></div>
+          <div class="badges"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-live">5</span><span class="b b-gone">6</span><span class="b b-elim">7</span><span class="b b-gone">8</span></div>
+        </div>
+      </div>
+      <div class="r3-group" style="--flex:1">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a></div>
+          <div class="badges"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-elim">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-elim">8</span></div>
+        </div>
+      </div>
+      <div class="r3-group" style="--flex:2">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/carbonizzare" target="_blank" rel="noopener">Carbonizzare</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/schafter2" target="_blank" rel="noopener">Schafter</a></div>
+          <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-gone">8</span></div>
+        </div>
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/f620" target="_blank" rel="noopener">F620</a></div>
+          <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-gone">8</span></div>
+        </div>
+      </div>
+      <div class="r3-group" style="--flex:3">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/bullet" target="_blank" rel="noopener">Bullet</a></div>
+          <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-elim">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-live">8</span></div>
+        </div>
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/carbonizzare" target="_blank" rel="noopener">Carbonizzare</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/schafter2" target="_blank" rel="noopener">Schafter</a></div>
+          <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-live">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-elim">8</span></div>
+        </div>
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a></div>
+          <div class="badges"><span class="b b-live">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-elim">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-elim">8</span></div>
+        </div>
+      </div>
+      <div class="r3-group" style="--flex:1">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/bullet" target="_blank" rel="noopener">Bullet</a></div>
+          <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-elim">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-gone">8</span></div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="col col-r4">
+      <div class="col-head">Round 4 — confirmed list</div>
+      <div class="r4-cells">
+      <div class="r4-group" style="--flex:2">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-conf">8</span></div>
+        <div class="cn">List 8</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/rocoto" target="_blank" rel="noopener">Rocoto</a> · <a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a> · <a class="car-link" href="https://gtacars.net/gta5/schafter2" target="_blank" rel="noopener">Schafter</a> · <a class="car-link" href="https://gtacars.net/gta5/carbonizzare" target="_blank" rel="noopener">Carbonizzare</a> · <a class="car-link" href="https://gtacars.net/gta5/exemplar" target="_blank" rel="noopener">Exemplar</a></span></div>
+      </div>
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-conf">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 7</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/sentinel2" target="_blank" rel="noopener">Sentinel</a> · <a class="car-link" href="https://gtacars.net/gta5/schwarzer" target="_blank" rel="noopener">Schwartzer</a> · <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a> · <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> · <a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a></span></div>
+      </div>
+      </div>
+      <div class="r4-group" style="--flex:1">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-conf">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 5</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a> · <a class="car-link" href="https://gtacars.net/gta5/serrano" target="_blank" rel="noopener">Serrano</a> · <a class="car-link" href="https://gtacars.net/gta5/bullet" target="_blank" rel="noopener">Bullet</a> · <a class="car-link" href="https://gtacars.net/gta5/infernus" target="_blank" rel="noopener">Infernus</a> · <a class="car-link" href="https://gtacars.net/gta5/coquette" target="_blank" rel="noopener">Coquette</a></span></div>
+      </div>
+      </div>
+      <div class="r4-group" style="--flex:1">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-conf">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 7</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/sentinel2" target="_blank" rel="noopener">Sentinel</a> · <a class="car-link" href="https://gtacars.net/gta5/schwarzer" target="_blank" rel="noopener">Schwartzer</a> · <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a> · <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> · <a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a></span></div>
+      </div>
+      </div>
+      <div class="r4-group" style="--flex:2">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-conf">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 7</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/sentinel2" target="_blank" rel="noopener">Sentinel</a> · <a class="car-link" href="https://gtacars.net/gta5/schwarzer" target="_blank" rel="noopener">Schwartzer</a> · <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a> · <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> · <a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a></span></div>
+      </div>
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-conf">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 7</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/sentinel2" target="_blank" rel="noopener">Sentinel</a> · <a class="car-link" href="https://gtacars.net/gta5/schwarzer" target="_blank" rel="noopener">Schwartzer</a> · <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a> · <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> · <a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a></span></div>
+      </div>
+      </div>
+      <div class="r4-group" style="--flex:3">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-conf">8</span></div>
+        <div class="cn">List 8</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/rocoto" target="_blank" rel="noopener">Rocoto</a> · <a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a> · <a class="car-link" href="https://gtacars.net/gta5/schafter2" target="_blank" rel="noopener">Schafter</a> · <a class="car-link" href="https://gtacars.net/gta5/carbonizzare" target="_blank" rel="noopener">Carbonizzare</a> · <a class="car-link" href="https://gtacars.net/gta5/exemplar" target="_blank" rel="noopener">Exemplar</a></span></div>
+      </div>
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-conf">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 5</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a> · <a class="car-link" href="https://gtacars.net/gta5/serrano" target="_blank" rel="noopener">Serrano</a> · <a class="car-link" href="https://gtacars.net/gta5/bullet" target="_blank" rel="noopener">Bullet</a> · <a class="car-link" href="https://gtacars.net/gta5/infernus" target="_blank" rel="noopener">Infernus</a> · <a class="car-link" href="https://gtacars.net/gta5/coquette" target="_blank" rel="noopener">Coquette</a></span></div>
+      </div>
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-conf">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 1</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/schafter2" target="_blank" rel="noopener">Schafter</a> · <a class="car-link" href="https://gtacars.net/gta5/bullet" target="_blank" rel="noopener">Bullet</a> · <a class="car-link" href="https://gtacars.net/gta5/f620" target="_blank" rel="noopener">F620</a> · <a class="car-link" href="https://gtacars.net/gta5/carbonizzare" target="_blank" rel="noopener">Carbonizzare</a> · <a class="car-link" href="https://gtacars.net/gta5/comet2" target="_blank" rel="noopener">Comet</a></span></div>
+      </div>
+      </div>
+      <div class="r4-group" style="--flex:1">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-conf">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 7</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/sentinel2" target="_blank" rel="noopener">Sentinel</a> · <a class="car-link" href="https://gtacars.net/gta5/schwarzer" target="_blank" rel="noopener">Schwartzer</a> · <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a> · <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> · <a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a></span></div>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="r1-section">
+  <div class="r1-header">
+    <span class="r1-tag">Round 1</span>
+    <a href="https://gtacars.net/gta5/coquette" target="_blank" rel="noopener" class="r1-name">Coquette</a><span class="r1-or">or</span><a href="https://gtacars.net/gta5/infernus" target="_blank" rel="noopener" class="r1-name">Infernus</a>
+    <div class="r1-badges"><span class="b b-live">1</span><span class="b b-elim">2</span><span class="b b-live">3</span><span class="b b-elim">4</span><span class="b b-elim">5</span><span class="b b-live">6</span><span class="b b-live">7</span><span class="b b-live">8</span></div>
+    <span class="r1-done"><span class="dot-g"></span>find it — deliver</span>
+  </div>
+  <div class="flow">
+    <div class="col col-r2">
+      <div class="col-head">Round 2</div>
+      <div class="r2-cells" style="grid-template-rows:1fr 2fr 2fr 1fr 3fr 1fr">
+      <div class="r2-cell" style="--flex:1">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/carbonizzare" target="_blank" rel="noopener">Carbonizzare</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/schafter2" target="_blank" rel="noopener">Schafter</a></div>
+        <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-live">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-live">6</span><span class="b b-live">7</span><span class="b b-elim">8</span></div>
+      </div>
+      <div class="r2-cell" style="--flex:2">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/comet2" target="_blank" rel="noopener">Comet</a></div>
+        <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-live">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-elim">6</span><span class="b b-live">7</span><span class="b b-live">8</span></div>
+      </div>
+      <div class="r2-cell" style="--flex:2">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/exemplar" target="_blank" rel="noopener">Exemplar</a></div>
+        <div class="badges"><span class="b b-live">1</span><span class="b b-gone">2</span><span class="b b-live">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-elim">6</span><span class="b b-live">7</span><span class="b b-elim">8</span></div>
+      </div>
+      <div class="r2-cell" style="--flex:1">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/f620" target="_blank" rel="noopener">F620</a></div>
+        <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-live">6</span><span class="b b-live">7</span><span class="b b-live">8</span></div>
+      </div>
+      <div class="r2-cell" style="--flex:3">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a></div>
+        <div class="badges"><span class="b b-live">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-live">6</span><span class="b b-elim">7</span><span class="b b-live">8</span></div>
+      </div>
+      <div class="r2-cell" style="--flex:1">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/rocoto" target="_blank" rel="noopener">Rocoto</a></div>
+        <div class="badges"><span class="b b-live">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-live">6</span><span class="b b-live">7</span><span class="b b-elim">8</span></div>
+      </div>
+      </div>
+    </div>
+    <div class="col col-r3">
+      <div class="col-head">Round 3</div>
+      <div class="r3-cells" style="grid-template-rows:1fr 2fr 2fr 1fr 3fr 1fr">
+      <div class="r3-group" style="--flex:1">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a></div>
+          <div class="badges"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-live">6</span><span class="b b-elim">7</span><span class="b b-gone">8</span></div>
+        </div>
+      </div>
+      <div class="r3-group" style="--flex:2">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a></div>
+          <div class="badges"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-elim">7</span><span class="b b-live">8</span></div>
+        </div>
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/rocoto" target="_blank" rel="noopener">Rocoto</a></div>
+          <div class="badges"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-elim">8</span></div>
+        </div>
+      </div>
+      <div class="r3-group" style="--flex:2">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/f620" target="_blank" rel="noopener">F620</a></div>
+          <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-live">7</span><span class="b b-gone">8</span></div>
+        </div>
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a></div>
+          <div class="badges"><span class="b b-live">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-elim">7</span><span class="b b-gone">8</span></div>
+        </div>
+      </div>
+      <div class="r3-group" style="--flex:1">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/exemplar" target="_blank" rel="noopener">Exemplar</a></div>
+          <div class="badges"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-elim">6</span><span class="b b-live">7</span><span class="b b-elim">8</span></div>
+        </div>
+      </div>
+      <div class="r3-group" style="--flex:3">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/carbonizzare" target="_blank" rel="noopener">Carbonizzare</a> <span class="sl">/</span> <a class="car-link" href="https://gtacars.net/gta5/schafter2" target="_blank" rel="noopener">Schafter</a></div>
+          <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-live">6</span><span class="b b-gone">7</span><span class="b b-elim">8</span></div>
+        </div>
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/comet2" target="_blank" rel="noopener">Comet</a></div>
+          <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-elim">6</span><span class="b b-gone">7</span><span class="b b-live">8</span></div>
+        </div>
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/exemplar" target="_blank" rel="noopener">Exemplar</a></div>
+          <div class="badges"><span class="b b-live">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-elim">6</span><span class="b b-gone">7</span><span class="b b-elim">8</span></div>
+        </div>
+      </div>
+      <div class="r3-group" style="--flex:1">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/comet2" target="_blank" rel="noopener">Comet</a></div>
+          <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-elim">6</span><span class="b b-live">7</span><span class="b b-gone">8</span></div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="col col-r4">
+      <div class="col-head">Round 4 — confirmed list</div>
+      <div class="r4-cells">
+      <div class="r4-group" style="--flex:1">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-conf">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 6</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/zion" target="_blank" rel="noopener">Zion</a> · <a class="car-link" href="https://gtacars.net/gta5/banshee" target="_blank" rel="noopener">Banshee</a> · <a class="car-link" href="https://gtacars.net/gta5/comet2" target="_blank" rel="noopener">Comet</a> · <a class="car-link" href="https://gtacars.net/gta5/surano" target="_blank" rel="noopener">Surano</a> · <a class="car-link" href="https://gtacars.net/gta5/exemplar" target="_blank" rel="noopener">Exemplar</a></span></div>
+      </div>
+      </div>
+      <div class="r4-group" style="--flex:2">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-conf">8</span></div>
+        <div class="cn">List 8</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/rocoto" target="_blank" rel="noopener">Rocoto</a> · <a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a> · <a class="car-link" href="https://gtacars.net/gta5/schafter2" target="_blank" rel="noopener">Schafter</a> · <a class="car-link" href="https://gtacars.net/gta5/carbonizzare" target="_blank" rel="noopener">Carbonizzare</a> · <a class="car-link" href="https://gtacars.net/gta5/exemplar" target="_blank" rel="noopener">Exemplar</a></span></div>
+      </div>
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-conf">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 7</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/sentinel2" target="_blank" rel="noopener">Sentinel</a> · <a class="car-link" href="https://gtacars.net/gta5/schwarzer" target="_blank" rel="noopener">Schwartzer</a> · <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a> · <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> · <a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a></span></div>
+      </div>
+      </div>
+      <div class="r4-group" style="--flex:2">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-conf">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 7</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/sentinel2" target="_blank" rel="noopener">Sentinel</a> · <a class="car-link" href="https://gtacars.net/gta5/schwarzer" target="_blank" rel="noopener">Schwartzer</a> · <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a> · <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> · <a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a></span></div>
+      </div>
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-conf">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 1</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/schafter2" target="_blank" rel="noopener">Schafter</a> · <a class="car-link" href="https://gtacars.net/gta5/bullet" target="_blank" rel="noopener">Bullet</a> · <a class="car-link" href="https://gtacars.net/gta5/f620" target="_blank" rel="noopener">F620</a> · <a class="car-link" href="https://gtacars.net/gta5/carbonizzare" target="_blank" rel="noopener">Carbonizzare</a> · <a class="car-link" href="https://gtacars.net/gta5/comet2" target="_blank" rel="noopener">Comet</a></span></div>
+      </div>
+      </div>
+      <div class="r4-group" style="--flex:1">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-conf">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 7</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/sentinel2" target="_blank" rel="noopener">Sentinel</a> · <a class="car-link" href="https://gtacars.net/gta5/schwarzer" target="_blank" rel="noopener">Schwartzer</a> · <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a> · <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> · <a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a></span></div>
+      </div>
+      </div>
+      <div class="r4-group" style="--flex:3">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-conf">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 6</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/zion" target="_blank" rel="noopener">Zion</a> · <a class="car-link" href="https://gtacars.net/gta5/banshee" target="_blank" rel="noopener">Banshee</a> · <a class="car-link" href="https://gtacars.net/gta5/comet2" target="_blank" rel="noopener">Comet</a> · <a class="car-link" href="https://gtacars.net/gta5/surano" target="_blank" rel="noopener">Surano</a> · <a class="car-link" href="https://gtacars.net/gta5/exemplar" target="_blank" rel="noopener">Exemplar</a></span></div>
+      </div>
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-conf">8</span></div>
+        <div class="cn">List 8</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/rocoto" target="_blank" rel="noopener">Rocoto</a> · <a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a> · <a class="car-link" href="https://gtacars.net/gta5/schafter2" target="_blank" rel="noopener">Schafter</a> · <a class="car-link" href="https://gtacars.net/gta5/carbonizzare" target="_blank" rel="noopener">Carbonizzare</a> · <a class="car-link" href="https://gtacars.net/gta5/exemplar" target="_blank" rel="noopener">Exemplar</a></span></div>
+      </div>
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-conf">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 1</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/schafter2" target="_blank" rel="noopener">Schafter</a> · <a class="car-link" href="https://gtacars.net/gta5/bullet" target="_blank" rel="noopener">Bullet</a> · <a class="car-link" href="https://gtacars.net/gta5/f620" target="_blank" rel="noopener">F620</a> · <a class="car-link" href="https://gtacars.net/gta5/carbonizzare" target="_blank" rel="noopener">Carbonizzare</a> · <a class="car-link" href="https://gtacars.net/gta5/comet2" target="_blank" rel="noopener">Comet</a></span></div>
+      </div>
+      </div>
+      <div class="r4-group" style="--flex:1">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-conf">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 7</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/sentinel2" target="_blank" rel="noopener">Sentinel</a> · <a class="car-link" href="https://gtacars.net/gta5/schwarzer" target="_blank" rel="noopener">Schwartzer</a> · <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a> · <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> · <a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a></span></div>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="r1-section">
+  <div class="r1-header">
+    <span class="r1-tag">Round 1</span>
+    <a href="https://gtacars.net/gta5/sentinel2" target="_blank" rel="noopener" class="r1-name">Sentinel</a>
+    <div class="r1-badges"><span class="b b-live">1</span><span class="b b-elim">2</span><span class="b b-live">3</span><span class="b b-elim">4</span><span class="b b-live">5</span><span class="b b-live">6</span><span class="b b-elim">7</span><span class="b b-live">8</span></div>
+    <span class="r1-done"><span class="dot-g"></span>find it — deliver</span>
+  </div>
+  <div class="flow">
+    <div class="col col-r2">
+      <div class="col-head">Round 2</div>
+      <div class="r2-cells" style="grid-template-rows:2fr 2fr 2fr 2fr 2fr 2fr">
+      <div class="r2-cell" style="--flex:2">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/bullet" target="_blank" rel="noopener">Bullet</a></div>
+        <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-live">3</span><span class="b b-gone">4</span><span class="b b-elim">5</span><span class="b b-live">6</span><span class="b b-gone">7</span><span class="b b-live">8</span></div>
+      </div>
+      <div class="r2-cell" style="--flex:2">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/comet2" target="_blank" rel="noopener">Comet</a></div>
+        <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-live">3</span><span class="b b-gone">4</span><span class="b b-live">5</span><span class="b b-elim">6</span><span class="b b-gone">7</span><span class="b b-live">8</span></div>
+      </div>
+      <div class="r2-cell" style="--flex:2">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/exemplar" target="_blank" rel="noopener">Exemplar</a></div>
+        <div class="badges"><span class="b b-live">1</span><span class="b b-gone">2</span><span class="b b-live">3</span><span class="b b-gone">4</span><span class="b b-live">5</span><span class="b b-elim">6</span><span class="b b-gone">7</span><span class="b b-elim">8</span></div>
+      </div>
+      <div class="r2-cell" style="--flex:2">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/f620" target="_blank" rel="noopener">F620</a></div>
+        <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-live">5</span><span class="b b-live">6</span><span class="b b-gone">7</span><span class="b b-live">8</span></div>
+      </div>
+      <div class="r2-cell" style="--flex:2">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a></div>
+        <div class="badges"><span class="b b-live">1</span><span class="b b-gone">2</span><span class="b b-live">3</span><span class="b b-gone">4</span><span class="b b-elim">5</span><span class="b b-live">6</span><span class="b b-gone">7</span><span class="b b-elim">8</span></div>
+      </div>
+      <div class="r2-cell" style="--flex:2">
+        <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/rocoto" target="_blank" rel="noopener">Rocoto</a></div>
+        <div class="badges"><span class="b b-live">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-live">5</span><span class="b b-live">6</span><span class="b b-gone">7</span><span class="b b-elim">8</span></div>
+      </div>
+      </div>
+    </div>
+    <div class="col col-r3">
+      <div class="col-head">Round 3</div>
+      <div class="r3-cells" style="grid-template-rows:2fr 2fr 2fr 2fr 2fr 2fr">
+      <div class="r3-group" style="--flex:2">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/exemplar" target="_blank" rel="noopener">Exemplar</a></div>
+          <div class="badges"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-live">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-elim">6</span><span class="b b-gone">7</span><span class="b b-elim">8</span></div>
+        </div>
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/rocoto" target="_blank" rel="noopener">Rocoto</a></div>
+          <div class="badges"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-live">6</span><span class="b b-gone">7</span><span class="b b-elim">8</span></div>
+        </div>
+      </div>
+      <div class="r3-group" style="--flex:2">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a></div>
+          <div class="badges"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-live">3</span><span class="b b-gone">4</span><span class="b b-elim">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-elim">8</span></div>
+        </div>
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/rocoto" target="_blank" rel="noopener">Rocoto</a></div>
+          <div class="badges"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-live">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-elim">8</span></div>
+        </div>
+      </div>
+      <div class="r3-group" style="--flex:2">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/bullet" target="_blank" rel="noopener">Bullet</a></div>
+          <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-live">3</span><span class="b b-gone">4</span><span class="b b-elim">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        </div>
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/f620" target="_blank" rel="noopener">F620</a></div>
+          <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-live">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        </div>
+      </div>
+      <div class="r3-group" style="--flex:2">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/exemplar" target="_blank" rel="noopener">Exemplar</a></div>
+          <div class="badges"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-live">5</span><span class="b b-elim">6</span><span class="b b-gone">7</span><span class="b b-elim">8</span></div>
+        </div>
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a></div>
+          <div class="badges"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-elim">5</span><span class="b b-live">6</span><span class="b b-gone">7</span><span class="b b-elim">8</span></div>
+        </div>
+      </div>
+      <div class="r3-group" style="--flex:2">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/comet2" target="_blank" rel="noopener">Comet</a></div>
+          <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-live">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-elim">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        </div>
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/f620" target="_blank" rel="noopener">F620</a></div>
+          <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-elim">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-live">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        </div>
+      </div>
+      <div class="r3-group" style="--flex:2">
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/bullet" target="_blank" rel="noopener">Bullet</a></div>
+          <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-elim">5</span><span class="b b-live">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        </div>
+        <div class="r3-cell">
+          <div class="cn"><a class="car-link" href="https://gtacars.net/gta5/comet2" target="_blank" rel="noopener">Comet</a></div>
+          <div class="badges"><span class="b b-elim">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-live">5</span><span class="b b-elim">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="col col-r4">
+      <div class="col-head">Round 4 — confirmed list</div>
+      <div class="r4-cells">
+      <div class="r4-group" style="--flex:2">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-conf">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 3</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a> · <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> · <a class="car-link" href="https://gtacars.net/gta5/f620" target="_blank" rel="noopener">F620</a> · <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a> · <a class="car-link" href="https://gtacars.net/gta5/rocoto" target="_blank" rel="noopener">Rocoto</a></span></div>
+      </div>
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-conf">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 6</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/zion" target="_blank" rel="noopener">Zion</a> · <a class="car-link" href="https://gtacars.net/gta5/banshee" target="_blank" rel="noopener">Banshee</a> · <a class="car-link" href="https://gtacars.net/gta5/comet2" target="_blank" rel="noopener">Comet</a> · <a class="car-link" href="https://gtacars.net/gta5/surano" target="_blank" rel="noopener">Surano</a> · <a class="car-link" href="https://gtacars.net/gta5/exemplar" target="_blank" rel="noopener">Exemplar</a></span></div>
+      </div>
+      </div>
+      <div class="r4-group" style="--flex:2">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-conf">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 3</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a> · <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> · <a class="car-link" href="https://gtacars.net/gta5/f620" target="_blank" rel="noopener">F620</a> · <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a> · <a class="car-link" href="https://gtacars.net/gta5/rocoto" target="_blank" rel="noopener">Rocoto</a></span></div>
+      </div>
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-conf">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 5</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a> · <a class="car-link" href="https://gtacars.net/gta5/serrano" target="_blank" rel="noopener">Serrano</a> · <a class="car-link" href="https://gtacars.net/gta5/bullet" target="_blank" rel="noopener">Bullet</a> · <a class="car-link" href="https://gtacars.net/gta5/infernus" target="_blank" rel="noopener">Infernus</a> · <a class="car-link" href="https://gtacars.net/gta5/coquette" target="_blank" rel="noopener">Coquette</a></span></div>
+      </div>
+      </div>
+      <div class="r4-group" style="--flex:2">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-conf">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 3</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a> · <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> · <a class="car-link" href="https://gtacars.net/gta5/f620" target="_blank" rel="noopener">F620</a> · <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a> · <a class="car-link" href="https://gtacars.net/gta5/rocoto" target="_blank" rel="noopener">Rocoto</a></span></div>
+      </div>
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-conf">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 5</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a> · <a class="car-link" href="https://gtacars.net/gta5/serrano" target="_blank" rel="noopener">Serrano</a> · <a class="car-link" href="https://gtacars.net/gta5/bullet" target="_blank" rel="noopener">Bullet</a> · <a class="car-link" href="https://gtacars.net/gta5/infernus" target="_blank" rel="noopener">Infernus</a> · <a class="car-link" href="https://gtacars.net/gta5/coquette" target="_blank" rel="noopener">Coquette</a></span></div>
+      </div>
+      </div>
+      <div class="r4-group" style="--flex:2">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-conf">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 5</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a> · <a class="car-link" href="https://gtacars.net/gta5/serrano" target="_blank" rel="noopener">Serrano</a> · <a class="car-link" href="https://gtacars.net/gta5/bullet" target="_blank" rel="noopener">Bullet</a> · <a class="car-link" href="https://gtacars.net/gta5/infernus" target="_blank" rel="noopener">Infernus</a> · <a class="car-link" href="https://gtacars.net/gta5/coquette" target="_blank" rel="noopener">Coquette</a></span></div>
+      </div>
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-conf">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 6</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/zion" target="_blank" rel="noopener">Zion</a> · <a class="car-link" href="https://gtacars.net/gta5/banshee" target="_blank" rel="noopener">Banshee</a> · <a class="car-link" href="https://gtacars.net/gta5/comet2" target="_blank" rel="noopener">Comet</a> · <a class="car-link" href="https://gtacars.net/gta5/surano" target="_blank" rel="noopener">Surano</a> · <a class="car-link" href="https://gtacars.net/gta5/exemplar" target="_blank" rel="noopener">Exemplar</a></span></div>
+      </div>
+      </div>
+      <div class="r4-group" style="--flex:2">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-conf">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 3</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/feltzer2" target="_blank" rel="noopener">Feltzer</a> · <a class="car-link" href="https://gtacars.net/gta5/jackal" target="_blank" rel="noopener">Jackal</a> · <a class="car-link" href="https://gtacars.net/gta5/f620" target="_blank" rel="noopener">F620</a> · <a class="car-link" href="https://gtacars.net/gta5/superd" target="_blank" rel="noopener">Super Diamond</a> · <a class="car-link" href="https://gtacars.net/gta5/rocoto" target="_blank" rel="noopener">Rocoto</a></span></div>
+      </div>
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-conf">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 6</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/zion" target="_blank" rel="noopener">Zion</a> · <a class="car-link" href="https://gtacars.net/gta5/banshee" target="_blank" rel="noopener">Banshee</a> · <a class="car-link" href="https://gtacars.net/gta5/comet2" target="_blank" rel="noopener">Comet</a> · <a class="car-link" href="https://gtacars.net/gta5/surano" target="_blank" rel="noopener">Surano</a> · <a class="car-link" href="https://gtacars.net/gta5/exemplar" target="_blank" rel="noopener">Exemplar</a></span></div>
+      </div>
+      </div>
+      <div class="r4-group" style="--flex:2">
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-gone">5</span><span class="b b-conf">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 6</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/zion" target="_blank" rel="noopener">Zion</a> · <a class="car-link" href="https://gtacars.net/gta5/banshee" target="_blank" rel="noopener">Banshee</a> · <a class="car-link" href="https://gtacars.net/gta5/comet2" target="_blank" rel="noopener">Comet</a> · <a class="car-link" href="https://gtacars.net/gta5/surano" target="_blank" rel="noopener">Surano</a> · <a class="car-link" href="https://gtacars.net/gta5/exemplar" target="_blank" rel="noopener">Exemplar</a></span></div>
+      </div>
+      <div class="r4-cell">
+        <div class="badges" style="margin-bottom:5px;"><span class="b b-gone">1</span><span class="b b-gone">2</span><span class="b b-gone">3</span><span class="b b-gone">4</span><span class="b b-conf">5</span><span class="b b-gone">6</span><span class="b b-gone">7</span><span class="b b-gone">8</span></div>
+        <div class="cn">List 5</div>
+        <div class="guar-cars"><span class="guar-car"><a class="car-link" href="https://gtacars.net/gta5/felon2" target="_blank" rel="noopener">Felon GT</a> · <a class="car-link" href="https://gtacars.net/gta5/serrano" target="_blank" rel="noopener">Serrano</a> · <a class="car-link" href="https://gtacars.net/gta5/bullet" target="_blank" rel="noopener">Bullet</a> · <a class="car-link" href="https://gtacars.net/gta5/infernus" target="_blank" rel="noopener">Infernus</a> · <a class="car-link" href="https://gtacars.net/gta5/coquette" target="_blank" rel="noopener">Coquette</a></span></div>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<button class="feedback-btn" onclick="openFeedback()">Report Error / Suggest Change</button>
+<div class="modal-overlay" id="feedback-overlay" onclick="if(event.target===this)closeFeedback()">
+  <div class="modal">
+    <div class="modal-title">Report an Error</div>
+    <div class="modal-sub">No login required. Screenshot optional.</div>
+    <label class="modal-label" style="margin-top:4px">What's wrong?</label>
+    <textarea class="modal-textarea" id="feedback-text" placeholder="Describe the error or suggest a change..."></textarea>
+    <div class="screenshot-zone" id="screenshot-zone" onclick="document.getElementById('screenshot-file').click()">
+      <div class="screenshot-hint" id="screenshot-hint"><span>Paste</span> a screenshot or <span>click</span> to upload</div>
+      <img id="screenshot-preview" style="display:none">
+      <button class="screenshot-clear" id="screenshot-clear" onclick="event.stopPropagation();clearScreenshot()">✕ Remove</button>
+    </div>
+    <input type="file" id="screenshot-file" accept="image/*" style="display:none" onchange="handleFileSelect(event)">
+    <div class="modal-footer">
+      <div class="modal-status" id="modal-status"></div>
+      <div style="display:flex;gap:8px">
+        <button class="modal-cancel-btn" onclick="closeFeedback()">Cancel</button>
+        <button class="modal-send-btn" id="modal-send-btn" onclick="submitFeedback()">Send Report</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+let screenshotData=null;
+function openFeedback(){document.getElementById('feedback-overlay').classList.add('open');document.getElementById('feedback-text').focus();}
+function closeFeedback(){document.getElementById('feedback-overlay').classList.remove('open');document.getElementById('modal-status').textContent='';}
+function setScreenshot(d){screenshotData=d;document.getElementById('screenshot-preview').src=d;document.getElementById('screenshot-preview').style.display='block';document.getElementById('screenshot-hint').style.display='none';document.getElementById('screenshot-zone').classList.add('has-image');}
+function clearScreenshot(){screenshotData=null;document.getElementById('screenshot-preview').src='';document.getElementById('screenshot-preview').style.display='none';document.getElementById('screenshot-hint').style.display='';document.getElementById('screenshot-zone').classList.remove('has-image');document.getElementById('screenshot-file').value='';}
+function handleFileSelect(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>setScreenshot(ev.target.result);r.readAsDataURL(f);}
+document.addEventListener('paste',e=>{if(!document.getElementById('feedback-overlay').classList.contains('open'))return;const items=e.clipboardData?.items;if(!items)return;for(const item of items){if(item.type.startsWith('image/')){e.preventDefault();const r=new FileReader();r.onload=ev=>setScreenshot(ev.target.result);r.readAsDataURL(item.getAsFile());break;}}});
+async function submitFeedback(){
+  const text=document.getElementById('feedback-text').value.trim();
+  if(!text){document.getElementById('modal-status').textContent='Please describe the issue first.';return;}
+  const btn=document.getElementById('modal-send-btn'),status=document.getElementById('modal-status');
+  btn.disabled=true;btn.textContent='Sending...';status.textContent='';
+  let body=`Page: ${location.href}\n\nFeedback:\n${text}`;
+  if(screenshotData){try{const f=new FormData();f.append('key','a3cb2b5f84e2b4e2a7b6c1d9f8e3a4b5');f.append('image',screenshotData.split(',')[1]);const r=await fetch('https://api.imgbb.com/1/upload',{method:'POST',body:f});const d=await r.json();if(d.success)body+=`\n\nScreenshot: ${d.data.url}`;}catch(e){body+='\n\n(Screenshot failed to upload)';}}
+  const fd=new FormData();fd.append('access_key','25c0d000-546c-45cd-be70-ec9abcded581');fd.append('subject','McKillsey Error Report — Simeon Daily');fd.append('message',body);
+  try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});const d=await r.json();if(d.success){status.style.color='var(--green)';status.textContent='Sent. Thank you.';btn.textContent='Sent ✓';setTimeout(()=>{closeFeedback();document.getElementById('feedback-text').value='';clearScreenshot();btn.disabled=false;btn.textContent='Send Report';status.style.color='';},1800);}else throw new Error(d.message||'Unknown error');}catch(err){status.style.color='var(--red)';status.textContent='Failed to send. Try again.';btn.disabled=false;btn.textContent='Send Report';}
+}
+</script>
+</body>
+</html>
