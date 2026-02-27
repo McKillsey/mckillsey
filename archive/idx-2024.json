@@ -1,5 +1,1797 @@
 [
   {
+    "t": "Bravado Dorado",
+    "y": "podium",
+    "w": "2024-11-21",
+    "d": "Podium Vehicle",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Vulcar Nebula Turbo",
+    "y": "prize",
+    "w": "2024-11-21",
+    "d": "Win a Race in LS Car Meet Series 2 days in a row",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Coil Brawler",
+    "y": "test",
+    "w": "2024-11-21",
+    "d": "Test Ride (Removed)",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Ocelot Lynx",
+    "y": "test",
+    "w": "2024-11-21",
+    "d": "Test Ride (Removed)",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Lampadati Furore GT",
+    "y": "test",
+    "w": "2024-11-21",
+    "d": "Test Ride (Removed)",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Karin Vivanite",
+    "y": "ptest",
+    "w": "2024-11-21",
+    "d": "Premium Test Ride (HSW)",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Vapid Hustler",
+    "y": "salvage",
+    "w": "2024-11-21",
+    "d": "The Podium Robbery",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Pfister Comet Safari",
+    "y": "salvage",
+    "w": "2024-11-21",
+    "d": "The Duggan Robbery",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Grotti Turismo Omaggio",
+    "y": "salvage",
+    "w": "2024-11-21",
+    "d": "The Cargo Ship Robbery",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Declasse Yosemite 1500",
+    "y": "lux",
+    "w": "2024-11-21",
+    "d": "Luxury Autos",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Albany Cavalcade XL",
+    "y": "lux",
+    "w": "2024-11-21",
+    "d": "Luxury Autos",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Överflöd Imorgon",
+    "y": "pdm",
+    "w": "2024-11-21",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "RUNE Cheburek",
+    "y": "pdm",
+    "w": "2024-11-21",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Dinka Enduro",
+    "y": "pdm",
+    "w": "2024-11-21",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Enus Cognoscenti",
+    "y": "pdm",
+    "w": "2024-11-21",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Enus Cognoscenti 55",
+    "y": "pdm",
+    "w": "2024-11-21",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Original Heist Finales",
+    "y": "bonus",
+    "w": "2024-11-21",
+    "d": "2X GTA$/RP",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Auto Shop Robbery Contracts",
+    "y": "bonus",
+    "w": "2024-11-21",
+    "d": "2X GTA$/RP",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Hotring Races",
+    "y": "bonus",
+    "w": "2024-11-21",
+    "d": "2X GTA$/RP",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Running Back (Remix)",
+    "y": "bonus",
+    "w": "2024-11-21",
+    "d": "2X GTA$/RP",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Complete any Heist Finale",
+    "y": "challenge",
+    "w": "2024-11-21",
+    "d": "$100,000 + Pacific Standard Sweater",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Coast to Coast",
+    "y": "tt",
+    "w": "2024-11-21",
+    "d": "Time Trial",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Pacific Bluffs to Mount Gordo",
+    "y": "hsw",
+    "w": "2024-11-21",
+    "d": "HSW Time Trial",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Lampadati Casco",
+    "y": "discount",
+    "w": "2024-11-21",
+    "d": "40% Off",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Mammoth Hydra",
+    "y": "discount",
+    "w": "2024-11-21",
+    "d": "30% Off",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Dinka Jester RR",
+    "y": "discount",
+    "w": "2024-11-21",
+    "d": "30% Off",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Grotti Visione",
+    "y": "discount",
+    "w": "2024-11-21",
+    "d": "30% Off",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Übermacht Cypher",
+    "y": "discount",
+    "w": "2024-11-21",
+    "d": "30% Off",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Coil Brawler",
+    "y": "discount",
+    "w": "2024-11-21",
+    "d": "30% Off",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Ocelot Lynx",
+    "y": "discount",
+    "w": "2024-11-21",
+    "d": "30% Off",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Lampadati Furore GT",
+    "y": "discount",
+    "w": "2024-11-21",
+    "d": "30% Off",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "High-End Apartment Properties, Upgrades, and Modifications",
+    "y": "discount",
+    "w": "2024-11-21",
+    "d": "40% Off",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Auto Shop Properties, Upgrades, and Modifications",
+    "y": "discount",
+    "w": "2024-11-21",
+    "d": "30% Off",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Machete",
+    "y": "gun",
+    "w": "2024-11-21",
+    "d": "10%",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Compact EMP Launcher",
+    "y": "gun",
+    "w": "2024-11-21",
+    "d": "30%",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Battle Rifle",
+    "y": "gun",
+    "w": "2024-11-21",
+    "d": "10%",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Musket",
+    "y": "gun",
+    "w": "2024-11-21",
+    "d": "10%",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Assault Rifle",
+    "y": "gun",
+    "w": "2024-11-21",
+    "d": "10%",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Compact Grenade Launcher",
+    "y": "gun",
+    "w": "2024-11-21",
+    "d": "10%",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Grenade",
+    "y": "gun",
+    "w": "2024-11-21",
+    "d": "10%",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Pipe Bomb",
+    "y": "gun",
+    "w": "2024-11-21",
+    "d": "10%",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Sticky Bomb",
+    "y": "gun",
+    "w": "2024-11-21",
+    "d": "10%",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Compact EMP Launcher",
+    "y": "discount",
+    "w": "2024-11-21",
+    "d": "30% Off (Gun Van)",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "The Heist Challenge",
+    "y": "event",
+    "w": "2024-11-21",
+    "d": "Collectively steal GTA$20 trillion by completing select Heist Finales",
+    "s": "2024-11-21",
+    "e": "2024-11-28"
+  },
+  {
+    "t": "Dinka RT3000",
+    "y": "podium",
+    "w": "2024-11-28",
+    "d": "Podium Vehicle",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Karin Futo GTX",
+    "y": "prize",
+    "w": "2024-11-28",
+    "d": "Place Top 3 in LS Car Meet Series 4 days in a row",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Vulcar Warrener",
+    "y": "test",
+    "w": "2024-11-28",
+    "d": "Test Ride (Removed)",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Canis Seminole Frontier",
+    "y": "test",
+    "w": "2024-11-28",
+    "d": "Test Ride (Removed)",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Obey 9F Cabrio",
+    "y": "test",
+    "w": "2024-11-28",
+    "d": "Test Ride (Removed)",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Penaud Le Coureuse",
+    "y": "ptest",
+    "w": "2024-11-28",
+    "d": "Premium Test Ride (HSW)",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Dinka Kanjo SJ",
+    "y": "salvage",
+    "w": "2024-11-28",
+    "d": "The Gangbanger Robbery",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Declasse Vigero ZX",
+    "y": "salvage",
+    "w": "2024-11-28",
+    "d": "The Podium Robbery",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Pegassi Torero XO",
+    "y": "salvage",
+    "w": "2024-11-28",
+    "d": "The McTony Robbery",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Übermacht Niobe",
+    "y": "lux",
+    "w": "2024-11-28",
+    "d": "Luxury Autos",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Överflöd Pipistrello",
+    "y": "lux",
+    "w": "2024-11-28",
+    "d": "Luxury Autos",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Benefactor Surano",
+    "y": "pdm",
+    "w": "2024-11-28",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Vapid Bullet",
+    "y": "pdm",
+    "w": "2024-11-28",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Emperor ETR1",
+    "y": "pdm",
+    "w": "2024-11-28",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Dewbauchee Rapid GT Classic",
+    "y": "pdm",
+    "w": "2024-11-28",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Canis Kalahari",
+    "y": "pdm",
+    "w": "2024-11-28",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Diamond Adversary Series",
+    "y": "bonus",
+    "w": "2024-11-28",
+    "d": "2X GTA$/RP",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Open Wheel Races",
+    "y": "bonus",
+    "w": "2024-11-28",
+    "d": "2X GTA$/RP",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Junk Energy Skydives",
+    "y": "bonus",
+    "w": "2024-11-28",
+    "d": "2X GTA$/RP",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Deadline",
+    "y": "bonus",
+    "w": "2024-11-28",
+    "d": "2X GTA$/RP",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Complete The Diamond Casino Heist once",
+    "y": "challenge",
+    "w": "2024-11-28",
+    "d": "$100,000 + The Diamond Strike Vest",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Casino",
+    "y": "tt",
+    "w": "2024-11-28",
+    "d": "Time Trial",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "North Chumash",
+    "y": "hsw",
+    "w": "2024-11-28",
+    "d": "HSW Time Trial",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Pegassi Weaponized Ignus",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Coil Cyclone II",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Vapid Bullet",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Emperor ETR1",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Grotti Itali GTO Stinger TT",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Benefactor Surano",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Pegassi Toreador",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Imponte Deluxo",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Ocelot Stromberg",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Dewbauchee Rapid GT Classic",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Declasse Vigero ZX Convertible",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Canis Kalahari",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Pegassi Oppressor",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Shitzu Hakuchou Drag",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Buckingham Luxor",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Buckingham Luxor Deluxe",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Buckingham Swift",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Buckingham Swift Deluxe",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Buckingham Weaponized Conada",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "50% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Mammoth Avenger",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "40% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "JoBuilt P-996 LAZER",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "35% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "B-11 Strikeforce",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "35% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Progen Emerus",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "30% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Truffade Thrax",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "30% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Übermacht Niobe",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "30% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Annis ZR350",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "30% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Mammoth F-160 Raiju",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "30% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Progen PR4",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "25% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Benefactor BR8",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "25% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Declasse DR1",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "25% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Ocelot R88",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "25% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Mammoth Avenger — Operations Terminal Upgrade",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "40% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Galaxy Super Yacht + Modifications",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "40% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Hangar Properties, Upgrades, and Modifications",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "35% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Salvage Yard Properties",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "35% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Arcade Properties, Upgrades, and Modifications",
+    "y": "discount",
+    "w": "2024-11-28",
+    "d": "30% Off",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Railgun",
+    "y": "gun",
+    "w": "2024-11-28",
+    "d": "10%",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Widowmaker",
+    "y": "gun",
+    "w": "2024-11-28",
+    "d": "40%",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Unholy Hellbringer",
+    "y": "gun",
+    "w": "2024-11-28",
+    "d": "10%",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Military Rifle",
+    "y": "gun",
+    "w": "2024-11-28",
+    "d": "10%",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "RPG",
+    "y": "gun",
+    "w": "2024-11-28",
+    "d": "10%",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Up-n-Atomizer",
+    "y": "gun",
+    "w": "2024-11-28",
+    "d": "10%",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Grenade",
+    "y": "gun",
+    "w": "2024-11-28",
+    "d": "10%",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Pipe Bomb",
+    "y": "gun",
+    "w": "2024-11-28",
+    "d": "10%",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Sticky Bomb",
+    "y": "gun",
+    "w": "2024-11-28",
+    "d": "10%",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "The Heist Challenge",
+    "y": "event",
+    "w": "2024-11-28",
+    "d": "Collectively steal GTA$20 trillion — Final Week",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Black Friday",
+    "y": "event",
+    "w": "2024-11-28",
+    "d": "Black Friday discounts through Dec 5",
+    "s": "2024-11-28",
+    "e": "2024-12-04"
+  },
+  {
+    "t": "Declasse Tahoma Coupe",
+    "y": "podium",
+    "w": "2024-12-04",
+    "d": "Podium Vehicle",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Överflöd Autarch",
+    "y": "prize",
+    "w": "2024-12-04",
+    "d": "Win in LS Car Meet Series 3 days in a row",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Vapid Peyote Gasser",
+    "y": "test",
+    "w": "2024-12-04",
+    "d": "Test Ride (Removed)",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Vulcar Fagaloa",
+    "y": "test",
+    "w": "2024-12-04",
+    "d": "Test Ride (Removed)",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Lampadati Tigon",
+    "y": "test",
+    "w": "2024-12-04",
+    "d": "Test Ride (Removed)",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Weeny Issi Rally",
+    "y": "ptest",
+    "w": "2024-12-04",
+    "d": "Premium Test Ride (HSW)",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Överflöd Tyrant",
+    "y": "salvage",
+    "w": "2024-12-04",
+    "d": "The Cargo Ship Robbery",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Declasse Mamba",
+    "y": "salvage",
+    "w": "2024-12-04",
+    "d": "The Podium Robbery",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Karin Previon",
+    "y": "salvage",
+    "w": "2024-12-04",
+    "d": "The Duggan Robbery",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Bollokan Envisage",
+    "y": "lux",
+    "w": "2024-12-04",
+    "d": "Luxury Autos",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Declasse Impaler SZ",
+    "y": "lux",
+    "w": "2024-12-04",
+    "d": "Luxury Autos",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Enus Stafford",
+    "y": "pdm",
+    "w": "2024-12-04",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Progen Tyrus",
+    "y": "pdm",
+    "w": "2024-12-04",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Weeny Dynasty",
+    "y": "pdm",
+    "w": "2024-12-04",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Dinka Thrust",
+    "y": "pdm",
+    "w": "2024-12-04",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Invetero Coquette BlackFin",
+    "y": "pdm",
+    "w": "2024-12-04",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Community Series (Winter)",
+    "y": "bonus",
+    "w": "2024-12-04",
+    "d": "3X GTA$/RP",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Bail Office Standard Targets",
+    "y": "bonus",
+    "w": "2024-12-04",
+    "d": "2X GTA$/RP",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Bail Office Staff Income",
+    "y": "bonus",
+    "w": "2024-12-04",
+    "d": "2X GTA$",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Secure 3 Bounty Targets",
+    "y": "challenge",
+    "w": "2024-12-04",
+    "d": "$100,000",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Route 68",
+    "y": "tt",
+    "w": "2024-12-04",
+    "d": "Time Trial",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "East Vinewood",
+    "y": "hsw",
+    "w": "2024-12-04",
+    "d": "HSW Time Trial",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Vapid Dominator FX Interceptor",
+    "y": "discount",
+    "w": "2024-12-04",
+    "d": "30% Off",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Vapid Dominator FX",
+    "y": "discount",
+    "w": "2024-12-04",
+    "d": "30% Off",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Bollokan Envisage",
+    "y": "discount",
+    "w": "2024-12-04",
+    "d": "30% Off",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Canis Castigator",
+    "y": "discount",
+    "w": "2024-12-04",
+    "d": "30% Off",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Enus Paragon S",
+    "y": "discount",
+    "w": "2024-12-04",
+    "d": "30% Off",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Enus Stafford",
+    "y": "discount",
+    "w": "2024-12-04",
+    "d": "30% Off",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Lampadati Tigon",
+    "y": "discount",
+    "w": "2024-12-04",
+    "d": "30% Off",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Vapid Peyote Gasser",
+    "y": "discount",
+    "w": "2024-12-04",
+    "d": "30% Off",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Progen Tyrus",
+    "y": "discount",
+    "w": "2024-12-04",
+    "d": "30% Off",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Weeny Dynasty",
+    "y": "discount",
+    "w": "2024-12-04",
+    "d": "30% Off",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Bail Office Properties, Upgrades, and Modifications",
+    "y": "discount",
+    "w": "2024-12-04",
+    "d": "40% Off",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Juggernaut",
+    "y": "bonus",
+    "w": "2024-12-04",
+    "d": "Returning Mode",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Battle Axe",
+    "y": "gun",
+    "w": "2024-12-04",
+    "d": "10%",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Precision Rifle",
+    "y": "gun",
+    "w": "2024-12-04",
+    "d": "10%",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Tactical SMG",
+    "y": "gun",
+    "w": "2024-12-04",
+    "d": "10%",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Grenade Launcher",
+    "y": "gun",
+    "w": "2024-12-04",
+    "d": "30%",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Sweeper Shotgun",
+    "y": "gun",
+    "w": "2024-12-04",
+    "d": "10%",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Vintage Pistol",
+    "y": "gun",
+    "w": "2024-12-04",
+    "d": "10%",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Grenade",
+    "y": "gun",
+    "w": "2024-12-04",
+    "d": "10%",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Pipe Bomb",
+    "y": "gun",
+    "w": "2024-12-04",
+    "d": "10%",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Proximity Mine",
+    "y": "gun",
+    "w": "2024-12-04",
+    "d": "10%",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Agents of Sabotage DLC",
+    "y": "event",
+    "w": "2024-12-04",
+    "d": "Releases December 10th",
+    "s": "2024-12-04",
+    "e": "2024-12-10"
+  },
+  {
+    "t": "Lampadati Cinquemila",
+    "y": "podium",
+    "w": "2024-12-10",
+    "d": "Podium Vehicle",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Enus Jubilee",
+    "y": "prize",
+    "w": "2024-12-10",
+    "d": "Place Top 3 in LS Car Meet Series 3 days in a row",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Pegassi Zorrusso",
+    "y": "test",
+    "w": "2024-12-10",
+    "d": "Test Ride",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Dewbauchee Seven-70",
+    "y": "test",
+    "w": "2024-12-10",
+    "d": "Test Ride",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Nagasaki Hot Rod Blazer",
+    "y": "test",
+    "w": "2024-12-10",
+    "d": "Test Ride",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Bravado Banshee GTS",
+    "y": "ptest",
+    "w": "2024-12-10",
+    "d": "Premium Test Ride (HSW)",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Enus Jubilee",
+    "y": "salvage",
+    "w": "2024-12-10",
+    "d": "The Gangbanger Robbery",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Invetero Coquette BlackFin",
+    "y": "salvage",
+    "w": "2024-12-10",
+    "d": "The Duggan Robbery",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Canis Seminole Frontier",
+    "y": "salvage",
+    "w": "2024-12-10",
+    "d": "The McTony Robbery",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Bravado Banshee GTS",
+    "y": "lux",
+    "w": "2024-12-10",
+    "d": "Luxury Autos",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Dinka Jester RR Widebody",
+    "y": "lux",
+    "w": "2024-12-10",
+    "d": "Luxury Autos",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Dinka Chavos V6",
+    "y": "pdm",
+    "w": "2024-12-10",
+    "d": "Premium Deluxe",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Vapid Contender",
+    "y": "pdm",
+    "w": "2024-12-10",
+    "d": "Premium Deluxe",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Vapid Retinue",
+    "y": "pdm",
+    "w": "2024-12-10",
+    "d": "Premium Deluxe",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Ocelot Swinger",
+    "y": "pdm",
+    "w": "2024-12-10",
+    "d": "Premium Deluxe",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Schyster Deviant",
+    "y": "pdm",
+    "w": "2024-12-10",
+    "d": "Premium Deluxe",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Stockpile",
+    "y": "bonus",
+    "w": "2024-12-10",
+    "d": "2X GTA$/RP",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Complete two FIB File Finales",
+    "y": "challenge",
+    "w": "2024-12-10",
+    "d": "$100,000",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "LSIA",
+    "y": "tt",
+    "w": "2024-12-10",
+    "d": "Time Trial",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Del Perro Beach to Murietta Heights",
+    "y": "hsw",
+    "w": "2024-12-10",
+    "d": "HSW Time Trial",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Benefactor Krieger",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Pfister Comet S2",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Pfister Comet S2 Cabrio",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Pfister Comet SR",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Pegassi Zorrusso",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Dewbauchee Seven-70",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Dewbauchee JB 700W",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Dinka Jester RR",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Annis RE-7B",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Annis S80RR",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Willard Eudora",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Ocelot XA-21",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Karin Futo GTX",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Överflöd Pipistrello",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Declasse Vigero ZX",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Lampadati Tigon",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Coil Cyclone",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Vysser Neo",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Vapid Retinue",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Benefactor Terrorbyte",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "20% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Eclipse Towers, Penthouse Suite 3",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Maze Bank Tower Office",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Murrieta Heights Vehicle Warehouse",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Hawick Clubhouse",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Farmhouse Bunker",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Fort Zancudo Hangar A2",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Land Act Reservoir Facility",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "West Vinewood Nightclub",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Arena Workshop",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Master Penthouse",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Eight-Bit Arcade",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "La Mesa Auto Shop",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Hawick Agency",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "La Puerta Salvage Yard",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Downtown Vinewood Bail Office",
+    "y": "discount",
+    "w": "2024-12-10",
+    "d": "30% Off",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Compact EMP Launcher",
+    "y": "gun",
+    "w": "2024-12-10",
+    "d": "10%",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Heavy Rifle",
+    "y": "gun",
+    "w": "2024-12-10",
+    "d": "10%",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Combat MG",
+    "y": "gun",
+    "w": "2024-12-10",
+    "d": "20%",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Homing Launcher",
+    "y": "gun",
+    "w": "2024-12-10",
+    "d": "30%",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Pump Shotgun",
+    "y": "gun",
+    "w": "2024-12-10",
+    "d": "10%",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Nightstick",
+    "y": "gun",
+    "w": "2024-12-10",
+    "d": "10%",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Sticky Bomb",
+    "y": "gun",
+    "w": "2024-12-10",
+    "d": "10%",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Proximity Mine",
+    "y": "gun",
+    "w": "2024-12-10",
+    "d": "10%",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Grenade",
+    "y": "gun",
+    "w": "2024-12-10",
+    "d": "10%",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Agents of Sabotage DLC Launch",
+    "y": "event",
+    "w": "2024-12-10",
+    "d": "New DLC — December 10th",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
+    "t": "Stockpile",
+    "y": "event",
+    "w": "2024-12-10",
+    "d": "Returning Mode",
+    "s": "2024-12-10",
+    "e": "2024-12-19"
+  },
+  {
     "t": "Albany Alpha",
     "y": "pdm",
     "w": "2024-12-19",

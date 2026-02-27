@@ -143,5 +143,658 @@
     ],
     "tt": "Calafia Way",
     "hsw_tt": "Sandy Shores to La Puerta"
+  },
+  "2024-11-21": {
+    "name": "Heist Challenge / OG Heists / Running Back",
+    "start": "2024-11-21",
+    "end": "2024-11-28",
+    "days": 7,
+    "podium": "Bravado Dorado",
+    "prize": "Vulcar Nebula Turbo",
+    "test": [
+      "Coil Brawler",
+      "Ocelot Lynx",
+      "Lampadati Furore GT"
+    ],
+    "ptest": "Karin Vivanite",
+    "salvage": [
+      {
+        "r": "The Podium Robbery",
+        "v": "Vapid Hustler"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Pfister Comet Safari"
+      },
+      {
+        "r": "The Cargo Ship Robbery",
+        "v": "Grotti Turismo Omaggio"
+      }
+    ],
+    "lux": [
+      "Declasse Yosemite 1500",
+      "Albany Cavalcade XL"
+    ],
+    "pdm": [
+      "Överflöd Imorgon ✱",
+      "RUNE Cheburek ✱",
+      "Dinka Enduro ✱",
+      "Enus Cognoscenti ✱",
+      "Enus Cognoscenti 55 ✱"
+    ],
+    "bonuses": [
+      {
+        "a": "Original Heist Finales",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Auto Shop Robbery Contracts",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Hotring Races",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Running Back (Remix)",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Cluckin' Bell Farm Raid — GTA$250,000 bonus",
+        "m": "Bonus",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Lampadati Casco",
+        "p": 40
+      },
+      {
+        "i": "Mammoth Hydra",
+        "p": 30
+      },
+      {
+        "i": "Dinka Jester RR",
+        "p": 30
+      },
+      {
+        "i": "Grotti Visione",
+        "p": 30
+      },
+      {
+        "i": "Übermacht Cypher",
+        "p": 30
+      },
+      {
+        "i": "Coil Brawler",
+        "p": 30
+      },
+      {
+        "i": "Ocelot Lynx",
+        "p": 30
+      },
+      {
+        "i": "Lampadati Furore GT",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "High-End Apartment Properties, Upgrades, and Modifications",
+        "p": 40
+      },
+      {
+        "i": "Auto Shop Properties, Upgrades, and Modifications",
+        "p": 30
+      }
+    ],
+    "fib": null,
+    "ch": "Complete any Heist Finale",
+    "chr": "Pacific Standard Sweater",
+    "chc": 100000,
+    "ov": [
+      "The Heist Challenge"
+    ],
+    "tt": "Coast to Coast",
+    "hsw_tt": "Pacific Bluffs to Mount Gordo"
+  },
+  "2024-11-28": {
+    "name": "Black Friday / Diamond Casino Heist",
+    "start": "2024-11-28",
+    "end": "2024-12-04",
+    "days": 6,
+    "podium": "Dinka RT3000",
+    "prize": "Karin Futo GTX",
+    "test": [
+      "Vulcar Warrener",
+      "Canis Seminole Frontier",
+      "Obey 9F Cabrio"
+    ],
+    "ptest": "Penaud Le Coureuse",
+    "salvage": [
+      {
+        "r": "The Gangbanger Robbery",
+        "v": "Dinka Kanjo SJ"
+      },
+      {
+        "r": "The Podium Robbery",
+        "v": "Declasse Vigero ZX"
+      },
+      {
+        "r": "The McTony Robbery",
+        "v": "Pegassi Torero XO"
+      }
+    ],
+    "lux": [
+      "Übermacht Niobe",
+      "Överflöd Pipistrello"
+    ],
+    "pdm": [
+      "Benefactor Surano ✱",
+      "Vapid Bullet ✱",
+      "Emperor ETR1 ✱",
+      "Dewbauchee Rapid GT Classic ✱",
+      "Canis Kalahari ✱"
+    ],
+    "bonuses": [
+      {
+        "a": "Diamond Adversary Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Open Wheel Races",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Junk Energy Skydives",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Deadline",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Guaranteed diamonds in The Diamond Casino Heist",
+        "m": "Bonus",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Pegassi Weaponized Ignus",
+        "p": 50
+      },
+      {
+        "i": "Coil Cyclone II",
+        "p": 50
+      },
+      {
+        "i": "Vapid Bullet",
+        "p": 50
+      },
+      {
+        "i": "Emperor ETR1",
+        "p": 50
+      },
+      {
+        "i": "Grotti Itali GTO Stinger TT",
+        "p": 50
+      },
+      {
+        "i": "Benefactor Surano",
+        "p": 50
+      },
+      {
+        "i": "Pegassi Toreador",
+        "p": 50
+      },
+      {
+        "i": "Imponte Deluxo",
+        "p": 50
+      },
+      {
+        "i": "Ocelot Stromberg",
+        "p": 50
+      },
+      {
+        "i": "Dewbauchee Rapid GT Classic",
+        "p": 50
+      },
+      {
+        "i": "Declasse Vigero ZX Convertible",
+        "p": 50
+      },
+      {
+        "i": "Canis Kalahari",
+        "p": 50
+      },
+      {
+        "i": "Pegassi Oppressor",
+        "p": 50
+      },
+      {
+        "i": "Shitzu Hakuchou Drag",
+        "p": 50
+      },
+      {
+        "i": "Buckingham Luxor",
+        "p": 50
+      },
+      {
+        "i": "Buckingham Luxor Deluxe",
+        "p": 50
+      },
+      {
+        "i": "Buckingham Swift",
+        "p": 50
+      },
+      {
+        "i": "Buckingham Swift Deluxe",
+        "p": 50
+      },
+      {
+        "i": "Buckingham Weaponized Conada",
+        "p": 50
+      },
+      {
+        "i": "Mammoth Avenger",
+        "p": 40
+      },
+      {
+        "i": "JoBuilt P-996 LAZER",
+        "p": 35
+      },
+      {
+        "i": "B-11 Strikeforce",
+        "p": 35
+      },
+      {
+        "i": "Progen Emerus",
+        "p": 30
+      },
+      {
+        "i": "Truffade Thrax",
+        "p": 30
+      },
+      {
+        "i": "Übermacht Niobe",
+        "p": 30
+      },
+      {
+        "i": "Annis ZR350",
+        "p": 30
+      },
+      {
+        "i": "Mammoth F-160 Raiju",
+        "p": 30
+      },
+      {
+        "i": "Progen PR4",
+        "p": 25
+      },
+      {
+        "i": "Benefactor BR8",
+        "p": 25
+      },
+      {
+        "i": "Declasse DR1",
+        "p": 25
+      },
+      {
+        "i": "Ocelot R88",
+        "p": 25
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Mammoth Avenger — Operations Terminal Upgrade",
+        "p": 40
+      },
+      {
+        "i": "Galaxy Super Yacht + Modifications",
+        "p": 40
+      },
+      {
+        "i": "Hangar Properties, Upgrades, and Modifications",
+        "p": 35
+      },
+      {
+        "i": "Salvage Yard Properties",
+        "p": 35
+      },
+      {
+        "i": "Arcade Properties, Upgrades, and Modifications",
+        "p": 30
+      }
+    ],
+    "fib": null,
+    "ch": "Complete The Diamond Casino Heist once",
+    "chr": "The Diamond Strike Vest",
+    "chc": 100000,
+    "ov": [
+      "The Heist Challenge",
+      "Black Friday"
+    ],
+    "tt": "Casino",
+    "hsw_tt": "North Chumash"
+  },
+  "2024-12-04": {
+    "name": "Bail Office Bonuses / Winter Community Series",
+    "start": "2024-12-04",
+    "end": "2024-12-10",
+    "days": 6,
+    "podium": "Declasse Tahoma Coupe",
+    "prize": "Överflöd Autarch",
+    "test": [
+      "Vapid Peyote Gasser",
+      "Vulcar Fagaloa",
+      "Lampadati Tigon"
+    ],
+    "ptest": "Weeny Issi Rally",
+    "salvage": [
+      {
+        "r": "The Cargo Ship Robbery",
+        "v": "Överflöd Tyrant"
+      },
+      {
+        "r": "The Podium Robbery",
+        "v": "Declasse Mamba"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Karin Previon"
+      }
+    ],
+    "lux": [
+      "Bollokan Envisage",
+      "Declasse Impaler SZ"
+    ],
+    "pdm": [
+      "Enus Stafford ✱",
+      "Progen Tyrus ✱",
+      "Weeny Dynasty ✱",
+      "Dinka Thrust ✱",
+      "Invetero Coquette BlackFin ✱"
+    ],
+    "bonuses": [
+      {
+        "a": "Community Series (Winter)",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Bail Office Standard Targets",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Bail Office Staff Income",
+        "m": "2X GTA$",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Vapid Dominator FX Interceptor",
+        "p": 30
+      },
+      {
+        "i": "Vapid Dominator FX",
+        "p": 30
+      },
+      {
+        "i": "Bollokan Envisage",
+        "p": 30
+      },
+      {
+        "i": "Canis Castigator",
+        "p": 30
+      },
+      {
+        "i": "Enus Paragon S",
+        "p": 30
+      },
+      {
+        "i": "Enus Stafford",
+        "p": 30
+      },
+      {
+        "i": "Lampadati Tigon",
+        "p": 30
+      },
+      {
+        "i": "Vapid Peyote Gasser",
+        "p": 30
+      },
+      {
+        "i": "Progen Tyrus",
+        "p": 30
+      },
+      {
+        "i": "Weeny Dynasty",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Bail Office Properties, Upgrades, and Modifications",
+        "p": 40
+      }
+    ],
+    "fib": null,
+    "ch": "Secure 3 Bounty Targets",
+    "chr": null,
+    "chc": 100000,
+    "ov": [],
+    "tt": "Route 68",
+    "hsw_tt": "East Vinewood"
+  },
+  "2024-12-10": {
+    "name": "Agents of Sabotage Launch / Stockpile",
+    "start": "2024-12-10",
+    "end": "2024-12-19",
+    "days": 9,
+    "podium": "Lampadati Cinquemila",
+    "prize": "Enus Jubilee",
+    "test": [
+      "Pegassi Zorrusso",
+      "Dewbauchee Seven-70",
+      "Nagasaki Hot Rod Blazer"
+    ],
+    "ptest": "Bravado Banshee GTS",
+    "salvage": [
+      {
+        "r": "The Gangbanger Robbery",
+        "v": "Enus Jubilee"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Invetero Coquette BlackFin"
+      },
+      {
+        "r": "The McTony Robbery",
+        "v": "Canis Seminole Frontier"
+      }
+    ],
+    "lux": [
+      "Bravado Banshee GTS",
+      "Dinka Jester RR Widebody"
+    ],
+    "pdm": [
+      "Dinka Chavos V6",
+      "Vapid Contender",
+      "Vapid Retinue",
+      "Ocelot Swinger",
+      "Schyster Deviant"
+    ],
+    "bonuses": [
+      {
+        "a": "Stockpile",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Benefactor Krieger",
+        "p": 30
+      },
+      {
+        "i": "Pfister Comet S2",
+        "p": 30
+      },
+      {
+        "i": "Pfister Comet S2 Cabrio",
+        "p": 30
+      },
+      {
+        "i": "Pfister Comet SR",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Zorrusso",
+        "p": 30
+      },
+      {
+        "i": "Dewbauchee Seven-70",
+        "p": 30
+      },
+      {
+        "i": "Dewbauchee JB 700W",
+        "p": 30
+      },
+      {
+        "i": "Dinka Jester RR",
+        "p": 30
+      },
+      {
+        "i": "Annis RE-7B",
+        "p": 30
+      },
+      {
+        "i": "Annis S80RR",
+        "p": 30
+      },
+      {
+        "i": "Willard Eudora",
+        "p": 30
+      },
+      {
+        "i": "Ocelot XA-21",
+        "p": 30
+      },
+      {
+        "i": "Karin Futo GTX",
+        "p": 30
+      },
+      {
+        "i": "Överflöd Pipistrello",
+        "p": 30
+      },
+      {
+        "i": "Declasse Vigero ZX",
+        "p": 30
+      },
+      {
+        "i": "Lampadati Tigon",
+        "p": 30
+      },
+      {
+        "i": "Coil Cyclone",
+        "p": 30
+      },
+      {
+        "i": "Vysser Neo",
+        "p": 30
+      },
+      {
+        "i": "Vapid Retinue",
+        "p": 30
+      },
+      {
+        "i": "Benefactor Terrorbyte",
+        "p": 20
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Eclipse Towers, Penthouse Suite 3",
+        "p": 30
+      },
+      {
+        "i": "Maze Bank Tower Office",
+        "p": 30
+      },
+      {
+        "i": "Murrieta Heights Vehicle Warehouse",
+        "p": 30
+      },
+      {
+        "i": "Hawick Clubhouse",
+        "p": 30
+      },
+      {
+        "i": "Farmhouse Bunker",
+        "p": 30
+      },
+      {
+        "i": "Fort Zancudo Hangar A2",
+        "p": 30
+      },
+      {
+        "i": "Land Act Reservoir Facility",
+        "p": 30
+      },
+      {
+        "i": "West Vinewood Nightclub",
+        "p": 30
+      },
+      {
+        "i": "Arena Workshop",
+        "p": 30
+      },
+      {
+        "i": "Master Penthouse",
+        "p": 30
+      },
+      {
+        "i": "Eight-Bit Arcade",
+        "p": 30
+      },
+      {
+        "i": "La Mesa Auto Shop",
+        "p": 30
+      },
+      {
+        "i": "Hawick Agency",
+        "p": 30
+      },
+      {
+        "i": "La Puerta Salvage Yard",
+        "p": 30
+      },
+      {
+        "i": "Downtown Vinewood Bail Office",
+        "p": 30
+      }
+    ],
+    "fib": null,
+    "ch": "Complete two FIB File Finales",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "Agents of Sabotage DLC Launch"
+    ],
+    "tt": "LSIA",
+    "hsw_tt": "Del Perro Beach to Murietta Heights"
   }
 }

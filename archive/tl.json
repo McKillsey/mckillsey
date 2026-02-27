@@ -1,5 +1,135 @@
 [
   {
+    "id": "2024-11-21",
+    "name": "Heist Challenge / OG Heists / Running Back",
+    "start": "2024-11-21",
+    "end": "2024-11-28",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Original Heist Finales",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Auto Shop Robbery Contracts",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Hotring Races",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Running Back (Remix)",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 21,
+    "pc": 2,
+    "ov": [
+      "The Heist Challenge"
+    ]
+  },
+  {
+    "id": "2024-11-28",
+    "name": "Black Friday / Diamond Casino Heist",
+    "start": "2024-11-28",
+    "end": "2024-12-04",
+    "days": 6,
+    "tags": [
+      {
+        "t": "Diamond Adversary Series",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Open Wheel Races",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Junk Energy Skydives",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Deadline",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Black Friday Discounts",
+        "c": "o",
+        "m": "★"
+      }
+    ],
+    "vc": 40,
+    "pc": 5,
+    "ov": [
+      "The Heist Challenge",
+      "Black Friday"
+    ]
+  },
+  {
+    "id": "2024-12-04",
+    "name": "Bail Office Bonuses / Winter Community Series",
+    "start": "2024-12-04",
+    "end": "2024-12-10",
+    "days": 6,
+    "tags": [
+      {
+        "t": "Community Series (Winter)",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Bail Office Standard Targets",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Bail Office Staff Income",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 20,
+    "pc": 1,
+    "ov": []
+  },
+  {
+    "id": "2024-12-10",
+    "name": "Agents of Sabotage Launch / Stockpile",
+    "start": "2024-12-10",
+    "end": "2024-12-19",
+    "days": 9,
+    "tags": [
+      {
+        "t": "Agents of Sabotage DLC",
+        "c": "o",
+        "m": "★"
+      },
+      {
+        "t": "Stockpile",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "30% Off Properties",
+        "c": "o",
+        "m": "★"
+      }
+    ],
+    "vc": 31,
+    "pc": 15,
+    "ov": [
+      "Agents of Sabotage DLC Launch"
+    ]
+  },
+  {
     "id": "2024-12-19",
     "name": "Festive Season / Agents of Sabotage Holiday",
     "start": "2024-12-19",
