@@ -41,6 +41,8 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 .toggle-group.equal-2 .toggle-btn{flex:1;text-align:center}
 .toggle-group.equal-3{width:100%}
 .toggle-group.equal-3 .toggle-btn{flex:1;text-align:center}
+.toggle-group.equal-4{width:100%}
+.toggle-group.equal-4 .toggle-btn{flex:1;text-align:center}
 .toggle-group.equal-5{width:100%}
 .toggle-group.equal-5 .toggle-btn{flex:1;text-align:center;padding:8px 6px}
 .hacker-slots{display:flex;flex-direction:column;gap:14px}
@@ -195,11 +197,10 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       </div>
     </div>
     <div class="input-section"><span class="input-label">Gunman</span>
-      <div class="toggle-group equal-5" id="gunman-group">
+      <div class="toggle-group equal-4" id="gunman-group">
         <button class="toggle-btn active" data-val="karl" onclick="si('gunman',this)">5%</button>
         <button class="toggle-btn" data-val="charlie" onclick="si('gunman',this)">7%</button>
         <button class="toggle-btn" data-val="patrick" onclick="si('gunman',this)">8%</button>
-        <button class="toggle-btn" data-val="gustavo" onclick="si('gunman',this)">9%</button>
         <button class="toggle-btn" data-val="chester" onclick="si('gunman',this)">10%</button>
       </div>
     </div>
@@ -293,7 +294,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       <div class="method-section"><h3>Crew Members</h3>
         <table class="method-table"><thead><tr><th>Gunman</th><th class="val">Cut</th></tr></thead><tbody>
           <tr><td>Karl Abolaji</td><td class="val">5%</td></tr><tr><td>Charlie Reed</td><td class="val">7%</td></tr>
-          <tr><td>Patrick McReary</td><td class="val">8%</td></tr><tr><td>Gustavo Mota</td><td class="val">9%</td></tr>
+          <tr><td>Patrick McReary</td><td class="val">8%</td></tr><tr><td>Gustavo Mota</td><td class="val">8%</td></tr>
           <tr><td>Chester McCoy</td><td class="val">10%</td></tr>
         </tbody></table>
         <table class="method-table" style="margin-top:12px"><thead><tr><th>Driver</th><th class="val">Cut</th></tr></thead><tbody>
@@ -331,7 +332,7 @@ const LAYOUTS={
 };
 const V={cash:{label:'Cash',maxN:2115000,maxH:2326500,u:8,ct:38,ly:'cgd'},artwork:{label:'Artwork',maxN:2350000,maxH:2585000,u:6,ct:18,ly:'art'},gold:{label:'Gold',maxN:2585000,maxH:2843500,u:8,ct:25,ly:'cgd'},diamonds:{label:'Diamonds',maxN:3290000,maxH:3619000,u:8,ct:38,ly:'cgd'}};
 const H=[{id:'rickie',label:'Rickie Lukens',cut:3,ue:146,ex:102},{id:'yohan',label:'Yohan Blair',cut:5,ue:172,ex:121},{id:'christian',label:'Christian Feltz',cut:7,ue:179,ex:125},{id:'paige',label:'Paige Harris',cut:9,ue:205,ex:143},{id:'avi',label:'Avi Schwartzman',cut:10,ue:210,ex:146}];
-const GN={karl:{l:'Karl Abolaji',c:5},charlie:{l:'Charlie Reed',c:7},patrick:{l:'Patrick McReary',c:8},gustavo:{l:'Gustavo Mota',c:9},chester:{l:'Chester McCoy',c:10}};
+const GN={karl:{l:'Karl Abolaji',c:5},charlie:{l:'Charlie Reed',c:7},patrick:{l:'Patrick McReary',c:8},gustavo:{l:'Gustavo Mota',c:8},chester:{l:'Chester McCoy',c:10}};
 const DR={karim:{l:'Karim Denz',c:5},zach:{l:'Zach Nelson',c:6},taliana:{l:'Taliana Martinez',c:7},eddie:{l:'Eddie Toh',c:9},chester_d:{l:'Chester McCoy',c:10}};
 let AN=24,AH=28; const HN=1,HH=2;
 const S={loot:'cash',approach:'sns',buyer:'high',difficulty:'hard',gunman:'karl',driver:'karim',hs:[{a:true,s:5},{a:false,s:10},{a:false,s:10},{a:false,s:10}],cpp:5,elite:true,mp:{2:[15],3:[15,15],4:[15,15,15]},dev:false};
@@ -406,7 +407,7 @@ function assignD(slots,vaultTime,collectTime,commute,doors){
 // localStorage
 const LS_KEY='mckillsey_dch';
 function saveState(){try{localStorage.setItem(LS_KEY,JSON.stringify({loot:S.loot,approach:S.approach,buyer:S.buyer,difficulty:S.difficulty,gunman:S.gunman,driver:S.driver,hs:S.hs,cpp:S.cpp,elite:S.elite,mp:S.mp}));}catch(e){}}
-function loadState(){try{const d=JSON.parse(localStorage.getItem(LS_KEY));if(!d)return false;if(d.loot)S.loot=d.loot;if(d.approach)S.approach=d.approach;if(d.buyer)S.buyer=d.buyer;if(d.difficulty)S.difficulty=d.difficulty;if(d.gunman)S.gunman=d.gunman;if(d.driver)S.driver=d.driver;if(d.hs)S.hs=d.hs;if(d.cpp!==undefined)S.cpp=d.cpp;if(d.elite!==undefined)S.elite=d.elite;if(d.mp)S.mp=d.mp;return true;}catch(e){return false;}}
+function loadState(){try{const d=JSON.parse(localStorage.getItem(LS_KEY));if(!d)return false;if(d.loot)S.loot=d.loot;if(d.approach)S.approach=d.approach;if(d.buyer)S.buyer=d.buyer;if(d.difficulty)S.difficulty=d.difficulty;if(d.gunman)S.gunman=d.gunman==='gustavo'?'patrick':d.gunman;if(d.driver)S.driver=d.driver;if(d.hs)S.hs=d.hs;if(d.cpp!==undefined)S.cpp=d.cpp;if(d.elite!==undefined)S.elite=d.elite;if(d.mp)S.mp=d.mp;return true;}catch(e){return false;}}
 function syncUI(){
   // Toggle buttons
   document.querySelectorAll('#loot-group .toggle-btn').forEach(b=>b.classList.toggle('active',b.dataset.val===S.loot));
