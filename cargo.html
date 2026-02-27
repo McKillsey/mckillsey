@@ -66,7 +66,7 @@ td:first-child{text-align:left;font-family:var(--sans);font-size:13px;white-spac
 </div>
 
 <div class="assumptions">
-  <div class="assumption-pill"><span class="dot"></span>Staff sourcing &mdash; $7,500/dispatch, 1.45 avg crates</div>
+  <div class="assumption-pill"><span class="dot"></span>Staff sourcing &mdash; $7,500/dispatch, 1.50 avg crates</div>
   <div class="assumption-pill"><span class="dot"></span>Mansion owned &mdash; security upgrade active</div>
   <div class="assumption-pill"><span class="dot"></span>Sell vehicles fully upgraded</div>
 </div>
@@ -77,14 +77,14 @@ td:first-child{text-align:left;font-family:var(--sans);font-size:13px;white-spac
 <div class="stat-grid">
   <div class="stat-row-label">Per Warehouse &mdash; Full Large (111 Crates)</div>
   <div class="stat-card">
-    <div class="stat-value green" id="s-dph">$5,505,000</div>
+    <div class="stat-value green" id="s-dph">$5,550,000</div>
     <div class="stat-label">$/Active Hour</div>
     <div class="stat-note" id="s-dph-note">30 min sell + reciprocity</div>
   </div>
   <div class="stat-card">
-    <div class="stat-value green" id="s-net">$2,752,500</div>
+    <div class="stat-value green" id="s-net">$2,775,000</div>
     <div class="stat-label">Net Income</div>
-    <div class="stat-note" id="s-net-note">$3,330,000 gross &minus; $577,500 sourcing</div>
+    <div class="stat-note" id="s-net-note">$3,330,000 gross &minus; $555,000 sourcing</div>
   </div>
   <div class="stat-card">
     <div class="stat-value" id="s-gross">$3,330,000</div>
@@ -92,20 +92,20 @@ td:first-child{text-align:left;font-family:var(--sans);font-size:13px;white-spac
     <div class="stat-note" id="s-gross-note">111 &times; $20K &times; 1.5 HDB</div>
   </div>
   <div class="stat-card">
-    <div class="stat-value red">$577,500</div>
+    <div class="stat-value red">$555,000</div>
     <div class="stat-label">Sourcing Cost</div>
-    <div class="stat-note">77 dispatches &times; $7,500</div>
+    <div class="stat-note">74 dispatches &times; $7,500</div>
   </div>
   <div class="stat-row-label">5-Warehouse Empire &mdash; One Full Cycle</div>
   <div class="stat-card">
-    <div class="stat-value green" id="e-dph">$5,505,000</div>
+    <div class="stat-value green" id="e-dph">$5,550,000</div>
     <div class="stat-label">$/Active Hour</div>
     <div class="stat-note">Same rate &mdash; scales linearly</div>
   </div>
   <div class="stat-card">
-    <div class="stat-value green" id="e-net">$13,762,500</div>
+    <div class="stat-value green" id="e-net">$13,875,000</div>
     <div class="stat-label">Net Income (5&times;)</div>
-    <div class="stat-note" id="e-net-note">5 &times; $2,752,500</div>
+    <div class="stat-note" id="e-net-note">5 &times; $2,775,000</div>
   </div>
   <div class="stat-card">
     <div class="stat-value" id="e-time">150 min</div>
@@ -113,9 +113,9 @@ td:first-child{text-align:left;font-family:var(--sans);font-size:13px;white-spac
     <div class="stat-note" id="e-time-note">5 &times; 30 min sell cycles</div>
   </div>
   <div class="stat-card">
-    <div class="stat-value red">$2,887,500</div>
+    <div class="stat-value red">$2,775,000</div>
     <div class="stat-label">Total Sourcing Cost</div>
-    <div class="stat-note">5 &times; $577,500</div>
+    <div class="stat-note">5 &times; $555,000</div>
   </div>
 </div>
 </div>
@@ -147,7 +147,7 @@ td:first-child{text-align:left;font-family:var(--sans);font-size:13px;white-spac
   <!-- populated by JS -->
 </tbody>
 </table></div>
-<div style="margin-top:10px;font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.04em">Sourcing cost assumes staff dispatches at $7,500 / 1.45 avg crates. Sell vehicles: small and medium = 2 vehicles, large = 3 vehicles. Crew active time includes reciprocity &mdash; small: 10 min sell + 10 min reciprocity; medium and large: 10 min sell + 20 min reciprocity. Solo: flat 30 min, no reciprocity.</div>
+<div style="margin-top:10px;font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.04em">Sourcing cost assumes staff dispatches at $7,500 / 1.50 avg crates. Sell vehicles: small and medium = 2 vehicles, large = 3 vehicles. Crew active time includes reciprocity &mdash; small: 10 min sell + 10 min reciprocity; medium and large: 10 min sell + 20 min reciprocity. Solo: flat 30 min, no reciprocity.</div>
 </div>
 
 <!-- ═══ SOURCE STRATEGY ═══ -->
@@ -170,20 +170,20 @@ td:first-child{text-align:left;font-family:var(--sans);font-size:13px;white-spac
   <tr>
     <td>Cost per crate</td>
     <td><span class="tip" data-tip-label="Cost/Crate — Active" data-tip-calc="$18,000 &divide; 3 crates per run&#10;= $6,000/crate">$6,000</span></td>
-    <td><span class="tip" data-tip-label="Cost/Crate — Staff" data-tip-calc="$7,500 &divide; 1.45 avg crates&#10;= $5,172/crate">$5,172</span></td>
-    <td>$5,172</td>
+    <td><span class="tip" data-tip-label="Cost/Crate — Staff" data-tip-calc="$7,500 &divide; 1.50 avg crates&#10;= $5,000/crate">$5,000</span></td>
+    <td>$5,000</td>
   </tr>
   <tr>
     <td>Total sourcing cost (111 crates)</td>
     <td class="red rneg"><span class="tip" data-tip-label="Total Cost — Active" data-tip-calc="37 missions &times; $18,000&#10;= $666,000">($666,000)</span></td>
-    <td class="red rneg"><span class="tip" data-tip-label="Total Cost — Staff" data-tip-calc="77 dispatches &times; $7,500&#10;= $577,500">($577,500)</span></td>
-    <td class="red rneg">($577,500)</td>
+    <td class="red rneg"><span class="tip" data-tip-label="Total Cost — Staff" data-tip-calc="74 dispatches &times; $7,500&#10;= $555,000">($555,000)</span></td>
+    <td class="red rneg">($555,000)</td>
   </tr>
   <tr>
     <td>Net income (crew + HDB sell)</td>
     <td><span class="tip" data-tip-label="Net — Active Source" data-tip-calc="$3,330,000 gross &minus; $666,000&#10;= $2,664,000">$2,664,000</span></td>
-    <td><span class="tip" data-tip-label="Net — Staff Source" data-tip-calc="$3,330,000 gross &minus; $577,500&#10;= $2,752,500">$2,752,500</span></td>
-    <td>$2,752,500</td>
+    <td><span class="tip" data-tip-label="Net — Staff Source" data-tip-calc="$3,330,000 gross &minus; $555,000&#10;= $2,775,000">$2,775,000</span></td>
+    <td>$2,775,000</td>
   </tr>
   <tr class="divider-row">
     <td colspan="4" style="font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding-bottom:6px">Time &amp; Efficiency</td>
@@ -191,32 +191,32 @@ td:first-child{text-align:left;font-family:var(--sans);font-size:13px;white-spac
   <tr>
     <td>Active time to fill</td>
     <td><span class="tip" data-tip-label="Active Time — Self Source" data-tip-calc="37 missions &times; ~5 min each&#10;= ~185 min to fill">~185 min</span></td>
-    <td><span class="tip" data-tip-label="Active Time — Staff, No GTA+" data-tip-calc="77 warehouse visits &times; ~2 min each&#10;= ~154 min active&#10;Spread over days or weeks">~154 min</span></td>
+    <td><span class="tip" data-tip-label="Active Time — Staff, No GTA+" data-tip-calc="74 warehouse visits &times; ~2 min each&#10;= ~148 min active&#10;Spread over days or weeks">~148 min</span></td>
     <td><span class="tip" data-tip-label="Active Time — Staff, GTA+" data-tip-calc="Phone dispatch from anywhere&#10;77 taps &asymp; 5 min total">~5 min</span></td>
   </tr>
   <tr>
     <td>Passive fill time</td>
     <td class="dim">&mdash;</td>
-    <td><span class="tip" data-tip-label="Passive Time — Staff" data-tip-calc="77 dispatches &times; 48 min each&#10;= 3,696 min (&asymp;62 hrs)&#10;Runs while you do other things">3,696 min</span></td>
-    <td>3,696 min</td>
+    <td><span class="tip" data-tip-label="Passive Time — Staff" data-tip-calc="77 dispatches &times; 48 min each&#10;= 3,552 min (&asymp;62 hrs)&#10;Runs while you do other things">3,552 min</span></td>
+    <td>3,552 min</td>
   </tr>
   <tr>
     <td>Total active time (fill + sell)</td>
     <td><span class="tip" data-tip-label="Total Active — Self Source" data-tip-calc="185 min sourcing + 30 min sell&#10;= 215 min total">215 min</span></td>
-    <td><span class="tip" data-tip-label="Total Active — Staff No GTA+" data-tip-calc="~154 min dispatch visits + 30 min sell&#10;= ~184 min total">~184 min</span></td>
+    <td><span class="tip" data-tip-label="Total Active — Staff No GTA+" data-tip-calc="~148 min dispatch visits + 30 min sell&#10;= ~178 min total">~178 min</span></td>
     <td><span class="tip" data-tip-label="Total Active — Staff GTA+" data-tip-calc="~5 min phone dispatch + 30 min sell&#10;= ~35 min total">~35 min</span></td>
   </tr>
   <tr>
     <td><strong>$/active hour</strong></td>
     <td><span class="tip" data-tip-label="$/Active Hr — Active Source" data-tip-calc="$2,664,000 &divide; 215 min &times; 60&#10;= $743,721/hr">$743,721</span></td>
-    <td><span class="tip" data-tip-label="$/Active Hr — Staff No GTA+" data-tip-calc="$2,752,500 &divide; 184 min &times; 60&#10;= $897,554/hr">$897,554</span></td>
-    <td class="green"><strong><span class="tip" data-tip-label="$/Active Hr — Staff GTA+" data-tip-calc="$2,752,500 &divide; 35 min &times; 60&#10;= $4,718,571/hr&#10;&#10;Nearly all active time is the sell">$4,718,571</span></strong></td>
+    <td><span class="tip" data-tip-label="$/Active Hr — Staff No GTA+" data-tip-calc="$2,775,000 &divide; 178 min &times; 60&#10;= $935,393/hr">$935,393</span></td>
+    <td class="green"><strong><span class="tip" data-tip-label="$/Active Hr — Staff GTA+" data-tip-calc="$2,775,000 &divide; 35 min &times; 60&#10;= $4,757,143/hr&#10;&#10;Nearly all active time is the sell">$4,757,143</span></strong></td>
   </tr>
   <tr>
     <td>$/passive hour</td>
     <td class="dim">&mdash;</td>
-    <td><span class="tip" data-tip-label="$/Passive Hr — Staff" data-tip-calc="$2,752,500 &divide; 3,696 min &times; 60&#10;= $44,686/hr">$44,686</span></td>
-    <td>$44,686</td>
+    <td><span class="tip" data-tip-label="$/Passive Hr — Staff" data-tip-calc="$2,775,000 &divide; 3,552 min &times; 60&#10;= $46,911/hr">$46,911</span></td>
+    <td>$46,911</td>
   </tr>
   <tr class="divider-row">
     <td colspan="4" style="font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);padding-bottom:6px">During a 2&times; Event Week &mdash; Speed Is Money</td>
@@ -224,14 +224,14 @@ td:first-child{text-align:left;font-family:var(--sans);font-size:13px;white-spac
   <tr>
     <td>Net income (2&times; + crew + HDB)</td>
     <td class="amber"><span class="tip" data-tip-label="Net — Active + 2×" data-tip-calc="$6,660,000 gross &minus; $666,000&#10;= $5,994,000">$5,994,000</span></td>
-    <td class="amber"><span class="tip" data-tip-label="Net — Staff + 2×" data-tip-calc="$6,660,000 gross &minus; $577,500&#10;= $6,082,500">$6,082,500</span></td>
-    <td class="amber">$6,082,500</td>
+    <td class="amber"><span class="tip" data-tip-label="Net — Staff + 2×" data-tip-calc="$6,660,000 gross &minus; $555,000&#10;= $6,105,000">$6,105,000</span></td>
+    <td class="amber">$6,105,000</td>
   </tr>
   <tr class="best-row">
     <td><strong>$/active hour (2&times;)</strong></td>
     <td class="amber"><strong><span class="tip" data-tip-label="$/Active Hr — Active + 2×" data-tip-calc="$5,994,000 &divide; 215 min &times; 60&#10;= $1,672,093/hr&#10;&#10;Active sourcing fills in several hours.&#10;Staff fills in days or weeks.">$1,672,093</span></strong></td>
-    <td class="amber"><span class="tip" data-tip-label="$/Active Hr — Staff No GTA+ + 2×" data-tip-calc="$6,082,500 &divide; 184 min &times; 60&#10;= $1,984,429/hr">$1,984,429</span></td>
-    <td class="amber"><span class="tip" data-tip-label="$/Active Hr — Staff GTA+ + 2×" data-tip-calc="$6,082,500 &divide; 35 min &times; 60&#10;= $10,427,143/hr">$10,427,143</span></td>
+    <td class="amber"><span class="tip" data-tip-label="$/Active Hr — Staff No GTA+ + 2×" data-tip-calc="$6,105,000 &divide; 178 min &times; 60&#10;= $2,057,303/hr">$2,057,303</span></td>
+    <td class="amber"><span class="tip" data-tip-label="$/Active Hr — Staff GTA+ + 2×" data-tip-calc="$6,105,000 &divide; 35 min &times; 60&#10;= $10,465,714/hr">$10,465,714</span></td>
   </tr>
 </tbody>
 </table></div>
@@ -347,7 +347,7 @@ td:first-child{text-align:left;font-family:var(--sans);font-size:13px;white-spac
 <div class="section-label">Methodology &amp; Assumptions</div>
 <div class="concept-box">
   <div class="verdict-label">Data &amp; Assumptions</div>
-  <p>Per-crate values by milestone: 1 crate = $10,000; 16 crates (small max) = $15,000; 42 crates (medium max) = $17,500; 77 crates (large raid threshold) = $18,500; 100&ndash;110 crates = $19,500; 111 crates (large max) = $20,000. Staff dispatch: $7,500 per dispatch, 65/25/10% probability for 1/2/3 crates = 1.45 average. Active sourcing: $18,000 per run, 3 crates, ~5 min. Sell vehicles: small and medium = 2 vehicles, large = 3 vehicles. Crew sell time includes reciprocity &mdash; small: 10 min sell + 10 min reciprocity = 20 min; medium: 10 min sell + 20 min reciprocity = 30 min; large: 10 min sell + 20 min reciprocity = 30 min. Solo: flat 30 min, no reciprocity. HDB: +50% in public session. 2&times; event frequency: approximately once per year for all players. Raid window: 5&ndash;10 hours after crossing 78 crates. Mansion security upgrade confirmed to prevent raids on CEO warehouses. Special item sale: ~$150K, one vehicle, ~10 min, no HDB.</p>
+  <p>Per-crate values by milestone: 1 crate = $10,000; 16 crates (small max) = $15,000; 42 crates (medium max) = $17,500; 77 crates (large raid threshold) = $18,500; 100&ndash;110 crates = $19,500; 111 crates (large max) = $20,000. Staff dispatch: $7,500 per dispatch, 60/30/10% probability for 1/2/3 crates = 1.50 average. Active sourcing: $18,000 per run, 3 crates, ~5 min. Sell vehicles: small and medium = 2 vehicles, large = 3 vehicles. Crew sell time includes reciprocity &mdash; small: 10 min sell + 10 min reciprocity = 20 min; medium: 10 min sell + 20 min reciprocity = 30 min; large: 10 min sell + 20 min reciprocity = 30 min. Solo: flat 30 min, no reciprocity. HDB: +50% in public session. 2&times; event frequency: approximately once per year for all players. Raid window: 5&ndash;10 hours after crossing 78 crates. Mansion security upgrade confirmed to prevent raids on CEO warehouses. Special item sale: ~$150K, one vehicle, ~10 min, no HDB.</p>
 </div>
 </div>
 
@@ -403,7 +403,7 @@ const WH = {
   medium: { name: 'Medium (42 crates)', max: 42,  pcu: 17500, veh: 3, sellCrew: 10, recipCrew: 20, sellSolo: 30, fill: 1392 },
   large:  { name: 'Large (111 crates)', max: 111, pcu: 20000, veh: 3, sellCrew: 10, recipCrew: 20, sellSolo: 30, fill: 3696 }
 };
-const SOURCING_COST_PER_CRATE = 7500 / 1.45; // ~5172
+const SOURCING_COST_PER_CRATE = 7500 / 1.50; // $5,000
 
 function fmtM(n) {
   return '$' + Math.round(n).toLocaleString();
@@ -423,7 +423,7 @@ function buildWHTable(mode) {
   const tbody = document.getElementById('wh-tbody');
   tbody.innerHTML = '';
   Object.values(WH).forEach((w, i) => {
-    const dispatches = Math.ceil(w.max / 1.45);
+    const dispatches = Math.ceil(w.max / 1.50);
     const sourcingCost = dispatches * 7500;
     const hdb = (mode === 'crew' || mode === 'solo-pub') ? 1.5 : 1.0;
     const gross = w.max * w.pcu * hdb;
@@ -493,9 +493,9 @@ function buildWHTable(mode) {
 
 // ── MODE TOGGLE ──
 const MODES = {
-  'crew':     { desc:'2 associates in org. High Demand Bonus applied. Maximum payout \u2014 recommended play.', label:'At a Glance \u2014 Crew + Full Lobby',    dph:'$5,505,000', dphNote:'30 min sell + reciprocity',               net:'$2,752,500', netNote:'$3,330,000 gross \u2212 $577,500 sourcing', gross:'$3,330,000', grossLbl:'Gross Sale (+ HDB)',    grossNote:'111 \u00d7 $20K \u00d7 1.5 HDB',          eDph:'$5,505,000', eNet:'$13,762,500', eNetNote:'5 \u00d7 $2,752,500', eTime:'150 min', eTimeLbl:'Active Time (5\u00d7)', eTimeNote:'5 \u00d7 30 min sell cycles' },
-  'solo-inv': { desc:'No associates. No HDB. Safe and entirely manageable solo.',                               label:'At a Glance \u2014 Solo + Invite Only',  dph:'$3,285,000', dphNote:'30 min solo sell, no reciprocity',       net:'$1,642,500', netNote:'$2,220,000 gross \u2212 $577,500 sourcing', gross:'$2,220,000', grossLbl:'Gross Sale (No HDB)', grossNote:'111 \u00d7 $20K, no lobby bonus',          eDph:'$3,285,000', eNet:'$8,212,500',  eNetNote:'5 \u00d7 $1,642,500', eTime:'150 min', eTimeLbl:'Active Time (5\u00d7)', eTimeNote:'5 \u00d7 30 min solo sells'  },
-  'solo-pub': { desc:'HDB applies, but 3 unaccompanied sell vehicles in a public lobby. Not recommended.',     label:'At a Glance \u2014 Solo + Full Lobby',   dph:'$5,505,000', dphNote:'30 min \u2014 extreme grief risk',         net:'$2,752,500', netNote:'Does not account for product loss',          gross:'$3,330,000', grossLbl:'Gross Sale (+ HDB)',    grossNote:'111 \u00d7 $20K \u00d7 1.5 HDB',          eDph:'$5,505,000', eNet:'$13,762,500', eNetNote:'If all 5 sells complete without loss', eTime:'150 min', eTimeLbl:'Active Time (5\u00d7)', eTimeNote:'Does not account for product loss' }
+  'crew':     { desc:'2 associates in org. High Demand Bonus applied. Maximum payout \u2014 recommended play.', label:'At a Glance \u2014 Crew + Full Lobby',    dph:'$5,550,000', dphNote:'30 min sell + reciprocity',               net:'$2,775,000', netNote:'$3,330,000 gross \u2212 $555,000 sourcing', gross:'$3,330,000', grossLbl:'Gross Sale (+ HDB)',    grossNote:'111 \u00d7 $20K \u00d7 1.5 HDB',          eDph:'$5,550,000', eNet:'$13,875,000', eNetNote:'5 \u00d7 $2,775,000', eTime:'150 min', eTimeLbl:'Active Time (5\u00d7)', eTimeNote:'5 \u00d7 30 min sell cycles' },
+  'solo-inv': { desc:'No associates. No HDB. Safe and entirely manageable solo.',                               label:'At a Glance \u2014 Solo + Invite Only',  dph:'$3,330,000', dphNote:'30 min solo sell, no reciprocity',       net:'$1,665,000', netNote:'$2,220,000 gross \u2212 $555,000 sourcing', gross:'$2,220,000', grossLbl:'Gross Sale (No HDB)', grossNote:'111 \u00d7 $20K, no lobby bonus',          eDph:'$3,330,000', eNet:'$8,325,000',  eNetNote:'5 \u00d7 $1,665,000', eTime:'150 min', eTimeLbl:'Active Time (5\u00d7)', eTimeNote:'5 \u00d7 30 min solo sells'  },
+  'solo-pub': { desc:'HDB applies, but 3 unaccompanied sell vehicles in a public lobby. Not recommended.',     label:'At a Glance \u2014 Solo + Full Lobby',   dph:'$5,550,000', dphNote:'30 min \u2014 extreme grief risk',         net:'$2,775,000', netNote:'Does not account for product loss',          gross:'$3,330,000', grossLbl:'Gross Sale (+ HDB)',    grossNote:'111 \u00d7 $20K \u00d7 1.5 HDB',          eDph:'$5,550,000', eNet:'$13,875,000', eNetNote:'If all 5 sells complete without loss', eTime:'150 min', eTimeLbl:'Active Time (5\u00d7)', eTimeNote:'Does not account for product loss' }
 };
 
 function setMode(m) {
