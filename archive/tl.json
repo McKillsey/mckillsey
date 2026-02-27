@@ -1,5 +1,235 @@
 [
   {
+    "id": "2024-10-03",
+    "name": "Halloween Arrives / Arena War / Oktoberfest",
+    "start": "2024-10-03",
+    "end": "2024-10-10",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Arena War Series",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Condemned",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Payphone Hits",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 21,
+    "pc": 1,
+    "ov": [
+      "Halloween Event",
+      "Oktoberfest"
+    ]
+  },
+  {
+    "id": "2024-10-10",
+    "name": "North Yankton Zombies / Halloween Community Series",
+    "start": "2024-10-10",
+    "end": "2024-10-17",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Halloween Community Series",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Ludendorff Cemetery Survival",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Ghosts Exposed",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 23,
+    "pc": 0,
+    "ov": [
+      "Halloween Event",
+      "North Yankton Zombie Challenge",
+      "UFO Event"
+    ]
+  },
+  {
+    "id": "2024-10-17",
+    "name": "Acid Lab Sell Missions / Clone Slasher",
+    "start": "2024-10-17",
+    "end": "2024-10-24",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Acid Lab Sell Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Slasher",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Ludendorff Cemetery Survival",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 24,
+    "pc": 0,
+    "ov": [
+      "Halloween Event",
+      "North Yankton Zombie Challenge",
+      "UFO Event"
+    ]
+  },
+  {
+    "id": "2024-10-24",
+    "name": "Halloween Deathmatches / Jack O'Lanterns",
+    "start": "2024-10-24",
+    "end": "2024-10-31",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Halloween Deathmatches",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Freemode Events and Challenges",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "G's Cache",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Armored Truck Robberies",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 23,
+    "pc": 0,
+    "ov": [
+      "Halloween Event",
+      "UFO Event"
+    ]
+  },
+  {
+    "id": "2024-10-31",
+    "name": "UFO Abductions / Judgement Day / Dealer Sales",
+    "start": "2024-10-31",
+    "end": "2024-11-07",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Judgement Day",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Alien Survivals",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Dealer Sales",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 21,
+    "pc": 0,
+    "ov": [
+      "Halloween Event",
+      "UFO Abductions"
+    ]
+  },
+  {
+    "id": "2024-11-07",
+    "name": "Cayo Perico / Panther Statue / Heist Month",
+    "start": "2024-11-07",
+    "end": "2024-11-14",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Panther Statue (Cayo Perico)",
+        "c": "r",
+        "m": "★"
+      },
+      {
+        "t": "Community Series",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Cayo Perico Series",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Assault on Cayo Perico",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Treasure Chests",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 20,
+    "pc": 1,
+    "ov": [
+      "The Heist Challenge"
+    ]
+  },
+  {
+    "id": "2024-11-14",
+    "name": "Doomsday Scenario / Bunker Series / Hunting Pack",
+    "start": "2024-11-14",
+    "end": "2024-11-21",
+    "days": 7,
+    "tags": [
+      {
+        "t": "The Doomsday Scenario",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Bunker Series",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Hunting Pack",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Taxi Work",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 24,
+    "pc": 1,
+    "ov": [
+      "The Heist Challenge"
+    ]
+  },
+  {
     "id": "2024-11-21",
     "name": "Heist Challenge / OG Heists / Running Back",
     "start": "2024-11-21",
