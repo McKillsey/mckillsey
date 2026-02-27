@@ -980,5 +980,145 @@
     "ov": [],
     "tt": "Fort Zancudo",
     "hsw_tt": "Pacific Bluffs to Mount Gordo"
+  },
+  "2026-02-26": {
+    "name": "Drift Event / Keitora Launch",
+    "start": "2026-02-26",
+    "end": "2026-03-05",
+    "days": 7,
+    "podium": "Benefactor Stirling GT",
+    "prize": "Fathom FR36",
+    "test": [
+      "Shitzu Keitora",
+      "Vapid Dominator GT",
+      "Dinka RT3000"
+    ],
+    "ptest": "Karin Woodlander",
+    "salvage": [
+      {
+        "r": "The Duggan Robbery",
+        "v": "Maibatsu Penumbra FF"
+      },
+      {
+        "r": "The McTony Robbery",
+        "v": "Grotti GT500"
+      },
+      {
+        "r": "The Cargo Ship Robbery",
+        "v": "BF Weevil"
+      }
+    ],
+    "lux": [
+      "Karin Woodlander",
+      "Annis Minimus"
+    ],
+    "pdm": [
+      "Karin Calico GTF",
+      "Emperor Vectre",
+      "Maibatsu Penumbra FF",
+      "Dinka Postlude",
+      "Annis ZR350"
+    ],
+    "bonuses": [
+      {
+        "a": "Drift Races",
+        "m": "3X GTA$/RP",
+        "g": "6X GTA$/RP"
+      },
+      {
+        "a": "LS Car Meet Rep",
+        "m": "5X",
+        "g": ""
+      },
+      {
+        "a": "Exotic Exports",
+        "m": "4X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Weed Sell Missions",
+        "m": "2X GTA$",
+        "g": ""
+      },
+      {
+        "a": "Sumo (Remix)",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Dinka Blista Kanjo",
+        "p": 100
+      },
+      {
+        "i": "Declasse Drift Walton L35",
+        "p": 100
+      },
+      {
+        "i": "Dinka Jester RR",
+        "p": 30
+      },
+      {
+        "i": "Fathom FR36",
+        "p": 30
+      },
+      {
+        "i": "Dinka Chavos V6",
+        "p": 30
+      },
+      {
+        "i": "Declasse Drift Yosemite",
+        "p": 30
+      },
+      {
+        "i": "Buckingham Howard NX-25",
+        "p": 30
+      },
+      {
+        "i": "Zirconium Journey II",
+        "p": 30
+      },
+      {
+        "i": "Bravado Gauntlet Hellfire",
+        "p": 30
+      },
+      {
+        "i": "RUNE Cheburek",
+        "p": 30
+      },
+      {
+        "i": "Karin Futo",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "LS Car Meet Membership",
+        "p": 100
+      },
+      {
+        "i": "Weed Farm Businesses",
+        "p": 40
+      },
+      {
+        "i": "Weed Farm Business Upgrades",
+        "p": 40
+      },
+      {
+        "i": "Drift Tuning Upgrades",
+        "p": 30
+      }
+    ],
+    "fib": "The Brute Force File",
+    "ch": "Participate in 3 Drift Races",
+    "chr": "Bright Manor Racing Suit",
+    "chc": 100000,
+    "ov": [
+      "Lunar New Year",
+      "Drift Event"
+    ],
+    "tt": "Tongva Valley",
+    "hsw_tt": "Terminal to Chiliad Mountain State Wilderness"
   }
 }

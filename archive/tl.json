@@ -1975,5 +1975,45 @@
     "ov": [
       "Lunar New Year"
     ]
+  },
+  {
+    "id": "2026-02-26",
+    "name": "Drift Event / Keitora Launch",
+    "start": "2026-02-26",
+    "end": "2026-03-05",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Drift Races",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Car Meet Rep",
+        "c": "g",
+        "m": "5X"
+      },
+      {
+        "t": "Exotic Exports",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Weed Sell Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Sumo (Remix)",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 0,
+    "pc": 0,
+    "ov": [
+      "Lunar New Year",
+      "Drift Event"
+    ]
   }
 ]
