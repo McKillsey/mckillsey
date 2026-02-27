@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special Cargo — McKillsey &amp; Company</title>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-RBI1DrB2NleHHMbucudjC.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3148;--cream:#f0ead8;--cream-dim:#9aabbf;--gold:#c9a84c;--green:#2dba72;--red:#d94f4f;--amber:#e08c2a;--rule:rgba(201,168,76,.18);--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;--serif:'Playfair Display',serif}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size:15px;line-height:1.65}
+.site-header{border-bottom:1px solid var(--rule);padding:20px 48px;display:flex;align-items:center;gap:32px}.wordmark{font-family:var(--serif);font-weight:700;color:#b8c8d8;line-height:1.15;text-decoration:none}.wordmark .line1{display:block;font-size:26px}.wordmark .line2{display:block;font-size:22px;padding-left:1.1em}.header-tagline{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.1em;text-transform:uppercase;margin-left:auto}
+.page{max-width:1400px;margin:0 auto;padding:44px 48px 80px}.page-title h1{font-family:var(--serif);font-size:34px;font-weight:900;line-height:1.1}.page-title .subtitle{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-top:6px}
+.section{margin-top:36px}.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+.mode-row{display:flex;align-items:center;gap:0;margin:28px 0 32px;flex-wrap:wrap;row-gap:12px}.mode-bar{display:flex;border:1px solid var(--rule);width:fit-content}.mode-btn{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:10px 20px;cursor:pointer;border:none;border-right:1px solid var(--rule);background:var(--navy-mid);color:var(--cream-dim);transition:all .15s;user-select:none;white-space:nowrap}.mode-btn:last-child{border-right:none}.mode-btn.active{background:var(--navy-light);color:var(--cream)}.mode-btn.active.m-crew{border-bottom:2px solid var(--green);color:var(--green)}.mode-btn.active.m-solo-inv{border-bottom:2px solid var(--gold);color:var(--gold)}.mode-btn.active.m-solo-pub{border-bottom:2px solid var(--amber);color:var(--amber)}.mode-desc{font-family:var(--mono);font-size:10px;color:var(--cream-dim);margin-left:20px;letter-spacing:.06em}
+.assumptions{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:32px;padding:11px 16px;border:1px solid var(--rule);background:rgba(201,168,76,.03)}.assumption-pill{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--cream-dim)}.assumption-pill .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}.stat-card{background:var(--navy-mid);padding:20px 18px}.stat-value{font-family:var(--mono);font-size:22px;font-weight:500;color:var(--cream);line-height:1;margin-bottom:4px}.stat-value.green{color:var(--green)}.stat-value.gold{color:var(--gold)}.stat-value.red{color:var(--red)}.stat-value.amber{color:var(--amber)}.stat-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim)}.stat-note{font-family:var(--mono);font-size:10px;color:var(--cream-dim);margin-top:4px}.stat-row-label{grid-column:1/-1;background:var(--navy-light);padding:10px 18px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;min-width:700px}
+thead th{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-align:right;padding:9px 14px;border-bottom:1px solid var(--rule);white-space:nowrap;font-weight:500}
+thead th:first-child{text-align:left}
+tbody tr{border-bottom:1px solid rgba(201,168,76,.07)}
+tbody tr.best-row{background:rgba(201,168,76,.04)}
+tbody tr.worst-row{background:rgba(217,79,79,.04)}
+tbody tr.divider-row td{border-top:2px solid var(--rule);padding-top:14px}
+td{padding:7px 14px;text-align:right;font-family:var(--mono);font-size:13px;color:var(--cream);vertical-align:middle;white-space:nowrap}
+td:first-child{text-align:left;font-family:var(--sans);font-size:13px;white-space:normal;min-width:180px}
+.htbl td{padding-right:calc(14px + .6em)}.htbl td.rneg{padding-right:14px}
+.verdict{border:1px solid var(--rule);border-left:3px solid var(--gold);padding:18px 22px;margin-bottom:12px;background:rgba(201,168,76,.02)}.verdict:last-child{margin-bottom:0}.verdict-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}.verdict p{font-size:13px;color:var(--cream);line-height:1.7;margin-bottom:7px}.verdict p:last-child{margin-bottom:0}.verdict em{color:var(--cream-dim);font-style:normal}
+.concept-box{border:1px solid var(--rule);border-left:3px solid var(--cream-dim);padding:18px 22px;background:rgba(255,255,255,.01);margin-bottom:12px}.concept-box:last-child{margin-bottom:0}.concept-box .verdict-label{color:var(--cream-dim)}.concept-box p{font-size:13px;color:var(--cream);line-height:1.7;margin-bottom:7px}.concept-box p:last-child{margin-bottom:0}
+.dim{color:var(--cream-dim)}.green{color:var(--green)}.red{color:var(--red)}.gold{color:var(--gold)}.amber{color:var(--amber)}
+#tipbox{position:fixed;z-index:9999;width:300px;background:#08111a;border:1px solid var(--gold);padding:12px 14px;font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--cream);pointer-events:none;display:none;box-shadow:0 8px 32px rgba(0,0,0,.6)}#tipbox .tb-label{color:var(--gold);font-size:9px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:6px;border-bottom:1px solid rgba(201,168,76,.2);padding-bottom:5px}#tipbox .tb-calc{color:var(--cream-dim)}#tipbox .tb-result{color:var(--green);font-weight:500;margin-top:5px;display:block}.tip{border-bottom:1px dashed rgba(201,168,76,.45);cursor:help;display:inline-block}
+.feedback-btn{position:fixed;bottom:22px;right:22px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--gold);padding:9px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .15s;z-index:100}.feedback-btn:hover{background:var(--gold);color:var(--navy)}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;display:none;align-items:center;justify-content:center}.modal-overlay.open{display:flex}.modal{background:var(--navy-mid);border:1px solid var(--rule);width:500px;max-width:calc(100vw - 40px);max-height:90vh;overflow-y:auto;padding:28px}.modal-title{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--cream);margin-bottom:4px}.modal-sub{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.08em;margin-bottom:22px}.modal-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block}.modal-textarea{width:100%;background:var(--navy);border:1px solid var(--rule);color:var(--cream);font-family:var(--sans);font-size:13px;padding:10px 12px;resize:vertical;min-height:90px;line-height:1.6;outline:none}.modal-textarea:focus{border-color:var(--gold)}.screenshot-zone{width:100%;min-height:80px;background:var(--navy);border:1px dashed rgba(201,168,76,.35);display:flex;align-items:center;justify-content:center;margin-top:14px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .15s}.screenshot-zone:hover{border-color:var(--gold)}.screenshot-zone.has-image{border-style:solid;border-color:var(--gold)}.screenshot-zone img{max-width:100%;max-height:220px;display:block}.screenshot-hint{font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.06em;text-align:center;padding:20px;pointer-events:none}.screenshot-hint span{color:var(--gold)}.screenshot-clear{position:absolute;top:6px;right:8px;background:var(--navy-mid);border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;padding:2px 8px;cursor:pointer;display:none}.screenshot-zone.has-image .screenshot-clear{display:block}.modal-footer{display:flex;align-items:center;justify-content:space-between;margin-top:18px;gap:12px}.modal-send-btn{background:var(--gold);border:none;color:var(--navy);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 22px;cursor:pointer;transition:all .15s;font-weight:500}.modal-send-btn:hover{background:var(--cream)}.modal-send-btn:disabled{opacity:.4;cursor:not-allowed}.modal-cancel-btn{background:none;border:1px solid var(--rule);color:var(--cream-dim);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:10px 16px;cursor:pointer;transition:all .15s}.modal-cancel-btn:hover{border-color:var(--cream-dim);color:var(--cream)}.modal-status{font-family:var(--mono);font-size:11px;color:var(--cream-dim);min-height:16px}
+@media(max-width:900px){.page{padding:24px 20px 80px}.site-header{padding:14px 20px}.header-tagline{display:none}.stat-grid{grid-template-columns:1fr 1fr}.mode-desc{margin-left:0;margin-top:2px;width:100%}table{min-width:500px}}
+@media(max-width:540px){.stat-grid{grid-template-columns:1fr}.mode-btn{padding:10px 12px;font-size:10px}.page-title h1{font-size:28px}.feedback-btn{bottom:16px;right:16px;padding:8px 12px}}
+</style>
+</head>
+<body>
+<div id="tipbox"></div>
+
+<header class="site-header">
+  <a href="/" class="wordmark"><span class="line1">McKillsey</span><span class="line2">&amp; Company</span></a>
+  <div class="header-tagline">Strategic Advisory &middot; Los Santos &middot; Blaine County</div>
+</header>
+
+<main class="page">
+
+<div class="page-title">
+  <h1>Special Cargo</h1>
+  <div class="subtitle">Warehouse Operations &mdash; CEO Division</div>
+</div>
+
+<div class="mode-row">
+  <div class="mode-bar">
+    <div class="mode-btn m-crew active" id="btn-crew" onclick="setMode('crew')">Crew + Full Lobby</div>
+    <div class="mode-btn m-solo-inv" id="btn-solo-inv" onclick="setMode('solo-inv')">Solo + Invite Only</div>
+    <div class="mode-btn m-solo-pub" id="btn-solo-pub" onclick="setMode('solo-pub')">Solo + Full Lobby</div>
+  </div>
+  <div class="mode-desc" id="mode-desc">2 associates in org. High Demand Bonus applied. Maximum payout &mdash; recommended play.</div>
+</div>
+
+<div class="assumptions">
+  <div class="assumption-pill"><span class="dot"></span>Staff sourcing &mdash; $7,500/dispatch, 1.45 avg crates</div>
+  <div class="assumption-pill"><span class="dot"></span>Mansion owned &mdash; security upgrade active</div>
+  <div class="assumption-pill"><span class="dot"></span>Sell vehicles fully upgraded</div>
+</div>
+
+<!-- ═══ AT A GLANCE ═══ -->
+<div class="section">
+<div class="section-label" id="stat-label">At a Glance &mdash; Crew + Full Lobby</div>
+<div class="stat-grid">
+  <div class="stat-row-label">Per Warehouse &mdash; Full Large (111 Crates)</div>
+  <div class="stat-card">
+    <div class="stat-value green" id="s-dph">$5,505,000</div>
+    <div class="stat-label">$/Active Hour</div>
+    <div class="stat-note" id="s-dph-note">30 min sell + reciprocity</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value green" id="s-net">$2,752,500</div>
+    <div class="stat-label">Net Income</div>
+    <div class="stat-note" id="s-net-note">$3,330,000 gross &minus; $577,500 sourcing</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value" id="s-gross">$3,330,000</div>
+    <div class="stat-label" id="s-gross-lbl">Gross Sale</div>
+    <div class="stat-note" id="s-gross-note">111 &times; $20K &times; 1.5 HDB</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value red">$577,500</div>
+    <div class="stat-label">Sourcing Cost</div>
+    <div class="stat-note">77 dispatches &times; $7,500</div>
+  </div>
+  <div class="stat-row-label">5-Warehouse Empire &mdash; One Full Cycle</div>
+  <div class="stat-card">
+    <div class="stat-value green" id="e-dph">$5,505,000</div>
+    <div class="stat-label">$/Active Hour</div>
+    <div class="stat-note">Same rate &mdash; scales linearly</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value green" id="e-net">$13,762,500</div>
+    <div class="stat-label">Net Income (5&times;)</div>
+    <div class="stat-note" id="e-net-note">5 &times; $2,752,500</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value" id="e-time">150 min</div>
+    <div class="stat-label" id="e-time-lbl">Active Time (5&times;)</div>
+    <div class="stat-note" id="e-time-note">5 &times; 30 min sell cycles</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value red">$2,887,500</div>
+    <div class="stat-label">Total Sourcing Cost</div>
+    <div class="stat-note">5 &times; $577,500</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ WAREHOUSE COMPARISON ═══ -->
+<div class="section">
+<div class="section-label">Warehouse Comparison &mdash; Small vs. Medium vs. Large</div>
+<div class="concept-box" style="margin-bottom:20px">
+  <div class="verdict-label">Why Size Is Not Optional</div>
+  <p>Per-crate sale value increases dramatically with warehouse fill level &mdash; small and medium warehouses sell at a steep discount per crate relative to a full large. The table below shows why running anything other than large warehouses is a structural disadvantage, and why the mode you sell in matters less than the warehouse you're selling from.</p>
+</div>
+<div class="table-wrap"><table class="htbl" id="wh-table">
+<thead>
+  <tr>
+    <th style="text-align:left">Warehouse (max crates)</th>
+    <th>Max Crates</th>
+    <th>Per-Crate Value</th>
+    <th>Gross Sale</th>
+    <th>Sourcing Cost</th>
+    <th>Net Income</th>
+    <th>Sell Vehicles</th>
+    <th>Active Time</th>
+    <th>Passive Fill</th>
+    <th>$/Active Hr</th>
+    <th>$/Passive Hr</th>
+  </tr>
+</thead>
+<tbody id="wh-tbody">
+  <!-- populated by JS -->
+</tbody>
+</table></div>
+<div style="margin-top:10px;font-family:var(--mono);font-size:10px;color:var(--cream-dim);letter-spacing:.04em">Sourcing cost assumes staff dispatches at $7,500 / 1.45 avg crates. Sell vehicles: small and medium = 2 vehicles, large = 3 vehicles. Crew active time includes reciprocity &mdash; small: 10 min sell + 10 min reciprocity; medium and large: 10 min sell + 20 min reciprocity. Solo: flat 30 min, no reciprocity.</div>
+</div>
+
+<!-- ═══ SOURCE STRATEGY ═══ -->
+<div class="section">
+<div class="section-label">Source Strategy &mdash; Active vs. Staff vs. GTA+</div>
+<div class="concept-box" style="margin-bottom:20px">
+  <div class="verdict-label">How to Read This</div>
+  <p>All three sourcing methods fill the same large warehouse to 111 crates and produce the same sell. The difference is how much of your time it costs &mdash; and whether that time is active (you must be present and doing something) or passive (the clock runs while you do other things). Normal weeks favour passive staff sourcing. During a 2&times; event week, speed is money: active sourcing fills a warehouse in several hours versus days or weeks for staff, which may be the difference between one sell and two during the bonus window.</p>
+</div>
+<div class="table-wrap"><table class="htbl">
+<thead>
+  <tr>
+    <th style="text-align:left">Metric</th>
+    <th>Active Sourcing</th>
+    <th>Staff (No GTA+)</th>
+    <th>Staff (GTA+)</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Cost per crate</td>
+    <td><span class="tip" data-tip-label="Cost/Crate — Active" data-tip-calc="$18,000 &divide; 3 crates per run&#10;= $6,000/crate">$6,000</span></td>
+    <td><span class="tip" data-tip-label="Cost/Crate — Staff" data-tip-calc="$7,500 &divide; 1.45 avg crates&#10;= $5,172/crate">$5,172</span></td>
+    <td>$5,172</td>
+  </tr>
+  <tr>
+    <td>Total sourcing cost (111 crates)</td>
+    <td class="red rneg"><span class="tip" data-tip-label="Total Cost — Active" data-tip-calc="37 missions &times; $18,000&#10;= $666,000">($666,000)</span></td>
+    <td class="red rneg"><span class="tip" data-tip-label="Total Cost — Staff" data-tip-calc="77 dispatches &times; $7,500&#10;= $577,500">($577,500)</span></td>
+    <td class="red rneg">($577,500)</td>
+  </tr>
+  <tr>
+    <td>Net income (crew + HDB sell)</td>
+    <td><span class="tip" data-tip-label="Net — Active Source" data-tip-calc="$3,330,000 gross &minus; $666,000&#10;= $2,664,000">$2,664,000</span></td>
+    <td><span class="tip" data-tip-label="Net — Staff Source" data-tip-calc="$3,330,000 gross &minus; $577,500&#10;= $2,752,500">$2,752,500</span></td>
+    <td>$2,752,500</td>
+  </tr>
+  <tr class="divider-row">
+    <td colspan="4" style="font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding-bottom:6px">Time &amp; Efficiency</td>
+  </tr>
+  <tr>
+    <td>Active time to fill</td>
+    <td><span class="tip" data-tip-label="Active Time — Self Source" data-tip-calc="37 missions &times; ~5 min each&#10;= ~185 min to fill">~185 min</span></td>
+    <td><span class="tip" data-tip-label="Active Time — Staff, No GTA+" data-tip-calc="77 warehouse visits &times; ~2 min each&#10;= ~154 min active&#10;Spread over days or weeks">~154 min</span></td>
+    <td><span class="tip" data-tip-label="Active Time — Staff, GTA+" data-tip-calc="Phone dispatch from anywhere&#10;77 taps &asymp; 5 min total">~5 min</span></td>
+  </tr>
+  <tr>
+    <td>Passive fill time</td>
+    <td class="dim">&mdash;</td>
+    <td><span class="tip" data-tip-label="Passive Time — Staff" data-tip-calc="77 dispatches &times; 48 min each&#10;= 3,696 min (&asymp;62 hrs)&#10;Runs while you do other things">3,696 min</span></td>
+    <td>3,696 min</td>
+  </tr>
+  <tr>
+    <td>Total active time (fill + sell)</td>
+    <td><span class="tip" data-tip-label="Total Active — Self Source" data-tip-calc="185 min sourcing + 30 min sell&#10;= 215 min total">215 min</span></td>
+    <td><span class="tip" data-tip-label="Total Active — Staff No GTA+" data-tip-calc="~154 min dispatch visits + 30 min sell&#10;= ~184 min total">~184 min</span></td>
+    <td><span class="tip" data-tip-label="Total Active — Staff GTA+" data-tip-calc="~5 min phone dispatch + 30 min sell&#10;= ~35 min total">~35 min</span></td>
+  </tr>
+  <tr>
+    <td><strong>$/active hour</strong></td>
+    <td><span class="tip" data-tip-label="$/Active Hr — Active Source" data-tip-calc="$2,664,000 &divide; 215 min &times; 60&#10;= $743,721/hr">$743,721</span></td>
+    <td><span class="tip" data-tip-label="$/Active Hr — Staff No GTA+" data-tip-calc="$2,752,500 &divide; 184 min &times; 60&#10;= $897,554/hr">$897,554</span></td>
+    <td class="green"><strong><span class="tip" data-tip-label="$/Active Hr — Staff GTA+" data-tip-calc="$2,752,500 &divide; 35 min &times; 60&#10;= $4,718,571/hr&#10;&#10;Nearly all active time is the sell">$4,718,571</span></strong></td>
+  </tr>
+  <tr>
+    <td>$/passive hour</td>
+    <td class="dim">&mdash;</td>
+    <td><span class="tip" data-tip-label="$/Passive Hr — Staff" data-tip-calc="$2,752,500 &divide; 3,696 min &times; 60&#10;= $44,686/hr">$44,686</span></td>
+    <td>$44,686</td>
+  </tr>
+  <tr class="divider-row">
+    <td colspan="4" style="font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);padding-bottom:6px">During a 2&times; Event Week &mdash; Speed Is Money</td>
+  </tr>
+  <tr>
+    <td>Net income (2&times; + crew + HDB)</td>
+    <td class="amber"><span class="tip" data-tip-label="Net — Active + 2×" data-tip-calc="$6,660,000 gross &minus; $666,000&#10;= $5,994,000">$5,994,000</span></td>
+    <td class="amber"><span class="tip" data-tip-label="Net — Staff + 2×" data-tip-calc="$6,660,000 gross &minus; $577,500&#10;= $6,082,500">$6,082,500</span></td>
+    <td class="amber">$6,082,500</td>
+  </tr>
+  <tr class="best-row">
+    <td><strong>$/active hour (2&times;)</strong></td>
+    <td class="amber"><strong><span class="tip" data-tip-label="$/Active Hr — Active + 2×" data-tip-calc="$5,994,000 &divide; 215 min &times; 60&#10;= $1,672,093/hr&#10;&#10;Active sourcing fills in several hours.&#10;Staff fills in days or weeks.">$1,672,093</span></strong></td>
+    <td class="amber"><span class="tip" data-tip-label="$/Active Hr — Staff No GTA+ + 2×" data-tip-calc="$6,082,500 &divide; 184 min &times; 60&#10;= $1,984,429/hr">$1,984,429</span></td>
+    <td class="amber"><span class="tip" data-tip-label="$/Active Hr — Staff GTA+ + 2×" data-tip-calc="$6,082,500 &divide; 35 min &times; 60&#10;= $10,427,143/hr">$10,427,143</span></td>
+  </tr>
+</tbody>
+</table></div>
+</div>
+
+<!-- ═══ CRATE VALUE SCALING ═══ -->
+<div class="section">
+<div class="section-label">Crate Value Scaling &mdash; The Non-Linear Incentive</div>
+<div class="table-wrap"><table>
+<thead>
+  <tr>
+    <th style="text-align:left">Warehouse / Reference Point</th>
+    <th>Crates</th>
+    <th>Per-Crate Value</th>
+    <th>Gross (No HDB)</th>
+    <th>Gross (+ HDB)</th>
+    <th>vs. Full Large</th>
+  </tr>
+</thead>
+<tbody>
+  <tr class="worst-row">
+    <td>Small warehouse maximum</td>
+    <td>16</td>
+    <td class="red">$15,000</td>
+    <td class="red">$240,000</td>
+    <td class="red">$360,000</td>
+    <td class="red">(89%)</td>
+  </tr>
+  <tr class="worst-row">
+    <td>Medium warehouse maximum</td>
+    <td>42</td>
+    <td class="red">$17,500</td>
+    <td>$735,000</td>
+    <td>$1,102,500</td>
+    <td class="red">(67%)</td>
+  </tr>
+  <tr>
+    <td>Raid threshold <span class="dim">(large warehouse)</span></td>
+    <td>77</td>
+    <td class="amber">$18,500</td>
+    <td>$1,424,500</td>
+    <td>$2,136,750</td>
+    <td class="amber">(36%)</td>
+  </tr>
+  <tr>
+    <td>Holding 1&ndash;11 special items<br><span class="dim" style="font-size:12px">Realistic ceiling if hoarding for 2&times;</span></td>
+    <td>100&ndash;110</td>
+    <td class="amber">$19,500</td>
+    <td>$1,950,000&ndash;$2,145,000</td>
+    <td>$2,925,000&ndash;$3,217,500</td>
+    <td class="amber">(12%)&ndash;(3%)</td>
+  </tr>
+  <tr class="best-row">
+    <td><strong>Large warehouse maximum</strong></td>
+    <td>111</td>
+    <td class="green"><strong>$20,000</strong></td>
+    <td class="green"><strong>$2,220,000</strong></td>
+    <td class="green"><strong>$3,330,000</strong></td>
+    <td class="green">Baseline</td>
+  </tr>
+</tbody>
+</table></div>
+</div>
+
+<!-- ═══ SPECIAL ITEMS ═══ -->
+<div class="section">
+<div class="section-label">Special Items &mdash; Just Sell Them</div>
+<div class="concept-box" style="margin-bottom:12px">
+  <div class="verdict-label">The Hidden Cost of Holding</div>
+  <p>Special Items are rare cargo sourced by staff (~1% chance per dispatch) and sold separately from regular crates via your laptop &mdash; one vehicle, no HDB, up to $150K each. The instinct is to hold them for a 2&times; event week and double the payout to $300K. But holding a special item means your warehouse fills to a maximum of 110 regular crates instead of 111, dropping per-crate value from $20,000 to $19,500 &mdash; costing <strong>$75,000 per sell cycle</strong> for that first displaced crate.</p>
+  <p>Items two through eleven each cost $19,500 per cycle to hold (already below 111, already at the $19,500 tier). The math barely rescues the strategy even then: you are betting a near-certain $19,500&ndash;$75,000 per cycle against an uncertain $150K upside that arrives roughly once a year. If you sell once a month while holding, opportunity cost accumulates well in excess of the 2&times; premium before the event arrives.</p>
+</div>
+<div class="verdict">
+  <div class="verdict-label">McKillsey Verdict &mdash; Sell Special Items When They Appear</div>
+  <p><strong>Don't hold special items for 2&times; weeks.</strong> Sell them when they appear. Each is a one-vehicle solo sale with no HDB &mdash; roughly 10 minutes for $150K. At $900K/active hour it's a reasonable filler activity, not a scheduling priority. There is no reason to wait.</p>
+  <p><strong>Keep your warehouse at 111 crates.</strong> Every slot displaced by a hoarded special item costs $19,500&ndash;$75,000 per sell cycle in reduced per-crate value. The 2&times; upside does not compensate for the compounding cost. Sell promptly, fill to 111, move on.</p>
+</div>
+</div>
+
+<!-- ═══ ADVISORY NOTES ═══ -->
+<div class="section">
+<div class="section-label">McKillsey Advisory Notes</div>
+
+<div class="verdict">
+  <div class="verdict-label">McKillsey Verdict &mdash; The Normal Week Playbook</div>
+  <p><strong>Staff source passively. Sell whenever full. Repeat.</strong> With GTA+, dispatch from your phone every 48 minutes and show up for a 30-minute crew sell whenever your warehouses are full &mdash; the cadence adapts to however much you play. Without GTA+, visit your warehouses when you can; expect roughly one sell per warehouse per month of casual play. Either way: sell at 111 crates, don't wait for a 2&times; event. The opportunity cost of hoarding dwarfs the upside by a factor most players underestimate &mdash; you could be cycling through ten or more sells in the time you spend waiting for a bonus that arrives once a year.</p>
+</div>
+
+<div class="verdict">
+  <div class="verdict-label">McKillsey Verdict &mdash; The 2&times; Event Week Playbook</div>
+  <p><strong>The moment a 2&times; event goes live, switch to active sourcing missions immediately.</strong> Fill your warehouses as fast as possible, then sell. A full large warehouse takes roughly 37 missions at ~5 minutes each &mdash; several hours of active play. Across 5 warehouses this is a serious time commitment, but the 2&times; multiplier on top of HDB makes it the single highest-earning activity in GTA Online for that window.</p>
+  <p><strong>Active sourcing outside of 2&times; weeks is not recommended.</strong> It costs more per crate than staff, and there are better things to do with your active time. Staff sourcing handles the normal week. Active sourcing exists for the event week.</p>
+</div>
+
+<div class="verdict">
+  <div class="verdict-label">On Sell Operations</div>
+  <p><strong>A full large warehouse spawns 3 sell vehicles. Bring 2 associates.</strong> Solo in a public lobby, you are the session's most conspicuous target for the entire sell window. Upgrade everything at the workbench: armor, bulletproof tires, jammer, boat speed where applicable (~$1.25M total). Non-negotiable for public lobby sells. Solo + invite only is always the safe fallback &mdash; same 30 minutes, same sourcing cost, no HDB.</p>
+</div>
+
+<div class="verdict">
+  <div class="verdict-label">On Raids</div>
+  <p><strong>Large warehouses become raid-eligible at 78+ crates after 5&ndash;10 hours of inactivity.</strong> A mansion with the security upgrade prevents raids on your CEO warehouses entirely. If you don't yet have raid protection, consider switching to active sourcing once you hit 77 crates &mdash; filling quickly and selling before the raid timer fires is cheaper than losing stock. There is also a ghost raid bug that can trigger in invite-only sessions on return from a hosted mission; the mansion is your only reliable insurance against both.</p>
+</div>
+
+<div class="verdict">
+  <div class="verdict-label">On Warehouse Location &amp; Count</div>
+  <p><strong>Five large warehouses in the southern part of Los Santos.</strong> Proximity to the port and LSIA minimises sell vehicle travel time to delivery points. Cluster your five warehouses to reduce dispatch visit time if you don't have GTA+. Fewer than five warehouses is leaving passive infrastructure idle &mdash; each warehouse fills and sells independently, and your active sell time per unit is fixed regardless of how many you own. More warehouses, same time per sell, more net per session.</p>
+</div>
+</div>
+
+<!-- ═══ METHODOLOGY ═══ -->
+<div class="section">
+<div class="section-label">Methodology &amp; Assumptions</div>
+<div class="concept-box">
+  <div class="verdict-label">Data &amp; Assumptions</div>
+  <p>Per-crate values by milestone: 1 crate = $10,000; 16 crates (small max) = $15,000; 42 crates (medium max) = $17,500; 77 crates (large raid threshold) = $18,500; 100&ndash;110 crates = $19,500; 111 crates (large max) = $20,000. Staff dispatch: $7,500 per dispatch, 65/25/10% probability for 1/2/3 crates = 1.45 average. Active sourcing: $18,000 per run, 3 crates, ~5 min. Sell vehicles: small and medium = 2 vehicles, large = 3 vehicles. Crew sell time includes reciprocity &mdash; small: 10 min sell + 10 min reciprocity = 20 min; medium: 10 min sell + 20 min reciprocity = 30 min; large: 10 min sell + 20 min reciprocity = 30 min. Solo: flat 30 min, no reciprocity. HDB: +50% in public session. 2&times; event frequency: approximately once per year for all players. Raid window: 5&ndash;10 hours after crossing 78 crates. Mansion security upgrade confirmed to prevent raids on CEO warehouses. Special item sale: ~$150K, one vehicle, ~10 min, no HDB.</p>
+</div>
+</div>
+
+</main>
+
+<button class="feedback-btn" onclick="openFeedback()">Report Error / Suggest Change</button>
+<div class="modal-overlay" id="feedback-overlay" onclick="if(event.target===this)closeFeedback()">
+  <div class="modal">
+    <div class="modal-title">Report an Error</div>
+    <div class="modal-sub">No login required. Screenshot optional.</div>
+    <label class="modal-label" style="margin-top:4px">What's wrong?</label>
+    <textarea class="modal-textarea" id="feedback-text" placeholder="Describe the error or suggest a change..."></textarea>
+    <div class="screenshot-zone" id="screenshot-zone" onclick="document.getElementById('screenshot-file').click()">
+      <div class="screenshot-hint" id="screenshot-hint"><span>Paste</span> a screenshot or <span>click</span> to upload</div>
+      <img id="screenshot-preview" style="display:none">
+      <button class="screenshot-clear" id="screenshot-clear" onclick="event.stopPropagation();clearScreenshot()">&#10005; Remove</button>
+    </div>
+    <input type="file" id="screenshot-file" accept="image/*" style="display:none" onchange="handleFileSelect(event)">
+    <div class="modal-footer">
+      <div class="modal-status" id="modal-status"></div>
+      <div style="display:flex;gap:8px">
+        <button class="modal-cancel-btn" onclick="closeFeedback()">Cancel</button>
+        <button class="modal-send-btn" id="modal-send-btn" onclick="submitFeedback()">Send Report</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── TOOLTIP ──
+const tipbox = document.getElementById('tipbox');
+let activeTip = null;
+document.addEventListener('mouseover', e => {
+  const el = e.target.closest('.tip'); if (!el) return;
+  activeTip = el;
+  const label = el.dataset.tipLabel || '', calc = el.dataset.tipCalc || '', result = el.dataset.tipResult || '';
+  tipbox.innerHTML = (label ? `<span class="tb-label">${label}</span>` : '') + (calc ? `<span class="tb-calc">${calc.replace(/\n/g,'<br>')}</span>` : '') + (result ? `<span class="tb-result">${result}</span>` : '');
+  tipbox.style.display = 'block'; positionTip(e);
+});
+document.addEventListener('mousemove', e => { if (!activeTip) return; if (!e.target.closest('.tip')) { tipbox.style.display = 'none'; activeTip = null; return; } positionTip(e); });
+document.addEventListener('mouseout', e => { if (!e.target.closest('.tip')) { tipbox.style.display = 'none'; activeTip = null; } });
+function positionTip(e) {
+  const tw = 300, th = tipbox.offsetHeight || 120, vw = window.innerWidth;
+  let x = e.clientX - tw / 2, y = e.clientY - th - 14;
+  if (x < 8) x = 8; if (x + tw > vw - 8) x = vw - tw - 8; if (y < 8) y = e.clientY + 20;
+  tipbox.style.left = x + 'px'; tipbox.style.top = y + 'px';
+}
+
+// ── WAREHOUSE TABLE DATA ──
+// [maxCrates, perCrateValue, vehicles, crewSellMin, crewRecipMin, soloSellMin, passiveFillMin]
+const WH = {
+  small:  { name: 'Small (16 crates)',  max: 16,  pcu: 15000, veh: 2, sellCrew: 10, recipCrew: 10, sellSolo: 30, fill: 528  },
+  medium: { name: 'Medium (42 crates)', max: 42,  pcu: 17500, veh: 3, sellCrew: 10, recipCrew: 20, sellSolo: 30, fill: 1392 },
+  large:  { name: 'Large (111 crates)', max: 111, pcu: 20000, veh: 3, sellCrew: 10, recipCrew: 20, sellSolo: 30, fill: 3696 }
+};
+const SOURCING_COST_PER_CRATE = 7500 / 1.45; // ~5172
+
+function fmtM(n) {
+  return '$' + Math.round(n).toLocaleString();
+}
+function fmtNeg(n) {
+  return '(' + fmtM(Math.abs(n)) + ')';
+}
+function fmtTime(mins) {
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  if (h === 0) return m + 'min';
+  if (m === 0) return h + 'hr';
+  return h + 'hr ' + m + 'min';
+}
+
+function buildWHTable(mode) {
+  const tbody = document.getElementById('wh-tbody');
+  tbody.innerHTML = '';
+  Object.values(WH).forEach((w, i) => {
+    const dispatches = Math.ceil(w.max / 1.45);
+    const sourcingCost = dispatches * 7500;
+    const hdb = (mode === 'crew' || mode === 'solo-pub') ? 1.5 : 1.0;
+    const gross = w.max * w.pcu * hdb;
+    const net = gross - sourcingCost;
+    const activeMins = mode === 'crew'
+      ? (w.sellCrew + w.recipCrew)
+      : w.sellSolo;
+    const dph = net / activeMins * 60;
+    const pph = net / w.fill * 60;
+    const isLarge = w.max === 111;
+    const isBest = isLarge;
+    const isWorst = w.max === 16;
+
+    const tr = document.createElement('tr');
+    if (isBest) tr.className = 'best-row';
+    if (isWorst) tr.className = 'worst-row';
+
+    const hdbLabel = (mode === 'crew') ? ' (+ HDB)' : (mode === 'solo-pub') ? ' (+ HDB)' : '';
+    const activeLbl = mode === 'crew'
+      ? `${w.sellCrew} min sell + ${w.recipCrew} min recip`
+      : `${w.sellSolo} min solo`;
+
+    tr.innerHTML = `
+      <td>${isLarge ? '<strong>' : ''}${w.name}${isLarge ? '</strong>' : ''}</td>
+      <td>${w.max}</td>
+      <td class="${isLarge ? 'green' : isWorst ? 'red' : 'amber'}">
+        <span class="tip" data-tip-label="Per-Crate Value — ${w.name}" data-tip-calc="Fixed at this warehouse size&#10;Max crates: ${w.max}">
+          ${fmtM(w.pcu)}
+        </span>
+      </td>
+      <td class="${isLarge ? 'green' : isWorst ? 'red' : ''}">
+        <span class="tip" data-tip-label="Gross — ${w.name}${hdbLabel}" data-tip-calc="${w.max} &times; ${fmtM(w.pcu)}${hdb > 1 ? ' &times; 1.5 HDB' : ''}&#10;= ${fmtM(gross)}">
+          ${fmtM(gross)}
+        </span>
+      </td>
+      <td class="red rneg">
+        <span class="tip" data-tip-label="Sourcing Cost — ${w.name}" data-tip-calc="${dispatches} dispatches &times; $7,500&#10;= ${fmtM(sourcingCost)}">
+          ${fmtNeg(sourcingCost)}
+        </span>
+      </td>
+      <td class="${isLarge ? 'green' : ''}">
+        <span class="tip" data-tip-label="Net — ${w.name}" data-tip-calc="${fmtM(gross)} &minus; ${fmtM(sourcingCost)}&#10;= ${fmtM(net)}">
+          ${fmtM(net)}
+        </span>
+      </td>
+      <td>${w.veh}</td>
+      <td>
+        <span class="tip" data-tip-label="Active Time — ${w.name}" data-tip-calc="${activeLbl}">
+          ${fmtTime(activeMins)}
+        </span>
+      </td>
+      <td>${fmtTime(w.fill)}</td>
+      <td class="${isLarge ? 'green' : ''}">
+        <span class="tip" data-tip-label="$/Active Hr — ${w.name}" data-tip-calc="${fmtM(net)} &divide; ${activeMins} min &times; 60&#10;= ${fmtM(dph)}/hr">
+          ${fmtM(dph)}
+        </span>
+      </td>
+      <td>
+        <span class="tip" data-tip-label="$/Passive Hr — ${w.name}" data-tip-calc="${fmtM(net)} &divide; ${w.fill} min &times; 60&#10;= ${fmtM(pph)}/hr">
+          ${fmtM(pph)}
+        </span>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// ── MODE TOGGLE ──
+const MODES = {
+  'crew':     { desc:'2 associates in org. High Demand Bonus applied. Maximum payout \u2014 recommended play.', label:'At a Glance \u2014 Crew + Full Lobby',    dph:'$5,505,000', dphNote:'30 min sell + reciprocity',               net:'$2,752,500', netNote:'$3,330,000 gross \u2212 $577,500 sourcing', gross:'$3,330,000', grossLbl:'Gross Sale (+ HDB)',    grossNote:'111 \u00d7 $20K \u00d7 1.5 HDB',          eDph:'$5,505,000', eNet:'$13,762,500', eNetNote:'5 \u00d7 $2,752,500', eTime:'150 min', eTimeLbl:'Active Time (5\u00d7)', eTimeNote:'5 \u00d7 30 min sell cycles' },
+  'solo-inv': { desc:'No associates. No HDB. Safe and entirely manageable solo.',                               label:'At a Glance \u2014 Solo + Invite Only',  dph:'$3,285,000', dphNote:'30 min solo sell, no reciprocity',       net:'$1,642,500', netNote:'$2,220,000 gross \u2212 $577,500 sourcing', gross:'$2,220,000', grossLbl:'Gross Sale (No HDB)', grossNote:'111 \u00d7 $20K, no lobby bonus',          eDph:'$3,285,000', eNet:'$8,212,500',  eNetNote:'5 \u00d7 $1,642,500', eTime:'150 min', eTimeLbl:'Active Time (5\u00d7)', eTimeNote:'5 \u00d7 30 min solo sells'  },
+  'solo-pub': { desc:'HDB applies, but 3 unaccompanied sell vehicles in a public lobby. Not recommended.',     label:'At a Glance \u2014 Solo + Full Lobby',   dph:'$5,505,000', dphNote:'30 min \u2014 extreme grief risk',         net:'$2,752,500', netNote:'Does not account for product loss',          gross:'$3,330,000', grossLbl:'Gross Sale (+ HDB)',    grossNote:'111 \u00d7 $20K \u00d7 1.5 HDB',          eDph:'$5,505,000', eNet:'$13,762,500', eNetNote:'If all 5 sells complete without loss', eTime:'150 min', eTimeLbl:'Active Time (5\u00d7)', eTimeNote:'Does not account for product loss' }
+};
+
+function setMode(m) {
+  ['crew','solo-inv','solo-pub'].forEach(id => {
+    document.getElementById('btn-' + id).className = 'mode-btn m-' + id + (m === id ? ' active' : '');
+  });
+  const c = MODES[m];
+  document.getElementById('mode-desc').textContent     = c.desc;
+  document.getElementById('stat-label').textContent    = c.label;
+  document.getElementById('s-dph').textContent         = c.dph;
+  document.getElementById('s-dph-note').textContent    = c.dphNote;
+  document.getElementById('s-net').textContent         = c.net;
+  document.getElementById('s-net-note').textContent    = c.netNote;
+  document.getElementById('s-gross').textContent       = c.gross;
+  document.getElementById('s-gross-lbl').textContent   = c.grossLbl;
+  document.getElementById('s-gross-note').textContent  = c.grossNote;
+  document.getElementById('e-dph').textContent         = c.eDph;
+  document.getElementById('e-net').textContent         = c.eNet;
+  document.getElementById('e-net-note').textContent    = c.eNetNote;
+  document.getElementById('e-time').textContent        = c.eTime;
+  document.getElementById('e-time-lbl').textContent    = c.eTimeLbl;
+  document.getElementById('e-time-note').textContent   = c.eTimeNote;
+  buildWHTable(m);
+}
+setMode('crew');
+
+// ── FEEDBACK ──
+let screenshotData = null;
+function openFeedback() { document.getElementById('feedback-overlay').classList.add('open'); document.getElementById('feedback-text').focus(); }
+function closeFeedback() { document.getElementById('feedback-overlay').classList.remove('open'); document.getElementById('modal-status').textContent = ''; }
+function setScreenshot(d) { screenshotData = d; const p = document.getElementById('screenshot-preview'); p.src = d; p.style.display = 'block'; document.getElementById('screenshot-hint').style.display = 'none'; document.getElementById('screenshot-zone').classList.add('has-image'); }
+function clearScreenshot() { screenshotData = null; const p = document.getElementById('screenshot-preview'); p.src = ''; p.style.display = 'none'; document.getElementById('screenshot-hint').style.display = ''; document.getElementById('screenshot-zone').classList.remove('has-image'); document.getElementById('screenshot-file').value = ''; }
+function handleFileSelect(e) { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = ev => setScreenshot(ev.target.result); r.readAsDataURL(f); }
+document.addEventListener('paste', e => {
+  if (!document.getElementById('feedback-overlay').classList.contains('open')) return;
+  const items = e.clipboardData?.items; if (!items) return;
+  for (const item of items) { if (item.type.startsWith('image/')) { const r = new FileReader(); r.onload = ev => setScreenshot(ev.target.result); r.readAsDataURL(item.getAsFile()); break; } }
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeFeedback(); });
+async function submitFeedback() {
+  const text = document.getElementById('feedback-text').value.trim();
+  if (!text) { document.getElementById('modal-status').textContent = 'Please describe the issue first.'; return; }
+  const btn = document.getElementById('modal-send-btn'), status = document.getElementById('modal-status');
+  btn.disabled = true; btn.textContent = 'Sending...'; status.textContent = '';
+  let body = `Page: ${location.href}\n\nFeedback:\n${text}`;
+  if (screenshotData) {
+    try {
+      const imgForm = new FormData(); imgForm.append('key', 'a3cb2b5f84e2b4e2a7b6c1d9f8e3a4b5'); imgForm.append('image', screenshotData.split(',')[1]);
+      const imgRes = await fetch('https://api.imgbb.com/1/upload', { method: 'POST', body: imgForm });
+      const imgData = await imgRes.json();
+      if (imgData.success) body += `\n\nScreenshot: ${imgData.data.url}`;
+    } catch(e) { body += '\n\n(Screenshot failed to upload)'; }
+  }
+  const fd = new FormData(); fd.append('access_key', '25c0d000-546c-45cd-be70-ec9abcded581'); fd.append('subject', 'McKillsey Error Report \u2014 CEO Cargo'); fd.append('message', body);
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
+    const result = await res.json();
+    if (result.success) {
+      status.style.color = 'var(--green)'; status.textContent = 'Sent. Thank you.'; btn.textContent = 'Sent \u2713';
+      setTimeout(() => { closeFeedback(); document.getElementById('feedback-text').value = ''; clearScreenshot(); btn.disabled = false; btn.textContent = 'Send Report'; status.style.color = ''; }, 1800);
+    } else { throw new Error(); }
+  } catch(e) { status.style.color = 'var(--red)'; status.textContent = 'Failed to send. Try again.'; btn.disabled = false; btn.textContent = 'Send Report'; }
+}
+</script>
+</body>
+</html>
