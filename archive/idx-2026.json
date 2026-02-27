@@ -1,0 +1,2810 @@
+[
+  {
+    "t": "Battle Axe",
+    "y": "gun",
+    "w": "2026-01-08",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Benefactor XLS",
+    "y": "test",
+    "w": "2026-01-08",
+    "d": "Test Ride (Removed)",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Bravado Gauntlet Hellfire",
+    "y": "salvage",
+    "w": "2026-01-08",
+    "d": "The McTony Robbery",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Buckingham Maverick",
+    "y": "discount",
+    "w": "2026-01-08",
+    "d": "30% Off",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Canis Seminole Frontier",
+    "y": "pdm",
+    "w": "2026-01-08",
+    "d": "Premium Deluxe",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Community Combat Series",
+    "y": "bonus",
+    "w": "2026-01-08",
+    "d": "2X GTA$/RP",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Complete 3 Hands On Car Wash Legal Jobs",
+    "y": "challenge",
+    "w": "2026-01-08",
+    "d": "$100,000",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Counterfeit Cash Factories",
+    "y": "discount",
+    "w": "2026-01-08",
+    "d": "40% Off",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Counterfeit Cash Factory Upgrades and Modifications",
+    "y": "discount",
+    "w": "2026-01-08",
+    "d": "40% Off",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Counterfeit Cash Sell Missions (Biker + NC)",
+    "y": "bonus",
+    "w": "2026-01-08",
+    "d": "2X GTA$/RP",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Dewbauchee Exemplar",
+    "y": "pdm",
+    "w": "2026-01-08",
+    "d": "Premium Deluxe",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Dinka Blista Kanjo",
+    "y": "salvage",
+    "w": "2026-01-08",
+    "d": "The Podium Robbery",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Dinka Jester (Racecar)",
+    "y": "test",
+    "w": "2026-01-08",
+    "d": "Test Ride (Removed)",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Dinka Sugoi",
+    "y": "discount",
+    "w": "2026-01-08",
+    "d": "30% Off",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Enus Stafford",
+    "y": "test",
+    "w": "2026-01-08",
+    "d": "Test Ride (Removed)",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Featured Series: Hasta La Vista",
+    "y": "bonus",
+    "w": "2026-01-08",
+    "d": "2X GTA$/RP",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Fort Zancudo",
+    "y": "tt",
+    "w": "2026-01-08",
+    "d": "Time Trial",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "GTA+ Operation Paper Trail",
+    "y": "gta_plus",
+    "w": "2026-01-08",
+    "d": "4X Operation Paper Trail",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Gallivanter Baller ST",
+    "y": "discount",
+    "w": "2026-01-08",
+    "d": "30% Off",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Grotti Brioso 300",
+    "y": "discount",
+    "w": "2026-01-08",
+    "d": "30% Off",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Grotti LSCM Cheetah Classic",
+    "y": "discount",
+    "w": "2026-01-08",
+    "d": "30% Off",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "HSW Race Series",
+    "y": "bonus",
+    "w": "2026-01-08",
+    "d": "4X GTA$/RP",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "HVY Chernobog",
+    "y": "discount",
+    "w": "2026-01-08",
+    "d": "30% Off",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Hands On Car Wash (Legal Side)",
+    "y": "bonus",
+    "w": "2026-01-08",
+    "d": "3X GTA$/RP",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Hands On Car Wash Property",
+    "y": "discount",
+    "w": "2026-01-08",
+    "d": "100% Off — Free",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Higgins Helitours (Legal Side)",
+    "y": "bonus",
+    "w": "2026-01-08",
+    "d": "3X GTA$/RP",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Homing Launcher",
+    "y": "gun",
+    "w": "2026-01-08",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Invetero Coquette BlackFin",
+    "y": "pdm",
+    "w": "2026-01-08",
+    "d": "Premium Deluxe",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "JoBuilt Hauler Custom",
+    "y": "discount",
+    "w": "2026-01-08",
+    "d": "30% Off",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Maxwell Vagrant",
+    "y": "prize",
+    "w": "2026-01-08",
+    "d": "Place Top 2 in LS Car Meet Series 4 days in a row",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Military Rifle",
+    "y": "gun",
+    "w": "2026-01-08",
+    "d": "50% (50% GTA+)",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Molotov",
+    "y": "gun",
+    "w": "2026-01-08",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Nagasaki Buzzard Attack Chopper",
+    "y": "discount",
+    "w": "2026-01-08",
+    "d": "30% Off",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Operation Paper Trail",
+    "y": "bonus",
+    "w": "2026-01-08",
+    "d": "2X GTA$/RP (4X GTA+)",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Pacific Bluffs to Mount Gordo",
+    "y": "hsw",
+    "w": "2026-01-08",
+    "d": "HSW Time Trial",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Pfister Astron Custom",
+    "y": "ptest",
+    "w": "2026-01-08",
+    "d": "Premium Test Ride (HSW)",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Pfister X-Treme",
+    "y": "lux",
+    "w": "2026-01-08",
+    "d": "Luxury Autos Showroom",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Pipe Bomb",
+    "y": "gun",
+    "w": "2026-01-08",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Prison Bus",
+    "y": "discount",
+    "w": "2026-01-08",
+    "d": "30% Off",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Proximity Mine",
+    "y": "gun",
+    "w": "2026-01-08",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Service Carbine",
+    "y": "gun",
+    "w": "2026-01-08",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Smoke on the Water (Legal Side)",
+    "y": "bonus",
+    "w": "2026-01-08",
+    "d": "3X GTA$/RP",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Stun Gun",
+    "y": "gun",
+    "w": "2026-01-08",
+    "d": "10% (30% GTA+)",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "The Fine Art File",
+    "y": "fib",
+    "w": "2026-01-08",
+    "d": "FIB Priority File",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Vapid Clique Wagon",
+    "y": "discount",
+    "w": "2026-01-08",
+    "d": "30% Off",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Vapid FMJ MK V",
+    "y": "lux",
+    "w": "2026-01-08",
+    "d": "Luxury Autos Showroom",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Vapid Retinue",
+    "y": "pdm",
+    "w": "2026-01-08",
+    "d": "Premium Deluxe",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Vintage Pistol",
+    "y": "gun",
+    "w": "2026-01-08",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Western Reever",
+    "y": "discount",
+    "w": "2026-01-08",
+    "d": "30% Off",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Western Wolfsbane",
+    "y": "pdm",
+    "w": "2026-01-08",
+    "d": "Premium Deluxe",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Överflöd Autarch",
+    "y": "salvage",
+    "w": "2026-01-08",
+    "d": "The Gangbanger Robbery",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Übermacht Rebla GTS",
+    "y": "podium",
+    "w": "2026-01-08",
+    "d": "Podium Vehicle",
+    "s": "2026-01-08",
+    "e": "2026-01-15"
+  },
+  {
+    "t": "Albany Cavalcade XL",
+    "y": "discount",
+    "w": "2026-01-15",
+    "d": "30% Off",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Albany Cavalcade XL",
+    "y": "salvage",
+    "w": "2026-01-15",
+    "d": "The McTony Robbery",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Albany Hermes",
+    "y": "discount",
+    "w": "2026-01-15",
+    "d": "30% Off",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Annis Euros X32",
+    "y": "ptest",
+    "w": "2026-01-15",
+    "d": "Premium Test Ride (HSW)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Battle Rifle",
+    "y": "gun",
+    "w": "2026-01-15",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Business Battles",
+    "y": "bonus",
+    "w": "2026-01-15",
+    "d": "4X GTA$/RP and Nightclub Goods",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Canis Kalahari",
+    "y": "pdm",
+    "w": "2026-01-15",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Cheval Taipan",
+    "y": "discount",
+    "w": "2026-01-15",
+    "d": "30% Off",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Combat MG",
+    "y": "gun",
+    "w": "2026-01-15",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Community Race Series",
+    "y": "bonus",
+    "w": "2026-01-15",
+    "d": "2X GTA$/RP",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Complete one Business Battle",
+    "y": "challenge",
+    "w": "2026-01-15",
+    "d": "$100,000",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Dashound",
+    "y": "discount",
+    "w": "2026-01-15",
+    "d": "30% Off",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Declasse Impaler LX",
+    "y": "podium",
+    "w": "2026-01-15",
+    "d": "Podium Vehicle",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Declasse Vigero ZX",
+    "y": "discount",
+    "w": "2026-01-15",
+    "d": "30% Off",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Dewbauchee Rapid GT",
+    "y": "pdm",
+    "w": "2026-01-15",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Dundreary Landstalker XL",
+    "y": "pdm",
+    "w": "2026-01-15",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "G's Cache",
+    "y": "bonus",
+    "w": "2026-01-15",
+    "d": "2X GTA$/RP",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Grotti Carbonizzare",
+    "y": "test",
+    "w": "2026-01-15",
+    "d": "Test Ride (Removed)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Grotti GT500",
+    "y": "test",
+    "w": "2026-01-15",
+    "d": "Test Ride (Removed)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Grotti GT750",
+    "y": "lux",
+    "w": "2026-01-15",
+    "d": "Luxury Autos Showroom",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Grotti Itali GTO",
+    "y": "prize",
+    "w": "2026-01-15",
+    "d": "Place Top 2 in LS Car Meet Series 4 days in a row",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Grotti Stinger",
+    "y": "test",
+    "w": "2026-01-15",
+    "d": "Test Ride (Removed)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Karin Everon",
+    "y": "discount",
+    "w": "2026-01-15",
+    "d": "30% Off",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "LCC Avarus",
+    "y": "pdm",
+    "w": "2026-01-15",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Mammoth Patriot Mil-Spec",
+    "y": "salvage",
+    "w": "2026-01-15",
+    "d": "The Duggan Robbery",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Mansion Raid",
+    "y": "bonus",
+    "w": "2026-01-15",
+    "d": "2X GTA$/RP",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Nightclub Daily Income",
+    "y": "bonus",
+    "w": "2026-01-15",
+    "d": "2X GTA$",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Nightclub Properties",
+    "y": "discount",
+    "w": "2026-01-15",
+    "d": "40% Off",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Nightclub Upgrades and Modifications",
+    "y": "discount",
+    "w": "2026-01-15",
+    "d": "40% Off",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Nightstick",
+    "y": "gun",
+    "w": "2026-01-15",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "North Chumash to Palomino Highlands",
+    "y": "hsw",
+    "w": "2026-01-15",
+    "d": "HSW Time Trial",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Obey Omnis e-GT",
+    "y": "discount",
+    "w": "2026-01-15",
+    "d": "30% Off",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Pegassi Zorrusso",
+    "y": "salvage",
+    "w": "2026-01-15",
+    "d": "The Cargo Ship Robbery",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Pipe Bomb",
+    "y": "gun",
+    "w": "2026-01-15",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Pistol .50",
+    "y": "gun",
+    "w": "2026-01-15",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Proximity Mine",
+    "y": "gun",
+    "w": "2026-01-15",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Railgun",
+    "y": "gun",
+    "w": "2026-01-15",
+    "d": "50% (50% GTA+)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Rhino Tank",
+    "y": "discount",
+    "w": "2026-01-15",
+    "d": "30% Off",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Sticky Bomb",
+    "y": "gun",
+    "w": "2026-01-15",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Storm Drain",
+    "y": "tt",
+    "w": "2026-01-15",
+    "d": "Time Trial",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Stun Gun",
+    "y": "gun",
+    "w": "2026-01-15",
+    "d": "10% (40% GTA+)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "The Project Breakaway File",
+    "y": "fib",
+    "w": "2026-01-15",
+    "d": "FIB Priority File",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Vapid Blade",
+    "y": "pdm",
+    "w": "2026-01-15",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Vapid Dominator FX",
+    "y": "discount",
+    "w": "2026-01-15",
+    "d": "30% Off",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Win a match of Mansion Raid",
+    "y": "bonus",
+    "w": "2026-01-15",
+    "d": "GTA$200,000 bonus (72hr)",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Übermacht Sentinel XS24",
+    "y": "lux",
+    "w": "2026-01-15",
+    "d": "Luxury Autos Showroom",
+    "s": "2026-01-15",
+    "e": "2026-01-22"
+  },
+  {
+    "t": "Albany Cavalcade XL",
+    "y": "salvage",
+    "w": "2026-01-22",
+    "d": "The Gangbanger Robbery",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Auto Shop Client Jobs",
+    "y": "bonus",
+    "w": "2026-01-22",
+    "d": "2X GTA$ + Car Meet Rep (4X GTA$ GTA+)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Auto Shop Properties",
+    "y": "discount",
+    "w": "2026-01-22",
+    "d": "40% Off",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Auto Shop Upgrades",
+    "y": "discount",
+    "w": "2026-01-22",
+    "d": "40% Off",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Battle Rifle",
+    "y": "gun",
+    "w": "2026-01-22",
+    "d": "10% (40% GTA+)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Carbine Rifle",
+    "y": "gun",
+    "w": "2026-01-22",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Classique Broadway",
+    "y": "discount",
+    "w": "2026-01-22",
+    "d": "30% Off",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Combat Shotgun",
+    "y": "gun",
+    "w": "2026-01-22",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Community Combat Series",
+    "y": "bonus",
+    "w": "2026-01-22",
+    "d": "3X GTA$/RP",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Complete 3 Auto Shop Client Jobs",
+    "y": "challenge",
+    "w": "2026-01-22",
+    "d": "$100,000",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Dinka Verus",
+    "y": "pdm",
+    "w": "2026-01-22",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Document Forgery Offices",
+    "y": "discount",
+    "w": "2026-01-22",
+    "d": "40% Off",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Document Forgery Sell Missions",
+    "y": "bonus",
+    "w": "2026-01-22",
+    "d": "2X GTA$",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Document Forgery Upgrades",
+    "y": "discount",
+    "w": "2026-01-22",
+    "d": "40% Off",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "East Vinewood to Vespucci Beach",
+    "y": "hsw",
+    "w": "2026-01-22",
+    "d": "HSW Time Trial",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Featured Series: Transform Races",
+    "y": "bonus",
+    "w": "2026-01-22",
+    "d": "2X GTA$/RP",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "GTA+ Auto Shop Client Jobs",
+    "y": "gta_plus",
+    "w": "2026-01-22",
+    "d": "4X GTA$ Auto Shop Client Jobs",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Grenade",
+    "y": "gun",
+    "w": "2026-01-22",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Grotti Brioso",
+    "y": "ptest",
+    "w": "2026-01-22",
+    "d": "Premium Test Ride (HSW)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Grotti LSCM Cheetah Classic",
+    "y": "lux",
+    "w": "2026-01-22",
+    "d": "Luxury Autos Showroom",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Gusenberg Sweeper",
+    "y": "gun",
+    "w": "2026-01-22",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Invetero Coquette",
+    "y": "test",
+    "w": "2026-01-22",
+    "d": "Test Ride (Removed)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Karin Everon RS",
+    "y": "pdm",
+    "w": "2026-01-22",
+    "d": "Premium Deluxe",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Madrazo Hits",
+    "y": "bonus",
+    "w": "2026-01-22",
+    "d": "3X GTA$/RP",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Maibatsu Penumbra FF",
+    "y": "salvage",
+    "w": "2026-01-22",
+    "d": "The Podium Robbery",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Molotov",
+    "y": "gun",
+    "w": "2026-01-22",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Nagasaki Hot Rod Blazer",
+    "y": "test",
+    "w": "2026-01-22",
+    "d": "Test Ride (Removed)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Nightstick",
+    "y": "gun",
+    "w": "2026-01-22",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Pegassi Esskey",
+    "y": "pdm",
+    "w": "2026-01-22",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Pegassi Tempesta",
+    "y": "prize",
+    "w": "2026-01-22",
+    "d": "Place Top 5 in LS Car Meet Series Once",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Pfister 811",
+    "y": "discount",
+    "w": "2026-01-22",
+    "d": "30% Off",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Pfister Astron",
+    "y": "salvage",
+    "w": "2026-01-22",
+    "d": "The Duggan Robbery",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Railgun",
+    "y": "gun",
+    "w": "2026-01-22",
+    "d": "30% (30% GTA+)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Tear Gas",
+    "y": "gun",
+    "w": "2026-01-22",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "The Black Box File",
+    "y": "fib",
+    "w": "2026-01-22",
+    "d": "FIB Priority File",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Truffade Z-Type",
+    "y": "discount",
+    "w": "2026-01-22",
+    "d": "30% Off",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Up Chiliad",
+    "y": "tt",
+    "w": "2026-01-22",
+    "d": "Time Trial",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Vapid FMJ",
+    "y": "podium",
+    "w": "2026-01-22",
+    "d": "Podium Vehicle",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Vapid Firebolt ASP",
+    "y": "discount",
+    "w": "2026-01-22",
+    "d": "30% Off",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Weeny Dynasty",
+    "y": "pdm",
+    "w": "2026-01-22",
+    "d": "Premium Deluxe",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Western Daemon",
+    "y": "test",
+    "w": "2026-01-22",
+    "d": "Test Ride (Removed)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Överflöd Entity XF",
+    "y": "pdm",
+    "w": "2026-01-22",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "Överflöd Pipistrello",
+    "y": "lux",
+    "w": "2026-01-22",
+    "d": "Luxury Autos Showroom",
+    "s": "2026-01-22",
+    "e": "2026-01-29"
+  },
+  {
+    "t": "5 different Odd Jobs completed",
+    "y": "bonus",
+    "w": "2026-01-29",
+    "d": "Clothing Reward — Downtown Cab Co. Revere Collar Shirt (72hr)",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Annis Hardy",
+    "y": "pdm",
+    "w": "2026-01-29",
+    "d": "Premium Deluxe — Taxi Import livery",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "BF Bifta",
+    "y": "test",
+    "w": "2026-01-29",
+    "d": "Test Ride (Removed)",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Benefactor Feltzer",
+    "y": "test",
+    "w": "2026-01-29",
+    "d": "Test Ride (Removed)",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Blimp",
+    "y": "discount",
+    "w": "2026-01-29",
+    "d": "30% Off",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Brute Bobcat Security Stockade",
+    "y": "discount",
+    "w": "2026-01-29",
+    "d": "30% Off",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Brute Stockade",
+    "y": "discount",
+    "w": "2026-01-29",
+    "d": "30% Off",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Buckingham Shamal",
+    "y": "discount",
+    "w": "2026-01-29",
+    "d": "30% Off",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Canis Freecrawler",
+    "y": "discount",
+    "w": "2026-01-29",
+    "d": "30% Off",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Canis Kamacho",
+    "y": "salvage",
+    "w": "2026-01-29",
+    "d": "The Gangbanger Robbery",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Cocaine Lockup Properties",
+    "y": "discount",
+    "w": "2026-01-29",
+    "d": "40% Off",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Cocaine Lockup Upgrades",
+    "y": "discount",
+    "w": "2026-01-29",
+    "d": "40% Off",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Cocaine Production Speed",
+    "y": "bonus",
+    "w": "2026-01-29",
+    "d": "2X",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Combat PDW",
+    "y": "gun",
+    "w": "2026-01-29",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Community Race Series",
+    "y": "bonus",
+    "w": "2026-01-29",
+    "d": "2X GTA$/RP",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Compact EMP Launcher",
+    "y": "gun",
+    "w": "2026-01-29",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Complete 5 Pizza Deliveries",
+    "y": "challenge",
+    "w": "2026-01-29",
+    "d": "$300,000 + Pizza This Tee",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Declasse Drift Yosemite",
+    "y": "salvage",
+    "w": "2026-01-29",
+    "d": "The Duggan Robbery",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Declasse Hotring Sabre",
+    "y": "discount",
+    "w": "2026-01-29",
+    "d": "30% Off",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Declasse Lifeguard",
+    "y": "pdm",
+    "w": "2026-01-29",
+    "d": "Premium Deluxe",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Declasse Tampa GT",
+    "y": "prize",
+    "w": "2026-01-29",
+    "d": "Place Top 4 in LS Car Meet Series",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Del Perro Beach to Murietta Heights",
+    "y": "hsw",
+    "w": "2026-01-29",
+    "d": "HSW Time Trial",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Dinka Veto Modern",
+    "y": "discount",
+    "w": "2026-01-29",
+    "d": "30% Off",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Featured Series: Issi Classic Races",
+    "y": "bonus",
+    "w": "2026-01-29",
+    "d": "2X GTA$/RP",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Firefighter",
+    "y": "bonus",
+    "w": "2026-01-29",
+    "d": "2X GTA$/RP",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Forklift Operator",
+    "y": "bonus",
+    "w": "2026-01-29",
+    "d": "2X GTA$/RP",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Grotti Cheetah",
+    "y": "discount",
+    "w": "2026-01-29",
+    "d": "30% Off",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Grotti Stinger TT",
+    "y": "salvage",
+    "w": "2026-01-29",
+    "d": "The Podium Robbery",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Karin 190z",
+    "y": "pdm",
+    "w": "2026-01-29",
+    "d": "Premium Deluxe",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Karin Vivanite",
+    "y": "ptest",
+    "w": "2026-01-29",
+    "d": "Premium Test Ride (HSW)",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Lampadati Furore GT",
+    "y": "test",
+    "w": "2026-01-29",
+    "d": "Test Ride (Removed)",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "MTL Dune",
+    "y": "discount",
+    "w": "2026-01-29",
+    "d": "30% Off",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "MTL Fire Truck",
+    "y": "discount",
+    "w": "2026-01-29",
+    "d": "30% Off",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Mammoth Patriot Mil-Spec",
+    "y": "podium",
+    "w": "2026-01-29",
+    "d": "Podium Vehicle",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Military Rifle",
+    "y": "gun",
+    "w": "2026-01-29",
+    "d": "10% (30% GTA+)",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Nagasaki Outlaw",
+    "y": "discount",
+    "w": "2026-01-29",
+    "d": "30% Off",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Paper Route",
+    "y": "bonus",
+    "w": "2026-01-29",
+    "d": "2X GTA$/RP",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Pegassi Pizza Boy",
+    "y": "bonus",
+    "w": "2026-01-29",
+    "d": "Free",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Pegassi Pizza Boy",
+    "y": "pdm",
+    "w": "2026-01-29",
+    "d": "Premium Deluxe",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Pegassi Zorrusso",
+    "y": "discount",
+    "w": "2026-01-29",
+    "d": "30% Off",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Pizza Delivery",
+    "y": "bonus",
+    "w": "2026-01-29",
+    "d": "2X GTA$/RP",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Progen Luiva",
+    "y": "lux",
+    "w": "2026-01-29",
+    "d": "Luxury Autos Showroom",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Proximity Mine",
+    "y": "gun",
+    "w": "2026-01-29",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "QuickiePharm",
+    "y": "bonus",
+    "w": "2026-01-29",
+    "d": "2X GTA$/RP",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "RC Time Trials",
+    "y": "bonus",
+    "w": "2026-01-29",
+    "d": "2X GTA$/RP",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Safeguard",
+    "y": "bonus",
+    "w": "2026-01-29",
+    "d": "2X GTA$/RP",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Sawmill",
+    "y": "tt",
+    "w": "2026-01-29",
+    "d": "Time Trial",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Service Carbine",
+    "y": "gun",
+    "w": "2026-01-29",
+    "d": "50% (50% GTA+)",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Sticky Bomb",
+    "y": "gun",
+    "w": "2026-01-29",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Sweeper Shotgun",
+    "y": "gun",
+    "w": "2026-01-29",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Switchblade",
+    "y": "gun",
+    "w": "2026-01-29",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Taxi Work",
+    "y": "bonus",
+    "w": "2026-01-29",
+    "d": "2X GTA$",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Tear Gas",
+    "y": "gun",
+    "w": "2026-01-29",
+    "d": "10% (20% GTA+)",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "The Brute Force File",
+    "y": "fib",
+    "w": "2026-01-29",
+    "d": "FIB Priority File",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Vapid Taxi",
+    "y": "discount",
+    "w": "2026-01-29",
+    "d": "30% Off",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Vapid Uranus LozSpeed",
+    "y": "lux",
+    "w": "2026-01-29",
+    "d": "Luxury Autos Showroom",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Übermacht Cypher",
+    "y": "pdm",
+    "w": "2026-01-29",
+    "d": "Premium Deluxe — Drift Taxi livery",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Übermacht Sentinel Classic",
+    "y": "discount",
+    "w": "2026-01-29",
+    "d": "30% Off",
+    "s": "2026-01-29",
+    "e": "2026-02-05"
+  },
+  {
+    "t": "Associate/Bodyguard Salaries",
+    "y": "bonus",
+    "w": "2026-02-05",
+    "d": "4X — Valentine's overlay",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Benefactor Vorschlaghammer",
+    "y": "discount",
+    "w": "2026-02-05",
+    "d": "30% Off",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Benefactor Vorschlaghammer",
+    "y": "lux",
+    "w": "2026-02-05",
+    "d": "Luxury Autos Showroom",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Bravado Greenwood",
+    "y": "salvage",
+    "w": "2026-02-05",
+    "d": "The Gangbanger Robbery",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Bravado Verlierer",
+    "y": "test",
+    "w": "2026-02-05",
+    "d": "Test Ride (Removed)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Bunker Research Missions",
+    "y": "bonus",
+    "w": "2026-02-05",
+    "d": "2X GTA$/RP/Research",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Classique Broadway",
+    "y": "salvage",
+    "w": "2026-02-05",
+    "d": "The McTony Robbery",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Combat Shotgun",
+    "y": "gun",
+    "w": "2026-02-05",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Community Race Series",
+    "y": "bonus",
+    "w": "2026-02-05",
+    "d": "2X GTA$/RP",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Compact EMP Launcher",
+    "y": "gun",
+    "w": "2026-02-05",
+    "d": "10% (30% GTA+)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Cypress Flats",
+    "y": "tt",
+    "w": "2026-02-05",
+    "d": "Time Trial",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Deadline Duet",
+    "y": "bonus",
+    "w": "2026-02-05",
+    "d": "3X GTA$/RP — Valentine's overlay",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Declasse Tornado Rat Rod",
+    "y": "pdm",
+    "w": "2026-02-05",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Dinka Enduro",
+    "y": "pdm",
+    "w": "2026-02-05",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Emperor ETR1",
+    "y": "discount",
+    "w": "2026-02-05",
+    "d": "30% Off",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Gallivanter Baller ST-D",
+    "y": "discount",
+    "w": "2026-02-05",
+    "d": "30% Off",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Grotti Furia",
+    "y": "salvage",
+    "w": "2026-02-05",
+    "d": "The Cargo Ship Robbery",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "HVY Vetir",
+    "y": "discount",
+    "w": "2026-02-05",
+    "d": "30% Off",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Hijak Ruston",
+    "y": "pdm",
+    "w": "2026-02-05",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Invetero Coquette D1",
+    "y": "podium",
+    "w": "2026-02-05",
+    "d": "Podium Vehicle",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Karin Futo GTX",
+    "y": "discount",
+    "w": "2026-02-05",
+    "d": "30% Off",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Lampadati Michelli GT",
+    "y": "pdm",
+    "w": "2026-02-05",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Lampadati Pigalle",
+    "y": "test",
+    "w": "2026-02-05",
+    "d": "Test Ride (Removed)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Maibatsu MonstroCiti",
+    "y": "ptest",
+    "w": "2026-02-05",
+    "d": "Premium Test Ride (HSW)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Marksman Pistol",
+    "y": "gun",
+    "w": "2026-02-05",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Meth Lab Properties",
+    "y": "discount",
+    "w": "2026-02-05",
+    "d": "40% Off",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Meth Lab Upgrades",
+    "y": "discount",
+    "w": "2026-02-05",
+    "d": "40% Off",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Meth Production Speed",
+    "y": "bonus",
+    "w": "2026-02-05",
+    "d": "2X",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Molotov",
+    "y": "gun",
+    "w": "2026-02-05",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Nagasaki Weaponized Dinghy",
+    "y": "discount",
+    "w": "2026-02-05",
+    "d": "30% Off",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Ocelot Lynx",
+    "y": "test",
+    "w": "2026-02-05",
+    "d": "Test Ride (Removed)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Pfister Comet S2",
+    "y": "discount",
+    "w": "2026-02-05",
+    "d": "30% Off",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Pool Cue",
+    "y": "gun",
+    "w": "2026-02-05",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Proximity Mine",
+    "y": "gun",
+    "w": "2026-02-05",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "RPG",
+    "y": "gun",
+    "w": "2026-02-05",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Sandy Shores to La Puerta",
+    "y": "hsw",
+    "w": "2026-02-05",
+    "d": "HSW Time Trial",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Service Carbine",
+    "y": "gun",
+    "w": "2026-02-05",
+    "d": "30% (30% GTA+)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Short Trips",
+    "y": "bonus",
+    "w": "2026-02-05",
+    "d": "2X GTA$/RP",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Sticky Bomb",
+    "y": "gun",
+    "w": "2026-02-05",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "The Fine Art File",
+    "y": "fib",
+    "w": "2026-02-05",
+    "d": "FIB Priority File",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Truffade Nero",
+    "y": "discount",
+    "w": "2026-02-05",
+    "d": "30% Off",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Valentine's Event",
+    "y": "event",
+    "w": "2026-02-05",
+    "d": "Through 2026-02-18",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Vulcar Warrener HKR",
+    "y": "discount",
+    "w": "2026-02-05",
+    "d": "30% Off",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Western Company Rogue",
+    "y": "discount",
+    "w": "2026-02-05",
+    "d": "30% Off",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Western Powersurge",
+    "y": "discount",
+    "w": "2026-02-05",
+    "d": "30% Off",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Western Rat Bike",
+    "y": "pdm",
+    "w": "2026-02-05",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Win two Adversary Modes",
+    "y": "challenge",
+    "w": "2026-02-05",
+    "d": "$100,000",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Överflöd Autarch",
+    "y": "discount",
+    "w": "2026-02-05",
+    "d": "30% Off",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Übermacht Rhinehart",
+    "y": "prize",
+    "w": "2026-02-05",
+    "d": "Win in LS Car Meet Series Once",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Übermacht Sentinel GTS",
+    "y": "lux",
+    "w": "2026-02-05",
+    "d": "Luxury Autos Showroom",
+    "s": "2026-02-05",
+    "e": "2026-02-12"
+  },
+  {
+    "t": "Albany Roosevelt",
+    "y": "lux",
+    "w": "2026-02-12",
+    "d": "Luxury Autos Showroom",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Assault SMG",
+    "y": "gun",
+    "w": "2026-02-12",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Associate/Bodyguard Salaries",
+    "y": "bonus",
+    "w": "2026-02-12",
+    "d": "4X — Valentine's overlay",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Bravado Buffalo EVX",
+    "y": "podium",
+    "w": "2026-02-12",
+    "d": "Podium Vehicle",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "CEO/VIP Work",
+    "y": "bonus",
+    "w": "2026-02-12",
+    "d": "4X GTA$/RP",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Cayo Perico Primary Target",
+    "y": "bonus",
+    "w": "2026-02-12",
+    "d": "Boosted Pink Diamond chance (50%)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Classique Broadway",
+    "y": "lux",
+    "w": "2026-02-12",
+    "d": "Luxury Autos Showroom",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Coil Cyclone II",
+    "y": "ptest",
+    "w": "2026-02-12",
+    "d": "Premium Test Ride (HSW)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Coil Raiden",
+    "y": "discount",
+    "w": "2026-02-12",
+    "d": "30% Off",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Coil Voltic",
+    "y": "test",
+    "w": "2026-02-12",
+    "d": "Test Ride (Removed)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Community Series",
+    "y": "bonus",
+    "w": "2026-02-12",
+    "d": "2X GTA$/RP",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Deadline Duet",
+    "y": "bonus",
+    "w": "2026-02-12",
+    "d": "3X GTA$/RP — Valentine's overlay",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Declasse Tahoma Coupe",
+    "y": "discount",
+    "w": "2026-02-12",
+    "d": "30% Off",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Declasse Tulip",
+    "y": "pdm",
+    "w": "2026-02-12",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Declasse Tulip M-100",
+    "y": "discount",
+    "w": "2026-02-12",
+    "d": "30% Off",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Declasse Yosemite 1500",
+    "y": "discount",
+    "w": "2026-02-12",
+    "d": "30% Off",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Dewbauchee Rapid GT Cabrio",
+    "y": "test",
+    "w": "2026-02-12",
+    "d": "Test Ride (Removed)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Dewbauchee Vagner",
+    "y": "discount",
+    "w": "2026-02-12",
+    "d": "30% Off",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Dinka Thrust",
+    "y": "pdm",
+    "w": "2026-02-12",
+    "d": "Premium Deluxe",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Earn GTA$100,000 as Associate/Bodyguard",
+    "y": "challenge",
+    "w": "2026-02-12",
+    "d": "$100,000 + Valentines Blazer",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Executive Office Upgrades",
+    "y": "discount",
+    "w": "2026-02-12",
+    "d": "40% Off",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Executive Offices",
+    "y": "discount",
+    "w": "2026-02-12",
+    "d": "40% Off",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "GTA+ Lunar New Year Stunt Races",
+    "y": "gta_plus",
+    "w": "2026-02-12",
+    "d": "6X GTA$/RP Lunar New Year Stunt Races",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Grotti Cheetah Classic",
+    "y": "discount",
+    "w": "2026-02-12",
+    "d": "30% Off",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Gusenberg Sweeper",
+    "y": "gun",
+    "w": "2026-02-12",
+    "d": "Free (Free GTA+)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Jobuilt Velum 5-Seater",
+    "y": "discount",
+    "w": "2026-02-12",
+    "d": "30% Off",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Karin Hotring Everon",
+    "y": "discount",
+    "w": "2026-02-12",
+    "d": "30% Off",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "LCC Innovation",
+    "y": "pdm",
+    "w": "2026-02-12",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Lampadati Corsita",
+    "y": "prize",
+    "w": "2026-02-12",
+    "d": "Place Top 2 in LS Car Meet Series",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Lunar New Year",
+    "y": "event",
+    "w": "2026-02-12",
+    "d": "Through 2026-03-04",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Lunar New Year Stunt Races",
+    "y": "bonus",
+    "w": "2026-02-12",
+    "d": "3X GTA$/RP (6X GTA$/RP GTA+)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Military Rifle",
+    "y": "gun",
+    "w": "2026-02-12",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Obey Omnis e-GT",
+    "y": "salvage",
+    "w": "2026-02-12",
+    "d": "The Duggan Robbery",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Ocelot Locust",
+    "y": "test",
+    "w": "2026-02-12",
+    "d": "Test Ride",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Pegassi Torero",
+    "y": "discount",
+    "w": "2026-02-12",
+    "d": "30% Off",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Pfister Comet Safari",
+    "y": "salvage",
+    "w": "2026-02-12",
+    "d": "The Cargo Ship Robbery",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Pfister Neon",
+    "y": "discount",
+    "w": "2026-02-12",
+    "d": "30% Off",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Pipe Bomb",
+    "y": "gun",
+    "w": "2026-02-12",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Pool Cue",
+    "y": "gun",
+    "w": "2026-02-12",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Proximity Mine",
+    "y": "gun",
+    "w": "2026-02-12",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Sniper Rifle",
+    "y": "gun",
+    "w": "2026-02-12",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Sticky Bomb",
+    "y": "gun",
+    "w": "2026-02-12",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Tactical SMG",
+    "y": "gun",
+    "w": "2026-02-12",
+    "d": "10% (30% GTA+)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Textile City to Stab City",
+    "y": "hsw",
+    "w": "2026-02-12",
+    "d": "HSW Time Trial",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "The Project Breakaway File",
+    "y": "fib",
+    "w": "2026-02-12",
+    "d": "FIB Priority File",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Up N Atom",
+    "y": "tt",
+    "w": "2026-02-12",
+    "d": "Time Trial",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Valentine's Event",
+    "y": "event",
+    "w": "2026-02-12",
+    "d": "Through 2026-02-18",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Vapid Caracara 4x4",
+    "y": "salvage",
+    "w": "2026-02-12",
+    "d": "The Gangbanger Robbery",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Vapid Hustler",
+    "y": "pdm",
+    "w": "2026-02-12",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Vulcar Fagaloa",
+    "y": "pdm",
+    "w": "2026-02-12",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-02-12",
+    "e": "2026-02-19"
+  },
+  {
+    "t": "Albany Alpha",
+    "y": "pdm",
+    "w": "2026-02-19",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "BF Weevil",
+    "y": "salvage",
+    "w": "2026-02-19",
+    "d": "The McTony Robbery",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Baseball Bat",
+    "y": "gun",
+    "w": "2026-02-19",
+    "d": "Free (Free GTA+)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Battle Rifle",
+    "y": "gun",
+    "w": "2026-02-19",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Benefactor Streiter",
+    "y": "test",
+    "w": "2026-02-19",
+    "d": "Test Ride (Removed)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Biker Clubhouse Contracts",
+    "y": "bonus",
+    "w": "2026-02-19",
+    "d": "2X GTA$/RP",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Canis Terminus",
+    "y": "discount",
+    "w": "2026-02-19",
+    "d": "30% Off",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Cargobob",
+    "y": "discount",
+    "w": "2026-02-19",
+    "d": "30% Off",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Cargobob (Jetsam)",
+    "y": "discount",
+    "w": "2026-02-19",
+    "d": "30% Off",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Combat Shotgun",
+    "y": "gun",
+    "w": "2026-02-19",
+    "d": "10% (40% GTA+)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Community Combat Series",
+    "y": "bonus",
+    "w": "2026-02-19",
+    "d": "2X GTA$/RP",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Counterfeit Cash Factories",
+    "y": "discount",
+    "w": "2026-02-19",
+    "d": "40% Off",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Counterfeit Cash Factory Upgrades and Modifications",
+    "y": "discount",
+    "w": "2026-02-19",
+    "d": "40% Off",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Counterfeit Cash Sell Missions",
+    "y": "bonus",
+    "w": "2026-02-19",
+    "d": "2X GTA$",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Declasse Drift Tampa",
+    "y": "discount",
+    "w": "2026-02-19",
+    "d": "30% Off",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Declasse Walton L35 Stock",
+    "y": "discount",
+    "w": "2026-02-19",
+    "d": "30% Off",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Dewbauchee Champion",
+    "y": "salvage",
+    "w": "2026-02-19",
+    "d": "The Gangbanger Robbery",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Dewbauchee JB 700",
+    "y": "pdm",
+    "w": "2026-02-19",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Dewbauchee Rapid GT Classic",
+    "y": "test",
+    "w": "2026-02-19",
+    "d": "Test Ride (Removed)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Dinka Jester Classic",
+    "y": "discount",
+    "w": "2026-02-19",
+    "d": "30% Off",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Dinka LSCM Jester RR",
+    "y": "lux",
+    "w": "2026-02-19",
+    "d": "Luxury Autos Showroom",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Enus Cognoscenti",
+    "y": "pdm",
+    "w": "2026-02-19",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Enus Cognoscenti Cabrio",
+    "y": "test",
+    "w": "2026-02-19",
+    "d": "Test Ride (Removed)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Enus Super Diamond",
+    "y": "pdm",
+    "w": "2026-02-19",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "GTA+ Lunar New Year Stunt Races",
+    "y": "gta_plus",
+    "w": "2026-02-19",
+    "d": "6X GTA$/RP Lunar New Year Stunt Races",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Grotti Stinger GT",
+    "y": "prize",
+    "w": "2026-02-19",
+    "d": "Place Top 4 in LS Car Meet Series",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "HVY Insurgent Pick-Up",
+    "y": "discount",
+    "w": "2026-02-19",
+    "d": "30% Off",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Homing Launcher",
+    "y": "gun",
+    "w": "2026-02-19",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Karin Everon",
+    "y": "salvage",
+    "w": "2026-02-19",
+    "d": "The Podium Robbery",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Karin Sultan RS Classic",
+    "y": "podium",
+    "w": "2026-02-19",
+    "d": "Podium Vehicle",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Lunar New Year",
+    "y": "event",
+    "w": "2026-02-19",
+    "d": "Through 2026-03-04",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Lunar New Year Stunt Races",
+    "y": "bonus",
+    "w": "2026-02-19",
+    "d": "3X GTA$/RP (6X GTA$/RP GTA+)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "MC Challenges",
+    "y": "bonus",
+    "w": "2026-02-19",
+    "d": "2X GTA$/RP",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "MC Work",
+    "y": "bonus",
+    "w": "2026-02-19",
+    "d": "2X GTA$/RP",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "MG",
+    "y": "gun",
+    "w": "2026-02-19",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Maze Bank Arena",
+    "y": "tt",
+    "w": "2026-02-19",
+    "d": "Time Trial",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Military Rifle",
+    "y": "gun",
+    "w": "2026-02-19",
+    "d": "40% (40% GTA+)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Molotov",
+    "y": "gun",
+    "w": "2026-02-19",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Ocelot Jugular",
+    "y": "discount",
+    "w": "2026-02-19",
+    "d": "30% Off",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Proximity Mine",
+    "y": "gun",
+    "w": "2026-02-19",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Ron Alternates to Elysian Island",
+    "y": "hsw",
+    "w": "2026-02-19",
+    "d": "HSW Time Trial",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Sticky Bomb",
+    "y": "gun",
+    "w": "2026-02-19",
+    "d": "10% (20% GTA+)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Street Dealer Sales",
+    "y": "bonus",
+    "w": "2026-02-19",
+    "d": "2X GTA$",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "The Black Box File",
+    "y": "fib",
+    "w": "2026-02-19",
+    "d": "FIB Priority File",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Vapid Caracara",
+    "y": "discount",
+    "w": "2026-02-19",
+    "d": "30% Off",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Vapid Retinue Mk II",
+    "y": "discount",
+    "w": "2026-02-19",
+    "d": "30% Off",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Vapid Slamtruck",
+    "y": "discount",
+    "w": "2026-02-19",
+    "d": "30% Off",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Vulcar Nebula Turbo",
+    "y": "discount",
+    "w": "2026-02-19",
+    "d": "30% Off",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Weeny Issi Rally",
+    "y": "ptest",
+    "w": "2026-02-19",
+    "d": "Premium Test Ride (HSW)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Western Zombie Bobber",
+    "y": "pdm",
+    "w": "2026-02-19",
+    "d": "Premium Deluxe (Removed)",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Win 2 Stunt Races",
+    "y": "challenge",
+    "w": "2026-02-19",
+    "d": "$100,000",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  },
+  {
+    "t": "Übermacht Sentinel XS4",
+    "y": "lux",
+    "w": "2026-02-19",
+    "d": "Luxury Autos Showroom",
+    "s": "2026-02-19",
+    "e": "2026-02-26"
+  }
+]

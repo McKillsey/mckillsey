@@ -1,0 +1,1979 @@
+[
+  {
+    "id": "2024-12-19",
+    "name": "Festive Season / Agents of Sabotage Holiday",
+    "start": "2024-12-19",
+    "end": "2025-01-02",
+    "days": 14,
+    "tags": [
+      {
+        "t": "Entourage (Festive Remix)",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Dispatch Work",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Pizza Delivery",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 8,
+    "pc": 0,
+    "ov": [
+      "The Gooch",
+      "Weazel Plaza Shootout",
+      "Yeti Hunt",
+      "Entourage (Festive Remix)"
+    ]
+  },
+  {
+    "id": "2025-01-02",
+    "name": "FIB Files / Trap Door",
+    "start": "2025-01-02",
+    "end": "2025-01-09",
+    "days": 7,
+    "tags": [
+      {
+        "t": "FIB File Finales (Associates)",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Trap Door",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 4,
+    "pc": 1,
+    "ov": [
+      "Trap Door"
+    ]
+  },
+  {
+    "id": "2025-01-09",
+    "name": "Random Transform Races / Community Series",
+    "start": "2025-01-09",
+    "end": "2025-01-16",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Community Series",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Random Transform Races",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 12,
+    "pc": 0,
+    "ov": [
+      "Random Transform Races"
+    ]
+  },
+  {
+    "id": "2025-01-16",
+    "name": "FIB Files / Overtime Rumble / Payphone Hits",
+    "start": "2025-01-16",
+    "end": "2025-01-23",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Overtime Rumble",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Payphone Hits",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 12,
+    "pc": 1,
+    "ov": [
+      "Overtime Rumble"
+    ]
+  },
+  {
+    "id": "2025-01-23",
+    "name": "Lunar New Year / Nightclub",
+    "start": "2025-01-23",
+    "end": "2025-01-30",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Lunar New Year Stunt Races",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Nightclub Daily Income",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Nightclub Goods Missions",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 8,
+    "pc": 2,
+    "ov": []
+  },
+  {
+    "id": "2025-01-30",
+    "name": "Drag Races / Auto Shop Client Jobs",
+    "start": "2025-01-30",
+    "end": "2025-02-06",
+    "days": 7,
+    "tags": [
+      {
+        "t": "LS Car Meet Reputation",
+        "c": "o",
+        "m": "3X"
+      },
+      {
+        "t": "Drag Races",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Auto Shop Client Jobs",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 9,
+    "pc": 2,
+    "ov": []
+  },
+  {
+    "id": "2025-02-06",
+    "name": "Drift Races / Community Series",
+    "start": "2025-02-06",
+    "end": "2025-02-13",
+    "days": 7,
+    "tags": [
+      {
+        "t": "New Community Series",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Drift Races",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "LS Tags",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 8,
+    "pc": 1,
+    "ov": []
+  },
+  {
+    "id": "2025-02-13",
+    "name": "Valentine's Week",
+    "start": "2025-02-13",
+    "end": "2025-02-20",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Till Death Do Us Part",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Taxi Work",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Casino Story Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Casino Work Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Hotring Races",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 8,
+    "pc": 2,
+    "ov": [
+      "Till Death Do Us Part",
+      "Hotring Races"
+    ]
+  },
+  {
+    "id": "2025-02-20",
+    "name": "Trevor & Ron / Motor Wars",
+    "start": "2025-02-20",
+    "end": "2025-02-27",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Trevor and Ron Contact Missions",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Motor Wars",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "G's Caches",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 8,
+    "pc": 2,
+    "ov": [
+      "Motor Wars"
+    ]
+  },
+  {
+    "id": "2025-02-27",
+    "name": "Bunker Sell Missions",
+    "start": "2025-02-27",
+    "end": "2025-03-04",
+    "days": 5,
+    "tags": [
+      {
+        "t": "Bunker Sell Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Ammu-Nation Contract Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Special Vehicle Races",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Bunker Research Speed",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 13,
+    "pc": 2,
+    "ov": [
+      "Special Vehicle Races"
+    ]
+  },
+  {
+    "id": "2025-03-04",
+    "name": "Oscar Guzman Flies Again DLC Launch",
+    "start": "2025-03-04",
+    "end": "2025-03-13",
+    "days": 9,
+    "tags": [
+      {
+        "t": "Sumo (Remix)",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 10,
+    "pc": 2,
+    "ov": [
+      "Sumo (Remix)"
+    ]
+  },
+  {
+    "id": "2025-03-13",
+    "name": "St. Patrick's Day / Arms Trafficking",
+    "start": "2025-03-13",
+    "end": "2025-03-20",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Community Series",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Arms Trafficking Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Junk Energy Skydives",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 11,
+    "pc": 0,
+    "ov": []
+  },
+  {
+    "id": "2025-03-20",
+    "name": "Oscar Guzman Flies Again / Vespucci Job",
+    "start": "2025-03-20",
+    "end": "2025-03-27",
+    "days": 7,
+    "tags": [
+      {
+        "t": "The Titan Job (Oscar Guzman Flies Again finale)",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "The Vespucci Job (Remix)",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 7,
+    "pc": 0,
+    "ov": [
+      "The Vespucci Job (Remix)"
+    ]
+  },
+  {
+    "id": "2025-03-27",
+    "name": "Air Freight Cargo / Oscar Guzman",
+    "start": "2025-03-27",
+    "end": "2025-04-03",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Air Freight Cargo Sell Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Oscar Guzman Flies Again Mission Challenges",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Rooster McCraw Sourcing — two crates guaranteed, reduced cooldown (48min → 24min)",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 8,
+    "pc": 0,
+    "ov": []
+  },
+  {
+    "id": "2025-04-03",
+    "name": "Peyote Plants / HSW Races",
+    "start": "2025-04-03",
+    "end": "2025-04-10",
+    "days": 7,
+    "tags": [
+      {
+        "t": "HSW Races",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Madrazo Hits",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Featured Series",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Nightclub Warehouse Production",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 10,
+    "pc": 2,
+    "ov": []
+  },
+  {
+    "id": "2025-04-10",
+    "name": "OG Heists",
+    "start": "2025-04-10",
+    "end": "2025-04-17",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Original Heists (Fleeca–Pacific Standard)",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Community Series",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Pizza Delivery",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Hasta La Vista",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 13,
+    "pc": 1,
+    "ov": [
+      "Hasta La Vista"
+    ]
+  },
+  {
+    "id": "2025-04-17",
+    "name": "4/20 Week",
+    "start": "2025-04-17",
+    "end": "2025-04-24",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Hunting Pack (Get Lamar)",
+        "c": "r",
+        "m": "★ NEW"
+      },
+      {
+        "t": "Weed Sell Missions",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Hunting Pack (Get Lamar) (GTA+)",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Street Dealer Sales",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 8,
+    "pc": 4,
+    "ov": [
+      "Hunting Pack (Get Lamar)"
+    ]
+  },
+  {
+    "id": "2025-04-24",
+    "name": "Terrorbyte / Acid Lab",
+    "start": "2025-04-24",
+    "end": "2025-05-01",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Terrorbyte Client Jobs",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Mobile Operations Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Acid Lab Resupply",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Fooligan Jobs",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 8,
+    "pc": 5,
+    "ov": [
+      "Deadline"
+    ]
+  },
+  {
+    "id": "2025-05-01",
+    "name": "Open Wheel Races",
+    "start": "2025-05-01",
+    "end": "2025-05-08",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Open Wheel Races",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Payphone Hits",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Payphone Hits (GTA+)",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Tow Truck Services",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 8,
+    "pc": 2,
+    "ov": [
+      "Open Wheel Races"
+    ]
+  },
+  {
+    "id": "2025-05-08",
+    "name": "The Contract / Security Contracts",
+    "start": "2025-05-08",
+    "end": "2025-05-15",
+    "days": 7,
+    "tags": [
+      {
+        "t": "The Data Leaks (Dr. Dre Contract)",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Security Contracts",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Community Series",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Double Down",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 11,
+    "pc": 3,
+    "ov": [
+      "Double Down"
+    ]
+  },
+  {
+    "id": "2025-05-15",
+    "name": "FIB Files / Garment Factory",
+    "start": "2025-05-15",
+    "end": "2025-05-22",
+    "days": 7,
+    "tags": [
+      {
+        "t": "FIB File Finales",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Garment Factory Passive Income (GTA+)",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Drift Races",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Hunting Pack (Remix)",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 9,
+    "pc": 2,
+    "ov": [
+      "Hunting Pack (Remix)"
+    ]
+  },
+  {
+    "id": "2025-05-22",
+    "name": "Superyacht Life",
+    "start": "2025-05-22",
+    "end": "2025-05-29",
+    "days": 7,
+    "tags": [
+      {
+        "t": "A Superyacht Life Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Taxi Work",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Shipwrecks",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Tiny Racers",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 10,
+    "pc": 0,
+    "ov": [
+      "Tiny Racers"
+    ]
+  },
+  {
+    "id": "2025-05-29",
+    "name": "Special Vehicle Work",
+    "start": "2025-05-29",
+    "end": "2025-06-05",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Special Vehicle Work",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Export Mixed Goods",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Random Transform Races",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 6,
+    "pc": 3,
+    "ov": [
+      "Random Transform Races"
+    ]
+  },
+  {
+    "id": "2025-06-05",
+    "name": "Casino Heist (Diamonds)",
+    "start": "2025-06-05",
+    "end": "2025-06-17",
+    "days": 12,
+    "tags": [
+      {
+        "t": "Diamond Casino Heist (Diamonds)",
+        "c": "r",
+        "m": "★"
+      },
+      {
+        "t": "Casino Story & Work Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Vehicle Cargo Sell Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Featured & Community Series",
+        "c": "g",
+        "m": "3X"
+      }
+    ],
+    "vc": 7,
+    "pc": 6,
+    "ov": []
+  },
+  {
+    "id": "2025-06-17",
+    "name": "Money Fronts Launch",
+    "start": "2025-06-17",
+    "end": "2025-06-26",
+    "days": 9,
+    "tags": [
+      {
+        "t": "Money Fronts DLC Launch",
+        "c": "r",
+        "m": "★"
+      },
+      {
+        "t": "Hands On Car Wash Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Hands On Car Wash (GTA+)",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Overtime Rumble",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 11,
+    "pc": 5,
+    "ov": [
+      "Overtime Rumble"
+    ]
+  },
+  {
+    "id": "2025-06-26",
+    "name": "Higgins Helitours",
+    "start": "2025-06-26",
+    "end": "2025-07-03",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Safeguard Deliveries",
+        "c": "g",
+        "m": "★ NEW"
+      },
+      {
+        "t": "Higgins Helitours Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Higgins Helitours (GTA+)",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Dispatch Work",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 12,
+    "pc": 3,
+    "ov": [
+      "Juggernaut"
+    ]
+  },
+  {
+    "id": "2025-07-03",
+    "name": "Independence Day",
+    "start": "2025-07-03",
+    "end": "2025-07-10",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Land Races",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Community Series",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Tow Truck Services",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Auto Shop Client Jobs",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 21,
+    "pc": 4,
+    "ov": []
+  },
+  {
+    "id": "2025-07-10",
+    "name": "Weed",
+    "start": "2025-07-10",
+    "end": "2025-07-17",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Smoke on the Water Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Smoke on the Water (GTA+)",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Lamar Contact Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Weed Farm Production",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 16,
+    "pc": 1,
+    "ov": []
+  },
+  {
+    "id": "2025-07-17",
+    "name": "Mr. Faber Work",
+    "start": "2025-07-17",
+    "end": "2025-07-24",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Mr. Faber Work",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Mr. Faber Work (GTA+)",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Time Trials",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "G's Cache",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 14,
+    "pc": 0,
+    "ov": []
+  },
+  {
+    "id": "2025-07-24",
+    "name": "Cayo Perico Motor Wars Launch",
+    "start": "2025-07-24",
+    "end": "2025-07-31",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Cayo Perico Motor Wars",
+        "c": "r",
+        "m": "★"
+      },
+      {
+        "t": "Cayo Perico Motor Wars (GTA+)",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Buried Stashes & Treasure Chests",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Featured Series",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 14,
+    "pc": 0,
+    "ov": [
+      "Cayo Perico Motor Wars"
+    ]
+  },
+  {
+    "id": "2025-07-31",
+    "name": "Side Hustles",
+    "start": "2025-07-31",
+    "end": "2025-08-07",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Side Hustles (All)",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Cayo Perico Motor Wars",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Cayo Perico Motor Wars (GTA+)",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Featured Series",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 17,
+    "pc": 3,
+    "ov": [
+      "Cayo Perico Motor Wars"
+    ]
+  },
+  {
+    "id": "2025-08-07",
+    "name": "Martin Madrazo",
+    "start": "2025-08-07",
+    "end": "2025-08-14",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Martin Madrazo Missions",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Community Race Series",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Madrazo Hits / Auto Shop",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 14,
+    "pc": 1,
+    "ov": []
+  },
+  {
+    "id": "2025-08-14",
+    "name": "Drift",
+    "start": "2025-08-14",
+    "end": "2025-08-21",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Drift Walton L35",
+        "c": "o",
+        "m": "FREE"
+      },
+      {
+        "t": "LS Car Meet Series",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Community Combat Series",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 17,
+    "pc": 1,
+    "ov": [
+      "Drift Week"
+    ]
+  },
+  {
+    "id": "2025-08-21",
+    "name": "End of Summer Giveaway",
+    "start": "2025-08-21",
+    "end": "2025-08-28",
+    "days": 7,
+    "tags": [
+      {
+        "t": "GTA$1M Login Bonus",
+        "c": "o",
+        "m": "FREE"
+      },
+      {
+        "t": "Simeon Export Requests",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Simeon Contact Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Simeon Missions (GTA+)",
+        "c": "g",
+        "m": "4X"
+      }
+    ],
+    "vc": 13,
+    "pc": 1,
+    "ov": [
+      "End of Summer Giveaway"
+    ]
+  },
+  {
+    "id": "2025-08-28",
+    "name": "Cayo Perico Survival Launch / Kosatka Discounts / Open Wheel",
+    "start": "2025-08-28",
+    "end": "2025-09-04",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Cayo Perico Survival",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Hidden Caches",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Featured Series: Open Wheel Races",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 16,
+    "pc": 0,
+    "ov": []
+  },
+  {
+    "id": "2025-09-04",
+    "name": "Cayo Perico Survival 2 / Payphone Hits 2X / Hotring",
+    "start": "2025-09-04",
+    "end": "2025-09-11",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Cayo Perico Survival",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Assault on Cayo Perico",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Payphone Hits",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Hotring Races",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Community Race Series",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 9,
+    "pc": 0,
+    "ov": []
+  },
+  {
+    "id": "2025-09-11",
+    "name": "Neighborhood Watch Start / Dispatch 2X / Vespucci Job",
+    "start": "2025-09-11",
+    "end": "2025-09-18",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Dispatch Work",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Wildlife Photography",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "The Vespucci Job (Remix)",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Community Combat Series",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 16,
+    "pc": 0,
+    "ov": [
+      "Neighborhood Watch Event"
+    ]
+  },
+  {
+    "id": "2025-09-18",
+    "name": "Neighborhood Watch Finale / Bail Office 2X / Dispatch 2X",
+    "start": "2025-09-18",
+    "end": "2025-09-25",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Community Race Series",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Dispatch Work",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "All Bail Office Bounties",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Pursuit Series",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Hunting Pack",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Wildlife Photography",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 18,
+    "pc": 0,
+    "ov": [
+      "Neighborhood Watch Event",
+      "Oktoberfest"
+    ]
+  },
+  {
+    "id": "2025-09-25",
+    "name": "Gerald's Last Play / Special Vehicle Races / Assault on ATT-16",
+    "start": "2025-09-25",
+    "end": "2025-10-02",
+    "days": 7,
+    "tags": [
+      {
+        "t": "All Gerald Contact Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "G's Cache",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Special Vehicle Races",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Assault on ATT-16",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Community Combat Series",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 11,
+    "pc": 0,
+    "ov": [
+      "Oktoberfest"
+    ]
+  },
+  {
+    "id": "2025-10-02",
+    "name": "Halloween 1 / Bunker 2X / Cayo Perico Survival",
+    "start": "2025-10-02",
+    "end": "2025-10-09",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Bunker Sell Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Beast vs. Slasher",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Cayo Perico Survival",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Halloween Community Series",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 14,
+    "pc": 0,
+    "ov": [
+      "Halloween Event"
+    ]
+  },
+  {
+    "id": "2025-10-09",
+    "name": "Halloween 2 / Document Forgery 2X / Taxi Work 2X",
+    "start": "2025-10-09",
+    "end": "2025-10-16",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Judgement Day",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Document Forgery Sell Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Taxi Work",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Halloween Community Series",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 14,
+    "pc": 0,
+    "ov": [
+      "Halloween Event"
+    ]
+  },
+  {
+    "id": "2025-10-16",
+    "name": "Halloween 3 / Acid Lab 2X / Slasher Ramius",
+    "start": "2025-10-16",
+    "end": "2025-10-23",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Halloween Community Series",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Slasher",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Ghosts Exposed Collectibles",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Acid Lab Sell Missions",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 13,
+    "pc": 0,
+    "ov": [
+      "Halloween Event"
+    ]
+  },
+  {
+    "id": "2025-10-23",
+    "name": "Halloween / Counterfeit Cash / Ludendorff",
+    "start": "2025-10-23",
+    "end": "2025-10-30",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Ludendorff Cemetery Survival",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Condemned",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Counterfeit Cash Sell Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Halloween Community Series",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Benefactor Krieger",
+        "c": "o",
+        "m": "FREE"
+      }
+    ],
+    "vc": 16,
+    "pc": 0,
+    "ov": [
+      "Halloween Event"
+    ]
+  },
+  {
+    "id": "2025-10-30",
+    "name": "Halloween Finale / Day of the Dead / Slasher",
+    "start": "2025-10-30",
+    "end": "2025-11-06",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Ludendorff Cemetery Survival",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Slasher",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Jack O'Lanterns Collectibles",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Halloween Community Series",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Benefactor Krieger",
+        "c": "o",
+        "m": "FREE"
+      }
+    ],
+    "vc": 15,
+    "pc": 0,
+    "ov": [
+      "Halloween Event"
+    ]
+  },
+  {
+    "id": "2025-11-06",
+    "name": "Cayo Perico Panther / Kosatka",
+    "start": "2025-11-06",
+    "end": "2025-11-13",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Cayo Perico Primary Target",
+        "c": "r",
+        "m": "★"
+      },
+      {
+        "t": "Buried Stashes",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Cayo Perico Motor Wars",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Community Race Series",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 13,
+    "pc": 0,
+    "ov": []
+  },
+  {
+    "id": "2025-11-13",
+    "name": "New Listings Launch / Vehicle Cargo / CEO",
+    "start": "2025-11-13",
+    "end": "2025-11-20",
+    "days": 7,
+    "tags": [
+      {
+        "t": "VIP Work and Challenges",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Associate and Bodyguard Salaries",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "New Listings Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Vehicle Cargo Sell Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Special Vehicle Work",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Random Transform Races",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 16,
+    "pc": 4,
+    "ov": [
+      "VIP Program",
+      "VIP Gold Tier"
+    ]
+  },
+  {
+    "id": "2025-11-20",
+    "name": "Casino Heist / New Listings / Open Wheel",
+    "start": "2025-11-20",
+    "end": "2025-11-27",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Open Wheel Races",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "New Listings Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "The Diamond Casino Heist Finale",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Casino Story Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Casino Work",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Community Race Series",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 15,
+    "pc": 4,
+    "ov": [
+      "VIP Program",
+      "VIP Gold Tier"
+    ]
+  },
+  {
+    "id": "2025-11-27",
+    "name": "Black Friday / Yacht 5X / VIP Program",
+    "start": "2025-11-27",
+    "end": "2025-12-04",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Pluck Me Sweater",
+        "c": "o",
+        "m": "FREE"
+      },
+      {
+        "t": "A Superyacht Life Missions",
+        "c": "g",
+        "m": "5X"
+      },
+      {
+        "t": "FIB Priority File",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Community Combat Series",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "New Listings Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Shipwrecks",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 16,
+    "pc": 3,
+    "ov": [
+      "VIP Program",
+      "VIP Gold Tier",
+      "Black Friday (through Dec 3)"
+    ]
+  },
+  {
+    "id": "2025-12-04",
+    "name": "Pre-DLC Extension / Yacht 5X + FIB 4X / VIP Finale",
+    "start": "2025-12-04",
+    "end": "2025-12-10",
+    "days": 6,
+    "tags": [
+      {
+        "t": "A Superyacht Life Missions",
+        "c": "g",
+        "m": "5X"
+      },
+      {
+        "t": "FIB Priority File",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Community Combat Series",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "New Listings Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Shipwrecks",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Featured Series: Deadline",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 16,
+    "pc": 3,
+    "ov": [
+      "VIP Program",
+      "VIP Gold Tier"
+    ]
+  },
+  {
+    "id": "2025-12-10",
+    "name": "Safehouse in the Hills DLC / Meth / Hotring",
+    "start": "2025-12-10",
+    "end": "2025-12-18",
+    "days": 8,
+    "tags": [
+      {
+        "t": "Hotring Races",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Meth Sell Missions (Biker + NC)",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Community Series",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Best in Snow",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "CHRISTMAS CRISSCROSS",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Christmas Karts",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 10,
+    "pc": 1,
+    "ov": []
+  },
+  {
+    "id": "2025-12-18",
+    "name": "Holiday Event / Cluckin' Bell / Weed",
+    "start": "2025-12-18",
+    "end": "2026-01-08",
+    "days": 21,
+    "tags": [
+      {
+        "t": "Weed Sell Missions (Biker + NC)",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Community Series",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Featured Series: Overtime Rumble",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 10,
+    "pc": 2,
+    "ov": [
+      "Holiday Event",
+      "Returning Holiday Content",
+      "VIP Gold Tier Rewards (through Jan 7)"
+    ]
+  },
+  {
+    "id": "2026-01-08",
+    "name": "Legal Fronts / Counterfeit Cash / Car Wash",
+    "start": "2026-01-08",
+    "end": "2026-01-15",
+    "days": 7,
+    "tags": [
+      {
+        "t": "HSW Race Series",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Hands On Car Wash (Legal Side)",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Higgins Helitours (Legal Side)",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Smoke on the Water (Legal Side)",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Counterfeit Cash Sell Missions (Bik",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Operation Paper Trail",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 11,
+    "pc": 3,
+    "ov": []
+  },
+  {
+    "id": "2026-01-15",
+    "name": "Mansion Raid / Nightclub Income",
+    "start": "2026-01-15",
+    "end": "2026-01-22",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Business Battles",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Mansion Raid",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "G's Cache",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Community Race Series",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Nightclub Daily Income",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 9,
+    "pc": 2,
+    "ov": []
+  },
+  {
+    "id": "2026-01-22",
+    "name": "Auto Shop / Document Forgery",
+    "start": "2026-01-22",
+    "end": "2026-01-29",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Madrazo Hits",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Community Combat Series",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Featured Series: Transform Races",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Document Forgery Sell Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Auto Shop Client Jobs",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 4,
+    "pc": 4,
+    "ov": []
+  },
+  {
+    "id": "2026-01-29",
+    "name": "New Odd Jobs / Cocaine",
+    "start": "2026-01-29",
+    "end": "2026-02-05",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Firefighter",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Forklift Operator",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Paper Route",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Taxi Work",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Pizza Delivery",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "QuickiePharm",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 14,
+    "pc": 2,
+    "ov": []
+  },
+  {
+    "id": "2026-02-05",
+    "name": "Valentine's Start / Deadline Duet / Meth",
+    "start": "2026-02-05",
+    "end": "2026-02-12",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Meth Production Speed",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Bunker Research Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Short Trips",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Community Race Series",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Deadline Duet",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Associate/Bodyguard Salaries",
+        "c": "g",
+        "m": "4X"
+      }
+    ],
+    "vc": 12,
+    "pc": 2,
+    "ov": [
+      "Valentine's Event"
+    ]
+  },
+  {
+    "id": "2026-02-12",
+    "name": "Itali Classic Release / Valentine's + Lunar New Year",
+    "start": "2026-02-12",
+    "end": "2026-02-19",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Cayo Perico Primary Target",
+        "c": "r",
+        "m": "★"
+      },
+      {
+        "t": "CEO/VIP Work",
+        "c": "g",
+        "m": "4X"
+      },
+      {
+        "t": "Community Series",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Lunar New Year Stunt Races",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Deadline Duet",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Associate/Bodyguard Salaries",
+        "c": "g",
+        "m": "4X"
+      }
+    ],
+    "vc": 10,
+    "pc": 2,
+    "ov": [
+      "Valentine's Event",
+      "Lunar New Year"
+    ]
+  },
+  {
+    "id": "2026-02-19",
+    "name": "Biker Bonuses",
+    "start": "2026-02-19",
+    "end": "2026-02-26",
+    "days": 7,
+    "tags": [
+      {
+        "t": "Lunar New Year Stunt Races",
+        "c": "g",
+        "m": "3X"
+      },
+      {
+        "t": "Counterfeit Cash Sell Missions",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Street Dealer Sales",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "Biker Clubhouse Contracts",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "MC Work",
+        "c": "g",
+        "m": "2X"
+      },
+      {
+        "t": "MC Challenges",
+        "c": "g",
+        "m": "2X"
+      }
+    ],
+    "vc": 12,
+    "pc": 2,
+    "ov": [
+      "Lunar New Year"
+    ]
+  }
+]

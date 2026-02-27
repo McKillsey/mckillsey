@@ -1,0 +1,147 @@
+{
+  "2024-12-19": {
+    "name": "Festive Season / Agents of Sabotage Holiday",
+    "start": "2024-12-19",
+    "end": "2025-01-02",
+    "days": 14,
+    "podium": "Western Powersurge",
+    "prize": "Emperor Vectre",
+    "test": [
+      "Pegassi Torero (Removed Vehicle)",
+      "Gallivanter Baller ST (limited-time Festive Stripes livery)",
+      "Pfister Comet Safari (limited-time Candy Cane livery)"
+    ],
+    "ptest": "Maibatsu MonstroCiti",
+    "salvage": [
+      "Pfister Comet Safari (LS Car Meet plate — note: plate cannot be displayed, no license plate mount on this vehicle — claimable)",
+      "Vapid Clique (LS Pounders Plate — claimable)",
+      "Lampadati Cinquemila"
+    ],
+    "lux": [
+      "Bravado Banshee GTS",
+      "Dinka Jester RR Widebody"
+    ],
+    "pdm": [
+      "Übermacht Revolter (limited-time Blue Tartan livery)",
+      "Vapid Clique (limited-time Merry Cliquemas livery)",
+      "Vysser Neo",
+      "Dewbauchee JB 700",
+      "Albany Alpha"
+    ],
+    "bonuses": [
+      {
+        "a": "Log in — Festive Penguin Onesie + Gold Reindeer Pendant + Gold Star Fitted Jacket and Pants + Firework Launcher with 20 Rockets + Snowball Launcher + Full Snacks, Armor, and Ammo",
+        "m": "Free (Login)",
+        "g": ""
+      },
+      {
+        "a": "Happy Holidays Hauler — GTA$, RP, Snacks, Ammo Refills + eCola Festive Sweater or Sprunk Festive Sweater (guaranteed)",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "Entourage (Festive Remix) — Complete once for Snowman Finish (Combat Pistol)",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "Entourage (Festive Remix) — Win five matches for Skull Santa Finish (Special Carbine)",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "Entourage (Festive Remix) — Win as Santa for Santa's Helper Finish (Heavy Sniper)",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "Yeti Hunt — Take out the Yeti for Yeti Outfit",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "The Gooch — Take out The Gooch for The Gooch Outfit",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "Snowmen Collectibles — Collect all 25 for The Snowman Outfit",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "Weazel Plaza Shootout — Take out Hans for WM 29 Pistol + Season's Greetings Finish (Pistol Mk II)",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "Entourage (Festive Remix)",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Dispatch Work",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Pizza Delivery",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Garment Factory Passive Income",
+        "m": "2X GTA$",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Übermacht Revolter",
+        "p": 40
+      },
+      {
+        "i": "Gallivanter Baller ST",
+        "p": 40
+      },
+      {
+        "i": "Western Company Rogue",
+        "p": 40
+      },
+      {
+        "i": "Nagasaki Havok",
+        "p": 40
+      },
+      {
+        "i": "Pegassi Torero",
+        "p": 30
+      },
+      {
+        "i": "Dewbauchee JB 700",
+        "p": 30
+      },
+      {
+        "i": "Bravado Greenwood",
+        "p": 30
+      },
+      {
+        "i": "Karin Boor",
+        "p": 30
+      }
+    ],
+    "disc_p": [],
+    "fib": "The Fine Art File",
+    "ch": "Win two Adversary Modes",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "The Gooch",
+      "Weazel Plaza Shootout",
+      "Yeti Hunt",
+      "Entourage (Festive Remix)",
+      "Snowmen Collectibles"
+    ],
+    "tt": "Calafia Way",
+    "hsw_tt": "Sandy Shores to La Puerta"
+  }
+}

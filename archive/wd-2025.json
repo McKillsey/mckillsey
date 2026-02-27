@@ -1,0 +1,6350 @@
+{
+  "2025-12-18": {
+    "name": "Holiday Event / Cluckin' Bell / Weed",
+    "start": "2025-12-18",
+    "end": "2026-01-08",
+    "days": 21,
+    "podium": "Bollokan Envisage",
+    "prize": "Pfister Comet Safari",
+    "test": [
+      "Dewbauchee Seven-70",
+      "Vapid Clique",
+      "Declasse Vamos"
+    ],
+    "ptest": "Übermacht Sentinel XS",
+    "salvage": [
+      {
+        "r": "The Gangbanger Robbery",
+        "v": "Vapid Clique"
+      },
+      {
+        "r": "The Podium Robbery",
+        "v": "Ocelot Virtue"
+      },
+      {
+        "r": "The Cargo Ship Robbery",
+        "v": "Bravado Buffalo STX"
+      }
+    ],
+    "lux": [
+      "Progen Luiva",
+      "Vapid FMJ MK V"
+    ],
+    "pdm": [
+      "Ocelot Ardent",
+      "HVY Nightshark",
+      "BF Dune FAV",
+      "Pfister Comet S2 Cabrio",
+      "Albany Alpha"
+    ],
+    "bonuses": [
+      {
+        "a": "Cluckin' Bell Finale as Leader",
+        "m": "GTA$500,000 one-time bonus (72hr)",
+        "g": ""
+      },
+      {
+        "a": "Cluckin' Bell Finale as Associate/Bodyguard",
+        "m": "GTA$500,000 one-time bonus (72hr)",
+        "g": ""
+      },
+      {
+        "a": "Weed Sell Missions (Biker + NC)",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Community Series",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "Featured Series: Overtime Rumble",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Annis Remus",
+        "p": 30
+      },
+      {
+        "i": "Karin S95",
+        "p": 30
+      },
+      {
+        "i": "Enus Deity",
+        "p": 30
+      },
+      {
+        "i": "Sea Sparrow",
+        "p": 30
+      },
+      {
+        "i": "Dinka RT3000",
+        "p": 30
+      },
+      {
+        "i": "Declasse Walton L35",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Reaper",
+        "p": 30
+      },
+      {
+        "i": "Albany Brigham",
+        "p": 30
+      },
+      {
+        "i": "Progen Itali GTB",
+        "p": 30
+      },
+      {
+        "i": "HVY Insurgent",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Weed Farm Businesses",
+        "p": 40
+      },
+      {
+        "i": "Weed Farm Business Upgrades and Modifications",
+        "p": 40
+      }
+    ],
+    "fib": "The Brute Force File",
+    "ch": "Rotating: Sell $100K (Dec 18-22), Win 4 Adversary Modes (Dec 23-29), Complete CB Raid as Leader (Dec 30-Jan 7)",
+    "chr": "Krampus Sweater",
+    "chc": 300000,
+    "ov": [
+      "Holiday Event",
+      "Returning Holiday Content",
+      "VIP Gold Tier Rewards (through Jan 7)"
+    ],
+    "tt": "Great Ocean Highway Mount Gordo",
+    "hsw_tt": "Textile City to Stab City Ron Alternates"
+  },
+  "2025-12-10": {
+    "name": "Safehouse in the Hills DLC / Meth / Hotring",
+    "start": "2025-12-10",
+    "end": "2025-12-18",
+    "days": 8,
+    "podium": "Ubermacht SC1",
+    "prize": "Overflod Entity XXR",
+    "test": [
+      "Dewbauchee JB 700",
+      "Dewbauchee Rapid GT",
+      "Benefactor Surano"
+    ],
+    "ptest": "Weeny Issi Rally",
+    "salvage": [
+      {
+        "r": "The Cargo Ship Robbery",
+        "v": "Ubermacht Sentinel Classic"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Lampadati Viseris"
+      },
+      {
+        "r": "The McTony Robbery",
+        "v": "Enus Deity"
+      }
+    ],
+    "lux": [
+      "Übermacht Sentinel XS4",
+      "Pfister X-Treme"
+    ],
+    "pdm": [
+      "Vapid Hustler",
+      "Western Rat Bike",
+      "Dewbauchee Rapid GT Classic",
+      "Dinka Enduro",
+      "Ocelot Locust"
+    ],
+    "bonuses": [
+      {
+        "a": "Hotring Races",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Meth Sell Missions (Biker + NC)",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Community Series",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "Best in Snow",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "CHRISTMAS CRISSCROSS",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Christmas Karts",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Reservoir Ice Race 2",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Issi Winter Sports",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Pfister Astron",
+        "p": 30
+      },
+      {
+        "i": "Schyster Deviant",
+        "p": 30
+      },
+      {
+        "i": "Progen GP1",
+        "p": 30
+      },
+      {
+        "i": "Grotti Turismo Omaggio",
+        "p": 30
+      },
+      {
+        "i": "Canis Castigator",
+        "p": 30
+      },
+      {
+        "i": "Vapid Dominator GTT",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Osiris",
+        "p": 30
+      },
+      {
+        "i": "Pfister Comet Safari",
+        "p": 30
+      },
+      {
+        "i": "Vapid Ellie",
+        "p": 30
+      },
+      {
+        "i": "Vapid Trophy Truck",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "MC Meth Businesses (+ Upgrades)",
+        "p": 40
+      }
+    ],
+    "fib": "The Black Box File",
+    "ch": "Complete the KnoWay Out Finale as Leader",
+    "chr": null,
+    "chc": 400000,
+    "ov": [],
+    "tt": "Observatory",
+    "hsw_tt": "Sandy Shores"
+  },
+  "2025-12-04": {
+    "name": "Pre-DLC Extension / Yacht 5X + FIB 4X / VIP Finale",
+    "start": "2025-12-04",
+    "end": "2025-12-10",
+    "days": 6,
+    "podium": "Annis S80RR",
+    "prize": "Annis Euros",
+    "test": [
+      "Ocelot Lynx",
+      "Lampadati Michelli GT",
+      "Karin 190z"
+    ],
+    "ptest": "Bravado Buffalo EVX",
+    "salvage": [
+      {
+        "r": "The Gangbanger Robbery",
+        "v": "Grotti Stinger GT"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Dinka Jester RR"
+      },
+      {
+        "r": "The Cargo Ship Robbery",
+        "v": "Ocelot Jugular"
+      }
+    ],
+    "lux": [
+      "Übermacht Revolter (Sessanta Nove livery)",
+      "Bravado Banshee GTS"
+    ],
+    "pdm": [
+      "Dewbauchee Champion",
+      "Benefactor LM87",
+      "Pegassi Tezeract",
+      "Pegassi Ignus",
+      "Progen Emerus"
+    ],
+    "bonuses": [
+      {
+        "a": "A Superyacht Life Missions",
+        "m": "5X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "FIB Priority File",
+        "m": "4X GTA$",
+        "g": ""
+      },
+      {
+        "a": "Community Combat Series",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "New Listings Missions",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "Shipwrecks",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Featured Series: Deadline",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Pluck Me Sweater",
+        "m": "Free (Login)",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Benefactor LM87",
+        "p": 30
+      },
+      {
+        "i": "Progen Emerus",
+        "p": 30
+      },
+      {
+        "i": "Progen Tyrus",
+        "p": 30
+      },
+      {
+        "i": "Överflöd Tyrant",
+        "p": 30
+      },
+      {
+        "i": "Ocelot XA-21",
+        "p": 30
+      },
+      {
+        "i": "Declasse Granger 3600LX",
+        "p": 30
+      },
+      {
+        "i": "Bravado Banshee GTS",
+        "p": 30
+      },
+      {
+        "i": "Übermacht Niobe",
+        "p": 30
+      },
+      {
+        "i": "Vysser Neo",
+        "p": 30
+      },
+      {
+        "i": "Vapid Caracara",
+        "p": 30
+      },
+      {
+        "i": "Lampadati Cinquemila",
+        "p": 30
+      },
+      {
+        "i": "Lampadati Komoda",
+        "p": 30
+      },
+      {
+        "i": "Annis ZR350",
+        "p": 30
+      },
+      {
+        "i": "Coil Raiden",
+        "p": 30
+      },
+      {
+        "i": "Karin Technical",
+        "p": 30
+      },
+      {
+        "i": "Übermacht Zion Classic",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Galaxy Super Yachts",
+        "p": 40
+      },
+      {
+        "i": "Galaxy Super Yacht Modifications",
+        "p": 40
+      },
+      {
+        "i": "Free Yacht Upgrade to Aquarius",
+        "p": 100
+      }
+    ],
+    "fib": "The Fine Art File",
+    "ch": "Complete 2 FIB Files",
+    "chr": "",
+    "chc": 0,
+    "ov": [
+      "VIP Program",
+      "VIP Gold Tier"
+    ],
+    "tt": "Del Perro Pier",
+    "hsw_tt": "Del Perro Pier"
+  },
+  "2025-11-27": {
+    "name": "Black Friday / Yacht 5X / VIP Program",
+    "start": "2025-11-27",
+    "end": "2025-12-04",
+    "days": 7,
+    "podium": "Annis S80RR",
+    "prize": "Annis Euros",
+    "test": [
+      "Ocelot Lynx",
+      "Lampadati Michelli GT",
+      "Karin 190z"
+    ],
+    "ptest": "Bravado Buffalo EVX",
+    "salvage": [
+      {
+        "r": "The Gangbanger Robbery",
+        "v": "Grotti Stinger GT"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Dinka Jester RR"
+      },
+      {
+        "r": "The Cargo Ship Robbery",
+        "v": "Ocelot Jugular"
+      }
+    ],
+    "lux": [
+      "Übermacht Revolter",
+      "Bravado Banshee GTS"
+    ],
+    "pdm": [
+      "Dewbauchee Champion",
+      "Benefactor LM87",
+      "Pegassi Tezeract",
+      "Pegassi Ignus",
+      "Progen Emerus"
+    ],
+    "bonuses": [
+      {
+        "a": "Pluck Me Sweater",
+        "m": "Free (Login)",
+        "g": ""
+      },
+      {
+        "a": "A Superyacht Life Missions",
+        "m": "5X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "FIB Priority File",
+        "m": "4X GTA$",
+        "g": ""
+      },
+      {
+        "a": "Community Combat Series",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "New Listings Missions",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "Shipwrecks",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Featured Series: Deadline",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Benefactor LM87",
+        "p": 30
+      },
+      {
+        "i": "Progen Emerus",
+        "p": 30
+      },
+      {
+        "i": "Progen Tyrus",
+        "p": 30
+      },
+      {
+        "i": "Överflöd Tyrant",
+        "p": 30
+      },
+      {
+        "i": "Ocelot XA-21",
+        "p": 30
+      },
+      {
+        "i": "Declasse Granger 3600LX",
+        "p": 30
+      },
+      {
+        "i": "Bravado Banshee GTS",
+        "p": 30
+      },
+      {
+        "i": "Übermacht Niobe",
+        "p": 30
+      },
+      {
+        "i": "Vysser Neo",
+        "p": 30
+      },
+      {
+        "i": "Vapid Caracara",
+        "p": 30
+      },
+      {
+        "i": "Lampadati Cinquemila",
+        "p": 30
+      },
+      {
+        "i": "Lampadati Komoda",
+        "p": 30
+      },
+      {
+        "i": "Annis ZR350",
+        "p": 30
+      },
+      {
+        "i": "Coil Raiden",
+        "p": 30
+      },
+      {
+        "i": "Karin Technical",
+        "p": 30
+      },
+      {
+        "i": "Übermacht Zion Classic",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Galaxy Super Yachts",
+        "p": 40
+      },
+      {
+        "i": "Galaxy Super Yacht Modifications",
+        "p": 40
+      },
+      {
+        "i": "Aquarius upgrade from Orion/Pisces",
+        "p": 100
+      }
+    ],
+    "fib": "The Fine Art File",
+    "ch": "Complete three A Superyacht Life Missions",
+    "chr": "Vibrant Check Smoking Jacket",
+    "chc": 100000,
+    "ov": [
+      "VIP Program",
+      "VIP Gold Tier",
+      "Black Friday (through Dec 3)"
+    ],
+    "tt": "Del Perro Pier",
+    "hsw_tt": "Del Perro Pier"
+  },
+  "2025-11-20": {
+    "name": "Casino Heist / New Listings / Open Wheel",
+    "start": "2025-11-20",
+    "end": "2025-11-27",
+    "days": 7,
+    "podium": "Dinka Jester Classic",
+    "prize": "Gallivanter Baller ST",
+    "test": [
+      "Western Zombie Bobber",
+      "Weeny Dynasty",
+      "Nagasaki Hot Rod Blazer"
+    ],
+    "ptest": "Principe Deveste Eight",
+    "salvage": [
+      {
+        "r": "The Podium Robbery",
+        "v": "Dinka Sugoi"
+      },
+      {
+        "r": "The McTony Robbery",
+        "v": "Gallivanter Baller ST-D"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Enus Jubilee"
+      }
+    ],
+    "lux": [
+      "Übermacht Revolter",
+      "Karin Everon RS"
+    ],
+    "pdm": [
+      "Lampadati Furore GT ✱",
+      "Western Cliffhanger ✱",
+      "Bravado Verlierer ✱",
+      "Hijak Ruston ✱",
+      "LCC Innovation ✱"
+    ],
+    "bonuses": [
+      {
+        "a": "Open Wheel Races",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "New Listings Missions",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "The Diamond Casino Heist Finale",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Casino Story Missions",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Casino Work",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Community Race Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Casino Daily Visitor Chips",
+        "m": "2X Daily Chips",
+        "g": ""
+      },
+      {
+        "a": "Diamond Casino Heist (GTA+)",
+        "m": "Guaranteed Diamonds",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "RUNE Zhaba",
+        "p": 30
+      },
+      {
+        "i": "Invade and Persuade Tank",
+        "p": 30
+      },
+      {
+        "i": "Maxwell Vagrant",
+        "p": 30
+      },
+      {
+        "i": "Karin Sultan Classic",
+        "p": 30
+      },
+      {
+        "i": "Dinka Blista Kanjo",
+        "p": 30
+      },
+      {
+        "i": "HVY Insurgent Pick-Up",
+        "p": 30
+      },
+      {
+        "i": "Karin Sultan RS Classic",
+        "p": 30
+      },
+      {
+        "i": "Imponte Arbiter GT",
+        "p": 30
+      },
+      {
+        "i": "Maibatsu Penumbra FF",
+        "p": 30
+      },
+      {
+        "i": "Albany V-STR",
+        "p": 30
+      },
+      {
+        "i": "Vulcar Warrener HKR",
+        "p": 30
+      },
+      {
+        "i": "Declasse Mamba",
+        "p": 30
+      },
+      {
+        "i": "Lampadati Tropos Rallye",
+        "p": 30
+      },
+      {
+        "i": "Dinka Vindicator",
+        "p": 30
+      },
+      {
+        "i": "BF Surfer Custom",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Casino Master Penthouse",
+        "p": 100
+      },
+      {
+        "i": "Casino Master Penthouse Party Package",
+        "p": 100
+      },
+      {
+        "i": "Arcade Properties",
+        "p": 30
+      },
+      {
+        "i": "Arcade Upgrades and Modifications",
+        "p": 30
+      }
+    ],
+    "fib": "The Black Box File",
+    "ch": "Complete The Diamond Casino Heist two times",
+    "chr": "The Diamond Strike Vest",
+    "chc": 100000,
+    "ov": [
+      "VIP Program",
+      "VIP Gold Tier"
+    ],
+    "tt": "El Burro Heights",
+    "hsw_tt": "East Vinewood to Vespucci Beach"
+  },
+  "2025-11-13": {
+    "name": "New Listings Launch / Vehicle Cargo / CEO",
+    "start": "2025-11-13",
+    "end": "2025-11-20",
+    "days": 7,
+    "podium": "Declasse Tahoma Coupe",
+    "prize": "Annis RE-7B",
+    "test": [
+      "Enus Cognoscenti",
+      "Enus Super Diamond",
+      "Vulcar Warrener"
+    ],
+    "ptest": "Benefactor Stirling GT",
+    "salvage": [
+      {
+        "r": "The Duggan Robbery",
+        "v": "Vysser Neo"
+      },
+      {
+        "r": "The Cargo Ship Robbery",
+        "v": "Hijak Ruston"
+      },
+      {
+        "r": "The Podium Robbery",
+        "v": "Karin Previon"
+      }
+    ],
+    "lux": [
+      "Übermacht Sentinel GTS",
+      "Übermacht Revolter"
+    ],
+    "pdm": [
+      "Vapid Riata ✱",
+      "Pegassi Esskey ✱",
+      "BF Bifta ✱",
+      "Dinka Jester ✱",
+      "Coil Brawler ✱"
+    ],
+    "bonuses": [
+      {
+        "a": "VIP Work and Challenges",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Associate and Bodyguard Salaries",
+        "m": "3X GTA$",
+        "g": ""
+      },
+      {
+        "a": "New Listings Missions",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "Vehicle Cargo Sell Missions",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Special Vehicle Work",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Random Transform Races",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Community Combat Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Imponte Nightshade",
+        "p": 50
+      },
+      {
+        "i": "Benefactor Schafter LWB (Armored)",
+        "p": 50
+      },
+      {
+        "i": "Benefactor Schafter LWB",
+        "p": 50
+      },
+      {
+        "i": "Benefactor Schafter V12 (Armored)",
+        "p": 50
+      },
+      {
+        "i": "Benefactor Schafter V12",
+        "p": 50
+      },
+      {
+        "i": "Enus Cognoscenti 55 (Armored)",
+        "p": 50
+      },
+      {
+        "i": "Enus Cognoscenti 55",
+        "p": 50
+      },
+      {
+        "i": "Gallivanter Baller LE (Armored)",
+        "p": 50
+      },
+      {
+        "i": "Lampadati Corsita",
+        "p": 30
+      },
+      {
+        "i": "Karin Hotring Everon",
+        "p": 30
+      },
+      {
+        "i": "Pfister Growler",
+        "p": 30
+      },
+      {
+        "i": "Buckingham Vestra",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Monroe",
+        "p": 30
+      },
+      {
+        "i": "Dinka Marquis",
+        "p": 30
+      },
+      {
+        "i": "Maxwell Asbo",
+        "p": 30
+      },
+      {
+        "i": "Declasse Tampa",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Lombank West Executive Office",
+        "p": 100
+      },
+      {
+        "i": "Executive Office Properties",
+        "p": 50
+      },
+      {
+        "i": "Executive Office Garages",
+        "p": 50
+      },
+      {
+        "i": "Executive Office Upgrades and Modifications",
+        "p": 50
+      }
+    ],
+    "fib": "The Fine Art File",
+    "ch": "Complete three VIP Work Missions",
+    "chr": "LS Smoking Jacket",
+    "chc": 100000,
+    "ov": [
+      "VIP Program",
+      "VIP Gold Tier"
+    ],
+    "tt": "Lake Vinewood Estate",
+    "hsw_tt": "North Chumash to Palomino Highlands"
+  },
+  "2025-11-06": {
+    "name": "Cayo Perico Panther / Kosatka",
+    "start": "2025-11-06",
+    "end": "2025-11-13",
+    "days": 7,
+    "podium": "Mammoth Squaddie",
+    "prize": "Canis Terminus",
+    "test": [
+      "Canis Kalahari",
+      "Coil Voltic",
+      "Dinka Verus"
+    ],
+    "ptest": "Grotti Brioso RA",
+    "salvage": [
+      {
+        "r": "The Gangbanger Robbery",
+        "v": "Annis Hellion"
+      },
+      {
+        "r": "The Cargo Ship Robbery",
+        "v": "Annis Euros"
+      },
+      {
+        "r": "The McTony Robbery",
+        "v": "Toundra Panthere"
+      }
+    ],
+    "lux": [
+      "Declasse Tampa GT",
+      "Karin Woodlander"
+    ],
+    "pdm": [
+      "Grotti Cheetah ✱",
+      "Enus Cognoscenti Cabrio ✱",
+      "Western Daemon (Custom) ✱",
+      "Dinka Thrust ✱",
+      "Invetero Coquette BlackFin ✱"
+    ],
+    "bonuses": [
+      {
+        "a": "Cayo Perico Heist",
+        "m": "Guaranteed Panther Statue",
+        "g": ""
+      },
+      {
+        "a": "Buried Stashes",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Cayo Perico Motor Wars",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Community Race Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "RUNE Kosatka",
+        "p": 40
+      },
+      {
+        "i": "Dinka Veto Modern",
+        "p": 40
+      },
+      {
+        "i": "Dinka Veto Classic",
+        "p": 40
+      },
+      {
+        "i": "Grotti Brioso 300",
+        "p": 40
+      },
+      {
+        "i": "Maibatsu Manchez Scout",
+        "p": 40
+      },
+      {
+        "i": "Western Reever",
+        "p": 30
+      },
+      {
+        "i": "Buckingham Nimbus",
+        "p": 30
+      },
+      {
+        "i": "Albany Cavalcade XL",
+        "p": 30
+      },
+      {
+        "i": "Truffade Nero",
+        "p": 30
+      },
+      {
+        "i": "Declasse Drift Yosemite",
+        "p": 30
+      },
+      {
+        "i": "Nagasaki Ultralight",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Speeder",
+        "p": 30
+      },
+      {
+        "i": "Western Company Mallard",
+        "p": 30
+      }
+    ],
+    "disc_p": [],
+    "fib": "The Project Breakaway File",
+    "ch": "Complete The Cayo Perico Heist once",
+    "chr": "Strickler Hat",
+    "chc": 100000,
+    "ov": [],
+    "tt": "Elysian Island II",
+    "hsw_tt": "Pacific Bluffs to Mount Gordo"
+  },
+  "2025-10-30": {
+    "name": "Halloween Finale / Day of the Dead / Slasher",
+    "start": "2025-10-30",
+    "end": "2025-11-06",
+    "days": 7,
+    "podium": "Ocelot Penetrator",
+    "prize": "Ocelot Ardent",
+    "test": [
+      "Pegassi Vacca",
+      "Vapid Blade",
+      "Enus Stafford"
+    ],
+    "ptest": "Declasse Vigero ZX",
+    "salvage": [
+      {
+        "r": "The Cargo Ship Robbery",
+        "v": "Truffade Thrax"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Lampadati Casco"
+      },
+      {
+        "r": "The McTony Robbery",
+        "v": "Vapid Ellie"
+      }
+    ],
+    "lux": [
+      "Benefactor Krieger",
+      "Överflöd Pipistrello"
+    ],
+    "pdm": [
+      "Grotti GT500 ✱",
+      "Dewbauchee Seven-70 ✱",
+      "Albany Fränken Stange",
+      "Declasse Tornado Rat Rod",
+      "Chariot Romero Hearse"
+    ],
+    "bonuses": [
+      {
+        "a": "Ludendorff Cemetery Survival",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Slasher",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "Jack O'Lanterns Collectibles",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Halloween Community Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Benefactor Krieger",
+        "m": "Free",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "LCC Sanctus",
+        "p": 30
+      },
+      {
+        "i": "Albany Lurcher",
+        "p": 30
+      },
+      {
+        "i": "Albany Fränken Stange",
+        "p": 30
+      },
+      {
+        "i": "Declasse Tornado Rat Rod",
+        "p": 30
+      },
+      {
+        "i": "Chariot Romero Hearse",
+        "p": 30
+      },
+      {
+        "i": "Übermacht Sentinel Classic",
+        "p": 30
+      },
+      {
+        "i": "Bravado Dorado",
+        "p": 30
+      },
+      {
+        "i": "Vapid Caracara 4x4",
+        "p": 30
+      },
+      {
+        "i": "Gallivanter Baller ST-D",
+        "p": 30
+      },
+      {
+        "i": "Vapid Retinue Mk II",
+        "p": 30
+      },
+      {
+        "i": "MTL Wastelander",
+        "p": 30
+      },
+      {
+        "i": "Vom Feuer Anti-Aircraft Trailer",
+        "p": 30
+      },
+      {
+        "i": "Shitzu Hakuchou Drag",
+        "p": 30
+      },
+      {
+        "i": "Mobile Operations Center",
+        "p": 30
+      },
+      {
+        "i": "Declasse Bugstars Burrito",
+        "p": 30
+      }
+    ],
+    "disc_p": [],
+    "fib": "The Brute Force File",
+    "ch": "Win one Adversary Mode",
+    "chr": "Gray Hooded Skull Mask",
+    "chc": 200000,
+    "ov": [
+      "Halloween Event"
+    ],
+    "tt": "Pillbox Hill",
+    "hsw_tt": "Terminal to Chiliad Mountain State Wilderness"
+  },
+  "2025-10-23": {
+    "name": "Halloween / Counterfeit Cash / Ludendorff",
+    "start": "2025-10-23",
+    "end": "2025-10-30",
+    "days": 7,
+    "podium": "Vapid Dominator ASP",
+    "prize": "Classique Broadway",
+    "test": [
+      "Dinka Jester (Racecar)",
+      "Dewbauchee Massacro (Racecar)",
+      "Benefactor Feltzer"
+    ],
+    "ptest": "Pegassi Weaponized Ignus",
+    "salvage": [
+      {
+        "r": "The Gangbanger Robbery",
+        "v": "Canis Seminole Frontier"
+      },
+      {
+        "r": "The Cargo Ship Robbery",
+        "v": "Übermacht Cypher"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Pfister Neon"
+      }
+    ],
+    "lux": [
+      "Benefactor Krieger",
+      "Invetero Coquette D1"
+    ],
+    "pdm": [
+      "Declasse Vamos ✱",
+      "Vulcar Fagaloa ✱",
+      "Albany Fränken Stange",
+      "Declasse Tornado Rat Rod",
+      "Chariot Romero Hearse"
+    ],
+    "bonuses": [
+      {
+        "a": "Ludendorff Cemetery Survival",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Condemned",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "Counterfeit Cash Sell Missions",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "Halloween Community Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Benefactor Krieger",
+        "m": "Free",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Benefactor Krieger",
+        "p": 100
+      },
+      {
+        "i": "LCC Sanctus",
+        "p": 30
+      },
+      {
+        "i": "Albany Lurcher",
+        "p": 30
+      },
+      {
+        "i": "Albany Fränken Stange",
+        "p": 30
+      },
+      {
+        "i": "Declasse Tornado Rat Rod",
+        "p": 30
+      },
+      {
+        "i": "Chariot Romero Hearse",
+        "p": 30
+      },
+      {
+        "i": "Buckingham Shamal",
+        "p": 30
+      },
+      {
+        "i": "Fathom FR36",
+        "p": 30
+      },
+      {
+        "i": "Benefactor Vorschlaghammer",
+        "p": 30
+      },
+      {
+        "i": "Vapid Winky",
+        "p": 30
+      },
+      {
+        "i": "Bravado Greenwood",
+        "p": 30
+      },
+      {
+        "i": "Pfister Comet SR",
+        "p": 30
+      },
+      {
+        "i": "Western Powersurge",
+        "p": 30
+      },
+      {
+        "i": "Obey I-Wagen",
+        "p": 30
+      },
+      {
+        "i": "Annis Savestra",
+        "p": 30
+      },
+      {
+        "i": "Lampadati Casco",
+        "p": 30
+      }
+    ],
+    "disc_p": [],
+    "fib": "The Brute Force File",
+    "ch": "Survive four Waves of a Survival",
+    "chr": "Gray Jumping Spider Mask",
+    "chc": 200000,
+    "ov": [
+      "Halloween Event"
+    ],
+    "tt": "LSIA II",
+    "hsw_tt": "Ron Alternates to Elysian Island"
+  },
+  "2025-10-16": {
+    "name": "Halloween 3 / Acid Lab 2X / Slasher Ramius",
+    "start": "2025-10-16",
+    "end": "2025-10-23",
+    "days": 7,
+    "podium": "Pfister Neon",
+    "prize": "Dinka Chavos V6",
+    "test": [
+      "Vapid Bullet",
+      "Dewbauchee Rapid GT Classic",
+      "Grotti Stinger"
+    ],
+    "ptest": "Übermacht Sentinel XS",
+    "salvage": [
+      {
+        "r": "The Duggan Robbery",
+        "v": "Albany Brigham"
+      },
+      {
+        "r": "The Podium Robbery",
+        "v": "Truffade Z-Type"
+      },
+      {
+        "r": "The Gangbanger Robbery",
+        "v": "Lampadati Corsita"
+      }
+    ],
+    "lux": [
+      "Bollokan Envisage",
+      "Grotti LSCM Cheetah Classic"
+    ],
+    "pdm": [
+      "Ocelot Locust",
+      "Vapid Peyote Gasser ✱",
+      "Albany Fränken Stange",
+      "Declasse Tornado Rat Rod",
+      "Chariot Romero Hearse"
+    ],
+    "bonuses": [
+      {
+        "a": "Halloween Community Series",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Slasher",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "Ghosts Exposed Collectibles",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Acid Lab Sell Missions",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "LCC Sanctus",
+        "p": 30
+      },
+      {
+        "i": "Albany Lurcher",
+        "p": 30
+      },
+      {
+        "i": "MTL Brickade 6x6 with Acid Lab",
+        "p": 30
+      },
+      {
+        "i": "Överflöd Autarch",
+        "p": 30
+      },
+      {
+        "i": "Vapid Aleutian",
+        "p": 30
+      },
+      {
+        "i": "Übermacht Cypher",
+        "p": 30
+      },
+      {
+        "i": "Karin Technical Aqua",
+        "p": 30
+      },
+      {
+        "i": "JoBuilt Hauler Custom",
+        "p": 30
+      },
+      {
+        "i": "Brute Armored Boxville",
+        "p": 30
+      },
+      {
+        "i": "Dinka Sugoi",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Torero",
+        "p": 30
+      },
+      {
+        "i": "Gallivanter Baller LE LWB (Armored)",
+        "p": 30
+      },
+      {
+        "i": "Gallivanter Baller LE LWB",
+        "p": 30
+      }
+    ],
+    "disc_p": [],
+    "fib": "The Fine Art File",
+    "ch": "Win one Adversary Mode",
+    "chr": "Brown Vintage Werewolf Mask",
+    "chc": 200000,
+    "ov": [
+      "Halloween Event"
+    ],
+    "tt": "Grove St",
+    "hsw_tt": "Textile City to Stab City"
+  },
+  "2025-10-09": {
+    "name": "Halloween 2 / Document Forgery 2X / Taxi Work 2X",
+    "start": "2025-10-09",
+    "end": "2025-10-16",
+    "days": 7,
+    "podium": "Dinka Kanjo SJ",
+    "prize": "Vapid Clique Wagon",
+    "test": [
+      "Vapid Hustler",
+      "Lampadati Pigalle",
+      "Dewbauchee Rapid GT"
+    ],
+    "ptest": "Grotti Stinger TT",
+    "salvage": [
+      {
+        "r": "The Gangbanger Robbery",
+        "v": "Bravado Greenwood"
+      },
+      {
+        "r": "The Cargo Ship Robbery",
+        "v": "Benefactor Schlagen GT"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Invetero Coquette D10"
+      }
+    ],
+    "lux": [
+      "Invetero Coquette D5",
+      "Declasse Yosemite 1500"
+    ],
+    "pdm": [
+      "Declasse Tulip ✱",
+      "BF Raptor ✱",
+      "Albany Fränken Stange",
+      "Declasse Tornado Rat Rod",
+      "Chariot Romero Hearse"
+    ],
+    "bonuses": [
+      {
+        "a": "Judgement Day",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "Document Forgery Sell Missions",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "Taxi Work",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Halloween Community Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Dinka Jester RR",
+        "p": 30
+      },
+      {
+        "i": "Grotti Itali GTO",
+        "p": 30
+      },
+      {
+        "i": "Vapid Festival Bus",
+        "p": 30
+      },
+      {
+        "i": "Western Company Annihilator",
+        "p": 30
+      },
+      {
+        "i": "Nagasaki Blazer Aqua",
+        "p": 30
+      },
+      {
+        "i": "Declasse Tulip M-100",
+        "p": 30
+      },
+      {
+        "i": "HVY Chernobog",
+        "p": 30
+      },
+      {
+        "i": "Kraken Avisa",
+        "p": 30
+      },
+      {
+        "i": "Übermacht Rebla GTS",
+        "p": 30
+      },
+      {
+        "i": "Ocelot Penetrator",
+        "p": 30
+      },
+      {
+        "i": "Vapid Taxi",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Document Forgery Offices",
+        "p": 30
+      }
+    ],
+    "fib": "The Brute Force File",
+    "ch": "Complete three Taxi Work fares",
+    "chr": "Weathered Vintage Mummy Mask",
+    "chc": 200000,
+    "ov": [
+      "Halloween Event"
+    ],
+    "tt": "Vinewood Hills",
+    "hsw_tt": "Sandy Shores to La Puerta"
+  },
+  "2025-10-02": {
+    "name": "Halloween 1 / Bunker 2X / Cayo Perico Survival",
+    "start": "2025-10-02",
+    "end": "2025-10-09",
+    "days": 7,
+    "podium": "Dewbauchee JB 700W",
+    "prize": "BF Weevil",
+    "test": [
+      "Dewbauchee Massacro",
+      "Dewbauchee Exemplar",
+      "Vapid FMJ"
+    ],
+    "ptest": "Karin S95",
+    "salvage": [
+      {
+        "r": "The Duggan Robbery",
+        "v": "Albany Hermes"
+      },
+      {
+        "r": "The Gangbanger Robbery",
+        "v": "Albany Roosevelt Valor"
+      },
+      {
+        "r": "The Podium Robbery",
+        "v": "Benefactor LM87"
+      }
+    ],
+    "lux": [
+      "Dinka LSCM Jester RR",
+      "Vapid Uranus LozSpeed"
+    ],
+    "pdm": [
+      "Canis Seminole Frontier ✱",
+      "Vapid Clique ✱",
+      "Albany Fränken Stange",
+      "Declasse Tornado Rat Rod",
+      "Chariot Romero Hearse"
+    ],
+    "bonuses": [
+      {
+        "a": "Bunker Sell Missions",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Beast vs. Slasher",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "Cayo Perico Survival",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Halloween Community Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Bunker Properties",
+        "p": 30
+      },
+      {
+        "i": "Bunker Upgrades and Modifications",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Osiris",
+        "p": 30
+      },
+      {
+        "i": "Buckingham Miljet",
+        "p": 30
+      },
+      {
+        "i": "Dewbauchee Vagner",
+        "p": 30
+      },
+      {
+        "i": "Karin Everon",
+        "p": 30
+      },
+      {
+        "i": "Ocelot Jugular",
+        "p": 30
+      },
+      {
+        "i": "Vapid Dominator GTT",
+        "p": 30
+      },
+      {
+        "i": "Western Company Seabreeze",
+        "p": 30
+      },
+      {
+        "i": "Western Company Duster 300-H",
+        "p": 30
+      },
+      {
+        "i": "Bravado Gauntlet Hellfire",
+        "p": 30
+      },
+      {
+        "i": "Albany Hermes",
+        "p": 30
+      },
+      {
+        "i": "Eberhard Titan 250 D",
+        "p": 25
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Bunker Properties",
+        "p": 30
+      },
+      {
+        "i": "Bunker Upgrades and Modifications",
+        "p": 30
+      }
+    ],
+    "fib": "The Project Breakaway File",
+    "ch": "Survive two Waves of a Survival without dying",
+    "chr": "Brown Vintage Zombie Mask",
+    "chc": 200000,
+    "ov": [
+      "Halloween Event"
+    ],
+    "tt": "Stab City",
+    "hsw_tt": "Del Perro Beach to Murietta Heights"
+  },
+  "2025-09-25": {
+    "name": "Gerald's Last Play / Special Vehicle Races / Assault on ATT-16",
+    "start": "2025-09-25",
+    "end": "2025-10-02",
+    "days": 7,
+    "podium": "Cheval Taipan",
+    "prize": "Übermacht Revolter",
+    "test": [
+      "BF Bifta",
+      "Dewbauchee JB 700",
+      "Grotti Carbonizzare"
+    ],
+    "ptest": "Imponte Arbiter GT",
+    "salvage": [
+      {
+        "r": "The McTony Robbery",
+        "v": "Vapid Clique"
+      },
+      {
+        "r": "The Cargo Ship Robbery",
+        "v": "Vapid Dominator GT"
+      },
+      {
+        "r": "The Gangbanger Robbery",
+        "v": "Enus Paragon R"
+      }
+    ],
+    "lux": [
+      "Överflöd Suzume",
+      "Declasse Impaler LX"
+    ],
+    "pdm": [
+      "Lampadati Michelli GT ✱",
+      "Bravado Verlierer ✱",
+      "Överflöd Entity XF ✱",
+      "Karin 190z ✱",
+      "Invetero Coquette ✱"
+    ],
+    "bonuses": [
+      {
+        "a": "All Gerald Contact Missions",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "G’s Cache",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Special Vehicle Races",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Assault on ATT-16",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Community Combat Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Överflöd Suzume",
+        "p": 20
+      },
+      {
+        "i": "Eberhard Titan 250 D",
+        "p": 25
+      },
+      {
+        "i": "Bravado Hotring Hellfire",
+        "p": 30
+      },
+      {
+        "i": "Vapid GB200",
+        "p": 30
+      },
+      {
+        "i": "Överflöd Entity XXR",
+        "p": 30
+      },
+      {
+        "i": "Declasse Draugur",
+        "p": 30
+      },
+      {
+        "i": "Vapid Firebolt ASP",
+        "p": 30
+      },
+      {
+        "i": "Truffade Z-Type",
+        "p": 30
+      },
+      {
+        "i": "Benefactor Turreted Limo",
+        "p": 30
+      },
+      {
+        "i": "Zirconium Journey II",
+        "p": 30
+      },
+      {
+        "i": "Emperor ETR1",
+        "p": 30
+      }
+    ],
+    "disc_p": [],
+    "fib": "The Black Box File",
+    "ch": "Complete three Gerald’s Last Play missions",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "Oktoberfest"
+    ],
+    "tt": "Galileo Park",
+    "hsw_tt": "East Vinewood to Vespucci Beach"
+  },
+  "2025-09-18": {
+    "name": "Neighborhood Watch Finale / Bail Office 2X / Dispatch 2X",
+    "start": "2025-09-18",
+    "end": "2025-09-25",
+    "days": 7,
+    "podium": "Albany V-STR",
+    "prize": "Obey Tailgater S",
+    "test": [
+      "Vapid Retinue",
+      "LCC Innovation",
+      "Western Wolfsbane"
+    ],
+    "ptest": "Maibatsu MonstroCiti",
+    "salvage": [
+      {
+        "r": "The Cargo Ship Robbery",
+        "v": "Enus Stafford"
+      },
+      {
+        "r": "The McTony Robbery",
+        "v": "Benefactor Stirling GT"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Dinka Kanjo SJ"
+      }
+    ],
+    "lux": [
+      "Annis Minimus",
+      "Declasse Walton L35 Stock"
+    ],
+    "pdm": [
+      "Vulcar Warrener ✱",
+      "Dinka Verus ✱",
+      "Dundreary Landstalker XL ✱",
+      "Invetero Coquette BlackFin ✱",
+      "Hijak Ruston ✱"
+    ],
+    "bonuses": [
+      {
+        "a": "Community Race Series",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Dispatch Work",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "All Bail Office Bounties",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "Pursuit Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Hunting Pack",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Wildlife Photography",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Western Police Bike",
+        "p": 15
+      },
+      {
+        "i": "Invetero Coquette D10 Pursuit",
+        "p": 25
+      },
+      {
+        "i": "Vapid Caracara Pursuit",
+        "p": 25
+      },
+      {
+        "i": "Canis Terminus Patrol",
+        "p": 25
+      },
+      {
+        "i": "Willard Outreach Faction",
+        "p": 25
+      },
+      {
+        "i": "Eberhard Titan 250 D",
+        "p": 25
+      },
+      {
+        "i": "Declasse Hotring Sabre",
+        "p": 30
+      },
+      {
+        "i": "Pfister Comet Safari",
+        "p": 30
+      },
+      {
+        "i": "Nagasaki Outlaw",
+        "p": 30
+      },
+      {
+        "i": "Vapid Slamtruck",
+        "p": 30
+      },
+      {
+        "i": "Nagasaki Stryder",
+        "p": 30
+      },
+      {
+        "i": "Body Armor",
+        "p": 30
+      },
+      {
+        "i": "Vapid Dominator FX Interceptor",
+        "p": 35
+      },
+      {
+        "i": "Bravado Greenwood Cruiser",
+        "p": 35
+      },
+      {
+        "i": "Bravado Dorado Cruiser",
+        "p": 35
+      },
+      {
+        "i": "Declasse Impaler LX Cruiser",
+        "p": 35
+      },
+      {
+        "i": "Declasse Impaler SZ Cruiser",
+        "p": 35
+      },
+      {
+        "i": "Vapid Stanier LE Cruiser",
+        "p": 35
+      },
+      {
+        "i": "Declasse Park Ranger",
+        "p": 35
+      },
+      {
+        "i": "Bravado Gauntlet Interceptor",
+        "p": 35
+      },
+      {
+        "i": "Vapid Unmarked Cruiser",
+        "p": 35
+      }
+    ],
+    "disc_p": [],
+    "fib": "The Fine Art File",
+    "ch": "Complete three Dispatch Work missions",
+    "chr": "Winter LSPD Officer w/Tie Outfit",
+    "chc": 100000,
+    "ov": [
+      "Neighborhood Watch Event",
+      "Oktoberfest"
+    ],
+    "tt": "Elysian Island",
+    "hsw_tt": "North Chumash to Palomino Highlands"
+  },
+  "2025-09-11": {
+    "name": "Neighborhood Watch Start / Dispatch 2X / Vespucci Job",
+    "start": "2025-09-11",
+    "end": "2025-09-18",
+    "days": 7,
+    "podium": "Annis Hellion",
+    "prize": "Överflöd Entity MT",
+    "test": [
+      "Ocelot Lynx",
+      "Western Daemon (Custom)",
+      "Pegassi Vacca"
+    ],
+    "ptest": "Pfister Astron Custom",
+    "salvage": [
+      {
+        "r": "The Gangbanger Robbery",
+        "v": "Enus Deity"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Karin Hotring Everon"
+      },
+      {
+        "r": "The McTony Robbery",
+        "v": "Vapid Hustler"
+      }
+    ],
+    "lux": [
+      "Annis Euros X32",
+      "Karin Asterope GZ"
+    ],
+    "pdm": [
+      "Enus Stafford ✱",
+      "Nagasaki Hot Rod Blazer ✱",
+      "Grotti GT500 ✱",
+      "Vapid Blade ✱",
+      "Coil Brawler ✱"
+    ],
+    "bonuses": [
+      {
+        "a": "Dispatch Work",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "Wildlife Photography",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "The Vespucci Job (Remix)",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Community Combat Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Western Police Bike",
+        "p": 15
+      },
+      {
+        "i": "Invetero Coquette D10 Pursuit",
+        "p": 25
+      },
+      {
+        "i": "Vapid Caracara Pursuit",
+        "p": 25
+      },
+      {
+        "i": "Canis Terminus Patrol",
+        "p": 25
+      },
+      {
+        "i": "Willard Outreach Faction",
+        "p": 25
+      },
+      {
+        "i": "Benefactor SM722",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Zorrusso",
+        "p": 30
+      },
+      {
+        "i": "HVY Menacer",
+        "p": 30
+      },
+      {
+        "i": "Grotti Turismo Classic",
+        "p": 30
+      },
+      {
+        "i": "Body Armor",
+        "p": 30
+      },
+      {
+        "i": "Vapid Dominator FX Interceptor",
+        "p": 35
+      },
+      {
+        "i": "Bravado Greenwood Cruiser",
+        "p": 35
+      },
+      {
+        "i": "Bravado Dorado Cruiser",
+        "p": 35
+      },
+      {
+        "i": "Declasse Impaler LX Cruiser",
+        "p": 35
+      },
+      {
+        "i": "Declasse Impaler SZ Cruiser",
+        "p": 35
+      },
+      {
+        "i": "Vapid Stanier LE Cruiser",
+        "p": 35
+      },
+      {
+        "i": "Declasse Park Ranger",
+        "p": 35
+      },
+      {
+        "i": "Bravado Gauntlet Interceptor",
+        "p": 35
+      },
+      {
+        "i": "Vapid Unmarked Cruiser",
+        "p": 35
+      }
+    ],
+    "disc_p": [],
+    "fib": "The Brute Force File",
+    "ch": "Complete three Dispatch Work missions",
+    "chr": "Summer LSPD Officer Outfit",
+    "chc": 100000,
+    "ov": [
+      "Neighborhood Watch Event"
+    ],
+    "tt": "Down Chiliad",
+    "hsw_tt": "Pacific Bluffs to Mount Gordo"
+  },
+  "2025-09-04": {
+    "name": "Cayo Perico Survival 2 / Payphone Hits 2X / Hotring",
+    "start": "2025-09-04",
+    "end": "2025-09-11",
+    "days": 7,
+    "podium": "Penaud La Coureuse",
+    "prize": "Enus Paragon R",
+    "test": [
+      "Albany Alpha",
+      "Benefactor Streiter",
+      "Benefactor XLS"
+    ],
+    "ptest": "Benefactor Stirling GT",
+    "salvage": [
+      {
+        "r": "The Duggan Robbery",
+        "v": "Übermacht Sentinel Classic"
+      },
+      {
+        "r": "The Podium Robbery",
+        "v": "Hijak Ruston"
+      },
+      {
+        "r": "The Gangbanger Robbery",
+        "v": "Grotti Turismo Omaggio"
+      }
+    ],
+    "lux": [
+      "Annis 300R",
+      "Übermacht Sentinel GTS"
+    ],
+    "pdm": [
+      "LCC Hexer ✱",
+      "LCC Avarus ✱",
+      "Western Cliffhanger ✱",
+      "Benefactor Surano ✱",
+      "Weeny Dynasty ✱"
+    ],
+    "bonuses": [
+      {
+        "a": "Cayo Perico Survival",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "Assault on Cayo Perico",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Payphone Hits",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Hotring Races",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Community Race Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Karin Sultan Classic",
+        "p": 30
+      },
+      {
+        "i": "Coil Raiden",
+        "p": 30
+      },
+      {
+        "i": "Annis RE-7B",
+        "p": 30
+      },
+      {
+        "i": "RUNE Zhaba",
+        "p": 30
+      },
+      {
+        "i": "Lampadati Viseris",
+        "p": 30
+      },
+      {
+        "i": "Übermacht Rhinehart",
+        "p": 30
+      },
+      {
+        "i": "Dinka Blista Kanjo",
+        "p": 30
+      },
+      {
+        "i": "Western Rampant Rocket",
+        "p": 30
+      }
+    ],
+    "disc_p": [],
+    "fib": "The Project Breakaway File",
+    "ch": "Complete all ten waves of a Survival",
+    "chr": "The Buccaneer Outfit",
+    "chc": 100000,
+    "ov": [],
+    "tt": "Raton Canyon",
+    "hsw_tt": "Terminal to Chiliad Mountain State Wilderness"
+  },
+  "2025-08-28": {
+    "name": "Cayo Perico Survival Launch / Kosatka Discounts / Open Wheel",
+    "start": "2025-08-28",
+    "end": "2025-09-04",
+    "days": 7,
+    "podium": "Willard Eudora",
+    "prize": "Übermacht Zion Classic",
+    "test": [
+      "Benefactor Feltzer",
+      "Coil Voltic",
+      "Dewbauchee Rapid GT Classic"
+    ],
+    "ptest": "Declasse Vigero ZX",
+    "salvage": [
+      {
+        "r": "The Cargo Ship Robbery",
+        "v": "Grotti Itali RSX"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Annis ZR350"
+      },
+      {
+        "r": "The Podium Robbery",
+        "v": "BF Weevil"
+      }
+    ],
+    "lux": [
+      "Dinka LSCM Jester RR",
+      "Bravado Banshee GTS"
+    ],
+    "pdm": [
+      "Vapid Riata ✱",
+      "Declasse Vamos ✱",
+      "Dewbauchee Seven-70 ✱",
+      "Dewbauchee Rapid GT ✱",
+      "Western Zombie Bobber ✱"
+    ],
+    "bonuses": [
+      {
+        "a": "Cayo Perico Survival",
+        "m": "2X GTA$/RP",
+        "g": "4X"
+      },
+      {
+        "a": "Hidden Caches",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Featured Series: Open Wheel Races",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Kosatka Upgrades",
+        "p": 30
+      },
+      {
+        "i": "Kosatka Cosmetic Modifications",
+        "p": 30
+      },
+      {
+        "i": "Western Company Annihilator Stealth",
+        "p": 30
+      },
+      {
+        "i": "Kurtz 31 Patrol Boat",
+        "p": 30
+      },
+      {
+        "i": "Mammoth Squaddie",
+        "p": 30
+      },
+      {
+        "i": "Dinka Veto Modern",
+        "p": 30
+      },
+      {
+        "i": "Dinka Veto Classic",
+        "p": 30
+      },
+      {
+        "i": "Buckingham Alpha-Z1",
+        "p": 30
+      },
+      {
+        "i": "Buckingham Nimbus",
+        "p": 30
+      },
+      {
+        "i": "HVY Insurgent Pick-Up",
+        "p": 30
+      },
+      {
+        "i": "Karin Hotring Everon",
+        "p": 30
+      },
+      {
+        "i": "Maibatsu Penumbra FF",
+        "p": 30
+      },
+      {
+        "i": "Benefactor Schlagen GT",
+        "p": 30
+      },
+      {
+        "i": "Gallivanter Baller ST",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Kosatka Upgrades",
+        "p": 30
+      },
+      {
+        "i": "Kosatka Cosmetic Modifications",
+        "p": 30
+      }
+    ],
+    "fib": "The Black Box File",
+    "ch": "Complete all ten waves of a Survival",
+    "chr": "The Buccaneer Outfit",
+    "chc": 100000,
+    "ov": [],
+    "tt": "Power Station",
+    "hsw_tt": "Ron Alternates to Elysian Island"
+  },
+  "2025-07-10": {
+    "name": "Weed",
+    "start": "2025-07-10",
+    "end": "2025-07-17",
+    "days": 7,
+    "podium": "Bravado Greenwood",
+    "prize": "Progen GP1",
+    "test": [
+      "Canis Kalahari",
+      "BF Bifta",
+      "Coil Brawler"
+    ],
+    "ptest": "Karin S95",
+    "salvage": [
+      {
+        "r": "The Gangbanger Robbery",
+        "v": "Överflöd Tyrant"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Maibatsu Penumbra FF"
+      },
+      {
+        "r": "The Podium Robbery",
+        "v": "Ocelot Virtue"
+      }
+    ],
+    "lux": [
+      "Överflöd Suzume",
+      "Annis Hardy"
+    ],
+    "pdm": [
+      "Dewbauchee Rapid GT Classic",
+      "Vulcar Warrener ✱",
+      "Dewbauchee Massacro ✱",
+      "Dewbauchee Rapid GT Cabrio ✱",
+      "Nagasaki Hot Rod Blazer ✱"
+    ],
+    "bonuses": [
+      {
+        "a": "Smoke on the Water Money Laundering Missions",
+        "m": "2X GTA$/RP",
+        "g": "4X GTA$/RP"
+      },
+      {
+        "a": "Lamar Contact Missions",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Short Trips",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Featured Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Biker Weed Farm Stock",
+        "m": "2X Production Speed",
+        "g": ""
+      },
+      {
+        "a": "Nightclub Organic Produce Stock",
+        "m": "2X Production Speed",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "LF-22 Starling",
+        "p": 40
+      },
+      {
+        "i": "Maxwell Vagrant",
+        "p": 40
+      },
+      {
+        "i": "Canis Terminus",
+        "p": 40
+      },
+      {
+        "i": "Dinka RT3000",
+        "p": 40
+      },
+      {
+        "i": "Western Powersurge",
+        "p": 40
+      },
+      {
+        "i": "Pegassi Zentorno",
+        "p": 40
+      },
+      {
+        "i": "Obey 8F Drafter",
+        "p": 40
+      },
+      {
+        "i": "Pfister Comet Safari",
+        "p": 40
+      },
+      {
+        "i": "Lampadati Casco",
+        "p": 40
+      },
+      {
+        "i": "Nagasaki Stryder",
+        "p": 40
+      },
+      {
+        "i": "Lampadati Novak",
+        "p": 40
+      },
+      {
+        "i": "Imponte Nightshade",
+        "p": 40
+      },
+      {
+        "i": "Vapid Trophy Truck",
+        "p": 40
+      },
+      {
+        "i": "Schyster Deviant",
+        "p": 40
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Weed Farm Businesses",
+        "p": 30
+      }
+    ],
+    "fib": "The Project Breakaway File",
+    "ch": "Complete any three Smoke on the Water Missions",
+    "chr": null,
+    "chc": 100000,
+    "ov": [],
+    "tt": "Tongva Valley",
+    "hsw_tt": "Terminal to Chiliad Mountain State Wilderness"
+  },
+  "2025-07-17": {
+    "name": "Mr. Faber Work",
+    "start": "2025-07-17",
+    "end": "2025-07-24",
+    "days": 7,
+    "podium": "Grotti Furia",
+    "prize": "Pegassi Infernus Classic",
+    "test": [
+      "Invetero Coquette",
+      "Vapid Clique",
+      "Dewbauchee Exemplar"
+    ],
+    "ptest": "Coil Cyclone II",
+    "salvage": [
+      {
+        "r": "The McTony Robbery",
+        "v": "Pegassi Ignus"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Albany Cavalcade XL"
+      },
+      {
+        "r": "The Podium Robbery",
+        "v": "Bravado Buffalo EVX"
+      }
+    ],
+    "lux": [
+      "Annis Minimus",
+      "Grotti LSCM Cheetah Classic"
+    ],
+    "pdm": [
+      "Ocelot Lynx ✱",
+      "Western Wolfsbane ✱",
+      "Pegassi Vacca ✱",
+      "Canis Bodhi ✱",
+      "Vapid Retinue ✱"
+    ],
+    "bonuses": [
+      {
+        "a": "Mr. Faber Work",
+        "m": "2X GTA$/RP",
+        "g": "4X GTA$/RP"
+      },
+      {
+        "a": "Time Trials",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "G's Cache",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Stockpile",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Mammoth Hydra",
+        "p": 40
+      },
+      {
+        "i": "Pegassi Zorrusso",
+        "p": 40
+      },
+      {
+        "i": "Declasse Draugur",
+        "p": 40
+      },
+      {
+        "i": "Declasse Weaponized Tampa",
+        "p": 40
+      },
+      {
+        "i": "Gallivanter Baller ST-D",
+        "p": 40
+      },
+      {
+        "i": "Grotti Bestia GTS",
+        "p": 40
+      },
+      {
+        "i": "Vapid Dominator GTX",
+        "p": 40
+      },
+      {
+        "i": "Vapid Ellie",
+        "p": 40
+      },
+      {
+        "i": "Vulcar Nebula Turbo",
+        "p": 40
+      },
+      {
+        "i": "Western Annihilator",
+        "p": 40
+      },
+      {
+        "i": "Western Rogue",
+        "p": 40
+      },
+      {
+        "i": "Western Seabreeze",
+        "p": 40
+      }
+    ],
+    "disc_p": [],
+    "fib": "The Brute Force File",
+    "ch": "Complete five Mr. Faber Work Missions",
+    "chr": null,
+    "chc": 100000,
+    "ov": [],
+    "tt": "Coast to Coast",
+    "hsw_tt": "Pacific Bluffs to Mount Gordo"
+  },
+  "2025-07-24": {
+    "name": "Cayo Perico Motor Wars Launch",
+    "start": "2025-07-24",
+    "end": "2025-07-31",
+    "days": 7,
+    "podium": "Declasse Granger 3600LX",
+    "prize": "Karin Sultan Classic",
+    "test": [
+      "Dinka Verus",
+      "Vapid Bullet",
+      "Declasse Tulip"
+    ],
+    "ptest": "Weeny Issi Rally",
+    "salvage": [
+      {
+        "r": "The Gangbanger Robbery",
+        "v": "Fathom FR36"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Ocelot Swinger"
+      },
+      {
+        "r": "The Podium Robbery",
+        "v": "Dewbauchee Vagner"
+      }
+    ],
+    "lux": [
+      "Vapid Firebolt ASP",
+      "Declasse Impaler LX"
+    ],
+    "pdm": [
+      "Grotti GT500 ✱",
+      "Vapid Hustler ✱",
+      "Vapid Blade ✱",
+      "Dewbauchee JB 700 ✱",
+      "LCC Innovation ✱"
+    ],
+    "bonuses": [
+      {
+        "a": "Cayo Perico Motor Wars",
+        "m": "2X GTA$/RP",
+        "g": "4X GTA$/RP"
+      },
+      {
+        "a": "Buried Stashes",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Treasure Chests",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Featured Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Bravado Half-track",
+        "p": 40
+      },
+      {
+        "i": "Vom Feuer Anti-Aircraft Trailer",
+        "p": 40
+      },
+      {
+        "i": "Volatol",
+        "p": 40
+      },
+      {
+        "i": "Grotti Stinger TT",
+        "p": 40
+      },
+      {
+        "i": "Grotti Visione",
+        "p": 40
+      },
+      {
+        "i": "Vapid Dominator GT",
+        "p": 40
+      },
+      {
+        "i": "Benefactor Vorschlaghammer",
+        "p": 40
+      },
+      {
+        "i": "Nagasaki Buzzard Attack Chopper",
+        "p": 40
+      },
+      {
+        "i": "Pfister Neon",
+        "p": 40
+      },
+      {
+        "i": "Dinka Postlude",
+        "p": 40
+      },
+      {
+        "i": "Western Company Besra",
+        "p": 40
+      },
+      {
+        "i": "Vapid Winky",
+        "p": 40
+      }
+    ],
+    "disc_p": [],
+    "fib": "The Black Box File",
+    "ch": "Complete three Safeguard deliveries",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "Cayo Perico Motor Wars"
+    ],
+    "tt": "Casino",
+    "hsw_tt": "North Chumash to Palomino Highlands"
+  },
+  "2025-07-31": {
+    "name": "Side Hustles",
+    "start": "2025-07-31",
+    "end": "2025-08-07",
+    "days": 7,
+    "podium": "Vapid Winky",
+    "prize": "Vapid Aleutian",
+    "test": [
+      "Enus Super Diamond",
+      "Grotti Carbonizzare",
+      "Hijak Ruston"
+    ],
+    "ptest": "Grotti Brioso rA",
+    "salvage": [
+      {
+        "r": "The McTony Robbery",
+        "v": "Invetero Coquette BlackFin"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Obey Omnis"
+      },
+      {
+        "r": "The Podium Robbery",
+        "v": "Annis Euros"
+      }
+    ],
+    "lux": [
+      "Dinka LSCM Jester RR",
+      "Vapid Uranus LozSpeed"
+    ],
+    "pdm": [
+      "Vapid FMJ ✱",
+      "Invetero Coquette BlackFin ✱",
+      "Bravado Verlierer ✱",
+      "Överflöd Entity XF ✱",
+      "Canis Seminole Frontier ✱"
+    ],
+    "bonuses": [
+      {
+        "a": "Safeguard Deliveries",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "QuickiePharm Deliveries",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Pizza Delivery",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Taxi Work",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Car Wash Passive Income",
+        "m": "2X GTA$",
+        "g": ""
+      },
+      {
+        "a": "Cayo Perico Motor Wars",
+        "m": "2X GTA$/RP",
+        "g": "4X GTA$/RP"
+      },
+      {
+        "a": "Featured Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Buckingham Volatus",
+        "p": 40
+      },
+      {
+        "i": "HVY Barrage",
+        "p": 40
+      },
+      {
+        "i": "Vapid Ratel",
+        "p": 40
+      },
+      {
+        "i": "Annis Euros",
+        "p": 40
+      },
+      {
+        "i": "Annis Euros X32",
+        "p": 40
+      },
+      {
+        "i": "Vapid FMJ",
+        "p": 40
+      },
+      {
+        "i": "Vulcar Warrener HKR",
+        "p": 40
+      },
+      {
+        "i": "Ocelot Swinger",
+        "p": 40
+      },
+      {
+        "i": "Överflöd Entity XF",
+        "p": 40
+      },
+      {
+        "i": "Invetero Coquette BlackFin",
+        "p": 40
+      },
+      {
+        "i": "Bravado Verlierer",
+        "p": 40
+      },
+      {
+        "i": "Canis Seminole Frontier",
+        "p": 40
+      },
+      {
+        "i": "BF Surfer Custom",
+        "p": 40
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Darnell Bros. Garment Factory",
+        "p": 30
+      },
+      {
+        "i": "Special Cargo Warehouses",
+        "p": 30
+      },
+      {
+        "i": "Acid Lab",
+        "p": 30
+      }
+    ],
+    "fib": "The Fine Art File",
+    "ch": "Make five QuickiePharm deliveries",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "Cayo Perico Motor Wars"
+    ],
+    "tt": "Route 68",
+    "hsw_tt": "East Vinewood to Vespucci Beach"
+  },
+  "2025-08-07": {
+    "name": "Martin Madrazo",
+    "start": "2025-08-07",
+    "end": "2025-08-14",
+    "days": 7,
+    "podium": "Karin Boor",
+    "prize": "Declasse Drift Tampa",
+    "test": [
+      "Enus Cognoscenti",
+      "Albany Roosevelt",
+      "Dinka Jester (Racecar)"
+    ],
+    "ptest": "Übermacht Sentinel XS",
+    "salvage": [
+      {
+        "r": "The Podium Robbery",
+        "v": "Willard Eudora"
+      },
+      {
+        "r": "The McTony Robbery",
+        "v": "Bravado Buffalo STX"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Lampadati Cinquemila"
+      }
+    ],
+    "lux": [
+      "Dewbauchee Rapid GT X",
+      "Benefactor Vorschlaghammer"
+    ],
+    "pdm": [
+      "Lampadati Michelli GT ✱",
+      "Vapid Peyote Gasser ✱",
+      "Vulcar Fagaloa ✱",
+      "Karin 190z ✱",
+      "Dinka Enduro ✱"
+    ],
+    "bonuses": [
+      {
+        "a": "Martin Madrazo Contact Missions",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Community Race Series",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Madrazo Hits",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Auto Shop Client Jobs",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Featured Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Buckingham Weaponized Conada",
+        "p": 40
+      },
+      {
+        "i": "Buckingham SuperVolito",
+        "p": 40
+      },
+      {
+        "i": "Enus Paragon S",
+        "p": 40
+      },
+      {
+        "i": "Buckingham Miljet",
+        "p": 40
+      },
+      {
+        "i": "Karin Everon",
+        "p": 40
+      },
+      {
+        "i": "Pegassi Tempesta",
+        "p": 40
+      },
+      {
+        "i": "Bravado Gauntlet Classic",
+        "p": 40
+      },
+      {
+        "i": "Dewbauchee Rapid GT X",
+        "p": 20
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Hands On Car Wash",
+        "p": 30
+      }
+    ],
+    "fib": "The Project Breakaway File",
+    "ch": "Eliminate three bounties for Martin Madrazo",
+    "chr": null,
+    "chc": 100000,
+    "ov": [],
+    "tt": "LSIA",
+    "hsw_tt": "Del Perro Beach"
+  },
+  "2025-08-14": {
+    "name": "Drift",
+    "start": "2025-08-14",
+    "end": "2025-08-21",
+    "days": 7,
+    "podium": "Declasse Weaponized Tampa",
+    "prize": "Karin Calico GTF",
+    "test": [
+      "Western Rat Bike",
+      "Lampadati Pigalle",
+      "Grotti Cheetah"
+    ],
+    "ptest": "Shitzu Hakuchou Drag",
+    "salvage": [
+      {
+        "r": "The Podium Robbery",
+        "v": "Vapid Dominator GTT"
+      },
+      {
+        "r": "The McTony Robbery",
+        "v": "Weeny Issi Rally"
+      },
+      {
+        "r": "The Gangbanger Robbery",
+        "v": "Överflöd Entity MT"
+      }
+    ],
+    "lux": [
+      "Invetero Coquette D1",
+      "Bollokan Envisage"
+    ],
+    "pdm": [
+      "Declasse Drift Walton L35",
+      "Bravado Gauntlet Hellfire",
+      "Annis Hardy",
+      "Vapid Dominator FX",
+      "Dinka Chavos V6"
+    ],
+    "bonuses": [
+      {
+        "a": "LS Car Meet Series",
+        "m": "2X GTA$/RP + Car Meet Rep",
+        "g": ""
+      },
+      {
+        "a": "All LS Car Meet Rep Sources",
+        "m": "2X LS Car Meet Rep",
+        "g": ""
+      },
+      {
+        "a": "Featured Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Community Combat Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Vapid Dominator FX",
+        "p": 50
+      },
+      {
+        "i": "Declasse Drift Yosemite",
+        "p": 50
+      },
+      {
+        "i": "Dinka Chavos V6",
+        "p": 50
+      },
+      {
+        "i": "Higgins Helitours",
+        "p": 30
+      },
+      {
+        "i": "Grotti LSCM Cheetah Classic",
+        "p": 30
+      },
+      {
+        "i": "Vapid Dominator ASP",
+        "p": 30
+      },
+      {
+        "i": "Übermacht Cypher",
+        "p": 30
+      },
+      {
+        "i": "Karin Futo GTX",
+        "p": 30
+      },
+      {
+        "i": "Annis ZR350",
+        "p": 30
+      },
+      {
+        "i": "Annis Remus",
+        "p": 30
+      },
+      {
+        "i": "RUNE Cheburek",
+        "p": 30
+      },
+      {
+        "i": "Dinka Jester RR",
+        "p": 30
+      },
+      {
+        "i": "Karin Sultan RS Classic",
+        "p": 30
+      },
+      {
+        "i": "Pfister Growler",
+        "p": 30
+      },
+      {
+        "i": "Karin Vivanite",
+        "p": 30
+      },
+      {
+        "i": "Grotti Stinger GT",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "LS Car Meet Membership",
+        "p": 50
+      }
+    ],
+    "fib": "The Brute Force File",
+    "ch": "Win three LS Car Meet races",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "Drift Week"
+    ],
+    "tt": "Calafia Way",
+    "hsw_tt": "Sandy Shores to La Puerta"
+  },
+  "2025-08-21": {
+    "name": "End of Summer Giveaway",
+    "start": "2025-08-21",
+    "end": "2025-08-28",
+    "days": 7,
+    "podium": "Pfister Comet S2 Cabrio",
+    "prize": "Declasse Impaler SZ",
+    "test": [
+      "Enus Cognoscenti Cabrio",
+      "Dinka Jester",
+      "BF Raptor"
+    ],
+    "ptest": "Annis Euros X32",
+    "salvage": [
+      {
+        "r": "The Podium Robbery",
+        "v": "Obey 10F"
+      },
+      {
+        "r": "The Duggan Robbery",
+        "v": "Grotti Stinger GT"
+      },
+      {
+        "r": "The McTony Robbery",
+        "v": "Karin Boor"
+      }
+    ],
+    "lux": [
+      "Canis Castigator",
+      "Übermacht Niobe"
+    ],
+    "pdm": [
+      "Annis S80RR",
+      "Pegassi Ignus",
+      "Nagasaki Shinobi",
+      "Ocelot Locust",
+      "Grotti Turismo Omaggio"
+    ],
+    "bonuses": [
+      {
+        "a": "One-Time Cash Bonus",
+        "m": "GTA$1,000,000 (Login)",
+        "g": "GTA$2,000,000"
+      },
+      {
+        "a": "Complete all Repo Work — Bonus",
+        "m": "GTA$500,000",
+        "g": ""
+      },
+      {
+        "a": "Simeon Export Requests",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Simeon Contact Missions",
+        "m": "2X GTA$/RP",
+        "g": "4X GTA$/RP"
+      },
+      {
+        "a": "Sumo (Remix)",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Community Race Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Annis S80RR",
+        "p": 40
+      },
+      {
+        "i": "Pegassi Ignus",
+        "p": 40
+      },
+      {
+        "i": "Nagasaki Shinobi",
+        "p": 40
+      },
+      {
+        "i": "Toundra Panthere",
+        "p": 40
+      },
+      {
+        "i": "Grotti Turismo Omaggio",
+        "p": 40
+      },
+      {
+        "i": "Buckingham Akula",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Torero XO",
+        "p": 30
+      },
+      {
+        "i": "B-11 Strikeforce",
+        "p": 30
+      },
+      {
+        "i": "Överflöd Pipistrello",
+        "p": 30
+      },
+      {
+        "i": "BF Club",
+        "p": 30
+      },
+      {
+        "i": "Ocelot Ardent",
+        "p": 30
+      },
+      {
+        "i": "Dewbauchee Specter",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Smoke on the Water",
+        "p": 30
+      }
+    ],
+    "fib": "tba",
+    "ch": "Complete three Premium Deluxe Repo Work missions",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "End of Summer Giveaway"
+    ],
+    "tt": "Vinewood Bowl",
+    "hsw_tt": "Textile City to Stab City"
+  },
+  "2025-05-29": {
+    "name": "Special Vehicle Work",
+    "start": "2025-05-29",
+    "end": "2025-06-05",
+    "days": 7,
+    "podium": "Pfister Astron",
+    "prize": "Obey Omnis e-GT",
+    "test": [
+      "Coil Voltic",
+      "Declasse Tulip",
+      "Lampadati Michelli GT"
+    ],
+    "ptest": "Annis Euros X32",
+    "salvage": [
+      "Pegassi Ignus",
+      "Grotti Itali GTO Stinger TT",
+      "Pegassi Infernus Classic"
+    ],
+    "lux": [
+      "Fathom FR36",
+      "Vapid Dominator FX"
+    ],
+    "pdm": [
+      "LCC Avarus",
+      "LCC Innovation",
+      "Pegassi Esskey",
+      "Vapid Bullet",
+      "Vapid FMJ"
+    ],
+    "bonuses": [
+      {
+        "a": "Special Vehicle Work",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Export Mixed Goods Missions",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Random Transform Races",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Buckingham Nimbus",
+        "p": 60
+      },
+      {
+        "i": "Buckingham Luxor Deluxe",
+        "p": 30
+      },
+      {
+        "i": "Buckingham Swift Deluxe",
+        "p": 30
+      },
+      {
+        "i": "Dinka Veto Classic",
+        "p": 30
+      },
+      {
+        "i": "Ocelot Penetrator",
+        "p": 30
+      },
+      {
+        "i": "Annis Savestra",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Executive Office Properties",
+        "p": 30
+      },
+      {
+        "i": "Executive Office Upgrades and Modifications",
+        "p": 30
+      },
+      {
+        "i": "Special Cargo Warehouses",
+        "p": 30
+      }
+    ],
+    "fib": "The Project Breakaway File",
+    "ch": "Sell GTA$300,000 across all businesses",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "Random Transform Races"
+    ],
+    "tt": "Up Chiliad",
+    "hsw_tt": "East Vinewood to Vespucci Beach"
+  },
+  "2025-06-05": {
+    "name": "Casino Heist (Diamonds)",
+    "start": "2025-06-05",
+    "end": "2025-06-17",
+    "days": 12,
+    "podium": "Karin Futo GTX",
+    "prize": "Imponte Ruiner ZZ-8",
+    "test": [
+      "Albany Alpha",
+      "Dinka Verus",
+      "Grotti Carbonizzare"
+    ],
+    "ptest": "Declasse Vigero ZX",
+    "salvage": [
+      "Dinka Blista Kanjo",
+      "Pegassi Toros",
+      "Överflöd Autarch"
+    ],
+    "lux": [
+      "Grotti Itali GTO (40% off)",
+      "Obey Tailgater S (40% off)"
+    ],
+    "pdm": [
+      "LCC Hexer",
+      "Hijak Ruston",
+      "Vapid Blade",
+      "Vapid Hustler",
+      "Vulcar Fagaloa"
+    ],
+    "bonuses": [
+      {
+        "a": "Diamond Casino Heist",
+        "m": "Guaranteed Diamonds",
+        "g": ""
+      },
+      {
+        "a": "Featured & Community Series",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Casino Story and Work Missions",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Vehicle Cargo Sell Missions",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Cheval Taipan",
+        "p": 40
+      },
+      {
+        "i": "Grotti Itali GTO",
+        "p": 40
+      },
+      {
+        "i": "Vapid Dominator ASP",
+        "p": 40
+      },
+      {
+        "i": "Obey Tailgater S",
+        "p": 40
+      },
+      {
+        "i": "Übermacht Rebla GTS",
+        "p": 40
+      },
+      {
+        "i": "Pfister Comet SR",
+        "p": 40
+      },
+      {
+        "i": "HVY Insurgent",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Arcade Properties",
+        "p": 30
+      },
+      {
+        "i": "Arcade Upgrades and Modifications",
+        "p": 30
+      },
+      {
+        "i": "Casino Master Penthouse",
+        "p": 30
+      },
+      {
+        "i": "Casino Master Penthouse Upgrades and Modifications",
+        "p": 30
+      },
+      {
+        "i": "Casino Master Penthouse Decorations",
+        "p": 30
+      },
+      {
+        "i": "Vehicle Warehouses",
+        "p": 30
+      }
+    ],
+    "fib": "The Brute Force File",
+    "ch": "Complete two Casino Work Missions",
+    "chr": null,
+    "chc": 100000,
+    "ov": [],
+    "tt": "Sawmill",
+    "hsw_tt": "Del Perro Beach to Murietta Heights"
+  },
+  "2025-06-17": {
+    "name": "Money Fronts Launch",
+    "start": "2025-06-17",
+    "end": "2025-06-26",
+    "days": 9,
+    "podium": "Ocelot XA-21",
+    "prize": "Ocelot Jugular",
+    "test": [
+      "Western Cliffhanger",
+      "Dinka Enduro",
+      "Vapid Riata"
+    ],
+    "ptest": "Pfister Astron Custom",
+    "salvage": [
+      "Dinka Jester Classic",
+      "Lampadati Tropos Rallye",
+      "Mammoth Patriot Mil-Spec"
+    ],
+    "lux": [
+      "Karin Everon RS (New)",
+      "Dewbauchee Rapid GT X (New)"
+    ],
+    "pdm": [
+      "Ocelot Locust",
+      "Karin 190z",
+      "Karin Woodlander (New)",
+      "Übermacht Sentinel GTS (New)",
+      "Annis Hardy (New)"
+    ],
+    "bonuses": [
+      {
+        "a": "Hands On Car Wash Missions",
+        "m": "2X GTA$/RP",
+        "g": "4X GTA$/RP"
+      },
+      {
+        "a": "Overtime Rumble",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Truffade Adder",
+        "p": 40
+      },
+      {
+        "i": "Überflöd Entity XXR",
+        "p": 40
+      },
+      {
+        "i": "Bravado Gauntlet Hellfire",
+        "p": 40
+      },
+      {
+        "i": "HVY Nightshark",
+        "p": 40
+      },
+      {
+        "i": "Karin Previon",
+        "p": 40
+      },
+      {
+        "i": "Übermacht Zion Classic",
+        "p": 40
+      },
+      {
+        "i": "Lampadati Cinquemila",
+        "p": 40
+      },
+      {
+        "i": "Canis Freecrawler",
+        "p": 40
+      },
+      {
+        "i": "Überflöd Imorgon",
+        "p": 40
+      },
+      {
+        "i": "Übermacht Niobe",
+        "p": 40
+      },
+      {
+        "i": "Überflöd Tyrant",
+        "p": 40
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Agency Properties",
+        "p": 30
+      },
+      {
+        "i": "Auto Shop Properties",
+        "p": 30
+      },
+      {
+        "i": "Counterfeit Cash Businesses",
+        "p": 30
+      },
+      {
+        "i": "Bail Offices",
+        "p": 30
+      },
+      {
+        "i": "Garment Factory",
+        "p": 30
+      }
+    ],
+    "fib": "The Black Box File",
+    "ch": "Complete three Hands On Car Wash missions",
+    "chr": "Hands On Car Wash Overalls",
+    "chc": 100000,
+    "ov": [
+      "Overtime Rumble"
+    ],
+    "tt": "Cypress Flats",
+    "hsw_tt": "Sandy Shores"
+  },
+  "2025-06-26": {
+    "name": "Higgins Helitours",
+    "start": "2025-06-26",
+    "end": "2025-07-03",
+    "days": 7,
+    "podium": "Vysser Neo",
+    "prize": "Coil Raiden",
+    "test": [
+      "Western Daemon",
+      "Western Rat Bike",
+      "Declasse Vamos"
+    ],
+    "ptest": "Principe Deveste Eight",
+    "salvage": [
+      "Grotti GT500",
+      "Annis Euros",
+      "Obey Omnis e-GT"
+    ],
+    "lux": [
+      "Överflöd Suzume",
+      "Declasse Tampa GT"
+    ],
+    "pdm": [
+      "Vapid Peyote Gasser",
+      "Annis Minimus",
+      "Lampadati Furore GT",
+      "Declasse Walton L35 Stock",
+      "Grotti LSCM Cheetah Classic"
+    ],
+    "bonuses": [
+      {
+        "a": "Higgins Helitours Missions",
+        "m": "2X GTA$/RP",
+        "g": "4X GTA$/RP"
+      },
+      {
+        "a": "Dispatch Work",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Junk Energy Skydives",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Flight School Lessons",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Juggernaut",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Benefactor LM87",
+        "p": 40
+      },
+      {
+        "i": "Progen Tyrus",
+        "p": 40
+      },
+      {
+        "i": "Benefactor SM722",
+        "p": 40
+      },
+      {
+        "i": "Pfister Comet S2",
+        "p": 40
+      },
+      {
+        "i": "Übermacht Rhinehart",
+        "p": 40
+      },
+      {
+        "i": "Dewbauchee Vagner",
+        "p": 40
+      },
+      {
+        "i": "Declasse Tahoma Coupe",
+        "p": 40
+      },
+      {
+        "i": "Dinka Kanjo SJ",
+        "p": 40
+      },
+      {
+        "i": "Pfister 811",
+        "p": 40
+      },
+      {
+        "i": "Pegassi Torero",
+        "p": 40
+      },
+      {
+        "i": "Dinka Jester Classic",
+        "p": 40
+      },
+      {
+        "i": "Buckingham Maverick",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Smuggler Hangars",
+        "p": 30
+      },
+      {
+        "i": "Smuggler Hangar Upgrades and Modifications",
+        "p": 30
+      },
+      {
+        "i": "McKenzie Field Hangar",
+        "p": 30
+      }
+    ],
+    "fib": "The Fine Art File",
+    "ch": "Complete three Safeguard deliveries",
+    "chr": "Hands On Car Wash Overalls",
+    "chc": 200000,
+    "ov": [
+      "Juggernaut"
+    ],
+    "tt": "Up N Atom",
+    "hsw_tt": "Textile City to Stab City"
+  },
+  "2025-07-03": {
+    "name": "Independence Day",
+    "start": "2025-07-03",
+    "end": "2025-07-10",
+    "days": 7,
+    "podium": "Vapid Dominator GTT",
+    "prize": "Bravado Hotring Hellfire",
+    "test": [
+      "Albany V-STR",
+      "Invetero Coquette D5",
+      "Vapid Dominator FX"
+    ],
+    "ptest": "Imponte Arbiter GT",
+    "salvage": [
+      "Declasse Drift Yosemite (Claimable)",
+      "Karin Boor (Claimable)",
+      "Bravado Buffalo STX"
+    ],
+    "lux": [
+      "Declasse Walton L35 Stock (Patriot Beer livery)",
+      "Karin Woodlander"
+    ],
+    "pdm": [
+      "Bravado Banshee GTS",
+      "Declasse Vigero ZX Convertible",
+      "Willard Eudora",
+      "Declasse Scramjet",
+      "Coil Cyclone"
+    ],
+    "bonuses": [
+      {
+        "a": "Land Races",
+        "m": "4X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Community Series",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Tow Truck Services",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Auto Shop Client Jobs",
+        "m": "2X GTA$",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "JoBuilt P-996 LAZER",
+        "p": 50
+      },
+      {
+        "i": "Western Sovereign",
+        "p": 40
+      },
+      {
+        "i": "Vapid Liberator",
+        "p": 40
+      },
+      {
+        "i": "Benny's Conversion Upgrades",
+        "p": 40
+      },
+      {
+        "i": "Independence Day Liveries & Apparel",
+        "p": 40
+      },
+      {
+        "i": "Sea Sparrow",
+        "p": 40
+      },
+      {
+        "i": "Vapid Caracara",
+        "p": 40
+      },
+      {
+        "i": "Albany Cavalcade XL",
+        "p": 40
+      },
+      {
+        "i": "Declasse Walton L35",
+        "p": 40
+      },
+      {
+        "i": "Declasse Tulip M-100",
+        "p": 40
+      },
+      {
+        "i": "Canis Castigator",
+        "p": 40
+      },
+      {
+        "i": "Vapid Retinue Mk II",
+        "p": 40
+      },
+      {
+        "i": "Invetero Coquette D1",
+        "p": 40
+      },
+      {
+        "i": "Bravado Dorado",
+        "p": 40
+      },
+      {
+        "i": "Vapid Clique Wagon",
+        "p": 40
+      },
+      {
+        "i": "Western Rampant Rocket",
+        "p": 40
+      },
+      {
+        "i": "Grotti Cheetah Classic",
+        "p": 40
+      },
+      {
+        "i": "Zirconium Journey II",
+        "p": 40
+      },
+      {
+        "i": "Vapid Desert Raid",
+        "p": 40
+      },
+      {
+        "i": "Mammoth Patriot Stretch",
+        "p": 40
+      },
+      {
+        "i": "Bravado Buffalo S",
+        "p": 40
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Bunker Properties",
+        "p": 30
+      },
+      {
+        "i": "Nightclub Properties",
+        "p": 30
+      },
+      {
+        "i": "Cocaine Lockups",
+        "p": 30
+      },
+      {
+        "i": "Salvage Yard Properties",
+        "p": 30
+      }
+    ],
+    "fib": "The Brute Force File",
+    "ch": "Win two Races",
+    "chr": "Fireworks Bucket Hat",
+    "chc": 100000,
+    "ov": [],
+    "tt": "Maze Bank Arena",
+    "hsw_tt": "Ron Alternates to Elysian Island"
+  },
+  "2025-04-03": {
+    "name": "Peyote Plants / HSW Races",
+    "start": "2025-04-03",
+    "end": "2025-04-10",
+    "days": 7,
+    "podium": "Pfister Comet S2",
+    "prize": "Pegassi Zorrusso",
+    "test": [
+      "Hijak Ruston",
+      "Vapid Blade",
+      "Pfister 811"
+    ],
+    "ptest": "Grotti Brioso RA",
+    "salvage": [
+      "Benefactor SM722",
+      "Obey Omnis",
+      "Lampadati Casco"
+    ],
+    "lux": [
+      "Übermacht Niobe",
+      "Vapid Aleutian"
+    ],
+    "pdm": [
+      "LCC Avarus",
+      "Benefactor Feltzer",
+      "Vapid Hustler",
+      "Dewbauchee Rapid GT",
+      "Dinka Jester (Racecar)"
+    ],
+    "bonuses": [
+      {
+        "a": "Sasquatch Outfit",
+        "m": "Free (Login)",
+        "g": ""
+      },
+      {
+        "a": "Complete any three Races — Dark Manor Suit (Withdrawn by Rockstar; GTA$200,000 paid only)",
+        "m": "GTA$200,000 (72hr)",
+        "g": ""
+      },
+      {
+        "a": "HSW Races",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Madrazo Hits",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Featured Series",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Nightclub Management Missions",
+        "m": "2X Popularity",
+        "g": ""
+      },
+      {
+        "a": "Nightclub Warehouse Production Speed",
+        "m": "2X Production Speed",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Grotti Turismo Omaggio",
+        "p": 30
+      },
+      {
+        "i": "Übermacht Niobe",
+        "p": 30
+      },
+      {
+        "i": "Penaud La Coureuse",
+        "p": 30
+      },
+      {
+        "i": "Gallivanter Baller ST-D",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Toros",
+        "p": 30
+      },
+      {
+        "i": "Vapid Dominator GT",
+        "p": 30
+      },
+      {
+        "i": "Declasse Tahoma Coupe",
+        "p": 30
+      },
+      {
+        "i": "Lampadati Cinquemila",
+        "p": 30
+      },
+      {
+        "i": "Ocelot XA-21",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Zorrusso",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Nightclub Properties",
+        "p": 30
+      },
+      {
+        "i": "Nightclub Upgrades and Modifications",
+        "p": 30
+      }
+    ],
+    "fib": "The Project Breakaway File",
+    "ch": "Complete three Madrazo Hits",
+    "chr": null,
+    "chc": 100000,
+    "ov": [],
+    "tt": "El Burro Heights",
+    "hsw_tt": "East Vinewood to Vespucci Beach"
+  },
+  "2025-04-10": {
+    "name": "OG Heists",
+    "start": "2025-04-10",
+    "end": "2025-04-17",
+    "days": 7,
+    "podium": "Karin Previon",
+    "prize": "Übermacht Cypher (Fleeca Circuit livery — Rare; livery does not unlock permanently)",
+    "test": [
+      "Vapid Peyote Gasser",
+      "Progen GP1",
+      "Western Wolfsbane"
+    ],
+    "ptest": "Bravado Buffalo EVX",
+    "salvage": [
+      "Grotti Cheetah Classic",
+      "Pegassi Toros",
+      "Benefactor Stirling GT"
+    ],
+    "lux": [
+      "Vapid Clique Wagon",
+      "Canis Terminus"
+    ],
+    "pdm": [
+      "Declasse Tulip",
+      "Coil Voltic",
+      "Western Rat Bike",
+      "Lampadati Michelli GT",
+      "Coil Raiden"
+    ],
+    "bonuses": [
+      {
+        "a": "Original Heists (Fleeca, Prison Break, Humane Raid, Series A, Pacific Standard)",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Community Series",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Pizza Delivery",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Hasta La Vista",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Karin Kuruma (Armored)",
+        "p": 30
+      },
+      {
+        "i": "RUNE Zhaba",
+        "p": 30
+      },
+      {
+        "i": "HVY Insurgent Pick-Up",
+        "p": 30
+      },
+      {
+        "i": "Vapid Winky",
+        "p": 30
+      },
+      {
+        "i": "Dewbauchee Vagner",
+        "p": 30
+      },
+      {
+        "i": "Mammoth Squaddie",
+        "p": 30
+      },
+      {
+        "i": "Dinka Kanjo SJ",
+        "p": 30
+      },
+      {
+        "i": "Pfister Neon",
+        "p": 30
+      },
+      {
+        "i": "Dinka RT3000",
+        "p": 30
+      },
+      {
+        "i": "Bravado Greenwood",
+        "p": 30
+      },
+      {
+        "i": "Karin Boor",
+        "p": 30
+      },
+      {
+        "i": "Vysser Neo",
+        "p": 30
+      },
+      {
+        "i": "Bravado Half-track",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "High-End Apartments",
+        "p": 30
+      }
+    ],
+    "fib": "The Brute Force File",
+    "ch": "Complete any two Heist Finales",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "Hasta La Vista"
+    ],
+    "tt": "Del Perro Pier",
+    "hsw_tt": "Del Perro Beach to Murietta Heights"
+  },
+  "2025-04-17": {
+    "name": "4/20 Week",
+    "start": "2025-04-17",
+    "end": "2025-04-24",
+    "days": 7,
+    "podium": "Western Rampant Rocket",
+    "prize": "Pegassi Osiris",
+    "test": [
+      "Dinka Enduro",
+      "Shitzu Hakuchou",
+      "Western Zombie Bobber"
+    ],
+    "ptest": "Declasse Vigero ZX",
+    "salvage": [
+      "Lampadati Viseris",
+      "Canis Kamacho",
+      "Grotti GT500"
+    ],
+    "lux": [
+      "Invetero Coquette D1",
+      "Pegassi Torero XO"
+    ],
+    "pdm": [
+      "Benefactor XLS",
+      "Lampadati Viseris",
+      "Enus Cognoscenti Cabrio",
+      "Declasse Vamos",
+      "Western Cliffhanger"
+    ],
+    "bonuses": [
+      {
+        "a": "Gold 420 Pendant + Green 420 Festival Outfit + Yeti Earth Day Hoodie",
+        "m": "Free (Login)",
+        "g": ""
+      },
+      {
+        "a": "Biker Sell Mission Reward — Güffy Drug Rug Hoodie",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "Weed Sell Missions (Biker + NC Organic Produce)",
+        "m": "3X GTA$",
+        "g": ""
+      },
+      {
+        "a": "Hunting Pack (Get Lamar)",
+        "m": "2X GTA$/RP",
+        "g": "4X GTA$/RP"
+      },
+      {
+        "a": "Street Dealer Sales",
+        "m": "2X GTA$",
+        "g": ""
+      },
+      {
+        "a": "Weed Farm & Organic Produce Production Speed",
+        "m": "2X Production Speed",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Nagasaki Shotaro",
+        "p": 30
+      },
+      {
+        "i": "Nagasaki Shinobi",
+        "p": 30
+      },
+      {
+        "i": "Lampadati Tigon",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Ignus",
+        "p": 30
+      },
+      {
+        "i": "Übermacht Rhinehart",
+        "p": 30
+      },
+      {
+        "i": "Annis RE-7B",
+        "p": 30
+      },
+      {
+        "i": "Annis S80RR",
+        "p": 30
+      },
+      {
+        "i": "Declasse Draugur",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Weed Farm Businesses",
+        "p": 50
+      },
+      {
+        "i": "Weed Farm Business Upgrades",
+        "p": 50
+      },
+      {
+        "i": "Biker Clubhouse",
+        "p": 30
+      },
+      {
+        "i": "Biker Clubhouse Upgrades and Modifications",
+        "p": 30
+      }
+    ],
+    "fib": "The Fine Art File",
+    "ch": "Win two rounds of Hunting Pack (Get Lamar)",
+    "chr": "Black High Brass Tee",
+    "chc": 100000,
+    "ov": [
+      "Hunting Pack (Get Lamar)"
+    ],
+    "tt": "Observatory",
+    "hsw_tt": "Sandy Shores to La Puerta"
+  },
+  "2025-04-24": {
+    "name": "Terrorbyte / Acid Lab",
+    "start": "2025-04-24",
+    "end": "2025-05-01",
+    "days": 7,
+    "podium": "Albany Cavalcade XL",
+    "prize": "Lampadati Tropos Rallye",
+    "test": [
+      "Western Daemon",
+      "Dewbauchee Massacro",
+      "Lampadati Furore GT"
+    ],
+    "ptest": "Penaud La Coureuse",
+    "salvage": [
+      "Dinka Blista Kanjo",
+      "Pegassi Zorrusso",
+      "Dewbauchee Champion"
+    ],
+    "lux": [
+      "Bravado Dorado",
+      "Bollokan Envisage"
+    ],
+    "pdm": [
+      "Vapid Riata",
+      "Canis Bodhi",
+      "Lampadati Pigalle",
+      "Übermacht Revolter",
+      "Declasse Tornado Rat Rod"
+    ],
+    "bonuses": [
+      {
+        "a": "FIB Priority File: The Black Box File",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Mobile Operations Missions",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Terrorbyte Client Jobs",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Fooligan Jobs",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Deadline",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Acid Lab Resupply Missions",
+        "m": "2X Supplies",
+        "g": ""
+      },
+      {
+        "a": "Acid Lab Production Speed",
+        "m": "2X Production Speed",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Überflöd Zeno",
+        "p": 30
+      },
+      {
+        "i": "Pfister Comet S2 Cabrio",
+        "p": 30
+      },
+      {
+        "i": "Pfister Growler",
+        "p": 30
+      },
+      {
+        "i": "Truffade Nero",
+        "p": 30
+      },
+      {
+        "i": "Declasse Impaler LX",
+        "p": 30
+      },
+      {
+        "i": "Declasse Tulip M-100",
+        "p": 30
+      },
+      {
+        "i": "Declasse Walton L35",
+        "p": 30
+      },
+      {
+        "i": "Willard Eudora",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Benefactor Terrorbyte",
+        "p": 30
+      },
+      {
+        "i": "Benefactor Terrorbyte Upgrades and Modifications",
+        "p": 30
+      },
+      {
+        "i": "Mobile Operations Center",
+        "p": 30
+      },
+      {
+        "i": "Mobile Operations Center Upgrades and Modifications",
+        "p": 30
+      },
+      {
+        "i": "MTL Brickade 6x6 with Acid Lab (Installation Included)",
+        "p": 30
+      }
+    ],
+    "fib": "The Black Box File",
+    "ch": "Complete three Terrorbyte Client Jobs",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "Deadline"
+    ],
+    "tt": "Great Ocean Highway",
+    "hsw_tt": "Textile City to Stab City"
+  },
+  "2025-05-01": {
+    "name": "Open Wheel Races",
+    "start": "2025-05-01",
+    "end": "2025-05-08",
+    "days": 7,
+    "podium": "Emperor ETR1 (Kronos livery)",
+    "prize": "Obey I-Wagen (Candybox Racing livery)",
+    "test": [
+      "Benefactor Surano",
+      "BF Bifta",
+      "Dewbauchee Exemplar"
+    ],
+    "ptest": "Karin Vivanite",
+    "salvage": [
+      "Dinka Sugoi",
+      "Fathom FR36",
+      "Toundra Panthere"
+    ],
+    "lux": [
+      "Declasse DR1 (40% off)",
+      "Ocelot R88 (40% off)"
+    ],
+    "pdm": [
+      "Invetero Coquette",
+      "Canis Kalahari",
+      "Albany Roosevelt",
+      "Benefactor Streiter",
+      "BF Raptor"
+    ],
+    "bonuses": [
+      {
+        "a": "Complete three Open Wheel Races — Dark Manor Suit (72hr)",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "Open Wheel Races",
+        "m": "4X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Tow Truck Services",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Payphone Hits",
+        "m": "2X GTA$/RP",
+        "g": "4X GTA$/RP"
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Ocelot R88",
+        "p": 40
+      },
+      {
+        "i": "Progen PR4",
+        "p": 40
+      },
+      {
+        "i": "Benefactor BR8",
+        "p": 40
+      },
+      {
+        "i": "Declasse DR1",
+        "p": 40
+      },
+      {
+        "i": "Vapid Retinue Mk II",
+        "p": 40
+      },
+      {
+        "i": "Karin Calico GTF",
+        "p": 40
+      },
+      {
+        "i": "Vapid Caracara 4x4",
+        "p": 40
+      },
+      {
+        "i": "Karin Vivanite",
+        "p": 40
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Salvage Yard Properties",
+        "p": 40
+      },
+      {
+        "i": "Salvage Yard Upgrades and Modifications",
+        "p": 40
+      }
+    ],
+    "fib": "The Brute Force File",
+    "ch": "Win two Open Wheel Races",
+    "chr": "Dark Manor Suit",
+    "chc": 100000,
+    "ov": [
+      "Open Wheel Races"
+    ],
+    "tt": "Mount Gordo",
+    "hsw_tt": "Ron Alternates to Elysian Island"
+  },
+  "2025-05-08": {
+    "name": "The Contract / Security Contracts",
+    "start": "2025-05-08",
+    "end": "2025-05-15",
+    "days": 7,
+    "podium": "Vapid Ratel",
+    "prize": "Invetero Coquette D10",
+    "test": [
+      "Coil Brawler",
+      "Dundreary Landstalker XL",
+      "Vulcar Warrener"
+    ],
+    "ptest": "Grotti Turismo Classic",
+    "salvage": [
+      "Vapid Caracara 4x4",
+      "Albany V-STR",
+      "Vysser Neo"
+    ],
+    "lux": [
+      "Grotti Itali GTO Stinger TT (30% off)",
+      "Declasse Granger 3600LX (30% off)"
+    ],
+    "pdm": [
+      "Dewbauchee Seven-70",
+      "Pegassi Vacca",
+      "Vapid Clique",
+      "Dewbauchee Rapid GT Classic",
+      "Dinka Jester"
+    ],
+    "bonuses": [
+      {
+        "a": "Community Series",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "The Data Leaks (Dr. Dre Contract)",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Security Contracts",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Double Down",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Enus Jubilee",
+        "p": 30
+      },
+      {
+        "i": "Declasse Granger 3600LX",
+        "p": 30
+      },
+      {
+        "i": "Grotti Itali GTO Stinger TT",
+        "p": 30
+      },
+      {
+        "i": "Enus Paragon S",
+        "p": 30
+      },
+      {
+        "i": "Annis 300R",
+        "p": 30
+      },
+      {
+        "i": "Toundra Panthere",
+        "p": 30
+      },
+      {
+        "i": "Vulcar Warrener HKR",
+        "p": 30
+      },
+      {
+        "i": "Classique Broadway",
+        "p": 30
+      },
+      {
+        "i": "BF Club",
+        "p": 30
+      },
+      {
+        "i": "Dinka Sugoi",
+        "p": 30
+      },
+      {
+        "i": "Karin Everon",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Agency Properties",
+        "p": 30
+      },
+      {
+        "i": "Agency Upgrades and Modifications",
+        "p": 30
+      },
+      {
+        "i": "Imani Tech Upgrades",
+        "p": 30
+      }
+    ],
+    "fib": "The Project Breakaway File",
+    "ch": "Complete The Data Leaks finale",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "Double Down"
+    ],
+    "tt": "End to End",
+    "hsw_tt": "Terminal to Chiliad Mountain State Wilderness"
+  },
+  "2025-05-15": {
+    "name": "FIB Files / Garment Factory",
+    "start": "2025-05-15",
+    "end": "2025-05-22",
+    "days": 7,
+    "podium": "Annis ZR350",
+    "prize": "Karin Hotring Everon",
+    "test": [
+      "Bravado Verlierer",
+      "Dewbauchee Massacro",
+      "Dewbauchee Rapid GT Cabrio"
+    ],
+    "ptest": "Shitzu Hakuchou Drag",
+    "salvage": [
+      "Albany Hermes",
+      "Obey Omnis",
+      "Pfister Comet S2 Cabrio"
+    ],
+    "lux": [
+      "Declasse Yosemite 1500",
+      "Canis Castigator"
+    ],
+    "pdm": [
+      "Vapid Retinue",
+      "Grotti Stinger",
+      "Enus Stafford",
+      "Nagasaki Hot Rod Blazer",
+      "Ocelot Lynx"
+    ],
+    "bonuses": [
+      {
+        "a": "The Titan Job — Merryweather Security livery for DH-7 Iron Mule (72hr)",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "All FIB File Finales",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Drift Races",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Hunting Pack (Remix)",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Garment Factory Passive Income",
+        "m": "2X GTA$",
+        "g": "4X GTA$"
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Dinka Chavos V6",
+        "p": 30
+      },
+      {
+        "i": "Grotti Visione",
+        "p": 30
+      },
+      {
+        "i": "Declasse Mamba",
+        "p": 30
+      },
+      {
+        "i": "Karin Sultan RS Classic",
+        "p": 30
+      },
+      {
+        "i": "Grotti X80 Proto",
+        "p": 30
+      },
+      {
+        "i": "Nagasaki Outlaw",
+        "p": 30
+      },
+      {
+        "i": "Karin Asterope GZ",
+        "p": 30
+      },
+      {
+        "i": "Albany Brigham",
+        "p": 30
+      },
+      {
+        "i": "Grotti Brioso 300",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Darnell Bros Garment Factory Property",
+        "p": 30
+      },
+      {
+        "i": "Drift Tune Upgrades",
+        "p": 30
+      }
+    ],
+    "fib": "The Fine Art File",
+    "ch": "Complete three FIB File Finales",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "Hunting Pack (Remix)"
+    ],
+    "tt": "Fort Zancudo",
+    "hsw_tt": "Pacific Bluffs to Mount Gordo"
+  },
+  "2025-05-22": {
+    "name": "Superyacht Life",
+    "start": "2025-05-22",
+    "end": "2025-05-29",
+    "days": 7,
+    "podium": "Vapid GB200",
+    "prize": "Dewbauchee Specter",
+    "test": [
+      "Canis Seminole Frontier",
+      "Dewbauchee JB 700",
+      "Invetero Coquette BlackFin"
+    ],
+    "ptest": "Benefactor Stirling GT",
+    "salvage": [
+      "Declasse Mamba",
+      "Grotti Furia",
+      "Pegassi Zorrusso"
+    ],
+    "lux": [
+      "Annis Euros (40% off)",
+      "Överflöd Autarch (40% off)"
+    ],
+    "pdm": [
+      "Grotti Cheetah",
+      "Grotti GT500",
+      "Överflöd Entity XF",
+      "Weeny Dynasty",
+      "Enus Super Diamond"
+    ],
+    "bonuses": [
+      {
+        "a": "A Superyacht Life Contact Missions",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Shipwrecks",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Tiny Racers",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Taxi Work",
+        "m": "3X GTA$",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Galaxy Super Yacht",
+        "p": 40
+      },
+      {
+        "i": "Galaxy Super Yacht Modifications",
+        "p": 40
+      },
+      {
+        "i": "Declasse Hotring Sabre",
+        "p": 40
+      },
+      {
+        "i": "BF Weevil",
+        "p": 40
+      },
+      {
+        "i": "Överflöd Autarch",
+        "p": 40
+      },
+      {
+        "i": "Gallivanter Baller ST",
+        "p": 40
+      },
+      {
+        "i": "Declasse Drift Yosemite",
+        "p": 40
+      },
+      {
+        "i": "Vapid Flash GT",
+        "p": 40
+      },
+      {
+        "i": "Dinka Veto Modern",
+        "p": 40
+      },
+      {
+        "i": "Annis Euros",
+        "p": 40
+      }
+    ],
+    "disc_p": [],
+    "fib": "The Black Box File",
+    "ch": "Complete three A Superyacht Life Contact Missions",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "Tiny Racers"
+    ],
+    "tt": "Storm Drain",
+    "hsw_tt": "North Chumash to Palomino Highlands"
+  },
+  "2025-02-13": {
+    "name": "Valentine's Week",
+    "start": "2025-02-13",
+    "end": "2025-02-20",
+    "days": 7,
+    "podium": "BF Club",
+    "prize": "Imponte Ruiner ZZ-8",
+    "test": [
+      "Canis Kalahari",
+      "Enus Paragon R",
+      "Vulcar Warrener"
+    ],
+    "ptest": "Shitzu Hakuchou Drag",
+    "salvage": [
+      "Albany Roosevelt Valor (Las Venturas vanity plate — claimable)",
+      "Obey Omnis",
+      "Obey 10F"
+    ],
+    "lux": [
+      "Classique Broadway (Los Santos Lovers livery — limited-time, permanently unlockable)",
+      "Albany Roosevelt"
+    ],
+    "pdm": [
+      "Ocelot Lynx",
+      "Dinka Jester",
+      "Dinka Thrust",
+      "BF Raptor",
+      "Benefactor Schafter LWB"
+    ],
+    "bonuses": [
+      {
+        "m": "Free (Login)",
+        "a": "Heartbreaker Robe + Heartbreaker Bustier (Female) + Heartbreaker Boxer Shorts (Male)",
+        "g": ""
+      },
+      {
+        "m": "Free (Reward)",
+        "a": "Play Till Death Do Us Part — Heartbreak Pendant",
+        "g": ""
+      },
+      {
+        "m": "Free (Reward)",
+        "a": "Become Associate/Bodyguard — Valentine's Blazer",
+        "g": ""
+      },
+      {
+        "m": "Free",
+        "a": "Blêuter'd Champagne at eligible bars",
+        "g": ""
+      },
+      {
+        "m": "Free (Reward)",
+        "a": "Complete Drift Race in Annis ZR350 (Drift) — Drift Junk livery",
+        "g": ""
+      },
+      {
+        "m": "50% Off",
+        "a": "Valentine's Clothing",
+        "g": ""
+      },
+      {
+        "m": "3X GTA$/RP",
+        "a": "Till Death Do Us Part",
+        "g": ""
+      },
+      {
+        "m": "2X GTA$/RP",
+        "a": "Taxi Work",
+        "g": ""
+      },
+      {
+        "m": "2X GTA$/RP",
+        "a": "Casino Story Missions",
+        "g": ""
+      },
+      {
+        "m": "2X GTA$/RP",
+        "a": "Casino Work Missions",
+        "g": ""
+      },
+      {
+        "m": "2X GTA$/RP",
+        "a": "Hotring Races",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Progen Emerus",
+        "p": 50
+      },
+      {
+        "i": "Pegassi Torero XO",
+        "p": 50
+      },
+      {
+        "i": "Valentine's Clothing",
+        "p": 50
+      },
+      {
+        "i": "Dinka Sugoi",
+        "p": 30
+      },
+      {
+        "i": "Declasse Impaler SZ",
+        "p": 30
+      },
+      {
+        "i": "Bravado Dorado",
+        "p": 30
+      },
+      {
+        "i": "Enus Paragon R",
+        "p": 30
+      },
+      {
+        "i": "Buckingham Shamal",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Casino Master Penthouse",
+        "p": 30
+      },
+      {
+        "i": "Casino Master Penthouse Upgrades and Modifications",
+        "p": 30
+      }
+    ],
+    "fib": "The Brute Force File",
+    "ch": "Win two Adversary Modes",
+    "chr": "Pink Heart Shades",
+    "chc": 100000,
+    "ov": [
+      "Till Death Do Us Part",
+      "Hotring Races"
+    ],
+    "tt": "Stab City",
+    "hsw_tt": "Del Perro Beach to Murietta Heights"
+  },
+  "2025-02-20": {
+    "name": "Trevor & Ron / Motor Wars",
+    "start": "2025-02-20",
+    "end": "2025-02-27",
+    "days": 7,
+    "podium": "Albany Cavalcade XL",
+    "prize": "Nagasaki Outlaw",
+    "test": [
+      "Emperor ETR1",
+      "Lampadati Furore GT",
+      "Coil Brawler"
+    ],
+    "ptest": "Bravado Buffalo EVX",
+    "salvage": [
+      "Obey Tailgater S",
+      "Bravado Gauntlet Hellfire",
+      "Pegassi Infernus Classic"
+    ],
+    "lux": [
+      "Enus Paragon S",
+      "Vapid Dominator FX"
+    ],
+    "pdm": [
+      "Vapid Bullet",
+      "Albany Hermes",
+      "Weeny Dynasty",
+      "Invetero Coquette",
+      "Nagasaki Hot Rod Blazer"
+    ],
+    "bonuses": [
+      {
+        "m": "Free (Login)",
+        "a": "Carnival Feather Shirt + Carnival Feather Shorts (Men) / Carnival Feather Dress + Carnival Sun Dress (Women)",
+        "g": ""
+      },
+      {
+        "m": "Free (Reward)",
+        "a": "Uncork Blêuter'd Champagne at any bar — Carnival Bandana (= Carnival Neck Gaiter)",
+        "g": ""
+      },
+      {
+        "m": "3X GTA$/RP",
+        "a": "Trevor and Ron Contact Missions",
+        "g": ""
+      },
+      {
+        "m": "3X GTA$/RP",
+        "a": "Motor Wars",
+        "g": ""
+      },
+      {
+        "m": "2X GTA$/RP",
+        "a": "G's Caches",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Western Company Cargobob",
+        "p": 30
+      },
+      {
+        "i": "HVY Insurgent",
+        "p": 30
+      },
+      {
+        "i": "HVY Menacer",
+        "p": 30
+      },
+      {
+        "i": "Nagasaki Outlaw",
+        "p": 30
+      },
+      {
+        "i": "Bravado Hotring Hellfire",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Osiris",
+        "p": 30
+      },
+      {
+        "i": "Dewbauchee JB 700W",
+        "p": 30
+      },
+      {
+        "i": "Karin Previon",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Hangar Properties",
+        "p": 30
+      },
+      {
+        "i": "Hangar Upgrades and Modifications",
+        "p": 30
+      }
+    ],
+    "fib": "The Black Box File",
+    "ch": "Collect three G's Caches",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "Motor Wars"
+    ],
+    "tt": "Vinewood Hills",
+    "hsw_tt": "Sandy Shores to La Puerta",
+    "nc": [
+      "Vapid Uranus LozSpeed"
+    ]
+  },
+  "2025-02-27": {
+    "name": "Bunker Sell Missions",
+    "start": "2025-02-27",
+    "end": "2025-03-04",
+    "days": 5,
+    "podium": "Karin Everon",
+    "prize": "Vapid Retinue Mk II",
+    "test": [
+      "Ocelot Locust",
+      "Grotti Stinger",
+      "Dewbauchee Rapid GT Classic"
+    ],
+    "ptest": "Överflöd Entity MT",
+    "salvage": [
+      "Grotti GT500",
+      "Declasse Drift Yosemite",
+      "Benefactor Schlagen GT"
+    ],
+    "lux": [
+      "Överflöd Pipistrello",
+      "Karin Asterope GZ"
+    ],
+    "pdm": [
+      "Enus Stafford",
+      "Karin 190z",
+      "Benefactor Streiter",
+      "Enus Super Diamond",
+      "Vulcar Fagaloa"
+    ],
+    "bonuses": [
+      {
+        "m": "Free (Login)",
+        "a": "Carnival Feather Shirt + Carnival Feather Shorts (Men) / Carnival Feather Dress + Carnival Sun Dress (Women)",
+        "g": ""
+      },
+      {
+        "m": "Free (Reward)",
+        "a": "Uncork Blêuter'd Champagne at any bar — Carnival Neck Gaiter",
+        "g": ""
+      },
+      {
+        "m": "2X GTA$/RP",
+        "a": "Bunker Sell Missions",
+        "g": "4X GTA$/RP"
+      },
+      {
+        "m": "2X GTA$/RP",
+        "a": "Ammu-Nation Contract Missions",
+        "g": ""
+      },
+      {
+        "m": "2X GTA$/RP",
+        "a": "Special Vehicle Races",
+        "g": ""
+      },
+      {
+        "m": "2X",
+        "a": "Bunker Research Speed",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Vapid Festival Bus",
+        "p": 50
+      },
+      {
+        "i": "Western Company Cuban 800",
+        "p": 30
+      },
+      {
+        "i": "Buckingham Vestra",
+        "p": 30
+      },
+      {
+        "i": "BF Dune Buggy",
+        "p": 30
+      },
+      {
+        "i": "Karin Sultan Classic",
+        "p": 30
+      },
+      {
+        "i": "Western Reever",
+        "p": 30
+      },
+      {
+        "i": "Benefactor Schlagen GT",
+        "p": 30
+      },
+      {
+        "i": "Zirconium Journey II",
+        "p": 30
+      },
+      {
+        "i": "Benefactor Turreted Limo",
+        "p": 30
+      },
+      {
+        "i": "Ocelot Jugular",
+        "p": 30
+      },
+      {
+        "i": "Vapid GB200",
+        "p": 30
+      },
+      {
+        "i": "Obey I-Wagen",
+        "p": 30
+      },
+      {
+        "i": "Pfister Astron",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Hangar Properties",
+        "p": 30
+      },
+      {
+        "i": "Hangar Upgrades and Modifications",
+        "p": 30
+      }
+    ],
+    "fib": "The Fine Art File",
+    "ch": "Win two Stunt Races",
+    "chr": "Bigness Carnival Bucket Hat",
+    "chc": 100000,
+    "ov": [
+      "Special Vehicle Races"
+    ],
+    "tt": "Grove St",
+    "hsw_tt": "Textile City to Stab City",
+    "nc": [
+      "Dispatch Work cooldown reduced to 1 minute"
+    ]
+  },
+  "2025-03-04": {
+    "name": "Oscar Guzman Flies Again DLC Launch",
+    "start": "2025-03-04",
+    "end": "2025-03-13",
+    "days": 9,
+    "podium": "Truffade Z-Type",
+    "prize": "Declasse Yosemite 1500",
+    "test": [
+      "Annis Hellion",
+      "Dewbauchee Exemplar",
+      "Übermacht Zion Classic"
+    ],
+    "ptest": "Karin Vivanite",
+    "salvage": [
+      "Ocelot Virtue",
+      "Vapid Hustler",
+      "Lampadati Tropos Rallye"
+    ],
+    "lux": [
+      "Invetero Coquette D5",
+      "Bravado Banshee GTS"
+    ],
+    "pdm": [
+      "Vapid Clique",
+      "Benefactor Surano",
+      "BF Bifta",
+      "Pegassi Vacca",
+      "Dewbauchee Seven-70"
+    ],
+    "bonuses": [
+      {
+        "m": "2X GTA$/RP",
+        "a": "Sumo (Remix)",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "V-65 Molotok",
+        "p": 40
+      },
+      {
+        "i": "Mammoth Tula",
+        "p": 40
+      },
+      {
+        "i": "B-11 Strikeforce",
+        "p": 40
+      },
+      {
+        "i": "Western Company Seabreeze",
+        "p": 40
+      },
+      {
+        "i": "Buckingham Howard NX-25",
+        "p": 40
+      },
+      {
+        "i": "Grotti Cheetah Classic",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Zentorno",
+        "p": 30
+      },
+      {
+        "i": "Bravado Youga Classic 4x4",
+        "p": 30
+      },
+      {
+        "i": "Declasse Granger 3600LX",
+        "p": 30
+      },
+      {
+        "i": "Vapid Dominator GTX",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Smuggler Hangar Properties",
+        "p": 30
+      },
+      {
+        "i": "Smuggler Hangar Upgrades and Modifications",
+        "p": 30
+      }
+    ],
+    "fib": "The Project Breakaway File",
+    "ch": "Complete the Titan Job as leader",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "Sumo (Remix)"
+    ],
+    "tt": "LSIA II",
+    "hsw_tt": "Ron Alternates to Elysian Island",
+    "nc": [
+      "Oscar Guzman Flies Again DLC",
+      "McKenzie Field Hangar",
+      "Titan 250 D",
+      "Buckingham DH-7 Iron Mule",
+      "HSW available on PC (Enhanced)"
+    ]
+  },
+  "2025-03-13": {
+    "name": "St. Patrick's Day / Arms Trafficking",
+    "start": "2025-03-13",
+    "end": "2025-03-20",
+    "days": 7,
+    "podium": "Western Powersurge",
+    "prize": "Truffade Adder",
+    "test": [
+      "Överflöd Imorgon",
+      "Vapid Retinue",
+      "Canis Seminole Frontier"
+    ],
+    "ptest": "Grotti Itali GTO Stinger TT",
+    "salvage": [
+      "Vysser Neo (Liberty City vanity plate — claimable)",
+      "Toundra Panthere",
+      "Karin Everon"
+    ],
+    "lux": [
+      "Vapid Firebolt ASP",
+      "Canis Castigator"
+    ],
+    "pdm": [
+      "Vapid Contender",
+      "Ocelot Swinger",
+      "Dewbauchee JB 700",
+      "Invetero Coquette BlackFin",
+      "Progen Tyrus"
+    ],
+    "bonuses": [
+      {
+        "m": "Free (Login)",
+        "a": "Blarneys Stout Tee",
+        "g": ""
+      },
+      {
+        "m": "Free (Login — Enhanced only)",
+        "a": "Blarneys Festive Beer Hat (PS5 / Xbox Series X|S / PC Enhanced only)",
+        "g": ""
+      },
+      {
+        "m": "3X GTA$/RP",
+        "a": "Community Series",
+        "g": ""
+      },
+      {
+        "m": "2X GTA$/RP",
+        "a": "Arms Trafficking Missions",
+        "g": ""
+      },
+      {
+        "m": "2X GTA$/RP",
+        "a": "Junk Energy Skydives",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Mammoth Mogul",
+        "p": 40
+      },
+      {
+        "i": "LF-22 Starling",
+        "p": 40
+      },
+      {
+        "i": "Buckingham Alpha-Z1",
+        "p": 40
+      },
+      {
+        "i": "Buckingham Akula",
+        "p": 40
+      },
+      {
+        "i": "FH-1 Hunter",
+        "p": 40
+      },
+      {
+        "i": "Maxwell Vagrant",
+        "p": 30
+      },
+      {
+        "i": "Överflöd Entity XXR",
+        "p": 30
+      },
+      {
+        "i": "Vapid Dominator GTT",
+        "p": 30
+      },
+      {
+        "i": "Declasse Weaponized Tampa",
+        "p": 30
+      },
+      {
+        "i": "Principe Lectro",
+        "p": 30
+      },
+      {
+        "i": "Mammoth F-160 Raiju",
+        "p": 20
+      }
+    ],
+    "disc_p": [],
+    "fib": "The Brute Force File",
+    "ch": "Complete five Arms Trafficking Missions",
+    "chr": "Buckingham Tee",
+    "chc": 100000,
+    "ov": [],
+    "tt": "Pillbox Hill",
+    "hsw_tt": "Terminal to Chiliad Mountain State Wilderness"
+  },
+  "2025-03-20": {
+    "name": "Oscar Guzman Flies Again / Vespucci Job",
+    "start": "2025-03-20",
+    "end": "2025-03-27",
+    "days": 7,
+    "podium": "Maibatsu MonstroCiti",
+    "prize": "Enus Windsor Drop",
+    "test": [
+      "Överflöd Entity XF",
+      "Pegassi Torero",
+      "Grotti Carbonizzare"
+    ],
+    "ptest": "Benefactor Stirling GT",
+    "salvage": [
+      "Benefactor SM722",
+      "Albany Roosevelt Valor",
+      "Benefactor Schlagen GT"
+    ],
+    "lux": [
+      "Dinka Chavos V6",
+      "Annis Euros X32"
+    ],
+    "pdm": [
+      "Albany Alpha",
+      "Dinka Verus",
+      "Pegassi Esskey",
+      "Grotti Cheetah",
+      "Grotti GT500"
+    ],
+    "bonuses": [
+      {
+        "m": "2X GTA$/RP",
+        "a": "The Titan Job (Oscar Guzman Flies Again finale)",
+        "g": ""
+      },
+      {
+        "m": "2X GTA$/RP",
+        "a": "The Vespucci Job (Remix)",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Western Company Rogue",
+        "p": 40
+      },
+      {
+        "i": "Mammoth Streamer216",
+        "p": 40
+      },
+      {
+        "i": "Sea Sparrow",
+        "p": 40
+      },
+      {
+        "i": "Benefactor SM722",
+        "p": 30
+      },
+      {
+        "i": "Enus Deity",
+        "p": 30
+      },
+      {
+        "i": "Grotti Furia",
+        "p": 30
+      },
+      {
+        "i": "RO-86 Alkonost",
+        "p": 20
+      }
+    ],
+    "disc_p": [],
+    "fib": "The Fine Art File",
+    "ch": "Steal from three Stash Houses",
+    "chr": "White Western Brand Tee",
+    "chc": 100000,
+    "ov": [
+      "The Vespucci Job (Remix)"
+    ],
+    "tt": "Elysian Island II",
+    "hsw_tt": "Pacific Bluffs to Mount Gordo"
+  },
+  "2025-03-27": {
+    "name": "Air Freight Cargo / Oscar Guzman",
+    "start": "2025-03-27",
+    "end": "2025-04-03",
+    "days": 7,
+    "podium": "Lampadati Corsita",
+    "prize": "Vapid Caracara",
+    "test": [
+      "Schyster Deviant",
+      "Bravado Verlierer",
+      "LCC Hexer"
+    ],
+    "ptest": "Bravado Banshee",
+    "salvage": [
+      "Declasse Mamba",
+      "Annis Hellion",
+      "Canis Seminole Frontier"
+    ],
+    "lux": [
+      "Dinka Jester RR Widebody",
+      "Benefactor Vorschlaghammer"
+    ],
+    "pdm": [
+      "Dewbauchee Massacro",
+      "Dinka Akuma",
+      "LCC Innovation",
+      "Dewbauchee Rapid GT Cabrio",
+      "Pfister Comet"
+    ],
+    "bonuses": [
+      {
+        "m": "2X GTA$/RP",
+        "a": "Air Freight Cargo Sell Missions",
+        "g": "4X GTA$/RP"
+      },
+      {
+        "m": "Free (Reward)",
+        "a": "Complete The Titan Job — GTA$200,000 (72hr, before April 2)",
+        "g": ""
+      },
+      {
+        "m": "2X GTA$",
+        "a": "Oscar Guzman Flies Again Mission Challenges",
+        "g": ""
+      },
+      {
+        "m": "2X Crates (guaranteed)",
+        "a": "Rooster McCraw Sourcing — two crates guaranteed, reduced cooldown (48min → 24min)",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Buckingham Conada",
+        "p": 40
+      },
+      {
+        "i": "Buckingham Pyro",
+        "p": 40
+      },
+      {
+        "i": "Obey 8F Drafter",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Tezeract",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Infernus Classic",
+        "p": 30
+      },
+      {
+        "i": "HVY Nightshark",
+        "p": 30
+      },
+      {
+        "i": "Dinka Postlude",
+        "p": 30
+      },
+      {
+        "i": "Bravado Banshee GTS",
+        "p": 20
+      }
+    ],
+    "disc_p": [],
+    "fib": "The Black Box File",
+    "ch": "Complete 5 Business Resupply Missions",
+    "chr": null,
+    "chc": 100000,
+    "ov": [],
+    "tt": "Lakewood Vinewood Estate",
+    "hsw_tt": "North Chumash to Palomino Highlands"
+  },
+  "2025-01-02": {
+    "name": "FIB Files / Trap Door",
+    "start": "2025-01-02",
+    "end": "2025-01-09",
+    "days": 7,
+    "podium": "Pfister Growler",
+    "prize": "Declasse Mamba",
+    "test": [
+      "BF Bifta",
+      "Grotti GT500",
+      "Grotti Cheetah"
+    ],
+    "ptest": "Declasse Vigero ZX",
+    "salvage": [
+      "BF Weevil",
+      "Hijak Ruston",
+      "Pfister Neon"
+    ],
+    "lux": [
+      "Dinka Chavos V6",
+      "Annis Euros X32"
+    ],
+    "pdm": [
+      "Declasse Tulip",
+      "Dewbauchee Exemplar",
+      "Übermacht Zion Classic",
+      "Annis Hellion",
+      "Pegassi Vacca"
+    ],
+    "bonuses": [
+      {
+        "a": "Complete an FIB File Finale as Boss — GTA$200,000 (within 72 hours)",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "FIB File Finales — Associates and Bodyguards",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Trap Door",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Savage",
+        "p": 40
+      },
+      {
+        "i": "Bravado Half-track",
+        "p": 30
+      },
+      {
+        "i": "Grotti Itali GTO",
+        "p": 30
+      },
+      {
+        "i": "Överflöd Zeno",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Apartment Properties",
+        "p": 30
+      }
+    ],
+    "fib": "The Black Box File",
+    "ch": "Earn GTA$100,000 as an Associate or Bodyguard in any line of work",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "Trap Door"
+    ],
+    "tt": "Vinewood Bowl",
+    "hsw_tt": "Textile City to Stab City"
+  },
+  "2025-01-09": {
+    "name": "Random Transform Races / Community Series",
+    "start": "2025-01-09",
+    "end": "2025-01-16",
+    "days": 7,
+    "podium": "Declasse Impaler LX",
+    "prize": "Vapid Caracara 4x4",
+    "test": [
+      "Bravado Verlierer",
+      "Coil Raiden",
+      "LCC Avarus"
+    ],
+    "ptest": "Vapid Firebolt ASP",
+    "salvage": [
+      "Bravado Greenwood",
+      "Albany Roosevelt Valor",
+      "Pegassi Zentorno"
+    ],
+    "lux": [
+      "Vapid Firebolt ASP",
+      "Benefactor Vorschlaghammer"
+    ],
+    "pdm": [
+      "Western Rat Bike",
+      "LCC Innovation",
+      "Dewbauchee Rapid GT Cabrio",
+      "Benefactor XLS",
+      "Dewbauchee Massacro"
+    ],
+    "bonuses": [
+      {
+        "a": "Community Series",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "FIB File Mission Challenges",
+        "m": "2X GTA$",
+        "g": ""
+      },
+      {
+        "a": "Random Transform Races",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Benefactor XLS",
+        "p": 50
+      },
+      {
+        "i": "Dewbauchee Massacro",
+        "p": 50
+      },
+      {
+        "i": "Penaud La Coureuse",
+        "p": 30
+      },
+      {
+        "i": "Coil Raiden",
+        "p": 30
+      },
+      {
+        "i": "Karin Calico GTF",
+        "p": 30
+      },
+      {
+        "i": "Toundra Panthere",
+        "p": 30
+      },
+      {
+        "i": "Declasse Tulip M-100",
+        "p": 30
+      },
+      {
+        "i": "Declasse Walton L35",
+        "p": 30
+      },
+      {
+        "i": "Dinka Veto Modern",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Tempesta",
+        "p": 30
+      },
+      {
+        "i": "Pegassi Reaper",
+        "p": 30
+      },
+      {
+        "i": "Western Company Besra",
+        "p": 30
+      }
+    ],
+    "disc_p": [],
+    "fib": "The Project Breakaway File",
+    "ch": "Create a Job in the Creator",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "Random Transform Races"
+    ],
+    "tt": "Power Station",
+    "hsw_tt": "Ron Alternates to Elysian Island"
+  },
+  "2025-01-16": {
+    "name": "FIB Files / Overtime Rumble / Payphone Hits",
+    "start": "2025-01-16",
+    "end": "2025-01-23",
+    "days": 7,
+    "podium": "Benefactor Stirling GT (Removed Vehicle)",
+    "prize": "Vapid Flash GT",
+    "test": [
+      "Pfister Comet (Removed Vehicle)",
+      "Vapid Blade (Removed Vehicle)",
+      "Dinka Akuma (Removed Vehicle)"
+    ],
+    "ptest": "Benefactor Stirling GT (Removed Vehicle)",
+    "salvage": [
+      "Willard Eudora",
+      "Benefactor Schlagen GT",
+      "Pfister Growler"
+    ],
+    "lux": [
+      "Vapid Dominator GT",
+      "Vapid Aleutian"
+    ],
+    "pdm": [
+      "Pegassi Esskey (Removed Vehicle)",
+      "Vapid Hustler (Removed Vehicle)",
+      "Western Wolfsbane (Removed Vehicle)",
+      "Gallivanter Baller LE (Removed Vehicle)",
+      "LCC Hexer (Removed Vehicle)"
+    ],
+    "bonuses": [
+      {
+        "a": "Complete The Black Box File — Merryweather Hoodie (within 72 hours)",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "Overtime Rumble",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Payphone Hits",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Vapid Hustler (Removed Vehicle)",
+        "p": 50
+      },
+      {
+        "i": "Pfister Comet (Removed Vehicle)",
+        "p": 50
+      },
+      {
+        "i": "Vapid Blade (Removed Vehicle)",
+        "p": 50
+      },
+      {
+        "i": "Gallivanter Baller LE (Removed Vehicle)",
+        "p": 50
+      },
+      {
+        "i": "Karin Sultan RS Classic",
+        "p": 30
+      },
+      {
+        "i": "Albany Brigham",
+        "p": 30
+      },
+      {
+        "i": "Mammoth Patriot Mil-Spec",
+        "p": 30
+      },
+      {
+        "i": "Declasse Drift Yosemite",
+        "p": 30
+      },
+      {
+        "i": "Declasse Drift Tampa",
+        "p": 30
+      },
+      {
+        "i": "Vapid Clique Wagon",
+        "p": 30
+      },
+      {
+        "i": "Obey Omnis e-GT",
+        "p": 30
+      },
+      {
+        "i": "Buckingham Nimbus",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Garage Properties (Small, Medium, Large)",
+        "p": 30
+      }
+    ],
+    "fib": "Brute Force File",
+    "ch": "Complete three FIB File Finales",
+    "chr": null,
+    "chc": 100000,
+    "ov": [
+      "Overtime Rumble"
+    ],
+    "tt": "Raton Canyon",
+    "hsw_tt": "Terminal to Chiliad Mountain State Wilderness"
+  },
+  "2025-01-23": {
+    "name": "Lunar New Year / Nightclub",
+    "start": "2025-01-23",
+    "end": "2025-01-30",
+    "days": 7,
+    "podium": "Grotti Stinger GT",
+    "prize": "Übermacht Rebla GTS",
+    "test": [
+      "Lampadati Pigalle (Removed Vehicle)",
+      "Benefactor Feltzer (Removed Vehicle)",
+      "Declasse Vamos (Removed Vehicle)"
+    ],
+    "ptest": "Grotti Turismo Classic",
+    "salvage": [
+      "Vapid Clique",
+      "Vapid Dominator ASP",
+      "Truffade Thrax"
+    ],
+    "lux": [
+      "Invetero Coquette D1",
+      "Grotti Turismo Omaggio"
+    ],
+    "pdm": [
+      "Western Daemon (Removed Vehicle)",
+      "Hijak Ruston (Removed Vehicle)",
+      "Dundreary Landstalker XL (Removed Vehicle)",
+      "Dewbauchee Rapid GT (Removed Vehicle)",
+      "Canis Bodhi (Removed Vehicle)"
+    ],
+    "bonuses": [
+      {
+        "a": "Log in — Black Snake Yogarishima Outfit + Red Serpent Leather Jacket + Snake Soul Pendant + Snake King Pendant + Red Snake Soul Cap + Gray Snake King Cap",
+        "m": "Free (Login)",
+        "g": ""
+      },
+      {
+        "a": "Collect all 36 Yuanbao — Gold Snake Santo Capra Outfit",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "Play any Lunar New Year Stunt Race — Lunar New Year livery for Maibatsu Penumbra FF (within 72 hours)",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "Lunar New Year Stunt Races",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Nightclub Daily Income",
+        "m": "2X GTA$",
+        "g": ""
+      },
+      {
+        "a": "Nightclub Goods Missions from Yohan",
+        "m": "2X GTA$, RP, and Goods",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Buckingham Volatus",
+        "p": 40
+      },
+      {
+        "i": "Annis 300R",
+        "p": 30
+      },
+      {
+        "i": "Lampadati Pigalle (Removed Vehicle)",
+        "p": 30
+      },
+      {
+        "i": "Declasse Vamos (Removed Vehicle)",
+        "p": 30
+      },
+      {
+        "i": "Maibatsu Penumbra FF",
+        "p": 30
+      },
+      {
+        "i": "Invetero Coquette D10",
+        "p": 30
+      },
+      {
+        "i": "Albany V-STR",
+        "p": 30
+      },
+      {
+        "i": "Hijak Ruston (Removed Vehicle)",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Nightclub Properties",
+        "p": 30
+      },
+      {
+        "i": "Nightclub Upgrades and Modifications",
+        "p": 30
+      }
+    ],
+    "fib": "The Black Box File",
+    "ch": "Win any two Stunt Races",
+    "chr": null,
+    "chc": 100000,
+    "ov": [],
+    "tt": "Down Chiliad",
+    "hsw_tt": "Pacific Bluffs to Mount Gordo"
+  },
+  "2025-01-30": {
+    "name": "Drag Races / Auto Shop Client Jobs",
+    "start": "2025-01-30",
+    "end": "2025-02-06",
+    "days": 7,
+    "podium": "Gallivanter Baller ST-D",
+    "prize": "Pfister Comet SR",
+    "test": [
+      "Pfister 811 (Removed Vehicle)",
+      "Vapid Riata (Removed Vehicle)",
+      "Shitzu Hakuchou (Removed Vehicle)"
+    ],
+    "ptest": "Annis Euros X32",
+    "salvage": [
+      "Vapid Ellie",
+      "Ocelot Jugular",
+      "Dewbauchee Vagner"
+    ],
+    "lux": [
+      "Übermacht Niobe",
+      "Declasse Vigero ZX Convertible"
+    ],
+    "pdm": [
+      "Progen GP1 (Removed Vehicle)",
+      "Coil Voltic (Removed Vehicle)",
+      "Enus Cognoscenti Cabrio (Removed Vehicle)",
+      "Dewbauchee Massacro (Removed Vehicle)",
+      "Dinka Jester (Racecar) (Removed Vehicle)"
+    ],
+    "bonuses": [
+      {
+        "a": "Complete one Dispatch Work Job — Black Square Shades + GTA$100,000 (within 72 hours)",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "Log in — Black Snake Yogarishima Outfit + Red Serpent Leather Jacket + Snake Soul Pendant + Snake King Pendant + Red Snake Soul Cap + Gray Snake King Cap",
+        "m": "Free (Login)",
+        "g": ""
+      },
+      {
+        "a": "Collect all 36 Yuanbao — Gold Snake Santo Capra Outfit",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "Play any Lunar New Year Stunt Race — Lunar New Year livery for Maibatsu Penumbra FF (within 72 hours)",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "LS Car Meet Reputation",
+        "m": "3X",
+        "g": ""
+      },
+      {
+        "a": "Drag Races",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Drop Zone",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Lunar New Year Stunt Races",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Auto Shop Client Jobs",
+        "m": "2X GTA$",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Progen GP1 (Removed Vehicle)",
+        "p": 30
+      },
+      {
+        "i": "Pfister 811 (Removed Vehicle)",
+        "p": 30
+      },
+      {
+        "i": "Dinka Jester (Racecar) (Removed Vehicle)",
+        "p": 30
+      },
+      {
+        "i": "Karin Hotring Everon",
+        "p": 30
+      },
+      {
+        "i": "Vapid Dominator ASP",
+        "p": 30
+      },
+      {
+        "i": "Obey Tailgater S",
+        "p": 30
+      },
+      {
+        "i": "Vulcar Warrener HKR",
+        "p": 30
+      },
+      {
+        "i": "Annis Remus",
+        "p": 30
+      },
+      {
+        "i": "JoBuilt Velum 5-Seater",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Auto Shop Properties",
+        "p": 30
+      },
+      {
+        "i": "Auto Shop Upgrades and Modifications",
+        "p": 30
+      }
+    ],
+    "fib": "The Fine Art File",
+    "ch": "Participate in two Drag Races",
+    "chr": null,
+    "chc": 100000,
+    "ov": [],
+    "tt": "Elysian Island",
+    "hsw_tt": "North Chumash to Palomino Highlands"
+  },
+  "2025-02-06": {
+    "name": "Drift Races / Community Series",
+    "start": "2025-02-06",
+    "end": "2025-02-13",
+    "days": 7,
+    "podium": "Lampadati Komoda",
+    "prize": "Progen Itali GTB",
+    "test": [
+      "Vapid FMJ (Removed Vehicle)",
+      "Annis Savestra (Removed Vehicle)",
+      "Übermacht SC1 (Removed Vehicle)"
+    ],
+    "ptest": "Grotti Brioso r/A",
+    "salvage": [
+      "Pfister Neon",
+      "Enus Paragon R",
+      "Lampadati Corsita"
+    ],
+    "lux": [
+      "Bollokan Envisage",
+      "Canis Terminus"
+    ],
+    "pdm": [
+      "Übermacht Cypher",
+      "RUNE Cheburek",
+      "Fathom FR36",
+      "Karin Futo GTX",
+      "Benefactor Vorschlaghammer"
+    ],
+    "bonuses": [
+      {
+        "a": "Log in — Black Snake Yogarishima Outfit + Red Serpent Leather Jacket + Snake Soul Pendant + Snake King Pendant + Red Snake Soul Cap + Gray Snake King Cap",
+        "m": "Free (Login)",
+        "g": ""
+      },
+      {
+        "a": "Collect all 36 Yuanbao — Gold Snake Santo Capra Outfit",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "Play any Lunar New Year Stunt Race — Lunar New Year livery for Maibatsu Penumbra FF (within 72 hours)",
+        "m": "Free (Reward)",
+        "g": ""
+      },
+      {
+        "a": "New Community Series",
+        "m": "3X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Drift Races",
+        "m": "2X GTA$/RP",
+        "g": "4X GTA$/RP"
+      },
+      {
+        "a": "LS Tags",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Exotic Exports",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Running Back",
+        "m": "2X GTA$/RP",
+        "g": ""
+      },
+      {
+        "a": "Lunar New Year Stunt Races",
+        "m": "2X GTA$/RP",
+        "g": ""
+      }
+    ],
+    "disc_v": [
+      {
+        "i": "Enus Cognoscenti",
+        "p": 50
+      },
+      {
+        "i": "JoBuilt Mammatus",
+        "p": 50
+      },
+      {
+        "i": "Übermacht Cypher",
+        "p": 30
+      },
+      {
+        "i": "RUNE Cheburek",
+        "p": 30
+      },
+      {
+        "i": "Fathom FR36",
+        "p": 30
+      },
+      {
+        "i": "Karin Futo GTX",
+        "p": 30
+      },
+      {
+        "i": "Dinka Jester RR",
+        "p": 30
+      },
+      {
+        "i": "Vulcar Nebula Turbo",
+        "p": 30
+      }
+    ],
+    "disc_p": [
+      {
+        "i": "Eclipse Blvd Garage Property",
+        "p": 30
+      }
+    ],
+    "fib": "The Project Breakaway File",
+    "ch": "Participate in three Drift Races",
+    "chr": null,
+    "chc": 100000,
+    "ov": [],
+    "tt": "Galileo Park",
+    "hsw_tt": "East Vinewood to Vespucci Beach"
+  }
+}
