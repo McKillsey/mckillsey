@@ -730,7 +730,7 @@
     "hsw": true,
     "imaniTech": null,
     "irlName": "Pontiac GTO (modern)",
-    "scImageId": "arbitergt"
+    "scImageId": "arbiter-gt"
   },
   {
     "id": "ardent",
@@ -1016,7 +1016,7 @@
     "hsw": true,
     "imaniTech": null,
     "irlName": "Porsche Macan (Custom)",
-    "scImageId": "astron2"
+    "scImageId": "astron-custom"
   },
   {
     "id": "blimp",
@@ -1442,7 +1442,7 @@
     "hsw": true,
     "imaniTech": null,
     "irlName": "Dodge Viper",
-    "scImageId": "banshee"
+    "scImageId": "banshee2"
   },
   {
     "id": "banshee2",
@@ -1482,7 +1482,7 @@
     "hsw": true,
     "imaniTech": null,
     "irlName": "Dodge Viper GTS",
-    "scImageId": "banshee3"
+    "scImageId": "banshee-gts"
   },
   {
     "id": "barracks3",
@@ -2556,7 +2556,7 @@
     "hsw": true,
     "imaniTech": "full",
     "irlName": "Dodge Charger (EV Concept)",
-    "scImageId": "buffalo5"
+    "scImageId": "buffalo-evx"
   },
   {
     "id": "buffalo2",
@@ -3317,7 +3317,7 @@
   },
   {
     "id": "driftchavosv6",
-    "displayName": "Chavos V6",
+    "displayName": "Chavos V6 (Drift)",
     "manufacturer": "Dinka",
     "class": "SEDAN",
     "type": "CAR",
@@ -3357,7 +3357,7 @@
   },
   {
     "id": "driftcheburek",
-    "displayName": "Cheburek",
+    "displayName": "Cheburek (Drift)",
     "manufacturer": "RUNE",
     "class": "SPORTS CLASSIC",
     "type": "CAR",
@@ -4205,11 +4205,11 @@
     "hsw": true,
     "imaniTech": null,
     "irlName": "Rimac C_Two / Nevera",
-    "scImageId": "cyclone2"
+    "scImageId": "cyclone-ii"
   },
   {
     "id": "driftcypher",
-    "displayName": "Cypher",
+    "displayName": "Cypher (Drift)",
     "manufacturer": "Ubermacht",
     "class": "SPORT",
     "type": "CAR",
@@ -4412,7 +4412,7 @@
     "hsw": true,
     "imaniTech": "jammer",
     "irlName": "Devel Sixteen",
-    "scImageId": "deveste"
+    "scImageId": "deveste-eight"
   },
   {
     "id": "deviant",
@@ -4746,7 +4746,7 @@
   },
   {
     "id": "driftdominator10",
-    "displayName": "Dominator FX",
+    "displayName": "Dominator FX (Drift)",
     "manufacturer": "Vapid",
     "class": "MUSCLE",
     "type": "CAR",
@@ -4806,7 +4806,7 @@
   },
   {
     "id": "driftdominator9",
-    "displayName": "Dominator GT",
+    "displayName": "Dominator GT (Drift)",
     "manufacturer": "Vapid",
     "class": "MUSCLE",
     "type": "CAR",
@@ -5570,7 +5570,7 @@
     "hsw": true,
     "imaniTech": "jammer",
     "irlName": "Koenigsegg Jesko Absolut",
-    "scImageId": "entity3"
+    "scImageId": "entity-mt"
   },
   {
     "id": "entityxf",
@@ -5694,7 +5694,7 @@
   },
   {
     "id": "drifteuros",
-    "displayName": "Euros",
+    "displayName": "Euros (Drift)",
     "manufacturer": "Annis",
     "class": "SPORT",
     "type": "CAR",
@@ -5750,7 +5750,7 @@
     "hsw": true,
     "imaniTech": null,
     "irlName": "Nissan 300ZX Z32",
-    "scImageId": "eurosx32"
+    "scImageId": "euros-x32"
   },
   {
     "id": "everon",
@@ -6262,7 +6262,7 @@
     "hsw": true,
     "imaniTech": null,
     "irlName": "Ford Bronco / Raptor-style",
-    "scImageId": "firebolt"
+    "scImageId": "firebolt-asp"
   },
   {
     "id": "fixter",
@@ -6406,7 +6406,7 @@
   },
   {
     "id": "driftfr36",
-    "displayName": "FR36",
+    "displayName": "FR36 (Drift)",
     "manufacturer": "Fathom",
     "class": "COUPE",
     "type": "CAR",
@@ -6810,7 +6810,7 @@
   },
   {
     "id": "driftfuto2",
-    "displayName": "Futo",
+    "displayName": "Futo (Drift)",
     "manufacturer": "Karin",
     "class": "SPORT",
     "type": "CAR",
@@ -6850,7 +6850,7 @@
   },
   {
     "id": "driftfuto",
-    "displayName": "Futo GTX",
+    "displayName": "Futo GTX (Drift)",
     "manufacturer": "Karin",
     "class": "SPORT",
     "type": "CAR",
@@ -7287,7 +7287,7 @@
   },
   {
     "id": "driftgauntlet4",
-    "displayName": "Gauntlet Hellfire",
+    "displayName": "Gauntlet Hellfire (Drift)",
     "manufacturer": "Bravado",
     "class": "MUSCLE",
     "type": "CAR",
@@ -7707,7 +7707,7 @@
     "hsw": true,
     "imaniTech": "jammer",
     "irlName": "Suzuki Hayabusa (Drag)",
-    "scImageId": "hakuchou2"
+    "scImageId": "hakuchou-drag-bike"
   },
   {
     "id": "halftrack",
@@ -7734,7 +7734,7 @@
   },
   {
     "id": "drifthardy",
-    "displayName": "Hardy",
+    "displayName": "Hardy (Drift)",
     "manufacturer": "Annis",
     "class": "SEDAN",
     "type": "CAR",
@@ -8551,7 +8551,7 @@
     "hsw": true,
     "imaniTech": null,
     "irlName": "Mini Cooper Countryman Rally",
-    "scImageId": "issi8"
+    "scImageId": "issi-rally"
   },
   {
     "id": "issi7",
@@ -8803,7 +8803,7 @@
   },
   {
     "id": "driftjester3",
-    "displayName": "Jester Classic",
+    "displayName": "Jester Classic (Drift)",
     "manufacturer": "Dinka",
     "class": "SPORTS CLASSIC",
     "type": "CAR",
@@ -8843,7 +8843,7 @@
   },
   {
     "id": "driftjester",
-    "displayName": "Jester RR",
+    "displayName": "Jester RR (Drift)",
     "manufacturer": "Dinka",
     "class": "SPORT",
     "type": "CAR",
@@ -9116,7 +9116,7 @@
   },
   {
     "id": "driftkeitora",
-    "displayName": "Keitora",
+    "displayName": "Keitora (Drift)",
     "manufacturer": "Shitzu",
     "class": "UTILITY",
     "type": "CAR",
@@ -9337,7 +9337,7 @@
     "hsw": true,
     "imaniTech": "full",
     "irlName": "Peugeot 9X8 / 208 WRC",
-    "scImageId": "coureur"
+    "scImageId": "la-coureuse"
   },
   {
     "id": "landstalker",
@@ -10405,7 +10405,7 @@
   },
   {
     "id": "driftnebula",
-    "displayName": "Nebula Turbo",
+    "displayName": "Nebula Turbo (Drift)",
     "manufacturer": "Vulcar",
     "class": "SPORTS CLASSIC",
     "type": "CAR",
@@ -12815,7 +12815,7 @@
   },
   {
     "id": "driftremus",
-    "displayName": "Remus",
+    "displayName": "Remus (Drift)",
     "manufacturer": "Annis",
     "class": "SPORT",
     "type": "CAR",
@@ -13206,7 +13206,7 @@
   },
   {
     "id": "driftrt3000",
-    "displayName": "RT3000",
+    "displayName": "RT3000 (Drift)",
     "manufacturer": "Dinka",
     "class": "SPORT",
     "type": "CAR",
@@ -14152,7 +14152,7 @@
   },
   {
     "id": "driftsentinel",
-    "displayName": "Sentinel Classic Widebody",
+    "displayName": "Sentinel Classic Widebody (Drift)",
     "manufacturer": "Ubermacht",
     "class": "SPORT",
     "type": "CAR",
@@ -14212,7 +14212,7 @@
   },
   {
     "id": "driftsentinel2",
-    "displayName": "Sentinel XS",
+    "displayName": "Sentinel XS (Drift)",
     "manufacturer": "Ubermacht",
     "class": "COUPE",
     "type": "CAR",
@@ -14948,7 +14948,7 @@
     "hsw": true,
     "imaniTech": null,
     "irlName": "",
-    "scImageId": "stingertt"
+    "scImageId": "stinger-tt"
   },
   {
     "id": "feltzer3",
@@ -14968,7 +14968,7 @@
     "hsw": true,
     "imaniTech": "jammer",
     "irlName": "Mercedes-Benz 300 SL Roadster",
-    "scImageId": "feltzer3"
+    "scImageId": "stirling-gt"
   },
   {
     "id": "stockade3",
@@ -15703,7 +15703,7 @@
     "hsw": true,
     "imaniTech": null,
     "irlName": "Dodge Challenger (modern)",
-    "scImageId": "tampa4"
+    "scImageId": "tampa-gt"
   },
   {
     "id": "tanker2",
@@ -17037,7 +17037,7 @@
     "hsw": true,
     "imaniTech": null,
     "irlName": "Ferrari F40",
-    "scImageId": "turismo2"
+    "scImageId": "turismo-classic"
   },
   {
     "id": "turismo3",
@@ -17672,7 +17672,7 @@
     "hsw": true,
     "imaniTech": "jammer",
     "irlName": "Chevrolet Camaro ZL1 (6th gen)",
-    "scImageId": "vigero2"
+    "scImageId": "vigero-zx"
   },
   {
     "id": "vigero3",
@@ -17692,7 +17692,7 @@
     "hsw": true,
     "imaniTech": null,
     "irlName": "Chevrolet Camaro ZL1 Convertible",
-    "scImageId": "vigero3"
+    "scImageId": "vigero-zx-convertible"
   },
   {
     "id": "vigilante",
@@ -18005,7 +18005,7 @@
   },
   {
     "id": "driftvorschlag",
-    "displayName": "Vorschlaghammer",
+    "displayName": "Vorschlaghammer (Drift)",
     "manufacturer": "Benefactor",
     "class": "SEDAN",
     "type": "CAR",
@@ -18251,7 +18251,7 @@
     "hsw": true,
     "imaniTech": "jammer",
     "irlName": "Lamborghini Si\u00e1n FKP 37 (Weaponized)",
-    "scImageId": "ignus2"
+    "scImageId": "weaponized-ignus"
   },
   {
     "id": "tampa3",
@@ -18926,7 +18926,7 @@
   },
   {
     "id": "driftzr350",
-    "displayName": "ZR350",
+    "displayName": "ZR350 (Drift)",
     "manufacturer": "Annis",
     "class": "SPORT",
     "type": "CAR",
