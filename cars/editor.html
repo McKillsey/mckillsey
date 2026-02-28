@@ -100,9 +100,9 @@ textarea.export-box:focus{border-color:var(--gold)}
 <script type="text/babel">
 const{useState,useEffect,useMemo,useRef,useCallback}=React;
 
-const STORABLE_TYPES=new Set(['CAR','BIKE','QUADBIKE','AMPHIBIOUS_AUTOMOBILE','AMPHIBIOUS_QUADBIKE','SUBMARINECAR','BICYCLE']);
-const CLASSES=['SUPER','SPORT','SPORT_CLASSIC','MUSCLE','SEDAN','SUV','COUPE','COMPACT','OFF_ROAD','MOTORCYCLE','CYCLE','VAN','UTILITY','COMMERCIAL','INDUSTRIAL','SERVICE','EMERGENCY','MILITARY','OPEN_WHEEL'];
-const TYPES=['CAR','BIKE','QUADBIKE','AMPHIBIOUS_AUTOMOBILE','AMPHIBIOUS_QUADBIKE','SUBMARINECAR','BICYCLE','HELI','PLANE','BOAT','SUBMARINE','TRAIN','TRAILER'];
+const STORABLE_TYPES=new Set(['CAR','MOTORCYCLE','BIKE','QUADBIKE','AMPHIBIOUS_AUTOMOBILE','AMPHIBIOUS_QUADBIKE','SUBMARINECAR','BICYCLE']);
+const CLASSES=['SUPER','SPORT','SPORTS CLASSIC','MUSCLE','SEDAN','SUV','COUPE','COMPACT','OFF-ROAD','MOTORCYCLE','CYCLE','VAN','UTILITY','COMMERCIAL','INDUSTRIAL','SERVICE','EMERGENCY','MILITARY','OPEN WHEEL','RAIL','BOAT','HELICOPTER','PLANE'];
+const TYPES=['CAR','MOTORCYCLE','BIKE','QUADBIKE','AMPHIBIOUS_AUTOMOBILE','AMPHIBIOUS_QUADBIKE','SUBMARINECAR','BICYCLE','HELICOPTER','PLANE','BOAT','SUBMARINE','TRAIN','TRAILER','BLIMP','OTHER'];
 
 const DLC_NAMES={
   'TitleUpdate':'Launch','mpbeach':'Beach Bum','mpbusiness':'Business','mpbusiness2':'Business 2',
@@ -142,9 +142,9 @@ function App(){
       dlc:v.dlc||'',
       weapons:(v.weapons||[]).map(w=>w.replace('VEHICLE_WEAPON_','').replace(/_/g,' ')).join(', '),
       // Armor: derived from game flags, editable
-      brGlass:gameFlags.includes('FLAG_HAS_BULLET_RESISTANT_GLASS'),
-      expRes:gameFlags.includes('FLAG_HAS_CAPPED_EXPLOSION_DAMAGE'),
-      wsProtect:gameFlags.includes('FLAG_DISABLE_THROUGH_WINDSCREEN'),
+      brGlass:gameFlags.includes('BULLET_RESISTANT_GLASS'),
+      expRes:gameFlags.includes('CAPPED_EXPLOSION_DAMAGE'),
+      wsProtect:gameFlags.includes('FLAG_DISABLE_THROUGH_WINDSCREEN')||gameFlags.includes('ARMOUR_PLATING'),
       // Keep raw flags for reference
       _gameFlags:gameFlags.filter(f=>!f.startsWith('FLAG_AVERAGE')&&!f.startsWith('FLAG_POOR')&&!f.startsWith('FLAG_RICH')&&!f.startsWith('FLAG_SPORTS')).join(', '),
       _storable:STORABLE_TYPES.has(v.type),
@@ -248,9 +248,9 @@ function App(){
       const flags=[...RAW_DB[v._idx].flags||[]];
       // Sync armor flags
       const sync=(flag,val)=>{const has=flags.includes(flag);if(val&&!has)flags.push(flag);if(!val&&has)flags.splice(flags.indexOf(flag),1)};
-      sync('FLAG_HAS_BULLET_RESISTANT_GLASS',v.brGlass);
-      sync('FLAG_HAS_CAPPED_EXPLOSION_DAMAGE',v.expRes);
-      sync('FLAG_DISABLE_THROUGH_WINDSCREEN',v.wsProtect);
+      sync('BULLET_RESISTANT_GLASS',v.brGlass);
+      sync('CAPPED_EXPLOSION_DAMAGE',v.expRes);
+      sync('ARMOUR_PLATING',v.wsProtect);
       return{
         id:RAW_DB[v._idx].id,displayName:v.displayName,manufacturer:v.manufacturer,
         class:v.class,type:v.type,price:v.price,seats:v.seats,
@@ -258,8 +258,8 @@ function App(){
         convertible:v.convertible,dlc:v.dlc,weapons,flags,
         hasArmoredWindows:RAW_DB[v._idx].hasArmoredWindows,
         tradePrice:RAW_DB[v._idx].tradePrice,
-        maxSpeed:RAW_DB[v._idx].maxSpeed,acceleration:RAW_DB[v._idx].acceleration,
-        maxBraking:RAW_DB[v._idx].maxBraking,maxTraction:RAW_DB[v._idx].maxTraction,
+        lapTime:RAW_DB[v._idx].lapTime||null,
+        topSpeed:RAW_DB[v._idx].topSpeed||null,
       };
     }),null,2);
   }
