@@ -23,6 +23,7 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 .toolbar-search svg{width:14px;height:14px;color:var(--cream-dim);flex-shrink:0}
 .toolbar-search input{background:none;border:none;color:var(--cream);font-size:12px;width:100%;outline:none;font-family:var(--mono)}
 .toolbar-search input::placeholder{color:var(--cream-dim);opacity:.6}
+.search-db-btn{padding:3px 8px!important;font-size:8px!important;flex-shrink:0;margin-left:2px;border-color:var(--gold-dim)!important;color:var(--gold)!important}
 .tb-btn{background:var(--navy-mid);border:1px solid var(--rule);color:var(--cream-dim);padding:6px 12px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:all .15s;white-space:nowrap}
 .tb-btn:hover{background:var(--navy-light);color:var(--cream);border-color:var(--gold-dim)}
 .tb-btn.active{background:rgba(201,168,76,.12);color:var(--gold);border-color:var(--gold)}
@@ -34,7 +35,7 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 
 .app-body{padding:24px 32px 80px;max-width:1600px;margin:0 auto}
 
-.stat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:24px}
+.stat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:24px}
 .stat-card{background:var(--navy-mid);padding:14px 12px;position:relative}
 .stat-card.hoverable{cursor:default}
 .stat-value{font-family:var(--mono);font-size:18px;font-weight:500;color:var(--cream);line-height:1;margin-bottom:3px}
@@ -113,7 +114,9 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 .slot-tag-opt.active{color:var(--gold)}
 
 /* Owned badge in vehicle picker */
-.mv-owned{font-family:var(--mono);font-size:7px;letter-spacing:.06em;text-transform:uppercase;padding:2px 5px;background:rgba(201,168,76,.12);color:var(--gold-dim);flex-shrink:0}
+.mv-owned{font-family:var(--mono);font-size:7px;letter-spacing:.06em;text-transform:uppercase;padding:2px 5px;background:rgba(201,168,76,.15);color:var(--gold);flex-shrink:0;border:1px solid rgba(201,168,76,.25)}
+.mv-tag-buy{background:rgba(45,186,114,.15);color:var(--green);border-color:rgba(45,186,114,.25)}
+.mv-tag-sell{background:rgba(217,79,79,.15);color:var(--red);border-color:rgba(217,79,79,.25)}
 
 /* Gallery mode tag overlay */
 .garage-list.gallery-mode .slot-tag{bottom:auto;top:4px;left:4px;right:auto;font-size:8px;padding:2px 6px;text-shadow:0 1px 3px rgba(0,0,0,.6)}
@@ -307,6 +310,8 @@ function migrateCollection(c){
 
 const CLS={SUPER:'Super',SPORT:'Sport','SPORT_CLASSIC':'Sports Classic','SPORTS CLASSIC':'Sports Classic',MUSCLE:'Muscle',SEDAN:'Sedan',SUV:'SUV',COUPE:'Coupe',COMPACT:'Compact','OFF_ROAD':'Off-Road','OFF-ROAD':'Off-Road',MOTORCYCLE:'Motorcycle',CYCLE:'Cycle',VAN:'Van',UTILITY:'Utility',COMMERCIAL:'Commercial',INDUSTRIAL:'Industrial',SERVICE:'Service',EMERGENCY:'Emergency',MILITARY:'Military','OPEN_WHEEL':'Open Wheel','OPEN WHEEL':'Open Wheel',RAIL:'Rail',BOAT:'Boat',HELICOPTER:'Helicopter',PLANE:'Plane'};
 function cls(c){return CLS[c]||c}
+const IRL_MFR_MULTI={'aston':'Aston Martin','range':'Range Rover','rolls':'Rolls-Royce','harley':'Harley-Davidson','alfa':'Alfa Romeo','land':'Land Rover','mercedes':'Mercedes-Benz','de':'De Tomaso','am':'AM General','el':'El Camino'};
+function irlMfr(irl){if(!irl)return null;const w=irl.split(/\s+/);if(!w.length)return null;const k=w[0].toLowerCase().replace(/-.*$/,'');return IRL_MFR_MULTI[k]||w[0]}
 function fmt$(n){if(!n||n<=0)return'—';if(n>=1e6)return'$'+(n/1e6).toFixed(n%1e6>=1e5?1:0)+'M';if(n>=1e3)return'$'+(n/1e3).toFixed(0)+'K';return'$'+n.toLocaleString()}
 function fmtFull$(n){if(!n||n<=0)return'Free';return'$'+n.toLocaleString()}
 
@@ -408,7 +413,7 @@ function findDuplicates(properties){
 }
 
 // ═══ VEHICLE PICKER ═══
-function VehiclePicker({isOpen,onClose,onSelect,label,ownedSet}){
+function VehiclePicker({isOpen,onClose,onSelect,label,ownedMap,browseMode}){
   const[q,setQ]=useState('');const[cf,setCf]=useState(null);const ref=useRef(null);
   useEffect(()=>{if(isOpen){setQ('');setCf(null);setTimeout(()=>ref.current?.focus(),100)}},[isOpen]);
   const filtered=useMemo(()=>{
@@ -419,7 +424,7 @@ function VehiclePicker({isOpen,onClose,onSelect,label,ownedSet}){
       const attrMap={'imani':v=>v.imani,'hsw':v=>v.hsw,'weaponized':v=>v.wpnzed,'wpnzd':v=>v.wpnzed,'weapon':v=>v.wpnzed,
         'armored':v=>v.armored,'armor':v=>v.armored,'bp':v=>v.brGlass,'bulletproof':v=>v.brGlass,'bullet':v=>v.brGlass,
         'convertible':v=>v.convertible,'open':v=>v.convertible,'jammer':v=>v.imani==='jammer',
-        'drift':v=>v.name.toLowerCase().includes('drift'),'owned':v=>ownedSet.has(v.vehicleId),'mine':v=>ownedSet.has(v.vehicleId)};
+        'drift':v=>v.name.toLowerCase().includes('drift'),'owned':v=>ownedMap.has(v.vehicleId)&&ownedMap.get(v.vehicleId)==='owned','mine':v=>ownedMap.has(v.vehicleId)};
       // Check for speed/lap filters like "top speed > 120" or "lap < 1:05"
       const speedMatch=ql.match(/(?:top\s*)?speed\s*([<>])\s*(\d+)/);
       const lapMatch=ql.match(/lap\s*(?:time)?\s*([<>])\s*(\d+[:\.]?\d*)/);
@@ -431,7 +436,6 @@ function VehiclePicker({isOpen,onClose,onSelect,label,ownedSet}){
         list=list.filter(v=>v.topSpeed&&(op==='>'?v.topSpeed>val:v.topSpeed<val));
       }else if(lapMatch){
         const op=lapMatch[1];let val=lapMatch[2];
-        // Parse "1:05" or "1:05.3" or "65" to seconds
         const parts=val.split(/[:.]/);let secs=0;
         if(parts.length>=2)secs=parseInt(parts[0])*60+parseFloat(parts.slice(1).join('.'));
         else secs=parseFloat(parts[0]);
@@ -446,22 +450,27 @@ function VehiclePicker({isOpen,onClose,onSelect,label,ownedSet}){
     }
     if(cf)list=list.filter(v=>v.cls===cf);
     // Sort: unowned first, then by name
-    list=[...list].sort((a,b)=>{const ao=ownedSet.has(a.vehicleId)?1:0,bo=ownedSet.has(b.vehicleId)?1:0;if(ao!==bo)return ao-bo;return a.name.localeCompare(b.name)});
+    list=[...list].sort((a,b)=>{const ao=ownedMap.has(a.vehicleId)?1:0,bo=ownedMap.has(b.vehicleId)?1:0;if(ao!==bo)return ao-bo;return a.name.localeCompare(b.name)});
     return list.slice(0,80);
-  },[isOpen,q,cf,ownedSet]);
+  },[isOpen,q,cf,ownedMap]);
   const classes=['SUPER','SPORT','SPORTS CLASSIC','MUSCLE','SUV','OFF-ROAD','MOTORCYCLE','SEDAN','COUPE','OPEN WHEEL'];
   if(!isOpen)return null;
   return(<div className="modal-overlay" onClick={e=>{if(e.target===e.currentTarget)onClose()}}><div className="modal">
-    <div className="modal-head"><div className="modal-title">Add Vehicle</div><div className="modal-sub">{label?`Adding to ${label}`:'Select a vehicle'}</div></div>
+    <div className="modal-head"><div className="modal-title">{browseMode?'Browse Database':'Add Vehicle'}</div><div className="modal-sub">{browseMode?`${VEHICLES.length} vehicles · search or filter`:label?`Adding to ${label}`:'Select a vehicle'}</div></div>
     <button className="modal-close" onClick={onClose}>×</button>
     <div className="modal-search"><input ref={ref} placeholder="Search name, manufacturer, or try: imani, hsw, armored, speed > 130, lap < 1:02..." value={q} onChange={e=>setQ(e.target.value)}/></div>
     <div className="modal-filters">{classes.map(c=><button key={c} className={`filter-chip ${cf===c?'active':''}`} onClick={()=>setCf(cf===c?null:c)}>{cls(c)}</button>)}</div>
     <div className="modal-list">
       {q.length<2&&!cf?<div style={{padding:'16px 0',textAlign:'center',color:'var(--cream-dim)',fontFamily:'var(--mono)',fontSize:'10px'}}>Type 2+ characters or select a class · try: imani, hsw, armored, speed &gt; 130</div>
       :filtered.length===0?<div style={{padding:'16px 0',textAlign:'center',color:'var(--cream-dim)',fontFamily:'var(--mono)',fontSize:'10px'}}>No vehicles found</div>
-      :filtered.map(v=>{const owned=ownedSet.has(v.vehicleId);return(<div key={v.idx} className="modal-vehicle" onClick={()=>{onSelect(v);onClose()}} style={owned?{opacity:.55}:{}}>
+      :filtered.map(v=>{const status=ownedMap.get(v.vehicleId);const isOwned=status==='owned';const isBuy=status==='buy';const isSell=status==='sell';return(<div key={v.idx} className="modal-vehicle" style={browseMode?{cursor:'default'}:{}} onClick={()=>{if(!browseMode){onSelect(v);onClose()}}}>
         <div style={{flex:1,minWidth:0}}><div className="mv-mfr">{v.mfr||'Unknown'}</div><div className="mv-name">{v.name}</div>{v.irl&&<div className="mv-irl">{v.irl}</div>}</div>
-        <div className="mv-badges">{owned&&<span className="mv-owned">Owned</span>}{v.hsw&&<span className="slot-badge badge-hsw">{v.isHswVariant?'HSW':'HSW Eligible'}</span>}{v.imani&&<span className="slot-badge badge-imani">{v.imani==='full'?'Imani+':'Jammer'}</span>}{v.armored&&<span className="slot-badge badge-armor">Armor</span>}{v.wpnzed&&<span className="slot-badge badge-weapon">Wpnzd</span>}</div>
+        <div className="mv-badges">
+          {isOwned&&<span className="mv-owned">★ Owned</span>}
+          {isBuy&&<span className="mv-owned mv-tag-buy">To Buy</span>}
+          {isSell&&<span className="mv-owned mv-tag-sell">To Sell</span>}
+          {v.hsw&&<span className="slot-badge badge-hsw">{v.isHswVariant?'HSW':'HSW Eligible'}</span>}{v.imani&&<span className="slot-badge badge-imani">{v.imani==='full'?'Imani+':'Jammer'}</span>}{v.armored&&<span className="slot-badge badge-armor">Armor</span>}{v.wpnzed&&<span className="slot-badge badge-weapon">Wpnzd</span>}
+        </div>
         <div className="mv-class">{cls(v.cls)}</div><div className="mv-price">{fmt$(v.price)}</div>
       </div>)})}
     </div>
@@ -730,6 +739,7 @@ function App(){
   const[coll,setColl]=useState(load);
   const[sq,setSq]=useState('');
   const[picker,setPicker]=useState(null);
+  const[browse,setBrowse]=useState(false);
   const[io,setIo]=useState(null);
   const[propMgr,setPropMgr]=useState(false);
   const[toast,setToast]=useState('');
@@ -745,21 +755,22 @@ function App(){
   const handleDragDrop=useCallback((fGi,fSi,tGi,tSi)=>{try{if(fGi===tGi&&fSi===tSi)return;const np=coll.properties.map(g=>({...g,slots:[...g.slots]}));const fc=np[fGi].slots[fSi];const tc=np[tGi].slots[tSi];np[fGi].slots[fSi]=tc;np[tGi].slots[tSi]=fc;setColl({...coll,properties:np});if(fGi!==tGi)flash('Moved');else flash('Swapped')}catch(err){console.error('DragDrop error:',err);flash('Error: '+err.message)}},[coll]);
   const dupes=useMemo(()=>findDuplicates(coll.properties),[coll]);
 
-  const ownedSet=useMemo(()=>{const s=new Set();coll.properties.forEach(g=>{g.slots.forEach(sl=>{if(sl){const d=resolveSlot(sl);if(d)s.add(d.vehicleId)}})});return s},[coll]);
+  const ownedMap=useMemo(()=>{const m=new Map();coll.properties.forEach(g=>{g.slots.forEach(sl=>{if(sl){const d=resolveSlot(sl);if(d)m.set(d.vehicleId,sl.tag||'owned')}})});return m},[coll]);
 
   const stats=useMemo(()=>{
-    let cars=0,slots=0,garages=0,totalValue=0;const cc={},mfrs={};const topCars=[];
+    let cars=0,slots=0,garages=0,totalValue=0;const cc={},mfrs={},irlMfrs={};const topCars=[];
     coll.properties.forEach(g=>{
       const f=g.slots.filter(s=>s!==null).length;cars+=f;slots+=g.capacity;if(f>0)garages++;
-      g.slots.forEach(s=>{if(!s)return;const dbv=resolveSlot(s);if(dbv){cc[dbv.cls]=(cc[dbv.cls]||0)+1;if(dbv.mfr)mfrs[dbv.mfr]=(mfrs[dbv.mfr]||0)+1;if(dbv.price>0){totalValue+=dbv.price;topCars.push({name:dbv.name,price:dbv.price})}}});
+      g.slots.forEach(s=>{if(!s)return;const dbv=resolveSlot(s);if(dbv){cc[dbv.cls]=(cc[dbv.cls]||0)+1;if(dbv.mfr)mfrs[dbv.mfr]=(mfrs[dbv.mfr]||0)+1;const im=irlMfr(dbv.irl);if(im)irlMfrs[im]=(irlMfrs[im]||0)+1;if(dbv.price>0){totalValue+=dbv.price;topCars.push({name:dbv.name,price:dbv.price})}}});
     });
-    // Count total vehicles per class and manufacturer in the database
-    const classTotals={},mfrTotals={};
-    VEHICLES.forEach(v=>{classTotals[v.cls]=(classTotals[v.cls]||0)+1;if(v.mfr)mfrTotals[v.mfr]=(mfrTotals[v.mfr]||0)+1});
+    // Count total vehicles per class, manufacturer, and IRL manufacturer in the database
+    const classTotals={},mfrTotals={},irlMfrTotals={};
+    VEHICLES.forEach(v=>{classTotals[v.cls]=(classTotals[v.cls]||0)+1;if(v.mfr)mfrTotals[v.mfr]=(mfrTotals[v.mfr]||0)+1;const im=irlMfr(v.irl);if(im)irlMfrTotals[im]=(irlMfrTotals[im]||0)+1});
     const classRank=Object.entries(cc).sort((a,b)=>b[1]-a[1]);
     const mfrRank=Object.entries(mfrs).sort((a,b)=>b[1]-a[1]);
+    const irlMfrRank=Object.entries(irlMfrs).sort((a,b)=>b[1]-a[1]);
     topCars.sort((a,b)=>b.price-a.price);
-    return{cars,slots,garages,pct:slots?Math.round(cars/slots*100):0,classRank,mfrRank,classTotals,mfrTotals,totalValue,topCars:topCars.slice(0,10),mfrCount:Object.keys(mfrs).length};
+    return{cars,slots,garages,pct:slots?Math.round(cars/slots*100):0,classRank,mfrRank,irlMfrRank,classTotals,mfrTotals,irlMfrTotals,totalValue,topCars:topCars.slice(0,10),mfrCount:Object.keys(mfrs).length,irlMfrCount:Object.keys(irlMfrs).length};
   },[coll]);
 
   const displayGroups=useMemo(()=>{
@@ -776,7 +787,8 @@ function App(){
     <div className="toolbar">
       <div className="toolbar-search">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <input placeholder="Search vehicles, garages, manufacturers..." value={sq} onChange={e=>setSq(e.target.value)}/>
+        <input placeholder="Search garages... try: imani, hsw, to buy, speed > 130" value={sq} onChange={e=>setSq(e.target.value)}/>
+        <button className="tb-btn search-db-btn" onClick={()=>setBrowse(true)} title="Search full database">All Cars</button>
       </div>
       <button className={`tb-btn ${hideEmpty?'active':''}`} onClick={()=>setHideEmpty(!hideEmpty)}>{hideEmpty?'◉ Hide empty':'○ Show all'}</button>
       <button className={`tb-btn ${display.gallery?'active':''}`} onClick={()=>setDisplay(d=>({...d,gallery:!d.gallery}))}>{display.gallery?'◉ Gallery':'○ Gallery'}</button>
@@ -802,10 +814,18 @@ function App(){
         </div>
         <div className="stat-card hoverable">
           <div className="stat-value">{stats.mfrCount}</div>
-          <div className="stat-label">Manufacturers · hover for list</div>
+          <div className="stat-label">GTA Mfrs · hover for list</div>
           <div className="stat-pop">
-            <div className="stat-pop-head">Manufacturers by Count</div>
+            <div className="stat-pop-head">GTA Manufacturers by Count</div>
             {stats.mfrRank.map(([m,n])=><div key={m} className="stat-pop-row"><span className="pop-name">{m}</span><span className="pop-val">{n}<span className="pop-sub">/{stats.mfrTotals[m]||'?'}</span></span></div>)}
+          </div>
+        </div>
+        <div className="stat-card hoverable">
+          <div className="stat-value">{stats.irlMfrCount}</div>
+          <div className="stat-label">IRL Mfrs · hover for list</div>
+          <div className="stat-pop">
+            <div className="stat-pop-head">IRL Manufacturers by Count</div>
+            {stats.irlMfrRank.map(([m,n])=><div key={m} className="stat-pop-row"><span className="pop-name">{m}</span><span className="pop-val">{n}<span className="pop-sub">/{stats.irlMfrTotals[m]||'?'}</span></span></div>)}
           </div>
         </div>
         <div className="stat-card"><div className="stat-value">{stats.garages}</div><div className="stat-label">Active Garages</div></div>
@@ -825,7 +845,8 @@ function App(){
         })}
       </div>
     </div>
-    <VehiclePicker isOpen={!!picker} onClose={()=>setPicker(null)} label={picker?.label} ownedSet={ownedSet} onSelect={v=>{if(!picker)return;const g=coll.properties[picker.gi];const s=[...g.slots];s[picker.si]={vehicleId:v.vehicleId};updateG(picker.gi,{...g,slots:s});flash('Added '+v.name)}}/>
+    <VehiclePicker isOpen={!!picker} onClose={()=>setPicker(null)} label={picker?.label} ownedMap={ownedMap} onSelect={v=>{if(!picker)return;const g=coll.properties[picker.gi];const s=[...g.slots];s[picker.si]={vehicleId:v.vehicleId};updateG(picker.gi,{...g,slots:s});flash('Added '+v.name)}}/>
+    <VehiclePicker isOpen={browse} onClose={()=>setBrowse(false)} browseMode={true} ownedMap={ownedMap} onSelect={()=>{}}/>
     <PropertyManager isOpen={propMgr} onClose={()=>setPropMgr(false)} collection={coll} onUpdate={c=>{setColl(c);flash('Properties updated')}}/>
     <IOModal isOpen={!!io} mode={io} onClose={()=>setIo(null)} collection={coll} onImport={d=>{setColl(d);flash('Imported')}}/>
     <Toast message={toast}/>
