@@ -426,12 +426,24 @@ function imgUrl(id){return RSC_BASE+id+'.jpg'}
 
 // Image preload cache: id -> 'loading'|'ok'|'fail'
 const imgCache={};
+// Fallback map: primary imgId -> fallback imgId (vehicleId)
+const imgFallbacks={};
+function registerFallback(imgId,vehicleId){if(imgId&&vehicleId&&imgId!==vehicleId)imgFallbacks[imgId]=vehicleId}
 function preloadImg(id){
   if(!id||imgCache[id])return;
   imgCache[id]='loading';
   const img=new Image();
   img.onload=()=>{imgCache[id]='ok'};
-  img.onerror=()=>{imgCache[id]='fail'};
+  img.onerror=()=>{
+    // Try fallback (vehicleId) if primary (scImageId) failed
+    const fb=imgFallbacks[id];
+    if(fb&&!imgCache[fb]){
+      imgCache[id]='fail';
+      preloadImg(fb);
+    } else {
+      imgCache[id]='fail';
+    }
+  };
   img.src=imgUrl(id);
 }
 
@@ -453,10 +465,13 @@ function showVTip(e,dbv){
   if(dbv.convertible)badges+=`<span class="vtip-badge" style="background:rgba(201,168,76,.1);color:var(--gold-dim)">Convertible</span>`;
   const imgId=dbv.imgId||'';
   const cached=imgCache[imgId];
+  const fbId=(imgId&&dbv.vehicleId&&imgId!==dbv.vehicleId)?dbv.vehicleId:'';
+  const fbCached=fbId?imgCache[fbId]:null;
   let imgHtml='';
-  if(imgId&&cached!=='fail'){
-    const isReady=cached==='ok';
-    imgHtml=`<div class="vtip-img-wrap${isReady?'':' loading'}"><img src="${imgUrl(imgId)}" onload="this.classList.add('loaded');this.parentElement.classList.remove('loading')" onerror="this.parentElement.style.display='none'" alt=""/></div>`;
+  const useImg=(cached!=='fail')?imgId:(fbCached!=='fail'&&fbId)?fbId:'';
+  if(useImg){
+    const isReady=imgCache[useImg]==='ok';
+    imgHtml=`<div class="vtip-img-wrap${isReady?'':' loading'}"><img src="${imgUrl(useImg)}" onload="this.classList.add('loaded');this.parentElement.classList.remove('loading')" onerror="this.parentElement.style.display='none'" alt=""/></div>`;
   }
   vtipEl.innerHTML=`${imgHtml}<div class="vtip-head"><div class="vtip-mfr">${dbv.mfr||'Unknown'}</div><div class="vtip-name">${dbv.name}</div>${dbv.irl?`<div class="vtip-irl">${dbv.irl}</div>`:''}</div><div class="vtip-body"><div class="vtip-row"><span class="vtip-label">Class</span><span class="vtip-val">${cls(dbv.cls)}</span></div><div class="vtip-row"><span class="vtip-label">Price</span><span class="vtip-val gold">${fmtFull$(dbv.price)}</span></div><div class="vtip-row"><span class="vtip-label">Seats</span><span class="vtip-val">${dbv.seats||'—'}</span></div>${dbv.lapTime?`<div class="vtip-row"><span class="vtip-label">Lap Time<sup style="color:var(--gold-dim);font-size:7px">1</sup></span><span class="vtip-val green">${dbv.lapTime}</span></div>`:''}${dbv.topSpeed?`<div class="vtip-row"><span class="vtip-label">Top Speed<sup style="color:var(--gold-dim);font-size:7px">1</sup></span><span class="vtip-val">${dbv.topSpeed} mph</span></div>`:''}</div>${badges?`<div class="vtip-badges">${badges}</div>`:''}`;
   vtipEl.style.display='block';posVTip(e);
@@ -807,13 +822,16 @@ function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,d
   const[isDragOver,setIsDragOver]=useState(false);
   const[galleryLoaded,setGalleryLoaded]=useState(false);
   const[galleryFailed,setGalleryFailed]=useState(false);
+  const[useFallback,setUseFallback]=useState(false);
   const[tagMenu,setTagMenu]=useState(false);
   const dbv=resolveSlot(car);
   const slotRef=useRef(null);
-  const imgId=dbv?.imgId||'';
+  const primaryImgId=dbv?.imgId||'';
+  const fallbackId=(primaryImgId&&dbv?.vehicleId&&primaryImgId!==dbv.vehicleId)?dbv.vehicleId:'';
+  const imgId=useFallback?fallbackId:primaryImgId;
   const tag=car?.tag||null;
-  useEffect(()=>{const el=slotRef.current;if(el&&imgId){slotObserver.observe(el);return()=>slotObserver.unobserve(el)}},[imgId]);
-  useEffect(()=>{setGalleryLoaded(false);setGalleryFailed(false)},[imgId]);
+  useEffect(()=>{const el=slotRef.current;if(el&&primaryImgId){slotObserver.observe(el);return()=>slotObserver.unobserve(el)}},[primaryImgId]);
+  useEffect(()=>{setGalleryLoaded(false);setGalleryFailed(false);setUseFallback(false)},[primaryImgId]);
   useEffect(()=>{if(!tagMenu)return;function h(e){if(!e.target.closest('.slot-tag-menu')&&!e.target.closest('.slot-tag'))setTagMenu(false)}document.addEventListener('mousedown',h);return()=>document.removeEventListener('mousedown',h)},[tagMenu]);
   const hiddenCount=(!display.showMfr?1:0)+(!display.showGta?1:0)+(!display.showIrl?1:0);
   const compactClass=hiddenCount>=3?' compact-3':hiddenCount>=2?' compact-2':hiddenCount>=1?' compact-1':'';
@@ -837,7 +855,10 @@ function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,d
       {!galleryLoaded&&<div className="gallery-img-shimmer"/>}
       <img className="gallery-img" src={galleryImgSrc} alt="" loading="lazy"
         style={galleryLoaded?{}:{opacity:0}}
-        onLoad={()=>setGalleryLoaded(true)} onError={()=>setGalleryFailed(true)}/>
+        onLoad={()=>setGalleryLoaded(true)} onError={()=>{
+          if(!useFallback&&fallbackId){setUseFallback(true);setGalleryLoaded(false)}
+          else setGalleryFailed(true)
+        }}/>
     </>}
     {isGallery&&(!galleryImgSrc||galleryFailed)&&<div className="gallery-placeholder">
       {dbv&&dbv.cls&&<span className="gp-class">{cls(dbv.cls)}</span>}
@@ -1273,7 +1294,7 @@ ReactDOM.render(React.createElement('div',{style:{display:'flex',alignItems:'cen
       wpnzed:(v[3]||'').includes('W'),convertible:(v[3]||'').includes('C'),
     }));
     // Rebuild lookup
-    VEHICLES.forEach(v=>{VEH_BY_NAME[v.name.toLowerCase()]=v;VEH_BY_ID[v.vehicleId]=v;const c=v.name.replace(/\s*\(HSW\)\s*$/i,'').trim().toLowerCase();if(c!==v.name.toLowerCase())VEH_BY_NAME[c]=v});
+    VEHICLES.forEach(v=>{VEH_BY_NAME[v.name.toLowerCase()]=v;VEH_BY_ID[v.vehicleId]=v;const c=v.name.replace(/\s*\(HSW\)\s*$/i,'').trim().toLowerCase();if(c!==v.name.toLowerCase())VEH_BY_NAME[c]=v;registerFallback(v.imgId,v.vehicleId)});
     
     // Now render the real app
     ReactDOM.render(React.createElement(ErrorBoundary,null,React.createElement(App,null)),document.getElementById('root'));
