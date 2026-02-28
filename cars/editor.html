@@ -48,6 +48,12 @@ tbody tr:hover{background:rgba(201,168,76,.03)}
 tbody tr.dirty{background:rgba(201,168,76,.06)}
 tbody tr.dirty td:first-child{border-left:2px solid var(--gold)}
 
+.img-cell{width:80px;padding:2px 4px}
+.img-cell img{width:72px;height:40px;object-fit:cover;display:block;border:1px solid var(--rule);background:var(--navy-light)}
+.img-cell .img-fail{width:72px;height:40px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--rule);color:var(--red);font-family:var(--mono);font-size:8px;letter-spacing:.04em;text-transform:uppercase;background:rgba(217,79,79,.04)}
+.img-cell .img-shimmer{width:72px;height:40px;border:1px solid var(--rule);background:linear-gradient(90deg,var(--navy-mid) 25%,var(--navy-light) 50%,var(--navy-mid) 75%);background-size:200% 100%;animation:shimmer 1.4s ease-in-out infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
 td{padding:3px 5px;vertical-align:middle;font-size:11px}
 td.mono{font-family:var(--mono);font-size:10px}
 td.dim{color:var(--cream-dim)}
@@ -149,6 +155,7 @@ function App(){
       _gameFlags:gameFlags.filter(f=>!f.startsWith('FLAG_AVERAGE')&&!f.startsWith('FLAG_POOR')&&!f.startsWith('FLAG_RICH')&&!f.startsWith('FLAG_SPORTS')).join(', '),
       _storable:STORABLE_TYPES.has(v.type),
       _id:v.id||'',
+      _scImageId:v.scImageId||v.id||'',
     };
   }));
 
@@ -158,6 +165,7 @@ function App(){
   const[classFilter,setClassFilter]=useState('');
   const[mfrFilter,setMfrFilter]=useState('');
   const[dirtyOnly,setDirtyOnly]=useState(false);
+  const[showImages,setShowImages]=useState(false);
   const[modal,setModal]=useState(null); // 'ultra','full',null
   const[toast,setToast]=useState('');
 
@@ -288,6 +296,7 @@ function App(){
         {mfrs.map(m=><option key={m} value={m}>{m}</option>)}
       </select>
       {dirtyCount>0&&<button className={`tb-btn ${dirtyOnly?'active':''}`} onClick={()=>setDirtyOnly(!dirtyOnly)}>Edited ({dirtyCount})</button>}
+      <button className={`tb-btn ${showImages?'active':''}`} onClick={()=>setShowImages(!showImages)}>{showImages?'◉ Images':'○ Images'}</button>
       <div className="tb-divider"/>
       <span className="tb-stat">Showing <b>{filtered.length}</b></span>
       <div style={{marginLeft:'auto',display:'flex',gap:6}}>
@@ -300,6 +309,7 @@ function App(){
       <table>
         <thead><tr>
           <th style={{width:30}}>#</th>
+          {showImages&&<th style={{width:80}}>Image</th>}
           <th className={thClass('displayName')} onClick={()=>toggleSort('displayName')} style={{minWidth:160}}>Name</th>
           <th className={thClass('manufacturer')} onClick={()=>toggleSort('manufacturer')} style={{minWidth:80}}>Manufacturer</th>
           <th className={thClass('class')} onClick={()=>toggleSort('class')}>Class</th>
@@ -317,7 +327,7 @@ function App(){
           <th className={thClass('dlc')} onClick={()=>toggleSort('dlc')} style={{minWidth:80}}>DLC</th>
         </tr></thead>
         <tbody>
-          {filtered.map((v,ri)=><Row key={v._idx} v={v} ri={ri} updateField={updateField}/>)}
+          {filtered.map((v,ri)=><Row key={v._idx} v={v} ri={ri} updateField={updateField} showImages={showImages}/>)}
         </tbody>
       </table>
     </div>
@@ -337,11 +347,19 @@ function App(){
 }
 
 // ═══ ROW (memoized) ═══
-const Row=React.memo(function Row({v,ri,updateField}){
+const Row=React.memo(function Row({v,ri,updateField,showImages}){
   const idx=v._idx;
+  const[imgState,setImgState]=useState('idle'); // idle, loading, ok, fail
+  const imgSrc=`https://s.rsg.sc/sc/images/games/GTAV/vehicles/screens/mp/main/${v._scImageId}.jpg`;
+  useEffect(()=>{if(showImages)setImgState('loading')},[showImages]);
   return(
     <tr className={v._dirty?'dirty':''}>
       <td className="row-num">{ri+1}</td>
+      {showImages&&<td className="img-cell">
+        {imgState==='loading'&&<><div className="img-shimmer"/><img src={imgSrc} alt="" style={{display:'none'}} onLoad={()=>setImgState('ok')} onError={()=>setImgState('fail')}/></>}
+        {imgState==='ok'&&<img src={imgSrc} alt={v.displayName}/>}
+        {imgState==='fail'&&<div className="img-fail">No img</div>}
+      </td>}
       <td><input type="text" value={v.displayName} onChange={e=>updateField(idx,'displayName',e.target.value)} style={{fontFamily:'var(--serif)',fontWeight:700,fontSize:11}}/></td>
       <td><input type="text" value={v.manufacturer} onChange={e=>updateField(idx,'manufacturer',e.target.value)}/></td>
       <td><select value={v.class} onChange={e=>updateField(idx,'class',e.target.value)}>{CLASSES.map(c=><option key={c} value={c}>{c}</option>)}</select></td>
