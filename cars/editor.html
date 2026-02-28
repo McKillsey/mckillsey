@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vehicle Database Editor — McKillsey & Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0d1b2a;--navy-mid:#162436;--navy-light:#1e3148;--cream:#f0ead8;--cream-dim:#9aabbf;--gold:#c9a84c;--gold-dim:#8a6f2e;--green:#2dba72;--red:#d94f4f;--amber:#e08c2a;--rule:rgba(201,168,76,.18);--serif:'Playfair Display',Georgia,serif;--mono:'IBM Plex Mono','Courier New',monospace;--sans:'IBM Plex Sans','Helvetica Neue',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size:12px;line-height:1.4}
+::selection{background:var(--gold);color:var(--navy)}
+::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:3px}
+
+.site-header{border-bottom:1px solid var(--rule);padding:14px 24px;display:flex;align-items:center;gap:20px}
+.wordmark{font-family:var(--serif);font-weight:700;color:#b8c8d8;line-height:1.15;text-decoration:none;font-size:18px}
+.header-tagline{font-family:var(--mono);font-size:9px;color:var(--cream-dim);letter-spacing:.1em;text-transform:uppercase;margin-left:auto}
+
+.toolbar{display:flex;align-items:center;gap:8px;padding:10px 24px;border-bottom:1px solid var(--rule);background:rgba(22,36,54,.6);flex-wrap:wrap}
+.tb-search{display:flex;align-items:center;gap:6px;background:var(--navy);border:1px solid var(--rule);padding:5px 10px;min-width:280px}
+.tb-search input{background:none;border:none;color:var(--cream);font-size:12px;width:100%;outline:none;font-family:var(--mono)}
+.tb-search input::placeholder{color:var(--cream-dim);opacity:.5}
+.tb-btn{background:var(--navy-mid);border:1px solid var(--rule);color:var(--cream-dim);padding:5px 10px;font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:all .12s;white-space:nowrap}
+.tb-btn:hover{background:var(--navy-light);color:var(--cream);border-color:var(--gold-dim)}
+.tb-btn.active{background:rgba(201,168,76,.12);color:var(--gold);border-color:var(--gold)}
+.tb-btn.primary{background:var(--gold);color:var(--navy);font-weight:500}
+.tb-btn.primary:hover{background:var(--cream)}
+.tb-btn.green{background:rgba(45,186,114,.15);color:var(--green);border-color:var(--green)}
+.tb-btn.green:hover{background:var(--green);color:var(--navy)}
+.tb-select{background:var(--navy);border:1px solid var(--rule);color:var(--cream);font-family:var(--mono);font-size:10px;padding:5px 6px;outline:none}
+.tb-select:focus{border-color:var(--gold)}
+.tb-stat{font-family:var(--mono);font-size:10px;color:var(--cream-dim)}
+.tb-stat b{color:var(--gold)}
+.tb-divider{width:1px;height:20px;background:var(--rule)}
+
+.table-wrap{overflow:auto;height:calc(100vh - 105px)}
+table{width:100%;border-collapse:collapse}
+thead{position:sticky;top:0;z-index:10}
+thead th{background:var(--navy-mid);font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);padding:6px 5px;border-bottom:2px solid var(--gold-dim);text-align:left;white-space:nowrap;cursor:pointer;user-select:none;position:relative}
+thead th:hover{background:var(--navy-light)}
+thead th.sorted-asc::after{content:' ▲';color:var(--cream)}
+thead th.sorted-desc::after{content:' ▼';color:var(--cream)}
+thead th.narrow{width:40px;text-align:center}
+thead th.med{width:70px}
+
+tbody tr{border-bottom:1px solid rgba(201,168,76,.04)}
+tbody tr:hover{background:rgba(201,168,76,.03)}
+tbody tr.dirty{background:rgba(201,168,76,.06)}
+tbody tr.dirty td:first-child{border-left:2px solid var(--gold)}
+
+td{padding:3px 5px;vertical-align:middle;font-size:11px}
+td.mono{font-family:var(--mono);font-size:10px}
+td.dim{color:var(--cream-dim)}
+td.center{text-align:center}
+
+/* Editable cells */
+td[contenteditable]{cursor:text;outline:none;border:1px solid transparent;transition:border-color .12s}
+td[contenteditable]:focus{border-color:var(--gold);background:rgba(201,168,76,.06)}
+td[contenteditable]:hover{border-color:var(--rule)}
+
+/* Inline inputs */
+td input[type=text],td input[type=number]{background:none;border:none;color:var(--cream);font-family:var(--mono);font-size:10px;width:100%;outline:none;padding:1px 2px}
+td input[type=text]:focus,td input[type=number]:focus{background:rgba(201,168,76,.06);outline:1px solid var(--gold)}
+td input[type=checkbox]{accent-color:var(--gold);cursor:pointer}
+td select{background:var(--navy);border:1px solid transparent;color:var(--cream);font-family:var(--mono);font-size:10px;padding:1px;outline:none;cursor:pointer;width:100%}
+td select:focus{border-color:var(--gold)}
+td select option{background:var(--navy-mid);color:var(--cream)}
+
+.row-num{font-family:var(--mono);font-size:9px;color:var(--cream-dim);opacity:.4;text-align:right;width:30px;padding-right:6px}
+
+/* Type/storable indicators */
+.storable{color:var(--green)}.not-storable{color:var(--cream-dim);opacity:.3}
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:flex;align-items:flex-start;justify-content:center;padding-top:40px}
+.modal{background:var(--navy-mid);border:1px solid var(--rule);width:700px;max-width:95vw;max-height:85vh;display:flex;flex-direction:column}
+.modal-head{padding:16px 20px;border-bottom:1px solid var(--rule)}
+.modal-title{font-family:var(--serif);font-size:16px;font-weight:700}
+.modal-sub{font-family:var(--mono);font-size:9px;color:var(--cream-dim);margin-top:3px}
+.modal-body{flex:1;overflow:auto;padding:16px 20px}
+.modal-foot{padding:12px 20px;border-top:1px solid var(--rule);display:flex;gap:8px;justify-content:flex-end;align-items:center}
+.modal-foot .status{font-family:var(--mono);font-size:10px;margin-right:auto}
+.modal-foot .status.ok{color:var(--green)}.modal-foot .status.err{color:var(--red)}
+textarea.export-box{width:100%;height:300px;background:var(--navy);border:1px solid var(--rule);color:var(--cream);font-family:var(--mono);font-size:10px;padding:8px;resize:vertical;outline:none}
+textarea.export-box:focus{border-color:var(--gold)}
+
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--navy-light);border:1px solid var(--gold);padding:7px 16px;font-family:var(--mono);font-size:11px;color:var(--gold);z-index:300;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+
+.changes-bar{position:fixed;bottom:0;left:0;right:0;background:var(--navy-mid);border-top:2px solid var(--gold);padding:8px 24px;display:flex;align-items:center;gap:12px;z-index:50;font-family:var(--mono);font-size:11px}
+.changes-bar .count{color:var(--gold)}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<!-- Vehicle DB loaded from /cars/db.json -->
+<script type="text/babel">
+const{useState,useEffect,useMemo,useRef,useCallback}=React;
+
+const STORABLE_TYPES=new Set(['CAR','BIKE','QUADBIKE','AMPHIBIOUS_AUTOMOBILE','AMPHIBIOUS_QUADBIKE','SUBMARINECAR','BICYCLE']);
+const CLASSES=['SUPER','SPORT','SPORT_CLASSIC','MUSCLE','SEDAN','SUV','COUPE','COMPACT','OFF_ROAD','MOTORCYCLE','CYCLE','VAN','UTILITY','COMMERCIAL','INDUSTRIAL','SERVICE','EMERGENCY','MILITARY','OPEN_WHEEL'];
+const TYPES=['CAR','BIKE','QUADBIKE','AMPHIBIOUS_AUTOMOBILE','AMPHIBIOUS_QUADBIKE','SUBMARINECAR','BICYCLE','HELI','PLANE','BOAT','SUBMARINE','TRAIN','TRAILER'];
+
+const DLC_NAMES={
+  'TitleUpdate':'Launch','mpbeach':'Beach Bum','mpbusiness':'Business','mpbusiness2':'Business 2',
+  'mpchristmas2':'Festive Surprise','mphipster':'Not a Hipster','mpindependence':'Independence Day',
+  'mppilot':'Flight School','mpvalentines':'Be My Valentine','mpheist':'Heists',
+  'mpluxe':'Ill-Gotten Gains','mpluxe2':'Ill-Gotten Gains 2','mplowrider':'Lowriders',
+  'mplowrider2':'Lowriders: Custom','mpexecutive':'Finance & Felony','mpstunt':'Cunning Stunts',
+  'mpbiker':'Bikers','mpimportexport':'Import/Export','mpgunrunning':'Gunrunning',
+  'mpsmuggler':'Smugglers Run','mpchristmas2017':'Doomsday Heist','mpheist3':'Casino Heist',
+  'mpheist4':'Cayo Perico','mpsecurity':'The Contract','mpchristmas3':'Arena War',
+  'mpvinewood':'Diamond Casino','mpsum':'LS Summer','mptuner':'LS Tuners',
+  'mpsalvage':'Chop Shop','mpfixer':'The Contract','mp2023_01':'LS Drug Wars',
+  'mp2023_02':'SA Mercenaries','mp2024_01':'Bottom Dollar','mp2024_02':'Agents of Sabotage',
+  'mp2024_03':'Money Fronts','mpg9ec':'Enhanced','mpsum2':'Criminal Enterprises',
+  'mpsum2_g9ec':'Enhanced Ed.','mp2025_01':'Mansions',
+};
+
+// Load DB
+let RAW_DB=[]; // loaded via fetch
+
+function App(){
+  const[db,setDb]=useState(()=>RAW_DB.map((v,i)=>{
+    const gameFlags=v.flags||[];
+    return{
+      _idx:i,
+      _dirty:false,
+      displayName:v.displayName||'',
+      manufacturer:v.manufacturer||'',
+      class:v.class||'',
+      type:v.type||'',
+      price:v.price||0,
+      seats:v.seats||0,
+      irlName:v.irlName||'',
+      hsw:!!v.hsw,
+      imaniTech:v.imaniTech||'',
+      convertible:!!v.convertible,
+      dlc:v.dlc||'',
+      weapons:(v.weapons||[]).map(w=>w.replace('VEHICLE_WEAPON_','').replace(/_/g,' ')).join(', '),
+      // Armor: derived from game flags, editable
+      brGlass:gameFlags.includes('FLAG_HAS_BULLET_RESISTANT_GLASS'),
+      expRes:gameFlags.includes('FLAG_HAS_CAPPED_EXPLOSION_DAMAGE'),
+      wsProtect:gameFlags.includes('FLAG_DISABLE_THROUGH_WINDSCREEN'),
+      // Keep raw flags for reference
+      _gameFlags:gameFlags.filter(f=>!f.startsWith('FLAG_AVERAGE')&&!f.startsWith('FLAG_POOR')&&!f.startsWith('FLAG_RICH')&&!f.startsWith('FLAG_SPORTS')).join(', '),
+      _storable:STORABLE_TYPES.has(v.type),
+      _id:v.id||'',
+    };
+  }));
+
+  const[q,setQ]=useState('');
+  const[sort,setSort]=useState({col:'displayName',dir:'asc'});
+  const[showOnly,setShowOnly]=useState('storable'); // all, storable
+  const[classFilter,setClassFilter]=useState('');
+  const[mfrFilter,setMfrFilter]=useState('');
+  const[dirtyOnly,setDirtyOnly]=useState(false);
+  const[modal,setModal]=useState(null); // 'ultra','full',null
+  const[toast,setToast]=useState('');
+
+  function flash(m){setToast(m);setTimeout(()=>setToast(''),2000)}
+
+  // Filtered + sorted
+  const filtered=useMemo(()=>{
+    let list=db;
+    if(showOnly==='storable')list=list.filter(v=>v._storable);
+    if(classFilter)list=list.filter(v=>v.class===classFilter);
+    if(mfrFilter)list=list.filter(v=>v.manufacturer===mfrFilter);
+    if(dirtyOnly)list=list.filter(v=>v._dirty);
+    if(q.length>=2){
+      const ql=q.toLowerCase();
+      list=list.filter(v=>
+        v.displayName.toLowerCase().includes(ql)||
+        v.manufacturer.toLowerCase().includes(ql)||
+        v.irlName.toLowerCase().includes(ql)||
+        v._id.toLowerCase().includes(ql)||
+        v.dlc.toLowerCase().includes(ql)||
+        (DLC_NAMES[v.dlc]||'').toLowerCase().includes(ql)
+      );
+    }
+    const col=sort.col;
+    const dir=sort.dir==='asc'?1:-1;
+    list=[...list].sort((a,b)=>{
+      let va=a[col],vb=b[col];
+      if(typeof va==='boolean'){va=va?1:0;vb=vb?1:0}
+      if(typeof va==='number')return(va-vb)*dir;
+      if(typeof va==='string')return va.localeCompare(vb)*dir;
+      return 0;
+    });
+    return list;
+  },[db,q,sort,showOnly,classFilter,mfrFilter,dirtyOnly]);
+
+  const dirtyCount=useMemo(()=>db.filter(v=>v._dirty).length,[db]);
+
+  // Unique manufacturers
+  const mfrs=useMemo(()=>{
+    const s=new Set();db.forEach(v=>{if(v.manufacturer)s.add(v.manufacturer)});
+    return[...s].sort();
+  },[db]);
+
+  function updateField(idx,field,value){
+    setDb(prev=>{
+      const n=[...prev];
+      n[idx]={...n[idx],[field]:value,_dirty:true};
+      return n;
+    });
+  }
+
+  function toggleSort(col){
+    setSort(prev=>prev.col===col?{col,dir:prev.dir==='asc'?'desc':'asc'}:{col,dir:'asc'});
+  }
+
+  function thClass(col){
+    if(sort.col!==col)return'';
+    return sort.dir==='asc'?'sorted-asc':'sorted-desc';
+  }
+
+  // ═══ EXPORT: generate ultra-compact for garage manager ═══
+  function generateUltra(){
+    const storable=db.filter(v=>v._storable);
+    storable.sort((a,b)=>(a.manufacturer||'ZZZ').localeCompare(b.manufacturer||'ZZZ')||a.displayName.localeCompare(b.displayName));
+    const ultra=storable.map(v=>{
+      let flags='';
+      if(v.irlName)flags+='I';
+      if(v.hsw)flags+='H';
+      if(v.imaniTech==='full')flags+='F';
+      else if(v.imaniTech==='jammer')flags+='J';
+      if(v.brGlass||v.expRes||v.wsProtect)flags+='A';
+      if(v.brGlass)flags+='B';
+      if(v.expRes)flags+='E';
+      if(v.weapons.trim())flags+='W';
+      if(v.convertible)flags+='C';
+      const dlcName=DLC_NAMES[v.dlc]||v.dlc;
+      return[v.displayName,v.manufacturer,v.class,flags,v.irlName,v.price>100?v.price:0,v.seats,dlcName];
+    });
+    return JSON.stringify(ultra);
+  }
+
+  // ═══ EXPORT: generate full DB JSON ═══
+  function generateFullDB(){
+    return JSON.stringify(db.map(v=>{
+      // Reconstruct weapons array
+      const weapons=v.weapons.trim()?v.weapons.split(',').map(w=>'VEHICLE_WEAPON_'+w.trim().replace(/ /g,'_').toUpperCase()):[];
+      // Reconstruct game flags with our edits
+      const flags=[...RAW_DB[v._idx].flags||[]];
+      // Sync armor flags
+      const sync=(flag,val)=>{const has=flags.includes(flag);if(val&&!has)flags.push(flag);if(!val&&has)flags.splice(flags.indexOf(flag),1)};
+      sync('FLAG_HAS_BULLET_RESISTANT_GLASS',v.brGlass);
+      sync('FLAG_HAS_CAPPED_EXPLOSION_DAMAGE',v.expRes);
+      sync('FLAG_DISABLE_THROUGH_WINDSCREEN',v.wsProtect);
+      return{
+        id:RAW_DB[v._idx].id,displayName:v.displayName,manufacturer:v.manufacturer,
+        class:v.class,type:v.type,price:v.price,seats:v.seats,
+        irlName:v.irlName||null,hsw:v.hsw,imaniTech:v.imaniTech||null,
+        convertible:v.convertible,dlc:v.dlc,weapons,flags,
+        hasArmoredWindows:RAW_DB[v._idx].hasArmoredWindows,
+        tradePrice:RAW_DB[v._idx].tradePrice,
+        maxSpeed:RAW_DB[v._idx].maxSpeed,acceleration:RAW_DB[v._idx].acceleration,
+        maxBraking:RAW_DB[v._idx].maxBraking,maxTraction:RAW_DB[v._idx].maxTraction,
+      };
+    }),null,2);
+  }
+
+  return(<>
+    <header className="site-header">
+      <a href="/" className="wordmark" style={{fontSize:18}}>McKillsey</a>
+      <span style={{fontFamily:'var(--mono)',fontSize:10,color:'var(--cream-dim)'}}>Vehicle Database Editor</span>
+      <span className="header-tagline">{db.length} vehicles · {db.filter(v=>v._storable).length} storable</span>
+    </header>
+
+    <div className="toolbar">
+      <div className="tb-search">
+        <input placeholder="Search name, manufacturer, IRL, DLC..." value={q} onChange={e=>setQ(e.target.value)}/>
+      </div>
+      <select className="tb-select" value={showOnly} onChange={e=>setShowOnly(e.target.value)}>
+        <option value="storable">Storable only ({db.filter(v=>v._storable).length})</option>
+        <option value="all">All vehicles ({db.length})</option>
+      </select>
+      <select className="tb-select" value={classFilter} onChange={e=>setClassFilter(e.target.value)}>
+        <option value="">All classes</option>
+        {CLASSES.map(c=><option key={c} value={c}>{c}</option>)}
+      </select>
+      <select className="tb-select" value={mfrFilter} onChange={e=>setMfrFilter(e.target.value)}>
+        <option value="">All manufacturers</option>
+        {mfrs.map(m=><option key={m} value={m}>{m}</option>)}
+      </select>
+      {dirtyCount>0&&<button className={`tb-btn ${dirtyOnly?'active':''}`} onClick={()=>setDirtyOnly(!dirtyOnly)}>Edited ({dirtyCount})</button>}
+      <div className="tb-divider"/>
+      <span className="tb-stat">Showing <b>{filtered.length}</b></span>
+      <div style={{marginLeft:'auto',display:'flex',gap:6}}>
+        <button className="tb-btn" onClick={()=>setModal('ultra')}>Export Garage Data</button>
+        <button className="tb-btn" onClick={()=>setModal('full')}>Export Full DB</button>
+      </div>
+    </div>
+
+    <div className="table-wrap">
+      <table>
+        <thead><tr>
+          <th style={{width:30}}>#</th>
+          <th className={thClass('displayName')} onClick={()=>toggleSort('displayName')} style={{minWidth:160}}>Name</th>
+          <th className={thClass('manufacturer')} onClick={()=>toggleSort('manufacturer')} style={{minWidth:80}}>Manufacturer</th>
+          <th className={thClass('class')} onClick={()=>toggleSort('class')}>Class</th>
+          <th className={thClass('type')} onClick={()=>toggleSort('type')}>Type</th>
+          <th className={thClass('price')} onClick={()=>toggleSort('price')} style={{width:80}}>Price</th>
+          <th className={thClass('seats')} onClick={()=>toggleSort('seats')} className2="narrow">Seats</th>
+          <th className={thClass('irlName')} onClick={()=>toggleSort('irlName')} style={{minWidth:140}}>IRL Name</th>
+          <th className={`narrow ${thClass('hsw')}`} onClick={()=>toggleSort('hsw')}>HSW</th>
+          <th className={thClass('imaniTech')} onClick={()=>toggleSort('imaniTech')}>Imani</th>
+          <th className={`narrow ${thClass('brGlass')}`} onClick={()=>toggleSort('brGlass')}>BR Glass</th>
+          <th className={`narrow ${thClass('expRes')}`} onClick={()=>toggleSort('expRes')}>Exp Res</th>
+          <th className={`narrow ${thClass('wsProtect')}`} onClick={()=>toggleSort('wsProtect')}>WS Prot</th>
+          <th className={`narrow ${thClass('convertible')}`} onClick={()=>toggleSort('convertible')}>Conv</th>
+          <th className={thClass('weapons')} onClick={()=>toggleSort('weapons')} style={{minWidth:80}}>Weapons</th>
+          <th className={thClass('dlc')} onClick={()=>toggleSort('dlc')} style={{minWidth:80}}>DLC</th>
+        </tr></thead>
+        <tbody>
+          {filtered.map((v,ri)=><Row key={v._idx} v={v} ri={ri} updateField={updateField}/>)}
+        </tbody>
+      </table>
+    </div>
+
+    {dirtyCount>0&&<div className="changes-bar">
+      <span className="count">{dirtyCount} vehicle{dirtyCount>1?'s':''} edited</span>
+      <span style={{color:'var(--cream-dim)'}}>— use Export to save changes</span>
+    </div>}
+
+    {modal&&<ExportModal mode={modal} onClose={()=>setModal(null)}
+      ultra={modal==='ultra'?generateUltra():''}
+      full={modal==='full'?generateFullDB():''}
+      flash={flash}/>}
+
+    <div className={`toast ${toast?'show':''}`}>{toast}</div>
+  </>);
+}
+
+// ═══ ROW (memoized) ═══
+const Row=React.memo(function Row({v,ri,updateField}){
+  const idx=v._idx;
+  return(
+    <tr className={v._dirty?'dirty':''}>
+      <td className="row-num">{ri+1}</td>
+      <td><input type="text" value={v.displayName} onChange={e=>updateField(idx,'displayName',e.target.value)} style={{fontFamily:'var(--serif)',fontWeight:700,fontSize:11}}/></td>
+      <td><input type="text" value={v.manufacturer} onChange={e=>updateField(idx,'manufacturer',e.target.value)}/></td>
+      <td><select value={v.class} onChange={e=>updateField(idx,'class',e.target.value)}>{CLASSES.map(c=><option key={c} value={c}>{c}</option>)}</select></td>
+      <td className="mono dim" style={{fontSize:9}}>{v.type}</td>
+      <td><input type="number" value={v.price} onChange={e=>updateField(idx,'price',parseInt(e.target.value)||0)} style={{width:70,textAlign:'right'}}/></td>
+      <td className="center"><input type="number" value={v.seats} onChange={e=>updateField(idx,'seats',parseInt(e.target.value)||0)} style={{width:30,textAlign:'center'}}/></td>
+      <td><input type="text" value={v.irlName} onChange={e=>updateField(idx,'irlName',e.target.value)} style={{fontFamily:'var(--sans)',color:'var(--cream-dim)'}}/></td>
+      <td className="center"><input type="checkbox" checked={v.hsw} onChange={e=>updateField(idx,'hsw',e.target.checked)}/></td>
+      <td><select value={v.imaniTech} onChange={e=>updateField(idx,'imaniTech',e.target.value)}>
+        <option value="">None</option><option value="jammer">Jammer</option><option value="full">Full</option>
+      </select></td>
+      <td className="center"><input type="checkbox" checked={v.brGlass} onChange={e=>updateField(idx,'brGlass',e.target.checked)}/></td>
+      <td className="center"><input type="checkbox" checked={v.expRes} onChange={e=>updateField(idx,'expRes',e.target.checked)}/></td>
+      <td className="center"><input type="checkbox" checked={v.wsProtect} onChange={e=>updateField(idx,'wsProtect',e.target.checked)}/></td>
+      <td className="center"><input type="checkbox" checked={v.convertible} onChange={e=>updateField(idx,'convertible',e.target.checked)}/></td>
+      <td className="mono dim" style={{fontSize:9,maxWidth:100,overflow:'hidden',textOverflow:'ellipsis'}} title={v.weapons}>{v.weapons||'—'}</td>
+      <td className="mono dim" style={{fontSize:9}} title={v.dlc}>{DLC_NAMES[v.dlc]||v.dlc||'—'}</td>
+    </tr>
+  );
+});
+
+// ═══ EXPORT MODAL ═══
+function ExportModal({mode,onClose,ultra,full,flash}){
+  const[status,setStatus]=useState('');
+  const data=mode==='ultra'?ultra:full;
+  const label=mode==='ultra'?'Garage Manager Vehicle Data (ultra-compact)':'Full Vehicle Database';
+  const filename=mode==='ultra'?'data-vehicles-ultra.json':'vehicles-db-full.json';
+
+  function download(){
+    const blob=new Blob([data],{type:'application/json'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');a.href=url;a.download=filename;a.click();
+    URL.revokeObjectURL(url);
+    setStatus('Downloaded!');
+  }
+  function copy(){
+    navigator.clipboard.writeText(data).then(()=>setStatus('Copied!'));
+  }
+
+  return(
+    <div className="modal-overlay" onClick={e=>{if(e.target===e.currentTarget)onClose()}}>
+      <div className="modal">
+        <div className="modal-head">
+          <div className="modal-title">{label}</div>
+          <div className="modal-sub">{mode==='ultra'?'Compact format used by the garage manager page':'Full JSON database with all fields'} — {(data.length/1024).toFixed(0)} KB</div>
+        </div>
+        <div className="modal-body">
+          <textarea className="export-box" readOnly value={data}/>
+        </div>
+        <div className="modal-foot">
+          <span className={`status ${status.includes('!')? 'ok':'err'}`}>{status}</span>
+          <button className="tb-btn" onClick={onClose}>Close</button>
+          <button className="tb-btn" onClick={copy}>Copy</button>
+          <button className="tb-btn primary" onClick={download}>Download {filename}</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Show loading state
+ReactDOM.render(React.createElement('div',{style:{display:'flex',alignItems:'center',justifyContent:'center',height:'100vh',fontFamily:'var(--mono)',color:'var(--gold)',fontSize:14}},'Loading vehicle database...'),document.getElementById('root'));
+
+(async()=>{
+  try{
+    const res=await fetch('/cars/db.json');
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    RAW_DB=await res.json();
+    ReactDOM.render(<App/>,document.getElementById('root'));
+  }catch(err){
+    ReactDOM.render(React.createElement('div',{style:{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',height:'100vh',fontFamily:'var(--mono)',color:'var(--red)',fontSize:13,gap:12}},
+      React.createElement('div',null,'Failed to load vehicle database'),
+      React.createElement('div',{style:{color:'var(--cream-dim)',fontSize:11}},err.message),
+      React.createElement('div',{style:{color:'var(--cream-dim)',fontSize:10,marginTop:8}},'Make sure /cars/db.json is accessible')
+    ),document.getElementById('root'));
+  }
+})();
+</script>
+</body>
+</html>
