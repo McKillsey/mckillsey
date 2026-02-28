@@ -70,6 +70,19 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 .slot-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:1px;padding:1px;background:rgba(201,168,76,.05)}
 .garage-list[data-scale="2"] .slot-grid{grid-template-columns:repeat(8,1fr)}
 .garage-list[data-scale="3"] .slot-grid{grid-template-columns:repeat(6,1fr)}
+
+/* Gallery view overrides */
+.garage-list.gallery-mode .slot-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:3px;padding:3px}
+.garage-list.gallery-mode .slot{padding:0;min-height:0;border-left:none;aspect-ratio:16/9;overflow:hidden;position:relative}
+.garage-list.gallery-mode .slot .slot-num{z-index:3;top:4px;right:6px;font-size:9px;opacity:.5;text-shadow:0 1px 3px rgba(0,0,0,.8)}
+.garage-list.gallery-mode .slot .slot-actions{z-index:4;top:4px;right:22px}
+.garage-list.gallery-mode .slot .slot-mfr,.garage-list.gallery-mode .slot .slot-irl,.garage-list.gallery-mode .slot .slot-badges{display:none}
+.garage-list.gallery-mode .slot .slot-gta{position:absolute;bottom:0;left:0;right:0;padding:20px 8px 6px 8px;margin:0;font-size:12px;z-index:2;background:linear-gradient(transparent,rgba(0,0,0,.75));white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.garage-list.gallery-mode .slot .gallery-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1}
+.garage-list.gallery-mode .slot .gallery-img-shimmer{position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,var(--navy-mid) 25%,var(--navy-light) 50%,var(--navy-mid) 75%);background-size:200% 200%;animation:shimmer 1.8s ease-in-out infinite}
+.garage-list.gallery-mode .slot.empty{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center}
+.garage-list.gallery-mode .slot.empty .empty-label{font-size:10px}
+.garage-list.gallery-mode .slot:hover{outline:1px solid var(--gold);outline-offset:-1px}
 .slot{background:var(--navy);padding:calc(7px + var(--sb)*.4) calc(8px + var(--sb)*.3);min-height:calc(52px + var(--sb)*4);position:relative;cursor:default;transition:background .12s,border-color .12s;border-left:2px solid transparent}
 .slot:hover{background:rgba(30,49,72,.8)}
 .slot.empty{opacity:.35;cursor:pointer}.slot.empty:hover{opacity:.65;background:rgba(201,168,76,.04);border-left-color:var(--gold-dim)}
@@ -348,7 +361,7 @@ const slotObserver=new IntersectionObserver((entries)=>{
 function showVTip(e,dbv){
   if(!dbv){vtipEl.style.display='none';return}
   let badges='';
-  if(dbv.hsw)badges+=`<span class="vtip-badge badge-hsw">HSW Eligible</span>`;
+  if(dbv.hsw)badges+=`<span class="vtip-badge badge-hsw">${dbv.vehicleId.endsWith('_hsw')?'HSW':'HSW Eligible'}</span>`;
   if(dbv.brGlass)badges+=`<span class="vtip-badge badge-armor">Bullet Resistant Glass</span>`;
   if(dbv.expRes)badges+=`<span class="vtip-badge badge-armor">Explosion Resistant</span>`;
   if(dbv.armored&&!dbv.brGlass&&!dbv.expRes)badges+=`<span class="vtip-badge badge-armor">Armored</span>`;
@@ -400,7 +413,7 @@ function VehiclePicker({isOpen,onClose,onSelect,label}){
       :filtered.length===0?<div style={{padding:'16px 0',textAlign:'center',color:'var(--cream-dim)',fontFamily:'var(--mono)',fontSize:'10px'}}>No vehicles found</div>
       :filtered.map(v=>(<div key={v.idx} className="modal-vehicle" onClick={()=>{onSelect(v);onClose()}}>
         <div style={{flex:1,minWidth:0}}><div className="mv-mfr">{v.mfr||'Unknown'}</div><div className="mv-name">{v.name}</div>{v.irl&&<div className="mv-irl">{v.irl}</div>}</div>
-        <div className="mv-badges">{v.hsw&&<span className="slot-badge badge-hsw">HSW</span>}{v.imani&&<span className="slot-badge badge-imani">{v.imani==='full'?'Imani+':'Jammer'}</span>}{v.armored&&<span className="slot-badge badge-armor">Armor</span>}{v.wpnzed&&<span className="slot-badge badge-weapon">Wpnzd</span>}</div>
+        <div className="mv-badges">{v.hsw&&<span className="slot-badge badge-hsw">{v.isHswVariant?'HSW':'HSW Eligible'}</span>}{v.imani&&<span className="slot-badge badge-imani">{v.imani==='full'?'Imani+':'Jammer'}</span>}{v.armored&&<span className="slot-badge badge-armor">Armor</span>}{v.wpnzed&&<span className="slot-badge badge-weapon">Wpnzd</span>}</div>
         <div className="mv-class">{cls(v.cls)}</div><div className="mv-price">{fmt$(v.price)}</div>
       </div>))}
     </div>
@@ -537,6 +550,11 @@ function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,d
 
   const isHsw=dbv&&dbv.hsw;
   const carName=dbv?dbv.name:(car?.gtaName||car?.vehicleId||'Unknown');
+  const isGallery=display.gallery;
+  const galleryImgSrc=isGallery&&imgId?imgUrl(imgId):null;
+  const[galleryLoaded,setGalleryLoaded]=useState(false);
+  const[galleryFailed,setGalleryFailed]=useState(false);
+  useEffect(()=>{setGalleryLoaded(false);setGalleryFailed(false)},[imgId]);
   return(<div ref={slotRef} data-img-id={imgId} className={`slot${compactClass}${hl?' highlight':''}${isDragOver?' drag-over':''}${isDupe?' dupe-flag':''}`}
     draggable={true}
     onDragStart={e=>{dragRef={garageIdx,slotIdx};e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain','')}}
@@ -544,13 +562,19 @@ function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,d
     onDragOver={e=>{e.preventDefault();setIsDragOver(true)}} onDragLeave={()=>setIsDragOver(false)}
     onDrop={e=>{e.preventDefault();setIsDragOver(false);if(dragRef.garageIdx!==null){onDragDrop(dragRef.garageIdx,dragRef.slotIdx,garageIdx,slotIdx);dragRef={garageIdx:null,slotIdx:null}}}}
     onMouseEnter={e=>{if(dbv)showVTip(e,dbv)}} onMouseMove={e=>{if(dbv)posVTip(e)}} onMouseLeave={hideVTip}>
+    {isGallery&&galleryImgSrc&&!galleryFailed&&<>
+      {!galleryLoaded&&<div className="gallery-img-shimmer"/>}
+      <img className="gallery-img" src={galleryImgSrc} alt="" loading="lazy"
+        style={galleryLoaded?{}:{opacity:0}}
+        onLoad={()=>setGalleryLoaded(true)} onError={()=>setGalleryFailed(true)}/>
+    </>}
     <span className="slot-num">{num}</span>
     <div className="slot-actions"><button className="slot-action-btn" onClick={e=>{e.stopPropagation();hideVTip();onRemove()}} title="Remove">×</button></div>
     {display.showMfr&&dbv&&dbv.mfr&&<div className="slot-mfr">{dbv.mfr}</div>}
-    {display.showGta&&<div className="slot-gta">{carName}</div>}
+    {(display.showGta||isGallery)&&<div className="slot-gta">{carName}</div>}
     {display.showIrl&&dbv&&dbv.irl&&<div className="slot-irl">{dbv.irl}</div>}
     {display.showBadges&&<div className="slot-badges">
-      {isHsw&&<span className="slot-badge badge-hsw">HSW</span>}
+      {isHsw&&<span className="slot-badge badge-hsw">{dbv.isHswVariant?'HSW':'HSW Eligible'}</span>}
       {dbv?.brGlass&&<span className="slot-badge badge-armor">BP</span>}
       {dbv?.expRes&&!dbv?.brGlass&&<span className="slot-badge badge-armor">Armor</span>}
       {dbv?.armored&&!dbv?.brGlass&&!dbv?.expRes&&<span className="slot-badge badge-armor">Armor</span>}
@@ -639,7 +663,7 @@ function App(){
   const[toast,setToast]=useState('');
   const[hideEmpty,setHideEmpty]=useState(false);
   const[showDupes,setShowDupes]=useState(false);
-  const[display,setDisplay]=useState({showMfr:true,showGta:true,showIrl:true,showBadges:true});
+  const[display,setDisplay]=useState({showMfr:true,showGta:true,showIrl:true,showBadges:true,gallery:false});
   const[slotScale,setSlotScale]=useState(0);
 
   useEffect(()=>{save(coll)},[coll]);
@@ -677,6 +701,7 @@ function App(){
         <input placeholder="Search vehicles, garages, manufacturers..." value={sq} onChange={e=>setSq(e.target.value)}/>
       </div>
       <button className={`tb-btn ${hideEmpty?'active':''}`} onClick={()=>setHideEmpty(!hideEmpty)}>{hideEmpty?'◉ Hide empty':'○ Show all'}</button>
+      <button className={`tb-btn ${display.gallery?'active':''}`} onClick={()=>setDisplay(d=>({...d,gallery:!d.gallery}))}>{display.gallery?'◉ Gallery':'○ Gallery'}</button>
       <button className="tb-btn" onClick={()=>setPropMgr(true)}>Properties</button>
       <SettingsDropdown display={display} setDisplay={setDisplay} showDupes={showDupes} setShowDupes={setShowDupes} slotScale={slotScale} setSlotScale={setSlotScale}/>
       <button className="tb-btn" onClick={()=>setIo('export')}>Export</button>
@@ -715,7 +740,7 @@ function App(){
           </div>
         </div>
       </div>
-      <div className="garage-list" style={{'--sb':slotScale*2+'px'}} data-scale={slotScale}>
+      <div className={`garage-list${display.gallery?' gallery-mode':''}`} style={{'--sb':slotScale*2+'px'}} data-scale={slotScale}>
         {displayGroups.map((g,i)=>{
           if(g.type==='single')return <GarageCard key={g.prop.id+'-'+g.propIdx} garages={[{prop:g.prop,propIdx:g.propIdx,floor:null}]} label={g.prop.name} sq={sq} dupes={dupes} showDupes={showDupes} display={display} onUpdate={(idx,u)=>updateG(idx,u)} onAdd={(gi,si,lbl)=>setPicker({gi,si,label:lbl})} onDragDrop={handleDragDrop}/>;
           return <GarageCard key={g.label+'-'+i} garages={g.siblings.map(s=>({prop:s.prop,propIdx:s.propIdx,floor:s.floor}))} label={g.label} sq={sq} dupes={dupes} showDupes={showDupes} display={display} onUpdate={(idx,u)=>updateG(idx,u)} onAdd={(gi,si,lbl)=>setPicker({gi,si,label:lbl})} onDragDrop={handleDragDrop}/>;
@@ -750,6 +775,7 @@ ReactDOM.render(React.createElement('div',{style:{display:'flex',alignItems:'cen
       let flags='';
       if(v.irlName)flags+='I';
       if(v.hsw)flags+='H';
+      if(v.id&&v.id.endsWith('_hsw'))flags+='h';
       if(v.imaniTech==='full')flags+='F';
       else if(v.imaniTech==='jammer')flags+='J';
       if(gf.includes('BULLET_RESISTANT_GLASS')||gf.includes('CAPPED_EXPLOSION_DAMAGE')||gf.includes('FLAG_DISABLE_THROUGH_WINDSCREEN'))flags+='A';
@@ -769,6 +795,7 @@ ReactDOM.render(React.createElement('div',{style:{display:'flex',alignItems:'cen
       imgId:v[8]||'',lapTime:v[9]||null,topSpeed:v[10]||null,
       vehicleId:v[11]||v[8]||'',
       hsw:(v[3]||'').includes('H'),
+      isHswVariant:(v[3]||'').includes('h'),
       imani:(v[3]||'').includes('F')?'full':(v[3]||'').includes('J')?'jammer':null,
       armored:(v[3]||'').includes('A'),brGlass:(v[3]||'').includes('B'),expRes:(v[3]||'').includes('E'),
       wpnzed:(v[3]||'').includes('W'),convertible:(v[3]||'').includes('C'),
