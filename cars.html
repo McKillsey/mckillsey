@@ -50,7 +50,7 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 .stat-pop-row .pop-sub{color:var(--cream-dim);font-size:9px}
 .stat-pop-head{font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:3px 12px 5px;border-bottom:1px solid rgba(201,168,76,.15);margin-bottom:2px}
 
-.garage-list{display:flex;flex-direction:column;gap:12px;--sb:0px}
+.garage-list{display:flex;flex-direction:column;gap:12px;--sb:0px;user-select:none}
 .garage-card{border:1px solid var(--rule);background:var(--navy-mid)}
 .garage-header{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid var(--rule);cursor:pointer;user-select:none}
 .garage-header:hover{background:rgba(201,168,76,.03)}
@@ -67,7 +67,7 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 .floor-header{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-dim);padding:6px 12px 4px;background:rgba(201,168,76,.02);border-bottom:1px solid rgba(201,168,76,.06)}
 
 /* 10-column slot grid */
-.slot-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:1px;padding:1px;background:rgba(201,168,76,.05)}
+.slot-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:1px;padding:1px;background:rgba(201,168,76,.05);user-select:none}
 .garage-list[data-scale="2"] .slot-grid{grid-template-columns:repeat(8,1fr)}
 .garage-list[data-scale="3"] .slot-grid{grid-template-columns:repeat(6,1fr)}
 
@@ -604,7 +604,7 @@ function GarageCard({garages,label,sq,onUpdate,onAdd,onDragDrop,dupes,showDupes,
     onUpdate(idx,p);
   }
 
-  return(<div className="garage-card" style={{opacity:hasMatch?1:.25,transition:'opacity .2s'}}>
+  return(<div className="garage-card" style={{opacity:hasMatch?1:.25,transition:'opacity .2s'}} onDragOver={e=>e.preventDefault()}>
     <div className="garage-header" onClick={()=>setOpen(!open)}>
       <span className={`garage-chevron ${open?'open':''}`}>▸</span>
       <span className="garage-name">{label}</span>
@@ -740,7 +740,7 @@ function App(){
           </div>
         </div>
       </div>
-      <div className={`garage-list${display.gallery?' gallery-mode':''}`} style={{'--sb':slotScale*2+'px'}} data-scale={slotScale}>
+      <div className={`garage-list${display.gallery?' gallery-mode':''}`} style={{'--sb':slotScale*2+'px'}} data-scale={slotScale} onDragOver={e=>e.preventDefault()}>
         {displayGroups.map((g,i)=>{
           if(g.type==='single')return <GarageCard key={g.prop.id+'-'+g.propIdx} garages={[{prop:g.prop,propIdx:g.propIdx,floor:null}]} label={g.prop.name} sq={sq} dupes={dupes} showDupes={showDupes} display={display} onUpdate={(idx,u)=>updateG(idx,u)} onAdd={(gi,si,lbl)=>setPicker({gi,si,label:lbl})} onDragDrop={handleDragDrop}/>;
           return <GarageCard key={g.label+'-'+i} garages={g.siblings.map(s=>({prop:s.prop,propIdx:s.propIdx,floor:s.floor}))} label={g.label} sq={sq} dupes={dupes} showDupes={showDupes} display={display} onUpdate={(idx,u)=>updateG(idx,u)} onAdd={(gi,si,lbl)=>setPicker({gi,si,label:lbl})} onDragDrop={handleDragDrop}/>;
