@@ -95,7 +95,14 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 .empty-label{font-family:var(--mono);font-size:calc(8px + var(--sb)*.6);color:var(--cream-dim);opacity:.5;letter-spacing:.02em}
 
 /* Vehicle tooltip */
-.vtip{position:fixed;z-index:9999;width:260px;background:#08111a;border:1px solid var(--gold);padding:0;pointer-events:none;display:none;box-shadow:0 8px 32px rgba(0,0,0,.6)}
+.vtip{position:fixed;z-index:9999;width:280px;background:#08111a;border:1px solid var(--gold);padding:0;pointer-events:none;display:none;box-shadow:0 8px 32px rgba(0,0,0,.6)}
+.vtip.has-hover{pointer-events:auto}
+.vtip-img-wrap{position:relative;width:100%;height:158px;overflow:hidden;background:var(--navy-mid)}
+.vtip-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .2s}
+.vtip-img-wrap .vtip-img-action{position:absolute;inset:0;opacity:0}
+.vtip-img-wrap:hover .vtip-img-main{opacity:0}
+.vtip-img-wrap:hover .vtip-img-action{opacity:1}
+.vtip-img-fail{display:none}
 .vtip-head{padding:10px 12px 8px;border-bottom:1px solid rgba(201,168,76,.15)}
 .vtip-mfr{font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:2px}
 .vtip-name{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--cream);line-height:1.2}
@@ -285,8 +292,14 @@ function buildDisplayGroups(properties){
 
 // ═══ TOOLTIP ═══
 const vtipEl=document.getElementById('vtip');
+const RSC_BASE='https://s.rsg.sc/sc/images/games/GTAV/vehicles/screens/mp/';
+let tipPinned=false; // true when mouse is over the tooltip itself
+let tipSlotEl=null;  // the slot element that triggered the tooltip
+
+function imgUrl(id,type){return RSC_BASE+type+'/'+id+'.jpg?resize=560px:*'}
+
 function showVTip(e,dbv){
-  if(!dbv){vtipEl.style.display='none';return}
+  if(!dbv){vtipEl.style.display='none';vtipEl.classList.remove('has-hover');return}
   let badges='';
   if(dbv.hsw)badges+=`<span class="vtip-badge badge-hsw">HSW Eligible</span>`;
   if(dbv.brGlass)badges+=`<span class="vtip-badge badge-armor">Bullet Resistant Glass</span>`;
@@ -296,11 +309,20 @@ function showVTip(e,dbv){
   if(dbv.imani==='full')badges+=`<span class="vtip-badge badge-imani">Imani Tech (Full)</span>`;
   else if(dbv.imani==='jammer')badges+=`<span class="vtip-badge badge-imani">Missile Jammer</span>`;
   if(dbv.convertible)badges+=`<span class="vtip-badge" style="background:rgba(201,168,76,.1);color:var(--gold-dim)">Convertible</span>`;
-  vtipEl.innerHTML=`<div class="vtip-head"><div class="vtip-mfr">${dbv.mfr||'Unknown'}</div><div class="vtip-name">${dbv.name}</div>${dbv.irl?`<div class="vtip-irl">${dbv.irl}</div>`:''}</div><div class="vtip-body"><div class="vtip-row"><span class="vtip-label">Class</span><span class="vtip-val">${cls(dbv.cls)}</span></div><div class="vtip-row"><span class="vtip-label">Price</span><span class="vtip-val gold">${fmtFull$(dbv.price)}</span></div><div class="vtip-row"><span class="vtip-label">Seats</span><span class="vtip-val">${dbv.seats||'—'}</span></div>${dbv.dlc?`<div class="vtip-row"><span class="vtip-label">Update</span><span class="vtip-val">${dbv.dlc}</span></div>`:''}</div>${badges?`<div class="vtip-badges">${badges}</div>`:''}`;
+  const imgId=dbv.imgId||'';
+  const imgHtml=imgId?`<div class="vtip-img-wrap"><img class="vtip-img-main" src="${imgUrl(imgId,'main')}" onerror="this.parentElement.style.display='none'" alt=""/><img class="vtip-img-action" src="${imgUrl(imgId,'action')}" onerror="this.style.display='none'" alt=""/></div>`:'';
+  vtipEl.innerHTML=`${imgHtml}<div class="vtip-head"><div class="vtip-mfr">${dbv.mfr||'Unknown'}</div><div class="vtip-name">${dbv.name}</div>${dbv.irl?`<div class="vtip-irl">${dbv.irl}</div>`:''}</div><div class="vtip-body"><div class="vtip-row"><span class="vtip-label">Class</span><span class="vtip-val">${cls(dbv.cls)}</span></div><div class="vtip-row"><span class="vtip-label">Price</span><span class="vtip-val gold">${fmtFull$(dbv.price)}</span></div><div class="vtip-row"><span class="vtip-label">Seats</span><span class="vtip-val">${dbv.seats||'—'}</span></div>${dbv.dlc?`<div class="vtip-row"><span class="vtip-label">Update</span><span class="vtip-val">${dbv.dlc}</span></div>`:''}</div>${badges?`<div class="vtip-badges">${badges}</div>`:''}`;
+  vtipEl.classList.add('has-hover');
+  tipPinned=false;
+  tipSlotEl=e.target.closest('.slot');
   vtipEl.style.display='block';posVTip(e);
 }
-function posVTip(e){const tw=260,th=vtipEl.offsetHeight||150,vw=window.innerWidth,vh=window.innerHeight;let x=e.clientX-tw/2,y=e.clientY-th-14;if(x<8)x=8;if(x+tw>vw-8)x=vw-tw-8;if(y<8)y=e.clientY+20;vtipEl.style.left=x+'px';vtipEl.style.top=y+'px'}
-function hideVTip(){vtipEl.style.display='none'}
+function posVTip(e){const tw=280,th=vtipEl.offsetHeight||200,vw=window.innerWidth,vh=window.innerHeight;let x=e.clientX-tw/2,y=e.clientY-th-14;if(x<8)x=8;if(x+tw>vw-8)x=vw-tw-8;if(y<8)y=e.clientY+20;vtipEl.style.left=x+'px';vtipEl.style.top=y+'px'}
+function hideVTip(){if(tipPinned)return;vtipEl.style.display='none';vtipEl.classList.remove('has-hover');tipSlotEl=null}
+
+// When mouse enters tooltip, pin it so it doesn't disappear
+vtipEl.addEventListener('mouseenter',()=>{tipPinned=true});
+vtipEl.addEventListener('mouseleave',()=>{tipPinned=false;vtipEl.style.display='none';vtipEl.classList.remove('has-hover');tipSlotEl=null});
 
 let dragRef={garageIdx:null,slotIdx:null};
 let toastTimeout=null;
@@ -472,7 +494,7 @@ function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,d
     onDragEnd={()=>{dragRef={garageIdx:null,slotIdx:null}}}
     onDragOver={e=>{e.preventDefault();setIsDragOver(true)}} onDragLeave={()=>setIsDragOver(false)}
     onDrop={e=>{e.preventDefault();setIsDragOver(false);if(dragRef.garageIdx!==null){onDragDrop(dragRef.garageIdx,dragRef.slotIdx,garageIdx,slotIdx);dragRef={garageIdx:null,slotIdx:null}}}}
-    onMouseEnter={e=>{if(dbv)showVTip(e,dbv)}} onMouseMove={e=>{if(dbv)posVTip(e)}} onMouseLeave={hideVTip}>
+    onMouseEnter={e=>{if(dbv)showVTip(e,dbv)}} onMouseMove={e=>{if(dbv&&!tipPinned)posVTip(e)}} onMouseLeave={hideVTip}>
     <span className="slot-num">{num}</span>
     <div className="slot-actions"><button className="slot-action-btn" onClick={e=>{e.stopPropagation();hideVTip();onRemove()}} title="Remove">×</button></div>
     {display.showMfr&&dbv&&dbv.mfr&&<div className="slot-mfr">{dbv.mfr}</div>}
@@ -684,7 +706,7 @@ ReactDOM.render(React.createElement('div',{style:{display:'flex',alignItems:'cen
       if(v.weapons&&v.weapons.length)flags+='W';
       if(v.convertible)flags+='C';
       const dlc=DLC_SHORT[v.dlc]||v.dlc||'';
-      return[v.displayName,v.manufacturer||'',v.class||'',flags,v.irlName||'',v.price>100?v.price:0,v.seats||0,dlc];
+      return[v.displayName,v.manufacturer||'',v.class||'',flags,v.irlName||'',v.price>100?v.price:0,v.seats||0,dlc,v.id||''];
     });
     
     // Re-init VEHICLES array
@@ -692,6 +714,7 @@ ReactDOM.render(React.createElement('div',{style:{display:'flex',alignItems:'cen
     RAW_V.forEach((v,i)=>VEHICLES.push({
       idx:i,name:v[0],mfr:v[1],cls:v[2],flags:v[3]||'',
       irl:v[4]||null,price:v[5]||0,seats:v[6]||0,dlc:v[7]||'',
+      imgId:v[8]||'',
       hsw:(v[3]||'').includes('H'),
       imani:(v[3]||'').includes('F')?'full':(v[3]||'').includes('J')?'jammer':null,
       armored:(v[3]||'').includes('A'),brGlass:(v[3]||'').includes('B'),expRes:(v[3]||'').includes('E'),
