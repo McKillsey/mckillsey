@@ -181,7 +181,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 
   <div class="concept-box" style="margin-bottom:16px">
     <div class="verdict-label" style="color:var(--cream-dim)">How Dealer Pricing Works</div>
-    <p>Three dealers appear daily across Los Santos, each buying small quantities: 1 coke, 2 meth, 10 weed, and 10 acid. Each dealer has one premium product they'll pay double for. Prices vary within a range. Dealers pull from MC business stock first; if empty, they pull from Nightclub warehouse.</p>
+    <p>Three dealers appear daily across Los Santos, each buying small quantities: 1 coke, 2 meth, 10 weed, and 10 acid. Each dealer has one premium product they'll pay double for. Prices vary within a range. Selling one at a time pulls from MC stock first; selling the full quantity in one go may pull from Nightclub instead (see Mechanics below).</p>
   </div>
 
   <div class="table-wrap" style="margin-top:14px">
@@ -260,7 +260,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 
   <div class="concept-box" style="margin-bottom:16px">
     <div class="verdict-label" style="color:var(--cream-dim)">What This Table Shows</div>
-    <p>The same units a dealer buys from you can be sold through your MC businesses, Acid Lab, or Nightclub for significantly more. Values shown per dealer visit quantity (1 coke, 2 meth, 10 weed, 10 acid). MC and Acid Lab values assume full upgrades and applicable front business bonuses (e.g. Smoke on the Water for weed). HDB = High Demand Bonus (+50% in a full lobby), which is how McKillsey recommends selling.</p>
+    <p>The same units a dealer buys from you can be sold through your MC businesses, Acid Lab, or Nightclub for significantly more. Values shown per dealer visit quantity (1 coke, 2 meth, 10 weed, 10 acid). MC and Acid Lab values assume full upgrades and applicable front business bonuses (e.g. Smoke on the Water for weed). Nightclub values are net of Tony&rsquo;s 10% laundering fee. HDB = High Demand Bonus (+50% in a full lobby), which is how McKillsey recommends selling.</p>
   </div>
 
   <div class="table-wrap opp-tbl">
@@ -279,24 +279,24 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
           <td class="tip" data-tip-label="Coke E[Dealer Revenue]" data-tip-calc="15% chance premium: $40,000&#10;85% chance normal: $20,000&#10;&#10;E[price] = 0.15 &times; $40,000 + 0.85 &times; $20,000&#10;= $6,000 + $17,000 = $23,000&#10;&times; 1 unit = $23,000 per visit" data-tip-result="$23,000" style="color:var(--red)">$23,000</td>
           <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Coke MC Sell" data-tip-calc="$52,500 per unit &times; 1 unit&#10;No front bonus for coke" data-tip-result="$52,500">$52,500</span><span style="color:var(--green);font-size:10px;line-height:1">+128%</span></div></td>
           <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Coke MC + HDB" data-tip-calc="$52,500 &times; 1.50 HDB&#10;= $78,750" data-tip-result="$78,750" style="color:var(--green);font-weight:500">$78,750</span><span style="color:var(--green);font-size:10px;line-height:1">+242%</span></div></td>
-          <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Coke NC Sell" data-tip-calc="South American Imports&#10;$20,000 per unit &times; 1&#10;Zero supply cost" data-tip-result="$20,000">$20,000</span><span style="color:var(--cream-dim);font-size:10px;line-height:1">(13%)</span></div></td>
-          <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Coke NC + HDB" data-tip-calc="$20,000 &times; 1.50 HDB&#10;= $30,000&#10;Zero supply cost" data-tip-result="$30,000" style="color:var(--green)">$30,000</span><span style="color:var(--green);font-size:10px;line-height:1">+30%</span></div></td>
+          <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Coke NC Sell (net)" data-tip-calc="South American Imports&#10;$27,000 per unit (post-buff)&#10;&minus; 10% Tony&rsquo;s fee&#10;= $24,300 per unit&#10;Zero supply cost" data-tip-result="$24,300">$24,300</span><span style="color:var(--green);font-size:10px;line-height:1">+6%</span></div></td>
+          <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Coke NC + HDB (net)" data-tip-calc="$24,300 &times; 1.50 HDB&#10;= $36,450&#10;Zero supply cost" data-tip-result="$36,450" style="color:var(--green)">$36,450</span><span style="color:var(--green);font-size:10px;line-height:1">+58%</span></div></td>
         </tr>
         <tr>
           <td><div class="prod"><span class="prod-dot meth"></span><span class="prod-name">Meth <span style="font-size:11px;color:var(--cream-dim);font-weight:400">&times;2</span></span></div></td>
           <td class="tip" data-tip-label="Meth E[Dealer Revenue]" data-tip-calc="20% chance premium: $17,500/unit&#10;80% chance normal: $8,750/unit&#10;&#10;E[price] = 0.20 &times; $17,500 + 0.80 &times; $8,750&#10;= $3,500 + $7,000 = $10,500/unit&#10;&times; 2 units = $21,000 per visit" data-tip-result="$21,000" style="color:var(--red)">$21,000</td>
           <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Meth MC Sell" data-tip-calc="$22,313 per unit &times; 2 units&#10;= $44,626" data-tip-result="$44,626">$44,626</span><span style="color:var(--green);font-size:10px;line-height:1">+113%</span></div></td>
           <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Meth MC + HDB" data-tip-calc="$22,313 &times; 1.50 HDB &times; 2&#10;= $66,939" data-tip-result="$66,939" style="color:var(--green);font-weight:500">$66,939</span><span style="color:var(--green);font-size:10px;line-height:1">+219%</span></div></td>
-          <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Meth NC Sell" data-tip-calc="Pharmaceutical Research&#10;$8,500 per unit &times; 2&#10;= $17,000&#10;Zero supply cost" data-tip-result="$17,000">$17,000</span><span style="color:var(--cream-dim);font-size:10px;line-height:1">(19%)</span></div></td>
-          <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Meth NC + HDB" data-tip-calc="$8,500 &times; 1.50 &times; 2&#10;= $25,500&#10;Zero supply cost" data-tip-result="$25,500" style="color:var(--green)">$25,500</span><span style="color:var(--green);font-size:10px;line-height:1">+21%</span></div></td>
+          <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Meth NC Sell (net)" data-tip-calc="Pharmaceutical Research&#10;$11,475 per unit (post-buff)&#10;&minus; 10% Tony&rsquo;s fee = $10,328&#10;&times; 2 units = $20,655&#10;Zero supply cost" data-tip-result="$20,655">$20,655</span><span style="color:var(--cream-dim);font-size:10px;line-height:1">(2%)</span></div></td>
+          <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Meth NC + HDB (net)" data-tip-calc="$10,328 &times; 1.50 &times; 2&#10;= $30,983&#10;Zero supply cost" data-tip-result="$30,983" style="color:var(--green)">$30,983</span><span style="color:var(--green);font-size:10px;line-height:1">+47%</span></div></td>
         </tr>
         <tr>
           <td><div class="prod"><span class="prod-dot weed"></span><span class="prod-name">Weed <span style="font-size:11px;color:var(--cream-dim);font-weight:400">&times;10</span></span></div></td>
           <td class="tip" data-tip-label="Weed E[Dealer Revenue]" data-tip-calc="30% chance premium: $3,000/unit&#10;70% chance normal: $1,500/unit&#10;&#10;E[price] = 0.30 &times; $3,000 + 0.70 &times; $1,500&#10;= $900 + $1,050 = $1,950/unit&#10;&times; 10 units = $19,500 per visit" data-tip-result="$19,500" style="color:var(--red)">$19,500</td>
           <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Weed MC + Front" data-tip-calc="$3,938 &times; 1.35 Smoke on Water&#10;= $5,316 &times; 10 = $53,163" data-tip-result="$53,163">$53,163</span><span style="color:var(--green);font-size:10px;line-height:1">+173%</span></div></td>
           <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Weed MC + Front + HDB" data-tip-calc="$5,316 &times; 1.50 HDB&#10;= $7,974 &times; 10 = $79,740" data-tip-result="$79,740" style="color:var(--green);font-weight:500">$79,740</span><span style="color:var(--green);font-size:10px;line-height:1">+309%</span></div></td>
-          <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Weed NC Sell" data-tip-calc="Organic Produce&#10;$3,000 per unit &times; 10&#10;= $30,000&#10;Zero supply cost" data-tip-result="$30,000">$30,000</span><span style="color:var(--green);font-size:10px;line-height:1">+54%</span></div></td>
-          <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Weed NC + HDB" data-tip-calc="$3,000 &times; 1.50 &times; 10&#10;= $45,000&#10;Zero supply cost" data-tip-result="$45,000" style="color:var(--green)">$45,000</span><span style="color:var(--green);font-size:10px;line-height:1">+131%</span></div></td>
+          <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Weed NC Sell (net)" data-tip-calc="Organic Produce&#10;$2,025 per unit (post-buff)&#10;&minus; 10% Tony&rsquo;s fee = $1,823&#10;&times; 10 units = $18,225&#10;Zero supply cost" data-tip-result="$18,225">$18,225</span><span style="color:var(--cream-dim);font-size:10px;line-height:1">(7%)</span></div></td>
+          <td><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px"><span class="tip" data-tip-label="Weed NC + HDB (net)" data-tip-calc="$1,823 &times; 1.50 &times; 10&#10;= $27,345&#10;Zero supply cost" data-tip-result="$27,345" style="color:var(--green)">$27,345</span><span style="color:var(--green);font-size:10px;line-height:1">+40%</span></div></td>
         </tr>
         <tr>
           <td><div class="prod"><span class="prod-dot acid"></span><span class="prod-name">Acid <span style="font-size:11px;color:var(--cream-dim);font-weight:400">&times;10</span></span></div></td>
@@ -311,7 +311,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
 
   <div class="verdict" style="margin-top:14px">
     <div class="verdict-label">The Math Is Clear</div>
-    <p>Even accounting for the chance of premium pricing, MC and Acid Lab sells with HDB earn <strong>2&times; to 4&times; more</strong> than expected dealer revenue for the same product. Even Nightclub sells &mdash; which cost nothing to produce &mdash; match or beat dealer prices. Every unit you divert to a dealer is a unit you're selling at a steep discount to what your businesses would earn.</p>
+    <p>Even accounting for the chance of premium pricing, MC and Acid Lab sells with HDB earn <strong>2&times; to 3&times; more</strong> than expected dealer revenue for the same product. Nightclub sells &mdash; which cost nothing to produce &mdash; come close but lose to dealers on meth and weed once you account for Tony&rsquo;s 10% laundering fee. With HDB, the Nightclub comfortably beats dealers across the board. Every unit you divert to a dealer is a unit you're selling at a discount to what your businesses would earn.</p>
   </div>
 </div>
 
@@ -324,7 +324,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
       <div class="verdict-label">2&times; Week Recommendation &mdash; Worth Your Time (with caveats)</div>
       <p>During 2&times; weeks, all dealer prices double &mdash; but your MC businesses and Acid Lab still pay more per unit. If you sell your full stock regularly, you're still better off selling through your businesses (or through your Acid Lab with HDB). Dealers don't change that math.</p>
       <p>Where 2&times; dealers shine is <strong>spare capacity</strong>. If you don't sell the moment you hit full stock &mdash; which realistically describes most players &mdash; dealers let you monetize production that would otherwise sit idle. Three dealer visits per day takes ~15 minutes of driving for an expected <strong>$325,785</strong> in passive-adjacent income on top of your normal rotation.</p>
-      <p>Players who sell Nightclub only and skip MC sells should sell their coke, meth, and acid to dealers during 2&times; weeks &mdash; but not weed, which still earns more through the Nightclub with HDB.</p>
+      <p>Players who sell Nightclub only and skip MC sells should sell their coke, meth, and weed to dealers during 2&times; weeks &mdash; all three beat Nightclub revenue even with HDB, once you account for Tony&rsquo;s cut.</p>
     </div>
 
     <div class="section-label" style="margin-top:22px;margin-bottom:10px;font-size:9px;color:var(--weekly);border-bottom-color:var(--weekly-border)">Expected Daily Profit &mdash; 2&times; Week</div>
@@ -447,25 +447,25 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
               <tr>
                 <td><div class="prod"><span class="prod-dot coke"></span><span class="prod-name">South Am.</span></div></td>
                 <td class="weekly" style="font-weight:600">$40,000</td>
-                <td>$20,000</td>
-                <td class="tip" data-tip-label="Coke NC + HDB" data-tip-calc="$20,000 &times; 1.50 HDB&#10;= $30,000" data-tip-result="$30,000">$30,000 <span style="color:var(--weekly);font-size:10px;font-weight:400;line-height:1;display:block;margin-top:2px;text-align:right">dealer wins</span></td>
+                <td>$24,300</td>
+                <td class="tip" data-tip-label="Coke NC + HDB (net)" data-tip-calc="$24,300 &times; 1.50 HDB&#10;= $36,450" data-tip-result="$36,450">$36,450 <span style="color:var(--weekly);font-size:10px;font-weight:400;line-height:1;display:block;margin-top:2px;text-align:right">dealer wins</span></td>
               </tr>
               <tr>
                 <td><div class="prod"><span class="prod-dot meth"></span><span class="prod-name">Pharma.</span></div></td>
                 <td class="weekly" style="font-weight:600">$35,000</td>
-                <td>$17,000</td>
-                <td class="tip" data-tip-label="Meth NC + HDB" data-tip-calc="$8,500 &times; 1.50 &times; 2 units&#10;= $25,500" data-tip-result="$25,500">$25,500 <span style="color:var(--weekly);font-size:10px;font-weight:400;line-height:1;display:block;margin-top:2px;text-align:right">dealer wins</span></td>
+                <td>$20,655</td>
+                <td class="tip" data-tip-label="Meth NC + HDB (net)" data-tip-calc="$10,328 &times; 1.50 &times; 2 units&#10;= $30,983" data-tip-result="$30,983">$30,983 <span style="color:var(--weekly);font-size:10px;font-weight:400;line-height:1;display:block;margin-top:2px;text-align:right">dealer wins</span></td>
               </tr>
               <tr>
                 <td><div class="prod"><span class="prod-dot weed"></span><span class="prod-name">Organic</span></div></td>
                 <td class="weekly">$30,000</td>
-                <td>$30,000</td>
-                <td class="tip" data-tip-label="Weed NC + HDB" data-tip-calc="$3,000 &times; 1.50 &times; 10 units&#10;= $45,000" data-tip-result="$45,000" style="color:var(--green);font-weight:500">$45,000 <span style="font-size:10px;font-weight:400;line-height:1;display:block;margin-top:2px;text-align:right">+50%</span></td>
+                <td>$18,225</td>
+                <td class="tip" data-tip-label="Weed NC + HDB (net)" data-tip-calc="$1,823 &times; 1.50 &times; 10 units&#10;= $27,345" data-tip-result="$27,345">$27,345 <span style="color:var(--weekly);font-size:10px;font-weight:400;line-height:1;display:block;margin-top:2px;text-align:right">dealer wins</span></td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div style="font-family:var(--mono);font-size:10px;color:var(--weekly);margin-top:8px;line-height:1.5"><strong>At 2&times;, selling NC coke and meth to dealers beats a Nightclub sell &mdash; even with HDB.</strong></div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--weekly);margin-top:8px;line-height:1.5"><strong>At 2&times;, selling all three NC products to dealers beats a Nightclub sell &mdash; even with HDB.</strong> NC values shown net of Tony&rsquo;s 10% laundering fee.</div>
       </div>
 
     </div>
@@ -494,11 +494,11 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
     </div>
     <div class="mech-card">
       <div class="mech-title">Stock Priority</div>
-      <div class="mech-text">Dealers pull from <strong>MC business stock first</strong>. If your MC business is empty for that product, they pull from your Nightclub warehouse instead. You cannot choose which source to sell from.</div>
+      <div class="mech-text">Selling items one at a time pulls from <strong>MC business stock first</strong>. Selling up to the max quantity in one go attempts to draw the entire amount from MC &mdash; if MC stock is insufficient, the game pulls the entire amount from your <strong>Nightclub warehouse</strong> instead. Example: if you have 6 weed in MC and 15 in Nightclub, &ldquo;sell all 10&rdquo; will take all from Nightclub. To sell from MC, you&rsquo;d need to sell 1 unit six separate times.</div>
     </div>
     <div class="mech-card">
       <div class="mech-title">Production Notes</div>
-      <div class="mech-text">MC businesses produce the same quantity per supply bar regardless of upgrades &mdash; upgrades only affect speed. Acid requires the <strong>equipment upgrade</strong> to produce more per supply cycle (150 min standard, 90 min boosted).</div>
+      <div class="mech-text">In MC businesses, the Equipment Upgrade doubles supply yield and is assumed to be in place for this analysis. Acid requires the <strong>equipment upgrade</strong> to produce more per supply cycle (150 min standard, 90 min boosted).</div>
     </div>
   </div>
 </div>
@@ -508,7 +508,7 @@ body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size
   <div class="section-label">Methodology</div>
   <div class="concept-box">
     <div class="verdict-label" style="color:var(--cream-dim)">Data Sources & Assumptions</div>
-    <p>Supply costs assume fully upgraded MC businesses and standard acid lab. Dealer prices are ranges observed in-game &mdash; midpoints used for profit calculations where a single figure is shown. MC business sell values are per-unit remote sell prices with full upgrades, no lobby bonus. Nightclub values are per-unit with full equipment upgrade. Per-unit values for the Nightclub column use the standard $/unit without the High Demand Bonus.</p>
+    <p>Supply costs assume fully upgraded MC businesses and standard acid lab. Dealer prices are ranges observed in-game &mdash; midpoints used for profit calculations where a single figure is shown. MC business sell values are per-unit remote sell prices with full upgrades, no lobby bonus. Nightclub values are per-unit after deducting Tony&rsquo;s 10% laundering fee (conservatively applied at the full 10% rate, though the fee caps at $100K per sale). Per-unit values for the Nightclub column use the standard $/unit without the High Demand Bonus.</p>
     <p>See <a href="/mc">/mc</a> for full MC business analysis. Weekly bonus impact on dealers is covered in <a href="/weekly">/weekly</a> when active.</p>
   </div>
 </div>
