@@ -82,7 +82,7 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 .garage-list[data-scale="3"] .slot-grid{grid-template-columns:repeat(6,1fr)}
 
 /* Gallery view overrides */
-.garage-list.gallery-mode .slot-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:3px;padding:3px}
+.garage-list.gallery-mode .slot-grid{grid-template-columns:repeat(5,1fr);gap:3px;padding:3px}
 .garage-list.gallery-mode .slot{padding:0;min-height:0;border-left:none;aspect-ratio:16/9;overflow:hidden;position:relative}
 .garage-list.gallery-mode .slot .slot-num{z-index:3;top:4px;right:6px;font-size:9px;opacity:.5;text-shadow:0 1px 3px rgba(0,0,0,.8)}
 .garage-list.gallery-mode .slot .slot-actions{z-index:4;top:4px;right:22px}
@@ -268,14 +268,15 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 .io-file-label:hover{border-color:var(--gold);color:var(--gold)}
 .io-sep{font-family:var(--mono);font-size:9px;color:var(--cream-dim);padding:8px 22px 0;letter-spacing:.06em;text-transform:uppercase}
 
-@media(max-width:1200px){.slot-grid{grid-template-columns:repeat(5,1fr)}.garage-list[data-scale="2"] .slot-grid{grid-template-columns:repeat(5,1fr)}.garage-list[data-scale="3"] .slot-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:1200px){.slot-grid{grid-template-columns:repeat(5,1fr)}.garage-list[data-scale="2"] .slot-grid{grid-template-columns:repeat(5,1fr)}.garage-list[data-scale="3"] .slot-grid{grid-template-columns:repeat(4,1fr)}.garage-list.gallery-mode .slot-grid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:900px){
   .site-header{padding:12px 16px}.header-tagline{display:none}
   .toolbar{padding:10px 16px}.app-body{padding:16px 16px 80px}
   .stat-grid>.stat-card{min-width:140px}
   .slot-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+  .garage-list.gallery-mode .slot-grid{grid-template-columns:repeat(3,1fr)}
 }
-@media(max-width:540px){.stat-grid>.stat-card{min-width:calc(50% - 1px)}.slot-grid{grid-template-columns:1fr 1fr}.garage-meta{display:none}}
+@media(max-width:540px){.stat-grid>.stat-card{min-width:calc(50% - 1px)}.slot-grid{grid-template-columns:1fr 1fr}.garage-meta{display:none}.garage-list.gallery-mode .slot-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
