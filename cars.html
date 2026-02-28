@@ -283,6 +283,7 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 const{useState,useEffect,useMemo,useRef,useCallback}=React;
 let RAW_V=null; // loaded via fetch
 const DEFAULT_COLL=JSON.parse(document.getElementById('collection-data').textContent);
+const DEFAULT_SLUG='r00t'; // Owner's fleet — loaded for new visitors with no localStorage
 const PROP_CATALOG=JSON.parse(document.getElementById('property-catalog').textContent);
 const SK='mckillsey-garage-v1';
 
@@ -338,6 +339,7 @@ function irlMfr(irl){if(!irl)return null;const w=irl.split(/\s+/);if(!w.length)r
 function fmt$(n){if(!n||n<=0)return'—';if(n>=1e6)return'$'+(n/1e6).toFixed(n%1e6>=1e5?1:0)+'M';if(n>=1e3)return'$'+(n/1e3).toFixed(0)+'K';return'$'+n.toLocaleString()}
 function fmtFull$(n){if(!n||n<=0)return'Free';return'$'+n.toLocaleString()}
 
+function hasLocalData(){try{return!!localStorage.getItem(SK)}catch(e){return false}}
 function load(){try{const s=localStorage.getItem(SK);if(s)return migrateCollection(JSON.parse(s))}catch(e){}return migrateCollection(JSON.parse(JSON.stringify(DEFAULT_COLL)))}
 function save(c){try{localStorage.setItem(SK,JSON.stringify(c))}catch(e){}}
 
@@ -892,22 +894,36 @@ function App(){
   // Cloud state
   const[cloud,setCloud]=useState({slug:null,editKey:null,loading:false,dirty:false,lastSaved:null});
 
-  // Load from cloud if URL has a slug
+  // Load from cloud if URL has a slug, OR load r00t for first-time visitors
   useEffect(()=>{
-    if(!urlParams.slug)return;
-    setCloud(c=>({...c,loading:true}));
-    fetch(`/api/fleet?slug=${encodeURIComponent(urlParams.slug)}`)
+    const slugToLoad=urlParams.slug;
+    const isNewVisitor=!urlParams.slug&&!hasLocalData();
+
+    if(!slugToLoad&&!isNewVisitor)return;
+
+    const targetSlug=slugToLoad||DEFAULT_SLUG;
+    if(slugToLoad)setCloud(c=>({...c,loading:true}));
+
+    fetch(`/api/fleet?slug=${encodeURIComponent(targetSlug)}`)
       .then(r=>r.json())
       .then(d=>{
         if(d.ok&&d.data){
           setColl(migrateCollection(d.data));
-          setCloud({slug:urlParams.slug,editKey:urlParams.edit,loading:false,dirty:false,lastSaved:d.updatedAt});
+          if(slugToLoad){
+            // Explicit URL load — connect to cloud
+            setCloud({slug:targetSlug,editKey:urlParams.edit,loading:false,dirty:false,lastSaved:d.updatedAt});
+          }else{
+            // New visitor — just seed their local copy, don't connect to cloud
+            save(migrateCollection(d.data));
+          }
         }else{
-          setCloud(c=>({...c,loading:false}));
-          flash('Fleet "'+urlParams.slug+'" not found');
+          if(slugToLoad){setCloud(c=>({...c,loading:false}));flash('Fleet "'+targetSlug+'" not found')}
+          // For new visitors, silently fall back to hardcoded DEFAULT_COLL (already loaded)
         }
       })
-      .catch(()=>{setCloud(c=>({...c,loading:false}));flash('Failed to load fleet')});
+      .catch(()=>{
+        if(slugToLoad){setCloud(c=>({...c,loading:false}));flash('Failed to load fleet')}
+      });
   },[]);
 
   // Mark dirty when collection changes (only if cloud-connected)
@@ -1001,7 +1017,12 @@ function App(){
       <button className="tb-btn green" onClick={()=>setShare(true)}>Share</button>
       {cloud.slug&&cloud.editKey&&<button className={`tb-btn ${cloud.dirty?'green':''}${cloud.loading?' loading':''}`} onClick={cloudSave} disabled={cloud.loading||!cloud.dirty}>{cloud.loading?'Saving...':cloud.dirty?'● Save':'✓ Saved'}</button>}
       <button className="tb-btn danger" onClick={()=>{if(confirm('Clear all vehicles from every garage? Properties will be kept.')){setColl(c=>({...c,properties:c.properties.map(p=>({...p,slots:Array(p.capacity).fill(null),theme:p.theme}))}));flash('Cleared all vehicles')}}}>Clear</button>
-      <button className="tb-btn danger" onClick={()=>{if(confirm('Reset to demo fleet? This replaces everything.')){setColl(JSON.parse(JSON.stringify(DEFAULT_COLL)));flash('Reset')}}}>Reset</button>
+      <button className="tb-btn danger" onClick={()=>{if(confirm('Reset to demo fleet? This replaces everything.')){
+        fetch(`/api/fleet?slug=${DEFAULT_SLUG}`).then(r=>r.json()).then(d=>{
+          if(d.ok&&d.data){setColl(migrateCollection(d.data));flash('Reset to latest demo fleet')}
+          else{setColl(JSON.parse(JSON.stringify(DEFAULT_COLL)));flash('Reset (offline fallback)')}
+        }).catch(()=>{setColl(JSON.parse(JSON.stringify(DEFAULT_COLL)));flash('Reset (offline fallback)')})
+      }}}>Reset</button>
       <button className="tb-btn" onClick={()=>setHelp(true)}>?</button>
     </div>
     <div className="app-body">
@@ -1084,12 +1105,18 @@ function App(){
           <p>Click <span className="help-code">⚙ View</span> to toggle slot size and which details are shown (manufacturer, GTA name, IRL name, badges). <span className="help-code">Gallery</span> switches to a photo grid. <span className="help-code">Hide empty</span> collapses garages with no vehicles.</p>
         </div>
         <div className="help-section">
-          <div className="help-heading">Data</div>
-          <p>Everything saves to your browser automatically — no account needed. Use <span className="help-code">Export</span> to download a backup JSON file and <span className="help-code">Import</span> to restore it. <span className="help-code">Clear</span> empties all vehicles but keeps your properties. <span className="help-code">Reset</span> replaces everything with the demo fleet.</p>
+          <div className="help-heading">Saving &amp; Sharing</div>
+          <p>Your fleet saves to your browser automatically. Click <span className="help-code">Share</span> to save it online and get a shareable link. Pick a name (this becomes your URL), and optionally set a passphrase. No account needed.</p>
+          <p>You'll get two links: a <b>view link</b> anyone can open, and an <b>edit link</b> (with your secret key) that lets you save changes. Bookmark the edit link — it's the only way to save back to the cloud.</p>
+          <p>Click <span className="help-code">✕ Disconnect</span> in the banner to go back to your local fleet.</p>
+        </div>
+        <div className="help-section">
+          <div className="help-heading">Backup &amp; Reset</div>
+          <p><span className="help-code">Export</span> downloads a JSON backup. <span className="help-code">Import</span> restores from a file or pasted JSON. <span className="help-code">Clear</span> empties all vehicles but keeps your properties. <span className="help-code">Reset</span> replaces everything with the latest demo fleet.</p>
         </div>
         <div className="help-section">
           <div className="help-heading">Stats</div>
-          <p>The stat bar shows your fleet summary. Hover any card for a detailed breakdown. Class and manufacturer counts show unique vehicles owned out of total available. Duplicates count toward your vehicle total but not toward per-brand or per-class counts.</p>
+          <p>The stat bar shows your fleet summary. Hover any card for a detailed breakdown. Class and manufacturer counts show unique vehicles — duplicates count toward your total but not per-brand or per-class.</p>
         </div>
       </div>
       <div className="modal-footer"><button className="tb-btn primary" onClick={()=>setHelp(false)}>Got it</button></div>
