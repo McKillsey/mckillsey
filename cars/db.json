@@ -37,7 +37,7 @@
     "hsw": false,
     "imaniTech": "jammer",
     "irlName": "Audi R8 V10 (Widebody)",
-    "scImageId": "tenf2"
+    "scImageId": "10f-custom"
   },
   {
     "id": "z190",
@@ -5131,7 +5131,7 @@
     "hsw": false,
     "imaniTech": null,
     "irlName": "Chevrolet Silverado (Drift)",
-    "scImageId": "drift-walton-l35"
+    "scImageId": "non-lifted-walton"
   },
   {
     "id": "driftyosemite",
@@ -7516,7 +7516,7 @@
     "hsw": false,
     "imaniTech": null,
     "irlName": "Honda CR-Z (Go Go Monkey)",
-    "scImageId": "blista3"
+    "scImageId": "blista-compact"
   },
   {
     "id": "gp1",
@@ -12958,7 +12958,7 @@
     "hsw": false,
     "imaniTech": null,
     "irlName": "BMW 3 Series Touring",
-    "scImageId": "rhinehart"
+    "scImageId": "reinhart"
   },
   {
     "id": "rhino",
