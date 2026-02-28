@@ -316,6 +316,26 @@ const NAME_ALIASES={'futo gtx (drift)':'driftfuto','mamba topless':'mamba','dubs
 function migrateCollection(c){
   if(!c||!c.properties)return c;
   let changed=false;
+  // Sync capacity from catalog (handles Facility 7->11, Arena floors 9->10, etc.)
+  const catMap={};PROP_CATALOG.forEach(p=>{catMap[p.id]=p});
+  c.properties.forEach(p=>{
+    const cat=catMap[p.id];
+    if(cat&&cat.capacity!==p.capacity){
+      const oldCap=p.capacity;
+      p.capacity=cat.capacity;
+      if(cat.capacity>oldCap){
+        // Expand: add null slots
+        while(p.slots.length<cat.capacity)p.slots.push(null);
+      }else{
+        // Shrink: truncate (move vehicles to front first)
+        const filled=p.slots.filter(s=>s!==null);
+        const empty=cat.capacity-filled.length;
+        p.slots=[...filled,...Array(Math.max(0,empty)).fill(null)].slice(0,cat.capacity);
+      }
+      changed=true;
+      console.log('McKillsey: synced '+p.name+' capacity '+oldCap+' -> '+cat.capacity);
+    }
+  });
   c.properties.forEach(p=>{p.slots=p.slots.map(s=>{
     if(!s)return null;
     if(s.vehicleId)return s;
