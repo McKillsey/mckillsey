@@ -157,6 +157,26 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 .theme-add{font-family:var(--mono);font-size:8px;color:var(--cream-dim);opacity:.3;cursor:pointer;margin-left:6px}
 .theme-add:hover{opacity:.7;color:var(--gold)}
 
+/* Settings dropdown */
+.settings-wrap{position:relative}
+.settings-panel{position:absolute;top:calc(100% + 4px);right:0;background:#08111a;border:1px solid var(--gold);padding:10px 14px;z-index:80;min-width:200px;display:none;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.settings-wrap.open .settings-panel{display:block}
+.settings-head{font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid rgba(201,168,76,.2)}
+.settings-item{display:flex;align-items:center;gap:6px;padding:3px 0;font-family:var(--mono);font-size:10px;color:var(--cream-dim);cursor:pointer;user-select:none;letter-spacing:.03em}
+.settings-item:hover{color:var(--cream)}
+.settings-item input{accent-color:var(--gold);cursor:pointer}
+
+/* Compact slot modes */
+.slot.compact-1{min-height:40px;padding:5px 8px}
+.slot.compact-2{min-height:32px;padding:4px 8px}
+.slot.compact-3{min-height:24px;padding:3px 8px}
+
+/* IO file buttons */
+.io-btn-row{display:flex;gap:8px;padding:0 22px;margin-top:6px}
+.io-file-label{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--cream-dim);background:var(--navy);border:1px solid var(--rule);padding:6px 12px;cursor:pointer;transition:all .15s}
+.io-file-label:hover{border-color:var(--gold);color:var(--gold)}
+.io-sep{font-family:var(--mono);font-size:9px;color:var(--cream-dim);padding:8px 22px 0;letter-spacing:.06em;text-transform:uppercase}
+
 @media(max-width:1200px){.slot-grid{grid-template-columns:repeat(5,1fr)}}
 @media(max-width:900px){
   .site-header{padding:12px 16px}.header-tagline{display:none}
@@ -344,15 +364,34 @@ function PropertyManager({isOpen,onClose,collection,onUpdate}){
 // ═══ IMPORT/EXPORT ═══
 function IOModal({isOpen,mode,onClose,collection,onImport}){
   const[text,setText]=useState('');const[status,setStatus]=useState('');
+  const fileRef=useRef(null);
   useEffect(()=>{if(isOpen&&mode==='export')setText(JSON.stringify(collection,null,2));if(isOpen)setStatus('')},[isOpen,mode]);
+  function downloadFile(){
+    const blob=new Blob([JSON.stringify(collection,null,2)],{type:'application/json'});
+    const url=URL.createObjectURL(blob);const a=document.createElement('a');
+    a.href=url;a.download=`mckillsey-fleet-${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+    setStatus('Downloaded!');
+  }
+  function handleFileUpload(e){
+    const file=e.target.files[0];if(!file)return;
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      try{const d=JSON.parse(ev.target.result);if(!d.properties)throw new Error('Missing properties');setText(JSON.stringify(d,null,2));onImport(d);setStatus('Imported from file!');setTimeout(onClose,800)}
+      catch(err){setStatus('Error: '+err.message)}
+    };
+    reader.readAsText(file);if(fileRef.current)fileRef.current.value='';
+  }
   if(!isOpen)return null;
   return(<div className="modal-overlay" onClick={e=>{if(e.target===e.currentTarget)onClose()}}><div className="modal">
-    <div className="modal-head"><div className="modal-title">{mode==='export'?'Export':'Import'} Collection</div><div className="modal-sub">{mode==='export'?'Copy JSON to back up':'Paste JSON to restore'}</div></div>
+    <div className="modal-head"><div className="modal-title">{mode==='export'?'Export':'Import'} Collection</div><div className="modal-sub">{mode==='export'?'Copy or download JSON to back up':'Paste or upload JSON to restore'}</div></div>
     <button className="modal-close" onClick={onClose}>×</button>
-    <div style={{padding:'0 22px'}}><textarea className="io-textarea" value={text} onChange={e=>setText(e.target.value)} readOnly={mode==='export'}/></div>
+    {mode==='import'&&<><div className="io-btn-row"><label className="io-file-label" onClick={()=>fileRef.current?.click()}>↑ Upload .json file</label><input ref={fileRef} type="file" accept=".json,application/json" style={{display:'none'}} onChange={handleFileUpload}/></div><div className="io-sep">— or paste below —</div></>}
+    <div style={{padding:'0 22px'}}><textarea className="io-textarea" value={text} onChange={e=>setText(e.target.value)} readOnly={mode==='export'} placeholder={mode==='import'?'Paste your collection JSON here...':''}/></div>
     <div className="modal-footer">
       <span style={{fontFamily:'var(--mono)',fontSize:'10px',color:status.includes('Error')?'var(--red)':'var(--green)',marginRight:'auto'}}>{status}</span>
       <button className="tb-btn" onClick={onClose}>Cancel</button>
+      {mode==='export'&&<button className="tb-btn" onClick={downloadFile}>↓ Download</button>}
       {mode==='export'&&<button className="tb-btn primary" onClick={()=>{navigator.clipboard.writeText(text).then(()=>setStatus('Copied!'))}}>Copy</button>}
       {mode==='import'&&<button className="tb-btn primary" onClick={()=>{try{const d=JSON.parse(text);if(!d.properties)throw new Error('Missing properties');onImport(d);setStatus('Imported!');setTimeout(onClose,600)}catch(e){setStatus('Error: '+e.message)}}}>Import</button>}
     </div>
@@ -370,16 +409,18 @@ function EditableTheme({theme,onChange}){
 }
 
 // ═══ SLOT ═══
-function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe}){
+function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,display}){
   const[isDragOver,setIsDragOver]=useState(false);
   const dbv=car?lookupV(car.gtaName):null;
-  if(!car)return(<div className={`slot empty${hl?' highlight':''}${isDragOver?' drag-over':''}`} onClick={onClick}
+  const hiddenCount=(!display.showMfr?1:0)+(!display.showGta?1:0)+(!display.showIrl?1:0);
+  const compactClass=hiddenCount>=3?' compact-3':hiddenCount>=2?' compact-2':hiddenCount>=1?' compact-1':'';
+  if(!car)return(<div className={`slot empty${compactClass}${hl?' highlight':''}${isDragOver?' drag-over':''}`} onClick={onClick}
     onDragOver={e=>{e.preventDefault();setIsDragOver(true)}} onDragLeave={()=>setIsDragOver(false)}
     onDrop={e=>{e.preventDefault();setIsDragOver(false);if(dragRef.garageIdx!==null){onDragDrop(dragRef.garageIdx,dragRef.slotIdx,garageIdx,slotIdx);dragRef={garageIdx:null,slotIdx:null}}}}>
     <span className="slot-num">{num}</span><span className="empty-label">+ add</span></div>);
 
   const isHsw=car.gtaName.includes('(HSW)')||(dbv&&dbv.hsw);
-  return(<div className={`slot${hl?' highlight':''}${isDragOver?' drag-over':''}${isDupe?' dupe-flag':''}`}
+  return(<div className={`slot${compactClass}${hl?' highlight':''}${isDragOver?' drag-over':''}${isDupe?' dupe-flag':''}`}
     draggable={true}
     onDragStart={e=>{dragRef={garageIdx,slotIdx};e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain','')}}
     onDragEnd={()=>{dragRef={garageIdx:null,slotIdx:null}}}
@@ -388,22 +429,22 @@ function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe})
     onMouseEnter={e=>{if(dbv)showVTip(e,dbv)}} onMouseMove={e=>{if(dbv)posVTip(e)}} onMouseLeave={hideVTip}>
     <span className="slot-num">{num}</span>
     <div className="slot-actions"><button className="slot-action-btn" onClick={e=>{e.stopPropagation();hideVTip();onRemove()}} title="Remove">×</button></div>
-    {dbv&&dbv.mfr&&<div className="slot-mfr">{dbv.mfr}</div>}
-    <div className="slot-gta">{car.gtaName}</div>
-    {(car.irlName||(dbv&&dbv.irl))&&<div className="slot-irl">{car.irlName||dbv.irl}</div>}
-    <div className="slot-badges">
+    {display.showMfr&&dbv&&dbv.mfr&&<div className="slot-mfr">{dbv.mfr}</div>}
+    {display.showGta&&<div className="slot-gta">{car.gtaName}</div>}
+    {display.showIrl&&(car.irlName||(dbv&&dbv.irl))&&<div className="slot-irl">{car.irlName||dbv.irl}</div>}
+    {display.showBadges&&<div className="slot-badges">
       {isHsw&&<span className="slot-badge badge-hsw">HSW</span>}
       {dbv?.brGlass&&<span className="slot-badge badge-armor">BP</span>}
       {dbv?.expRes&&!dbv?.brGlass&&<span className="slot-badge badge-armor">Armor</span>}
       {dbv?.armored&&!dbv?.brGlass&&!dbv?.expRes&&<span className="slot-badge badge-armor">Armor</span>}
       {dbv?.wpnzed&&<span className="slot-badge badge-weapon">Wpnzd</span>}
       {dbv?.imani&&<span className="slot-badge badge-imani">{dbv.imani==='full'?'Imani':'Jammer'}</span>}
-    </div>
+    </div>}
   </div>);
 }
 
 // ═══ GARAGE CARD ═══
-function GarageCard({garages,label,sq,onUpdate,onAdd,onDragDrop,dupes,showDupes}){
+function GarageCard({garages,label,sq,onUpdate,onAdd,onDragDrop,dupes,showDupes,display}){
   const[open,setOpen]=useState(true);
   const totalSlots=garages.reduce((a,g)=>a+g.prop.capacity,0);
   const totalFilled=garages.reduce((a,g)=>a+g.prop.slots.filter(s=>s!==null).length,0);
@@ -436,12 +477,33 @@ function GarageCard({garages,label,sq,onUpdate,onAdd,onDragDrop,dupes,showDupes}
     </div>
     {open&&garages.map((g,fi)=>{const matches=allMatches[g.propIdx]||new Set();return(<div key={g.propIdx}>
       {isGrouped&&<div className="floor-header">{g.floor?.floorLabel||`Floor ${fi+1}`} — {g.prop.slots.filter(s=>s!==null).length}/{g.prop.capacity}</div>}
-      <div className="slot-grid">{g.prop.slots.map((car,si)=><Slot key={`${g.propIdx}-${si}`} car={car} num={si+1} garageIdx={g.propIdx} slotIdx={si} hl={matches.has(si)} isDupe={showDupes&&car&&dupes.has(`${g.propIdx}-${si}`)} onRemove={()=>{const s=[...g.prop.slots];s[si]=null;onUpdate(g.propIdx,{...g.prop,slots:s})}} onClick={()=>{if(!car)onAdd(g.propIdx,si,label)}} onDragDrop={onDragDrop}/>)}</div>
+      <div className="slot-grid">{g.prop.slots.map((car,si)=><Slot key={`${g.propIdx}-${si}`} car={car} num={si+1} garageIdx={g.propIdx} slotIdx={si} hl={matches.has(si)} isDupe={showDupes&&car&&dupes.has(`${g.propIdx}-${si}`)} display={display} onRemove={()=>{const s=[...g.prop.slots];s[si]=null;onUpdate(g.propIdx,{...g.prop,slots:s})}} onClick={()=>{if(!car)onAdd(g.propIdx,si,label)}} onDragDrop={onDragDrop}/>)}</div>
     </div>)})}
   </div>);
 }
 
 // ═══ APP ═══
+function SettingsDropdown({display,setDisplay,showDupes,setShowDupes}){
+  const[open,setOpen]=useState(false);
+  const ref=useRef(null);
+  useEffect(()=>{function handleClick(e){if(ref.current&&!ref.current.contains(e.target))setOpen(false)}document.addEventListener('mousedown',handleClick);return()=>document.removeEventListener('mousedown',handleClick)},[]);
+  const items=[
+    {key:'showMfr',label:'Manufacturer'},
+    {key:'showGta',label:'GTA Name'},
+    {key:'showIrl',label:'IRL Name'},
+    {key:'showBadges',label:'Badges'},
+  ];
+  return(<div className={`settings-wrap${open?' open':''}`} ref={ref}>
+    <button className={`tb-btn${open?' active':''}`} onClick={()=>setOpen(!open)}>⚙ View</button>
+    <div className="settings-panel">
+      <div className="settings-head">Slot Display</div>
+      {items.map(i=><label key={i.key} className="settings-item"><input type="checkbox" checked={display[i.key]} onChange={e=>setDisplay(d=>({...d,[i.key]:e.target.checked}))}/>{i.label}</label>)}
+      <div className="settings-head" style={{marginTop:'8px'}}>Warnings</div>
+      <label className="settings-item"><input type="checkbox" checked={showDupes} onChange={e=>setShowDupes(e.target.checked)}/> Flag Duplicates</label>
+    </div>
+  </div>);
+}
+
 function App(){
   const[coll,setColl]=useState(load);
   const[sq,setSq]=useState('');
@@ -451,6 +513,7 @@ function App(){
   const[toast,setToast]=useState('');
   const[hideEmpty,setHideEmpty]=useState(false);
   const[showDupes,setShowDupes]=useState(false);
+  const[display,setDisplay]=useState({showMfr:true,showGta:true,showIrl:true,showBadges:true});
 
   useEffect(()=>{save(coll)},[coll]);
   function flash(m){setToast(m);if(toastTimeout)clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>setToast(''),1800)}
@@ -487,8 +550,8 @@ function App(){
         <input placeholder="Search vehicles, garages, manufacturers..." value={sq} onChange={e=>setSq(e.target.value)}/>
       </div>
       <button className={`tb-btn ${hideEmpty?'active':''}`} onClick={()=>setHideEmpty(!hideEmpty)}>{hideEmpty?'◉ Hide empty':'○ Show all'}</button>
-      <label className="tb-check"><input type="checkbox" checked={showDupes} onChange={e=>setShowDupes(e.target.checked)}/> Flag dupes</label>
       <button className="tb-btn" onClick={()=>setPropMgr(true)}>Properties</button>
+      <SettingsDropdown display={display} setDisplay={setDisplay} showDupes={showDupes} setShowDupes={setShowDupes}/>
       <button className="tb-btn" onClick={()=>setIo('export')}>Export</button>
       <button className="tb-btn" onClick={()=>setIo('import')}>Import</button>
       <button className="tb-btn danger" onClick={()=>{if(confirm('Reset to default?')){setColl(JSON.parse(JSON.stringify(DEFAULT_COLL)));flash('Reset')}}}>Reset</button>
@@ -527,8 +590,8 @@ function App(){
       </div>
       <div className="garage-list">
         {displayGroups.map((g,i)=>{
-          if(g.type==='single')return <GarageCard key={g.prop.id+'-'+g.propIdx} garages={[{prop:g.prop,propIdx:g.propIdx,floor:null}]} label={g.prop.name} sq={sq} dupes={dupes} showDupes={showDupes} onUpdate={(idx,u)=>updateG(idx,u)} onAdd={(gi,si,lbl)=>setPicker({gi,si,label:lbl})} onDragDrop={handleDragDrop}/>;
-          return <GarageCard key={g.label+'-'+i} garages={g.siblings.map(s=>({prop:s.prop,propIdx:s.propIdx,floor:s.floor}))} label={g.label} sq={sq} dupes={dupes} showDupes={showDupes} onUpdate={(idx,u)=>updateG(idx,u)} onAdd={(gi,si,lbl)=>setPicker({gi,si,label:lbl})} onDragDrop={handleDragDrop}/>;
+          if(g.type==='single')return <GarageCard key={g.prop.id+'-'+g.propIdx} garages={[{prop:g.prop,propIdx:g.propIdx,floor:null}]} label={g.prop.name} sq={sq} dupes={dupes} showDupes={showDupes} display={display} onUpdate={(idx,u)=>updateG(idx,u)} onAdd={(gi,si,lbl)=>setPicker({gi,si,label:lbl})} onDragDrop={handleDragDrop}/>;
+          return <GarageCard key={g.label+'-'+i} garages={g.siblings.map(s=>({prop:s.prop,propIdx:s.propIdx,floor:s.floor}))} label={g.label} sq={sq} dupes={dupes} showDupes={showDupes} display={display} onUpdate={(idx,u)=>updateG(idx,u)} onAdd={(gi,si,lbl)=>setPicker({gi,si,label:lbl})} onDragDrop={handleDragDrop}/>;
         })}
       </div>
     </div>
