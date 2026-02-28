@@ -154,6 +154,24 @@ async function handlePut(res, slug, body) {
   return sendJson(res, { ok: true, slug, updatedAt: stored.updatedAt });
 }
 
+// ═══ RATE LIMITING (per serverless instance) ═══
+const createLog = new Map(); // IP -> [timestamps]
+const RATE_WINDOW = 3600 * 1000; // 1 hour
+const RATE_LIMIT = 15; // max 15 creates per hour per IP
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  const timestamps = createLog.get(ip) || [];
+  const recent = timestamps.filter(t => now - t < RATE_WINDOW);
+  createLog.set(ip, recent);
+  if (recent.length >= RATE_LIMIT) return true;
+  recent.push(now);
+  return false;
+}
+
+// Reserved slugs that can't be created through the API
+const RESERVED = new Set(['admin', 'api', 'cars', 'mckillsey', 'default', 'null', 'undefined', 'test']);
+
 // ═══ MAIN HANDLER ═══
 export default async function handler(req, res) {
   // CORS preflight
@@ -171,8 +189,11 @@ export default async function handler(req, res) {
       return await handleGet(res, slug);
     }
     if (req.method === 'POST') {
+      const ip = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || 'unknown';
+      if (isRateLimited(ip)) return sendError(res, 'Too many fleets created. Try again later.', 429);
       const body = req.body || {};
       body.slug = (body.slug || '').toLowerCase().trim();
+      if (RESERVED.has(body.slug)) return sendError(res, `"${body.slug}" is reserved. Pick a different name.`, 409);
       return await handlePost(res, body);
     }
     if (req.method === 'PUT') {
