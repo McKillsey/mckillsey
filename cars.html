@@ -237,6 +237,15 @@ const VEH_BY_ID={};
 VEHICLES.forEach(v=>{VEH_BY_NAME[v.name.toLowerCase()]=v;VEH_BY_ID[v.vehicleId]=v;const c=v.name.replace(/\s*\(HSW\)\s*$/i,'').trim().toLowerCase();if(c!==v.name.toLowerCase())VEH_BY_NAME[c]=v});
 function lookupV(n){if(!n)return null;return VEH_BY_ID[n]||VEH_BY_NAME[n.replace(/\s*\(HSW\)\s*$/i,'').trim().toLowerCase()]||VEH_BY_NAME[n.toLowerCase()]||null}
 function resolveSlot(s){if(!s)return null;if(s.vehicleId)return VEH_BY_ID[s.vehicleId]||null;if(s.gtaName)return lookupV(s.gtaName);return null}
+// Aliases for user-given names that don't match DB display names
+const NAME_ALIASES={'futo gtx (drift)':'driftfuto','mamba topless':'mamba','dubsta 2':'dubsta2','dubsta2':'dubsta2',
+'kuruma (armored)':'kuruma2','insurgent pick-up custom':'insurgent3','schafter v12 (armored)':'schafter6',
+'paragon r (armored)':'paragon2','bati 801rr':'bati2','hakuchou drag (hsw)':'hakuchou2',
+'deveste eight (hsw)':'deveste','stirling gt (hsw)':'feltzer3','banshee gts (hsw)':'banshee3',
+'vigero zx (hsw)':'vigero2','stinger tt (hsw)':'stingertt',
+'future shock dominator':'dominator5','future shock scarab':'scarab2','future shock zr380':'zr3802',
+'future shock imperator':'imperator2','nightmare deathbike':'deathbike3',
+'coquette d1':'coquette5','stanier le cruiser':'police5'};
 function migrateCollection(c){
   if(!c||!c.properties)return c;
   let changed=false;
@@ -244,12 +253,16 @@ function migrateCollection(c){
     if(!s)return null;
     if(s.vehicleId)return s;
     // Legacy slot: {gtaName, irlName, vclass} -> {vehicleId}
+    const nm=(s.gtaName||'').toLowerCase().trim();
+    const alias=NAME_ALIASES[nm];
+    if(alias&&VEH_BY_ID[alias]){changed=true;return{vehicleId:alias}}
     const dbv=lookupV(s.gtaName);
     if(dbv){changed=true;return{vehicleId:dbv.vehicleId}}
     // Can't resolve — keep as-is with gtaName as fallback
+    console.warn('McKillsey: could not migrate slot "'+s.gtaName+'"');
     return s;
   })});
-  if(changed)console.log('McKillsey: migrated garage data to ID-based format');
+  if(changed){console.log('McKillsey: migrated garage data to ID-based format');save(c)}
   return c;
 }
 
@@ -345,7 +358,7 @@ function showVTip(e,dbv){
     const isReady=cached==='ok';
     imgHtml=`<div class="vtip-img-wrap${isReady?'':' loading'}"><img src="${imgUrl(imgId)}" onload="this.classList.add('loaded');this.parentElement.classList.remove('loading')" onerror="this.parentElement.style.display='none'" alt=""/></div>`;
   }
-  vtipEl.innerHTML=`${imgHtml}<div class="vtip-head"><div class="vtip-mfr">${dbv.mfr||'Unknown'}</div><div class="vtip-name">${dbv.name}</div>${dbv.irl?`<div class="vtip-irl">${dbv.irl}</div>`:''}</div><div class="vtip-body"><div class="vtip-row"><span class="vtip-label">Class</span><span class="vtip-val">${cls(dbv.cls)}</span></div><div class="vtip-row"><span class="vtip-label">Price</span><span class="vtip-val gold">${fmtFull$(dbv.price)}</span></div><div class="vtip-row"><span class="vtip-label">Seats</span><span class="vtip-val">${dbv.seats||'—'}</span></div>${dbv.lapTime?`<div class="vtip-row"><span class="vtip-label">Lap Time</span><span class="vtip-val green">${dbv.lapTime}</span></div>`:''}${dbv.topSpeed?`<div class="vtip-row"><span class="vtip-label">Top Speed</span><span class="vtip-val">${dbv.topSpeed} mph</span></div>`:''}${dbv.dlc?`<div class="vtip-row"><span class="vtip-label">Update</span><span class="vtip-val">${dbv.dlc}</span></div>`:''}</div>${badges?`<div class="vtip-badges">${badges}</div>`:''}`;
+  vtipEl.innerHTML=`${imgHtml}<div class="vtip-head"><div class="vtip-mfr">${dbv.mfr||'Unknown'}</div><div class="vtip-name">${dbv.name}</div>${dbv.irl?`<div class="vtip-irl">${dbv.irl}</div>`:''}</div><div class="vtip-body"><div class="vtip-row"><span class="vtip-label">Class</span><span class="vtip-val">${cls(dbv.cls)}</span></div><div class="vtip-row"><span class="vtip-label">Price</span><span class="vtip-val gold">${fmtFull$(dbv.price)}</span></div><div class="vtip-row"><span class="vtip-label">Seats</span><span class="vtip-val">${dbv.seats||'—'}</span></div>${dbv.lapTime?`<div class="vtip-row"><span class="vtip-label">Lap Time <sup style="color:var(--gold-dim);font-size:7px">1</sup></span><span class="vtip-val green">${dbv.lapTime}</span></div>`:''}${dbv.topSpeed?`<div class="vtip-row"><span class="vtip-label">Top Speed <sup style="color:var(--gold-dim);font-size:7px">1</sup></span><span class="vtip-val">${dbv.topSpeed} mph</span></div>`:''}</div>${badges?`<div class="vtip-badges">${badges}</div>`:''}`;
   vtipEl.style.display='block';posVTip(e);
 }
 function posVTip(e){const tw=280,th=vtipEl.offsetHeight||200,vw=window.innerWidth,vh=window.innerHeight;let x=e.clientX-tw/2,y=e.clientY-th-14;if(x<8)x=8;if(x+tw>vw-8)x=vw-tw-8;if(y<8)y=e.clientY+20;vtipEl.style.left=x+'px';vtipEl.style.top=y+'px'}
@@ -518,7 +531,7 @@ function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,d
     <span className="slot-num">{num}</span><span className="empty-label">+ add</span></div>);
 
   const isHsw=dbv&&dbv.hsw;
-  const carName=dbv?dbv.name:(car?.gtaName||'Unknown');
+  const carName=dbv?dbv.name:(car?.gtaName||car?.vehicleId||'Unknown');
   return(<div ref={slotRef} data-img-id={imgId} className={`slot${compactClass}${hl?' highlight':''}${isDragOver?' drag-over':''}${isDupe?' dupe-flag':''}`}
     draggable={true}
     onDragStart={e=>{dragRef={garageIdx,slotIdx};e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain','')}}
@@ -708,6 +721,9 @@ function App(){
     <PropertyManager isOpen={propMgr} onClose={()=>setPropMgr(false)} collection={coll} onUpdate={c=>{setColl(c);flash('Properties updated')}}/>
     <IOModal isOpen={!!io} mode={io} onClose={()=>setIo(null)} collection={coll} onImport={d=>{setColl(d);flash('Imported')}}/>
     <Toast message={toast}/>
+    <div style={{padding:'16px 32px 24px',borderTop:'1px solid var(--rule)',marginTop:32,fontFamily:'var(--mono)',fontSize:9,color:'var(--cream-dim)',letterSpacing:'.04em',lineHeight:1.8}}>
+      <span style={{color:'var(--gold-dim)'}}><sup>1</sup></span> Lap times and top speeds sourced from <a href="https://gtacars.net" target="_blank" rel="noopener" style={{color:'var(--gold-dim)',textDecoration:'underline',textUnderlineOffset:2}}>Broughy1322 / gtacars.net</a>. Tested on PC with max upgrades on the standard test track. See <a href="https://www.youtube.com/c/Broughy1322" target="_blank" rel="noopener" style={{color:'var(--gold-dim)',textDecoration:'underline',textUnderlineOffset:2}}>his YouTube channel</a> for methodology and full testing videos.
+    </div>
   </>);
 }
 // Show loading state
