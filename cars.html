@@ -175,6 +175,19 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 
 /* Help modal */
 .help-body{padding:4px 22px 14px;overflow-y:auto;flex:1}
+
+/* Share modal */
+.share-input{width:100%;background:var(--navy);border:1px solid var(--rule);color:var(--cream);font-family:var(--mono);font-size:11px;padding:7px 10px;outline:none}
+
+/* Cloud banner */
+.cloud-banner{padding:6px 24px;background:rgba(201,168,76,.04);border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:10px;color:var(--cream-dim);display:flex;align-items:center;gap:8px;letter-spacing:.03em}
+.share-input:focus{border-color:var(--gold)}
+.share-input[readonly]{color:var(--cream-dim);cursor:text}
+.share-url-row{display:flex;gap:6px;align-items:stretch}
+.share-url-row .share-input{flex:1}
+.share-url-row .tb-btn{flex-shrink:0}
+.share-result-section{margin-bottom:12px}
+.modal-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;display:block}
 .help-section{margin-bottom:14px}
 .help-heading{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid rgba(201,168,76,.12)}
 .help-body p{font-size:12px;color:var(--cream);line-height:1.65;margin-bottom:6px}
@@ -591,7 +604,122 @@ function IOModal({isOpen,mode,onClose,collection,onImport}){
   </div></div>);
 }
 
-// ═══ EDITABLE THEME ═══
+// ═══ SHARE MODAL ═══
+function ShareModal({isOpen,onClose,collection,cloud,setCloud,flash}){
+  const[slug,setSlug]=useState(cloud.slug||'');
+  const[editKey,setEditKey]=useState(cloud.editKey||'');
+  const[useCustomKey,setUseCustomKey]=useState(false);
+  const[status,setStatus]=useState('');
+  const[loading,setLoading]=useState(false);
+  const[result,setResult]=useState(null); // {viewUrl,editUrl,editKey}
+
+  useEffect(()=>{if(isOpen){setStatus('');setResult(null);setSlug(cloud.slug||'');setEditKey(cloud.editKey||'');setUseCustomKey(false)}},[isOpen]);
+
+  async function handleCreate(){
+    const s=slug.toLowerCase().trim();
+    if(!s||!/^[a-z0-9][a-z0-9-]{0,28}[a-z0-9]$/.test(s)){setStatus('Slug must be 2-30 chars: lowercase letters, numbers, hyphens. Must start and end with letter/number.');return}
+    if(useCustomKey&&editKey.length<4){setStatus('Edit key must be at least 4 characters');return}
+    setLoading(true);setStatus('');
+    try{
+      const body={slug:s,data:collection};
+      if(useCustomKey&&editKey)body.editKey=editKey;
+      const r=await fetch('/api/fleet',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+      const d=await r.json();
+      if(d.ok){
+        setResult({viewUrl:d.viewUrl,editUrl:d.editUrl,editKey:d.editKey});
+        setCloud({slug:d.slug,editKey:d.editKey,loading:false,dirty:false,lastSaved:new Date().toISOString()});
+        // Update URL without reload
+        history.replaceState(null,'',d.editUrl);
+        setStatus('');
+      }else{setStatus(d.error||'Failed to create')}
+    }catch(e){setStatus('Network error — try again')}
+    setLoading(false);
+  }
+
+  async function handleSave(){
+    if(!cloud.slug||!cloud.editKey)return;
+    setLoading(true);setStatus('');
+    try{
+      const r=await fetch(`/api/fleet?slug=${encodeURIComponent(cloud.slug)}`,{
+        method:'PUT',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({editKey:cloud.editKey,data:collection})});
+      const d=await r.json();
+      if(d.ok){
+        setCloud(c=>({...c,dirty:false,lastSaved:d.updatedAt}));
+        setStatus('Saved!');flash('Saved to cloud');
+      }else{setStatus(d.error||'Save failed')}
+    }catch(e){setStatus('Network error')}
+    setLoading(false);
+  }
+
+  const isLinked=!!cloud.slug;
+
+  if(!isOpen)return null;
+  return(<div className="modal-overlay" onClick={e=>{if(e.target===e.currentTarget)onClose()}}><div className="modal" style={{maxWidth:520}}>
+    <div className="modal-head"><div className="modal-title">{isLinked?'Cloud Fleet':'Share Your Fleet'}</div>
+    <div className="modal-sub">{isLinked?`Linked to mckillsey.com/cars?${cloud.slug}`:'Save online · share via link · no account needed'}</div></div>
+    <button className="modal-close" onClick={onClose}>×</button>
+
+    <div style={{padding:'14px 22px'}}>
+      {!isLinked&&!result&&<>
+        <label className="modal-label">Fleet Name (URL slug)</label>
+        <div style={{display:'flex',gap:6,alignItems:'center',marginBottom:10}}>
+          <span style={{fontFamily:'var(--mono)',fontSize:10,color:'var(--cream-dim)',whiteSpace:'nowrap'}}>mckillsey.com/cars?</span>
+          <input className="share-input" value={slug} onChange={e=>setSlug(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g,''))} placeholder="your-name" maxLength={30}/>
+        </div>
+
+        <div style={{marginBottom:10}}>
+          <label className="settings-item" style={{marginBottom:6}}><input type="checkbox" checked={useCustomKey} onChange={e=>setUseCustomKey(e.target.checked)}/> Set custom edit passphrase</label>
+          {useCustomKey&&<>
+            <div style={{fontSize:10,color:'var(--cream-dim)',fontFamily:'var(--mono)',marginBottom:4}}>Anyone with this passphrase can edit your fleet</div>
+            <input className="share-input" value={editKey} onChange={e=>setEditKey(e.target.value)} placeholder="your-secret-passphrase" type="text"/>
+          </>}
+          {!useCustomKey&&<div style={{fontSize:10,color:'var(--cream-dim)',fontFamily:'var(--mono)'}}>A random edit key will be generated — bookmark the edit URL</div>}
+        </div>
+
+        <button className="tb-btn primary" onClick={handleCreate} disabled={loading} style={{width:'100%',padding:'10px 0'}}>{loading?'Creating...':'Create & Share'}</button>
+      </>}
+
+      {result&&<div className="share-result">
+        <div className="share-result-section">
+          <label className="modal-label">View Link (share this)</label>
+          <div className="share-url-row">
+            <input className="share-input" readOnly value={`mckillsey.com${result.viewUrl}`}/>
+            <button className="tb-btn" onClick={()=>{navigator.clipboard.writeText(`https://mckillsey.com${result.viewUrl}`);flash('View link copied!')}}>Copy</button>
+          </div>
+        </div>
+        <div className="share-result-section">
+          <label className="modal-label" style={{color:'var(--amber)'}}>Edit Link (keep this private!)</label>
+          <div className="share-url-row">
+            <input className="share-input" readOnly value={`mckillsey.com${result.editUrl}`}/>
+            <button className="tb-btn" onClick={()=>{navigator.clipboard.writeText(`https://mckillsey.com${result.editUrl}`);flash('Edit link copied!')}}>Copy</button>
+          </div>
+          <div style={{fontSize:10,color:'var(--amber)',fontFamily:'var(--mono)',marginTop:4}}>⚠ Bookmark this link! It's the only way to edit your fleet.</div>
+        </div>
+        {result.editKey&&!useCustomKey&&<div className="share-result-section">
+          <label className="modal-label">Edit Key</label>
+          <div style={{fontFamily:'var(--mono)',fontSize:11,color:'var(--cream)',background:'var(--navy)',padding:'6px 10px',border:'1px solid var(--rule)',wordBreak:'break-all'}}>{result.editKey}</div>
+        </div>}
+      </div>}
+
+      {isLinked&&!result&&<>
+        <div className="share-result-section" style={{marginBottom:12}}>
+          <label className="modal-label">View Link</label>
+          <div className="share-url-row">
+            <input className="share-input" readOnly value={`mckillsey.com/cars?${cloud.slug}`}/>
+            <button className="tb-btn" onClick={()=>{navigator.clipboard.writeText(`https://mckillsey.com/cars?${cloud.slug}`);flash('View link copied!')}}>Copy</button>
+          </div>
+        </div>
+        {cloud.lastSaved&&<div style={{fontFamily:'var(--mono)',fontSize:9,color:'var(--cream-dim)',marginBottom:10}}>Last saved: {new Date(cloud.lastSaved).toLocaleString()}</div>}
+        <button className="tb-btn primary" onClick={handleSave} disabled={loading} style={{width:'100%',padding:'10px 0'}}>{loading?'Saving...':'Save Now'}</button>
+      </>}
+
+      {status&&<div style={{fontFamily:'var(--mono)',fontSize:10,color:status.includes('!')&&!status.includes('error')?'var(--green)':'var(--red)',marginTop:10}}>{status}</div>}
+    </div>
+
+    <div className="modal-footer"><button className="tb-btn" onClick={onClose}>Done</button></div>
+  </div></div>);
+}
 function EditableTheme({theme,onChange}){
   const[editing,setEditing]=useState(false);const[val,setVal]=useState(theme||'');const ref=useRef(null);
   useEffect(()=>{if(editing&&ref.current){ref.current.focus();ref.current.select()}},[editing]);
@@ -746,6 +874,12 @@ function SettingsDropdown({display,setDisplay,showDupes,setShowDupes,slotScale,s
 }
 
 function App(){
+  // Parse URL: ?slug or ?slug&edit=key
+  const urlParams=useMemo(()=>{const p=new URLSearchParams(location.search);const entries=[...p.entries()];
+    // Support ?jack (key with no value) or ?slug=jack
+    let slug=p.get('slug');if(!slug&&entries.length>0&&!entries[0][1])slug=entries[0][0];
+    const edit=p.get('edit');return{slug:slug?.toLowerCase().trim()||null,edit:edit||null}},[]);
+
   const[coll,setColl]=useState(load);
   const[sq,setSq]=useState('');
   const[picker,setPicker]=useState(null);
@@ -753,13 +887,53 @@ function App(){
   const[io,setIo]=useState(null);
   const[propMgr,setPropMgr]=useState(false);
   const[help,setHelp]=useState(false);
+  const[share,setShare]=useState(false);
+
+  // Cloud state
+  const[cloud,setCloud]=useState({slug:null,editKey:null,loading:false,dirty:false,lastSaved:null});
+
+  // Load from cloud if URL has a slug
+  useEffect(()=>{
+    if(!urlParams.slug)return;
+    setCloud(c=>({...c,loading:true}));
+    fetch(`/api/fleet?slug=${encodeURIComponent(urlParams.slug)}`)
+      .then(r=>r.json())
+      .then(d=>{
+        if(d.ok&&d.data){
+          setColl(migrateCollection(d.data));
+          setCloud({slug:urlParams.slug,editKey:urlParams.edit,loading:false,dirty:false,lastSaved:d.updatedAt});
+        }else{
+          setCloud(c=>({...c,loading:false}));
+          flash('Fleet "'+urlParams.slug+'" not found');
+        }
+      })
+      .catch(()=>{setCloud(c=>({...c,loading:false}));flash('Failed to load fleet')});
+  },[]);
+
+  // Mark dirty when collection changes (only if cloud-connected)
+  const collRef=useRef(coll);
+  useEffect(()=>{if(cloud.slug&&collRef.current!==coll)setCloud(c=>({...c,dirty:true}));collRef.current=coll},[coll,cloud.slug]);
+
+  // Cloud save function
+  const cloudSave=useCallback(async()=>{
+    if(!cloud.slug||!cloud.editKey)return;
+    setCloud(c=>({...c,loading:true}));
+    try{
+      const r=await fetch(`/api/fleet?slug=${encodeURIComponent(cloud.slug)}`,{
+        method:'PUT',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({editKey:cloud.editKey,data:coll})});
+      const d=await r.json();
+      if(d.ok){setCloud(c=>({...c,loading:false,dirty:false,lastSaved:d.updatedAt}));flash('Saved to cloud')}
+      else{setCloud(c=>({...c,loading:false}));flash(d.error||'Save failed')}
+    }catch(e){setCloud(c=>({...c,loading:false}));flash('Save failed — check connection')}
+  },[cloud.slug,cloud.editKey,coll]);
   const[toast,setToast]=useState('');
   const[hideEmpty,setHideEmpty]=useState(false);
   const[showDupes,setShowDupes]=useState(false);
   const[display,setDisplay]=useState({showMfr:true,showGta:true,showIrl:true,showBadges:true,gallery:false});
   const[slotScale,setSlotScale]=useState(0);
 
-  useEffect(()=>{save(coll)},[coll]);
+  useEffect(()=>{if(!urlParams.slug||urlParams.edit)save(coll)},[coll]);
   function flash(m){setToast(m);if(toastTimeout)clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>setToast(''),1800)}
   function updateG(idx,g){const p=[...coll.properties];p[idx]=g;setColl({...coll,properties:p});flash('Saved')}
   const handleTag=useCallback((gi,si,tag)=>{const np=coll.properties.map(g=>({...g,slots:[...g.slots]}));const slot=np[gi].slots[si];if(!slot)return;np[gi].slots[si]={...slot,tag:tag||undefined};if(!tag)delete np[gi].slots[si].tag;setColl({...coll,properties:np})},[coll]);
@@ -806,6 +980,12 @@ function App(){
       <a href="/" className="wordmark"><span className="line1">McKillsey</span><span className="line2">&amp; Company</span></a>
       <span className="header-tagline">Fleet Management · Los Santos · Blaine County</span>
     </header>
+    {cloud.slug&&<div className="cloud-banner">
+      <span style={{color:'var(--cream)'}}>📂 {cloud.slug}'s fleet</span>
+      {cloud.editKey?<span style={{color:'var(--green)'}}>· editing</span>:<span style={{color:'var(--cream-dim)'}}>· view only</span>}
+      {cloud.dirty&&cloud.editKey&&<span style={{color:'var(--amber)'}}>· unsaved changes</span>}
+      {!cloud.editKey&&<button className="tb-btn" style={{padding:'2px 8px',fontSize:'8px',marginLeft:6}} onClick={()=>{const url=new URL(location.href);url.search='';history.replaceState(null,'',url);location.reload()}}>Open your own fleet</button>}
+    </div>}
     <div className="toolbar">
       <div className="toolbar-search">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
@@ -818,6 +998,8 @@ function App(){
       <SettingsDropdown display={display} setDisplay={setDisplay} showDupes={showDupes} setShowDupes={setShowDupes} slotScale={slotScale} setSlotScale={setSlotScale}/>
       <button className="tb-btn" onClick={()=>setIo('export')}>Export</button>
       <button className="tb-btn" onClick={()=>setIo('import')}>Import</button>
+      <button className="tb-btn green" onClick={()=>setShare(true)}>Share</button>
+      {cloud.slug&&cloud.editKey&&<button className={`tb-btn ${cloud.dirty?'green':''}${cloud.loading?' loading':''}`} onClick={cloudSave} disabled={cloud.loading||!cloud.dirty}>{cloud.loading?'Saving...':cloud.dirty?'● Save':'✓ Saved'}</button>}
       <button className="tb-btn danger" onClick={()=>{if(confirm('Clear all vehicles from every garage? Properties will be kept.')){setColl(c=>({...c,properties:c.properties.map(p=>({...p,slots:Array(p.capacity).fill(null),theme:p.theme}))}));flash('Cleared all vehicles')}}}>Clear</button>
       <button className="tb-btn danger" onClick={()=>{if(confirm('Reset to demo fleet? This replaces everything.')){setColl(JSON.parse(JSON.stringify(DEFAULT_COLL)));flash('Reset')}}}>Reset</button>
       <button className="tb-btn" onClick={()=>setHelp(true)}>?</button>
@@ -873,6 +1055,7 @@ function App(){
     <VehiclePicker isOpen={browse} onClose={()=>setBrowse(false)} browseMode={true} ownedMap={ownedMap} onSelect={()=>{}}/>
     <PropertyManager isOpen={propMgr} onClose={()=>setPropMgr(false)} collection={coll} onUpdate={c=>{setColl(c);flash('Properties updated')}}/>
     <IOModal isOpen={!!io} mode={io} onClose={()=>setIo(null)} collection={coll} onImport={d=>{setColl(d);flash('Imported')}}/>
+    <ShareModal isOpen={share} onClose={()=>setShare(false)} collection={coll} cloud={cloud} setCloud={setCloud} flash={flash}/>
     <Toast message={toast}/>
     {help&&<div className="modal-overlay" onClick={e=>{if(e.target===e.currentTarget)setHelp(false)}}><div className="modal" style={{maxWidth:560}}>
       <div className="modal-head"><div className="modal-title">How to Use</div><div className="modal-sub">McKillsey Fleet Manager</div></div>
