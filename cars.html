@@ -234,7 +234,7 @@ const SK='mckillsey-garage-v1';
 const VEHICLES=[]; // populated after fetch
 const VEH_BY_NAME={};
 const VEH_BY_ID={};
-VEHICLES.forEach(v=>{VEH_BY_NAME[v.name.toLowerCase()]=v;VEH_BY_ID[v.imgId]=v;const c=v.name.replace(/\s*\(HSW\)\s*$/i,'').trim().toLowerCase();if(c!==v.name.toLowerCase())VEH_BY_NAME[c]=v});
+VEHICLES.forEach(v=>{VEH_BY_NAME[v.name.toLowerCase()]=v;VEH_BY_ID[v.vehicleId]=v;const c=v.name.replace(/\s*\(HSW\)\s*$/i,'').trim().toLowerCase();if(c!==v.name.toLowerCase())VEH_BY_NAME[c]=v});
 function lookupV(n){if(!n)return null;return VEH_BY_ID[n]||VEH_BY_NAME[n.replace(/\s*\(HSW\)\s*$/i,'').trim().toLowerCase()]||VEH_BY_NAME[n.toLowerCase()]||null}
 function resolveSlot(s){if(!s)return null;if(s.vehicleId)return VEH_BY_ID[s.vehicleId]||null;if(s.gtaName)return lookupV(s.gtaName);return null}
 function migrateCollection(c){
@@ -245,7 +245,7 @@ function migrateCollection(c){
     if(s.vehicleId)return s;
     // Legacy slot: {gtaName, irlName, vclass} -> {vehicleId}
     const dbv=lookupV(s.gtaName);
-    if(dbv){changed=true;return{vehicleId:dbv.imgId}}
+    if(dbv){changed=true;return{vehicleId:dbv.vehicleId}}
     // Can't resolve — keep as-is with gtaName as fallback
     return s;
   })});
@@ -357,7 +357,7 @@ function Toast({message}){return <div className={`toast ${message?'show':''}`}>{
 
 function findDuplicates(properties){
   const seen={},dupes=new Set();
-  properties.forEach((g,gi)=>{g.slots.forEach((s,si)=>{if(!s)return;const dbv=resolveSlot(s);const key=dbv?dbv.imgId:(s.gtaName||'').replace(/\s*\(HSW\)\s*$/i,'').trim().toLowerCase();if(!key)return;if(seen[key]!==undefined){dupes.add(key);dupes.add(`${gi}-${si}`);dupes.add(seen[key])}else seen[key]=`${gi}-${si}`})});
+  properties.forEach((g,gi)=>{g.slots.forEach((s,si)=>{if(!s)return;const dbv=resolveSlot(s);const key=dbv?dbv.vehicleId:(s.gtaName||'').replace(/\s*\(HSW\)\s*$/i,'').trim().toLowerCase();if(!key)return;if(seen[key]!==undefined){dupes.add(key);dupes.add(`${gi}-${si}`);dupes.add(seen[key])}else seen[key]=`${gi}-${si}`})});
   return dupes;
 }
 
@@ -704,7 +704,7 @@ function App(){
         })}
       </div>
     </div>
-    <VehiclePicker isOpen={!!picker} onClose={()=>setPicker(null)} label={picker?.label} onSelect={v=>{if(!picker)return;const g=coll.properties[picker.gi];const s=[...g.slots];s[picker.si]={vehicleId:v.imgId};updateG(picker.gi,{...g,slots:s});flash('Added '+v.name)}}/>
+    <VehiclePicker isOpen={!!picker} onClose={()=>setPicker(null)} label={picker?.label} onSelect={v=>{if(!picker)return;const g=coll.properties[picker.gi];const s=[...g.slots];s[picker.si]={vehicleId:v.vehicleId};updateG(picker.gi,{...g,slots:s});flash('Added '+v.name)}}/>
     <PropertyManager isOpen={propMgr} onClose={()=>setPropMgr(false)} collection={coll} onUpdate={c=>{setColl(c);flash('Properties updated')}}/>
     <IOModal isOpen={!!io} mode={io} onClose={()=>setIo(null)} collection={coll} onImport={d=>{setColl(d);flash('Imported')}}/>
     <Toast message={toast}/>
@@ -737,7 +737,7 @@ ReactDOM.render(React.createElement('div',{style:{display:'flex',alignItems:'cen
       if(v.weapons&&v.weapons.length)flags+='W';
       if(v.convertible)flags+='C';
       const dlc=DLC_SHORT[v.dlc]||v.dlc||'';
-      return[v.displayName,v.manufacturer||'',v.class||'',flags,v.irlName||'',v.price>100?v.price:0,v.seats||0,dlc,v.id||'',v.lapTime||null,v.topSpeed||null];
+      return[v.displayName,v.manufacturer||'',v.class||'',flags,v.irlName||'',v.price>100?v.price:0,v.seats||0,dlc,v.scImageId||v.id||'',v.lapTime||null,v.topSpeed||null,v.id||''];
     });
     
     // Re-init VEHICLES array
@@ -746,13 +746,14 @@ ReactDOM.render(React.createElement('div',{style:{display:'flex',alignItems:'cen
       idx:i,name:v[0],mfr:v[1],cls:v[2],flags:v[3]||'',
       irl:v[4]||null,price:v[5]||0,seats:v[6]||0,dlc:v[7]||'',
       imgId:v[8]||'',lapTime:v[9]||null,topSpeed:v[10]||null,
+      vehicleId:v[11]||v[8]||'',
       hsw:(v[3]||'').includes('H'),
       imani:(v[3]||'').includes('F')?'full':(v[3]||'').includes('J')?'jammer':null,
       armored:(v[3]||'').includes('A'),brGlass:(v[3]||'').includes('B'),expRes:(v[3]||'').includes('E'),
       wpnzed:(v[3]||'').includes('W'),convertible:(v[3]||'').includes('C'),
     }));
     // Rebuild lookup
-    VEHICLES.forEach(v=>{VEH_BY_NAME[v.name.toLowerCase()]=v;VEH_BY_ID[v.imgId]=v;const c=v.name.replace(/\s*\(HSW\)\s*$/i,'').trim().toLowerCase();if(c!==v.name.toLowerCase())VEH_BY_NAME[c]=v});
+    VEHICLES.forEach(v=>{VEH_BY_NAME[v.name.toLowerCase()]=v;VEH_BY_ID[v.vehicleId]=v;const c=v.name.replace(/\s*\(HSW\)\s*$/i,'').trim().toLowerCase();if(c!==v.name.toLowerCase())VEH_BY_NAME[c]=v});
     
     // Now render the real app
     ReactDOM.render(React.createElement(App,null),document.getElementById('root'));
