@@ -1,8 +1,8 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
   "functions": {
-      "api/fleet.js": {
-        "runtime": "@vercel/node@3"
-      }
+    "api/fleet.js": {
+      "runtime": "@vercel/node@3"
+    }
   }
 }
