@@ -50,7 +50,7 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 .stat-pop-row .pop-sub{color:var(--cream-dim);font-size:9px}
 .stat-pop-head{font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:3px 12px 5px;border-bottom:1px solid rgba(201,168,76,.15);margin-bottom:2px}
 
-.garage-list{display:flex;flex-direction:column;gap:12px}
+.garage-list{display:flex;flex-direction:column;gap:12px;--sb:0px}
 .garage-card{border:1px solid var(--rule);background:var(--navy-mid)}
 .garage-header{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid var(--rule);cursor:pointer;user-select:none}
 .garage-header:hover{background:rgba(201,168,76,.03)}
@@ -67,7 +67,7 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 .floor-header{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-dim);padding:6px 12px 4px;background:rgba(201,168,76,.02);border-bottom:1px solid rgba(201,168,76,.06)}
 
 /* 10-column slot grid */
-.slot-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:1px;padding:1px;background:rgba(201,168,76,.05);--sb:0px}
+.slot-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:1px;padding:1px;background:rgba(201,168,76,.05)}
 .garage-list[data-scale="2"] .slot-grid{grid-template-columns:repeat(8,1fr)}
 .garage-list[data-scale="3"] .slot-grid{grid-template-columns:repeat(6,1fr)}
 .slot{background:var(--navy);padding:calc(7px + var(--sb)*.4) calc(8px + var(--sb)*.3);min-height:calc(52px + var(--sb)*4);position:relative;cursor:default;transition:background .12s,border-color .12s;border-left:2px solid transparent}
@@ -185,7 +185,7 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 .prop-search-input{width:100%;background:var(--navy);border:1px solid var(--rule);color:var(--cream);font-family:var(--mono);font-size:11px;padding:6px 8px;outline:none}
 .prop-search-input:focus{border-color:var(--gold)}
 .prop-search-input::placeholder{color:var(--cream-dim);opacity:.5}
-.prop-dropdown{position:absolute;left:0;right:0;top:100%;background:#08111a;border:1px solid var(--gold);border-top:none;max-height:220px;overflow-y:auto;z-index:60;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.prop-dropdown{position:absolute;left:0;right:0;top:100%;background:#08111a;border:1px solid var(--gold);border-top:none;max-height:280px;overflow-y:auto;z-index:60;box-shadow:0 8px 24px rgba(0,0,0,.5)}
 .prop-dropdown-item{display:flex;align-items:center;justify-content:space-between;padding:6px 10px;cursor:pointer;transition:background .1s;gap:8px}
 .prop-dropdown-item:hover,.prop-dropdown-item.focused{background:rgba(201,168,76,.08)}
 .prop-dropdown-name{font-family:var(--sans);font-size:11px;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
@@ -393,7 +393,7 @@ function PropertyManager({isOpen,onClose,collection,onUpdate}){
           <input ref={propInputRef} className="prop-search-input" placeholder="Type to search properties..." value={propQ} onChange={e=>{setPropQ(e.target.value);setAddId('');setPropOpen(true);setPropFocus(-1)}} onFocus={()=>setPropOpen(true)} onKeyDown={handlePropKey}/>
           {propOpen&&<div className="prop-dropdown">
             {filteredProps.length===0?<div className="prop-dropdown-empty">No matching properties</div>
-            :filteredProps.slice(0,20).map((p,i)=><div key={p.id} className={`prop-dropdown-item${i===propFocus?' focused':''}`} onMouseEnter={()=>setPropFocus(i)} onMouseDown={e=>{e.preventDefault();selectProp(p)}}>
+            :filteredProps.map((p,i)=><div key={p.id} className={`prop-dropdown-item${i===propFocus?' focused':''}`} onMouseEnter={()=>setPropFocus(i)} onMouseDown={e=>{e.preventDefault();selectProp(p)}}>
               <span className="prop-dropdown-name">{p.name}</span>
               <span className="prop-dropdown-loc">{p.location||''}</span>
               <span className="prop-dropdown-meta">{p.capacity} slots</span>
