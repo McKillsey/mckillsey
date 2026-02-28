@@ -537,10 +537,13 @@ function EditableTheme({theme,onChange}){
 // ═══ SLOT ═══
 function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,display}){
   const[isDragOver,setIsDragOver]=useState(false);
+  const[galleryLoaded,setGalleryLoaded]=useState(false);
+  const[galleryFailed,setGalleryFailed]=useState(false);
   const dbv=resolveSlot(car);
   const slotRef=useRef(null);
   const imgId=dbv?.imgId||'';
   useEffect(()=>{const el=slotRef.current;if(el&&imgId){slotObserver.observe(el);return()=>slotObserver.unobserve(el)}},[imgId]);
+  useEffect(()=>{setGalleryLoaded(false);setGalleryFailed(false)},[imgId]);
   const hiddenCount=(!display.showMfr?1:0)+(!display.showGta?1:0)+(!display.showIrl?1:0);
   const compactClass=hiddenCount>=3?' compact-3':hiddenCount>=2?' compact-2':hiddenCount>=1?' compact-1':'';
   if(!car)return(<div className={`slot empty${compactClass}${hl?' highlight':''}${isDragOver?' drag-over':''}`} onClick={onClick}
@@ -552,9 +555,6 @@ function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,d
   const carName=dbv?dbv.name:(car?.gtaName||car?.vehicleId||'Unknown');
   const isGallery=display.gallery;
   const galleryImgSrc=isGallery&&imgId?imgUrl(imgId):null;
-  const[galleryLoaded,setGalleryLoaded]=useState(false);
-  const[galleryFailed,setGalleryFailed]=useState(false);
-  useEffect(()=>{setGalleryLoaded(false);setGalleryFailed(false)},[imgId]);
   return(<div ref={slotRef} data-img-id={imgId} className={`slot${compactClass}${hl?' highlight':''}${isDragOver?' drag-over':''}${isDupe?' dupe-flag':''}`}
     draggable={true}
     onDragStart={e=>{dragRef={garageIdx,slotIdx};hideVTip();e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain','')}}
