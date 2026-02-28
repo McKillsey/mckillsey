@@ -134,6 +134,7 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 .mv-irl{font-family:var(--sans);font-size:10px;color:var(--cream-dim)}
 .mv-mfr{font-family:var(--mono);font-size:8px;color:var(--gold-dim);letter-spacing:.04em;text-transform:uppercase}
 .mv-badges{display:flex;gap:3px;margin-left:auto;flex-shrink:0}
+.mv-badges .slot-badge{font-size:8px;padding:2px 5px}
 .mv-class{font-family:var(--mono);font-size:8px;color:var(--cream-dim);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;flex-shrink:0}
 .mv-price{font-family:var(--mono);font-size:9px;color:var(--cream-dim);white-space:nowrap;flex-shrink:0;min-width:60px;text-align:right}
 .modal-close{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--cream-dim);font-size:18px;cursor:pointer;padding:4px}
@@ -276,29 +277,23 @@ function save(c){try{localStorage.setItem(SK,JSON.stringify(c))}catch(e){}}
 
 // ═══ CONNECTED GARAGE GROUPS ═══
 const GARAGE_GROUPS={
-  'agency-f1':{group:'agency',label:'The Agency',order:1,floorLabel:'Floor 1'},
-  'agency-f2':{group:'agency',label:'The Agency',order:2,floorLabel:'Floor 2'},
-  'office-g1':{group:'office',label:'CEO Office Garage',order:1,floorLabel:'Level 1'},
-  'office-g2':{group:'office',label:'CEO Office Garage',order:2,floorLabel:'Level 2'},
-  'office-g3':{group:'office',label:'CEO Office Garage',order:3,floorLabel:'Level 3'},
-  'nc-guest':{group:'nightclub',label:'Nightclub',order:1,floorLabel:'Guest Parking'},
-  'nc-b2':{group:'nightclub',label:'Nightclub',order:2,floorLabel:'Basement 2'},
-  'nc-b3':{group:'nightclub',label:'Nightclub',order:3,floorLabel:'Basement 3'},
-  'nc-b4':{group:'nightclub',label:'Nightclub',order:4,floorLabel:'Basement 4'},
-  'arena-1':{group:'arena',label:'Arena Workshop',order:1,floorLabel:'Level 1 (10)'},
-  'arena-2':{group:'arena',label:'Arena Workshop',order:2,floorLabel:'Level 2 (9)'},
-  'arena-3':{group:'arena',label:'Arena Workshop',order:3,floorLabel:'Level 3 (9)'},
-  'vinewood-f1':{group:'vinewood',label:'Vinewood Club',order:1,floorLabel:'Floor 1'},
-  'vinewood-f2':{group:'vinewood',label:'Vinewood Club',order:2,floorLabel:'Floor 2'},
-  'vinewood-f3':{group:'vinewood',label:'Vinewood Club',order:3,floorLabel:'Floor 3'},
-  'vinewood-f4':{group:'vinewood',label:'Vinewood Club',order:4,floorLabel:'Floor 4'},
-  'vinewood-f5':{group:'vinewood',label:'Vinewood Club',order:5,floorLabel:'Floor 5'},
-  'mansion-tongva-g1':{group:'mansion-tongva',label:'Tongva Mansion',order:1,floorLabel:'Garage 1'},
-  'mansion-tongva-g2':{group:'mansion-tongva',label:'Tongva Mansion',order:2,floorLabel:'Garage 2'},
-  'mansion-vinewood-g1':{group:'mansion-vinewood',label:'Vinewood Mansion',order:1,floorLabel:'Garage 1'},
-  'mansion-vinewood-g2':{group:'mansion-vinewood',label:'Vinewood Mansion',order:2,floorLabel:'Garage 2'},
-  'mansion-richman-g1':{group:'mansion-richman',label:'Richman Mansion',order:1,floorLabel:'Garage 1'},
-  'mansion-richman-g2':{group:'mansion-richman',label:'Richman Mansion',order:2,floorLabel:'Garage 2'},
+  'agency-garage-1':{group:'agency',label:'The Agency',order:1,floorLabel:'Floor 1'},
+  'agency-garage-2':{group:'agency',label:'The Agency',order:2,floorLabel:'Floor 2'},
+  'office-garage-1':{group:'office',label:'CEO Office Garage',order:1,floorLabel:'Garage 1'},
+  'office-garage-2':{group:'office',label:'CEO Office Garage',order:2,floorLabel:'Garage 2'},
+  'office-garage-3':{group:'office',label:'CEO Office Garage',order:3,floorLabel:'Garage 3'},
+  'nightclub-b1-service':{group:'nightclub',label:'Nightclub',order:1,floorLabel:'Service Entrance'},
+  'nightclub-b2':{group:'nightclub',label:'Nightclub',order:2,floorLabel:'Basement Level 2'},
+  'nightclub-b3':{group:'nightclub',label:'Nightclub',order:3,floorLabel:'Basement Level 3'},
+  'nightclub-b4':{group:'nightclub',label:'Nightclub',order:4,floorLabel:'Basement Level 4'},
+  'arena-workshop-1':{group:'arena',label:'Arena Workshop',order:1,floorLabel:'Floor 1 (10)'},
+  'arena-workshop-2':{group:'arena',label:'Arena Workshop',order:2,floorLabel:'Floor 2 (9)'},
+  'arena-workshop-3':{group:'arena',label:'Arena Workshop',order:3,floorLabel:'Floor 3 (9)'},
+  'vinewood-club-f1':{group:'vinewood',label:'Vinewood Club',order:1,floorLabel:'Floor 1'},
+  'vinewood-club-f2':{group:'vinewood',label:'Vinewood Club',order:2,floorLabel:'Floor 2'},
+  'vinewood-club-f3':{group:'vinewood',label:'Vinewood Club',order:3,floorLabel:'Floor 3'},
+  'vinewood-club-f4':{group:'vinewood',label:'Vinewood Club',order:4,floorLabel:'Floor 4'},
+  'vinewood-club-f5':{group:'vinewood',label:'Vinewood Club',order:5,floorLabel:'Floor 5'},
 };
 
 function buildDisplayGroups(properties){
@@ -358,7 +353,7 @@ function showVTip(e,dbv){
     const isReady=cached==='ok';
     imgHtml=`<div class="vtip-img-wrap${isReady?'':' loading'}"><img src="${imgUrl(imgId)}" onload="this.classList.add('loaded');this.parentElement.classList.remove('loading')" onerror="this.parentElement.style.display='none'" alt=""/></div>`;
   }
-  vtipEl.innerHTML=`${imgHtml}<div class="vtip-head"><div class="vtip-mfr">${dbv.mfr||'Unknown'}</div><div class="vtip-name">${dbv.name}</div>${dbv.irl?`<div class="vtip-irl">${dbv.irl}</div>`:''}</div><div class="vtip-body"><div class="vtip-row"><span class="vtip-label">Class</span><span class="vtip-val">${cls(dbv.cls)}</span></div><div class="vtip-row"><span class="vtip-label">Price</span><span class="vtip-val gold">${fmtFull$(dbv.price)}</span></div><div class="vtip-row"><span class="vtip-label">Seats</span><span class="vtip-val">${dbv.seats||'—'}</span></div>${dbv.lapTime?`<div class="vtip-row"><span class="vtip-label">Lap Time <sup style="color:var(--gold-dim);font-size:7px">1</sup></span><span class="vtip-val green">${dbv.lapTime}</span></div>`:''}${dbv.topSpeed?`<div class="vtip-row"><span class="vtip-label">Top Speed <sup style="color:var(--gold-dim);font-size:7px">1</sup></span><span class="vtip-val">${dbv.topSpeed} mph</span></div>`:''}</div>${badges?`<div class="vtip-badges">${badges}</div>`:''}`;
+  vtipEl.innerHTML=`${imgHtml}<div class="vtip-head"><div class="vtip-mfr">${dbv.mfr||'Unknown'}</div><div class="vtip-name">${dbv.name}</div>${dbv.irl?`<div class="vtip-irl">${dbv.irl}</div>`:''}</div><div class="vtip-body"><div class="vtip-row"><span class="vtip-label">Class</span><span class="vtip-val">${cls(dbv.cls)}</span></div><div class="vtip-row"><span class="vtip-label">Price</span><span class="vtip-val gold">${fmtFull$(dbv.price)}</span></div><div class="vtip-row"><span class="vtip-label">Seats</span><span class="vtip-val">${dbv.seats||'—'}</span></div>${dbv.lapTime?`<div class="vtip-row"><span class="vtip-label">Lap Time<sup style="color:var(--gold-dim);font-size:7px">1</sup></span><span class="vtip-val green">${dbv.lapTime}</span></div>`:''}${dbv.topSpeed?`<div class="vtip-row"><span class="vtip-label">Top Speed<sup style="color:var(--gold-dim);font-size:7px">1</sup></span><span class="vtip-val">${dbv.topSpeed} mph</span></div>`:''}</div>${badges?`<div class="vtip-badges">${badges}</div>`:''}`;
   vtipEl.style.display='block';posVTip(e);
 }
 function posVTip(e){const tw=280,th=vtipEl.offsetHeight||200,vw=window.innerWidth,vh=window.innerHeight;let x=e.clientX-tw/2,y=e.clientY-th-14;if(x<8)x=8;if(x+tw>vw-8)x=vw-tw-8;if(y<8)y=e.clientY+20;vtipEl.style.left=x+'px';vtipEl.style.top=y+'px'}
@@ -722,7 +717,7 @@ function App(){
     <IOModal isOpen={!!io} mode={io} onClose={()=>setIo(null)} collection={coll} onImport={d=>{setColl(d);flash('Imported')}}/>
     <Toast message={toast}/>
     <div style={{padding:'16px 32px 24px',borderTop:'1px solid var(--rule)',marginTop:32,fontFamily:'var(--mono)',fontSize:9,color:'var(--cream-dim)',letterSpacing:'.04em',lineHeight:1.8}}>
-      <span style={{color:'var(--gold-dim)'}}><sup>1</sup></span> Lap times and top speeds sourced from <a href="https://gtacars.net" target="_blank" rel="noopener" style={{color:'var(--gold-dim)',textDecoration:'underline',textUnderlineOffset:2}}>Broughy1322 / gtacars.net</a>. Tested on PC with max upgrades on the standard test track. See <a href="https://www.youtube.com/c/Broughy1322" target="_blank" rel="noopener" style={{color:'var(--gold-dim)',textDecoration:'underline',textUnderlineOffset:2}}>his YouTube channel</a> for methodology and full testing videos.
+      <span style={{color:'var(--gold-dim)'}}><sup>1</sup></span> Lap times and top speeds sourced from <a href="https://gtacars.net" target="_blank" rel="noopener" style={{color:'var(--gold-dim)',textDecoration:'underline',textUnderlineOffset:2}}>Broughy1322 / gtacars.net</a>. Tested on PC with max upgrades on the standard test track. See <a href="https://www.youtube.com/@Broughy1322" target="_blank" rel="noopener" style={{color:'var(--gold-dim)',textDecoration:'underline',textUnderlineOffset:2}}>his YouTube channel</a> for methodology and full testing videos.
     </div>
   </>);
 }
