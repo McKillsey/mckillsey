@@ -669,7 +669,7 @@ function App(){
   useEffect(()=>{save(coll)},[coll]);
   function flash(m){setToast(m);if(toastTimeout)clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>setToast(''),1800)}
   function updateG(idx,g){const p=[...coll.properties];p[idx]=g;setColl({...coll,properties:p});flash('Saved')}
-  const handleDragDrop=useCallback((fGi,fSi,tGi,tSi)=>{if(fGi===tGi&&fSi===tSi)return;const np=coll.properties.map(g=>({...g,slots:[...g.slots]}));const fc=np[fGi].slots[fSi];const tc=np[tGi].slots[tSi];np[fGi].slots[fSi]=tc;np[tGi].slots[tSi]=fc;setColl({...coll,properties:np});if(fGi!==tGi)flash('Moved');else flash('Swapped')},[coll]);
+  const handleDragDrop=useCallback((fGi,fSi,tGi,tSi)=>{try{if(fGi===tGi&&fSi===tSi)return;const np=coll.properties.map(g=>({...g,slots:[...g.slots]}));const fc=np[fGi].slots[fSi];const tc=np[tGi].slots[tSi];np[fGi].slots[fSi]=tc;np[tGi].slots[tSi]=fc;setColl({...coll,properties:np});if(fGi!==tGi)flash('Moved');else flash('Swapped')}catch(err){console.error('DragDrop error:',err);flash('Error: '+err.message)}},[coll]);
   const dupes=useMemo(()=>findDuplicates(coll.properties),[coll]);
 
   const stats=useMemo(()=>{
@@ -756,6 +756,17 @@ function App(){
     </div>
   </>);
 }
+class ErrorBoundary extends React.Component{
+  constructor(p){super(p);this.state={error:null}}
+  static getDerivedStateFromError(e){return{error:e}}
+  componentDidCatch(e,info){console.error('React crash:',e,info)}
+  render(){if(this.state.error)return React.createElement('div',{style:{padding:40,fontFamily:'var(--mono)',color:'var(--red)',fontSize:13}},
+    React.createElement('h2',{style:{color:'var(--gold)',marginBottom:12}},'Something crashed'),
+    React.createElement('pre',{style:{color:'var(--cream-dim)',whiteSpace:'pre-wrap'}},this.state.error.toString()),
+    React.createElement('button',{onClick:()=>this.setState({error:null}),style:{marginTop:12,padding:'8px 16px',background:'var(--gold)',color:'var(--navy)',border:'none',cursor:'pointer',fontFamily:'var(--mono)'}},'Try again'));
+    return this.props.children}
+}
+
 // Show loading state
 ReactDOM.render(React.createElement('div',{style:{display:'flex',alignItems:'center',justifyContent:'center',height:'100vh',fontFamily:'var(--mono)',color:'var(--gold)',fontSize:14}},'Loading vehicle database...'),document.getElementById('root'));
 
@@ -804,7 +815,7 @@ ReactDOM.render(React.createElement('div',{style:{display:'flex',alignItems:'cen
     VEHICLES.forEach(v=>{VEH_BY_NAME[v.name.toLowerCase()]=v;VEH_BY_ID[v.vehicleId]=v;const c=v.name.replace(/\s*\(HSW\)\s*$/i,'').trim().toLowerCase();if(c!==v.name.toLowerCase())VEH_BY_NAME[c]=v});
     
     // Now render the real app
-    ReactDOM.render(React.createElement(App,null),document.getElementById('root'));
+    ReactDOM.render(React.createElement(ErrorBoundary,null,React.createElement(App,null)),document.getElementById('root'));
   }catch(err){
     ReactDOM.render(React.createElement('div',{style:{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',height:'100vh',fontFamily:'var(--mono)',color:'var(--red)',fontSize:13,gap:12}},
       React.createElement('div',null,'Failed to load vehicle database'),
