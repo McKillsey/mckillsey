@@ -29,6 +29,13 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 .tb-btn.active{background:rgba(201,168,76,.12);color:var(--gold);border-color:var(--gold)}
 .tb-btn.primary{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:500}
 .tb-btn.primary:hover{background:var(--cream)}
+.tb-seg{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.tb-seg-label{color:var(--cream-dim);margin-right:6px}
+.tb-seg-group{display:inline-flex;border:1px solid var(--rule);overflow:hidden}
+.tb-seg-opt{padding:5px 10px;cursor:pointer;color:var(--cream-dim);background:var(--navy-mid);transition:all .15s;border-right:1px solid var(--rule);user-select:none}
+.tb-seg-opt:last-child{border-right:none}
+.tb-seg-opt:hover{background:var(--navy-light);color:var(--cream)}
+.tb-seg-opt.active{background:rgba(201,168,76,.15);color:var(--gold)}
 .tb-btn.danger{color:var(--red)}.tb-btn.danger:hover{border-color:var(--red)}
 .tb-check{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10px;color:var(--cream-dim);cursor:pointer;letter-spacing:.04em;text-transform:uppercase;user-select:none}
 .tb-check input{accent-color:var(--gold);cursor:pointer}
@@ -371,7 +378,7 @@ const GARAGE_GROUPS={
   'office-garage-1':{group:'office',label:'CEO Office Garage',order:1,floorLabel:'Garage 1'},
   'office-garage-2':{group:'office',label:'CEO Office Garage',order:2,floorLabel:'Garage 2'},
   'office-garage-3':{group:'office',label:'CEO Office Garage',order:3,floorLabel:'Garage 3'},
-  'nightclub-b1-service':{group:'nightclub',label:'Nightclub',order:1,floorLabel:'Service Entrance'},
+  'nightclub-b1-service':{group:'nightclub',label:'Nightclub',order:1,floorLabel:'Service Entrance / Terrorbyte'},
   'nightclub-b2':{group:'nightclub',label:'Nightclub',order:2,floorLabel:'Basement Level 2'},
   'nightclub-b3':{group:'nightclub',label:'Nightclub',order:3,floorLabel:'Basement Level 3'},
   'nightclub-b4':{group:'nightclub',label:'Nightclub',order:4,floorLabel:'Basement Level 4'},
@@ -1079,8 +1086,8 @@ function App(){
         <input placeholder="Search garages... try: imani, hsw, to buy, speed > 130" value={sq} onChange={e=>setSq(e.target.value)}/>
         <button className="tb-btn search-db-btn" onClick={()=>setBrowse(true)} title="Search full database">All Cars</button>
       </div>
-      <button className={`tb-btn ${hideEmpty?'active':''}`} onClick={()=>setHideEmpty(!hideEmpty)}>Empty: {hideEmpty?'Hide':'Show'}</button>
-      <button className={`tb-btn ${display.gallery?'active':''}`} onClick={()=>setDisplay(d=>({...d,gallery:!d.gallery}))}>View: {display.gallery?'Gallery':'Details'}</button>
+      <div className="tb-seg"><span className="tb-seg-label">Empty</span><div className="tb-seg-group"><span className={`tb-seg-opt${!hideEmpty?' active':''}`} onClick={()=>setHideEmpty(false)}>Show</span><span className={`tb-seg-opt${hideEmpty?' active':''}`} onClick={()=>setHideEmpty(true)}>Hide</span></div></div>
+      <div className="tb-seg"><span className="tb-seg-label">View</span><div className="tb-seg-group"><span className={`tb-seg-opt${!display.gallery?' active':''}`} onClick={()=>setDisplay(d=>({...d,gallery:false}))}>Details</span><span className={`tb-seg-opt${display.gallery?' active':''}`} onClick={()=>setDisplay(d=>({...d,gallery:true}))}>Gallery</span></div></div>
       <button className="tb-btn" onClick={()=>setPropMgr(true)}>Properties</button>
       <SettingsDropdown display={display} setDisplay={setDisplay} showDupes={showDupes} setShowDupes={setShowDupes} slotScale={slotScale} setSlotScale={setSlotScale}/>
       <button className="tb-btn" onClick={()=>setIo('export')}>Export</button>
