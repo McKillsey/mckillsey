@@ -102,6 +102,21 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 .badge-armor{background:rgba(201,168,76,.15);color:var(--gold)}
 .badge-weapon{background:rgba(217,79,79,.15);color:var(--red)}
 .slot-actions{position:absolute;top:3px;right:3px;display:none;gap:2px}
+
+/* Slot tags (to buy / to sell) */
+.slot-tag{position:absolute;bottom:2px;right:4px;font-family:var(--mono);font-size:7px;letter-spacing:.04em;text-transform:uppercase;padding:1px 4px;border-radius:1px;cursor:pointer;z-index:2}
+.slot-tag.tag-buy{background:rgba(45,186,114,.2);color:var(--green)}
+.slot-tag.tag-sell{background:rgba(217,79,79,.2);color:var(--red)}
+.slot-tag-menu{position:absolute;bottom:16px;right:2px;z-index:20;background:#08111a;border:1px solid var(--gold);padding:2px;display:flex;flex-direction:column;gap:1px;box-shadow:0 4px 12px rgba(0,0,0,.5)}
+.slot-tag-opt{font-family:var(--mono);font-size:8px;letter-spacing:.04em;text-transform:uppercase;padding:4px 8px;cursor:pointer;color:var(--cream-dim);background:none;border:none;text-align:left;white-space:nowrap;transition:all .1s}
+.slot-tag-opt:hover{background:rgba(201,168,76,.1);color:var(--cream)}
+.slot-tag-opt.active{color:var(--gold)}
+
+/* Owned badge in vehicle picker */
+.mv-owned{font-family:var(--mono);font-size:7px;letter-spacing:.06em;text-transform:uppercase;padding:2px 5px;background:rgba(201,168,76,.12);color:var(--gold-dim);flex-shrink:0}
+
+/* Gallery mode tag overlay */
+.garage-list.gallery-mode .slot-tag{bottom:auto;top:4px;left:4px;right:auto;font-size:8px;padding:2px 6px;text-shadow:0 1px 3px rgba(0,0,0,.6)}
 .slot:hover .slot-actions{display:flex}
 .slot-action-btn{background:var(--navy-mid);border:1px solid var(--rule);color:var(--cream-dim);width:calc(16px + var(--sb));height:calc(16px + var(--sb));display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:calc(9px + var(--sb)*.5);transition:all .1s;border-radius:1px}
 .slot-action-btn:hover{background:var(--red);color:white;border-color:var(--red)}
@@ -393,29 +408,62 @@ function findDuplicates(properties){
 }
 
 // ═══ VEHICLE PICKER ═══
-function VehiclePicker({isOpen,onClose,onSelect,label}){
+function VehiclePicker({isOpen,onClose,onSelect,label,ownedSet}){
   const[q,setQ]=useState('');const[cf,setCf]=useState(null);const ref=useRef(null);
   useEffect(()=>{if(isOpen){setQ('');setCf(null);setTimeout(()=>ref.current?.focus(),100)}},[isOpen]);
   const filtered=useMemo(()=>{
     if(!isOpen)return[];let list=VEHICLES;
-    if(q.length>=2){const ql=q.toLowerCase();list=list.filter(v=>v.name.toLowerCase().includes(ql)||v.mfr.toLowerCase().includes(ql)||(v.irl&&v.irl.toLowerCase().includes(ql)))}
-    if(cf)list=list.filter(v=>v.cls===cf);return list.slice(0,60);
-  },[isOpen,q,cf]);
+    if(q.length>=2){
+      const ql=q.toLowerCase().trim();
+      // Smart attribute search
+      const attrMap={'imani':v=>v.imani,'hsw':v=>v.hsw,'weaponized':v=>v.wpnzed,'wpnzd':v=>v.wpnzed,'weapon':v=>v.wpnzed,
+        'armored':v=>v.armored,'armor':v=>v.armored,'bp':v=>v.brGlass,'bulletproof':v=>v.brGlass,'bullet':v=>v.brGlass,
+        'convertible':v=>v.convertible,'open':v=>v.convertible,'jammer':v=>v.imani==='jammer',
+        'drift':v=>v.name.toLowerCase().includes('drift'),'owned':v=>ownedSet.has(v.vehicleId),'mine':v=>ownedSet.has(v.vehicleId)};
+      // Check for speed/lap filters like "top speed > 120" or "lap < 1:05"
+      const speedMatch=ql.match(/(?:top\s*)?speed\s*([<>])\s*(\d+)/);
+      const lapMatch=ql.match(/lap\s*(?:time)?\s*([<>])\s*(\d+[:\.]?\d*)/);
+      const priceMatch=ql.match(/price\s*([<>])\s*\$?([\d,.]+)\s*(m|k)?/i);
+      if(attrMap[ql]){
+        list=list.filter(attrMap[ql]);
+      }else if(speedMatch){
+        const op=speedMatch[1],val=parseFloat(speedMatch[2]);
+        list=list.filter(v=>v.topSpeed&&(op==='>'?v.topSpeed>val:v.topSpeed<val));
+      }else if(lapMatch){
+        const op=lapMatch[1];let val=lapMatch[2];
+        // Parse "1:05" or "1:05.3" or "65" to seconds
+        const parts=val.split(/[:.]/);let secs=0;
+        if(parts.length>=2)secs=parseInt(parts[0])*60+parseFloat(parts.slice(1).join('.'));
+        else secs=parseFloat(parts[0]);
+        list=list.filter(v=>{if(!v.lapTime)return false;const lp=v.lapTime.split(/[:.]/);let ls=parseInt(lp[0])*60+parseFloat(lp.slice(1).join('.'));return op==='<'?ls<secs:ls>secs});
+      }else if(priceMatch){
+        const op=priceMatch[1];let val=parseFloat(priceMatch[2].replace(/,/g,''));
+        const unit=(priceMatch[3]||'').toLowerCase();if(unit==='m')val*=1e6;if(unit==='k')val*=1e3;
+        list=list.filter(v=>v.price>0&&(op==='>'?v.price>val:v.price<val));
+      }else{
+        list=list.filter(v=>v.name.toLowerCase().includes(ql)||v.mfr.toLowerCase().includes(ql)||(v.irl&&v.irl.toLowerCase().includes(ql))||(v.dlc&&v.dlc.toLowerCase().includes(ql)));
+      }
+    }
+    if(cf)list=list.filter(v=>v.cls===cf);
+    // Sort: unowned first, then by name
+    list=[...list].sort((a,b)=>{const ao=ownedSet.has(a.vehicleId)?1:0,bo=ownedSet.has(b.vehicleId)?1:0;if(ao!==bo)return ao-bo;return a.name.localeCompare(b.name)});
+    return list.slice(0,80);
+  },[isOpen,q,cf,ownedSet]);
   const classes=['SUPER','SPORT','SPORTS CLASSIC','MUSCLE','SUV','OFF-ROAD','MOTORCYCLE','SEDAN','COUPE','OPEN WHEEL'];
   if(!isOpen)return null;
   return(<div className="modal-overlay" onClick={e=>{if(e.target===e.currentTarget)onClose()}}><div className="modal">
     <div className="modal-head"><div className="modal-title">Add Vehicle</div><div className="modal-sub">{label?`Adding to ${label}`:'Select a vehicle'}</div></div>
     <button className="modal-close" onClick={onClose}>×</button>
-    <div className="modal-search"><input ref={ref} placeholder="Search GTA name, manufacturer, or IRL car..." value={q} onChange={e=>setQ(e.target.value)}/></div>
+    <div className="modal-search"><input ref={ref} placeholder="Search name, manufacturer, or try: imani, hsw, armored, speed > 130, lap < 1:02..." value={q} onChange={e=>setQ(e.target.value)}/></div>
     <div className="modal-filters">{classes.map(c=><button key={c} className={`filter-chip ${cf===c?'active':''}`} onClick={()=>setCf(cf===c?null:c)}>{cls(c)}</button>)}</div>
     <div className="modal-list">
-      {q.length<2&&!cf?<div style={{padding:'16px 0',textAlign:'center',color:'var(--cream-dim)',fontFamily:'var(--mono)',fontSize:'10px'}}>Type 2+ characters or select a class</div>
+      {q.length<2&&!cf?<div style={{padding:'16px 0',textAlign:'center',color:'var(--cream-dim)',fontFamily:'var(--mono)',fontSize:'10px'}}>Type 2+ characters or select a class · try: imani, hsw, armored, speed &gt; 130</div>
       :filtered.length===0?<div style={{padding:'16px 0',textAlign:'center',color:'var(--cream-dim)',fontFamily:'var(--mono)',fontSize:'10px'}}>No vehicles found</div>
-      :filtered.map(v=>(<div key={v.idx} className="modal-vehicle" onClick={()=>{onSelect(v);onClose()}}>
+      :filtered.map(v=>{const owned=ownedSet.has(v.vehicleId);return(<div key={v.idx} className="modal-vehicle" onClick={()=>{onSelect(v);onClose()}} style={owned?{opacity:.55}:{}}>
         <div style={{flex:1,minWidth:0}}><div className="mv-mfr">{v.mfr||'Unknown'}</div><div className="mv-name">{v.name}</div>{v.irl&&<div className="mv-irl">{v.irl}</div>}</div>
-        <div className="mv-badges">{v.hsw&&<span className="slot-badge badge-hsw">{v.isHswVariant?'HSW':'HSW Eligible'}</span>}{v.imani&&<span className="slot-badge badge-imani">{v.imani==='full'?'Imani+':'Jammer'}</span>}{v.armored&&<span className="slot-badge badge-armor">Armor</span>}{v.wpnzed&&<span className="slot-badge badge-weapon">Wpnzd</span>}</div>
+        <div className="mv-badges">{owned&&<span className="mv-owned">Owned</span>}{v.hsw&&<span className="slot-badge badge-hsw">{v.isHswVariant?'HSW':'HSW Eligible'}</span>}{v.imani&&<span className="slot-badge badge-imani">{v.imani==='full'?'Imani+':'Jammer'}</span>}{v.armored&&<span className="slot-badge badge-armor">Armor</span>}{v.wpnzed&&<span className="slot-badge badge-weapon">Wpnzd</span>}</div>
         <div className="mv-class">{cls(v.cls)}</div><div className="mv-price">{fmt$(v.price)}</div>
-      </div>))}
+      </div>)})}
     </div>
   </div></div>);
 }
@@ -535,15 +583,18 @@ function EditableTheme({theme,onChange}){
 }
 
 // ═══ SLOT ═══
-function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,display}){
+function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,display,onTag}){
   const[isDragOver,setIsDragOver]=useState(false);
   const[galleryLoaded,setGalleryLoaded]=useState(false);
   const[galleryFailed,setGalleryFailed]=useState(false);
+  const[tagMenu,setTagMenu]=useState(false);
   const dbv=resolveSlot(car);
   const slotRef=useRef(null);
   const imgId=dbv?.imgId||'';
+  const tag=car?.tag||null;
   useEffect(()=>{const el=slotRef.current;if(el&&imgId){slotObserver.observe(el);return()=>slotObserver.unobserve(el)}},[imgId]);
   useEffect(()=>{setGalleryLoaded(false);setGalleryFailed(false)},[imgId]);
+  useEffect(()=>{if(!tagMenu)return;function h(e){if(!e.target.closest('.slot-tag-menu')&&!e.target.closest('.slot-tag'))setTagMenu(false)}document.addEventListener('mousedown',h);return()=>document.removeEventListener('mousedown',h)},[tagMenu]);
   const hiddenCount=(!display.showMfr?1:0)+(!display.showGta?1:0)+(!display.showIrl?1:0);
   const compactClass=hiddenCount>=3?' compact-3':hiddenCount>=2?' compact-2':hiddenCount>=1?' compact-1':'';
   if(!car)return(<div className={`slot empty${compactClass}${hl?' highlight':''}${isDragOver?' drag-over':''}`} onClick={onClick}
@@ -569,7 +620,16 @@ function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,d
         onLoad={()=>setGalleryLoaded(true)} onError={()=>setGalleryFailed(true)}/>
     </>}
     <span className="slot-num">{num}</span>
-    <div className="slot-actions"><button className="slot-action-btn" onClick={e=>{e.stopPropagation();hideVTip();onRemove()}} title="Remove">×</button></div>
+    <div className="slot-actions">
+      <button className="slot-action-btn" onClick={e=>{e.stopPropagation();setTagMenu(!tagMenu)}} title="Tag" style={{fontSize:tagMenu?'calc(9px + var(--sb)*.5)':'calc(7px + var(--sb)*.5)'}}>⚑</button>
+      <button className="slot-action-btn" onClick={e=>{e.stopPropagation();hideVTip();onRemove()}} title="Remove">×</button>
+    </div>
+    {tagMenu&&<div className="slot-tag-menu" onClick={e=>e.stopPropagation()}>
+      <button className={`slot-tag-opt${tag==='buy'?' active':''}`} onClick={()=>{onTag(garageIdx,slotIdx,tag==='buy'?null:'buy');setTagMenu(false)}}>🟢 To Buy{tag==='buy'?' ✓':''}</button>
+      <button className={`slot-tag-opt${tag==='sell'?' active':''}`} onClick={()=>{onTag(garageIdx,slotIdx,tag==='sell'?null:'sell');setTagMenu(false)}}>🔴 To Sell{tag==='sell'?' ✓':''}</button>
+      {tag&&<button className="slot-tag-opt" onClick={()=>{onTag(garageIdx,slotIdx,null);setTagMenu(false)}}>✕ Clear</button>}
+    </div>}
+    {tag&&<span className={`slot-tag tag-${tag}`} onClick={e=>{e.stopPropagation();setTagMenu(!tagMenu)}}>{tag==='buy'?'To Buy':'To Sell'}</span>}
     {display.showMfr&&dbv&&dbv.mfr&&<div className="slot-mfr">{dbv.mfr}</div>}
     {(display.showGta||isGallery)&&<div className="slot-gta">{carName}</div>}
     {display.showIrl&&dbv&&dbv.irl&&<div className="slot-irl">{dbv.irl}</div>}
@@ -585,13 +645,25 @@ function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,d
 }
 
 // ═══ GARAGE CARD ═══
-function GarageCard({garages,label,sq,onUpdate,onAdd,onDragDrop,dupes,showDupes,display}){
+function GarageCard({garages,label,sq,onUpdate,onAdd,onDragDrop,dupes,showDupes,display,onTag}){
   const[open,setOpen]=useState(true);
   const totalSlots=garages.reduce((a,g)=>a+g.prop.capacity,0);
   const totalFilled=garages.reduce((a,g)=>a+g.prop.slots.filter(s=>s!==null).length,0);
   const pct=Math.round((totalFilled/totalSlots)*100);
   const garageValue=useMemo(()=>{let v=0;garages.forEach(g=>{g.prop.slots.forEach(s=>{if(s){const d=resolveSlot(s);if(d&&d.price>0)v+=d.price}})});return v},[garages]);
-  const allMatches=useMemo(()=>{if(!sq||sq.length<2)return{};const q=sq.toLowerCase(),m={};garages.forEach(g=>{m[g.propIdx]=new Set();g.prop.slots.forEach((s,i)=>{if(!s)return;const dbv=resolveSlot(s);if(!dbv)return;if(dbv.name.toLowerCase().includes(q)||(dbv.irl&&dbv.irl.toLowerCase().includes(q))||(dbv.mfr&&dbv.mfr.toLowerCase().includes(q))||(cls(dbv.cls).toLowerCase().includes(q)))m[g.propIdx].add(i)})});return m},[garages,sq]);
+  const allMatches=useMemo(()=>{if(!sq||sq.length<2)return{};const q=sq.toLowerCase().trim(),m={};
+    // Attribute matchers
+    const attrMatch={'imani':v=>v.imani,'hsw':v=>v.hsw,'weaponized':v=>v.wpnzed,'wpnzd':v=>v.wpnzed,'armored':v=>v.armored,'armor':v=>v.armored,
+      'bp':v=>v.brGlass,'bulletproof':v=>v.brGlass,'convertible':v=>v.convertible,'jammer':v=>v.imani==='jammer',
+      'to buy':(_,s)=>s?.tag==='buy','to sell':(_,s)=>s?.tag==='sell','buy':(_,s)=>s?.tag==='buy','sell':(_,s)=>s?.tag==='sell','tagged':(_,s)=>!!s?.tag};
+    const attrFn=attrMatch[q];
+    const speedMatch=q.match(/(?:top\s*)?speed\s*([<>])\s*(\d+)/);
+    const lapMatch=q.match(/lap\s*(?:time)?\s*([<>])\s*(\d+[:\.]?\d*)/);
+    garages.forEach(g=>{m[g.propIdx]=new Set();g.prop.slots.forEach((s,i)=>{if(!s)return;const dbv=resolveSlot(s);if(!dbv)return;
+      if(attrFn){if(attrFn(dbv,s))m[g.propIdx].add(i)}
+      else if(speedMatch){const op=speedMatch[1],val=parseFloat(speedMatch[2]);if(dbv.topSpeed&&(op==='>'?dbv.topSpeed>val:dbv.topSpeed<val))m[g.propIdx].add(i)}
+      else if(lapMatch){const op=lapMatch[1];const pts=lapMatch[2].split(/[:.]/);let secs=pts.length>=2?parseInt(pts[0])*60+parseFloat(pts.slice(1).join('.')):parseFloat(pts[0]);if(dbv.lapTime){const lp=dbv.lapTime.split(/[:.]/);let ls=parseInt(lp[0])*60+parseFloat(lp.slice(1).join('.'));if(op==='<'?ls<secs:ls>secs)m[g.propIdx].add(i)}}
+      else if(dbv.name.toLowerCase().includes(q)||(dbv.irl&&dbv.irl.toLowerCase().includes(q))||(dbv.mfr&&dbv.mfr.toLowerCase().includes(q))||(cls(dbv.cls).toLowerCase().includes(q)))m[g.propIdx].add(i)})});return m},[garages,sq]);
   const hasMatch=!sq||sq.length<2||Object.values(allMatches).some(s=>s.size>0)||label.toLowerCase().includes((sq||'').toLowerCase());
   const isGrouped=garages.length>1;
   const firstTheme=garages[0].prop.theme;
@@ -618,7 +690,7 @@ function GarageCard({garages,label,sq,onUpdate,onAdd,onDragDrop,dupes,showDupes,
     </div>
     {open&&garages.map((g,fi)=>{const matches=allMatches[g.propIdx]||new Set();return(<div key={g.propIdx}>
       {isGrouped&&<div className="floor-header">{g.floor?.floorLabel||`Floor ${fi+1}`} — {g.prop.slots.filter(s=>s!==null).length}/{g.prop.capacity}</div>}
-      <div className="slot-grid">{g.prop.slots.map((car,si)=><Slot key={`${g.propIdx}-${si}`} car={car} num={si+1} garageIdx={g.propIdx} slotIdx={si} hl={matches.has(si)} isDupe={showDupes&&car&&dupes.has(`${g.propIdx}-${si}`)} display={display} onRemove={()=>{const s=[...g.prop.slots];s[si]=null;onUpdate(g.propIdx,{...g.prop,slots:s})}} onClick={()=>{if(!car)onAdd(g.propIdx,si,label)}} onDragDrop={onDragDrop}/>)}</div>
+      <div className="slot-grid">{g.prop.slots.map((car,si)=><Slot key={`${g.propIdx}-${si}`} car={car} num={si+1} garageIdx={g.propIdx} slotIdx={si} hl={matches.has(si)} isDupe={showDupes&&car&&dupes.has(`${g.propIdx}-${si}`)} display={display} onTag={onTag} onRemove={()=>{const s=[...g.prop.slots];s[si]=null;onUpdate(g.propIdx,{...g.prop,slots:s})}} onClick={()=>{if(!car)onAdd(g.propIdx,si,label)}} onDragDrop={onDragDrop}/>)}</div>
     </div>)})}
   </div>);
 }
@@ -669,8 +741,11 @@ function App(){
   useEffect(()=>{save(coll)},[coll]);
   function flash(m){setToast(m);if(toastTimeout)clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>setToast(''),1800)}
   function updateG(idx,g){const p=[...coll.properties];p[idx]=g;setColl({...coll,properties:p});flash('Saved')}
+  const handleTag=useCallback((gi,si,tag)=>{const np=coll.properties.map(g=>({...g,slots:[...g.slots]}));const slot=np[gi].slots[si];if(!slot)return;np[gi].slots[si]={...slot,tag:tag||undefined};if(!tag)delete np[gi].slots[si].tag;setColl({...coll,properties:np})},[coll]);
   const handleDragDrop=useCallback((fGi,fSi,tGi,tSi)=>{try{if(fGi===tGi&&fSi===tSi)return;const np=coll.properties.map(g=>({...g,slots:[...g.slots]}));const fc=np[fGi].slots[fSi];const tc=np[tGi].slots[tSi];np[fGi].slots[fSi]=tc;np[tGi].slots[tSi]=fc;setColl({...coll,properties:np});if(fGi!==tGi)flash('Moved');else flash('Swapped')}catch(err){console.error('DragDrop error:',err);flash('Error: '+err.message)}},[coll]);
   const dupes=useMemo(()=>findDuplicates(coll.properties),[coll]);
+
+  const ownedSet=useMemo(()=>{const s=new Set();coll.properties.forEach(g=>{g.slots.forEach(sl=>{if(sl){const d=resolveSlot(sl);if(d)s.add(d.vehicleId)}})});return s},[coll]);
 
   const stats=useMemo(()=>{
     let cars=0,slots=0,garages=0,totalValue=0;const cc={},mfrs={};const topCars=[];
@@ -678,10 +753,13 @@ function App(){
       const f=g.slots.filter(s=>s!==null).length;cars+=f;slots+=g.capacity;if(f>0)garages++;
       g.slots.forEach(s=>{if(!s)return;const dbv=resolveSlot(s);if(dbv){cc[dbv.cls]=(cc[dbv.cls]||0)+1;if(dbv.mfr)mfrs[dbv.mfr]=(mfrs[dbv.mfr]||0)+1;if(dbv.price>0){totalValue+=dbv.price;topCars.push({name:dbv.name,price:dbv.price})}}});
     });
+    // Count total vehicles per class and manufacturer in the database
+    const classTotals={},mfrTotals={};
+    VEHICLES.forEach(v=>{classTotals[v.cls]=(classTotals[v.cls]||0)+1;if(v.mfr)mfrTotals[v.mfr]=(mfrTotals[v.mfr]||0)+1});
     const classRank=Object.entries(cc).sort((a,b)=>b[1]-a[1]);
     const mfrRank=Object.entries(mfrs).sort((a,b)=>b[1]-a[1]);
     topCars.sort((a,b)=>b.price-a.price);
-    return{cars,slots,garages,pct:slots?Math.round(cars/slots*100):0,classRank,mfrRank,totalValue,topCars:topCars.slice(0,10),mfrCount:Object.keys(mfrs).length};
+    return{cars,slots,garages,pct:slots?Math.round(cars/slots*100):0,classRank,mfrRank,classTotals,mfrTotals,totalValue,topCars:topCars.slice(0,10),mfrCount:Object.keys(mfrs).length};
   },[coll]);
 
   const displayGroups=useMemo(()=>{
@@ -719,7 +797,7 @@ function App(){
           <div className="stat-label">Top Class ({stats.classRank[0]?stats.classRank[0][1]:0}) · hover for all</div>
           <div className="stat-pop">
             <div className="stat-pop-head">Classes by Count</div>
-            {stats.classRank.map(([c,n])=><div key={c} className="stat-pop-row"><span className="pop-name">{cls(c)}</span><span className="pop-val">{n}</span></div>)}
+            {stats.classRank.map(([c,n])=><div key={c} className="stat-pop-row"><span className="pop-name">{cls(c)}</span><span className="pop-val">{n}<span className="pop-sub">/{stats.classTotals[c]||'?'}</span></span></div>)}
           </div>
         </div>
         <div className="stat-card hoverable">
@@ -727,7 +805,7 @@ function App(){
           <div className="stat-label">Manufacturers · hover for list</div>
           <div className="stat-pop">
             <div className="stat-pop-head">Manufacturers by Count</div>
-            {stats.mfrRank.map(([m,n])=><div key={m} className="stat-pop-row"><span className="pop-name">{m}</span><span className="pop-val">{n}</span></div>)}
+            {stats.mfrRank.map(([m,n])=><div key={m} className="stat-pop-row"><span className="pop-name">{m}</span><span className="pop-val">{n}<span className="pop-sub">/{stats.mfrTotals[m]||'?'}</span></span></div>)}
           </div>
         </div>
         <div className="stat-card"><div className="stat-value">{stats.garages}</div><div className="stat-label">Active Garages</div></div>
@@ -742,12 +820,12 @@ function App(){
       </div>
       <div className={`garage-list${display.gallery?' gallery-mode':''}`} style={{'--sb':slotScale*2+'px'}} data-scale={slotScale} onDragOver={e=>e.preventDefault()}>
         {displayGroups.map((g,i)=>{
-          if(g.type==='single')return <GarageCard key={g.prop.id+'-'+g.propIdx} garages={[{prop:g.prop,propIdx:g.propIdx,floor:null}]} label={g.prop.name} sq={sq} dupes={dupes} showDupes={showDupes} display={display} onUpdate={(idx,u)=>updateG(idx,u)} onAdd={(gi,si,lbl)=>setPicker({gi,si,label:lbl})} onDragDrop={handleDragDrop}/>;
-          return <GarageCard key={g.label+'-'+i} garages={g.siblings.map(s=>({prop:s.prop,propIdx:s.propIdx,floor:s.floor}))} label={g.label} sq={sq} dupes={dupes} showDupes={showDupes} display={display} onUpdate={(idx,u)=>updateG(idx,u)} onAdd={(gi,si,lbl)=>setPicker({gi,si,label:lbl})} onDragDrop={handleDragDrop}/>;
+          if(g.type==='single')return <GarageCard key={g.prop.id+'-'+g.propIdx} garages={[{prop:g.prop,propIdx:g.propIdx,floor:null}]} label={g.prop.name} sq={sq} dupes={dupes} showDupes={showDupes} display={display} onTag={handleTag} onUpdate={(idx,u)=>updateG(idx,u)} onAdd={(gi,si,lbl)=>setPicker({gi,si,label:lbl})} onDragDrop={handleDragDrop}/>;
+          return <GarageCard key={g.label+'-'+i} garages={g.siblings.map(s=>({prop:s.prop,propIdx:s.propIdx,floor:s.floor}))} label={g.label} sq={sq} dupes={dupes} showDupes={showDupes} display={display} onTag={handleTag} onUpdate={(idx,u)=>updateG(idx,u)} onAdd={(gi,si,lbl)=>setPicker({gi,si,label:lbl})} onDragDrop={handleDragDrop}/>;
         })}
       </div>
     </div>
-    <VehiclePicker isOpen={!!picker} onClose={()=>setPicker(null)} label={picker?.label} onSelect={v=>{if(!picker)return;const g=coll.properties[picker.gi];const s=[...g.slots];s[picker.si]={vehicleId:v.vehicleId};updateG(picker.gi,{...g,slots:s});flash('Added '+v.name)}}/>
+    <VehiclePicker isOpen={!!picker} onClose={()=>setPicker(null)} label={picker?.label} ownedSet={ownedSet} onSelect={v=>{if(!picker)return;const g=coll.properties[picker.gi];const s=[...g.slots];s[picker.si]={vehicleId:v.vehicleId};updateG(picker.gi,{...g,slots:s});flash('Added '+v.name)}}/>
     <PropertyManager isOpen={propMgr} onClose={()=>setPropMgr(false)} collection={coll} onUpdate={c=>{setColl(c);flash('Properties updated')}}/>
     <IOModal isOpen={!!io} mode={io} onClose={()=>setIo(null)} collection={coll} onImport={d=>{setColl(d);flash('Imported')}}/>
     <Toast message={toast}/>
