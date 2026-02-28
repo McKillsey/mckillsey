@@ -92,8 +92,9 @@ a{color:var(--gold);text-decoration:none}input,select,textarea,button{font-famil
 .garage-list.gallery-mode .slot .gallery-img-shimmer{position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,var(--navy-mid) 25%,var(--navy-light) 50%,var(--navy-mid) 75%);background-size:200% 200%;animation:shimmer 1.8s ease-in-out infinite}
 .garage-list.gallery-mode .slot.empty{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center}
 .garage-list.gallery-mode .slot.empty .empty-label{font-size:10px}
-.gallery-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--navy-mid);z-index:1}
-.gallery-placeholder svg{width:60%;height:60%;opacity:.12}
+.gallery-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(145deg,var(--navy-mid) 0%,#0f1e2e 100%);z-index:1;padding:12px;text-align:center;gap:4px}
+.gallery-placeholder .gp-class{font-family:var(--mono);font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-dim);opacity:.7}
+.gallery-placeholder .gp-name{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--cream);opacity:.35;line-height:1.2;max-width:90%;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .garage-list.gallery-mode .slot:hover{outline:1px solid var(--gold);outline-offset:-1px}
 .slot{background:var(--navy);padding:calc(7px + var(--sb)*.4) calc(8px + var(--sb)*.3);min-height:calc(52px + var(--sb)*4);position:relative;cursor:default;transition:background .12s,border-color .12s;border-left:2px solid transparent}
 .slot:hover{background:rgba(30,49,72,.8)}
@@ -838,7 +839,10 @@ function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,d
         style={galleryLoaded?{}:{opacity:0}}
         onLoad={()=>setGalleryLoaded(true)} onError={()=>setGalleryFailed(true)}/>
     </>}
-    {isGallery&&(!galleryImgSrc||galleryFailed)&&<div className="gallery-placeholder" dangerouslySetInnerHTML={{__html:CAR_SILHOUETTE}}/>}
+    {isGallery&&(!galleryImgSrc||galleryFailed)&&<div className="gallery-placeholder">
+      {dbv&&dbv.cls&&<span className="gp-class">{cls(dbv.cls)}</span>}
+      <span className="gp-name">{carName}</span>
+    </div>}
     <span className="slot-num">{num}</span>
     <div className="slot-actions">
       <button className="slot-action-btn" onClick={e=>{e.stopPropagation();setTagMenu(!tagMenu)}} title="Tag" style={{fontSize:tagMenu?'calc(9px + var(--sb)*.5)':'calc(7px + var(--sb)*.5)'}}>⚑</button>
@@ -865,7 +869,6 @@ function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,d
 }
 
 // ═══ GARAGE CARD ═══
-const CAR_SILHOUETTE='<svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg"><path d="M15 58c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8zm146 0c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8zM5 52h10c1-9.5 8-17 16.5-17h20L70 22c3-3 7-5 11-5h38c5 0 10 2 13 6l18 12h16c6 0 12 3 16 8l6 7h7v10h-7c-2 9-10 16-19 16s-17-7-19-16H50c-2 9-10 16-19 16S14 67 12 58H5V52z" fill="currentColor"/></svg>';
 function GarageCard({garages,label,sq,onUpdate,onAdd,onDragDrop,dupes,showDupes,display,onTag,hideEmpty}){
   const[open,setOpen]=useState(true);
   const[closedFloors,setClosedFloors]=useState(new Set());
