@@ -557,11 +557,11 @@ function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,d
   useEffect(()=>{setGalleryLoaded(false);setGalleryFailed(false)},[imgId]);
   return(<div ref={slotRef} data-img-id={imgId} className={`slot${compactClass}${hl?' highlight':''}${isDragOver?' drag-over':''}${isDupe?' dupe-flag':''}`}
     draggable={true}
-    onDragStart={e=>{dragRef={garageIdx,slotIdx};e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain','')}}
+    onDragStart={e=>{dragRef={garageIdx,slotIdx};hideVTip();e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain','')}}
     onDragEnd={()=>{dragRef={garageIdx:null,slotIdx:null}}}
     onDragOver={e=>{e.preventDefault();setIsDragOver(true)}} onDragLeave={()=>setIsDragOver(false)}
     onDrop={e=>{e.preventDefault();setIsDragOver(false);if(dragRef.garageIdx!==null){onDragDrop(dragRef.garageIdx,dragRef.slotIdx,garageIdx,slotIdx);dragRef={garageIdx:null,slotIdx:null}}}}
-    onMouseEnter={e=>{if(dbv)showVTip(e,dbv)}} onMouseMove={e=>{if(dbv)posVTip(e)}} onMouseLeave={hideVTip}>
+    onMouseEnter={e=>{if(dbv&&dragRef.garageIdx===null)showVTip(e,dbv)}} onMouseMove={e=>{if(dbv&&dragRef.garageIdx===null)posVTip(e)}} onMouseLeave={hideVTip}>
     {isGallery&&galleryImgSrc&&!galleryFailed&&<>
       {!galleryLoaded&&<div className="gallery-img-shimmer"/>}
       <img className="gallery-img" src={galleryImgSrc} alt="" loading="lazy"
