@@ -305,6 +305,11 @@ function preloadImg(id){
   img.src=imgUrl(id);
 }
 
+// IntersectionObserver: preload vehicle images as slots scroll into view
+const slotObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){const id=e.target.dataset.imgId;if(id)preloadImg(id)}});
+},{rootMargin:'300px 0px',threshold:0});
+
 function showVTip(e,dbv){
   if(!dbv){vtipEl.style.display='none';return}
   let badges='';
@@ -328,16 +333,6 @@ function showVTip(e,dbv){
 }
 function posVTip(e){const tw=280,th=vtipEl.offsetHeight||200,vw=window.innerWidth,vh=window.innerHeight;let x=e.clientX-tw/2,y=e.clientY-th-14;if(x<8)x=8;if(x+tw>vw-8)x=vw-tw-8;if(y<8)y=e.clientY+20;vtipEl.style.left=x+'px';vtipEl.style.top=y+'px'}
 function hideVTip(){vtipEl.style.display='none'}
-
-// Preload images for all vehicles in the user's collection (called after render)
-function preloadCollectionImages(coll){
-  if(!coll||!coll.properties)return;
-  const ids=new Set();
-  coll.properties.forEach(g=>{g.slots.forEach(s=>{if(!s)return;const dbv=lookupV(s.gtaName);if(dbv&&dbv.imgId)ids.add(dbv.imgId)})});
-  // Stagger preloads to avoid hammering the CDN
-  let delay=0;
-  ids.forEach(id=>{setTimeout(()=>preloadImg(id),delay);delay+=80});
-}
 
 let dragRef={garageIdx:null,slotIdx:null};
 let toastTimeout=null;
@@ -495,6 +490,9 @@ function EditableTheme({theme,onChange}){
 function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,display}){
   const[isDragOver,setIsDragOver]=useState(false);
   const dbv=car?lookupV(car.gtaName):null;
+  const slotRef=useRef(null);
+  const imgId=dbv?.imgId||'';
+  useEffect(()=>{const el=slotRef.current;if(el&&imgId){slotObserver.observe(el);return()=>slotObserver.unobserve(el)}},[imgId]);
   const hiddenCount=(!display.showMfr?1:0)+(!display.showGta?1:0)+(!display.showIrl?1:0);
   const compactClass=hiddenCount>=3?' compact-3':hiddenCount>=2?' compact-2':hiddenCount>=1?' compact-1':'';
   if(!car)return(<div className={`slot empty${compactClass}${hl?' highlight':''}${isDragOver?' drag-over':''}`} onClick={onClick}
@@ -503,7 +501,7 @@ function Slot({car,num,garageIdx,slotIdx,onRemove,onClick,hl,onDragDrop,isDupe,d
     <span className="slot-num">{num}</span><span className="empty-label">+ add</span></div>);
 
   const isHsw=car.gtaName.includes('(HSW)')||(dbv&&dbv.hsw);
-  return(<div className={`slot${compactClass}${hl?' highlight':''}${isDragOver?' drag-over':''}${isDupe?' dupe-flag':''}`}
+  return(<div ref={slotRef} data-img-id={imgId} className={`slot${compactClass}${hl?' highlight':''}${isDragOver?' drag-over':''}${isDupe?' dupe-flag':''}`}
     draggable={true}
     onDragStart={e=>{dragRef={garageIdx,slotIdx};e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain','')}}
     onDragEnd={()=>{dragRef={garageIdx:null,slotIdx:null}}}
@@ -609,7 +607,6 @@ function App(){
   const[slotScale,setSlotScale]=useState(0);
 
   useEffect(()=>{save(coll)},[coll]);
-  useEffect(()=>{preloadCollectionImages(coll)},[coll]);
   function flash(m){setToast(m);if(toastTimeout)clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>setToast(''),1800)}
   function updateG(idx,g){const p=[...coll.properties];p[idx]=g;setColl({...coll,properties:p});flash('Saved')}
   const handleDragDrop=useCallback((fGi,fSi,tGi,tSi)=>{if(fGi===tGi&&fSi===tSi)return;const np=coll.properties.map(g=>({...g,slots:[...g.slots]}));const fc=np[fGi].slots[fSi];const tc=np[tGi].slots[tSi];np[fGi].slots[fSi]=tc;np[tGi].slots[tSi]=fc;setColl({...coll,properties:np});if(fGi!==tGi)flash('Moved');else flash('Swapped')},[coll]);
