@@ -984,7 +984,7 @@ function App(){
       <span style={{color:'var(--cream)'}}>📂 {cloud.slug}'s fleet</span>
       {cloud.editKey?<span style={{color:'var(--green)'}}>· editing</span>:<span style={{color:'var(--cream-dim)'}}>· view only</span>}
       {cloud.dirty&&cloud.editKey&&<span style={{color:'var(--amber)'}}>· unsaved changes</span>}
-      {!cloud.editKey&&<button className="tb-btn" style={{padding:'2px 8px',fontSize:'8px',marginLeft:6}} onClick={()=>{const url=new URL(location.href);url.search='';history.replaceState(null,'',url);location.reload()}}>Open your own fleet</button>}
+      <button className="tb-btn" style={{padding:'2px 8px',fontSize:'8px',marginLeft:'auto'}} onClick={()=>{if(cloud.dirty&&!confirm('You have unsaved changes. Disconnect anyway?'))return;const url=new URL(location.href);url.search='';history.replaceState(null,'',url);location.reload()}}>✕ Disconnect</button>
     </div>}
     <div className="toolbar">
       <div className="toolbar-search">
