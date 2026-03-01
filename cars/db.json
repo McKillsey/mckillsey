@@ -996,7 +996,7 @@
     "topSpeed": 126,
     "hsw": true,
     "imaniTech": null,
-    "irlName": "Porsche 928",
+    "irlName": "Nardone Porsche 928",
     "scImageId": "astrale"
   },
   {
@@ -3339,7 +3339,7 @@
     "topSpeed": 125,
     "hsw": false,
     "imaniTech": "full",
-    "irlName": "Aston Martin Victor / Valour",
+    "irlName": "Aston Martin Victor",
     "scImageId": "champion"
   },
   {
@@ -4231,7 +4231,7 @@
     "topSpeed": 119.25,
     "hsw": true,
     "imaniTech": null,
-    "irlName": "Rimac C_Two / Nevera",
+    "irlName": "Rimac Nevera",
     "scImageId": "cyclone-ii"
   },
   {
@@ -4242,7 +4242,7 @@
     "type": "CAR",
     "price": 2725000,
     "seats": 2,
-    "irlName": "Rimac C_Two / Nevera",
+    "irlName": "Rimac Nevera",
     "hsw": true,
     "imaniTech": null,
     "convertible": false,
@@ -5719,7 +5719,7 @@
     "topSpeed": 121.25,
     "hsw": false,
     "imaniTech": null,
-    "irlName": "Lexus LF-LC GT Vision Gran Turismo",
+    "irlName": "Lexus LF-LC GT",
     "scImageId": "etr1"
   },
   {
@@ -6373,7 +6373,7 @@
     "topSpeed": 116,
     "hsw": false,
     "imaniTech": null,
-    "irlName": "Ford Focus RS / Fiesta WRC",
+    "irlName": "Ford Focus RS",
     "scImageId": "flash-gt"
   },
   {
@@ -7255,7 +7255,7 @@
     "topSpeed": 142,
     "hsw": false,
     "imaniTech": null,
-    "irlName": "Nissan 350Z",
+    "irlName": "Nissan 350Z (Future Shock)",
     "scImageId": "zr-380"
   },
   {
@@ -8887,7 +8887,7 @@
     "topSpeed": 119.5,
     "hsw": false,
     "imaniTech": null,
-    "irlName": "Acura NSX / Honda NSX",
+    "irlName": "Acura NSX",
     "scImageId": "jester"
   },
   {
@@ -9600,7 +9600,7 @@
     "topSpeed": 119.5,
     "hsw": false,
     "imaniTech": "jammer",
-    "irlName": "Lotus Seven / Caterham Super Seven",
+    "irlName": "Lotus Seven",
     "scImageId": "locust"
   },
   {
@@ -9700,7 +9700,7 @@
     "topSpeed": 136.25,
     "hsw": false,
     "imaniTech": null,
-    "irlName": "McLaren Solus GT",
+    "irlName": "McLaren Elva",
     "scImageId": "luiva"
   },
   {
@@ -10584,7 +10584,7 @@
     "topSpeed": 127,
     "hsw": false,
     "imaniTech": null,
-    "irlName": "Bugatti Chiron (Custom)",
+    "irlName": "Bugatti Chiron",
     "scImageId": "nero-custom"
   },
   {
@@ -11058,7 +11058,7 @@
     "topSpeed": 140,
     "hsw": false,
     "imaniTech": null,
-    "irlName": "Flying Motorcycle (Street Hawk)",
+    "irlName": "Street Hawk",
     "scImageId": "oppressor"
   },
   {
@@ -13471,7 +13471,7 @@
     "topSpeed": 116.25,
     "hsw": true,
     "imaniTech": null,
-    "irlName": "Toyota GR86 / Subaru BRZ",
+    "irlName": "Toyota GR86",
     "scImageId": "s95"
   },
   {
@@ -13482,7 +13482,7 @@
     "type": "CAR",
     "price": 2520000,
     "seats": 2,
-    "irlName": "Toyota GR86 / Subaru BRZ",
+    "irlName": "Toyota GR86",
     "hsw": true,
     "imaniTech": null,
     "convertible": false,
@@ -14934,7 +14934,7 @@
     "topSpeed": 132,
     "hsw": true,
     "imaniTech": null,
-    "irlName": "",
+    "irlName": "Ferrari Roma",
     "scImageId": "stinger-tt"
   },
   {
@@ -14945,7 +14945,7 @@
     "type": "CAR",
     "price": 3798000,
     "seats": 2,
-    "irlName": "",
+    "irlName": "Ferrari Roma",
     "hsw": true,
     "imaniTech": null,
     "convertible": false,
@@ -15711,7 +15711,7 @@
     "topSpeed": 130.5,
     "hsw": true,
     "imaniTech": null,
-    "irlName": "Dodge Challenger (modern)",
+    "irlName": "Dodge Challenger",
     "scImageId": "tampa-gt"
   },
   {
@@ -15722,7 +15722,7 @@
     "type": "CAR",
     "price": 2711000,
     "seats": 2,
-    "irlName": "Dodge Challenger (modern)",
+    "irlName": "Dodge Challenger",
     "hsw": true,
     "imaniTech": null,
     "convertible": false,
@@ -17027,7 +17027,7 @@
     "topSpeed": 122.5,
     "hsw": false,
     "imaniTech": "full",
-    "irlName": "Ferrari 812 Competizione / Daytona SP3",
+    "irlName": "Ferrari F8 Tributo",
     "scImageId": "turismo-omaggio"
   },
   {
@@ -18314,7 +18314,7 @@
     "topSpeed": 112,
     "hsw": false,
     "imaniTech": null,
-    "irlName": "Plymouth Barracuda / Corvair",
+    "irlName": "Plymouth Barracuda",
     "scImageId": "weaponized-tampa"
   },
   {
@@ -18535,7 +18535,7 @@
     "topSpeed": 128.25,
     "hsw": false,
     "imaniTech": null,
-    "irlName": "Ferrari FXX K / Devel Sixteen Concept",
+    "irlName": "Ferrari FXX K",
     "scImageId": "x80-proto"
   },
   {
@@ -18818,7 +18818,7 @@
     "topSpeed": 128,
     "hsw": false,
     "imaniTech": null,
-    "irlName": "Bugatti Bolide",
+    "irlName": "SSC Tuatara",
     "scImageId": "zeno"
   },
   {
@@ -18838,7 +18838,7 @@
     "topSpeed": 122.25,
     "hsw": false,
     "imaniTech": "jammer",
-    "irlName": "Lamborghini Sesto Elemento / Veneno",
+    "irlName": "Lamborghini Sesto Elemento",
     "scImageId": "zentorno"
   },
   {
@@ -19001,7 +19001,7 @@
     "topSpeed": 116.75,
     "hsw": false,
     "imaniTech": null,
-    "irlName": "Nissan 300ZX Z32",
+    "irlName": "Mazda RX-7",
     "scImageId": "zr350"
   },
   {
