@@ -1071,11 +1071,11 @@ function App(){
   const ownedMap=useMemo(()=>{const m=new Map();coll.properties.forEach(g=>{g.slots.forEach(sl=>{if(sl){const d=resolveSlot(sl);if(d)m.set(d.vehicleId,sl.tag||'owned')}})});return m},[coll]);
 
   const stats=useMemo(()=>{
-    let cars=0,slots=0,garages=0,totalValue=0;const cc={},mfrs={},irlMfrs={};const topCars=[];
+    let cars=0,slots=0,garages=0,totalValue=0,tagBuy=0,tagSell=0;const cc={},mfrs={},irlMfrs={};const topCars=[];
     const seenByClass={},seenByMfr={},seenByIrlMfr={};
     coll.properties.forEach(g=>{
       const f=g.slots.filter(s=>s!==null).length;cars+=f;slots+=g.capacity;if(f>0)garages++;
-      g.slots.forEach(s=>{if(!s)return;const dbv=resolveSlot(s);if(dbv){
+      g.slots.forEach(s=>{if(!s)return;if(s.tag==='buy')tagBuy++;if(s.tag==='sell')tagSell++;const dbv=resolveSlot(s);if(dbv){
         const vid=dbv.vehicleId;
         // Classes: count unique
         if(!seenByClass[dbv.cls])seenByClass[dbv.cls]=new Set();
@@ -1094,7 +1094,7 @@ function App(){
     const mfrRank=Object.entries(mfrs).sort((a,b)=>b[1]-a[1]);
     const irlMfrRank=Object.entries(irlMfrs).sort((a,b)=>b[1]-a[1]);
     topCars.sort((a,b)=>b.price-a.price);
-    return{cars,slots,garages,pct:slots?Math.round(cars/slots*100):0,classRank,mfrRank,irlMfrRank,classTotals,mfrTotals,irlMfrTotals,totalValue,topCars:topCars.slice(0,10),mfrCount:Object.keys(mfrs).length,irlMfrCount:Object.keys(irlMfrs).length};
+    return{cars,slots,garages,pct:slots?Math.round(cars/slots*100):0,classRank,mfrRank,irlMfrRank,classTotals,mfrTotals,irlMfrTotals,totalValue,topCars:topCars.slice(0,10),mfrCount:Object.keys(mfrs).length,irlMfrCount:Object.keys(irlMfrs).length,tagBuy,tagSell};
   },[coll]);
 
   const displayGroups=useMemo(()=>{
@@ -1139,9 +1139,16 @@ function App(){
     </div>
     <div className="app-body">
       <div className="stat-grid">
-        <div className="stat-card">
+        <div className="stat-card hoverable">
           <div className="stat-value gold">{stats.cars}<span style={{fontSize:'11px',color:'var(--cream-dim)',fontWeight:400}}>/{stats.slots}</span></div>
           <div className="stat-label">Vehicles · {stats.pct}% Full</div>
+          {(stats.tagBuy>0||stats.tagSell>0)&&<div className="stat-pop">
+            <div className="stat-pop-head">Fleet Breakdown</div>
+            <div className="stat-pop-row"><span className="pop-name">Current + Planned</span><span className="pop-val" style={{color:'var(--cream)'}}>{stats.cars}</span></div>
+            {stats.tagBuy>0&&<div className="stat-pop-row"><span className="pop-name" style={{color:'var(--green)'}}>▸ To Buy</span><span className="pop-val" style={{color:'var(--green)'}}>{stats.tagBuy}</span></div>}
+            {stats.tagSell>0&&<div className="stat-pop-row"><span className="pop-name" style={{color:'var(--red)'}}>▸ To Sell</span><span className="pop-val" style={{color:'var(--red)'}}>{stats.tagSell}</span></div>}
+            <div className="stat-pop-row" style={{borderTop:'1px solid rgba(201,168,76,.15)',marginTop:4,paddingTop:6}}><span className="pop-name">After Buy/Sell</span><span className="pop-val" style={{color:'var(--gold)'}}>{stats.cars-stats.tagSell}</span></div>
+          </div>}
         </div>
         <div className="stat-card hoverable">
           <div className="stat-value" style={{fontFamily:'var(--mono)'}}>{stats.classRank[0]?cls(stats.classRank[0][0]):'—'}</div>
