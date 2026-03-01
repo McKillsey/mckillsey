@@ -1139,14 +1139,14 @@ function App(){
     </div>
     <div className="app-body">
       <div className="stat-grid">
-        <div className="stat-card hoverable">
-          <div className="stat-value gold">{stats.cars}<span style={{fontSize:'11px',color:'var(--cream-dim)',fontWeight:400}}>/{stats.slots}</span></div>
+        <div className={`stat-card${(stats.tagBuy>0||stats.tagSell>0)?' hoverable':''}`}>
+          <div className="stat-value gold">{stats.cars-stats.tagBuy}<span style={{fontSize:'11px',color:'var(--cream-dim)',fontWeight:400}}>/{stats.slots}</span></div>
           <div className="stat-label">Vehicles · {stats.pct}% Full</div>
           {(stats.tagBuy>0||stats.tagSell>0)&&<div className="stat-pop">
             <div className="stat-pop-head">Fleet Breakdown</div>
-            <div className="stat-pop-row"><span className="pop-name">Current + Planned</span><span className="pop-val" style={{color:'var(--cream)'}}>{stats.cars}</span></div>
-            {stats.tagBuy>0&&<div className="stat-pop-row"><span className="pop-name" style={{color:'var(--green)'}}>▸ To Buy</span><span className="pop-val" style={{color:'var(--green)'}}>{stats.tagBuy}</span></div>}
-            {stats.tagSell>0&&<div className="stat-pop-row"><span className="pop-name" style={{color:'var(--red)'}}>▸ To Sell</span><span className="pop-val" style={{color:'var(--red)'}}>{stats.tagSell}</span></div>}
+            <div className="stat-pop-row"><span className="pop-name">Owned</span><span className="pop-val" style={{color:'var(--cream)'}}>{stats.cars-stats.tagBuy}</span></div>
+            {stats.tagBuy>0&&<div className="stat-pop-row"><span className="pop-name" style={{color:'var(--green)'}}>+ To Buy</span><span className="pop-val" style={{color:'var(--green)'}}>{stats.tagBuy}</span></div>}
+            {stats.tagSell>0&&<div className="stat-pop-row"><span className="pop-name" style={{color:'var(--red)'}}>− To Sell</span><span className="pop-val" style={{color:'var(--red)'}}>{stats.tagSell}</span></div>}
             <div className="stat-pop-row" style={{borderTop:'1px solid rgba(201,168,76,.15)',marginTop:4,paddingTop:6}}><span className="pop-name">After Buy/Sell</span><span className="pop-val" style={{color:'var(--gold)'}}>{stats.cars-stats.tagSell}</span></div>
           </div>}
         </div>
