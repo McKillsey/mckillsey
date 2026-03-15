@@ -18,7 +18,6 @@
   --cream:#f0ead8; --cream-dim:#9aabbf;
   --gold:#c9a84c; --gold-dim:#8a6f2e;
   --green:#2dba72; --red:#d94f4f;
-  --weekly:#d4a843;
   --rule:rgba(201,168,76,0.18);
   --mono:'IBM Plex Mono',monospace;
   --sans:'IBM Plex Sans',sans-serif;
@@ -52,41 +51,6 @@ body {
 .hero-sub{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:20px}
 .hero-copy{font-size:14px;color:var(--cream-dim);line-height:1.7;max-width:540px;margin:0 auto}
 .hero-copy strong{color:var(--cream);font-weight:500}
-
-/* ── WEEKLY BANNER ── */
-.weekly-banner{
-  max-width:1100px;margin:40px auto 0;padding:0 48px;
-}
-.weekly-card{
-  display:flex;align-items:center;gap:20px;
-  border:1px solid rgba(212,168,67,.2);border-left:3px solid var(--weekly);
-  background:rgba(212,168,67,.04);
-  padding:16px 24px;
-  text-decoration:none;
-  transition:background .15s;
-}
-.weekly-card:hover{background:rgba(212,168,67,.08)}
-.weekly-flag{
-  font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--weekly);white-space:nowrap;
-}
-.weekly-title{
-  font-family:var(--serif);font-size:16px;font-weight:700;color:var(--cream);
-  flex:1;
-}
-.weekly-detail{
-  font-family:var(--mono);font-size:11px;color:var(--cream-dim);
-  letter-spacing:.04em;
-}
-.weekly-arrow{
-  font-family:var(--mono);font-size:14px;color:var(--weekly);opacity:.5;
-}
-.archive-link{
-  display:block;font-family:var(--mono);font-size:10px;letter-spacing:.04em;
-  color:var(--cream-dim);text-decoration:none;margin-top:10px;text-align:right;
-  transition:color .15s;
-}
-.archive-link:hover{color:var(--gold)}
 
 /* ── INDEX GRID ── */
 .index-wrap{max-width:1100px;margin:44px auto 0;padding:0 48px 60px;display:grid;grid-template-columns:1fr 1fr;gap:48px}
@@ -129,9 +93,6 @@ body {
   font-family:var(--mono);font-size:8px;letter-spacing:.18em;text-transform:uppercase;
   padding:3px 8px;border-radius:2px;white-space:nowrap;flex-shrink:0;
 }
-.badge-live{background:rgba(45,186,114,.12);color:var(--green);border:1px solid rgba(45,186,114,.2)}
-.badge-beta{background:rgba(201,168,76,.1);color:var(--gold);border:1px solid rgba(201,168,76,.2)}
-.badge-new{background:rgba(45,186,114,.15);color:var(--green);border:1px solid rgba(45,186,114,.25)}
 .badge-dev{background:rgba(154,171,191,.06);color:var(--cream-dim);border:1px solid rgba(154,171,191,.12);opacity:.6}
 
 /* Stub cards (greyed out, no link) */
@@ -166,7 +127,6 @@ body {
   .site-header{padding:16px 20px}
   .header-tagline{display:none}
   .hero{padding:36px 20px 0}
-  .weekly-banner{padding:0 20px}
   .index-wrap{padding:0 20px 40px;grid-template-columns:1fr;gap:32px}
   .site-footer{padding:14px 20px;flex-direction:column;gap:6px;text-align:center}
 }
@@ -188,17 +148,6 @@ body {
   </p>
 </div>
 
-<!-- WEEKLY BANNER -->
-<div class="weekly-banner">
-  <a href="/weekly" class="weekly-card">
-    <span class="weekly-flag">The McKillsey Weekly</span>
-    <span class="weekly-title">Week of Feb 26 &mdash; 2&times; Weed, Penumbra FF Claimable</span>
-    <span class="weekly-detail">Updated every Thursday</span>
-    <span class="weekly-arrow">&rarr;</span>
-  </a>
-  <a href="/archive" class="archive-link">Search historical bonuses, discounts &amp; vehicles</a>
-</div>
-
 <!-- INDEX -->
 <div class="index-wrap">
 
@@ -212,7 +161,7 @@ body {
           <div class="idx-card-title">MC Businesses</div>
           <div class="idx-card-desc">Some MC businesses are not at all like others</div>
         </div>
-        <span class="badge badge-beta">Beta</span>
+
         <span class="idx-card-arrow">&rarr;</span>
       </a>
 
@@ -221,7 +170,7 @@ body {
           <div class="idx-card-title">Nightclub</div>
           <div class="idx-card-desc">True passive income &mdash; sell every 20 hours, no exceptions</div>
         </div>
-        <span class="badge badge-new">New</span>
+
         <span class="idx-card-arrow">&rarr;</span>
       </a>
 
@@ -230,7 +179,7 @@ body {
           <div class="idx-card-title">Bunker</div>
           <div class="idx-card-desc">Sell weapons, but buy research</div>
         </div>
-        <span class="badge badge-beta">Beta</span>
+
         <span class="idx-card-arrow">&rarr;</span>
       </a>
 
@@ -239,7 +188,7 @@ body {
           <div class="idx-card-title">Hangar</div>
           <div class="idx-card-desc">Viable as passive or active business</div>
         </div>
-        <span class="badge badge-beta">Beta</span>
+
         <span class="idx-card-arrow">&rarr;</span>
       </a>
 
@@ -248,7 +197,7 @@ body {
           <div class="idx-card-title">Special Cargo</div>
           <div class="idx-card-desc">Source passively, don't wait to sell</div>
         </div>
-        <span class="badge badge-new">New</span>
+
         <span class="idx-card-arrow">&rarr;</span>
       </a>
 
@@ -277,7 +226,7 @@ body {
           <div class="idx-card-title">Cayo Perico Payout Model</div>
           <div class="idx-card-desc">Optimal team size, loot strategy, crew cut validation</div>
         </div>
-        <span class="badge badge-live">Live</span>
+
         <span class="idx-card-arrow">&rarr;</span>
       </a>
 
@@ -286,7 +235,7 @@ body {
           <div class="idx-card-title">Diamond Casino Heist Vault Time Model</div>
           <div class="idx-card-desc">Crew composition, hacker selection, take optimization</div>
         </div>
-        <span class="badge badge-beta">Beta</span>
+
         <span class="idx-card-arrow">&rarr;</span>
       </a>
 
@@ -300,7 +249,7 @@ body {
           <div class="idx-card-title">Fleet Manager</div>
           <div class="idx-card-desc">Organize, track, and obsess over your fleet</div>
         </div>
-        <span class="badge badge-new">New</span>
+
         <span class="idx-card-arrow">&rarr;</span>
       </a>
 
@@ -314,7 +263,7 @@ body {
           <div class="idx-card-title">Street Dealers</div>
           <div class="idx-card-desc">When to sell, when to skip &mdash; the math behind dealer economics</div>
         </div>
-        <span class="badge badge-new">New</span>
+
         <span class="idx-card-arrow">&rarr;</span>
       </a>
 
@@ -323,7 +272,7 @@ body {
           <div class="idx-card-title">Simeon Didn't Text</div>
           <div class="idx-card-desc">It's fine, you only need to check four options</div>
         </div>
-        <span class="badge badge-new">New</span>
+
         <span class="idx-card-arrow">&rarr;</span>
       </a>
 
